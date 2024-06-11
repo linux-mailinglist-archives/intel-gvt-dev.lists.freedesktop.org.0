@@ -2,170 +2,89 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C7F4902951
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jun 2024 21:32:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A564A903E17
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jun 2024 15:56:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C011410E3D7;
-	Mon, 10 Jun 2024 19:32:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 767FA10E166;
+	Tue, 11 Jun 2024 13:56:53 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="gqLLcFBA";
+	dkim=pass (2048-bit key; unprotected) header.d=quicinc.com header.i=@quicinc.com header.b="ACXUAdni";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6465D10E36C;
- Mon, 10 Jun 2024 19:32:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718047932; x=1749583932;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=xSS9laCRc8Y0IDeBlGwxZc5vlM8Pj5IDp5v493Fvce8=;
- b=gqLLcFBA+bhaH2UdYiwyyc1bC19yMn4OaKOfeglV6I2RsKIUllsXUSno
- F6uLnrpt+qVi2m4ZaDpLA030tYFZ+QtjENbTk3msNnXf7jgWPnyBHu4h0
- rjLxzUTVURNktPr+4otMo6D19nu8z+YGwe/nAs0RgcZ3iugfc/Xs08D/G
- Sv1MZMBXGP9q0cCCQ4b6c/V+IlrFoaReWjdIMWkR1+Pk64c86ixOiIKTr
- CMzBTbwKTx5hIcg4F4D3R9wAPFxqhWfpqjwwE973Z6+tNpuTNLk2glc8U
- AWO9HiS99GMvFXoMm6se7t6C6HtbJbyUp8/kQsbwNXQbrMogUU7XW/Z6s Q==;
-X-CSE-ConnectionGUID: 3sKnoDV3ToeFUgksCf0BrA==
-X-CSE-MsgGUID: Csc6zBo+SIm7PlJaTMUu7g==
-X-IronPort-AV: E=McAfee;i="6600,9927,11099"; a="14526569"
-X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="14526569"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jun 2024 12:32:11 -0700
-X-CSE-ConnectionGUID: yWmMZHw1SPSVmSZDHaljEw==
-X-CSE-MsgGUID: 4Eehh/pCT2KaZTDtcYlinA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="44088857"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 10 Jun 2024 12:32:12 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 10 Jun 2024 12:32:11 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 10 Jun 2024 12:32:10 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Mon, 10 Jun 2024 12:32:10 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.176)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 10 Jun 2024 12:32:10 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=COuN6rqTqzUmKiX44d8BArzcfD+RxQWrBQ6VpsM+B9WA+SMv5dY5VDKWFTvmExo1FebaWuQf7kbkmBmZENUjH90i7S1EiC0tLM3hRjNEpgjz++p/0ngiUkrYlTRMPG9RhiNwsKMM7F6QRw9AjGUF+3TXABA693H19o0yjlROSzueFI382Ammfd+kaJF0wdZTSlmQHRMfXXtYz4gXNX0iZtPRKAnk+UGFPrnZayG4e9ebL30ucKbbSWP2pkWewUhbbAFekh5+aVWC3NyQ4MYxxmteqrAmssU+t/U/mn9xPUop6yaQ/DJ7c5a+49jeQFBDdnWyb3HqMvkyLIpVdmpGiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8gE8DuZdzZoXmiV++wwKThhMjcjosvJ7ajmrfjqnWxo=;
- b=lGdu12hCWel733n1Bbc4PZyuv4owND3sk5Ky2AGvXJf8CbloDlQe0XaZCDB0gQ5Km+nKAq5sLvhWEvL9naNFIhwC6G/9PBpVHBoOfljYISndO2V58jgQDJdlnOMTHpaJaXB2UwmOdNScm7n3CYJ7tQ01DGVzT3RDDST2lVZMTywXc82C8Z19eFHyojtZ8B1jlo1UoZH4LRO/dHoQBeuOm8tjlc7hj+06VdZZ0458xdG/CgDhDOpwTrSBFifxXn7K+KH0guPcjRBlwjy7CqSO/KPu3mtFtTF+76J9em7qhevMIVMh1OuI8jX71lJwpWg7KxjszVVOzSj2hydF8A60Gw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from BYAPR11MB2854.namprd11.prod.outlook.com (2603:10b6:a02:c9::12)
- by SA3PR11MB7626.namprd11.prod.outlook.com (2603:10b6:806:307::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.36; Mon, 10 Jun
- 2024 19:32:08 +0000
-Received: from BYAPR11MB2854.namprd11.prod.outlook.com
- ([fe80::8a98:4745:7147:ed42]) by BYAPR11MB2854.namprd11.prod.outlook.com
- ([fe80::8a98:4745:7147:ed42%5]) with mapi id 15.20.7633.036; Mon, 10 Jun 2024
- 19:32:08 +0000
-Date: Mon, 10 Jun 2024 15:32:05 -0400
-From: Rodrigo Vivi <rodrigo.vivi@intel.com>
-To: Jani Nikula <jani.nikula@intel.com>
-CC: <intel-gfx@lists.freedesktop.org>, <intel-gvt-dev@lists.freedesktop.org>, 
- <ville.syrjala@linux.intel.com>
-Subject: Re: [PATCH v2 6/6] drm/i915: remove unused pipe/plane B register
- macros
-Message-ID: <ZmdUtZei8kb0X0Un@intel.com>
-References: <cover.1717773890.git.jani.nikula@intel.com>
- <16d278bea466a69cdce94fd83d98dd15ce1a8c89.1717773890.git.jani.nikula@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <16d278bea466a69cdce94fd83d98dd15ce1a8c89.1717773890.git.jani.nikula@intel.com>
-X-ClientProxiedBy: BY5PR13CA0015.namprd13.prod.outlook.com
- (2603:10b6:a03:180::28) To BYAPR11MB2854.namprd11.prod.outlook.com
- (2603:10b6:a02:c9::12)
+Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com
+ [205.220.180.131])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ACD9010E166;
+ Tue, 11 Jun 2024 13:56:50 +0000 (UTC)
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45B9bbQN013082;
+ Tue, 11 Jun 2024 13:56:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=jWwTS6KJCt0lEEIDSYms9t
+ vUy5UMkXCmOkbk0Uzj1Kw=; b=ACXUAdnirLxPiRT2Bbq/F91X1fV3xBt4brPukQ
+ tUaW3sTgJUacjxY4F912o1OuEqG+mE7PQA+pIvuFkWZioh9bJxc8x23DiUY56wW8
+ nXOUeEkUQl3EDicXa8e/EJLSASbpaQX9zqF5CWllzBNyrz82tRCr0fE7It++ho3N
+ eCSbIv2V8UrHLfw8wh7NF0ItblI9FftcXHfmhvURp6TiWvP1ZnHzD/cC2jpq6fi1
+ iluSn4cY9zdEQD44OKE2V+akVlGsKpZJRufk8k6AX2APmmJUYh1IGkMh6sfwJCaJ
+ cz7adpt1dqn1uHjHnRLZato6Xy3MZSJYHSCspX5ymhcU+/uw==
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ypm458nyu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Jun 2024 13:56:42 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
+ [10.47.209.196])
+ by NALASPPMTA02.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id
+ 45BDubgH027092
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Jun 2024 13:56:37 GMT
+Received: from [169.254.0.1] (10.49.16.6) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Tue, 11 Jun
+ 2024 06:56:37 -0700
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+Date: Tue, 11 Jun 2024 06:56:33 -0700
+Subject: [PATCH v2] drm: add missing MODULE_DESCRIPTION() macros
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR11MB2854:EE_|SA3PR11MB7626:EE_
-X-MS-Office365-Filtering-Correlation-Id: 348431ac-340e-48b6-0236-08dc8984044f
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|1800799015|376005|366007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?WrsdTDr5uVW7MM8wdP122EJykJw0wZKzJWN01/Zr0+PeIzyFVg11y8X+p5PW?=
- =?us-ascii?Q?/8FbptJCqiyaDGMENFqdgKURQbU4aqauV4W3g7UqiIOYsETZOOlqSDboeS6U?=
- =?us-ascii?Q?vyWNVYkVsatBsxy2ZaSA6xGERVaSEhc9thPINdKMTSFH3CUsf0377KpRze5s?=
- =?us-ascii?Q?NMMpDfm9LYaRqIVC1HJItXSCrZqGhkPkNE59Mk0rH0SaW7m9HvGDYXF1HLgE?=
- =?us-ascii?Q?WzfJ/Gvbk3OUQ4ZbHreMx0KAYNQ0vmZXjfe82X7unf9clsn280jZTLUpm2yq?=
- =?us-ascii?Q?T7CLiYt/zHCphE3ueHZ2Ezk1NqOv148xqfPl2c76Pw0cIWVr4JvhnlvFjddP?=
- =?us-ascii?Q?8tvizRUw9LrrMbZZ4IrXMPfvaCVsPF1SLtAh91fa9r9F8AzFOLU7tydZgeYe?=
- =?us-ascii?Q?Cmzedc65WU7jAb3yr/gQu6oLX5KnTuOe0ZlnSOla2ZxrEkjD3u9Ey3r7AcF0?=
- =?us-ascii?Q?r2rSSvmosX0DYJG2KsaPTxjvhZnnp6sw+ILi5CQMLEN9hExnNGyVEOQSYMID?=
- =?us-ascii?Q?3sbmVKi55WdlEKQA7pxE+AyGRr4mVeOU0OCVRZWMvMlLJmR3NwiKL3cHiAf+?=
- =?us-ascii?Q?d/0fpYVgVCv3BjF7iEG04A9SUhGVJHf6W7Kh3m8AelXh0EdIXwiK3ZYKXRth?=
- =?us-ascii?Q?2Vaij8tqKkaPBpe/+v1hn9t1nnSjmInfyk0gJDvQHfK8LAhQjdj1fHyLYGID?=
- =?us-ascii?Q?aIOq2m71B18y+RPYLiYl4WQG8UNhLXvMIadO/xrYNPY3P1E/RGV2u4yADIjS?=
- =?us-ascii?Q?6vvRGEzzQlohdMPjdqn1ml4VzxAnhGEHkxMWnU/IwMZM5wiZWowsgK3UJQNE?=
- =?us-ascii?Q?BeUDBRLyUuh5GwgljydTNY+k+BqeO81v3OZhF+wGlxxZHxlCTeg3mMGWACdW?=
- =?us-ascii?Q?Yq2OqYiiVINJ5g4ihwU3OeM5PYavx1ac9GhoIBWASDOmJizoUnFptFle8B+q?=
- =?us-ascii?Q?MSfcYoDYXFkNa3UOUiWjmCZg99LV8u6B/Lkn5XaUcsOD93oKWMCLt836DVD3?=
- =?us-ascii?Q?bnBjJecdcX+N+iLb9HUwqeV4Wi07BKFR384z32GM8CX3x1eWXFuMFIgzS3wC?=
- =?us-ascii?Q?XeN9wRZ2qhCK79nY1J0WlJ67SxXWNmdcJslGjMTXQRrV0H4KskHC3de+HO95?=
- =?us-ascii?Q?Hytmg1zSaDRZKuKYi8T1OfEQT9ogaZScjq6A9FaYFJDPO7ojwFneZgoxTJfI?=
- =?us-ascii?Q?oaRZkYG2VZkLyo40ocqE3u92C+tDQdGpfVu5p3P7B7AR+/b6l8pd9Tvwhrpk?=
- =?us-ascii?Q?xbyYfFddEF7mpiy2+3pw5dVy56w5FckOiXYewz+u8ertVQmsLOg1/DR6cT+7?=
- =?us-ascii?Q?7z2lBrD1sM1Jj/G9p5ZXbZ8p?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB2854.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(366007); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JlNaDYFMB9GJk6+sVEwhjBJWw+zUa5sYHzYqzkp/RM8/TFExV30kw6XmPwLd?=
- =?us-ascii?Q?muEff42JnubGcBnKNuJXjc/JWXM5qyHBO+hJsNlg1am5uAki/b1rHWpSAOlv?=
- =?us-ascii?Q?FZqUbydKOyiPZB019VTTRTvJWfvwRrokHnCbBkajOF9aFotYyA9GgBlUf5zc?=
- =?us-ascii?Q?Enav8iAc0P1uWFgi+FpYNLfjRV/1H4EaRaYgiX2N/bc3XpZSu2xQU/11aXmJ?=
- =?us-ascii?Q?z8QowsyR2HuRybLcZ7mRn1dU4srw62Tv8tHXyLz0vjP5L/QM0xcLBO4eIJ2g?=
- =?us-ascii?Q?iLwaO1ZoSDZZADNOclp+hzx/4XqTR09+8QfIEy0/zHqa3o8F0wsp60giAJ17?=
- =?us-ascii?Q?r7Jgwk0GvuSt4XXlRs8GKu2GOEmMTLLMb/uiHNe1IyF40IEvSLnz1/8o8eu5?=
- =?us-ascii?Q?33WdDkG6SryHTMWadgf+0lypcro5ZeSsNyWl7EyqYpHRmAjzcon8WXT3ORC2?=
- =?us-ascii?Q?BTbFmYXpz/G3STk+ha+P7Kx+AuGGAz7VsXPJ/OxE2VMNSKL+PnfsEo96H9bg?=
- =?us-ascii?Q?+zpYVoRxM8e0QJlgQKVk//IK1bStuz1edBLUZsgi7DKrINQEFlvuCgRbdE4H?=
- =?us-ascii?Q?6mmcb6nQa72CK6cMABPyDP093p34cX0NN9b3MJcf4aO1GRZBRKiy7hk7Xwa8?=
- =?us-ascii?Q?0uE1kYu223tY6jArAaC+A+abHeWEcIRmar5I6wkChiNeDTeUow86jZegHf8S?=
- =?us-ascii?Q?biG7TJIkZNOlWfUeC5+cEnvMN7uBe7vfokwIcK4LcJHE6Py8sE5ZljZxmVrH?=
- =?us-ascii?Q?cBULzSgIZ52m5CfndSlm3TbNhkL9RA8zH9KOj4jFB0Qcav1nBs7EL4K0lrDL?=
- =?us-ascii?Q?7/8C623dYkjWtlwufMb4BOQZ4B8OhYbatMp+jlPW3nWx0ZJHRUlBjneeQ/3v?=
- =?us-ascii?Q?sBRug8e8WkNEvnajJK8JXlCMo6tP61KU2ckfURaugyY99FghUWOudAy2SQAK?=
- =?us-ascii?Q?VXALVeOfbwYt6RFaQQ+8swp7xXA/MQaxcylDQJA6huLb7YxOr5dZB5OqHSUT?=
- =?us-ascii?Q?e5CsDJE4p/32lrfWpCy3/F594M6wliPB2fuIuy+FeaXikOQqRVSI4x61vQ7A?=
- =?us-ascii?Q?2JhmftcWLPLxSklWek3r6fXP/bGxlAq93GPd4tciI+CJQyKM0x7ecXIlmN6Z?=
- =?us-ascii?Q?SJ6fw5OVYYcFokojCEZhanBDlyolmbCgSWdJd1j904F4NirPssRvxfgUOHzE?=
- =?us-ascii?Q?ssTUvtr1fh2UHz5w3bBwT4qgKiVRqcpeQDTl30RZqwwI/Kip/lEzXr+2egOU?=
- =?us-ascii?Q?LxOn9K6K6ni9zCkqHIoprDP01VDRN+sEbibMqwPfl2TmVdcIymaut43hmEHW?=
- =?us-ascii?Q?ql3xNubIT8pt0WzX5gYbo1Kcn5cCWEVNAZ9Z+ZLVoEbjDQWbLLQnF3yZcM80?=
- =?us-ascii?Q?qrUX5UTqaXnZ3QriLVyx2i7r3p2Ba+J3Zp0zvp4or8ibYNnMKcXCGRc9rMNT?=
- =?us-ascii?Q?Rm4kZ5cLeek+fii6l2H9X1QZmk05HYOUUH6syii1vBS674tjyZVKSUnWNkS8?=
- =?us-ascii?Q?8EjBJumo7UgSd+ZK2+EWVJZwNMYGY5Ch3LiN3qyYE9Fo7GBhLDEXM7EBEZrS?=
- =?us-ascii?Q?ojl5omj9ZoFGnmd5/2ZAPWuZ4XZ9VnxZO8zKmfaK?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 348431ac-340e-48b6-0236-08dc8984044f
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2854.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jun 2024 19:32:08.2388 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: E5P60o3rHSxpj5rwnrIv7l1ii3zpKdQmEdmY+gW9qJstaN5fDCPZrDXFUI9omBO/Mrc4R2JSgg2SbPX6Em3a8w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7626
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-ID: <20240611-md-drivers-gpu-drm-v2-1-0b7d9347b159@quicinc.com>
+X-B4-Tracking: v=1; b=H4sIAJBXaGYC/32OSw6CMBRFt2I69pl+lFBH7sMwKO0TXmILttBgC
+ Hu3sABn9yT3t7KEkTCx+2llETMlGkIBeT4x25vQIZArzCSXV15xDd6Bi5QxJujGuWgP3GmtlLG
+ 1rAUrwTHii5aj9NkUbk1CaKMJtt+r3hTmBbxJE8bd3lOahvg9LmSxh/6uZQECao3aKFG5m1CPz
+ 0yWgr3YwbNm27YfDsIbgNUAAAA=
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ =?utf-8?q?Noralf_Tr=C3=B8nnes?= <noralf@tronnes.org>, Zhenyu Wang
+ <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>, Jani Nikula
+ <jani.nikula@linux.intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>,
+ Dave Airlie <airlied@redhat.com>, "Sean Paul" <sean@poorly.run>
+CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+ <intel-gvt-dev@lists.freedesktop.org>,
+ <intel-gfx@lists.freedesktop.org>, <kernel-janitors@vger.kernel.org>,
+ Jeff Johnson <quic_jjohnson@quicinc.com>
+X-Mailer: b4 0.13.0
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: cPRmd3M4QhByFG9Z8m_AHs22QTegWQ4G
+X-Proofpoint-ORIG-GUID: cPRmd3M4QhByFG9Z8m_AHs22QTegWQ4G
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-06-11_07,2024-06-11_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ impostorscore=0 mlxlogscore=999 phishscore=0 malwarescore=0 suspectscore=0
+ bulkscore=0 spamscore=0 clxscore=1015 priorityscore=1501 adultscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405170001 definitions=main-2406110101
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -181,52 +100,94 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 07, 2024 at 06:25:40PM +0300, Jani Nikula wrote:
-> None of these are used. The parametrized register macros all depend on
-> the pipe/plane A offset macros alone. Remove the unused ones.
-> 
-> v2: Rebase
+On x86, make allmodconfig && make W=1 C=1 reports:
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/gpu/drm/gud/gud.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/gpu/drm/drm_panel_orientation_quirks.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/gpu/drm/i915/kvmgt.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/gpu/drm/udl/udl.o
 
-Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Add the missing invocation of the MODULE_DESCRIPTION() macro to all
+files which have a MODULE_LICENSE().
 
-> 
-> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
-> ---
->  drivers/gpu/drm/i915/i915_reg.h | 21 ---------------------
->  1 file changed, 21 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
-> index 2a14dd9ef4a0..a33f3a61a9a4 100644
-> --- a/drivers/gpu/drm/i915/i915_reg.h
-> +++ b/drivers/gpu/drm/i915/i915_reg.h
-> @@ -2214,27 +2214,6 @@
->  #define SWF3(dev_priv, i)	_MMIO(DISPLAY_MMIO_BASE(dev_priv) + 0x72414 + (i) * 4)
->  #define SWF_ILK(i)	_MMIO(0x4F000 + (i) * 4)
->  
-> -/* Pipe B */
-> -#define _PIPEBDSL		(DISPLAY_MMIO_BASE(dev_priv) + 0x71000)
-> -#define _TRANSBCONF		(DISPLAY_MMIO_BASE(dev_priv) + 0x71008)
-> -#define _PIPEBSTAT		(DISPLAY_MMIO_BASE(dev_priv) + 0x71024)
-> -#define _PIPEBFRAMEHIGH		0x71040
-> -#define _PIPEBFRAMEPIXEL	0x71044
-> -#define _PIPEB_FRMCOUNT_G4X	(DISPLAY_MMIO_BASE(dev_priv) + 0x71040)
-> -#define _PIPEB_FLIPCOUNT_G4X	(DISPLAY_MMIO_BASE(dev_priv) + 0x71044)
-> -
-> -
-> -/* Display B control */
-> -#define _DSPBCNTR		(DISPLAY_MMIO_BASE(dev_priv) + 0x71180)
-> -#define _DSPBADDR		(DISPLAY_MMIO_BASE(dev_priv) + 0x71184)
-> -#define _DSPBSTRIDE		(DISPLAY_MMIO_BASE(dev_priv) + 0x71188)
-> -#define _DSPBPOS		(DISPLAY_MMIO_BASE(dev_priv) + 0x7118C)
-> -#define _DSPBSIZE		(DISPLAY_MMIO_BASE(dev_priv) + 0x71190)
-> -#define _DSPBSURF		(DISPLAY_MMIO_BASE(dev_priv) + 0x7119C)
-> -#define _DSPBTILEOFF		(DISPLAY_MMIO_BASE(dev_priv) + 0x711A4)
-> -#define _DSPBOFFSET		(DISPLAY_MMIO_BASE(dev_priv) + 0x711A4)
-> -#define _DSPBSURFLIVE		(DISPLAY_MMIO_BASE(dev_priv) + 0x711AC)
-> -
->  /* ICL DSI 0 and 1 */
->  #define _PIPEDSI0CONF		0x7b008
->  #define _PIPEDSI1CONF		0x7b808
-> -- 
-> 2.39.2
-> 
+For consistency this includes drivers/gpu/drm/drm_simple_kms_helper.c
+since it contains a MODULE_LICENSE() even though it isn't built as a
+separate module -- it is always built as part of drm_kms_helper and
+drm_kms_helper_common.c already provides a MODULE_DESCRIPTION for that
+module.
+
+Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+---
+This is the last in a set of patches to drivers/gpu/drm. The
+preceeding patches cleaned up subdirectiries that had more than one
+issue. This patch cleans up the stragglers. Let me know if any of
+these modifications need to segregated into separate patches.
+---
+Changes in v2:
+- Removed all references to drivers/gpu/drm/drm_mipi_dbi.c since it is already
+  being handled by:
+  https://lore.kernel.org/all/20240425125627.2275559-1-andriy.shevchenko@linux.intel.com/
+- Link to v1: https://lore.kernel.org/r/20240609-md-drivers-gpu-drm-v1-1-89e9a316d513@quicinc.com
+---
+ drivers/gpu/drm/drm_panel_orientation_quirks.c | 1 +
+ drivers/gpu/drm/drm_simple_kms_helper.c        | 1 +
+ drivers/gpu/drm/gud/gud_drv.c                  | 1 +
+ drivers/gpu/drm/i915/gvt/kvmgt.c               | 1 +
+ drivers/gpu/drm/udl/udl_drv.c                  | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_panel_orientation_quirks.c b/drivers/gpu/drm/drm_panel_orientation_quirks.c
+index aa93129c3397..ca5a2222ebc0 100644
+--- a/drivers/gpu/drm/drm_panel_orientation_quirks.c
++++ b/drivers/gpu/drm/drm_panel_orientation_quirks.c
+@@ -501,4 +501,5 @@ EXPORT_SYMBOL(drm_get_panel_orientation_quirk);
+ 
+ #endif
+ 
++MODULE_DESCRIPTION("Quirks for non-normal panel orientation");
+ MODULE_LICENSE("Dual MIT/GPL");
+diff --git a/drivers/gpu/drm/drm_simple_kms_helper.c b/drivers/gpu/drm/drm_simple_kms_helper.c
+index 270523ae36d4..250819fbc5ce 100644
+--- a/drivers/gpu/drm/drm_simple_kms_helper.c
++++ b/drivers/gpu/drm/drm_simple_kms_helper.c
+@@ -453,4 +453,5 @@ int drm_simple_display_pipe_init(struct drm_device *dev,
+ }
+ EXPORT_SYMBOL(drm_simple_display_pipe_init);
+ 
++MODULE_DESCRIPTION("Helpers for drivers for simple display hardware");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/gpu/drm/gud/gud_drv.c b/drivers/gpu/drm/gud/gud_drv.c
+index 9d7bf8ee45f1..db2b7d2e246f 100644
+--- a/drivers/gpu/drm/gud/gud_drv.c
++++ b/drivers/gpu/drm/gud/gud_drv.c
+@@ -678,4 +678,5 @@ static struct usb_driver gud_usb_driver = {
+ module_usb_driver(gud_usb_driver);
+ 
+ MODULE_AUTHOR("Noralf Trønnes");
++MODULE_DESCRIPTION("GUD USB Display driver");
+ MODULE_LICENSE("Dual MIT/GPL");
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 4f74d867fe1a..38830818c120 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1985,5 +1985,6 @@ static void __exit kvmgt_exit(void)
+ module_init(kvmgt_init);
+ module_exit(kvmgt_exit);
+ 
++MODULE_DESCRIPTION("Intel mediated pass-through framework for KVM");
+ MODULE_LICENSE("GPL and additional rights");
+ MODULE_AUTHOR("Intel Corporation");
+diff --git a/drivers/gpu/drm/udl/udl_drv.c b/drivers/gpu/drm/udl/udl_drv.c
+index 1506094a8009..de78a9b0eed7 100644
+--- a/drivers/gpu/drm/udl/udl_drv.c
++++ b/drivers/gpu/drm/udl/udl_drv.c
+@@ -160,4 +160,5 @@ static struct usb_driver udl_driver = {
+ 	.id_table = id_table,
+ };
+ module_usb_driver(udl_driver);
++MODULE_DESCRIPTION("KMS driver for the USB displaylink video adapters");
+ MODULE_LICENSE("GPL");
+
+---
+base-commit: 19ca0d8a433ff37018f9429f7e7739e9f3d3d2b4
+change-id: 20240609-md-drivers-gpu-drm-0d9933ac8281
+
