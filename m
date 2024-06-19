@@ -2,54 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B385990E1F0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Jun 2024 05:22:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9711890E50D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Jun 2024 10:00:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8A9BB10EA90;
-	Wed, 19 Jun 2024 03:22:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 24A5310EAF6;
+	Wed, 19 Jun 2024 08:00:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="Hu2+I2zT";
+	dkim=pass (2048-bit key; secure) header.d=VentureMakers.pl header.i=@VentureMakers.pl header.b="ABqe8zHM";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B35CB10EA90
+X-Greylist: delayed 549 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Jun 2024 08:00:11 UTC
+Received: from mail.VentureMakers.pl (mail.VentureMakers.pl [80.211.129.137])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A210D10EB34
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Jun 2024 03:22:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718767361; x=1750303361; h=date:from:cc:subject:message-id;
- bh=5ivcn0KPscCTQwUYD1FN4cQ0KHI9RDIiEmtGLXQ2fHA=;
- b=Hu2+I2zTzlzJ7KeNKpqHAdebOoT4RCcF0XEnUYigTDWjcYHT1hvkdlp9
- j4Ea0ldfJQ5iWqIdwbWJNSx9DdG5m/YD9L1cySOovBuD4gfckQ8nYXH7l
- xPmFrdLQhh7IfQn/Y4uX/NHtohaPbJ1c1+aMtr3wOkpumToUAZSNquhS4
- 1SWgBPeLrNT/n376eMifqltJanWQ09wckqPWMDtl2FQJfDLyp7LDOHyD6
- n8S1tgNs3HUovjiej4BbY6SnUIrvyaULA0N6SxuC2fBITa9V89S8xUKqA
- mYSqLRSMmE8UiFkmFtJABac5XPylo2Alf0Y6+ZJX7113PdowShP0yj7jl A==;
-X-CSE-ConnectionGUID: yT1JXJt9Qzi2L7rTmByefw==
-X-CSE-MsgGUID: EXcsbFsQS0e+gv0amc2OzA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11107"; a="33225871"
-X-IronPort-AV: E=Sophos;i="6.08,249,1712646000"; d="scan'208";a="33225871"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2024 20:22:40 -0700
-X-CSE-ConnectionGUID: UKixTFm+S1mkec8I6OdmQQ==
-X-CSE-MsgGUID: aUcdgFPNSd2/ADVJLokIjg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,249,1712646000"; d="scan'208";a="41900719"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by fmviesa010.fm.intel.com with ESMTP; 18 Jun 2024 20:22:39 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sJlu8-0006EL-2l;
- Wed, 19 Jun 2024 03:22:36 +0000
-Date: Wed, 19 Jun 2024 11:21:48 +0800
-From: kernel test robot <lkp@intel.com>
-Cc: zhenyu.z.wang@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org
-Subject: [intel-gvt:dependabot/pip/drivers/gpu/drm/ci/xfails/urllib3-2.2.2]
- BUILD SUCCESS 74f29db864d3be1eabed9dd449c50547555e0294
-Message-ID: <202406191144.vFlsZFb5-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+ Wed, 19 Jun 2024 08:00:11 +0000 (UTC)
+Received: by mail.VentureMakers.pl (Postfix, from userid 1002)
+ id F0315827CC; Wed, 19 Jun 2024 09:50:44 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=VentureMakers.pl;
+ s=mail; t=1718783457;
+ bh=AKXYpk+eIIu98AS1Z0PBb2dIVYLgjO8YI7zXs4yXlkw=;
+ h=Date:From:To:Subject:From;
+ b=ABqe8zHMQiC1sbYbljjKUJf2xdnOMRsK53BB+ncT5ALKBnUANnhQfFEvAj9HHisSY
+ wPCZCOvFSt5d5SshXkEf+5M/PsWf+NV4AjdJ0LQtG6JRegm0Pcg9p/vHo6w8lO1/xC
+ tvs/tVaTkscT0AtuGHXXBNa5g+0HI1iGVaLqBe3TqRP2aK6gZQTFzl44YtIY2L0jxd
+ LYqffDYHphw56wvihCYKJoQDeNUvV6aiM2tZcH0f7ujj5TkBcoYITz3dxIKLf3LpI5
+ 0I14DdTL32WqoCJZBZoMSqQFsgYPZu5RRzbTg8gNxz6q6BXmNDBH932KqPvMqXI9yc
+ y64pAPoZIQKOA==
+Received: by mail.VentureMakers.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 19 Jun 2024 07:50:26 GMT
+Message-ID: <20240619084500-0.1.91.p6cv.0.5d8rbinjsf@VentureMakers.pl>
+Date: Wed, 19 Jun 2024 07:50:26 GMT
+From: "Adrian Garbalewski" <adrian.garbalewski@venturemakers.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Oferta_dla_mobilnych_handlowc=C3=B3w_?=
+X-Mailer: mail.VentureMakers.pl
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,99 +56,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git dependabot/pip/drivers/gpu/drm/ci/xfails/urllib3-2.2.2
-branch HEAD: 74f29db864d3be1eabed9dd449c50547555e0294  build(deps): bump urllib3 in /drivers/gpu/drm/ci/xfails
+Szanowni Pa=C5=84stwo,
 
-elapsed time: 1704m
+jeste=C5=9Bmy autorami aplikacji, kt=C3=B3ra w znacznym stopniu usprawnia=
+ i automatyzuje prac=C4=99 dzia=C5=82u handlowego.
 
-configs tested: 80
-configs skipped: 1
+Dzi=C4=99ki naszemu rozwi=C4=85zaniu handlowcy dzia=C5=82aj=C4=85cy w ter=
+enie nie trac=C4=85 czasu na zb=C4=99dne szukanie informacji czy r=C4=99c=
+zne przepisywanie danych, a w pe=C5=82ni mog=C4=85 skupi=C4=87 si=C4=99 n=
+a budowaniu relacji z kontrahentem i generowaniu sprzeda=C5=BCy.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Manager z poziomu aplikacji mo=C5=BCe na bie=C5=BC=C4=85co monitorowa=C4=87=
+ dzia=C5=82ania, takie jak: zbieranie zam=C3=B3wie=C5=84, sprzeda=C5=BC, =
+realizacja wizyt czy wype=C5=82nianie ankiet.
 
-tested configs:
-arc                   randconfig-001-20240618   gcc-13.2.0
-arc                   randconfig-002-20240618   gcc-13.2.0
-arm                   randconfig-001-20240618   gcc-13.2.0
-arm                   randconfig-002-20240618   gcc-13.2.0
-arm                   randconfig-003-20240618   clang-19
-arm                   randconfig-004-20240618   gcc-13.2.0
-arm64                 randconfig-001-20240618   clang-17
-arm64                 randconfig-002-20240618   clang-19
-arm64                 randconfig-003-20240618   clang-16
-arm64                 randconfig-004-20240618   clang-19
-csky                  randconfig-001-20240618   gcc-13.2.0
-csky                  randconfig-002-20240618   gcc-13.2.0
-hexagon               randconfig-001-20240618   clang-19
-hexagon               randconfig-002-20240618   clang-19
-i386         buildonly-randconfig-001-20240618   gcc-13
-i386         buildonly-randconfig-002-20240618   gcc-12
-i386         buildonly-randconfig-003-20240618   gcc-8
-i386         buildonly-randconfig-004-20240618   gcc-10
-i386         buildonly-randconfig-005-20240618   gcc-10
-i386         buildonly-randconfig-006-20240618   gcc-10
-i386                  randconfig-001-20240618   clang-18
-i386                  randconfig-002-20240618   gcc-13
-i386                  randconfig-003-20240618   gcc-13
-i386                  randconfig-004-20240618   clang-18
-i386                  randconfig-005-20240618   clang-18
-i386                  randconfig-006-20240618   clang-18
-i386                  randconfig-011-20240618   gcc-13
-i386                  randconfig-012-20240618   gcc-11
-i386                  randconfig-013-20240618   gcc-7
-i386                  randconfig-014-20240618   gcc-11
-i386                  randconfig-015-20240618   clang-18
-i386                  randconfig-016-20240618   clang-18
-loongarch             randconfig-001-20240618   gcc-13.2.0
-loongarch             randconfig-002-20240618   gcc-13.2.0
-nios2                 randconfig-001-20240618   gcc-13.2.0
-nios2                 randconfig-002-20240618   gcc-13.2.0
-parisc                randconfig-001-20240618   gcc-13.2.0
-parisc                randconfig-002-20240618   gcc-13.2.0
-powerpc               randconfig-001-20240618   gcc-13.2.0
-powerpc               randconfig-002-20240618   clang-19
-powerpc               randconfig-003-20240618   clang-19
-powerpc64             randconfig-001-20240618   clang-19
-powerpc64             randconfig-002-20240618   clang-17
-powerpc64             randconfig-003-20240618   clang-19
-riscv                 randconfig-001-20240618   gcc-13.2.0
-riscv                 randconfig-002-20240618   clang-14
-s390                  randconfig-001-20240618   clang-15
-s390                  randconfig-002-20240618   gcc-13.2.0
-sh                    randconfig-001-20240618   gcc-13.2.0
-sh                    randconfig-002-20240618   gcc-13.2.0
-sparc64               randconfig-001-20240618   gcc-13.2.0
-sparc64               randconfig-002-20240618   gcc-13.2.0
-um                    randconfig-001-20240618   clang-19
-um                    randconfig-002-20240618   clang-19
-x86_64       buildonly-randconfig-001-20240618   clang-18
-x86_64       buildonly-randconfig-002-20240618   gcc-8
-x86_64       buildonly-randconfig-003-20240618   clang-18
-x86_64       buildonly-randconfig-004-20240618   gcc-13
-x86_64       buildonly-randconfig-005-20240618   gcc-13
-x86_64       buildonly-randconfig-006-20240618   gcc-12
-x86_64                randconfig-001-20240618   clang-18
-x86_64                randconfig-002-20240618   clang-18
-x86_64                randconfig-003-20240618   gcc-11
-x86_64                randconfig-004-20240618   clang-18
-x86_64                randconfig-005-20240618   clang-18
-x86_64                randconfig-006-20240618   clang-18
-x86_64                randconfig-011-20240618   gcc-13
-x86_64                randconfig-012-20240618   gcc-8
-x86_64                randconfig-013-20240618   clang-18
-x86_64                randconfig-014-20240618   clang-18
-x86_64                randconfig-015-20240618   gcc-13
-x86_64                randconfig-016-20240618   clang-18
-x86_64                randconfig-071-20240618   gcc-13
-x86_64                randconfig-072-20240618   clang-18
-x86_64                randconfig-073-20240618   gcc-12
-x86_64                randconfig-074-20240618   clang-18
-x86_64                randconfig-075-20240618   gcc-8
-x86_64                randconfig-076-20240618   gcc-13
-xtensa                randconfig-001-20240618   gcc-13.2.0
-xtensa                randconfig-002-20240618   gcc-13.2.0
+Chcieliby Pa=C5=84stwo pozna=C4=87 rozwi=C4=85zanie, kt=C3=B3re upraszcza=
+ prac=C4=99 i przynosi realne rezultaty?
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
+Pozdrawiam
+Adrian Garbalewski
