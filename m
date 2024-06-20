@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B503E9961A5
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Oct 2024 09:59:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 428F09985D7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Oct 2024 14:23:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9497510E67E;
-	Wed,  9 Oct 2024 07:59:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 22CD210E157;
+	Thu, 10 Oct 2024 12:23:37 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=businesslume.pl header.i=@businesslume.pl header.b="n/WiVv5e";
+	dkim=pass (1024-bit key; unprotected) header.d=match-area.de header.i=@match-area.de header.b="V/pUS1Hy";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.businesslume.pl (mail.businesslume.pl [51.38.99.212])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1AE5C10E67E
+X-Greylist: delayed 149632 seconds by postgrey-1.36 at gabe;
+ Thu, 10 Oct 2024 12:23:35 UTC
+Received: from match-area.de (match-area.de [82.165.178.247])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8261010E157
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  9 Oct 2024 07:59:50 +0000 (UTC)
-Received: by mail.businesslume.pl (Postfix, from userid 1002)
- id 538362599A; Wed,  9 Oct 2024 09:50:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=businesslume.pl;
- s=mail; t=1728460270;
- bh=n9RRp8MlabRDJBtJNro49Rmci90RtotaZYZ8+xo6WI4=;
- h=Date:From:To:Subject:From;
- b=n/WiVv5ee5513kNXg+95RfBCP54ygOx+trzC2E6zKl4tZVcbRGlWzbVd9j/qPlNkH
- OboiHKd9U1bQZFow8hbTwFHUomQmhxQN9NfYpA0t1akKX677y50YW5lG7/3LKWmtna
- Ng04ZnAq/2TJ/bednVkP2LfJC2BNEWPxn/NtbSuIQ5UHpfpzM09r1yngwbBtevrBKH
- WgYT6PwoBqnxA+PQa+Zh+IQ21/fx16twzAUZyAJd5yT+j9a9M3bov+KZeXBEjo3EvV
- TR5nuxrR/yKI1GGMeluR1lZu+NxnAEP+xrWoMrZ/6cBi+da6TOnxEeTOyH5ahBRpvz
- EyFm1mxLwa9CQ==
-Received: by mail.businesslume.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  9 Oct 2024 07:50:21 GMT
-Message-ID: <20241009084500-0.1.eg.3opxy.0.1theip69ze@businesslume.pl>
-Date: Wed,  9 Oct 2024 07:50:21 GMT
-From: =?UTF-8?Q?"Konrad_Zieli=C5=84ski_"?= <konrad.zielinski@businesslume.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Instalacja pv
-X-Mailer: mail.businesslume.pl
+ Thu, 10 Oct 2024 12:23:35 +0000 (UTC)
+Received: from [192.168.18.14] (unknown [196.39.240.133])
+ by match-area.de (Postfix) with ESMTPA id 36B611D1FD45;
+ Thu, 20 Jun 2024 12:25:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=match-area.de;
+ s=default; t=1718886349;
+ bh=6Q21B5GWD5BAIq99iCG72LaelrG9xGhEkV0nXNq2d5U=; h=Subject:To:From;
+ b=V/pUS1HyykA2eeza1+aFNqPbl5xTHcMMD4d8pNzNN0lqVdPt6fXTobZncVcGOwhRP
+ dfwXHyyifbTOlNAV2DqWjknZDwU2zRQB8BusKCPdKxEiuXMZqsX2+sAR6+E261IpbU
+ G4ax+mI9xsLiBN77EDgCP4jm8YJdFqu8AtNW82M8=
+Authentication-Results: match-area.de;
+ spf=pass (sender IP is 196.39.240.133) smtp.mailfrom=info@match-area.de
+ smtp.helo=[192.168.18.14]
+Received-SPF: pass (match-area.de: connection is authenticated)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: =?utf-8?q?Sie_haben_eine_Spende_von_=D0=8420=2E000=2E000?=
+To: Recipients <info@match-area.de>
+From: <info@match-area.de>
+Date: Thu, 20 Jun 2024 14:24:27 +0200
+X-Mailer: TurboMailer 2
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,22 +52,14 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: sorosgeorgewww@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20241010122337.22CD210E157@gabe.freedesktop.org>
 
-Dzie=C5=84 dobry,
-
-czy s=C4=85 Pa=C5=84stwo otwarci na niezobowi=C4=85zuj=C4=85c=C4=85 rozmo=
-w=C4=99 na temat fotowoltaiki?
-
-Jako firma specjalizuj=C4=85ca si=C4=99 w instalacji i serwisie najlepszy=
-ch jako=C5=9Bciowo paneli s=C5=82onecznych na rynku chcia=C5=82bym przeds=
-tawi=C4=87 propozycj=C4=99, jak=C4=85 wsp=C3=B3lnie z zespo=C5=82em przyg=
-otowali=C5=9Bmy dla Pa=C5=84stwa obiektu.
-
-B=C4=99d=C4=99 wdzi=C4=99czny za wiadomo=C5=9B=C4=87 od Pa=C5=84stwa czy =
-mo=C5=BCemy porozmawia=C4=87.
-
-
-Pozdrawiam
-Konrad Zieli=C5=84ski 
+Gr=C3=BC=C3=9Fe, Sie haben eine Spende von =D0=8420.000.000 . Mein Name ist=
+ Soros George, meine Stiftung m=C3=B6chte Ihnen eine Spende von =D0=8420.00=
+0.000  anbieten und als gl=C3=BCcklicher Mensch werde ich spenden, um die W=
+aisenhaus-Wohlt=C3=A4tigkeitsorganisation in Ihrem Land zu unterst=C3=BCtze=
+n. Kontaktieren Sie mich f=C3=BCr weitere Informationen zum Erhalt meines g=
+espendeten Geldes: Dies ist 100 % garantiert &lt;
