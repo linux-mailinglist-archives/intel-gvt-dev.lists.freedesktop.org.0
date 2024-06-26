@@ -2,63 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1322D911CA7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Jun 2024 09:17:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A6B09179CC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Jun 2024 09:34:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DB89710EB0E;
-	Fri, 21 Jun 2024 07:17:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1240310E79F;
+	Wed, 26 Jun 2024 07:34:09 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="NVNlelBV";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=goo.jp header.i=@goo.jp header.b="Vyz+4hT4";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com
- [209.85.167.174])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5495010EB23
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Jun 2024 07:17:12 +0000 (UTC)
-Received: by mail-oi1-f174.google.com with SMTP id
- 5614622812f47-3d4430b8591so887616b6e.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Jun 2024 00:17:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718954231; x=1719559031; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=1YIxeipAVc5LQYIaRyJ8mumwC1UhziW1i7ZfDql3Lvw=;
- b=NVNlelBVjMKJY57AC+jdc9/uNnz+wIvodsMm6uxzmipZ5jeMgchZ6vd3V/+NMc5O62
- T76U8jyJ22iqZnueZywdHqViAF38LQpqgk6m1w66WLCdY2eEkcxULm55sR5CaFGqZ4Qu
- r7BBYE70fLzVJlcSlIACduBFjYGrawR1Lqr4l8jeKEv76Xb99Kq+xJFi1lzvELPxGyzN
- 7w76Zi3nJT0N8tfTYLDnGWLul1ATeyO5MgoJ+hGpIUY3sp/ePsEALmqOxOX8fXPegmzO
- 2+3YFnA0Qt4MbANypKzKnggtddN6suwLqQTN/yPa51wKDaQD0SDiZE2Yf6dpje+FH4H3
- tzng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718954231; x=1719559031;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1YIxeipAVc5LQYIaRyJ8mumwC1UhziW1i7ZfDql3Lvw=;
- b=l06GUxqUGDoX+pxw/V+85dhPaOBY9YwNv1HvOpR0/d+WxEiQecjIr6UndBiWNx+FoM
- iAlxNK/7BdO4TCtUKJr5PqZ8xpfO8f/8+jTRG1qhd+RMkGvxkcXgFsWOnj8O83QqeUCw
- m1lOckJdWwjwhLFINWqY/5AaSEn7GdpX9efN6xH7wBKORraFj/yFfu9r4HPJ622V0L5d
- EOvJRsZk6SX8naTIxAWdJ1HKbVQ8CgqcIkBNsBgM9WpOIObklgxB8kAj5FPhHaQ+1E83
- 5058HJM8lUsMn6pRTQ18VFBHw0cvzjUBeJFRYokJKY6HAu2G0aAxdO4RdrWWG4v0FuNz
- 7b1A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUg45GK6bXml2aPX8nQG1LETkO8sl/ynp1SwI5PVQhS7lWMSDWOv/ZlV8p0tRQcVqZbT+pX42yPr0DNj7Nkk+GgcdDPgSmdMF5svEBQ4T4Dhodulw==
-X-Gm-Message-State: AOJu0YzZOp5M2DaHIkVG/zMhl004eDhtdkYGKDEa292cITrm1uQlHKkC
- MpPTG3j//m8Xzkx5PhNu48s6ZmdP+SB7cUZI4wwdi1i/hat6tsKn5KRWnmID4xroDnv+BCJFP7m
- RJ/PKjjtPn7BQihtxqwSLFFSS4A8=
-X-Google-Smtp-Source: AGHT+IFJs3GAwGSJ0vxRXiIvSALYNdjZ3dpzR4MyNRt3bfVXm0PRghSxxiq2JknL+UlnSWReaJ8uts4BuHWvHXipghM=
-X-Received: by 2002:a05:6808:1705:b0:3d4:41b6:6c4e with SMTP id
- 5614622812f47-3d51b9b86a6mr8063929b6e.16.1718954231329; Fri, 21 Jun 2024
- 00:17:11 -0700 (PDT)
+X-Greylist: delayed 497 seconds by postgrey-1.36 at gabe;
+ Wed, 26 Jun 2024 07:34:07 UTC
+Received: from mas-dfr-mts-106c1.mail.goo.jp (mas-dfr-mts-106c1.mail.goo.jp
+ [153.128.190.165])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C59CA10E79F;
+ Wed, 26 Jun 2024 07:34:07 +0000 (UTC)
+Received: from mas-ckd-mts-105c8.mail.goo.jp (mas-ckd-mts-105c8.mail.goo.jp
+ [153.128.190.73])
+ by mas-dfr-mts-106c1.mail.goo.jp (Postfix) with ESMTP id 89FAB7C0004A9;
+ Wed, 26 Jun 2024 16:25:50 +0900 (JST)
+Received: from mas-spm-mts-105c1.ocn.ad.jp (mas-spm-mts-105c1.ocn.ad.jp
+ [153.153.66.233])
+ by mas-ckd-mts-105c8.mail.goo.jp (Postfix) with ESMTP id BDEF04400113C;
+ Wed, 26 Jun 2024 16:25:47 +0900 (JST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=goo.jp; s=20240118;
+ t=1719386748; bh=eMsjFSL+AROsJwtPG+4AZB8T5U0sonLijLRWgrD0/eQ=;
+ h=To:Subject:From:Date:From;
+ b=Vyz+4hT4/iQC2PLNO04cMNodkH2cYHaBetXpt5WVAc9FzPUtQiemW7C5THPw8HNJ2
+ qLTrwKp9uhXH9UFMl8OrTjWpc7/RtRBvDGO4tpODcS5wltJ6iZCG1f/BpMWIIz6NtG
+ rI2DBN8kj5IYbOyyLeAaLIMc64UOt0gvXHSQJSmm+3oloz8xENPWTwOM1o6xgV9z80
+ irrlggmuaXrsmvdC1bS2hrnsAewVWQJvwWzcqykTyCpBz8XnzkI8TMx4fEH/hpYmQ3
+ rLNcho8NDWYso3vFV8Mn+VXhuTlevoOQypOM+iC9bh6UbSnzSEunx3PLQfj4Bq40zQ
+ saTvqU9kE17FQ==
+Received: from mas-vc-mts-102c1.ocn.ad.jp ([153.138.237.87])
+ by mas-spm-mts-105c1.ocn.ad.jp with ESMTP
+ id MN2JsdHFnOVPuMN2Js4eK1; Wed, 26 Jun 2024 16:25:47 +0900
+Received: from mas-sdpx-mts-106c2.mail.goo.jp ([153.128.117.224])
+ by mas-vc-mts-102c1.ocn.ad.jp with ESMTP
+ id MN2Hs26c8R4dXMN2HsMwFE; Wed, 26 Jun 2024 16:25:47 +0900
+Received: from md-app-cb005.noc-chibaminato.ocn.ad.jp (md-app-cb005.ocn.ad.jp
+ [153.138.211.201])
+ by mas-sdpx-mts-106c2.mail.goo.jp (Postfix) with ESMTP;
+ Wed, 26 Jun 2024 16:25:45 +0900 (JST)
+Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
-From: Soros George <sorosgeorgewww@gmail.com>
-Date: Fri, 21 Jun 2024 09:16:59 +0200
-Message-ID: <CACVjM-M7dY593ThmUzYaKQj6ps4hnUzUnNRQ_fPKbp7yw35wOw@mail.gmail.com>
-Subject: =?UTF-8?Q?Sie_haben_eine_Spende_von_=D0=8420=2E000=2E000?=
+Content-Transfer-Encoding: 7bit
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="00000000000057ff7d061b613866"
+Subject: Kindly reply via abu79aziz@gmail.com
+From: Office! <ryuusei.nanoha@goo.jp>
+Message-ID: <171938631821.50387.6480177128930001127@goo.jp>
+X-Originating-IP: [102.135.174.125]
+Date: Wed, 26 Jun 2024 16:25:45 +0900
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,33 +69,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000057ff7d061b613866
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Greetings,
 
-Guten Tag, Sie haben eine Spende in H=C3=B6he von =D0=8420.000.000  erhalte=
-n. Mein
-Name ist Soros George, meine Stiftung m=C3=B6chte Ihnen eine Spende in H=C3=
-=B6he von
-=D0=8420.000.000 anbieten und als gl=C3=BCcklicher Mensch werde ich spenden=
-, um die
-Wohlt=C3=A4tigkeitsorganisation Waisenhaus zu unterst=C3=BCtzen. Kontaktier=
-en Sie
-mich f=C3=BCr weitere Informationen, um Ihr gespendetes Geld zu erhalten: D=
-ies
-ist 100 % garantiert  https://www.youtube.com/watch?v=3DsuMviHNNk2U
+I am Abu Aziz from Sudan,
 
---00000000000057ff7d061b613866
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I am interested in relocating to live and invest in your country due to the current war situation in my country.
 
-<div dir=3D"ltr">Guten Tag, Sie haben eine Spende in H=C3=B6he von =D0=8420=
-.000.000 =C2=A0erhalten. Mein Name ist Soros George, meine Stiftung m=C3=B6=
-chte Ihnen eine Spende in H=C3=B6he von =D0=8420.000.000 anbieten und als g=
-l=C3=BCcklicher Mensch werde ich spenden, um die Wohlt=C3=A4tigkeitsorganis=
-ation Waisenhaus zu unterst=C3=BCtzen. Kontaktieren Sie mich f=C3=BCr weite=
-re Informationen, um Ihr gespendetes Geld zu erhalten: Dies ist 100 % garan=
-tiert =C2=A0<a href=3D"https://www.youtube.com/watch?v=3DsuMviHNNk2U" targe=
-t=3D"_blank">https://www.youtube.com/watch?v=3DsuMviHNNk2U</a></div>
+I am in search of a partner to assist me to get out of Sudan safe and all my money safe where i can put all of it safe. My life here is in real danger. I can't tell how long I can manage to save my life here and my family here.
 
---00000000000057ff7d061b613866--
+I will kindly request these things from you please,  you should have an interest and good idea of investment plans like:
+
+(1) Assist in the transfer of the cash to be invested
+
+(2) Advise on lucrative areas for investment.
+
+(3) Assist me in purchase of properties and legal documents
+
+If you agree to render your service to me in this regard, 35% of the
+money to be invested will be allocated to you.
+
+Kindly reply me directly here { abu79aziz@gmail.com } if your willing to help me
+
+Thank you..
+Aziz
