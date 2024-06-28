@@ -2,58 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A6B09179CC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Jun 2024 09:34:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E151091B8AF
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Jun 2024 09:42:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1240310E79F;
-	Wed, 26 Jun 2024 07:34:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B408B10E10E;
+	Fri, 28 Jun 2024 07:42:31 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=goo.jp header.i=@goo.jp header.b="Vyz+4hT4";
+	dkim=pass (2048-bit key; secure) header.d=VentureMakers.pl header.i=@VentureMakers.pl header.b="BqBfUgnU";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 497 seconds by postgrey-1.36 at gabe;
- Wed, 26 Jun 2024 07:34:07 UTC
-Received: from mas-dfr-mts-106c1.mail.goo.jp (mas-dfr-mts-106c1.mail.goo.jp
- [153.128.190.165])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C59CA10E79F;
- Wed, 26 Jun 2024 07:34:07 +0000 (UTC)
-Received: from mas-ckd-mts-105c8.mail.goo.jp (mas-ckd-mts-105c8.mail.goo.jp
- [153.128.190.73])
- by mas-dfr-mts-106c1.mail.goo.jp (Postfix) with ESMTP id 89FAB7C0004A9;
- Wed, 26 Jun 2024 16:25:50 +0900 (JST)
-Received: from mas-spm-mts-105c1.ocn.ad.jp (mas-spm-mts-105c1.ocn.ad.jp
- [153.153.66.233])
- by mas-ckd-mts-105c8.mail.goo.jp (Postfix) with ESMTP id BDEF04400113C;
- Wed, 26 Jun 2024 16:25:47 +0900 (JST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=goo.jp; s=20240118;
- t=1719386748; bh=eMsjFSL+AROsJwtPG+4AZB8T5U0sonLijLRWgrD0/eQ=;
- h=To:Subject:From:Date:From;
- b=Vyz+4hT4/iQC2PLNO04cMNodkH2cYHaBetXpt5WVAc9FzPUtQiemW7C5THPw8HNJ2
- qLTrwKp9uhXH9UFMl8OrTjWpc7/RtRBvDGO4tpODcS5wltJ6iZCG1f/BpMWIIz6NtG
- rI2DBN8kj5IYbOyyLeAaLIMc64UOt0gvXHSQJSmm+3oloz8xENPWTwOM1o6xgV9z80
- irrlggmuaXrsmvdC1bS2hrnsAewVWQJvwWzcqykTyCpBz8XnzkI8TMx4fEH/hpYmQ3
- rLNcho8NDWYso3vFV8Mn+VXhuTlevoOQypOM+iC9bh6UbSnzSEunx3PLQfj4Bq40zQ
- saTvqU9kE17FQ==
-Received: from mas-vc-mts-102c1.ocn.ad.jp ([153.138.237.87])
- by mas-spm-mts-105c1.ocn.ad.jp with ESMTP
- id MN2JsdHFnOVPuMN2Js4eK1; Wed, 26 Jun 2024 16:25:47 +0900
-Received: from mas-sdpx-mts-106c2.mail.goo.jp ([153.128.117.224])
- by mas-vc-mts-102c1.ocn.ad.jp with ESMTP
- id MN2Hs26c8R4dXMN2HsMwFE; Wed, 26 Jun 2024 16:25:47 +0900
-Received: from md-app-cb005.noc-chibaminato.ocn.ad.jp (md-app-cb005.ocn.ad.jp
- [153.138.211.201])
- by mas-sdpx-mts-106c2.mail.goo.jp (Postfix) with ESMTP;
- Wed, 26 Jun 2024 16:25:45 +0900 (JST)
-Content-Type: text/plain; charset="us-ascii"
+Received: from mail.VentureMakers.pl (mail.VentureMakers.pl [80.211.129.137])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2C3DD10E10E
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 28 Jun 2024 07:42:30 +0000 (UTC)
+Received: by mail.VentureMakers.pl (Postfix, from userid 1002)
+ id D7B5A83806; Fri, 28 Jun 2024 09:41:45 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=VentureMakers.pl;
+ s=mail; t=1719560532;
+ bh=AKXYpk+eIIu98AS1Z0PBb2dIVYLgjO8YI7zXs4yXlkw=;
+ h=Date:From:To:Subject:From;
+ b=BqBfUgnUyx1wxnbwYeOYXaeUwSlTF8Rsv/e649VOF645UJjQAdeq+LynKs/8WAMrB
+ 8E2HdlFoKWCeZs7BEoa8RCH0nn9uBdUtTOWKyfJeHOzAjD2+r4M/uZUKmlx5bNBy4N
+ g9Jd3Rj/hwS/PDJVb35IMvlORix9hNa1I7valfB3edRGKPMxujLYmuTp6IcqTWpRVu
+ wPcxSdl13w6YvJmJzJGUpMXRRb4i2pTyiMKryte8zWTiOSFsPHoW9hDWpIMiXNDvWI
+ 0jo80rlu9HzCkhvO6EeiSKbzwxrfbKvHCFQy74PfvVY4vM03pVELBOyr0gErBMUeLB
+ MGmkTdQjOFwdQ==
+Received: by mail.VentureMakers.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 28 Jun 2024 07:41:13 GMT
+Message-ID: <20240628084501-0.1.98.p6cv.0.25ilxzexg5@VentureMakers.pl>
+Date: Fri, 28 Jun 2024 07:41:13 GMT
+From: "Adrian Garbalewski" <adrian.garbalewski@venturemakers.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Oferta_dla_mobilnych_handlowc=C3=B3w_?=
+X-Mailer: mail.VentureMakers.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-To: undisclosed-recipients:;
-Subject: Kindly reply via abu79aziz@gmail.com
-From: Office! <ryuusei.nanoha@goo.jp>
-Message-ID: <171938631821.50387.6480177128930001127@goo.jp>
-X-Originating-IP: [102.135.174.125]
-Date: Wed, 26 Jun 2024 16:25:45 +0900
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +54,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Greetings,
+Szanowni Pa=C5=84stwo,
 
-I am Abu Aziz from Sudan,
+jeste=C5=9Bmy autorami aplikacji, kt=C3=B3ra w znacznym stopniu usprawnia=
+ i automatyzuje prac=C4=99 dzia=C5=82u handlowego.
 
-I am interested in relocating to live and invest in your country due to the current war situation in my country.
+Dzi=C4=99ki naszemu rozwi=C4=85zaniu handlowcy dzia=C5=82aj=C4=85cy w ter=
+enie nie trac=C4=85 czasu na zb=C4=99dne szukanie informacji czy r=C4=99c=
+zne przepisywanie danych, a w pe=C5=82ni mog=C4=85 skupi=C4=87 si=C4=99 n=
+a budowaniu relacji z kontrahentem i generowaniu sprzeda=C5=BCy.
 
-I am in search of a partner to assist me to get out of Sudan safe and all my money safe where i can put all of it safe. My life here is in real danger. I can't tell how long I can manage to save my life here and my family here.
+Manager z poziomu aplikacji mo=C5=BCe na bie=C5=BC=C4=85co monitorowa=C4=87=
+ dzia=C5=82ania, takie jak: zbieranie zam=C3=B3wie=C5=84, sprzeda=C5=BC, =
+realizacja wizyt czy wype=C5=82nianie ankiet.
 
-I will kindly request these things from you please,  you should have an interest and good idea of investment plans like:
+Chcieliby Pa=C5=84stwo pozna=C4=87 rozwi=C4=85zanie, kt=C3=B3re upraszcza=
+ prac=C4=99 i przynosi realne rezultaty?
 
-(1) Assist in the transfer of the cash to be invested
 
-(2) Advise on lucrative areas for investment.
-
-(3) Assist me in purchase of properties and legal documents
-
-If you agree to render your service to me in this regard, 35% of the
-money to be invested will be allocated to you.
-
-Kindly reply me directly here { abu79aziz@gmail.com } if your willing to help me
-
-Thank you..
-Aziz
+Pozdrawiam
+Adrian Garbalewski
