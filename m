@@ -2,30 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B64F591D099
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 30 Jun 2024 10:36:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B85C91D0AD
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 30 Jun 2024 10:56:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 94E9910E16A;
-	Sun, 30 Jun 2024 08:36:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EA6A110E16A;
+	Sun, 30 Jun 2024 08:56:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 412 seconds by postgrey-1.36 at gabe;
- Sun, 30 Jun 2024 08:36:20 UTC
 Received: from cwp.ccclub700.com (server.ccclub700.com [51.89.151.46])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 56AD010E16A
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2A34210E16A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 30 Jun 2024 08:36:20 +0000 (UTC)
-Received: from [102.90.64.10] (unknown [102.90.64.10])
+ Sun, 30 Jun 2024 08:56:34 +0000 (UTC)
+Received: from [102.90.64.10] (unknown [102.90.57.248])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by cwp.ccclub700.com (Postfix) with ESMTPSA id B1D631F4F4
+ by cwp.ccclub700.com (Postfix) with ESMTPSA id 190B92E39D5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 30 Jun 2024 08:29:21 +0000 (UTC)
+ Sun, 30 Jun 2024 08:54:04 +0000 (UTC)
 From: rewgins2@gmail.com
 To: intel-gvt-dev@lists.freedesktop.org
 Subject: Re:: HALLO
-Date: 30 Jun 2024 01:29:16 -0700
-Message-ID: <20240630012916.E7274C407DA850E7@gmail.com>
+Date: 30 Jun 2024 01:54:01 -0700
+Message-ID: <20240630015401.970D36A26544CD56@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
 	charset="utf-8"
