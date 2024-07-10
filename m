@@ -2,43 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 963D992CC1F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Jul 2024 09:42:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A78AA92D9F5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Jul 2024 22:23:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6D26510E0B8;
-	Wed, 10 Jul 2024 07:42:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8C77810E8EA;
+	Wed, 10 Jul 2024 20:23:05 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=VentureMakers.pl header.i=@VentureMakers.pl header.b="Uwh58Xdw";
+	dkim=pass (2048-bit key; unprotected) header.d=collabora.com header.i=@collabora.com header.b="YwikL/RN";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.VentureMakers.pl (mail.VentureMakers.pl [80.211.129.137])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AD4D610E0B8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Jul 2024 07:42:30 +0000 (UTC)
-Received: by mail.VentureMakers.pl (Postfix, from userid 1002)
- id 1C3F883277; Wed, 10 Jul 2024 09:41:10 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=VentureMakers.pl;
- s=mail; t=1720597275;
- bh=6x9f12X6gPEfPoNA5TI7/9kVuQNcgUPjFcHw47pJPeU=;
- h=Date:From:To:Subject:From;
- b=Uwh58Xdwa8UTGkqwGsBHkci1sZ6v+inX/lTUmNLA00Wlm91EVxWXi01r8fhyN7pX3
- s1oWeMUdCvpktjzhBQwUT801xnpSWrpCN/VvtaCNAE7qAhtat2S3vyQ5pRVUDVERvC
- P9Z/metSzbSnBNfy7oZcv+vvfzwZmM66ZiyyglJEnPMVGLJJSV3Bt51dfQbTOSn427
- XN2ntlTPtyBr7CGVFqEin4GoB28aEgRklEYRcvpKbkaVeinv8hDMO/ppB+PVB5jZAG
- KHkvI5aEOgSnGqTH+XmpN1wZata6L1C2eN+/CGr4EbKdTTcdj8WNI4JPPA2V+aMEDe
- 6cCWMRHnMeESw==
-Received: by mail.VentureMakers.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Jul 2024 07:41:01 GMT
-Message-ID: <20240710084500-0.1.9g.p6cv.0.8hlc1fjsc1@VentureMakers.pl>
-Date: Wed, 10 Jul 2024 07:41:01 GMT
-From: "Adrian Garbalewski" <adrian.garbalewski@venturemakers.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Mobilny CRM 
-X-Mailer: mail.VentureMakers.pl
+Received: from madrid.collaboradmins.com (madrid.collaboradmins.com
+ [46.235.227.194])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A516E10E8EA;
+ Wed, 10 Jul 2024 20:23:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1720642983;
+ bh=S2S5BrlKFHCSOaQ/HORfy3cWipQAGsIPftq+UXjaxP4=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=YwikL/RNJJUIvHJd8wTCGaQR4mqEVxQVM9q+1THEV/PO0Jox6YasBoThKS7lOyK4D
+ s1/IVqj+LV3+qeQ2WWDorlPAuL2IV2B3zCQRdijKkNisIgF43GlNevEo1FZa3ek+MV
+ FTHUuZPjYSdkHuf1F5raTRMXXwSiX+OXPEjtp9JQIGeRFxZ94Pd7Ep90nhdlrDjs5X
+ Xng6NE1wZh39mN4bsIlqTIAtLek9xnw+8JD5IFJvhziLXRoVlKdh0kD7sAjw7MU5MP
+ 27A8xeJqvC8s4PZq5rp6IBb8q11dTdTH4gSIYpwh5eF/4uPvQhXD1msWTrOBvFXjex
+ u1cKdFk1ExTtQ==
+Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested) (Authenticated sender: koike)
+ by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0E87A3782180;
+ Wed, 10 Jul 2024 20:22:57 +0000 (UTC)
+Message-ID: <22bc825c-d726-4a4d-bd3a-508773c04071@collabora.com>
+Date: Wed, 10 Jul 2024 17:22:55 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 27/52] selftests-dyndbg: check KCONFIG_CONFIG to avoid
+ silly fails
+To: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
+ tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
+ ville.syrjala@linux.intel.com, jbaron@akamai.com,
+ gregkh@linuxfoundation.org, ukaszb@chromium.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk, joe@perches.com,
+ mcgrof@kernel.org
+References: <20240702215804.2201271-1-jim.cromie@gmail.com>
+ <20240702215804.2201271-28-jim.cromie@gmail.com>
+Content-Language: en-US
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20240702215804.2201271-28-jim.cromie@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,32 +68,143 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,=20
-
-czy Pa=C5=84stwa handlowcy maj=C4=85 mo=C5=BCliwo=C5=9B=C4=87 zarz=C4=85d=
-zania ofertami, sk=C5=82adania zam=C3=B3wie=C5=84, kontrolowania ich real=
-izacji z wykorzystaniem telefonu?
-
-Poniewa=C5=BC smartphone jest dzisiaj nieod=C5=82=C4=85czn=C4=85 cz=C4=99=
-=C5=9Bci=C4=85 =C5=BCycia, nasza aplikacja przekszta=C5=82ca go w mobilne=
- biuro handlowca. Pod r=C4=99k=C4=85 maj=C4=85 Pa=C5=84stwo: zam=C3=B3wie=
-nia, baz=C4=99 klient=C3=B3w, dost=C4=99p do dokument=C3=B3w, stany magaz=
-ynowe, automatyczne raportowanie, kontrola targetu, optymalizacja tras i =
-wiele wi=C4=99cej.
-
-Mened=C5=BCerowie sprzeda=C5=BCy, z poziomu aplikacji mog=C4=85 na bie=C5=
-=BC=C4=85co monitorowa=C4=87 dzia=C5=82ania takie jak: zbieranie zam=C3=B3=
-wie=C5=84, mobilna sprzeda=C5=BC, realizacja wizyt czy wype=C5=82nianie a=
-nkiet.
-
-Dzi=C4=99ki aplikacji handlowcy nie trac=C4=85 czasu na zb=C4=99dne szuka=
-nie informacji czy r=C4=99czne przepisywanie danych, a w pe=C5=82ni mog=C4=
-=85 skupi=C4=87 si=C4=99 na budowaniu relacji z kontrahentem i generowani=
-u sprzeda=C5=BCy.
-
-Dostrzegaj=C4=85 Pa=C5=84stwo mo=C5=BCliwo=C5=9B=C4=87 wykorzystania taki=
-ego narz=C4=99dzia w swojej firmie?
 
 
-Pozdrawiam
-Adrian Garbalewski
+On 02/07/2024 18:57, Jim Cromie wrote:
+> Several tests are dependent upon config choices. Lets avoid failing
+> where that is noise.
+> 
+> The KCONFIG_CONFIG var exists to convey the config-file around.  If
+> the var names a file, read it and extract the relevant CONFIG items,
+> and use them to skip the dependent tests, thus avoiding the fails that
+> would follow, and the disruption to whatever CI is running these
+> selftests.
+> 
+> If the envar doesn't name a config-file, ".config" is assumed.
+> 
+> CONFIG_DYNAMIC_DEBUG=y:
+> 
+> basic-tests() and comma-terminator-tests() test for the presence of
+> the builtin pr_debugs in module/main.c, which I deemed stable and
+> therefore safe to count.  That said, the test fails if only
+> CONFIG_DYNAMIC_DEBUG_CORE=y is set.  It could be rewritten to test
+> against test-dynamic-debug.ko, but that just trades one config
+> dependence for another.
+> 
+> CONFIG_TEST_DYNAMIC_DEBUG=m
+> 
+> As written, test_percent_splitting() modprobes test_dynamic_debug,
+> enables several classes, and count them.  It could be re-written to
+> work for the builtin module also, but builtin test modules are not a
+> common or desirable build/config.
+> 
+> CONFIG_TEST_DYNAMIC_DEBUG=m && CONFIG_TEST_DYNAMIC_DEBUG_SUBMOD=m
+> 
+> test_mod_submod() recaps the bug found in DRM-CI where drivers werent
+
+If this fixes any but listed in drm/ci/xfails folder, please update it too.
+
+Regards,
+Helen
+
+> enabled by drm.debug=<bits>.  It modprobes both test_dynamic_debug &
+> test_dynamic_debug_submod, so it depends on a loadable modules config.
+> 
+> It could be rewritten to work in a builtin parent config; DRM=y is
+> common enough to be pertinent, but testing that config also wouldn't
+> really test anything more fully than all-loadable modules, since they
+> default together.
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> 
+> fixup-kconfig
+> ---
+>   .../dynamic_debug/dyndbg_selftest.sh          | 45 ++++++++++++++++++-
+>   1 file changed, 44 insertions(+), 1 deletion(-)
+> 
+> diff --git a/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh b/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
+> index fccd2012b548..d09ef26b2308 100755
+> --- a/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
+> +++ b/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
+> @@ -11,6 +11,30 @@ CYAN="\033[0;36m"
+>   NC="\033[0;0m"
+>   error_msg=""
+>   
+> +[ -e /proc/dynamic_debug/control ] || {
+> +    echo -e "${RED}: this test requires CONFIG_DYNAMIC_DEBUG=y ${NC}"
+> +    exit 0 # nothing to test here, no good reason to fail.
+> +}
+> +
+> +# need info to avoid failures due to untestable configs
+> +
+> +[ -f "$KCONFIG_CONFIG" ] || KCONFIG_CONFIG=".config"
+> +if [ -f "$KCONFIG_CONFIG" ]; then
+> +    echo "# consulting KCONFIG_CONFIG: $KCONFIG_CONFIG"
+> +    grep -q "CONFIG_DYNAMIC_DEBUG=y" $KCONFIG_CONFIG ; LACK_DD_BUILTIN=$?
+> +    grep -q "CONFIG_TEST_DYNAMIC_DEBUG=m" $KCONFIG_CONFIG ; LACK_TMOD=$?
+> +    grep -q "CONFIG_TEST_DYNAMIC_DEBUG_SUBMOD=m" $KCONFIG_CONFIG ; LACK_TMOD_SUBMOD=$?
+> +    if [ $V -eq 1 ]; then
+> +	echo LACK_DD_BUILTIN: $LACK_DD_BUILTIN
+> +	echo LACK_TMOD: $LACK_TMOD
+> +	echo LACK_TMOD_SUBMOD: $LACK_TMOD_SUBMOD
+> +    fi
+> +else
+> +    LACK_DD_BUILTIN=0
+> +    LACK_TMOD=0
+> +    LACK_TMOD_SUBMOD=0
+> +fi
+> +
+>   function vx () {
+>       echo $1 > /sys/module/dynamic_debug/parameters/verbose
+>   }
+> @@ -192,6 +216,10 @@ function check_err_msg() {
+>   
+>   function basic_tests {
+>       echo -e "${GREEN}# BASIC_TESTS ${NC}"
+> +    if [ $LACK_DD_BUILTIN -eq 1 ]; then
+> +	echo "SKIP"
+> +	return
+> +    fi
+>       ddcmd =_ # zero everything (except class'd sites)
+>       check_match_ct =p 0
+>       # there are several main's :-/
+> @@ -214,6 +242,10 @@ EOF
+>   
+>   function comma_terminator_tests {
+>       echo -e "${GREEN}# COMMA_TERMINATOR_TESTS ${NC}"
+> +    if [ $LACK_DD_BUILTIN -eq 1 ]; then
+> +	echo "SKIP"
+> +	return
+> +    fi
+>       # try combos of spaces & commas
+>       check_match_ct '\[params\]' 4 -r
+>       ddcmd module,params,=_		# commas as spaces
+> @@ -226,9 +258,12 @@ function comma_terminator_tests {
+>       ddcmd =_
+>   }
+>   
+> -
+>   function test_percent_splitting {
+>       echo -e "${GREEN}# TEST_PERCENT_SPLITTING - multi-command splitting on % ${NC}"
+> +    if [ $LACK_TMOD -eq 1 ]; then
+> +	echo "SKIP"
+> +	return
+> +    fi
+>       ifrmmod test_dynamic_debug_submod
+>       ifrmmod test_dynamic_debug
+>       ddcmd =_
+> @@ -248,6 +283,14 @@ function test_percent_splitting {
+>   
+>   function test_mod_submod {
+>       echo -e "${GREEN}# TEST_MOD_SUBMOD ${NC}"
+> +    if [ $LACK_TMOD -eq 1 ]; then
+> +	echo "SKIP"
+> +	return
+> +    fi
+> +    if [ $LACK_TMOD_SUBMOD -eq 1 ]; then
+> +	echo "SKIP"
+> +	return
+> +    fi
+>       ifrmmod test_dynamic_debug_submod
+>       ifrmmod test_dynamic_debug
+>       ddcmd =_
