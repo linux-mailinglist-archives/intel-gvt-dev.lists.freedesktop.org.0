@@ -2,77 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E50CF9319EA
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jul 2024 20:01:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E7D893211C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 16 Jul 2024 09:20:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C3FC810E156;
-	Mon, 15 Jul 2024 18:00:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 614ED10E103;
+	Tue, 16 Jul 2024 07:20:34 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="kmdI8MVx";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="gVvDd0bk";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-f47.google.com (mail-io1-f47.google.com
- [209.85.166.47])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 44E9F10E156;
- Mon, 15 Jul 2024 18:00:58 +0000 (UTC)
-Received: by mail-io1-f47.google.com with SMTP id
- ca18e2360f4ac-8138e2f2f69so38415639f.0; 
- Mon, 15 Jul 2024 11:00:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1721066457; x=1721671257; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oOYbwMrV/O4jAT8P0a8rUtJkT/tF7xf5ebflegYxDG4=;
- b=kmdI8MVxsqruIquCQ19Y+cnOEbx8er3sSiiN1Ng7gH1aoOmTLR7OJ5yQeMCE55RHnt
- De1Y8aThSUijj561+qFfWdzTSR23RZRs7bXnJTYSHtkNNZ/QHdrqoQcwpZxuN9SxEB6m
- FYgP5cuQSWLvr8BB//I4+WyEQNhjrkhbsPf40mh/VdbtgzBRZ0UHh/aat4mjEUKnLaRB
- APgLp8HnYYTI8WM92utSAtFTVDoDKWeRiI91t3aNeR5mG08dtDNcseYNOedpuDTO11jd
- EKXHENjRLccSVFTpSiha0Xvh1A66OXGq0rLthcCCSG7pVRpzL6NRumwSeJEF9BRC8o/S
- f8Qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721066457; x=1721671257;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oOYbwMrV/O4jAT8P0a8rUtJkT/tF7xf5ebflegYxDG4=;
- b=fb61nafpQ+w2ILpJJSkuGOcJ6wc5ilVoffA9hBFIs2dO1djG5rKslssisyi46GEsHU
- 2mbvu5aX88X35Xec8MklCrH2DLLqkPrTHKNynMczkFKRb6boRW3utmmtSXH/S+x78rOd
- dS4u08bQBVzIanyONbnvL/zWqDsM/SS8dY4T1e/K+a0qQaBmx0hgEfjKIFaBKYx6gfDn
- 1htjcfNC785Js+gqZuSpxSGnmDJSwFxx8qk3/C0Swq0bUtAMIrQ/TON0YFT9QJlC/9Ik
- BRVf0o9vUWH7A94dNA3SMVOgiUzZSOLsp8YcAzIyUnqspQCFios2iHK4w3+traKA7qao
- J4Hw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXU8gqqxJMP6qLQryK/OKBCOdwOj2kvAnutSZA5d6SQlkcmCYNq/FZCm1y8ynMEYl9D3AtrV9YN/J1Fs370qVtNSemZ1z1IebUogVuuEvteHYAmErp+l8pOsMDnb5Xhr8+Zf8Y0v7Rsx0o+K+eUhipcHSJQt2i4yLJzOe4ykdi3gOn1afraNJDZBxflfHfgLIJlN44I+Z5ZR/9M8x40GCYp+Oa5Brofn5mxMWvVb/l3rWCh1Ok=
-X-Gm-Message-State: AOJu0Yw/7ry2uzaXWA0Usdl1xn9SughQsxyxf4YaaE1S3/rG//H2zURg
- liqAOJ06lGnOv2p4P06t2QOXhWD+DtxrGjx13gSVAmNK7tNayslFI+DRPf54K0P6oSnOvTpK6Zc
- xkYpBrf/wNDJ29cDIkYWBkO5d9Fk=
-X-Google-Smtp-Source: AGHT+IFcGuXfUh6AFDn0k76fOiyVn1OhhrJ6yvUnZlqakwLRz4tCX/opcDQa3egBWhhCntMh2a6NU9aloRgRPANMli4=
-X-Received: by 2002:a6b:440b:0:b0:807:4efc:9a64 with SMTP id
- ca18e2360f4ac-81546fc1d08mr43403739f.19.1721066456938; Mon, 15 Jul 2024
- 11:00:56 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240702215804.2201271-1-jim.cromie@gmail.com>
- <ZoR40nWmpEV2Ly_6@bombadil.infradead.org>
- <CAJfuBxyxamRhOyz8WuL+7=eJkEKSw8jnAWjyAuqU2i7gvg-rsQ@mail.gmail.com>
- <CALwA+NbUCfEj_DzT5eMQ7_pSNpyp-zBe6PEL2XnMZrb303J4_Q@mail.gmail.com>
- <CAJfuBxzeYWWV1ikYagFpyFHdAQU4ReYPirksQFHbEzDxhXCfHA@mail.gmail.com>
- <CALwA+Naec_YHxHoKu8Ba_Bnuq2L3VXw1cT3=Tx3qC3mE5_BG1g@mail.gmail.com>
-In-Reply-To: <CALwA+Naec_YHxHoKu8Ba_Bnuq2L3VXw1cT3=Tx3qC3mE5_BG1g@mail.gmail.com>
-From: jim.cromie@gmail.com
-Date: Mon, 15 Jul 2024 12:00:30 -0600
-Message-ID: <CAJfuBxxnTyqeGtS1mPBFqX2MYs7kgK49ZUQeR1oTe4UMC4ct5A@mail.gmail.com>
-Subject: Re: [PATCH v9 00/53] fix CONFIG_DRM_USE_DYNAMIC_DEBUG=y
-To: =?UTF-8?Q?=C5=81ukasz_Bartosik?= <ukaszb@chromium.org>
-Cc: Luis Chamberlain <mcgrof@kernel.org>, daniel.vetter@ffwll.ch, 
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
- ville.syrjala@linux.intel.com, jbaron@akamai.com, gregkh@linuxfoundation.org, 
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk, joe@perches.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7AB4010E103
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 16 Jul 2024 07:20:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1721114433; x=1752650433; h=date:from:cc:subject:message-id;
+ bh=SwpwDoXvrj3kYwa1zDX9SyS85IGsh8EvIrisqFXFU7A=;
+ b=gVvDd0bkYw/+E2sGjA/vSZUKCL7O6ise0WDuQUoomWQcX+tz9ZDamqSN
+ CK352qWV5GDH2J3KoCMeihhrJeYi1tzANMZMgJMlCnPOOnNsiHBsPsfAL
+ lDOvejXckk7q2AnIw74H7Z2itT7tdJyWvvQbYWuuFt8T/C7vevEAbQTwZ
+ kJ55wLqz1syvCVspnUlXNWqdhYZmyQ3mlv5pk1GqDXqsdTuE8DIbPSnkD
+ fT0/8ycRvX2J8GcMGUdlrLjmYJhPCIdcHVvM+VUG9frg7+BMANlkxPpZW
+ lb78xS8tAIET5R+mLrzhWopeC1xMkZuUHXQ/wBjdDXhMT7Mz+MqQ6ZaBt Q==;
+X-CSE-ConnectionGUID: nsfoHUtLTiqizxSN4ZtnNg==
+X-CSE-MsgGUID: gWomNrTaSGO3Q5bT7ANmag==
+X-IronPort-AV: E=McAfee;i="6700,10204,11134"; a="18379683"
+X-IronPort-AV: E=Sophos;i="6.09,211,1716274800"; d="scan'208";a="18379683"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2024 00:20:33 -0700
+X-CSE-ConnectionGUID: 2INbpit+SyWt2CViDxQlEg==
+X-CSE-MsgGUID: nDZ61yjfTZGlw3h0NXgN6Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,211,1716274800"; d="scan'208";a="49954153"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+ by orviesa009.jf.intel.com with ESMTP; 16 Jul 2024 00:20:31 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sTcU8-000f0M-0o;
+ Tue, 16 Jul 2024 07:20:28 +0000
+Date: Tue, 16 Jul 2024 15:19:54 +0800
+From: kernel test robot <lkp@intel.com>
+Cc: zhenyu.z.wang@intel.com, terrence.xu@intel.com,
+ intel-gvt-dev@lists.freedesktop.org
+Subject: [intel-gvt:dependabot/pip/drivers/gpu/drm/ci/xfails/setuptools-70.0.0] BUILD
+ SUCCESS f758073736b8c7e3dd188497dea71bb40d045b1e
+Message-ID: <202407161551.zMRAgL56-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,178 +65,124 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jul 15, 2024 at 4:05=E2=80=AFAM =C5=81ukasz Bartosik <ukaszb@chromi=
-um.org> wrote:
->
-> On Sat, Jul 13, 2024 at 11:45=E2=80=AFPM <jim.cromie@gmail.com> wrote:
-> >
-> > On Fri, Jul 12, 2024 at 9:44=E2=80=AFAM =C5=81ukasz Bartosik <ukaszb@ch=
-romium.org> wrote:
-> > >
-> > > On Wed, Jul 3, 2024 at 12:14=E2=80=AFAM <jim.cromie@gmail.com> wrote:
-> > > >
-> > > > On Tue, Jul 2, 2024 at 4:01=E2=80=AFPM Luis Chamberlain <mcgrof@ker=
-nel.org> wrote:
-> > > > >
-> > > > > On Tue, Jul 02, 2024 at 03:56:50PM -0600, Jim Cromie wrote:
-> > > > > > This fixes dynamic-debug support for DRM.debug, added via class=
-maps.
-> > > > > > commit bb2ff6c27bc9 (drm: Disable dynamic debug as broken)
-> > > > > >
-> > > > > > CONFIG_DRM_USE_DYNAMIC_DEBUG=3Dy was marked broken because drm.=
-debug=3Dval
-> > > > > > was applied when drm.ko was modprobed; too early for the yet-to=
--load
-> > > > > > drivers, which thus missed the enablement.  My testing with
-> > > > > > /etc/modprobe.d/ entries and modprobes with dyndbg=3D$querycmd =
-options
-> > > > > > obscured this omission.
-> > > > > >
-> > > > > > The fix is to replace invocations of DECLARE_DYNDBG_CLASSMAP wi=
-th
-> > > > > > DYNDBG_CLASSMAP_DEFINE for core, and DYNDBG_CLASSMAP_USE for dr=
-ivers.
-> > > > > > The distinction allows dyndbg to also handle the users properly=
-.
-> > > > > >
-> > > > > > DRM is the only current classmaps user, and is not really using=
- it,
-> > > > > > so if you think DRM could benefit from zero-off-cost debugs bas=
-ed on
-> > > > > > static-keys, please test.
-> > > > > >
-> > > > > > HISTORY
-> > > > > >
-> > > > > > 9/4/22  - ee879be38bc8..ace7c4bbb240 commited - classmaps-v1 dy=
-ndbg parts
-> > > > > > 9/11/22 - 0406faf25fb1..16deeb8e18ca commited - classmaps-v1 dr=
-m parts
-> > > > > >
-> > > > > > https://lore.kernel.org/lkml/Y3XUrOGAV4I7bB3M@kroah.com/
-> > > > > > greg k-h says:
-> > > > > > This should go through the drm tree now.  The rest probably sho=
-uld also
-> > > > > > go that way and not through my tree as well.
-> > > > >
-> > > > > Can't this just be defined as a coccinelle smpl patch? Must easie=
-r
-> > > > > to read than 53 patches?
-> > > > >
-> > > >
-> > > > perhaps it could - Im not sure that would be easier to review
-> > > > than a file-scoped struct declaration or reference per driver
-> > > >
-> > > > Also, I did it hoping to solicit more Tested-by:s with drm.debug=3D=
-0x1ff
-> > > >
-> > > > Jim
-> > > >
-> > >
-> > > Jim,
-> > >
-> > > When testing different combinations of Y/M for TEST_DYNAMIC_DEBUG and
-> > > TEST_DYNAMIC_DEBUG_SUBMOD in virtme-ng I spotted test failures:
-> > >
-> > > When the TEST_DYNAMIC_DEBUG=3DM and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
-> > > BASIC_TESTS, COMMA_TERMINATOR_TESTS, TEST_PERCENT_SPLITTING,
-> > > TEST_MOD_SUBMOD selftests passed
-> > > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
-> > > BASIC_TESTS, COMMA_TERMINATOR_TESTS selftests passed, however
-> > > TEST_PERCENT_SPLITTING selftest fails with ": ./dyndbg_selftest.sh:27=
-0
-> > > check failed expected 1 on =3Dpf, got 0"
-> > > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DY -
-> > > BASIC_TESTS, COMMA_TERMINATOR_TESTS selftests passed, however
-> > > TEST_PERCENT_SPLITTING selftest fails also with ":
-> > > ./dyndbg_selftest.sh:270 check failed expected 1 on =3Dpf, got 0"
-> > >
-> > > Have I missed something ?
-> > >
-> >
-> > I am not seeing those 2 failures on those 2 configs.
-> >
-> > most of my recent testing has been on x86-defconfig + minimals,
-> > built and run using/inside virtme-ng
-> >
-> > the last kernel I installed on this hw was june 16, I will repeat that,
-> > and report soon if I see the failure outside the vm
-> >
-> > I'll also send you my script, to maybe speed isolation of the differenc=
-es.
-> >
->
-> Jim,
->
-> I know why I saw these failures.
-> I ran dyndbg_selftest.sh directly in thw directory
-> tools/testing/selftests/dynamic_debug/.
+tree/branch: https://github.com/intel/gvt-linux.git dependabot/pip/drivers/gpu/drm/ci/xfails/setuptools-70.0.0
+branch HEAD: f758073736b8c7e3dd188497dea71bb40d045b1e  build(deps): bump setuptools in /drivers/gpu/drm/ci/xfails
 
-thats odd.
-I mostly run it from src-root,
-also whereever make selftest target is/works (I forgot)
+elapsed time: 730m
 
-I went into that subdir and ran it there
-I got no test differences / failures.
+configs tested: 105
+configs skipped: 2
 
-IIRC, the failure was on line 270, just after a modprobe.
-can you further isolate it ?
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> All works as expected when I run it from the top kernel directory.
-> Here are the results:
->
-> When the TEST_DYNAMIC_DEBUG=3DM and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
-> BASIC_TESTS, COMMA_TERMINATOR_TESTS, TEST_PERCENT_SPLITTING,
-> TEST_MOD_SUBMOD selftests passed
->
-> When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
-> BASIC_TESTS and COMMA_TERMINATOR_TESTS selftests passed,
-> TEST_PERCENT_SPLITTING and TEST_PERCENT_SPLITTING selftests were
-> skipped
->
-> When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DY -
-> BASIC_TESTS and COMMA_TERMINATOR_TESTS selftests passed,
-> TEST_PERCENT_SPLITTING and TEST_PERCENT_SPLITTING selftests were
-> skipped
+tested configs:
+alpha                             allnoconfig   gcc-13.3.0
+alpha                            allyesconfig   gcc-13.3.0
+arc                              allmodconfig   gcc-13.2.0
+arc                               allnoconfig   gcc-13.2.0
+arc                              allyesconfig   gcc-13.2.0
+arc                   randconfig-001-20240716   gcc-13.2.0
+arc                   randconfig-002-20240716   gcc-13.2.0
+arm                              allmodconfig   gcc-14.1.0
+arm                               allnoconfig   clang-19
+arm                              allyesconfig   gcc-14.1.0
+arm                   randconfig-001-20240716   gcc-14.1.0
+arm                   randconfig-002-20240716   clang-19
+arm                   randconfig-003-20240716   gcc-14.1.0
+arm                   randconfig-004-20240716   gcc-14.1.0
+arm64                            allmodconfig   clang-19
+arm64                             allnoconfig   gcc-14.1.0
+arm64                 randconfig-001-20240716   gcc-14.1.0
+arm64                 randconfig-002-20240716   clang-19
+arm64                 randconfig-003-20240716   gcc-14.1.0
+arm64                 randconfig-004-20240716   gcc-14.1.0
+csky                              allnoconfig   gcc-14.1.0
+csky                  randconfig-001-20240716   gcc-14.1.0
+csky                  randconfig-002-20240716   gcc-14.1.0
+hexagon                          allmodconfig   clang-19
+hexagon                           allnoconfig   clang-19
+hexagon                          allyesconfig   clang-19
+hexagon               randconfig-001-20240716   clang-19
+hexagon               randconfig-002-20240716   clang-19
+i386                             allmodconfig   gcc-13
+i386                              allnoconfig   gcc-13
+i386                             allyesconfig   gcc-13
+i386         buildonly-randconfig-001-20240716   clang-18
+i386         buildonly-randconfig-002-20240716   clang-18
+i386         buildonly-randconfig-003-20240716   clang-18
+i386         buildonly-randconfig-004-20240716   clang-18
+i386         buildonly-randconfig-005-20240716   clang-18
+i386         buildonly-randconfig-006-20240716   clang-18
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240716   clang-18
+i386                  randconfig-002-20240716   clang-18
+i386                  randconfig-003-20240716   gcc-9
+i386                  randconfig-004-20240716   gcc-7
+i386                  randconfig-005-20240716   clang-18
+i386                  randconfig-006-20240716   gcc-9
+i386                  randconfig-011-20240716   gcc-8
+i386                  randconfig-012-20240716   clang-18
+i386                  randconfig-013-20240716   gcc-8
+i386                  randconfig-014-20240716   clang-18
+i386                  randconfig-015-20240716   clang-18
+i386                  randconfig-016-20240716   gcc-10
+loongarch                        allmodconfig   gcc-14.1.0
+loongarch                         allnoconfig   gcc-14.1.0
+loongarch             randconfig-001-20240716   gcc-14.1.0
+loongarch             randconfig-002-20240716   gcc-14.1.0
+m68k                             allmodconfig   gcc-14.1.0
+m68k                              allnoconfig   gcc-14.1.0
+m68k                             allyesconfig   gcc-14.1.0
+microblaze                       allmodconfig   gcc-14.1.0
+microblaze                        allnoconfig   gcc-14.1.0
+microblaze                       allyesconfig   gcc-14.1.0
+mips                              allnoconfig   gcc-14.1.0
+nios2                             allnoconfig   gcc-14.1.0
+nios2                 randconfig-001-20240716   gcc-14.1.0
+nios2                 randconfig-002-20240716   gcc-14.1.0
+openrisc                          allnoconfig   gcc-14.1.0
+openrisc                         allyesconfig   gcc-14.1.0
+openrisc                            defconfig   gcc-14.1.0
+parisc                           allmodconfig   gcc-14.1.0
+parisc                            allnoconfig   gcc-14.1.0
+parisc                           allyesconfig   gcc-14.1.0
+parisc                              defconfig   gcc-14.1.0
+parisc                randconfig-001-20240716   gcc-14.1.0
+parisc                randconfig-002-20240716   gcc-14.1.0
+powerpc                          allmodconfig   gcc-14.1.0
+powerpc                           allnoconfig   gcc-14.1.0
+powerpc                          allyesconfig   clang-19
+powerpc               randconfig-001-20240716   clang-19
+powerpc               randconfig-002-20240716   clang-19
+powerpc               randconfig-003-20240716   clang-19
+powerpc64             randconfig-001-20240716   clang-19
+riscv                            allmodconfig   clang-19
+riscv                             allnoconfig   gcc-14.1.0
+riscv                            allyesconfig   clang-19
+riscv                               defconfig   clang-19
+s390                             allmodconfig   clang-19
+s390                              allnoconfig   clang-19
+s390                             allyesconfig   gcc-14.1.0
+s390                                defconfig   clang-19
+sh                               allmodconfig   gcc-14.1.0
+sh                                allnoconfig   gcc-14.1.0
+sh                               allyesconfig   gcc-14.1.0
+sh                                  defconfig   gcc-14.1.0
+sparc                            allmodconfig   gcc-14.1.0
+sparc64                             defconfig   gcc-14.1.0
+um                               allmodconfig   clang-19
+um                                allnoconfig   clang-17
+um                               allyesconfig   gcc-13
+um                                  defconfig   clang-19
+um                             i386_defconfig   gcc-13
+um                           x86_64_defconfig   clang-15
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64                              defconfig   gcc-13
+x86_64                          rhel-8.3-rust   clang-18
+xtensa                            allnoconfig   gcc-14.1.0
 
-
-thank you for running these config-combo tests.
-
-are you doing these in a VM ?
-and since Im asking, Ive done these combos on virtme-ng builds,
-also installed & running on 2 x86 boxen.
-
-could you add DRM=3Dm and a driver too,
-and boot with drm.debug=3D0x1ff, dynamic_debug.verbose=3D3
-the debug output should show all the class-work on modprobe,
-for your easy inspection/grading ;-)
-
->
-> Based on that maybe it would be worth it for the script to fail when
-> it doesn't find a .config with an error message something like this:
-
-if no config - they get to see more errors now.
-if the solution isnt obvious to them, we can find out more ?
-
-> "Kernel .config not found. Are you running the script from the
-> kernel's top directory?"
->
-> What do you think ?
-
-the -rc0 window is open, Id rather not fiddle with this now.
-
-Im gonna rebase onto 6.10, resend,
-copy and rebase onto drm-mumble-next
-then try to get into the DRM-CI river, see where that takes me.
-
-thanks Lukas,
-Jim
-
->
-> Thanks,
-> Lukasz
->
-> > > Thanks,
-> > > Lukasz
-> > >
-> > > > >   Luis
-> > > > >
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
