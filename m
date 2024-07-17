@@ -2,81 +2,78 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEFA5933133
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 16 Jul 2024 21:01:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3FA4933B38
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2024 12:39:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88C7C10E865;
-	Tue, 16 Jul 2024 19:01:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9453810E0AA;
+	Wed, 17 Jul 2024 10:39:09 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="HTHPzqPq";
+	dkim=pass (1024-bit key; unprotected) header.d=chromium.org header.i=@chromium.org header.b="oJO2W+zf";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-f46.google.com (mail-io1-f46.google.com
- [209.85.166.46])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BAAAF10E841;
- Tue, 16 Jul 2024 18:59:34 +0000 (UTC)
-Received: by mail-io1-f46.google.com with SMTP id
- ca18e2360f4ac-7f70a708f54so6584139f.3; 
- Tue, 16 Jul 2024 11:59:34 -0700 (PDT)
+Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
+ [209.85.167.52])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D85F310EA49
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 17 Jul 2024 10:39:06 +0000 (UTC)
+Received: by mail-lf1-f52.google.com with SMTP id
+ 2adb3069b0e04-52ea5765e75so7888934e87.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 17 Jul 2024 03:39:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1721156374; x=1721761174; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=chromium.org; s=google; t=1721212745; x=1721817545;
+ darn=lists.freedesktop.org; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=02GQEyQ8Fgm4yEF+9D4Fm23zLJa07LslS1GKZkXapgQ=;
- b=HTHPzqPq+4ko6CRDqc5KGGx9IfaOE+I7SKV/lti/ZKc/jaUS4xHepzZHymfE+qNdo8
- oDCDrRo31Xm7LTaQtN6H6DX/6EcJPRl475h9368yW8jtPcy7k2nYDogrKJTZb4JoHokd
- NE6gm906Ch9g6rl4K+b5a00iDheLqEjz7uQarnfWgGLSwJEAitmssz6m+ftPTT3gjs0R
- ukdtnNasdshybU8NZQxZTXSf/EmXrfoGEi+ZiuZK++Z542uYGr/qgWA0JHEbXdEtniE9
- jCwXnZQ7h6ouhzRllJofWb5VNXiPCYQBwwIicajAhWECFm0dZi9S1+J6+HY1dKi6Dm4n
- 8ARA==
+ bh=IUGlQHl8PKwPc+cI7G+9C1/A30MK7pw94dtaMexOJNU=;
+ b=oJO2W+zf3UDVZ7S/QuU2RokeGPq/jCuT3K175B1AzbsHTD25jOPw6XHaVwG+7dYwWB
+ SqHZjoDrc1xG2HqOvFwv6IEgBU4sI80MoECXbawfzW3Psz0FcQQ+6hFiaOfIc0MmbT6E
+ rQQvGU4LKIfbHX0Rvg5Lc/8R0NnkiHDWDk59o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721156374; x=1721761174;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1721212745; x=1721817545;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=02GQEyQ8Fgm4yEF+9D4Fm23zLJa07LslS1GKZkXapgQ=;
- b=LU6KBLRc5BbfjEdqW8rAUkcXN82mJ/lHPZJxBmGEVxmi/C5yST0/Mc4ACjRxN2QFHF
- 77Y2dMbZbT0BESSJMDznx4ZF9b7hry3jIPIxZHy/gcRJBQph4ftWUoUvjjqgIpEWAN0b
- l7rertgA4nRSs1aqG8hy7tVSKBzGiCxnwByogkl/CGmEv8Z0Z9dOx90xbTbOQ5CxPnCf
- t9aAytUqVhdlenLCjy9HULRmYcfqqTC1jkWT32pY8mbYXMYMChgKo0QCdiAWp7nifGy/
- 5mfqIdYjkwlF1zgb3qHTHNty6yWd7DcmiQZLjTQjFxmnL3aOAAf4eUGoYtUpnc90uzv+
- la/Q==
+ bh=IUGlQHl8PKwPc+cI7G+9C1/A30MK7pw94dtaMexOJNU=;
+ b=mWx/fDfXDF/gJCO8cqyC0P82zYGtHmOmb6nDVgjfjj9Z+rWbuTmhR41MZ+QjctqmvQ
+ K44Sz8oicsVBq0C8diWbualzE9TVgiNL5MG3m2UsS2WI5+iCNFKjFaqfnp4+r9dWY4Pv
+ XtEUdT0MWUGcynL5zY1LOSDcuaT1VMAKIdeoMe7RyX9Bndz2tSG+FSjWIo21E8ENRfSf
+ lzJeidTgnvhrGrUZ1iNimz1ZNAW6fmoswciwqAXOAfplpVHHQKk6w9OtoDB1THvqdIBd
+ LUAUaBxEpHy227TPkQ7698NnME5xJyYKSKxSfiv+/4TzoH92VzLIMOLYG0GnSzbkpwQN
+ 7I4A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWF8zQRaIldkH/2bzeSldeq2Pu4KrcmClP2wYWHcKRXBU0oR6UxbsN68DCQRte1WqZYe9Tjf/30C1ihH8RsbVNNzgQTIfDoE6UsZB/UcwfWfHNiniTQkhJVBBvptYdvlDYuELYhqQHCzACdXJyfJwfpFzsRj4ha7WDVvNHjG9zXqc5nRydIDhUwdbz389VROW5cWohGGQzT8Fz75wfyPh0AiI42NFDmQSehjS4MM3us2vC/s+0=
-X-Gm-Message-State: AOJu0YxoGjWSYBt4/DSPYm4q37wRFwkFx/jpv5Rzmx7Pu/hwijjIID6W
- tlOZ33XbLoqlUhqiuIhJ1AU/nxVjfKKgmW7ZqaB+G9bK4Jd+qAuE
-X-Google-Smtp-Source: AGHT+IH2P7UQSoQkuUq22B0bjuKA/ngzw01JbZNtKHx44WAJD4WRstjL+48jrY+j0JQqgWF+0C1c2g==
-X-Received: by 2002:a05:6602:1548:b0:804:f2be:ee21 with SMTP id
- ca18e2360f4ac-816c2c0d633mr43164039f.3.1721156373964; 
- Tue, 16 Jul 2024 11:59:33 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- 8926c6da1cb9f-4c210f23f1csm75301173.102.2024.07.16.11.59.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jul 2024 11:59:33 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, jbaron@akamai.com,
- gregkh@linuxfoundation.org, daniel.vetter@ffwll.ch,
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
- ville.syrjala@linux.intel.com
-Cc: ukaszb@chromium.org, linux@rasmusvillemoes.dk, joe@perches.com,
- mcgrof@kernel.org, seanpaul@chromium.org, robdclark@gmail.com,
- groeck@google.com, yanivt@google.com, bleung@google.com,
- linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, kernelnewbies@kernelnewbies.org,
- Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v9-resend 54/54] docs-dyndbg: improve howto classmaps api
- section
-Date: Tue, 16 Jul 2024 12:58:06 -0600
-Message-ID: <20240716185806.1572048-55-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240716185806.1572048-1-jim.cromie@gmail.com>
-References: <20240716185806.1572048-1-jim.cromie@gmail.com>
+ AJvYcCUexOApsRQrl/B/kiNv1aSsalJys89YGBPexnFnp/pReCsjZyb81W37/wjVmuwNYLl319BE/yXr0Ia+BZMCGrXFcHPliD4M5i3S90XGRybHWhk6gA==
+X-Gm-Message-State: AOJu0Yyc7cWzTwTT/tNMybuNX9m17Dx1PJPNUXiN46UFpkGirmME85lt
+ L8v9Elr0O3sWLqPAudkWVOhLmQ6C31lTmFceqSA9bvxcsZ1eYvLzW3VbGEdou7N7HdLoW9JPf7r
+ ST6o+NxmdvW8cnm+GkhQUK9H18ULpFC6ao7s=
+X-Google-Smtp-Source: AGHT+IHxg8zNsdD8Eo1Vffp0MSXIaIS5xW3Su0QbPUe5IWbUhBN/2S1B3D0WgRGGz2VkYyi0XXC5WDVvjaMANhw5Xos=
+X-Received: by 2002:a05:6512:2387:b0:52d:259d:bd91 with SMTP id
+ 2adb3069b0e04-52ee53b04c7mr1051655e87.18.1721212744729; Wed, 17 Jul 2024
+ 03:39:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240702215804.2201271-1-jim.cromie@gmail.com>
+ <ZoR40nWmpEV2Ly_6@bombadil.infradead.org>
+ <CAJfuBxyxamRhOyz8WuL+7=eJkEKSw8jnAWjyAuqU2i7gvg-rsQ@mail.gmail.com>
+ <CALwA+NbUCfEj_DzT5eMQ7_pSNpyp-zBe6PEL2XnMZrb303J4_Q@mail.gmail.com>
+ <CAJfuBxzeYWWV1ikYagFpyFHdAQU4ReYPirksQFHbEzDxhXCfHA@mail.gmail.com>
+ <CALwA+Naec_YHxHoKu8Ba_Bnuq2L3VXw1cT3=Tx3qC3mE5_BG1g@mail.gmail.com>
+ <CAJfuBxxnTyqeGtS1mPBFqX2MYs7kgK49ZUQeR1oTe4UMC4ct5A@mail.gmail.com>
+In-Reply-To: <CAJfuBxxnTyqeGtS1mPBFqX2MYs7kgK49ZUQeR1oTe4UMC4ct5A@mail.gmail.com>
+From: =?UTF-8?Q?=C5=81ukasz_Bartosik?= <ukaszb@chromium.org>
+Date: Wed, 17 Jul 2024 12:38:53 +0200
+Message-ID: <CALwA+NYQsKAtrME-dgZcBH=+KKU0duHAjxu-X3PhckJmbwz60A@mail.gmail.com>
+Subject: Re: [PATCH v9 00/53] fix CONFIG_DRM_USE_DYNAMIC_DEBUG=y
+To: jim.cromie@gmail.com
+Cc: Luis Chamberlain <mcgrof@kernel.org>, daniel.vetter@ffwll.ch, 
+ tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
+ ville.syrjala@linux.intel.com, jbaron@akamai.com, gregkh@linuxfoundation.org, 
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk, joe@perches.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,113 +89,211 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-reword the classmaps-api section to better explain how it supports
-DRM, and (a little bit) to steer clear of designated-inits in the
-_DEFINE description.
+On Mon, Jul 15, 2024 at 8:00=E2=80=AFPM <jim.cromie@gmail.com> wrote:
+>
+> On Mon, Jul 15, 2024 at 4:05=E2=80=AFAM =C5=81ukasz Bartosik <ukaszb@chro=
+mium.org> wrote:
+> >
+> > On Sat, Jul 13, 2024 at 11:45=E2=80=AFPM <jim.cromie@gmail.com> wrote:
+> > >
+> > > On Fri, Jul 12, 2024 at 9:44=E2=80=AFAM =C5=81ukasz Bartosik <ukaszb@=
+chromium.org> wrote:
+> > > >
+> > > > On Wed, Jul 3, 2024 at 12:14=E2=80=AFAM <jim.cromie@gmail.com> wrot=
+e:
+> > > > >
+> > > > > On Tue, Jul 2, 2024 at 4:01=E2=80=AFPM Luis Chamberlain <mcgrof@k=
+ernel.org> wrote:
+> > > > > >
+> > > > > > On Tue, Jul 02, 2024 at 03:56:50PM -0600, Jim Cromie wrote:
+> > > > > > > This fixes dynamic-debug support for DRM.debug, added via cla=
+ssmaps.
+> > > > > > > commit bb2ff6c27bc9 (drm: Disable dynamic debug as broken)
+> > > > > > >
+> > > > > > > CONFIG_DRM_USE_DYNAMIC_DEBUG=3Dy was marked broken because dr=
+m.debug=3Dval
+> > > > > > > was applied when drm.ko was modprobed; too early for the yet-=
+to-load
+> > > > > > > drivers, which thus missed the enablement.  My testing with
+> > > > > > > /etc/modprobe.d/ entries and modprobes with dyndbg=3D$querycm=
+d options
+> > > > > > > obscured this omission.
+> > > > > > >
+> > > > > > > The fix is to replace invocations of DECLARE_DYNDBG_CLASSMAP =
+with
+> > > > > > > DYNDBG_CLASSMAP_DEFINE for core, and DYNDBG_CLASSMAP_USE for =
+drivers.
+> > > > > > > The distinction allows dyndbg to also handle the users proper=
+ly.
+> > > > > > >
+> > > > > > > DRM is the only current classmaps user, and is not really usi=
+ng it,
+> > > > > > > so if you think DRM could benefit from zero-off-cost debugs b=
+ased on
+> > > > > > > static-keys, please test.
+> > > > > > >
+> > > > > > > HISTORY
+> > > > > > >
+> > > > > > > 9/4/22  - ee879be38bc8..ace7c4bbb240 commited - classmaps-v1 =
+dyndbg parts
+> > > > > > > 9/11/22 - 0406faf25fb1..16deeb8e18ca commited - classmaps-v1 =
+drm parts
+> > > > > > >
+> > > > > > > https://lore.kernel.org/lkml/Y3XUrOGAV4I7bB3M@kroah.com/
+> > > > > > > greg k-h says:
+> > > > > > > This should go through the drm tree now.  The rest probably s=
+hould also
+> > > > > > > go that way and not through my tree as well.
+> > > > > >
+> > > > > > Can't this just be defined as a coccinelle smpl patch? Must eas=
+ier
+> > > > > > to read than 53 patches?
+> > > > > >
+> > > > >
+> > > > > perhaps it could - Im not sure that would be easier to review
+> > > > > than a file-scoped struct declaration or reference per driver
+> > > > >
+> > > > > Also, I did it hoping to solicit more Tested-by:s with drm.debug=
+=3D0x1ff
+> > > > >
+> > > > > Jim
+> > > > >
+> > > >
+> > > > Jim,
+> > > >
+> > > > When testing different combinations of Y/M for TEST_DYNAMIC_DEBUG a=
+nd
+> > > > TEST_DYNAMIC_DEBUG_SUBMOD in virtme-ng I spotted test failures:
+> > > >
+> > > > When the TEST_DYNAMIC_DEBUG=3DM and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
+> > > > BASIC_TESTS, COMMA_TERMINATOR_TESTS, TEST_PERCENT_SPLITTING,
+> > > > TEST_MOD_SUBMOD selftests passed
+> > > > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
+> > > > BASIC_TESTS, COMMA_TERMINATOR_TESTS selftests passed, however
+> > > > TEST_PERCENT_SPLITTING selftest fails with ": ./dyndbg_selftest.sh:=
+270
+> > > > check failed expected 1 on =3Dpf, got 0"
+> > > > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DY -
+> > > > BASIC_TESTS, COMMA_TERMINATOR_TESTS selftests passed, however
+> > > > TEST_PERCENT_SPLITTING selftest fails also with ":
+> > > > ./dyndbg_selftest.sh:270 check failed expected 1 on =3Dpf, got 0"
+> > > >
+> > > > Have I missed something ?
+> > > >
+> > >
+> > > I am not seeing those 2 failures on those 2 configs.
+> > >
+> > > most of my recent testing has been on x86-defconfig + minimals,
+> > > built and run using/inside virtme-ng
+> > >
+> > > the last kernel I installed on this hw was june 16, I will repeat tha=
+t,
+> > > and report soon if I see the failure outside the vm
+> > >
+> > > I'll also send you my script, to maybe speed isolation of the differe=
+nces.
+> > >
+> >
+> > Jim,
+> >
+> > I know why I saw these failures.
+> > I ran dyndbg_selftest.sh directly in thw directory
+> > tools/testing/selftests/dynamic_debug/.
+>
+> thats odd.
+> I mostly run it from src-root,
+> also whereever make selftest target is/works (I forgot)
+>
+> I went into that subdir and ran it there
+> I got no test differences / failures.
+>
 
-probably just squash this back in
+Jim,
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- .../admin-guide/dynamic-debug-howto.rst       | 64 +++++++++++--------
- 1 file changed, 39 insertions(+), 25 deletions(-)
+The dyndbg_selftest.sh checks the location of kernel .config if it is
+configured and
+if not it sets it to the current dir.
 
-diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
-index ccf3704f2143..1ffab6be07fc 100644
---- a/Documentation/admin-guide/dynamic-debug-howto.rst
-+++ b/Documentation/admin-guide/dynamic-debug-howto.rst
-@@ -390,42 +390,56 @@ in case ``prefix_str`` is built dynamically.
- Dynamic Debug classmaps
- =======================
- 
--Dyndbg allows selection/grouping of *prdbg* callsites using structural
--info: module, file, function, line.  Classmaps allow authors to add
--their own domain-oriented groupings using class-names.  Classmaps are
--exported, so they referencable from other modules.
-+Classmaps adds the "class" keyword, which selects prdbgs based on
-+author supplied, domain-oriented names; this complements the code
-+organizational keywords: module, file, function, line.
-+
-+The main difference from the others: class'd prdbgs must be named to
-+be changed.  This protects them from generic overwrite:
-+
-+  # IOW this cannot undo any DRM.debug settings
-+  :#> ddcmd -p
-+
-+So each class must be enabled individually (no wildcards):
- 
--  # enable classes individually
-   :#> ddcmd class DRM_UT_CORE +p
-   :#> ddcmd class DRM_UT_KMS +p
-   # or more selectively
-   :#> ddcmd class DRM_UT_CORE module drm +p
- 
--The "class FOO" syntax protects class'd prdbgs from generic overwrite::
--
--  # IOW this doesn't wipe any DRM.debug settings
--  :#> ddcmd -p
-+Or the legacy/normal (convenient) way:
- 
--To support the DRM.debug parameter, DYNDBG_CLASSMAP_PARAM* updates all
--classes in a classmap, mapping param-bits 0..N onto the classes:
--DRM_UT_<*> for the DRM use-case.
-+  :#> echo 0x1ff > /sys/module/drm/parameters/debug
- 
- Dynamic Debug Classmap API
- ==========================
- 
--DYNDBG_CLASSMAP_DEFINE - modules use this to create classmaps, naming
--each of the classes (stringified enum-symbols: "DRM_UT_<*>"), and
--type, and mapping the class-names to consecutive _class_ids.
-+The classmap API is closely modeled on DRM, which has:
-+
-+enum drm_debug_category: DRM_UT_* // 10 independent categories. 
-+dyndbg's .classid encodes that directly, allowing 0..62 classes
-+
-+DRM has ~5k calls like: drm_dbg(DRM_UT_KMS, "kms msg");
-+these are unchanged, even in argtype, since classid === category.
-+
-+DRM controls the classes together via sysfs; bits 0..9 control the
-+classes independently.
-+
-+Its expected that other classmap users will also provide debug-macros
-+using an enum-defined categorization scheme like DRM's, and dyndbg can
-+be adapted under them similarly.
-+
-+DYNDBG_CLASSMAP_DEFINE(var,type,_base,classnames) - this maps
-+classnames onto class-ids starting at _base, it also maps the
-+names onto CLASSMAP_PARAM bits 0..N.
- 
--By doing so, modules tell dyndbg that they have prdbgs with those
--class_ids, and they authorize dyndbg to accept "class FOO" for the
--module defining the classmap, and its contained classnames.
-+DYNDBG_CLASSMAP_USE(var) - modules call this to refer to the var
-+_DEFINEd elsewhere (and exported).
- 
--DYNDBG_CLASSMAP_USE - drm drivers invoke this to ref the CLASSMAP that
--drm DEFINEs.  This shares the classmap definition, and authorizes
--dyndbg to apply changes to the user module's class'd pr_debugs.  It
--also tells dyndbg how to initialize the user's prdbgs at modprobe,
--based upon the current setting of the parent's controlling param.
-+Classmaps are opt-in: modules invoke _DEFINE or _USE to authorize
-+dyndbg to update those classes.  "class FOO" queries are validated
-+against the classes, this finds the classid to alter; classes are not
-+directly selectable by their classid.
- 
- There are 2 types of classmaps:
- 
-@@ -436,9 +450,9 @@ DYNDBG_CLASSMAP_PARAM - modelled after module_param_cb, it refers to a
- DEFINEd classmap, and associates it to the param's data-store.  This
- state is then applied to DEFINEr and USEr modules when they're modprobed.
- 
--This interface also enforces the DD_CLASS_TYPE_LEVEL_NUM relation
-+The PARAM interface also enforces the DD_CLASS_TYPE_LEVEL_NUM relation
- amongst the contained classnames; all classes are independent in the
--control parser itself.
-+control parser itself; there is no implied meaning in names like "V4".
- 
- Modules or module-groups (drm & drivers) can define multiple
- classmaps, as long as they share the limited 0..62 per-module-group
--- 
-2.45.2
+[ -f "$KCONFIG_CONFIG" ] || KCONFIG_CONFIG=3D".config"
+if [ -f "$KCONFIG_CONFIG" ]; then
 
+If it does not find the .config it will set the variables to:
+
+    LACK_DD_BUILTIN=3D0
+    LACK_TMOD=3D0
+    LACK_TMOD_SUBMOD=3D0
+
+and run all selftests no matter what the values (Y/M) of
+TEST_DYNAMIC_DEBUG and TEST_DYNAMIC_DEBUG_SUBMOD are.
+
+> IIRC, the failure was on line 270, just after a modprobe.
+> can you further isolate it ?
+>
+> > All works as expected when I run it from the top kernel directory.
+> > Here are the results:
+> >
+> > When the TEST_DYNAMIC_DEBUG=3DM and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
+> > BASIC_TESTS, COMMA_TERMINATOR_TESTS, TEST_PERCENT_SPLITTING,
+> > TEST_MOD_SUBMOD selftests passed
+> >
+> > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DM -
+> > BASIC_TESTS and COMMA_TERMINATOR_TESTS selftests passed,
+> > TEST_PERCENT_SPLITTING and TEST_PERCENT_SPLITTING selftests were
+> > skipped
+> >
+> > When the TEST_DYNAMIC_DEBUG=3DY and TEST_DYNAMIC_DEBUG_SUBMOD=3DY -
+> > BASIC_TESTS and COMMA_TERMINATOR_TESTS selftests passed,
+> > TEST_PERCENT_SPLITTING and TEST_PERCENT_SPLITTING selftests were
+> > skipped
+>
+>
+> thank you for running these config-combo tests.
+>
+> are you doing these in a VM ?
+> and since Im asking, Ive done these combos on virtme-ng builds,
+> also installed & running on 2 x86 boxen.
+>
+
+Sorry I forgot to mention that I tested it using virtme-ng.
+
+> could you add DRM=3Dm and a driver too,
+> and boot with drm.debug=3D0x1ff, dynamic_debug.verbose=3D3
+> the debug output should show all the class-work on modprobe,
+> for your easy inspection/grading ;-)
+>
+
+I will retest with your patchset v9.
+
+Thanks,
+Lukasz
+
+> >
+> > Based on that maybe it would be worth it for the script to fail when
+> > it doesn't find a .config with an error message something like this:
+>
+> if no config - they get to see more errors now.
+> if the solution isnt obvious to them, we can find out more ?
+>
+> > "Kernel .config not found. Are you running the script from the
+> > kernel's top directory?"
+> >
+> > What do you think ?
+>
+> the -rc0 window is open, Id rather not fiddle with this now.
+>
+> Im gonna rebase onto 6.10, resend,
+> copy and rebase onto drm-mumble-next
+> then try to get into the DRM-CI river, see where that takes me.
+>
+> thanks Lukas,
+> Jim
+>
+> >
+> > Thanks,
+> > Lukasz
+> >
+> > > > Thanks,
+> > > > Lukasz
+> > > >
+> > > > > >   Luis
+> > > > > >
