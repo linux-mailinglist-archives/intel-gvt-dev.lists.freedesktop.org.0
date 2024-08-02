@@ -2,31 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2081C94542F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Aug 2024 23:43:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CFD81946345
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  2 Aug 2024 20:35:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA34310E0D0;
-	Thu,  1 Aug 2024 21:43:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AF1B110E194;
+	Fri,  2 Aug 2024 18:35:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3339 seconds by postgrey-1.36 at gabe;
- Thu, 01 Aug 2024 21:43:50 UTC
+X-Greylist: delayed 3815 seconds by postgrey-1.36 at gabe;
+ Fri, 02 Aug 2024 18:34:58 UTC
 Received: from open17.ddns.net (open17.ddns.net [51.79.156.250])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 151FC10E0D0
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B513210E194
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Aug 2024 21:43:50 +0000 (UTC)
+ Fri,  2 Aug 2024 18:34:58 +0000 (UTC)
 Received: by open17.ddns.net (Postfix, from userid 0)
- id 13CCC46891; Thu,  1 Aug 2024 15:20:22 -0500 (EST)
+ id 771C24F7E1; Fri,  2 Aug 2024 12:01:51 -0500 (EST)
 Content-Transfer-Encoding: binary
-Content-Type: multipart/mixed; boundary="_----------=_17225436221106475471"
+Content-Type: multipart/mixed; boundary="_----------=_172261811124913075471"
 MIME-Version: 1.0
 X-Mailer: MIME::Lite 3.031 (F2.85; T2.17; A2.21; B3.15; Q3.13)
-Date: Thu, 1 Aug 2024 15:20:22 -0500
-From: pg523@open17.ddns.net
+Date: Fri, 2 Aug 2024 12:01:51 -0500
+From: pg563@open17.ddns.net
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: 10:25:15 ORDEN DE PAGO CEP1757 ENVIADA,
- 01/08/2024 VERIFICAR CON LA INSTITUCION RECEPTORA
-Message-Id: <20240801202202.13CCC46891@open17.ddns.net>
+Subject: 09:05:21CONFIRMAR ORDEN DE PAGO CEP1597 ENVIADA,
+ 02/08/2024 VERIFICAR CON LA INSTITUCION RECEPTORA
+Message-Id: <20240802170252.771C24F7E1@open17.ddns.net>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,22 +44,22 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 This is a multi-part message in MIME format.
 
---_----------=_17225436221106475471
+--_----------=_172261811124913075471
 Content-Disposition: inline
 Content-Transfer-Encoding: base64
 Content-Type: text
 
 SFNCQyCuCgpDb21wcm9iYW50ZSBkZSBUcmFuc2ZlcmVuY2lhCgpUcmFuc2ZlcmVuY2lhIHJlYWxp
-emFkYSBwb3I6IEFsZWphbmRybyBHYXJjaWEKCkZlY2hhOiAwMSBBZ28gMjAyNAoKSG9yYTogMTA6
+emFkYSBwb3I6IFNhbmNoZXMgQ29yb25hZG8KCkZlY2hhOiAwMiBBZ28gMjAyNAoKSG9yYTogMTA6
 MTU6MjMgaCB0aWVtcG8gZGVsIGNlbnRybwoKCgpFc3RhIHRyYW5zZmVyZW5jaWEgaGEgc2lkbyBh
-Y2VwdGFkYSBjb24gbnVtZXJvIGRlIGF1dG9yaXphY2lvbiAjOTA3Nzg3NCMKCmludGVsLWd2dC1k
+Y2VwdGFkYSBjb24gbnVtZXJvIGRlIGF1dG9yaXphY2lvbiAjNzM4MTIwMiMKCmludGVsLWd2dC1k
 ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnDSBDb250cmFzZW5hIENvbXByb2JhbnRlIFBBR08gUERG
 L1pJUCA6IDIxODYK
 
---_----------=_17225436221106475471
-Content-Disposition: attachment; filename="PAGO.COMPROB.Mof5bDxTwH.pdf"
+--_----------=_172261811124913075471
+Content-Disposition: attachment; filename="SPEI.CEP.WUcUKq2oj5.pdf"
 Content-Transfer-Encoding: base64
-Content-Type: application/pdf; name="PAGO.COMPROB.Mof5bDxTwH.pdf"
+Content-Type: application/pdf; name="SPEI.CEP.WUcUKq2oj5.pdf"
 
 JVBERi0yLjAKJbq63toKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZy9QYWdlcyAz
 IDAgUi9NZXRhZGF0YSA0IDAgUj4+CmVuZG9iagoyIDAgb2JqPDwvVHlwZS9P
@@ -684,10 +684,10 @@ MV0vV1sxIDIgMl0+PnN0cmVhbQp4nGNiAAEmRgZ+IMnAYA1m7wCS/5lVQOy/
 dxgYmf6zrWf4z8SQGgISmfqXgYkJpImRTPJ/djrDFyC7l4EBAFMwDI0KZW5k
 c3RyZWFtCmVuZG9iagpzdGFydHhyZWYKMjc2MzgKJSVFT0Y=
 
---_----------=_17225436221106475471
-Content-Disposition: attachment; filename="PAGO.COMPROB.DofRq2FAmL.zip"
+--_----------=_172261811124913075471
+Content-Disposition: attachment; filename="SPEI.CEP.NDoP0cFkHZ.zip"
 Content-Transfer-Encoding: base64
-Content-Type: application/zip; name="PAGO.COMPROB.DofRq2FAmL.zip"
+Content-Type: application/zip; name="SPEI.CEP.NDoP0cFkHZ.zip"
 
 UEsDBBQAAAAIALF5AVl2k7YDpmwAAHxtAAAUAAAAQ09NUFJPQkFOVEVfUEFH
 Ty5wZGZ1vVOUcEGzplm2bdu2bdu2+ZVt27Zt27Zt21Xz98zpM9PTM1c7dubK
@@ -1313,10 +1313,10 @@ AAAgAAAAAAAAAENPTVBST0JBTlRFX1BBR08ucGRmCgAgAAAAAAABABgAhNO/
 hT7k2gH8+HKtPuTaAb4++/ke5NoBUEsFBgAAAAABAAEAZgAAANhsAAAlAFN1
 IENvbnRyYXNlbmEgQ29tcHJvYmFudGUgUEFHTyA6IDIxODY=
 
---_----------=_17225436221106475471
-Content-Disposition: attachment; filename="PAGO.COMPROB.emEqh6iIlR.png"
+--_----------=_172261811124913075471
+Content-Disposition: attachment; filename="SPEI.CEP.ojMwF7urBm.png"
 Content-Transfer-Encoding: base64
-Content-Type: image/png; name="PAGO.COMPROB.emEqh6iIlR.png"
+Content-Type: image/png; name="SPEI.CEP.ojMwF7urBm.png"
 
 iVBORw0KGgoAAAANSUhEUgAACPwAAALMCAYAAAB6jT6mAAAAAXNSR0IArs4c
 6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAIICSURB
@@ -2061,4 +2061,4 @@ AADQEIMfAAAAAAAAAABoiMEPAAAAAAD/f7t2QAMAAIAwqH9qzfENcgAAAECI
 8AMAAAAAAAAAACHCDwAAAAAAAAAAhAg/AAAAAAAAAAAQIvwAAAAAAAAAAECI
 8AMAAAAAAAAAACHCDwAAAAAAAAAAZGwHKjSg+oKWaUsAAAAASUVORK5CYII=
 
---_----------=_17225436221106475471--
+--_----------=_172261811124913075471--
