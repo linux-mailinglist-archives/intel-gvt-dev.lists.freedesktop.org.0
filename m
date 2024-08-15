@@ -2,60 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE7C695131B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Aug 2024 05:30:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BBE58952AD5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Aug 2024 10:46:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CDA2A10E32E;
-	Wed, 14 Aug 2024 03:30:40 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="K+nt2jwO";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9C6BC10E0C5;
+	Thu, 15 Aug 2024 08:46:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=freedesktop.org;
+	s=20240201; t=1723711594;
+	bh=JNOZAMrpL5wFEXrW6rxLKc2IPQm12q1l6rQM3+kZ1W8=;
+	h=From:To:Subject:Date:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Reply-To:From;
+	b=xteVGQeyFsT/Qy34Yd6TSFnKBfbvkGuoz6mFBw4QSiprYdLhj0bLld0pAO8SIu1rH
+	 qUORtEOeq61mlOwEMh+hzarX+fns96dXm89FlxnUGrXhjcsTLyhICH0jr/uP3dNA5j
+	 DiD5oorXl4GIWj9ALj4AJ324wPeoSJIGbADXC5oMAuyYqzwMRhuULGpVTAzbNawMW6
+	 Bktn0927iGc8qwwZgiMr75Yv4RrMq28nJ/mt006Lmti/ALCMb+DhT1sI9Tm99CmMA/
+	 0vXTKB2aF6qCGERlE8icVZ29YJyjM63V+KmtGxy4cp9fyNfmauGqDmRk33H3JWH21w
+	 1VQ6MqpzAv/nw==
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3241810E32E;
- Wed, 14 Aug 2024 03:30:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723606239; x=1755142239;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=IRG2HoilNLCV3MWbYyl9BQgmgBOkKVLTEiD0+Tvq3XQ=;
- b=K+nt2jwOGh+ER9r+00SlgmRzz5dHXreXczZl7QYfeo2qscxNNTTih47E
- XHnL2nBtZG7PEZWejaPt1Qv+YNDeF6QXJdF05/bo9VRRyC4BJUlki1H2C
- ZM5z0DE8+D7c0jzVeQ5o8+tffRGkTZF3uvekFvSRGm6TO61FCQ8h+RTPi
- t/85X8iHmv8rQVvBwNJuY9WkLOdp0eIwraDhZBS9yiJ2AZvNhdiUHwOBU
- 4dkKx8PwQedJIFSamHfjd9joGJNmjAGGN6XHKj77ugBvMtH2pfU1OhnwJ
- 9xXe4kfayxi/yk9kVKJAtEi+eXfHy//1UhzUHxm5DRki12XyQBUYpsrzO g==;
-X-CSE-ConnectionGUID: /7k2PamZTTSaqCJh1bhQNg==
-X-CSE-MsgGUID: 4Fhs9dgzSRq+qN7FrfYlwg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="21957709"
-X-IronPort-AV: E=Sophos;i="6.09,287,1716274800"; 
- d="asc'?scan'208";a="21957709"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2024 20:30:38 -0700
-X-CSE-ConnectionGUID: FhVFhCKIS7yc54nUYs8z5g==
-X-CSE-MsgGUID: Y78UXkCjS8+6kNzzRVElag==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,287,1716274800"; 
- d="asc'?scan'208";a="58809244"
-Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
- by orviesa009.jf.intel.com with ESMTP; 13 Aug 2024 20:30:36 -0700
-Date: Wed, 14 Aug 2024 11:32:13 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@intel.com>
-Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Zhi Wang <zhiwang@kernel.rog>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.wang.linux@gmail.com>, intel-gvt-dev@lists.freedesktop.org
-Subject: Re: [RESEND 1/2] drm/i915/gvt: stop using drm_edid_block_valid()
-Message-ID: <ZrwlPUVhp3v59rzS@debian-scheme>
-References: <20240812142849.1588006-1-jani.nikula@intel.com>
+Received: from cwp.ccclub700.com (server.ccclub700.com [51.89.151.46])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1646D10E0C5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 15 Aug 2024 08:46:33 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+ dkim=permerror (bad message/signature format)
+Received: from [102.90.43.235] (unknown [105.116.3.16])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by cwp.ccclub700.com (Postfix) with ESMTPSA id C2B0771C336
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 15 Aug 2024 08:39:54 +0000 (UTC)
+From: <PASTORINALICEABRAHAM@freedesktop.org>, cylamarver932@gmail.com
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?UTF-8?B?UmU6IEdSw5zDn0UgVk9NIEtBTFZBUklFTkJFUkc=?=
+Date: 15 Aug 2024 01:39:53 -0700
+Message-ID: <20240815013953.178923608D06E31C@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="DqdRhSWku2VpMsMe"
-Content-Disposition: inline
-In-Reply-To: <20240812142849.1588006-1-jani.nikula@intel.com>
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,91 +53,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Reply-To: pastormrs.aliceabraham@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Mein g=C3=B6ttlicher Freund,
 
---DqdRhSWku2VpMsMe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Gr=C3=BC=C3=9Fe vom Kalvarienberg an Sie und Ihre Familie aus den USA. Ich=
+=20
+hoffe, Sie und Ihre Familie waren heute bei guter Gesundheit.=20
+Seien Sie dar=C3=BCber nicht =C3=BCberrascht, denn mein Kontakt mit Ihnen=
+=20
+ist g=C3=B6ttlich. So wie mein Geist es mir befohlen hat, h=C3=B6ren Sie,=
+=20
+ich habe nur noch wenige Wochen zu leben, da alle meine =C3=84rzte=20
+best=C3=A4tigt haben, dass ich diese Krankheit nicht =C3=BCberleben werde.
+=
 
-On 2024.08.12 17:28:48 +0300, Jani Nikula wrote:
-> We'll want to stop drm_edid_block_valid() usage. KVMGT is the last
-> user. Replace with drm_edid_valid(), which unfortunately requires an
-> allocated drm_edid. However, on the plus side, this would be required to
-> handle the TODO comment about EDID extension block support.
->=20
-> Acked-by: Zhi Wang <zhiwang@kernel.rog>
-> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->
+Ich habe beschlossen, das gesamte Verm=C3=B6gen und die Investitionen=20
+meines verstorbenen Mannes mit Ihrer freundlichen Unterst=C3=BCtzung=20
+an mutterlose Babys und Witwen in Deutschland zu vererben, da wir=20
+keine eigenen Kinder hatten, die sie erben k=C3=B6nnten. Mein=20
+verstorbener Mann war ein sehr reicher Amerikaner, aber ich bin=20
+deutscher Herkunft, daher wollte ich unser Verm=C3=B6gen nach=20
+Deutschland oder irgendwo anders in Europa zur=C3=BCckbringen. Ich=20
+hoffe, Sie k=C3=B6nnen mir helfen, etwa 26 Millionen Dollar dort in=20
+ein Waisenhaus/Heim f=C3=BCr mutterlose Babys zu investieren und auch=20
+den armen Witwen in der Umgebung zu helfen.
 
-Looks fine to me. Feel free to merge.
+Wie Sie vielleicht wissen, erforderte dies eine dringende=20
+Antwort. Bitte antworten Sie mir f=C3=BCr weitere Einzelheiten.
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Pastorin Alice Abraham
 
-> ---
->=20
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
-> Cc: intel-gvt-dev@lists.freedesktop.org
-> Cc: intel-gfx@lists.freedesktop.org
-> Cc: dri-devel@lists.freedesktop.org
-> ---
->  drivers/gpu/drm/i915/gvt/kvmgt.c | 18 +++++++++++++-----
->  1 file changed, 13 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
-kvmgt.c
-> index 38830818c120..ca0fb126b02d 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -425,6 +425,18 @@ static const struct intel_vgpu_regops intel_vgpu_reg=
-ops_opregion =3D {
->  	.release =3D intel_vgpu_reg_release_opregion,
->  };
-> =20
-> +static bool edid_valid(const void *edid, size_t size)
-> +{
-> +	const struct drm_edid *drm_edid;
-> +	bool is_valid;
-> +
-> +	drm_edid =3D drm_edid_alloc(edid, size);
-> +	is_valid =3D drm_edid_valid(drm_edid);
-> +	drm_edid_free(drm_edid);
-> +
-> +	return is_valid;
-> +}
-> +
->  static int handle_edid_regs(struct intel_vgpu *vgpu,
->  			struct vfio_edid_region *region, char *buf,
->  			size_t count, u16 offset, bool is_write)
-> @@ -443,11 +455,7 @@ static int handle_edid_regs(struct intel_vgpu *vgpu,
->  		switch (offset) {
->  		case offsetof(struct vfio_region_gfx_edid, link_state):
->  			if (data =3D=3D VFIO_DEVICE_GFX_LINK_STATE_UP) {
-> -				if (!drm_edid_block_valid(
-> -					(u8 *)region->edid_blob,
-> -					0,
-> -					true,
-> -					NULL)) {
-> +				if (!edid_valid(region->edid_blob, EDID_SIZE)) {
->  					gvt_vgpu_err("invalid EDID blob\n");
->  					return -EINVAL;
->  				}
-> --=20
-> 2.39.2
->=20
-
---DqdRhSWku2VpMsMe
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZrwlOQAKCRCxBBozTXgY
-J07dAJ0ZTZ8Fd/2wGBj8i44MsFb1iOm/XwCeIuq/32BDPLTjDt02E543ifdRqvk=
-=ZrFf
------END PGP SIGNATURE-----
-
---DqdRhSWku2VpMsMe--
+pastormrs.aliceabraham@gmail.com
