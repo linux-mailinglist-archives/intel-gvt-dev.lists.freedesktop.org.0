@@ -2,45 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19F5E963E5E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Aug 2024 10:27:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B9059671AF
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 31 Aug 2024 15:05:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F170110E61B;
-	Thu, 29 Aug 2024 08:27:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 490D210E0AE;
+	Sat, 31 Aug 2024 13:05:55 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=synergyflux.pl header.i=@synergyflux.pl header.b="iGHOFMOd";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="AT+iIyO9";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 609 seconds by postgrey-1.36 at gabe;
- Thu, 29 Aug 2024 08:27:28 UTC
-Received: from mail.synergyflux.pl (mail.synergyflux.pl [51.38.99.212])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3944210E61B
+Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
+ [209.85.167.52])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 306DD10E126
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Aug 2024 08:27:28 +0000 (UTC)
-Received: by mail.synergyflux.pl (Postfix, from userid 1002)
- id 662F12699C; Thu, 29 Aug 2024 10:10:59 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synergyflux.pl;
- s=mail; t=1724919089;
- bh=n9RRp8MlabRDJBtJNro49Rmci90RtotaZYZ8+xo6WI4=;
- h=Date:From:To:Subject:From;
- b=iGHOFMOdOAiRIMPbwloGsb/oucQuKoy9afr5+6PWq9OG1Oy2ExdyPApyvnJcF5VFu
- jsI0/fbg2DQRwIbJ6qckWLb0cTikqyBWKrVXdWLeLtkoC1RozjGTeAnmroMwwTjfKq
- QtmDuRqihjBkAy5IyulbowWslOfqh6Ih8Md6xHkQphzjsPYz9O3wWQ0hhGte8fMcFz
- Pihgi08aYU5Nz41GXEDjZvCBhT3qsNvgmGAOVaZHrBMpwZ9R9GXwwr6hZvf45nOy3G
- NUFIODY1A1tuc+2KEHeNG0BR1HXCkhkKQx1xqeJDErbLhJqKV59idMpo0xGPfygH0A
- v0f+jDDMxAV5A==
-Received: by mail.synergyflux.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Aug 2024 08:10:34 GMT
-Message-ID: <20240829084501-0.1.dm.3fdf0.0.0a6jfycj99@synergyflux.pl>
-Date: Thu, 29 Aug 2024 08:10:34 GMT
-From: =?UTF-8?Q?"Konrad_Zieli=C5=84ski_"?= <konrad.zielinski@synergyflux.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Instalacja pv
-X-Mailer: mail.synergyflux.pl
+ Sat, 31 Aug 2024 13:05:54 +0000 (UTC)
+Received: by mail-lf1-f52.google.com with SMTP id
+ 2adb3069b0e04-533463f6b16so3485378e87.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 31 Aug 2024 06:05:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1725109552; x=1725714352; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Y5wRZ2/YvLbD0rIlo0ds7GNcj84qpOcRrw/Btoavjv4=;
+ b=AT+iIyO9Wq0SAUZrp7lq1W2AsVKasgLFfNRsvEh2lFeJIJKfsIchuKWGvxkySB000h
+ zp6voR25BFyhu/bLsTQud1adOMRrKjz4RSKbaT9luR2xicvoK1yeXopw91agHjh6KXQp
+ 1B7v5dUW56V3RIswEGQEoPG0b6fPUcRlkXMO2aSU3Heh4JIAHuk70KYPSw0Vy3gaLpJZ
+ 2AlS8YjUnpl12oY8bLhm/ZDJGm18YxYe4QzAY+9X6BRfr4mghcMDm/aVVYpn2luhFU2k
+ qYkBbf14ZtrJpFNbD0tFHilpO64QEJbIF5m+hHYEx1GESkYe9BfqGqlTkjbU8WWTL236
+ PNQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725109552; x=1725714352;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y5wRZ2/YvLbD0rIlo0ds7GNcj84qpOcRrw/Btoavjv4=;
+ b=QbjU7mp55obIfYP10LEwwdvmwq6AEYA+/Do2ySd1wpOaYAByDdR8wrBhLuAzCmhpkQ
+ Mack1ARl1TiHRoXlfzQu8WGYwA1eDXmXmKP5fr6mdyU+Wb+suRLM7o28MQURdtvQh1ps
+ lCFhyEQJDiRlwZhZrXGU8j7OvCsSTplnmg8G6Zj/C0HBA8wdeDlzjCC1LPdq4+DggS9K
+ gr+Ar++jklI55rEsxZjt1hf83h87eanAlaDmb6mbdSbkydleT9Vf1DR990HAyGaO32Cr
+ JOfYrpwvbJt5cQNSbTx38Twd5Mw+nbtnWFey86THe9QisAszFc1oWKQeFIkz2txtzsQr
+ NItw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUvwYrW5hMnpHL78MO8NpoXEUQzo4d4ppOd9QJ4KjsbRXXyRidW35j7o9zxNP31v92Br5kBF2In4M12nt7H@lists.freedesktop.org
+X-Gm-Message-State: AOJu0Yw6wpHyINh85EoFWpS3MbDZOvVlFUuS7ARQkjhzG3UaZa1389Jm
+ /lQLFFt5YExhR1qy932pd8osc6wRrcwos4bzfyfeiyZmMGFmMlAW0bUFCNxeJto0XKSEsp6rlx6
+ 2iOANUUAFGRIJTmrAlx2WZaEpQ7U=
+X-Google-Smtp-Source: AGHT+IF2XjB2RItHMjLuYTvx8BIriJrnf2w5lwaXIV3uCxmBC790T6vpbsTtY0FQ33PcP33e5OcJ5EETh7vIQ8ROk+M=
+X-Received: by 2002:a05:6512:3351:b0:52f:89aa:c344 with SMTP id
+ 2adb3069b0e04-53546aff219mr2913702e87.16.1725109551166; Sat, 31 Aug 2024
+ 06:05:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Amir Aaliyah <harunabb9@gmail.com>
+Date: Sat, 31 Aug 2024 09:05:37 -0400
+Message-ID: <CALvF3s+M3yLv8STZ51wt5rnvtn_Qcxk5O8KYrsH-bhrQiTF4dA@mail.gmail.com>
+Subject: I await your urgent response.
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000fefc5d0620fa5d49"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,22 +71,34 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: FIRS01@protonmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+--000000000000fefc5d0620fa5d49
+Content-Type: text/plain; charset="UTF-8"
 
-czy s=C4=85 Pa=C5=84stwo otwarci na niezobowi=C4=85zuj=C4=85c=C4=85 rozmo=
-w=C4=99 na temat fotowoltaiki?
+-- 
+Dear Sir,
 
-Jako firma specjalizuj=C4=85ca si=C4=99 w instalacji i serwisie najlepszy=
-ch jako=C5=9Bciowo paneli s=C5=82onecznych na rynku chcia=C5=82bym przeds=
-tawi=C4=87 propozycj=C4=99, jak=C4=85 wsp=C3=B3lnie z zespo=C5=82em przyg=
-otowali=C5=9Bmy dla Pa=C5=84stwa obiektu.
+My name is Barrister Amir Aaliyah, I am a financial attorney practicing
+here in UK, Kindly revert back on receipt of this proposal to enable me
+divulge further details of transaction proper.
 
-B=C4=99d=C4=99 wdzi=C4=99czny za wiadomo=C5=9B=C4=87 od Pa=C5=84stwa czy =
-mo=C5=BCemy porozmawia=C4=87.
+I await your urgent response.
 
+Yours Sincerely,
 
-Pozdrawiam
-Konrad Zieli=C5=84ski 
+Amir Aaliyah
+
+--000000000000fefc5d0620fa5d49
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">-- <br>Dear Sir,<br><br>My name is Barrister Amir Aaliyah,=
+ I am a financial attorney practicing here in UK, Kindly revert back on rec=
+eipt of this proposal to enable me divulge further details of transaction p=
+roper.<br><br>I await your urgent response.<br><br>Yours Sincerely,<br><br>=
+Amir Aaliyah</div>
+
+--000000000000fefc5d0620fa5d49--
