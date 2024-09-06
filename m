@@ -2,63 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B9059671AF
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 31 Aug 2024 15:05:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A39796F42A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Sep 2024 14:22:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 490D210E0AE;
-	Sat, 31 Aug 2024 13:05:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5FDAF10EA38;
+	Fri,  6 Sep 2024 12:22:27 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="AT+iIyO9";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="DIRGPOOo";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
- [209.85.167.52])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 306DD10E126
+Received: from mail-yb1-f195.google.com (mail-yb1-f195.google.com
+ [209.85.219.195])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3524A10EA43
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 31 Aug 2024 13:05:54 +0000 (UTC)
-Received: by mail-lf1-f52.google.com with SMTP id
- 2adb3069b0e04-533463f6b16so3485378e87.1
+ Fri,  6 Sep 2024 12:22:26 +0000 (UTC)
+Received: by mail-yb1-f195.google.com with SMTP id
+ 3f1490d57ef6-e1a80979028so2096825276.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 31 Aug 2024 06:05:54 -0700 (PDT)
+ Fri, 06 Sep 2024 05:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725109552; x=1725714352; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1725625345; x=1726230145; darn=lists.freedesktop.org;
  h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Y5wRZ2/YvLbD0rIlo0ds7GNcj84qpOcRrw/Btoavjv4=;
- b=AT+iIyO9Wq0SAUZrp7lq1W2AsVKasgLFfNRsvEh2lFeJIJKfsIchuKWGvxkySB000h
- zp6voR25BFyhu/bLsTQud1adOMRrKjz4RSKbaT9luR2xicvoK1yeXopw91agHjh6KXQp
- 1B7v5dUW56V3RIswEGQEoPG0b6fPUcRlkXMO2aSU3Heh4JIAHuk70KYPSw0Vy3gaLpJZ
- 2AlS8YjUnpl12oY8bLhm/ZDJGm18YxYe4QzAY+9X6BRfr4mghcMDm/aVVYpn2luhFU2k
- qYkBbf14ZtrJpFNbD0tFHilpO64QEJbIF5m+hHYEx1GESkYe9BfqGqlTkjbU8WWTL236
- PNQA==
+ bh=a241IOC113dSjWL2f3Ezc0H4dVwfHZrLwaUu+f0d0Ak=;
+ b=DIRGPOOobNgq/w565qzoVgzIsRT7k146i52sPrmN5ZtkEykgXItVc85i8naqtabTLI
+ SlpdQkFV+aDJ+mX+UyTEkfwMsLX/DPcea1gAj6fgvu+JKLiE6QD0xnyGdghHVFgjvCCH
+ Q5IqFPFs3LPqh/DYUldX/NHf1CYVBzN6yc4KSrVRyKcCcnvFGdeYD/dIx1iGqqrnPXYz
+ oAFAj+zEGwDUZt2BRFai//BYPhBS7Ys6wkrDx1a2zNjv4oih1XWFI46Y+VF9bQyP3HbM
+ iDOsmj2zaRax1QXKuXAtM6rgYUI2kH40XLuWUldAho50mVgVW1C087P2aSP3MHIzO2Ya
+ j3bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725109552; x=1725714352;
+ d=1e100.net; s=20230601; t=1725625345; x=1726230145;
  h=to:subject:message-id:date:from:reply-to:mime-version
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Y5wRZ2/YvLbD0rIlo0ds7GNcj84qpOcRrw/Btoavjv4=;
- b=QbjU7mp55obIfYP10LEwwdvmwq6AEYA+/Do2ySd1wpOaYAByDdR8wrBhLuAzCmhpkQ
- Mack1ARl1TiHRoXlfzQu8WGYwA1eDXmXmKP5fr6mdyU+Wb+suRLM7o28MQURdtvQh1ps
- lCFhyEQJDiRlwZhZrXGU8j7OvCsSTplnmg8G6Zj/C0HBA8wdeDlzjCC1LPdq4+DggS9K
- gr+Ar++jklI55rEsxZjt1hf83h87eanAlaDmb6mbdSbkydleT9Vf1DR990HAyGaO32Cr
- JOfYrpwvbJt5cQNSbTx38Twd5Mw+nbtnWFey86THe9QisAszFc1oWKQeFIkz2txtzsQr
- NItw==
+ bh=a241IOC113dSjWL2f3Ezc0H4dVwfHZrLwaUu+f0d0Ak=;
+ b=jbtetz0OiB3FPdt4TQgEMOu6GPiyG/zY9WYUP1tRaWMA1X+/mZv+ox6ERwHG60IQZ9
+ cYyMrz+SwlofrGztdx/EaqZ5ANIyoYDgIZoEVhN+z68QPD5RWap4UIA8tAWM4xDVGUw/
+ xytgxS3H5YAhS/3kIm77aByMyk3F/xvUdEHR4NBzzLoFy1yHE0T9obZSA2WpnW6l4p2x
+ FuBZZNdZwk0jvomNk0LSmaJi6qalasGA7qQpkbv0UCGQMd+XUdx22cVxJPSsZBw5HPQj
+ dINocp5RgJeffPcfNcqVpiXYOoJ2ODSL1obNPncM1syxHvRoIGB0VqdshFdyidGjLkVn
+ HgWQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUvwYrW5hMnpHL78MO8NpoXEUQzo4d4ppOd9QJ4KjsbRXXyRidW35j7o9zxNP31v92Br5kBF2In4M12nt7H@lists.freedesktop.org
-X-Gm-Message-State: AOJu0Yw6wpHyINh85EoFWpS3MbDZOvVlFUuS7ARQkjhzG3UaZa1389Jm
- /lQLFFt5YExhR1qy932pd8osc6wRrcwos4bzfyfeiyZmMGFmMlAW0bUFCNxeJto0XKSEsp6rlx6
- 2iOANUUAFGRIJTmrAlx2WZaEpQ7U=
-X-Google-Smtp-Source: AGHT+IF2XjB2RItHMjLuYTvx8BIriJrnf2w5lwaXIV3uCxmBC790T6vpbsTtY0FQ33PcP33e5OcJ5EETh7vIQ8ROk+M=
-X-Received: by 2002:a05:6512:3351:b0:52f:89aa:c344 with SMTP id
- 2adb3069b0e04-53546aff219mr2913702e87.16.1725109551166; Sat, 31 Aug 2024
- 06:05:51 -0700 (PDT)
+ AJvYcCWxOc5psNYM0UrMMTeJpIiV07aY8z0IKaPTLKGVbtASR1OVxXPBdDvVIuEI6KprqUtJ9dIy4hB0H790Z3QL@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YxF6B2OfFnDEVtYUOQKusSNGY+Ndgp6MZkHL6jXa5LJ4SXgbg7h
+ snIykyi6JxfKxvTmHSiuqxVQ3jdRa9qQ69tLud+eMQuNauEWmFur05nkC/turE9obTM8bDOZ7jN
+ H5aWPzKOLDYluaObtLcZrqaMOA3g=
+X-Google-Smtp-Source: AGHT+IFnBQZtpbKhG7RnTTkFFVZSXYcXF7SRwt5B6fK3kbBiz/DmdL4dWXu1iBy97bjsUsN+qVcrrJB11qohwWoPCAs=
+X-Received: by 2002:a05:6902:1b09:b0:e0b:fa84:5839 with SMTP id
+ 3f1490d57ef6-e1d34867c66mr2815326276.8.1725625344220; Fri, 06 Sep 2024
+ 05:22:24 -0700 (PDT)
 MIME-Version: 1.0
-From: Amir Aaliyah <harunabb9@gmail.com>
-Date: Sat, 31 Aug 2024 09:05:37 -0400
-Message-ID: <CALvF3s+M3yLv8STZ51wt5rnvtn_Qcxk5O8KYrsH-bhrQiTF4dA@mail.gmail.com>
-Subject: I await your urgent response.
+From: "Mrs.lina Gabriel" <linagabriel61@gmail.com>
+Date: Fri, 6 Sep 2024 05:22:15 -0700
+Message-ID: <CAKRdAwukN4Qqm0=r33=gam41Yb67hKGgmjwWmPYiJxobKMhEtQ@mail.gmail.com>
+Subject: My beloved friend,
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000fefc5d0620fa5d49"
+Content-Type: multipart/alternative; boundary="000000000000a868f10621727588"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,34 +71,41 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: FIRS01@protonmail.com
+Reply-To: linagabriel701@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000fefc5d0620fa5d49
+--000000000000a868f10621727588
 Content-Type: text/plain; charset="UTF-8"
 
--- 
-Dear Sir,
+Dearest in christ,
 
-My name is Barrister Amir Aaliyah, I am a financial attorney practicing
-here in UK, Kindly revert back on receipt of this proposal to enable me
-divulge further details of transaction proper.
+I believe that you can help in setting up a charity foundation for the
+benefit of mankind,
 
-I await your urgent response.
+I wish to establish a charity foundation to help the poor in your
+country under your care, Can you help to build and set up this project
+to help the poor people and the elderly ones in your country? We can make
+the
+world a better place when we help one another sincerely,
 
-Yours Sincerely,
+I will be waiting to read from you today my dear.
 
-Amir Aaliyah
+Remain blessed,
 
---000000000000fefc5d0620fa5d49
+Mrs.lina Gabriel.
+
+--000000000000a868f10621727588
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">-- <br>Dear Sir,<br><br>My name is Barrister Amir Aaliyah,=
- I am a financial attorney practicing here in UK, Kindly revert back on rec=
-eipt of this proposal to enable me divulge further details of transaction p=
-roper.<br><br>I await your urgent response.<br><br>Yours Sincerely,<br><br>=
-Amir Aaliyah</div>
+<div dir=3D"ltr">Dearest in christ,<br><br>I believe that you can help in s=
+etting up a charity foundation for the benefit of mankind,<br><br>I wish to=
+ establish a charity foundation to help the poor in your<br>country under y=
+our care, Can you help to build and set up this project<br>to help the poor=
+ people and the elderly ones in your country? We can make the<br>world a be=
+tter place when we help one another sincerely,<br><br>I will be waiting to =
+read from you today my dear.<br><br>Remain blessed,<br><br>Mrs.lina Gabriel=
+.</div>
 
---000000000000fefc5d0620fa5d49--
+--000000000000a868f10621727588--
