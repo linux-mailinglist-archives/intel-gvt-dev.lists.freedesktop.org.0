@@ -2,45 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5187985553
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Sep 2024 10:18:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06938987301
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Sep 2024 13:45:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8915F10E7B8;
-	Wed, 25 Sep 2024 08:18:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D7C9010EAF3;
+	Thu, 26 Sep 2024 11:45:14 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=bizinception.pl header.i=@bizinception.pl header.b="AAjiSCiw";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="mbLpIrdi";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 448 seconds by postgrey-1.36 at gabe;
- Wed, 25 Sep 2024 08:18:49 UTC
-Received: from mail.bizinception.pl (mail.bizinception.pl [51.68.214.200])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2694810E7B1
+Received: from mail-vs1-f54.google.com (mail-vs1-f54.google.com
+ [209.85.217.54])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A568F10EAF4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Sep 2024 08:18:49 +0000 (UTC)
-Received: by mail.bizinception.pl (Postfix, from userid 1002)
- id B3B934C3DD; Wed, 25 Sep 2024 10:11:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizinception.pl;
- s=mail; t=1727251878;
- bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=;
- h=Date:From:To:Subject:From;
- b=AAjiSCiwKBITN7RRh18vt5djx8qH3Wfx8TpXa/5bP/yJqbUSarg0Fruie+M598Wop
- 2Nty3Vz+a8DFwL9wICSlzjV6aI7aqQPGD8qOn1wcMHSV3hAlSvhO3uQyg+0JL2ltZu
- iwDbyv+cPSwXmA8Y0iLo53FAVtMQc8S6KgDx7+3nkG/MLLbhz6A9j2jRfGSpKVJkYN
- GQpER6ia7e1yzb6qE7CCb5ZMhq97AdPlxqOYCcJEF52Bm9v7m50UQEh4t4OruTJqTU
- q+k8LOfQJlv3VmWli6RLXXzDvLfmX3JRm8yWUrQtBDJyYWYvPmR4AO+tueWDTInN+S
- q2tcclaUPDHUw==
-Received: by mail.bizinception.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Sep 2024 08:11:04 GMT
-Message-ID: <20240925084500-0.1.55.ina2.0.6s4jkmzmf2@bizinception.pl>
-Date: Wed, 25 Sep 2024 08:11:04 GMT
-From: "Dominik Lotka" <dominik.lotka@bizinception.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.bizinception.pl
+ Thu, 26 Sep 2024 11:45:13 +0000 (UTC)
+Received: by mail-vs1-f54.google.com with SMTP id
+ ada2fe7eead31-49bc1b1368fso541515137.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Sep 2024 04:45:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1727351112; x=1727955912; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=neAf9OjqP/TUsWruzS7195l0Hyoh1eeGLZKPsJ++Usk=;
+ b=mbLpIrdihCuKkVr+nsZPV2tG85WDjI75yOEZaJsQ+i0ZLyGtAahvtTms11aX3SkNp/
+ 7w3BWq4UG1T/MaFh7E51uEAY/z+ItAkCC+UI+UvKYfKvDtUe58Yjz9bh1wiyC3zmWmJ8
+ lDzZO5zuMvBqADo3qVU744EwqcMWlv2pFy2FistlH/olV896Mbq9F2+otg3GuPklAOFe
+ u+doV5ozCjkHfra2p4lo+RQ5MKGfS5Mvky7XGp4DlnryzspGO1VqquBghC+9zLVdU37L
+ LaWE+AKanGOOq7AeqXGrywIfNCQInXSVITbGpuFlzzeo5sCWKJCuvaQ7tomOk62QhDx/
+ 7Nxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727351112; x=1727955912;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=neAf9OjqP/TUsWruzS7195l0Hyoh1eeGLZKPsJ++Usk=;
+ b=QIrlBDTT2IGLlYKKAkbyhNPFWUxPT2FhysJ43aTTtPo+RVhnQk7lGqmChyZGVuBh93
+ R+Ok/lOYFaSqyzoM08X3F19mHrm3DGbiNxGU8RtuHxMZnt2a7LW42QCtsiVqYnqFs3KV
+ BqELun7UuSB93Qx+k7hl+iIgrM0XRmjybFkRpVZDpR96nKPa5YbL9pbJIgvOKrslPDjh
+ WxcPAV/QTVw3SjkJyuOYk5hvHynu8aFHPHHGlZggD8fRukVK8JVKNahaB9oDT8nvSSkj
+ Okpoqsw0o4O81iEReoW7QIkVodeTm9ZkJCgm1GaF5cvqQp2wxSPym8OrTlZYDv47n/XO
+ bhdw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVIsXA5R3TySpbOjhkdXWB5Fox5NLA1Uzh6whyQF5lVfnbKQgzevelihD0jKzvaNTDvhYcPZnTvLUkBUQCk@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YxK47FPU67vn3c8lkXL635NWtSRUZdpS1YQgWpwhjIEVZ8S2mEP
+ ExH/9cIYI5shcGbGRSpWbmgIpjCXf5I3JLN5LUelnhIA/8yqBOVOhi0jouxvkxrW4gQbSCWOEOY
+ 9yVVv2BlB4CBuLxwMgitSxK5qrbg=
+X-Google-Smtp-Source: AGHT+IFyTLIwZV/dYntpPChVngaOary4+DzdJR9U/fbmRhNU7ANIhJJXtuu6/XH0//HoA1inSFmjjXu7fd7X9IVHvlo=
+X-Received: by 2002:a05:6102:5111:b0:49b:e4eb:37d2 with SMTP id
+ ada2fe7eead31-4a1772daf28mr2108451137.11.1727351112269; Thu, 26 Sep 2024
+ 04:45:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: "Mr. John Robinson" <jhrobinson1956@gmail.com>
+Date: Thu, 26 Sep 2024 06:44:59 -0500
+Message-ID: <CAKBmgeuX4Bdy+4prg=goBvcr-Z9A_McUWURdTAwNSmbDfK2Xrw@mail.gmail.com>
+Subject: Donatie in geld!
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000007306f30623044567"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,18 +74,19 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+--0000000000007306f30623044567
+Content-Type: text/plain; charset="UTF-8"
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+U bent de gelukkige winnaar. De som van (EUR 1.500.000) is aan u gedoneerd
+door de heer John Robinson. Reageer op de e-mail voor meer informatie
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+--0000000000007306f30623044567
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+<div dir=3D"ltr"><div><div dir=3D"ltr" class=3D"gmail_signature" data-smart=
+mail=3D"gmail_signature"><div dir=3D"ltr">U bent de gelukkige winnaar. De s=
+om van (EUR 1.500.000) is aan u gedoneerd door de heer John Robinson. Reage=
+er op de e-mail voor meer informatie<br></div></div></div></div>
 
-Zapraszam do kontaktu.
-
-
-Pozdrawiam
-Dominik Lotka
+--0000000000007306f30623044567--
