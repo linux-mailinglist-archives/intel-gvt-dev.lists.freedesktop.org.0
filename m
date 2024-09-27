@@ -2,63 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06938987301
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Sep 2024 13:45:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 741A9988917
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Sep 2024 18:32:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D7C9010EAF3;
-	Thu, 26 Sep 2024 11:45:14 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="mbLpIrdi";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5779510E21B;
+	Fri, 27 Sep 2024 16:32:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-f54.google.com (mail-vs1-f54.google.com
- [209.85.217.54])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A568F10EAF4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 Sep 2024 11:45:13 +0000 (UTC)
-Received: by mail-vs1-f54.google.com with SMTP id
- ada2fe7eead31-49bc1b1368fso541515137.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 Sep 2024 04:45:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1727351112; x=1727955912; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=neAf9OjqP/TUsWruzS7195l0Hyoh1eeGLZKPsJ++Usk=;
- b=mbLpIrdihCuKkVr+nsZPV2tG85WDjI75yOEZaJsQ+i0ZLyGtAahvtTms11aX3SkNp/
- 7w3BWq4UG1T/MaFh7E51uEAY/z+ItAkCC+UI+UvKYfKvDtUe58Yjz9bh1wiyC3zmWmJ8
- lDzZO5zuMvBqADo3qVU744EwqcMWlv2pFy2FistlH/olV896Mbq9F2+otg3GuPklAOFe
- u+doV5ozCjkHfra2p4lo+RQ5MKGfS5Mvky7XGp4DlnryzspGO1VqquBghC+9zLVdU37L
- LaWE+AKanGOOq7AeqXGrywIfNCQInXSVITbGpuFlzzeo5sCWKJCuvaQ7tomOk62QhDx/
- 7Nxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727351112; x=1727955912;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=neAf9OjqP/TUsWruzS7195l0Hyoh1eeGLZKPsJ++Usk=;
- b=QIrlBDTT2IGLlYKKAkbyhNPFWUxPT2FhysJ43aTTtPo+RVhnQk7lGqmChyZGVuBh93
- R+Ok/lOYFaSqyzoM08X3F19mHrm3DGbiNxGU8RtuHxMZnt2a7LW42QCtsiVqYnqFs3KV
- BqELun7UuSB93Qx+k7hl+iIgrM0XRmjybFkRpVZDpR96nKPa5YbL9pbJIgvOKrslPDjh
- WxcPAV/QTVw3SjkJyuOYk5hvHynu8aFHPHHGlZggD8fRukVK8JVKNahaB9oDT8nvSSkj
- Okpoqsw0o4O81iEReoW7QIkVodeTm9ZkJCgm1GaF5cvqQp2wxSPym8OrTlZYDv47n/XO
- bhdw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVIsXA5R3TySpbOjhkdXWB5Fox5NLA1Uzh6whyQF5lVfnbKQgzevelihD0jKzvaNTDvhYcPZnTvLUkBUQCk@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YxK47FPU67vn3c8lkXL635NWtSRUZdpS1YQgWpwhjIEVZ8S2mEP
- ExH/9cIYI5shcGbGRSpWbmgIpjCXf5I3JLN5LUelnhIA/8yqBOVOhi0jouxvkxrW4gQbSCWOEOY
- 9yVVv2BlB4CBuLxwMgitSxK5qrbg=
-X-Google-Smtp-Source: AGHT+IFyTLIwZV/dYntpPChVngaOary4+DzdJR9U/fbmRhNU7ANIhJJXtuu6/XH0//HoA1inSFmjjXu7fd7X9IVHvlo=
-X-Received: by 2002:a05:6102:5111:b0:49b:e4eb:37d2 with SMTP id
- ada2fe7eead31-4a1772daf28mr2108451137.11.1727351112269; Thu, 26 Sep 2024
- 04:45:12 -0700 (PDT)
+Received: from qiuqiux.com (unknown [192.3.55.30])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5EA9B10E21B;
+ Fri, 27 Sep 2024 16:32:56 +0000 (UTC)
+Received: from [178.215.236.76] (unknown [178.215.236.76])
+ by qiuqiux.com (Postfix) with ESMTPA id 7E2F4FEC55;
+ Fri, 27 Sep 2024 19:16:04 +0800 (CST)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-From: "Mr. John Robinson" <jhrobinson1956@gmail.com>
-Date: Thu, 26 Sep 2024 06:44:59 -0500
-Message-ID: <CAKBmgeuX4Bdy+4prg=goBvcr-Z9A_McUWURdTAwNSmbDfK2Xrw@mail.gmail.com>
-Subject: Donatie in geld!
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000007306f30623044567"
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Urgent Assistance Needed ....
+To: Recipients <jennifer.kate1954@gmail.com>
+From: "Mrs. Jennifer Kate" <jennifer.kate1954@gmail.com>
+Date: Fri, 27 Sep 2024 04:16:01 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,22 +35,50 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Jennifer.kate1954@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20240927163258.5779510E21B@gabe.freedesktop.org>
 
---0000000000007306f30623044567
-Content-Type: text/plain; charset="UTF-8"
+Greetings to you and your family.
 
-U bent de gelukkige winnaar. De som van (EUR 1.500.000) is aan u gedoneerd
-door de heer John Robinson. Reageer op de e-mail voor meer informatie
+My name is Mrs Jennifer Kate, i am undergoing medical treatment here in Fra=
+nce. I have been diagnosed with Esophageal cancer of the throat which was d=
+iscovered very late, due to my laxity in caring for my health. I was marrie=
+d to Dr. John Kate who worked as a director with the uk Railway Commission =
+for over a decade before he died on 5th of July in the year 2022. We were m=
+arried for twenty one years without a child. He died after a brief illness =
+that lasted for two weeks. Before his death he made a vow to use his wealth=
+ for the less privileged in the society. Since his death I decided not to r=
+e-marry or get a child outside my matrimonial home.  However, I adopted a s=
+on by name Ali from South Africa who is 17 years old.
 
---0000000000007306f30623044567
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+My husband and I deposited the sum of US$50,5 Million (Fifty million five h=
+undred thousand dollar) in a usa bank. and now that my Doctor made it clear=
+ to me that I would not last long due to my health that has resulted in str=
+oke, I hereby seek for the assistance of an honest and God fearing person t=
+o assist me distribute this funds to orphanages, and those affected in the =
+Tsunami in far Asia.
 
-<div dir=3D"ltr"><div><div dir=3D"ltr" class=3D"gmail_signature" data-smart=
-mail=3D"gmail_signature"><div dir=3D"ltr">U bent de gelukkige winnaar. De s=
-om van (EUR 1.500.000) is aan u gedoneerd door de heer John Robinson. Reage=
-er op de e-mail voor meer informatie<br></div></div></div></div>
+I took this decision because my adopted son is still small and my husband's=
+ relatives are not inclined to help poor people, they are only after the mo=
+ney and I do not want my husband's hard earned money to be misused or spent=
+ in the manner in which my late husband did not specify. I do not want them=
+ to know about this development, this is why i am contacting an external pe=
+rson and also i cannot carry this out because of my condition.
 
---0000000000007306f30623044567--
+As soon as I receive your reply I will introduce you as my partner, and sha=
+ll give you the contact of the bank where the funds are deposited. I will a=
+lso issue you a letter of authority and all other documents that will empow=
+er you as the next beneficiary.
+
+You will be compensated with 20% of the total fund for your kind assistance.
+
+P.S: You might receive this message in your inbox; spam or junk folders dep=
+ending on your web host or server network. I will be waiting for your reply.
+
+I expect your reply immediately,
+
+Thank you and may the Almighty bless you.
+Yours sincerely,
+Mrs. Jennifer Kate
