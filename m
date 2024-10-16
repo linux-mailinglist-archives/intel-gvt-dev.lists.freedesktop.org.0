@@ -2,47 +2,66 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06FB199F937
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Oct 2024 23:30:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 475A39A1663
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2024 02:01:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE5BF10E069;
-	Tue, 15 Oct 2024 21:30:53 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=11123w-x8-w2.com header.i=@11123w-x8-w2.com header.b="Crkp1RkV";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id A219510E08A;
+	Thu, 17 Oct 2024 00:01:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 21361 seconds by postgrey-1.36 at gabe;
- Tue, 15 Oct 2024 21:30:52 UTC
-Received: from inbox.11123w-x8-w2.com (inbox.11123w-x8-w2.com [8.39.147.50])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 14B4410E069
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 15 Oct 2024 21:30:52 +0000 (UTC)
-Received: from authenticated-user (inbox.11123w-x8-w2.com [8.39.147.50])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (No client certificate requested)
- by inbox.11123w-x8-w2.com (Postfix) with ESMTPSA id 861B9373E4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 15 Oct 2024 10:55:22 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=11123w-x8-w2.com;
- s=mail; t=1729004122;
- bh=nef9+wTRH92/bGnjk41JueWBWSKHD4pnuNZJXWgwbVc=;
- h=From:To:Subject:Date:From;
- b=Crkp1RkVGOI1vcOkq4Zc5+1dohA2kw6nJkdmtqajX/1OObtMSX9slmBARt3YZ1xYb
- ZKH2HKu9+Zts47PtoIDPlr6Sj7g+ATnAHzwvCVN7RU7j3vmlczQS2+IKiIBrjKWK6B
- yn+HG9KKzUEeb7YAGn6Murs/qsn+92FaejrmlVcpbrBruHNiq1H+360TSFKLWSqwM0
- 5lkEKrg9k3ynVUH9pnFusFZNXrAGKjn8O4+Wx3vNabK43yIhGMGgvDhP39xjQ5OLrV
- l0URd/0s3EoYA4f4QCsOBnJM1b3hab1iN3LbUOW6oTVWZbCqOm7Ja5/VIKxZeAGjt+
- c4zQp2UjYwfyw==
-From: DocuSign via DocuSign<procurement@11123w-x8-w2.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Purchase Order E-Sign Request: intel-gvt-dev@lists.freedesktop.org
- -Signature requested by Raul Hurtado
-Date: 15 Oct 2024 16:55:22 +0200
-Message-ID: <20241015165522.789FF02442B84538@11123w-x8-w2.com>
+X-Greylist: delayed 1582 seconds by postgrey-1.36 at gabe;
+ Thu, 17 Oct 2024 00:01:16 UTC
+Received: from mgw01.dicle.edu.tr (mailgw.dicle.edu.tr [193.140.240.11])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 89B6C10E08A;
+ Thu, 17 Oct 2024 00:01:16 +0000 (UTC)
+Received: from mgw01.dicle.edu.tr (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2E54638478;
+ Thu, 17 Oct 2024 01:19:26 +0300 (EEST)
+Received: from mgw01.dicle.edu.tr (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DF19B38477;
+ Thu, 17 Oct 2024 01:19:25 +0300 (EEST)
+Received: from eposta.dicle.edu.tr (unknown [10.1.1.21])
+ by mgw01.dicle.edu.tr (Postfix) with ESMTP;
+ Thu, 17 Oct 2024 01:19:25 +0300 (EEST)
+Received: from EXCHANGE03.dicle.edu.tr (10.1.1.23) by EXCHANGE01.dicle.edu.tr
+ (10.1.1.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Thu, 17 Oct
+ 2024 02:31:28 +0300
+Received: from EXCHANGE03.dicle.edu.tr ([fe80::a674:ba8a:acb7:7bd5]) by
+ EXCHANGE03.dicle.edu.tr ([fe80::a674:ba8a:acb7:7bd5%10]) with mapi id
+ 15.02.1544.011; Thu, 17 Oct 2024 02:31:28 +0300
+From: =?iso-8859-1?Q?Buket_YAL=C7IN?= <buket.yalcin@dicle.edu.tr>
+Subject: Please feel free to contact me
+Thread-Topic: Please feel free to contact me
+Thread-Index: AQHbICOFTYkEslkO4UybVTKSB8IbfA==
+Date: Wed, 16 Oct 2024 23:31:27 +0000
+Message-ID: <239ea8d25dee4ce3bf555f4e0f9719ee@dicle.edu.tr>
+Accept-Language: tr-TR, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.1.1.30]
+Content-Type: multipart/alternative;
+ boundary="_000_239ea8d25dee4ce3bf555f4e0f9719eedicleedutr_"
 MIME-Version: 1.0
-Content-Type: text/html
-Content-Transfer-Encoding: quoted-printable
+To: undisclosed-recipients:;
+X-TM-AS-GCONF: 00
+X-TM-AS-Product-Ver: IMSVA-9.1.0.1600-9.0.0.1002-28004.004
+X-TM-AS-Result: No--11.425-5.0-31-10
+X-imss-scan-details: No--11.425-5.0-31-10
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Version: IMSVA-9.1.0.1600-9.0.1002-28004.004
+X-TMASE-Result: 10--11.424800-10.000000
+X-TMASE-MatchedRID: UDURC7+S0uecsYwJGMUCnk6cPAGJW4fBXWbHI9XswNqCCtUaLksF8OUD
+ uD+xeTCcmhqkbVQOOBh+jAE4+JZFpRLPK2qg2h/0EclbAMYYY6yoQTiUnpKj/L5vsWxZ438UVBX
+ EQns166k8Xbxw0bsYno6m9YEK3GlUZktI7sXxoYGvac0Wx6/vWWfaM1g0H4HRDmmxK0Skkb1nPR
+ iJbOcpSIDAbaZpdAwgSaVfaxxV94+zMJ0yoJG7DsG0UNgaZpYqGsvgUMYAn4XX1cRD6e4P5LFIf
+ jpGjoaXwn76N1IBRSSaSf4hnkTBUD+wOpps1LJAgNylVbI/EAzGhlMdn5cIUZbI+L60qto8JLFI
+ nNYdwWUgXKLHLyCfrOG8ILCMur8DDlWhxTgIXOoCOoDG5aR1MbTxnpbCjruI3YxvWdeodsHDL2I
+ oNQ22urQVeAuTxzWJgM4D72plZif/7ZoGC9Fj1+LzNWBegCW2Tvt7hjXGr/f0V+CoPiF+k1CUya
+ UF68hFQDOhcTwz6YEMlzUirzOZKwHZsCQffa2cos8SJMSnM4kqtq5d3cxkNbDGGXOPbPCbuN5IN
+ fPR9srMkSYu54oz14cV1bixX6g84WMhxqxflqVLhb8xGEnVfg==
+X-TMASE-SNAP-Result: 1.821001.0001-0-1-22:0,33:0,34:0-0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,66 +74,118 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: "thomas.atkinsonn@hotmail.com" <thomas.atkinsonn@hotmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html><head>
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+--_000_239ea8d25dee4ce3bf555f4e0f9719eedicleedutr_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+I hope this message finds you in good health and high spirits.
+
+I am writing to introduce myself as a member of a charity organization base=
+d in the United Kingdom. Our organization is dedicated to helping individua=
+ls and institutions secure the funding necessary to create meaningful impac=
+ts within their communities.
+
+With extensive experience in grant applications, I am proud to maintain a 9=
+9% success rate in securing grants for my clients. If you or anyone within =
+your network is seeking funding, I would be more than happy to offer my exp=
+ertise to help streamline the application process and improve the likelihoo=
+d of success.
+
+Please feel free to contact me, if you have any questions or would like to =
+explore potential collaboration opportunities.
+
+I look forward to the possibility of working together.
+
+Warm regards,
+Thomas Atkinson
+Head of Philanthropy Management
+
+--_000_239ea8d25dee4ce3bf555f4e0f9719eedicleedutr_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
 </head>
-<body><div dir=3D"ltr">
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">I hope this message finds you in good health and hig=
+h spirits.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">I am writing to introduce myself as a member of a ch=
+arity organization based in the United Kingdom. Our organization is dedicat=
+ed to helping individuals and institutions secure the funding necessary to =
+create meaningful impacts within their
+ communities.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">With extensive experience in grant applications, I a=
+m proud to maintain a 99% success rate in securing grants for my clients. I=
+f you or anyone within your network is seeking funding, I would be more tha=
+n happy to offer my expertise to help
+ streamline the application process and improve the likelihood of success.<=
+o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Please feel free to contact me, if you have any ques=
+tions or would like to explore potential collaboration opportunities.<o:p><=
+/o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">I look forward to the possibility of working togethe=
+r.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Warm regards,&nbsp; <o:p></o:p></p>
+<p class=3D"MsoNormal">Thomas Atkinson&nbsp; <o:p></o:p></p>
+<p class=3D"MsoNormal">Head of Philanthropy Management<o:p></o:p></p>
+</div>
+</body>
+</html>
 
-<div style=3D"text-align: center; color: gray; text-transform: none; text-i=
-ndent: 0px; letter-spacing: normal; font-family: Arial,Helvetica,sans-serif=
-; font-size: 0.9em; font-style: normal; font-weight: 400; margin-bottom: 20=
-px; word-spacing: 0px; white-space: normal; font-variant-ligatures: normal;=
- font-variant-caps: normal; text-decoration-style: initial; text-decoration=
--color: initial;">This sender has been verified. Add to the safe senders li=
-st.</div>
-<div style=3D"padding: 20px; color: rgb(34, 34, 34); text-transform: none; =
-text-indent: 0px; letter-spacing: normal; font-family: Arial,Helvetica,sans=
--serif; font-size: medium; font-style: normal; font-weight: 400; word-spaci=
-ng: 0px; white-space: normal; background-color: rgb(234, 234, 234); font-va=
-riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
-initial; text-decoration-color: initial;">
-<table style=3D"margin: auto; width: 640px; border-collapse: collapse; max-=
-width: 640px; background-color: rgb(255, 255, 255);"><tbody><tr><td style=
-=3D"padding: 20px;"><img style=3D"width: 116px;" alt=3D"DocuSign" src=3D"ht=
-tps://ci3.googleusercontent.com/meips/ADKq_NaQg5pwClcsW_LwBbFuf596GSz_o06MY=
-x4t5zv07b5-kVd_l1KufcooGLX6efbo67ih20jtZx1GGTvMu-m8ofU7OMfXZR5LJYWNzpMb0oev=
-ruE=3Ds0-d-e1-ft#https://na3.docusign.net/Signing/Images/email/Email_Logo.p=
-ng" width=3D"172" height=3D"50"></td></tr><tr>
-<td style=3D"padding: 20px; border-radius: 2px; text-align: center; color: =
-rgb(255, 255, 255); background-color: rgb(0, 98, 204);"><img style=3D"width=
-: 75px; height: 75px;" alt=3D"" src=3D"https://ci3.googleusercontent.com/me=
-ips/ADKq_NZ-jHyJYxz025E_xsa4rsftBPi9eWVWOM3orIEXXpPMAxa5TG3US9T74ZOvWtEmZzZ=
-tQ6lgTpdIZZxtYbO1HT-ZNjXyPK2HpQKvzLJJVc1JhRaXlUH4=3Ds0-d-e1-ft#https://na3.=
-docusign.net/member/Images/email/docInvite-white.png" width=3D"150" height=
-=3D"150"><p>You have received a document to review and sign.</p>
-<div style=3D"margin-top: 30px;">
-<a style=3D"padding: 12px 24px; border-radius: 2px; text-align: center; col=
-or: rgb(0, 98, 204); font-family: Arial,Helvetica,sans-serif; font-size: 15=
-px; font-weight: bold; text-decoration: none; display: inline-block; backgr=
-ound-color: rgb(255, 255, 255);" href=3D"https://fossil-momentous-screw.gli=
-tch.me/#aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc=3D" target=3D"_blan=
-k"=20
-data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttps://locrian-tatt=
-ered-scilla.glitch.me%23%5B%5Bconvert_to_base64(-Email-,TRUE)%5D%5D&amp;sou=
-rce=3Dgmail&amp;ust=3D1728982506011000&amp;usg=3DAOvVaw2XNfTl1VQAUi7_efQh5c=
-8Q">REVIEW DOCUMENT(S)</a></div></td></tr><tr><td style=3D"padding: 20px; c=
-olor: rgb(51, 51, 51); font-size: 16px;"><p>Please sign the attached docume=
-nt</p></td></tr><tr><td style=3D"padding: 30px 20px; color: rgb(102, 102, 1=
-02); font-size: 13px; background-color: rgb(234, 234, 234);"><p>
-<b style=3D"margin-bottom: 10px; display: block;">Do Not Share This Email</=
-b>This email contains a secure link to DocuSign. Please do not share this e=
-mail, link, or access code with others.</p><p>Sign
- documents electronically in just minutes. It's safe, secure, and=20
-legally binding. Whether you're in an office, at home, on-the-go -- or=20
-even across the globe -- DocuSign provides a professional trusted=20
-solution for Digital Transaction Management&#8482;.</p><p><b style=3D"margi=
-n-bottom: 10px; display: block;">Questions about the Document?</b>If
- you need to modify the document or have questions about the details in=20
-the document, please reach out to the sender by emailing them directly.</p>=
-</td></tr></tbody></table></div>
+--_000_239ea8d25dee4ce3bf555f4e0f9719eedicleedutr_--
 
-</div><p>
-<br></p></body></html>
