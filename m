@@ -2,34 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DC4D9A3E4A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 18 Oct 2024 14:25:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C71B9A51F3
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 20 Oct 2024 03:46:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 533D210E8FF;
-	Fri, 18 Oct 2024 12:25:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6DB7C10E125;
+	Sun, 20 Oct 2024 01:46:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 450 seconds by postgrey-1.36 at gabe;
- Fri, 18 Oct 2024 12:25:16 UTC
-Received: from m1.c11.g2.solusoftware.com (m1.c11.g2.solusoftware.com
- [158.69.185.40])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A14610E8FF;
- Fri, 18 Oct 2024 12:25:16 +0000 (UTC)
-Received: from webmail.altamed.com.co (localhost [IPv6:::1])
- by m1.c11.g2.solusoftware.com (Postfix) with ESMTPSA id 81B69304046E;
- Fri, 18 Oct 2024 07:17:45 -0500 (-05)
+X-Greylist: delayed 8096 seconds by postgrey-1.36 at gabe;
+ Sun, 20 Oct 2024 01:46:04 UTC
+Received: from antispam02.world4you.com (antispam02.world4you.com
+ [81.19.145.23])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9927310E125
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 20 Oct 2024 01:46:04 +0000 (UTC)
+Received: from [81.19.145.24] (helo=www4.world4you.com)
+ by antispam02.world4you.com with esmtp (Exim 4.97.1)
+ (envelope-from <ftp7606369@www4.world4you.com>)
+ id 1t2IuY-00000004SwN-1ULJ for intel-gvt-dev@lists.freedesktop.org;
+ Sun, 20 Oct 2024 01:31:06 +0200
+Received: by www4.world4you.com (Postfix, from userid 1651)
+ id 49567140302CC; Sun, 20 Oct 2024 01:31:06 +0200 (CEST)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Automatische Antwort
+Date: Sat, 19 Oct 2024 23:31:06 +0000
+From: KLARHorn <klar-horn@amkurs.at>
+Message-ID: <pwjAGf85Lzbu8aaOTX3ZHPSzDzupR8P3YpolcXK94rs@www.klar-horn.at>
+X-Mailer: PHPMailer 6.9.1 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
-Date: Fri, 18 Oct 2024 05:17:45 -0700
-From: Audit Dept <medico9@altamed.com.co>
-To: undisclosed-recipients:;
-Subject: Re Business Proposal
-User-Agent: Roundcube Webmail/1.4.15
-Message-ID: <6706af1f05ef58e5e722c531788642c5@altamed.com.co>
-X-Sender: medico9@altamed.com.co
-Content-Type: multipart/alternative;
- boundary="=_fb7d931654fb1bbb0cb696be0f206caf"
-X-PPP-Message-ID: <172925386595.3199628.12844710350410661513@c11.g2.solusoftware.com>
-X-PPP-Vhost: altamed.com.co
+Content-Type: text/html; charset=utf-8
+X-ACL-Warn: X-W4Y-Antispam
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,47 +44,10 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mrchen548@gmail.com
+Reply-To: klar-horn@amkurs.at
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_fb7d931654fb1bbb0cb696be0f206caf
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Vielen Dank, dass Ihnen das Thema Klimawandel ein wichtiges Anliegen ist!<br /><br />
+Wir freuen uns, dass Sie sich in der KLAR! Region Horn mit Ideen und Anregungen einbringen möchten und werden Sie in Kürze persönlich kontaktieren!<br /><br /><br /><strong>Deine Nachricht: </strong><br /><br />Name: kintenrene <br />E-Mail: intel-gvt-dev@lists.freedesktop.org <br />Betreff: Your account will be removed in 24 hours <br /> <br />Ihre Nachricht an uns: <br />Your account has been dormant for 364 days. To stop removal and claim your funds, please sign in and initiate a withdrawal within 24 hours. For help, visit our Telegram group: https://t.me/ ErdfEexQjCw0ZmRl <br /> <br />
 
-Good day,
-
-How are you today? I am contacting you with regards to an opportunity 
-that will immensely benefit us both. I have discovered an abandoned 
-overdue claim/estate and I am contacting you before they get confiscated 
-or declared unclaimed.
-
-If interested ,please get back to me with your contact details after 
-which I'll provide more details on the way forward nothing that it will 
-be legally binding and will require your utmost trust, CONFIDENTIALITY & 
-transparency.
-
-Hoping to hear from you.
- From: Audit Department
---=_fb7d931654fb1bbb0cb696be0f206caf
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset=UTF-8
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
-eva,sans-serif'>
-<p>Good day,</p>
-<p>How are you today? I am contacting you with regards to an opportunity th=
-at will immensely benefit us both. I have discovered an abandoned overdue c=
-laim/estate and I am contacting you before they get confiscated or declared=
- unclaimed.</p>
-<p>If interested ,please get back to me with your contact details after whi=
-ch I'll provide more details on the way forward nothing that it will be leg=
-ally binding and will require your utmost trust, CONFIDENTIALITY &amp; tran=
-sparency.</p>
-<p>Hoping to hear from you.<br />From: Audit Department</p>
-
-</body></html>
-
---=_fb7d931654fb1bbb0cb696be0f206caf--
