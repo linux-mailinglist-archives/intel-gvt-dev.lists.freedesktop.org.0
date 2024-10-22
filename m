@@ -2,61 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D2B69AA22A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Oct 2024 14:34:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BDEF9AB380
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Oct 2024 18:12:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E2C0110E677;
-	Tue, 22 Oct 2024 12:34:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B8D5C10E6BE;
+	Tue, 22 Oct 2024 16:11:58 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="CFCTAHxe";
+	dkim=pass (1024-bit key; unprotected) header.d=frhamsafetty.com header.i=mail@frhamsafetty.com header.b="fFi0tZHD";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AEF6610E678;
- Tue, 22 Oct 2024 12:34:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1729600474; x=1761136474;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version:content-transfer-encoding;
- bh=6PiCEkmz3PxV76Ql/JGaGp23Cy9ETcqyvbQd66TUE8U=;
- b=CFCTAHxeNXCrPlzbrqbrfyh1kV3yzueyhtdpxdgsS3i7gxRExfIANaJD
- m1XfIzEHCMJUH3GeKg44JA4pNvXLSlEO2Cru29IHxtG1GmdQkci0gU6i7
- te0/T/eErXO0KqMgfiJUePiPgZzWPp1Ztzz08C5wS7SgLvne5cSgxVtlq
- DlWo00hvyGhL5XpJj56zy17JMnk3yt7/wy4u/Ycrxt9CH4TNALoeRiIHL
- +/Tfx7qkSOnLFQMcVpbvBVBJJxhG7g+DIW6C4t0OC7dJppdxTzr/5qQY6
- ROWiqqotpT9AaDzO7Upz9/Kk8vucslgcUNY5IaNiwWm8BineDJcmgUhCS g==;
-X-CSE-ConnectionGUID: DEE2ZvNOToagE0jA4IdYDw==
-X-CSE-MsgGUID: gKjL1f4XSdGOb0aO6fPWlA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="29006818"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="29006818"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2024 05:34:33 -0700
-X-CSE-ConnectionGUID: CHO74jyyS4OEIm4vyc93pA==
-X-CSE-MsgGUID: a712ZmJIQUScPom4qzmUFg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,223,1725346800"; d="scan'208";a="84463636"
-Received: from lfiedoro-mobl.ger.corp.intel.com (HELO localhost)
- ([10.245.246.4])
- by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2024 05:34:31 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>, "Kandpal, Suraj"
- <suraj.kandpal@intel.com>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
-Subject: Re: [RESEND] drm/i915/gvt: use macros from drm_dp.h instead of
- duplication
-In-Reply-To: <CAN=xO45AmJ=v8eyoFnNUKbu4RCQat3HFZkPuEShTwJWWcmP5pQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20240930135342.3562755-1-jani.nikula@intel.com>
- <SN7PR11MB6750B146EA2054AB40F3F026E34C2@SN7PR11MB6750.namprd11.prod.outlook.com>
- <CAN=xO45AmJ=v8eyoFnNUKbu4RCQat3HFZkPuEShTwJWWcmP5pQ@mail.gmail.com>
-Date: Tue, 22 Oct 2024 15:34:28 +0300
-Message-ID: <87ldyguxij.fsf@intel.com>
+X-Greylist: delayed 601 seconds by postgrey-1.36 at gabe;
+ Tue, 22 Oct 2024 16:11:57 UTC
+Received: from frhamsafetty.com (frhamsafetty.com [79.141.163.6])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8C4B410E6BE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 22 Oct 2024 16:11:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim;
+ d=frhamsafetty.com; 
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=mail@frhamsafetty.com;
+ bh=5FgUim21c5F3ZxcpkLmV0Np0voFRSc2vSPqheq9TMgQ=;
+ b=fFi0tZHDYdxWqqkTHF4QIHPAW5BZTi2HdzwHrm9c6J8+l+1qdDv8BvkQKubtYG7Yte/5oeVkIhvV
+ EyywxK0hFz+SJaran0Vv3DG5RSPh7UsU066pagtKwrLEtGT4OjMWFV0ysGHConZ7tF11eWkyYLmg
+ 5/CLjempaq9KfHqawmg=
+From: DocuSign via DocuSign<mail@frhamsafetty.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Purchase Order E-Sign Request: intel-gvt-dev@lists.freedesktop.org
+ -Signature requested by Raul Hurtado
+Date: 22 Oct 2024 17:34:39 +0200
+Message-ID: <20241022173439.0BE6F136D9CFF4BF@frhamsafetty.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/html
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -73,340 +50,64 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 22 Oct 2024, Zhi Wang <zhi.wang.linux@gmail.com> wrote:
-> Reviewed-by: Zhi Wang <zhiwang@kernel.org>
->
->
-> Sorry for the late reply as I was on vacation.
+<html><head>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body><div tabindex=3D"1" class=3D"Am aiL Al editable LW-avf tS-tW tS-tY" i=
+d=3D":1vi" role=3D"textbox" aria-expanded=3D"false" aria-controls=3D":1xx" =
+aria-owns=3D":1xx" style=3D"direction: ltr; min-height: 277px;" contentedit=
+able=3D"true" hidefocus=3D"true" spellcheck=3D"false" aria-label=3D"Message=
+ Body" aria-multiline=3D"true" itacorner=3D"6,7:1,1,0,0" g_editable=3D"true=
+" writingsuggestions=3D"false">
 
-Thanks for the reviews, pushed to drm-intel-next.
+<div class=3D"gmail-disclaimer" style=3D"text-align: center; color: gray; t=
+ext-transform: none; text-indent: 0px; letter-spacing: normal; font-family:=
+ Arial, Helvetica, sans-serif; font-size: 0.9em; font-style: normal; font-w=
+eight: 400; margin-bottom: 20px; word-spacing: 0px; white-space: normal; fo=
+nt-variant-ligatures: normal; font-variant-caps: normal; text-decoration-st=
+yle: initial; text-decoration-color: initial; text-decoration-thickness: in=
+itial;">
+This sender has been verified by DocuSIgn@micr0s0ft.info. Add to safe sende=
+rs list.</div>
+<div class=3D"gmail-container" style=3D"padding: 20px; color: rgb(34, 34, 3=
+4); text-transform: none; text-indent: 0px; letter-spacing: normal; font-fa=
+mily: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; =
+font-weight: 400; word-spacing: 0px; white-space: normal; background-color:=
+ rgb(234, 234, 234); font-variant-ligatures: normal; font-variant-caps: nor=
+mal; text-decoration-style: initial; text-decoration-color: initial; text-d=
+ecoration-thickness: initial;">
+<table class=3D"gmail-main-table" style=3D"margin: auto; width: 640px; bord=
+er-collapse: collapse; max-width: 640px; background-color: rgb(255, 255, 25=
+5);"><tbody><tr><td class=3D"gmail-header" style=3D"padding: 20px;"><img st=
+yle=3D"width: 116px;" alt=3D"DocuSign" src=3D"https://na3.docusign.net/Sign=
+ing/Images/email/Email_Logo.png" width=3D"172" height=3D"50"></td></tr><tr>=
+<td class=3D"gmail-content" style=3D"padding: 20px; border-radius: 2px; tex=
+t-align: center; color: rgb(255, 255, 255); background-color: rgb(0, 98, 20=
+4);">
+<img style=3D"width: 75px; height: 75px;" alt=3D"" src=3D"https://na3.docus=
+ign.net/member/Images/email/docInvite-white.png" width=3D"150" height=3D"15=
+0"><p>You have received a document to review and sign.</p><div class=3D"gma=
+il-button-container" style=3D"margin-top: 30px;">
+<a class=3D"gmail-button" style=3D"padding: 12px 24px; border-radius: 2px; =
+text-align: center; color: rgb(0, 98, 204); font-family: Arial, Helvetica, =
+sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; disp=
+lay: inline-block; background-color: rgb(255, 255, 255);" href=3D"https://d=
+eciduous-jungle-niece.glitch.me/#aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC=
+5vcmc=3D" target=3D"_blank">REVIEW DOCUMENT(S)</a></div></td></tr><tr>
+<td class=3D"gmail-message" style=3D"padding: 20px; color: rgb(51, 51, 51);=
+ font-size: 16px;"><p>Please sign the attached document</p></td></tr><tr><t=
+d class=3D"gmail-note" style=3D"padding: 30px 20px; color: rgb(102, 102, 10=
+2); font-size: 13px; background-color: rgb(234, 234, 234);"><p><b style=3D"=
+margin-bottom: 10px; display: block;">Do Not Share This Email</b>This email=
+ contains a secure link to DocuSign. Please do not share this email, link, =
+or access code with others.</p><p>
+Sign documents electronically in just minutes. It's safe, secure, and legal=
+ly binding. Whether you're in an office, at home, on-the-go -- or even acro=
+ss the globe -- DocuSign provides a professional trusted solution for Digit=
+al Transaction Management&#8482;.</p><p><b style=3D"margin-bottom: 10px; di=
+splay: block;">Questions about the Document?</b>If you need to modify the d=
+ocument or have questions about the details in the document, please reach o=
+ut to the sender by emailing them directly.</p></td>
+</tr></tbody></table></div>
 
-BR,
-Jani.
-
->
-> On Tue, Oct 22, 2024, 2:50=E2=80=AFPM Kandpal, Suraj <suraj.kandpal@intel=
-.com>
-> wrote:
->
->>
->>
->> > -----Original Message-----
->> > From: Intel-gfx <intel-gfx-bounces@lists.freedesktop.org> On Behalf Of
->> Jani
->> > Nikula
->> > Sent: Monday, September 30, 2024 7:24 PM
->> > To: intel-gfx@lists.freedesktop.org; intel-gvt-dev@lists.freedesktop.o=
-rg
->> > Cc: Nikula, Jani <jani.nikula@intel.com>
->> > Subject: [RESEND] drm/i915/gvt: use macros from drm_dp.h instead of
->> > duplication
->> >
->> > Use the existing macros in drm_dp.h for DPCD and DP AUX instead of
->> > duplicating. Remove unused macros, as well as the duplicate definition=
- of
->> > DPCD_SIZE.
->> >
->> > AUX_NATIVE_REPLY_NAK is left unchanged, as it does not match
->> > DP_AUX_NATIVE_REPLY_NACK, and I'm not sure what the right thing to do =
-is
->> > here.
->>
->> LGTM,
->> Reviewed-by: Suraj Kandpal <suraj.kandpal@intel.com>
->>
->> >
->> > Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->> > ---
->> >  drivers/gpu/drm/i915/gvt/display.c  |  4 ++-
->> > drivers/gpu/drm/i915/gvt/display.h  | 42 ----------------------------
->> >  drivers/gpu/drm/i915/gvt/edid.c     | 12 ++++----
->> >  drivers/gpu/drm/i915/gvt/edid.h     |  8 ------
->> >  drivers/gpu/drm/i915/gvt/handlers.c | 43 +++++++++++++++++------------
->> >  5 files changed, 36 insertions(+), 73 deletions(-)
->> >
->> > diff --git a/drivers/gpu/drm/i915/gvt/display.c
->> > b/drivers/gpu/drm/i915/gvt/display.c
->> > index c66d6d3177c8..17f74cb244bb 100644
->> > --- a/drivers/gpu/drm/i915/gvt/display.c
->> > +++ b/drivers/gpu/drm/i915/gvt/display.c
->> > @@ -32,6 +32,8 @@
->> >   *
->> >   */
->> >
->> > +#include <drm/display/drm_dp.h>
->> > +
->> >  #include "i915_drv.h"
->> >  #include "i915_reg.h"
->> >  #include "gvt.h"
->> > @@ -568,7 +570,7 @@ static int setup_virtual_dp_monitor(struct intel_v=
-gpu
->> > *vgpu, int port_num,
->> >
->> >       memcpy(port->dpcd->data, dpcd_fix_data, DPCD_HEADER_SIZE);
->> >       port->dpcd->data_valid =3D true;
->> > -     port->dpcd->data[DPCD_SINK_COUNT] =3D 0x1;
->> > +     port->dpcd->data[DP_SINK_COUNT] =3D 0x1;
->> >       port->type =3D type;
->> >       port->id =3D resolution;
->> >       port->vrefresh_k =3D GVT_DEFAULT_REFRESH_RATE * MSEC_PER_SEC;
->> > diff --git a/drivers/gpu/drm/i915/gvt/display.h
->> > b/drivers/gpu/drm/i915/gvt/display.h
->> > index f5616f99ef2f..8090bc53c7e1 100644
->> > --- a/drivers/gpu/drm/i915/gvt/display.h
->> > +++ b/drivers/gpu/drm/i915/gvt/display.h
->> > @@ -59,52 +59,10 @@ struct intel_vgpu;
->> >
->> >  #define INTEL_GVT_MAX_UEVENT_VARS    3
->> >
->> > -/* DPCD start */
->> > -#define DPCD_SIZE    0x700
->> > -
->> > -/* DPCD */
->> > -#define DP_SET_POWER            0x600
->> > -#define DP_SET_POWER_D0         0x1
->> > -#define AUX_NATIVE_WRITE        0x8
->> > -#define AUX_NATIVE_READ         0x9
->> > -
->> > -#define AUX_NATIVE_REPLY_MASK   (0x3 << 4)
->> > -#define AUX_NATIVE_REPLY_ACK    (0x0 << 4)
->> >  #define AUX_NATIVE_REPLY_NAK    (0x1 << 4)
->> > -#define AUX_NATIVE_REPLY_DEFER  (0x2 << 4)
->> >
->> >  #define AUX_BURST_SIZE          20
->> >
->> > -/* DPCD addresses */
->> > -#define DPCD_REV                     0x000
->> > -#define DPCD_MAX_LINK_RATE           0x001
->> > -#define DPCD_MAX_LANE_COUNT          0x002
->> > -
->> > -#define DPCD_TRAINING_PATTERN_SET    0x102
->> > -#define      DPCD_SINK_COUNT                 0x200
->> > -#define DPCD_LANE0_1_STATUS          0x202
->> > -#define DPCD_LANE2_3_STATUS          0x203
->> > -#define DPCD_LANE_ALIGN_STATUS_UPDATED       0x204
->> > -#define DPCD_SINK_STATUS             0x205
->> > -
->> > -/* link training */
->> > -#define DPCD_TRAINING_PATTERN_SET_MASK       0x03
->> > -#define DPCD_LINK_TRAINING_DISABLED  0x00
->> > -#define DPCD_TRAINING_PATTERN_1              0x01
->> > -#define DPCD_TRAINING_PATTERN_2              0x02
->> > -
->> > -#define DPCD_CP_READY_MASK           (1 << 6)
->> > -
->> > -/* lane status */
->> > -#define DPCD_LANES_CR_DONE           0x11
->> > -#define DPCD_LANES_EQ_DONE           0x22
->> > -#define DPCD_SYMBOL_LOCKED           0x44
->> > -
->> > -#define DPCD_INTERLANE_ALIGN_DONE    0x01
->> > -
->> > -#define DPCD_SINK_IN_SYNC            0x03
->> > -/* DPCD end */
->> > -
->> >  #define SBI_RESPONSE_MASK               0x3
->> >  #define SBI_RESPONSE_SHIFT              0x1
->> >  #define SBI_STAT_MASK                   0x1
->> > diff --git a/drivers/gpu/drm/i915/gvt/edid.c
->> > b/drivers/gpu/drm/i915/gvt/edid.c index c022dc736045..0a357ca42db1
->> > 100644
->> > --- a/drivers/gpu/drm/i915/gvt/edid.c
->> > +++ b/drivers/gpu/drm/i915/gvt/edid.c
->> > @@ -32,6 +32,8 @@
->> >   *
->> >   */
->> >
->> > +#include <drm/display/drm_dp.h>
->> > +
->> >  #include "display/intel_dp_aux_regs.h"
->> >  #include "display/intel_gmbus_regs.h"
->> >  #include "gvt.h"
->> > @@ -504,13 +506,13 @@ void intel_gvt_i2c_handle_aux_ch_write(struct
->> > intel_vgpu *vgpu,
->> >       }
->> >
->> >       /* Always set the wanted value for vms. */
->> > -     ret_msg_size =3D (((op & 0x1) =3D=3D GVT_AUX_I2C_READ) ? 2 : 1);
->> > +     ret_msg_size =3D (((op & 0x1) =3D=3D DP_AUX_I2C_READ) ? 2 : 1);
->> >       vgpu_vreg(vgpu, offset) =3D
->> >               DP_AUX_CH_CTL_DONE |
->> >               DP_AUX_CH_CTL_MESSAGE_SIZE(ret_msg_size);
->> >
->> >       if (msg_length =3D=3D 3) {
->> > -             if (!(op & GVT_AUX_I2C_MOT)) {
->> > +             if (!(op & DP_AUX_I2C_MOT)) {
->> >                       /* stop */
->> >                       intel_vgpu_init_i2c_edid(vgpu);
->> >               } else {
->> > @@ -530,7 +532,7 @@ void intel_gvt_i2c_handle_aux_ch_write(struct
->> > intel_vgpu *vgpu,
->> >                                       i2c_edid->edid_available =3D tru=
-e;
->> >                       }
->> >               }
->> > -     } else if ((op & 0x1) =3D=3D GVT_AUX_I2C_WRITE) {
->> > +     } else if ((op & 0x1) =3D=3D DP_AUX_I2C_WRITE) {
->> >               /* TODO
->> >                * We only support EDID reading from I2C_over_AUX. And
->> >                * we do not expect the index mode to be used. Right now
->> > @@ -538,7 +540,7 @@ void intel_gvt_i2c_handle_aux_ch_write(struct
->> > intel_vgpu *vgpu,
->> >                * support the gfx driver to do EDID access.
->> >                */
->> >       } else {
->> > -             if (drm_WARN_ON(&i915->drm, (op & 0x1) !=3D
->> > GVT_AUX_I2C_READ))
->> > +             if (drm_WARN_ON(&i915->drm, (op & 0x1) !=3D
->> > DP_AUX_I2C_READ))
->> >                       return;
->> >               if (drm_WARN_ON(&i915->drm, msg_length !=3D 4))
->> >                       return;
->> > @@ -553,7 +555,7 @@ void intel_gvt_i2c_handle_aux_ch_write(struct
->> > intel_vgpu *vgpu,
->> >        * ACK of I2C_WRITE
->> >        * returned byte if it is READ
->> >        */
->> > -     aux_data_for_write |=3D GVT_AUX_I2C_REPLY_ACK << 24;
->> > +     aux_data_for_write |=3D DP_AUX_I2C_REPLY_ACK << 24;
->> >       vgpu_vreg(vgpu, offset + 4) =3D aux_data_for_write;  }
->> >
->> > diff --git a/drivers/gpu/drm/i915/gvt/edid.h
->> > b/drivers/gpu/drm/i915/gvt/edid.h index c3b5a55aecb3..13fd06590929
->> > 100644
->> > --- a/drivers/gpu/drm/i915/gvt/edid.h
->> > +++ b/drivers/gpu/drm/i915/gvt/edid.h
->> > @@ -42,14 +42,6 @@ struct intel_vgpu;
->> >  #define EDID_SIZE            128
->> >  #define EDID_ADDR            0x50 /* Linux hvm EDID addr */
->> >
->> > -#define GVT_AUX_NATIVE_WRITE                 0x8
->> > -#define GVT_AUX_NATIVE_READ                  0x9
->> > -#define GVT_AUX_I2C_WRITE                    0x0
->> > -#define GVT_AUX_I2C_READ                     0x1
->> > -#define GVT_AUX_I2C_STATUS                   0x2
->> > -#define GVT_AUX_I2C_MOT                              0x4
->> > -#define GVT_AUX_I2C_REPLY_ACK                        0x0
->> > -
->> >  struct intel_vgpu_edid_data {
->> >       bool data_valid;
->> >       unsigned char edid_block[EDID_SIZE];
->> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c
->> > b/drivers/gpu/drm/i915/gvt/handlers.c
->> > index 0f09344d3c20..9494d812c00a 100644
->> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
->> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
->> > @@ -36,6 +36,8 @@
->> >
->> >   */
->> >
->> > +#include <drm/display/drm_dp.h>
->> > +
->> >  #include "i915_drv.h"
->> >  #include "i915_reg.h"
->> >  #include "gvt.h"
->> > @@ -1129,29 +1131,36 @@ static int dp_aux_ch_ctl_trans_done(struct
->> > intel_vgpu *vgpu, u32 value,  static void
->> dp_aux_ch_ctl_link_training(struct
->> > intel_vgpu_dpcd_data *dpcd,
->> >               u8 t)
->> >  {
->> > -     if ((t & DPCD_TRAINING_PATTERN_SET_MASK) =3D=3D
->> > DPCD_TRAINING_PATTERN_1) {
->> > +     if ((t & DP_TRAINING_PATTERN_MASK) =3D=3D DP_TRAINING_PATTERN_1)
->> > {
->> >               /* training pattern 1 for CR */
->> >               /* set LANE0_CR_DONE, LANE1_CR_DONE */
->> > -             dpcd->data[DPCD_LANE0_1_STATUS] |=3D
->> > DPCD_LANES_CR_DONE;
->> > +             dpcd->data[DP_LANE0_1_STATUS] |=3D DP_LANE_CR_DONE |
->> > +                     DP_LANE_CR_DONE << 4;
->> >               /* set LANE2_CR_DONE, LANE3_CR_DONE */
->> > -             dpcd->data[DPCD_LANE2_3_STATUS] |=3D
->> > DPCD_LANES_CR_DONE;
->> > -     } else if ((t & DPCD_TRAINING_PATTERN_SET_MASK) =3D=3D
->> > -                     DPCD_TRAINING_PATTERN_2) {
->> > +             dpcd->data[DP_LANE2_3_STATUS] |=3D DP_LANE_CR_DONE |
->> > +                     DP_LANE_CR_DONE << 4;
->> > +     } else if ((t & DP_TRAINING_PATTERN_MASK) =3D=3D
->> > +                     DP_TRAINING_PATTERN_2) {
->> >               /* training pattern 2 for EQ */
->> >               /* Set CHANNEL_EQ_DONE and  SYMBOL_LOCKED for
->> > Lane0_1 */
->> > -             dpcd->data[DPCD_LANE0_1_STATUS] |=3D
->> > DPCD_LANES_EQ_DONE;
->> > -             dpcd->data[DPCD_LANE0_1_STATUS] |=3D
->> > DPCD_SYMBOL_LOCKED;
->> > +             dpcd->data[DP_LANE0_1_STATUS] |=3D
->> > DP_LANE_CHANNEL_EQ_DONE |
->> > +                     DP_LANE_CHANNEL_EQ_DONE << 4;
->> > +             dpcd->data[DP_LANE0_1_STATUS] |=3D
->> > DP_LANE_SYMBOL_LOCKED |
->> > +                     DP_LANE_SYMBOL_LOCKED << 4;
->> >               /* Set CHANNEL_EQ_DONE and  SYMBOL_LOCKED for
->> > Lane2_3 */
->> > -             dpcd->data[DPCD_LANE2_3_STATUS] |=3D
->> > DPCD_LANES_EQ_DONE;
->> > -             dpcd->data[DPCD_LANE2_3_STATUS] |=3D
->> > DPCD_SYMBOL_LOCKED;
->> > +             dpcd->data[DP_LANE2_3_STATUS] |=3D
->> > DP_LANE_CHANNEL_EQ_DONE |
->> > +                     DP_LANE_CHANNEL_EQ_DONE << 4;
->> > +             dpcd->data[DP_LANE2_3_STATUS] |=3D
->> > DP_LANE_SYMBOL_LOCKED |
->> > +                     DP_LANE_SYMBOL_LOCKED << 4;
->> >               /* set INTERLANE_ALIGN_DONE */
->> > -             dpcd->data[DPCD_LANE_ALIGN_STATUS_UPDATED] |=3D
->> > -                     DPCD_INTERLANE_ALIGN_DONE;
->> > -     } else if ((t & DPCD_TRAINING_PATTERN_SET_MASK) =3D=3D
->> > -                     DPCD_LINK_TRAINING_DISABLED) {
->> > +             dpcd->data[DP_LANE_ALIGN_STATUS_UPDATED] |=3D
->> > +                     DP_INTERLANE_ALIGN_DONE;
->> > +     } else if ((t & DP_TRAINING_PATTERN_MASK) =3D=3D
->> > +                     DP_TRAINING_PATTERN_DISABLE) {
->> >               /* finish link training */
->> >               /* set sink status as synchronized */
->> > -             dpcd->data[DPCD_SINK_STATUS] =3D DPCD_SINK_IN_SYNC;
->> > +             dpcd->data[DP_SINK_STATUS] =3D DP_RECEIVE_PORT_0_STATUS
->> > |
->> > +                     DP_RECEIVE_PORT_1_STATUS;
->> >       }
->> >  }
->> >
->> > @@ -1206,7 +1215,7 @@ static int dp_aux_ch_ctl_mmio_write(struct
->> > intel_vgpu *vgpu,
->> >       len =3D msg & 0xff;
->> >       op =3D ctrl >> 4;
->> >
->> > -     if (op =3D=3D GVT_AUX_NATIVE_WRITE) {
->> > +     if (op =3D=3D DP_AUX_NATIVE_WRITE) {
->> >               int t;
->> >               u8 buf[16];
->> >
->> > @@ -1252,7 +1261,7 @@ static int dp_aux_ch_ctl_mmio_write(struct
->> > intel_vgpu *vgpu,
->> >
->> >                               dpcd->data[p] =3D buf[t];
->> >                               /* check for link training */
->> > -                             if (p =3D=3D DPCD_TRAINING_PATTERN_SET)
->> > +                             if (p =3D=3D DP_TRAINING_PATTERN_SET)
->> >                                       dp_aux_ch_ctl_link_training(dpcd,
->> >                                                       buf[t]);
->> >                       }
->> > @@ -1265,7 +1274,7 @@ static int dp_aux_ch_ctl_mmio_write(struct
->> > intel_vgpu *vgpu,
->> >               return 0;
->> >       }
->> >
->> > -     if (op =3D=3D GVT_AUX_NATIVE_READ) {
->> > +     if (op =3D=3D DP_AUX_NATIVE_READ) {
->> >               int idx, i, ret =3D 0;
->> >
->> >               if ((addr + len + 1) >=3D DPCD_SIZE) {
->> > --
->> > 2.39.5
->>
->>
-
---=20
-Jani Nikula, Intel
+</div></body></html>
