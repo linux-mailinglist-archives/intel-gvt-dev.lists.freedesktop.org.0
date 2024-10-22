@@ -2,36 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C71B9A51F3
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 20 Oct 2024 03:46:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 656F19A97FE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Oct 2024 06:40:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6DB7C10E125;
-	Sun, 20 Oct 2024 01:46:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4219A10E2F5;
+	Tue, 22 Oct 2024 04:40:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 8096 seconds by postgrey-1.36 at gabe;
- Sun, 20 Oct 2024 01:46:04 UTC
-Received: from antispam02.world4you.com (antispam02.world4you.com
- [81.19.145.23])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9927310E125
+X-Greylist: delayed 2058 seconds by postgrey-1.36 at gabe;
+ Tue, 22 Oct 2024 04:40:41 UTC
+Received: from www3851.sakura.ne.jp (www3851.sakura.ne.jp [163.43.102.61])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9637010E2F5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 20 Oct 2024 01:46:04 +0000 (UTC)
-Received: from [81.19.145.24] (helo=www4.world4you.com)
- by antispam02.world4you.com with esmtp (Exim 4.97.1)
- (envelope-from <ftp7606369@www4.world4you.com>)
- id 1t2IuY-00000004SwN-1ULJ for intel-gvt-dev@lists.freedesktop.org;
- Sun, 20 Oct 2024 01:31:06 +0200
-Received: by www4.world4you.com (Postfix, from userid 1651)
- id 49567140302CC; Sun, 20 Oct 2024 01:31:06 +0200 (CEST)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Automatische Antwort
-Date: Sat, 19 Oct 2024 23:31:06 +0000
-From: KLARHorn <klar-horn@amkurs.at>
-Message-ID: <pwjAGf85Lzbu8aaOTX3ZHPSzDzupR8P3YpolcXK94rs@www.klar-horn.at>
-X-Mailer: PHPMailer 6.9.1 (https://github.com/PHPMailer/PHPMailer)
+ Tue, 22 Oct 2024 04:40:41 +0000 (UTC)
+Received: from www3851.sakura.ne.jp (localhost [127.0.0.1])
+ by www3851.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 49M46LLZ062986;
+ Tue, 22 Oct 2024 13:06:21 +0900 (JST)
+ (envelope-from hairs-espoir@www3851.sakura.ne.jp)
+Received: (from hairs-espoir@localhost)
+ by www3851.sakura.ne.jp (8.15.2/8.15.2/Submit) id 49M46LXD062985;
+ Tue, 22 Oct 2024 13:06:21 +0900 (JST) (envelope-from hairs-espoir)
+To: contact@hairs-espoir.net
+Subject: =?UTF-8?B?44GK5ZWP44GE5ZCI44KP44Gb44GC44KK44GM44Go44GG44GU44GW44GE44G+?=
+ =?UTF-8?B?44GZ44CC?=
+X-PHP-Originating-Script: 1111:PHPMailer.php
+Date: Tue, 22 Oct 2024 04:06:21 +0000
+From: =?UTF-8?Q?hair=E2=80=99s_Espoir?= <contact@hairs-espoir.net>
+Cc: Fumimpor <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <Ri5RSstmC5t7Zfq31py9AkFG1CqIVywZiuYLOPTPNQ@hairs-espoir.net>
+X-Mailer: PHPMailer 6.8.1 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
-Content-Type: text/html; charset=utf-8
-X-ACL-Warn: X-W4Y-Antispam
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,10 +46,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: klar-horn@amkurs.at
+Reply-To: intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Vielen Dank, dass Ihnen das Thema Klimawandel ein wichtiges Anliegen ist!<br /><br />
-Wir freuen uns, dass Sie sich in der KLAR! Region Horn mit Ideen und Anregungen einbringen möchten und werden Sie in Kürze persönlich kontaktieren!<br /><br /><br /><strong>Deine Nachricht: </strong><br /><br />Name: kintenrene <br />E-Mail: intel-gvt-dev@lists.freedesktop.org <br />Betreff: Your account will be removed in 24 hours <br /> <br />Ihre Nachricht an uns: <br />Your account has been dormant for 364 days. To stop removal and claim your funds, please sign in and initiate a withdrawal within 24 hours. For help, visit our Telegram group: https://t.me/ ErdfEexQjCw0ZmRl <br /> <br />
+<html><head>
+                            <style type='text/css'>
+                                body {
+                                    font-size: 12px;
+                                    color: #444444;
+                                    text-align: left;
+                                    background-color: #ffffff;
+                                }
+                                table {
+                                    width: 100%;
+                                    color: #444444;
+                                    background-color: #ffffff;
+                                }
+                                table th,
+                                table td {
+                                    padding: 4px 0;
+                                    font-size: 12px;
+                                    text-align: left;
+                                }
+                                table th {
+                                    width: 240px;
+                                }
+                                table th h1 {
+                                    font-size: 28px;
+                                }
+                            </style>
+                        </head><body><table><tr><td><table><tr><th colspan='2'><h1 style='margin: 0'>お問い合わせありがとうございます。</h1></th></tr><tr><th colspan='2'><p>後ほど担当者よりご連絡致します。</p></th></tr><tr><td colspan='2'><hr style='border-color: #dcdcdc; border-width: 0 0 1px'></td></tr><tr><th>Name</th><td>Fumimpor</td></tr><tr><th>Email address</th><td>intel-gvt-dev@lists.freedesktop.org</td></tr><tr><th>Phone number</th><td>86994241496</td></tr><tr><th>Message</th><td>Your account has been inactive for 364 days. To avoid deletion and claim your funds, please access your account and request a payout within 24 hours. For assistance, visit our Telegram group: https://t.me/+ErdfEexQjCw0ZmRl</td></tr></table></td></tr></table></body></html>
 
