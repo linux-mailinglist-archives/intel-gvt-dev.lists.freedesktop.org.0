@@ -2,47 +2,32 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5BC19B1DA8
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 27 Oct 2024 13:24:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA14D9B3F3B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Oct 2024 01:36:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B4AD210E2DB;
-	Sun, 27 Oct 2024 12:24:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 86E8A10E08E;
+	Tue, 29 Oct 2024 00:36:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1482 seconds by postgrey-1.36 at gabe;
- Sun, 27 Oct 2024 12:24:21 UTC
-Received: from ojodata.com (ojodata.com [184.95.40.226])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D2D7510E2DB
+Received: from cwp.ccclub700.com (unknown [51.89.151.46])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 528B010E08E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 27 Oct 2024 12:24:21 +0000 (UTC)
-Received: from dncspr by phx.ojodata.com with local (Exim 4.96.2)
- (envelope-from <lmdiaz@dnconstruction.com>) id 1t51vl-0000m1-1k
- for intel-gvt-dev@lists.freedesktop.org;
- Sun, 27 Oct 2024 07:59:37 -0400
+ Tue, 29 Oct 2024 00:36:01 +0000 (UTC)
+Received: from [105.116.7.244] (unknown [105.113.40.214])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by cwp.ccclub700.com (Postfix) with ESMTPSA id 01DC82B86DAA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 28 Oct 2024 22:32:30 +0000 (UTC)
+From: Andrew Higgins<cylamarver932@gmail.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Thank you for your submission!
-X-PHP-Script: dncspr.com/index.php for 165.231.182.80
-X-PHP-Originating-Script: 1044:class.phpmailer.php
-Date: Sun, 27 Oct 2024 11:59:37 +0000
-From: DNCS <lmdiaz@dnconstruction.com>
-Message-ID: <0deb82d607f264b4c1d86a26e1196da1@dncspr.com>
-X-Priority: 3
-X-Mailer: PHPMailer 5.2.9 (https://github.com/PHPMailer/PHPMailer/)
+Subject: Re: HALLO 
+Date: 28 Oct 2024 15:32:29 -0700
+Message-ID: <20241028153229.610A6092C4AFCC31@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - phx.ojodata.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [1044 993] / [47 12]
-X-AntiAbuse: Sender Address Domain - dnconstruction.com
-X-Get-Message-Sender-Via: phx.ojodata.com: authenticated_id: dncspr/only user
- confirmed/virtual account not confirmed
-X-Authenticated-Sender: phx.ojodata.com: dncspr
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,13 +40,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: rewgins2@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<p>Thank you for contacting us. We will get back to you as soon as possible.</p>
-<p>Your Name: Amurness</p>
-<p>Your Email: intel-gvt-dev@lists.freedesktop.org</p>
-<p>{Subject:caption}: {Subject:value}</p>
-<p>Message: Your account has been inactive for 364 days. To avoid deletion and claim your funds, please log in and request a payout within 24 hours. For support, join our Telegram group: https://telegra.ph/BbvQiki692-10-25</p>
-<p>: Send</p>
+Hallo,
 
+Gr=C3=BC=C3=9Fe an Sie! Ich hoffe, diese E-Mail kommt bei Ihnen an. Ich=20
+wollte einer fr=C3=BCheren E-Mail nachgehen, die ich bez=C3=BCglich einer=
+=20
+Mitteilung =C3=BCber ein bestehendes ruhendes Konto bei meiner Bank=20
+mit demselben Nachnamen wie Ihres gesendet habe. Da ich noch=20
+keine Antwort erhalten habe, bin ich mir nicht sicher, ob Sie=20
+meine erste E-Mail erhalten haben. Ich melde mich noch einmal, um=20
+Sie darauf aufmerksam zu machen und zu fragen, ob Sie=20
+freundlicherweise den Empfang meiner vorherigen E-Mail best=C3=A4tigen=20
+k=C3=B6nnten.
+
+Auf dem besagten ruhenden Konto bei der Bank, bei der ich=20
+arbeite, sind enorme Zinsen in H=C3=B6he von 3 Millionen Dollar=20
+angefallen. Ich w=C3=BCrde dies gerne ausf=C3=BChrlich mit Ihnen=20
+besprechen, wenn Sie sich aufgrund der ersten oder dieser E-Mail=20
+an mich wenden, da ich Ihnen zu 100 % versichern kann, dass dies=20
+f=C3=BCr Sie von gro=C3=9Fem Nutzen sein wird. Sie m=C3=BCssen unbedingt au=
+f=20
+diese E-Mail antworten, da beide E-Mails dieselben Informationen=20
+enthalten. Bitte senden Sie Ihre Antwort an mein privates E-Mail-
+Konto.
+
+Ich freue mich darauf, bald von Ihnen zu h=C3=B6ren.
+
+Beste gr=C3=BC=C3=9Fe,
+Andrew Higgins
