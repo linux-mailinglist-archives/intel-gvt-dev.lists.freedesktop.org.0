@@ -2,28 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA14D9B3F3B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Oct 2024 01:36:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E7ED9B3EC5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Oct 2024 01:04:26 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 86E8A10E08E;
-	Tue, 29 Oct 2024 00:36:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4D0E510E0EE;
+	Tue, 29 Oct 2024 00:04:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
+X-Greylist: delayed 4590 seconds by postgrey-1.36 at gabe;
+ Tue, 29 Oct 2024 00:04:24 UTC
 Received: from cwp.ccclub700.com (unknown [51.89.151.46])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 528B010E08E
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1C9D010E0EE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 29 Oct 2024 00:36:01 +0000 (UTC)
-Received: from [105.116.7.244] (unknown [105.113.40.214])
+ Tue, 29 Oct 2024 00:04:24 +0000 (UTC)
+Received: from [105.116.7.244] (unknown [105.116.7.154])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by cwp.ccclub700.com (Postfix) with ESMTPSA id 01DC82B86DAA
+ by cwp.ccclub700.com (Postfix) with ESMTPSA id ABE602F015D0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 28 Oct 2024 22:32:30 +0000 (UTC)
+ Mon, 28 Oct 2024 23:46:57 +0000 (UTC)
 From: Andrew Higgins<cylamarver932@gmail.com>
 To: intel-gvt-dev@lists.freedesktop.org
 Subject: Re: HALLO 
-Date: 28 Oct 2024 15:32:29 -0700
-Message-ID: <20241028153229.610A6092C4AFCC31@gmail.com>
+Date: 28 Oct 2024 16:46:56 -0700
+Message-ID: <20241028164656.5972B81A1A05368E@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
 	charset="utf-8"
