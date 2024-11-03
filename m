@@ -2,45 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CDA59B77C5
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Oct 2024 10:44:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 317269BA5FB
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Nov 2024 15:45:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 42D1F10E2D5;
-	Thu, 31 Oct 2024 09:44:33 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=firmtostart.pl header.i=@firmtostart.pl header.b="xrCDemlM";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 709B810E144;
+	Sun,  3 Nov 2024 14:45:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 854 seconds by postgrey-1.36 at gabe;
- Thu, 31 Oct 2024 09:44:31 UTC
-Received: from mail.firmtostart.pl (unknown [217.61.112.199])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B460310E2D5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Oct 2024 09:44:31 +0000 (UTC)
-Received: by mail.firmtostart.pl (Postfix, from userid 1002)
- id ECB688301A; Thu, 31 Oct 2024 10:24:18 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=firmtostart.pl;
- s=mail; t=1730366692;
- bh=5k7KaERzV9XtiDAeG3jYJqSXCiNxYwmW5KPssYFF/k8=;
- h=Date:From:To:Subject:From;
- b=xrCDemlMI/ZmFH2TImcSBG+DfFG49+oHcqPcaapsqWw/BwfMX7QBrhjFbCSVC0qsE
- MyzbBwVqQMV+vnAAOgtJC1X1nf92G//7Fg+R4WGsdPOqkR/ydUk682ikEqGfGKg86V
- INxVTIPT+U7md3XKxPbiG7lFr4rCVcgri7buovhmE0rQX5PrjdDmlvS6vDWmLpck8z
- 4jrJ376oSC4+ZBgGCbzSmxjSBlcOyqCD5bTjkxPyUag43XE81Ohux32dExIFr+qm+s
- NqaULlHvEmzhamdZMc3xSNtQYq51J/BeA7fppz92hmzKvMR01BDxx4eGBAsUh53c4k
- gtqZM/QoQcCfw==
-Received: by mail.firmtostart.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Oct 2024 09:23:42 GMT
-Message-ID: <20241031094243-0.1.am.1nz3u.0.k9codkeny9@firmtostart.pl>
-Date: Thu, 31 Oct 2024 09:23:42 GMT
-From: "Patryk Wysocki" <patryk.wysocki@firmtostart.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.firmtostart.pl
+X-Greylist: delayed 23056 seconds by postgrey-1.36 at gabe;
+ Sun, 03 Nov 2024 14:45:48 UTC
+Received: from poczta.ums.gov.pl (poczta.ums.gov.pl [89.171.59.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 54CB410E05E;
+ Sun,  3 Nov 2024 14:45:48 +0000 (UTC)
+Received: from User (173.211.106.95) by poczta-ratusz.ums.gov.pl
+ (10.128.0.150) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Sun, 3 Nov
+ 2024 09:05:58 +0100
+From: B.Wils <willsonbrand@aol.com>
+Subject: THIS MESSAGE IS VERY URGENT AND IMPORTANT
+Date: Sun, 3 Nov 2024 07:06:06 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <9e4a3c6a80d4456e83b21ec1f344cd59@poczta-ratusz.ums.gov.pl>
+To: Undisclosed recipients:;
+X-ClientProxiedBy: poczta-ratusz.ums.gov.pl (10.128.0.150) To
+ poczta-ratusz.ums.gov.pl (10.128.0.150)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,19 +43,20 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: brawillson94@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+Dear Friend
+I am Mr. Wilson Brand, a financial consultant, bringing to your notice a business proposal.
 
-Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
-yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
+A well-known minister in one of the African countries who is undergoing financial queries by the Authority over alleged mismanaged of contract funds worth over five billion dollars has contacted me to help him move a transit funds amounting to US$ 76 Million dollars.
 
-Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
+He has advised that the funds be moved from its present position to a reliable hand and be used for any lucrative investment abroad. I am contacting you based on the information I already given to him that I have a reliable hand to handle the investment funds, but the person I had in mind unknown to me passed away due to Covid-19 complication as I was reliably informed.
 
-Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
-owych informacji?
+Therefore, I am contacting you to know if you are able to handle this matter by receiving and investing the funds under a 60/40 sharing ratio of the capital and the investment annual returns.
 
+If you are interested to handle the transaction, kindly contact me through this email address ( brawillson94@gmail.com) for more detail
+Regards
 
-Pozdrawiam
-Patryk Wysocki
+Mr. Wilson Brand
