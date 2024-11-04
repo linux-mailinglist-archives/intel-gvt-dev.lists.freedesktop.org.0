@@ -2,33 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A4679BB4D6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Nov 2024 13:42:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B6F09BBC19
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Nov 2024 18:36:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E0ACB10E409;
-	Mon,  4 Nov 2024 12:42:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D89D10E49C;
+	Mon,  4 Nov 2024 17:36:07 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=pelni.co.id header.i=@pelni.co.id header.b="BigYMm4U";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from poczta.ums.gov.pl (poczta.ums.gov.pl [89.171.59.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7CAD110E409;
- Mon,  4 Nov 2024 12:42:36 +0000 (UTC)
-Received: from User (173.211.106.95) by poczta-ratusz.ums.gov.pl
- (10.128.0.150) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Mon, 4 Nov
- 2024 08:00:24 +0100
-From: ALBERT <alberjustin@aol.com>
-Subject: WE OFFER LOANS FOR PROJECTS AND BUSINESS EXPANSION
-Date: Mon, 4 Nov 2024 06:00:32 -0800
+X-Greylist: delayed 515 seconds by postgrey-1.36 at gabe;
+ Mon, 04 Nov 2024 17:36:05 UTC
+Received: from zmtap1.pelni.co.id (mail.pelni.co.id [103.165.194.84])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EE5B310E48E;
+ Mon,  4 Nov 2024 17:36:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by zmtap1.pelni.co.id (Postfix) with ESMTP id 5BC786100B37;
+ Tue,  5 Nov 2024 00:27:43 +0700 (WIB)
+Received: from zmtap1.pelni.co.id ([127.0.0.1])
+ by localhost (zmtap1.pelni.co.id [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id MLr6Qfpm6S_A; Tue,  5 Nov 2024 00:27:43 +0700 (WIB)
+Received: from zmtap1.pelni.co.id (localhost [127.0.0.1])
+ by zmtap1.pelni.co.id (Postfix) with ESMTPS id F1A616100B2B;
+ Tue,  5 Nov 2024 00:27:42 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zmtap1.pelni.co.id F1A616100B2B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pelni.co.id;
+ s=C9C15D0C-5C0B-11ED-8263-4A2046B165AB; t=1730741263;
+ bh=MiPAjKXA/R288DZet3QAvMWPv1qNJNozcwm0+NuW8+M=;
+ h=Date:From:Message-ID:MIME-Version;
+ b=BigYMm4UFECipmmulZH4ZuvVMA/tAsKgB50F7fLjtrHF1Ryc9qyxGmFBxmKwNTwPz
+ i/Wdr1i4AFAHDe1pcIbGaDwkDkMeMjkgsooJ/68mDvJxL7p84STrKzCtoce8EwI4mN
+ MjzDxEopmlecGW6hUf1+IdTH8Id7lPRjOWiaaF+wTufDYWHXoOmKCEsqFYd9PiM7Eq
+ KU10GDmiyU41k22yECpLxZNymbKmKzFUvxR3Jw3tR1LwWOda8IISGJggE3rIa2Wlsy
+ k8GJTPBvsjKXroiGU1c3OWmwsWcruT/7JZfkNgf8QN3ODD9XbNsuDOrQsp/AfzWPRz
+ VTqVmM7RLeo8A==
+Received: from zmtap1.pelni.co.id (localhost [127.0.0.1])
+ by zmtap1.pelni.co.id (Postfix) with ESMTP id 26F3460FC5BE;
+ Tue,  5 Nov 2024 00:27:42 +0700 (WIB)
+X-JLM-Suspect: d54032bf17d84626a7ec6569340f0eee
+X-JLM-Spamstatus: NO
+Received: from zmbox1.pelni.co.id (zmbox1.pelni.co.id [172.16.101.51])
+ by zmtap1.pelni.co.id (Postfix) with ESMTP;
+ Tue,  5 Nov 2024 00:26:57 +0700 (WIB)
+Date: Tue, 5 Nov 2024 00:26:37 +0700 (WIB)
+From: "D. Apul GN" <apul@pelni.co.id>
+Message-ID: <627179319.20562299.1730741197430.JavaMail.zimbra@pelni.co.id>
+Subject: LOAN
 MIME-Version: 1.0
-Content-Type: text/plain; charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <9afefbeef7514a41ba2c771ec3f369f5@poczta-ratusz.ums.gov.pl>
-To: Undisclosed recipients:;
-X-ClientProxiedBy: poczta-ratusz.ums.gov.pl (10.128.0.150) To
- poczta-ratusz.ums.gov.pl (10.128.0.150)
+Content-Type: multipart/alternative; 
+ boundary="=_c4bfda50-58e8-489f-879b-2779c37a2ec5"
+X-Originating-IP: [23.249.172.135]
+X-Mailer: Zimbra 9.0.0_GA_4523 (ZimbraModernWebClient - GC130
+ (Windows)/9.0.0_GA_4523)
+Thread-Index: 6HrOPThWLb0T+7H+LcvrklxssjmQ1Q==
+Thread-Topic: LOAN
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,20 +69,27 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: albertintermediatessl@gmail.com
+Reply-To: EXCEL LOAN <excelmortgageloan.us@protonmail.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Attention.
-
-I represent a group of company based in the Gulf Region with access to over $500 Million. We are seeking means of expanding and relocating our business interest abroad in the following sectors: Oil/Gas, Construction, Real Estate, Stock Speculation and Mining, Transportation, Health Sector and Tobacco, Communication Services, Aviation industry, Agriculture Forestry & Fishing, thus any sector.
-
-If you have a solid background and idea of making good profit in any of the mentioned business sectors or any other VIABLE business in your country. Please write me for possible business co-operation. More so, we are ready to facilitate and fund any business that is capable of generating 2% annual return on investment (AROI)
-
-I am available to discuss this proposal with you and to answer any questions you may have in regard to this investment. As soon as you give your positive response to this proposal, I will not hesitate in sending you the details information of this great investment partnership opportunity. Kindly contact us through this address( albertintermediatessl@gmail.com)
-
-look forward to discussing this opportunity further with you.
+--=_c4bfda50-58e8-489f-879b-2779c37a2ec5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
 
-Sincerely,
-Justin Albert
+
+ 
+
+ 
+Excel loan funding, invite you to partner with us and benefit in our new Loan and Project funding program. We offer flexible and funding for various projects by the usual rigorous procedures. If you think you have a solid background and ideas of making good profit in any venture, do not hesitate to contact us for possible business co-operation via E-mail to us. 
+   
+ 
+
+
+--=_c4bfda50-58e8-489f-879b-2779c37a2ec5
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><body><div style="font-size: 12pt; font-family: arial, helvetica, sans-serif; color: rgb(0, 0, 0);"><div><br></div><div><br></div> <div data-marker="__SIG_PRE__" id="signature-content-15c9233e-f3b3-44a8-a933-3df5e1c3840a"><div><div> <div>Excel loan funding, invite you to partner with us and benefit in our new Loan and Project funding program. We offer flexible and funding for various projects by the usual rigorous procedures. If you think you have a solid background and ideas of making good profit in any venture, do not hesitate to contact us for possible business co-operation via E-mail to us.</div> <div> </div> </div> <div> </div></div><br><br></div></div></body></html>
+--=_c4bfda50-58e8-489f-879b-2779c37a2ec5--
