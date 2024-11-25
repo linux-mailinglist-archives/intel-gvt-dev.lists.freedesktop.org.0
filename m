@@ -2,41 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C94B29D38F3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Nov 2024 12:01:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 865C09D7D84
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 25 Nov 2024 09:53:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8598810E700;
-	Wed, 20 Nov 2024 11:01:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6665F10E3A5;
+	Mon, 25 Nov 2024 08:53:21 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=permerror (0-bit key) header.d=market-group.zp.ua header.i=@market-group.zp.ua header.b="Imc2UOCT";
+	dkim=pass (2048-bit key; secure) header.d=sharpwise.pl header.i=@sharpwise.pl header.b="t+voODuI";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 945 seconds by postgrey-1.36 at gabe;
- Wed, 20 Nov 2024 11:01:27 UTC
-Received: from relay.market-group.zp.ua (relay1.market-group.zp.ua
- [81.90.226.196])
- by gabe.freedesktop.org (Postfix) with ESMTP id 751CE10E701;
- Wed, 20 Nov 2024 11:01:27 +0000 (UTC)
-Received: from [45.94.31.104] (unknown [45.94.31.104])
- by relay.market-group.zp.ua (Postfix) with ESMTPA id EC68B61273;
- Wed, 20 Nov 2024 13:18:08 +0200 (EET)
-X-DKIM: OpenDKIM Filter v2.5.2 relay.market-group.zp.ua EC68B61273
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=market-group.zp.ua;
- s=mail; t=1732101489;
- bh=wotEWaupxWtydJTXXULHsTymP5eoisI3zI5QhmEpNH0=;
- h=Subject:To:From:Date:Reply-To;
- b=Imc2UOCTsP/zrph8W3k+H6Y1AbdBAIEIxCv3oPOMgIe3HJTC1PY6wSp59thjvnj95
- 2zUHqcej+CBlSBze0WJgpiNQSzjI3AqOVXLE0le0Tt2S3RAgPNQrBm3osQgptcIkQk
- eAx8JFJmFz1eAw/K9aS0YdLEoChGwzXmRMwpcNUk=
-Content-Type: text/plain; charset="iso-8859-1"
+X-Greylist: delayed 498 seconds by postgrey-1.36 at gabe;
+ Mon, 25 Nov 2024 08:53:18 UTC
+Received: from mail.sharpwise.pl (mail.sharpwise.pl [5.249.155.170])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D887510E3A5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 25 Nov 2024 08:53:18 +0000 (UTC)
+Received: by mail.sharpwise.pl (Postfix, from userid 1002)
+ id 88E66828DC; Mon, 25 Nov 2024 09:41:51 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sharpwise.pl; s=mail;
+ t=1732524170; bh=5k7KaERzV9XtiDAeG3jYJqSXCiNxYwmW5KPssYFF/k8=;
+ h=Date:From:To:Subject:From;
+ b=t+voODuIGF/czJm4ox1ecp5rSHV9BzqU3HOuNO5hKn1oktbZQ3LVE514e7uU1L3fk
+ 0Se6XSEjaRBANH4eUClMt9U56ooY8vUXWGtQZ5sO7JKSvjtLMbl/c0FN0hP/yjK9ix
+ YX79CNqAmOe/Ug/4AErLVjJi9t7KCaNknK4JvbhTv7Yst9mBzQRxiqdb6KsLg5bObG
+ zJSEMWOC4x+wf/4ZoU9ZmgHxC5hwqvnoo4f4fldGm7E7wBiNrpTnQeWv9zgHPkcFxl
+ fjTuoBJMVVVTYjh3JzGLjb94brZaPDRvUaK9xUDA9r0/e8oZ+vazXaWiUP6G7V4F1f
+ hdsZUnkeI9qOw==
+Received: by mail.sharpwise.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 25 Nov 2024 08:40:40 GMT
+Message-ID: <20241125084501-0.1.82.1aahd.0.cq5f7a9lcm@sharpwise.pl>
+Date: Mon, 25 Nov 2024 08:40:40 GMT
+From: "Patryk Wysocki" <patryk.wysocki@sharpwise.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Zapytanie ofertowe 
+X-Mailer: mail.sharpwise.pl
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: =?utf-8?q?banka_Lucembursko_a_Mezin=C3=A1rodn=C3=AD?=
-To: Recipients <service@market-group.zp.ua>
-From: "Pan Roy Kessier" <service@market-group.zp.ua>
-Date: Wed, 20 Nov 2024 11:34:52 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,38 +52,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: roykessier@yandex.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20241120110129.8598810E700@gabe.freedesktop.org>
 
-V=E1=9Een=FD pr=EDjemci,
+Dzie=C5=84 dobry,
 
-Evropsk=E1 investicn=ED banka Lucembursko a Mezin=E1rodn=ED menov=FD fond (=
-MMF) n=E1s po=9E=E1daly, abychom pro=9Aetrili pr=EDcinu zpo=9Eden=ED pri vy=
-pl=E1cen=ED jejich z=E1konem povolen=FDch financn=EDch prostredku.
+Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
+yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
 
-Na=9Ae vy=9Aetrov=E1n=ED odhalilo, =9Ee jeho platba byla zpo=9Edena kvuli z=
-korumpovan=FDm zamestnancum banky, kter=ED se pokusili presmerovat jeho pen=
-=EDze na jeho soukrom=E9 =FActy v ABANCA. Abychom tomuto typu podvodn=E9 ci=
-nnosti zabr=E1nili, uzavreli jsme dohodu s Evropskou investicn=ED bankou a =
-MMF o spr=E1ve a sledov=E1n=ED va=9A=ED platby. Obdr=9Eeli jsme tedy neodvo=
-latelnou platebn=ED z=E1ruku za va=9Ai platbu od MFY.
+Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
 
-S pote=9Aen=EDm v=E1m oznamujeme, =9Ee Evropsk=E1 investicn=ED banka se roz=
-hodla vr=E1tit v=E1m c=E1stku 3 500 000,00 EUR a prev=E9st ji pr=EDmo na v=
-=E1=9A bankovn=ED =FAcet bankovn=EDm prevodem.
+Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
+owych informacji?
 
-Chcete-li zajistit hladk=FD a bezprobl=E9mov=FD platebn=ED proces, kontaktu=
-jte na=9Aeho agenta pana Roye Kessiera na n=E1sleduj=EDc=ED e-mailov=E9 adr=
-ese:
-E-mail: roykessier@yandex.com
 
-Pro usnadnen=ED komunikace s n=E1mi tak=E9 mu=9Eete sd=EDlet sv=E9 c=EDslo =
-WhatsApp.
-
-Dekuji v=E1m za pozornost v t=E9to z=E1le=9Eitosti.
-
-S pozdravem
-Pan Roy Kessier
-roykessier@yandex.com
+Pozdrawiam
+Patryk Wysocki
