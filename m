@@ -2,37 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A52169E5CED
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Dec 2024 18:20:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D6109EAAFC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Dec 2024 09:48:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 849E810EF28;
-	Thu,  5 Dec 2024 17:20:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7478110E82D;
+	Tue, 10 Dec 2024 08:48:18 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=clwzxl.com header.i=@clwzxl.com header.b="iYQHbgUW";
+	dkim=pass (2048-bit key; secure) header.d=wholesalemarkets.pl header.i=@wholesalemarkets.pl header.b="LK19EcT2";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3642 seconds by postgrey-1.36 at gabe;
- Thu, 05 Dec 2024 17:20:16 UTC
-Received: from mta5.rev.qiantuduoduo.com (mta5.rev.qiantuduoduo.com
- [181.214.231.27])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2A21810EF28
+X-Greylist: delayed 340 seconds by postgrey-1.36 at gabe;
+ Tue, 10 Dec 2024 08:48:15 UTC
+Received: from mail.wholesalemarkets.pl (mail.wholesalemarkets.pl
+ [217.61.97.40])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F15FA10E82D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Dec 2024 17:20:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=clwzxl.com; 
- h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=tyz88NzjQN9C4JBO5375D3V7jq+2a/WVY5jBZqWp5iE=;
- b=iYQHbgUWSsu7og2pRyW0UW94yWiPmC/Ag6kaEmIIzxHGwFyZC3CR2Z8BjBaUncxxH9Yw1y/jmb04
- E/h/0uHN3KCr/OWf5DstSLZxAfVbqBGpma4I0XG7A9fmAVSPRLS6zXPE+wt55FuaCeEoiYLTSFt5
- q2kePk9r6HdXug2dsO0=
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: get ready for smooth rides with the urban cruiser
-Message-ID: <dd9a93c9dc9a5326c333d42211b079f0@clwzxl.com>
-Date: Thu, 05 Dec 2024 11:40:45 +0100
-From: "Ebike Factory" <ebikehbef@clwzxl.com>
+ Tue, 10 Dec 2024 08:48:15 +0000 (UTC)
+Received: by mail.wholesalemarkets.pl (Postfix, from userid 1002)
+ id 7119A83569; Tue, 10 Dec 2024 09:41:44 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=wholesalemarkets.pl;
+ s=mail; t=1733820146;
+ bh=Bg4PNAU9Kw/BSmAx5oB3M4wMohpuiCq973NJ3nLwODY=;
+ h=Date:From:To:Subject:From;
+ b=LK19EcT2NHjPz7DRt8sA+3LjeRzSXlQSjrXVvC8T7QN4zjetv392wj7imayOuAsoH
+ egTyVPHwzQomx9ckn0kelh9xvCieNDf8IfL0jvgOF6f6Oy+Dd/9YOGA1hljV0r2VV7
+ /CQi1/Hw6fOWbL1er+4/JvJCzw7xcZmeoi0YJauomL53S/s2yH6LcEBtBOavPAxJUM
+ dpTAYkMlnX8LkGEh80St1vFdO7LF8eu3eyov9hLdUkHsM0Wg16a0/M4Veh0ZT+QuB+
+ XoJxHGoTTzGtVoRRZmIOgjT5z5cEhO+9fahv59iaseey2Q6UpT4kBKlpQFG0C04QqL
+ UsRqFLYVGObiw==
+Received: by mail.wholesalemarkets.pl for
+ <intel-gvt-dev@lists.freedesktop.org>; Tue, 10 Dec 2024 08:40:39 GMT
+Message-ID: <20241210084504-0.1.30.6g1r.0.dcpq5ugaro@wholesalemarkets.pl>
+Date: Tue, 10 Dec 2024 08:40:39 GMT
+From: "Adrian Liszka" <adrian.liszka@wholesalemarkets.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.wholesalemarkets.pl
 MIME-Version: 1.0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,81 +54,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ebikehb@lqsgw.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /><br />I hope you're doing well! As a leading manufacturer in
-electric bikes, we are thrilled to introduce our latest innovation &ndash;
-the Urban Cruiser, <br />a state-of-the-art e-bike designed to elevate your
-cycling experience.<br /> <br /> With a perfect balance of advanced
-technology, exceptional comfort, and practical features, the Urban Cruiser
-is built for riders who seek style, <br />performance, and versatility.
-Whether you're commuting through the city or embarking on an outdoor
-adventure, <br />this e-bike has everything you need to make your ride more
-enjoyable and effortless.<br /> <br /> Shipping directly from our warehouse
-in Germany, you can expect a fast and reliable delivery to any EU
-destination within just 3-7 days.<br /> For more information or to make a
-purchase, simply get in touch with us. We will need your shipping address
-to calculate the exact shipping cost.<br /> <br /><img
-src="https://electroheads.com/cdn/shop/files/ado-ado-beast-20f-250w-electric-bike-ex-display-electric-bikes-with-fat-tyres-31064042569841.jpg"
-width="800" height="800" /><br /><br /> Key Features of the Urban
-Cruiser:<br /> Dual Suspension System<br /> The Urban Cruiser is designed
-for smooth rides over all terrains. The 80mm front air suspension ensures a
-cushioned, comfortable ride on rough roads, <br />while the rear suspension
-absorbs impacts, making it perfect for outdoor adventures and long rides.
-Whether you're on urban streets or mountain trails, <br />this e-bike
-offers an incredibly stable and comfortable journey.<br /> <br /> Powerful
-500W Motor<br /> Equipped with a 500W high-performance motor, the Urban
-Cruiser effortlessly reaches speeds of up to 30 MPH. Whether you're
-cruising through the city, <br />tackling steep mountain paths, or riding
-on snow, this e-bike delivers power when you need it most, making your ride
-faster and more efficient.<br /> <br /> Upgraded 48V 15AH Lithium-Ion
-Battery<br /> The 48V 15AH battery provides an impressive range of 40-54
-miles per charge, depending on riding conditions and assist mode. <br />The
-battery is removable, dustproof, and waterproof, ensuring long-lasting
-performance, safety, and reliability. Charge it at home, at work, or while
-on the go &ndash; the flexibility is yours.<br /> <br /> Foldable and
-Lightweight<br /> Weighing just 71 pounds and folding to 33 x 16 x 30
-inches, the Urban Cruiser is perfect for commuting, traveling, and storage.
-<br />It's lightweight and easy to carry, store in your car trunk, or take
-on public transport, making it ideal for any modern lifestyle.<br /> <br />
-Enhanced Riding Experience<br /> The Urban Cruiser features an intuitive
-LCD display, giving you real-time data about your ride, including speed,
-battery level, pedal assist mode, and distance traveled. <br />It&rsquo;s
-easy to keep track of your performance while you ride! Additionally, the
-e-bike comes with front and rear mechanical disc brakes, ensuring superior
-stopping power, even in challenging conditions. <br />The bright headlight
-and adjustable rear light offer excellent visibility, enhancing your safety
-when riding at night.<br /> <br /> You can also customize your ride with 3
-assist modes and a 7-speed gearbox, providing you with a variety of options
-for different terrains and riding styles.<br /><br /><img
-src="https://www.himobikes.com/cdn/shop/files/A20F_f3da5efe-2691-49e7-a6df-5ee686f9a58a.jpg"
-width="800" height="800" /><br /><img
-src="https://zoomelectricbikes.com/cdn/shop/files/G-FORCET42FatTire750W48V20AhAllTerrainFatTireFoldingElectricBike6_1200x.jpg"
-width="800" height="800" /><br /><br /> Additional Features:<br /> 20-Inch
-Fat Tires: Enjoy superior stability and comfort on any surface, whether
-it&rsquo;s asphalt, gravel, or snow.<br /> Lightweight Aluminum Alloy
-Frame: Durable and stylish, perfect for urban environments and daily
-use.<br /> Stylish Design: The sleek, modern aesthetic ensures that the
-Urban Cruiser stands out, whether you're riding through the city or on an
-outdoor trail.<br /> We believe that the Urban Cruiser will not only
-enhance your daily commute but also transform your outdoor adventures. <br
-/>With direct shipping from our German warehouse, getting your hands on
-this high-performance e-bike is quick. Your next cycling adventure is just
-a few clicks away.<br /> <br /> For any questions, further details, or to
-purchase, don&rsquo;t hesitate to reach out. Once we have your address,
-we'll calculate the shipping cost for you.<br /> <br /> Best regards,<br />
-<br /> David Dyson<br /> The E-bike Power<br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br />Send address for remove
-</body>
-</html>
+Dzie=C5=84 dobry,
 
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
+
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+
+Zapraszam do kontaktu.
+
+
+Pozdrawiam
+Adrian Liszka
