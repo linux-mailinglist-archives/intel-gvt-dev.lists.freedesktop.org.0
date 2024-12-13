@@ -1,37 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BC429F1CE1
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Dec 2024 07:00:20 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 132029F212D
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Dec 2024 23:18:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C7AEE10E291;
-	Sat, 14 Dec 2024 06:00:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E9A1310E1B9;
+	Sat, 14 Dec 2024 22:18:55 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=iqiwang.com header.i=@iqiwang.com header.b="uR7SKVuX";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=anep.edu.uy header.i=@anep.edu.uy header.b="K+tt1svW";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3654 seconds by postgrey-1.36 at gabe;
- Sat, 14 Dec 2024 06:00:18 UTC
-Received: from mta7.rev.mflpdf.com (mta7.rev.mflpdf.com [104.223.121.12])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1F5FC10E0CE
+X-Greylist: delayed 24276 seconds by postgrey-1.36 at gabe;
+ Sat, 14 Dec 2024 22:18:54 UTC
+Received: from correos.anep.edu.uy (mx120.anep.edu.uy [190.0.150.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0562810E1B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Dec 2024 06:00:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=iqiwang.com;
- h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=xUZjC1S59kIz0WSnE2jn4ZYi2PhK1kqmAt7b5FbPJ+U=;
- b=uR7SKVuXarUM/ED9Sr0A6IElekfsc/o7Ly/O65iXB8WdTi4zGCII2sw3kh8tHsWDRmKF8vtpSBMM
- ZzdkBjTlpA3ZE4t7p4z07aY1X6ryzuqgEobuAenX0Q+UoMQOBjt2tVW0hfGLvlqVDTR5YaqbD4hC
- ZVtxE+6v81i3Qx/mQ7s=
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: fat tire electric bicycles
-Message-ID: <8dbc0439c57b4292cebbe37c04024ebe@iqiwang.com>
-Date: Fri, 13 Dec 2024 14:53:44 +0100
-From: "Darren Young" <eustockcd@iqiwang.com>
+ Sat, 14 Dec 2024 22:18:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by correos.anep.edu.uy (Postfix) with ESMTP id B12C244225C;
+ Sat, 14 Dec 2024 09:02:09 -0300 (-03)
+Received: from correos.anep.edu.uy ([127.0.0.1])
+ by localhost (correos.anep.edu.uy [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id m4KYYYAHK2Uv; Sat, 14 Dec 2024 09:02:09 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by correos.anep.edu.uy (Postfix) with ESMTP id 0A451403E62;
+ Sat, 14 Dec 2024 09:01:19 -0300 (-03)
+DKIM-Filter: OpenDKIM Filter v2.10.3 correos.anep.edu.uy 0A451403E62
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=anep.edu.uy;
+ s=CA766030-28BF-11EF-B8E9-0BE48E5E4344; t=1734177679;
+ bh=Ju8wqnUh8A/sZ5KPZltOv2mE4sV3wrd3YjZOIMvtnq8=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=K+tt1svWEvJpGOmCx18tvgYxXpbCSBDRDWEJY+iplFAoFos4s8vS3USyJIGw0yJNt
+ YLO383fknkG4cEuZoL0AG7JCCKg9gplWo0o263IfOqZmKuUaIBcnNKjYcA+6pFkmd1
+ uk2cugBD/UZYuUnX1NmJ1tRuImU0Jr5B9J4BRGwKq3k1g2wIAgXn6z2X4F56ELeuKm
+ iKjSs8tMq3CkTkRGMlr9bWaAKCLAzhUN7cKQk41wX0fchXMwAWibu27yAmpu7PDWTu
+ 2jmn86zS4HYOv1Z/C7BPD3Ym9NJ/WMjVGs5Rppb9plxHMD20u3N3fQ5PoHsE9+griM
+ waxoeGqp3VABw==
+X-Amavis-Modified: Mail body modified (using disclaimer) - correos.anep.edu.uy
+X-Virus-Scanned: amavisd-new at anep.edu.uy
+Received: from correos.anep.edu.uy ([127.0.0.1])
+ by localhost (correos.anep.edu.uy [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id IrhkxtaJ8s_C; Sat, 14 Dec 2024 09:01:18 -0300 (-03)
+Received: from [192.168.100.202] (unknown [105.9.118.56])
+ by correos.anep.edu.uy (Postfix) with ESMTPSA id 387E8403F91;
+ Sat, 14 Dec 2024 09:00:36 -0300 (-03)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: =?utf-8?q?Investitions/Wohlt=C3=A4tigkeitsfonds_von_2_Millionen_Eur?=
+To: Recipients <>
+From: "Cheng saephan" <""@anep.edu.uy>
+Date: Fri, 13 Dec 2024 20:11:04 +0200
+X-Antivirus: Avast (VPS 241213-10, 12/13/2024), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20241214120037.387E8403F91@correos.anep.edu.uy>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,76 +69,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ebicycle@super87.com
+Reply-To: chengsaephanfoundation@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /> <br /> As the holiday season is fast approaching, we want to take
-a moment to send our warmest wishes to you and your loved ones. <br />May
-this festive season bring joy, peace, and exciting new opportunities!<br />
-Since our establishment in 2014, we have been a leading manufacturer in the
-electric bicycle industry, committed to providing innovative solutions for
-modern, eco-friendly transportation. <br />We are a fully equipped factory
-specializing in the production of electric bicycles, electric motorcycles,
-and mobility scooters. <br /> <br /> As a manufacturer, we control every
-step of the production process, ensuring that each product meets the
-highest standards for safety, performance, and durability. <br />Our
-commitment to innovation continues to drive us to create top-tier electric
-mobility solutions for riders of all types.<br /> <br /> We are also
-pleased to inform you that we have a warehouse in Germany, allowing us to
-offer fast delivery to customers within the EU. <br />Orders within the EU
-typically arrive within 3 to 7 days, ensuring that you can enjoy your new
-eBike as quickly as possible. <br />For customers outside the EU, we ship
-directly from our factory, with an estimated delivery time of 20 to 30
-days, depending on the destination.<br /> <br /> If you are interested in
-purchasing, please provide your address details so we can check the freight
-charges and send you an accurate quote.<br /> <br /> We are excited to
-share our newest electric bicycle, which combines powerful performance with
-a smooth, comfortable ride for any terrain. <br />Whether you&rsquo;re
-commuting, exploring off-road trails, or enjoying a weekend adventure, this
-eBike is ready for it all.<br /><br /><img
-src="https://www.ebikesexpress.co.uk/cdn/shop/files/Rocket88SFatBoy-SuperMonkeyElectricBike-250w-BlackFrame_5e9c539c-5764-4daa-82ce-2ab8ea898876.jpg"
-width="800" height="800" /><br /><img
-src="https://eridefox.com/wp-content/uploads/2023/03/Ouxi-V8-Electric-Bike-ZBC-_00146-6.jpg"
-width="800" height="800" /><br /><img
-src="https://shopcdnpro.grainajz.com/1300/upload/product/8788e0c92cf0b91789adae756d37ef342b4d75a0cd91d72f0f17aa71675a9b3b.jpg"
-width="800" height="800" /><br /> <br /> Here are some of its key
-features:<br /> <br /> 1.Powerful Performance: The 48V/500W brushless
-motor, peaking at 500W and offering 55N.m of torque, enables speeds of up
-to 28 mph. <br />It&rsquo;s ideal for off-road enthusiasts, daily
-commuters, and anyone who loves a bit of adventure.<br /> <br /> 2.Extended
-Range: With a 48V 15AH removable lithium battery, this eBike can travel up
-to 47 miles. <br />In pure electric mode, it covers up to 34.17 miles, and
-in assist mode, the range extends even further.<br /> <br /> 3.All-Terrain
-Capability: The 4.0 x 20 inch fat tires and full suspension system (front
-hydraulic and rear air shocks) ensure a smooth ride on any terrain. <br
-/>This eBike is perfect for off-road adventures, tackling rough trails or
-even sand and snow.<br /> <br /> 4.Advanced Features: Equipped with an
-intelligent LCD display that shows real-time data on speed, power, and
-mileage, along with 7-speed gears for flexible riding conditions. <br />LED
-headlights and rear brake lights enhance visibility and safety.<br /> <br
-/> 5.Safe and Quiet Ride: This eBike operates quietly at just 30db,
-ensuring a peaceful journey. <br />Front and rear disc mechanical brakes
-provide smooth and reliable stopping power.<br /> <br /> 6.Certified and
-Reliable: The eBike comes CE certified and 90 percent pre-assembled for
-easy setup. <br />It also includes a one-year warranty on the motor,
-battery, and controller, with a professional customer support team
-available to assist you via email.<br /> <br /> As we head into the holiday
-season, now is a great time to consider adding this eBike to your product
-lineup or enjoying it for personal use. <br />We are confident that this
-model will meet your expectations for both performance and quality.<br />
-<br /> If you are interested in purchasing, please provide your address
-details so we can check the freight charges and send you an accurate
-quote.<br /> <br /> Wishing you a joyous holiday season and looking forward
-to a continued partnership in the coming year!<br /> <br /> Best
-regards,<br /> Darren Young<br /> The Manufacture of Electric Bicycle<br />
-<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br
-/> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-<br /> <br /> <br /> <br /> <br /> Send address to unlist<br />
-</body>
-</html>
+Mein Name ist Cheng Charlie Saephan und es gibt einen Jackpot von 1,3 Milli=
+arde Dollar. Ich leide seit acht Jahren an Krebs und meine Zeit ist fast ab=
+gelaufen. Ich habe beschlossen, Ihnen 2 Millionen Euro zu spenden. Bitte ko=
+ntaktieren Sie mich unter dieser E-Mail-Adresse: chengsaephanfoundation@gma=
+il.com
+
+-- 
+This email has been checked for viruses by Avast antivirus software.
+www.avast.com
+PRIVACIDAD DE ESTE MENSAJE - Este mensaje esta dirigido exclusivamente a las personas que tienen las direcciones de correo electronico especificadas en los destinatarios dentro de su encabezado. Si por error usted ha recibido este mensaje, por ningun motivo debe revelar su contenido, copiarlo, distribuirlo o utilizarlo. Le solicitamos por favor comunique el error a la direccion de correo electronico remitente y elimine dicho mensaje junto con cualquier documento adjunto que pudiera contener. Los derechos de privacidad y confidencialidad de la informacion en este mensaje no deben perderse por el hecho de haberse trasmitido erroneamente o por causas de interferencias en el funcionamiento de los sistemas de correo y canales de comunicacion. Los datos contenidos en este mensaje estan protegidos por la Ley 18.331 Ley de Proteccion de Datos Personales y Accion de Habeas Data. Toda opinion que se expresa en este mensaje pertenece a la persona remitente por lo que no debe entenderse necesari
+ amente como una opinion de ANEP y/o de las entidades que la integran, a menos que el remitente este autorizado para hacerlo o expresamente lo diga en el mismo mensaje. En consideracion a que los mensajes enviados de manera electronica pueden ser interceptados y manipulados, ANEP y las entidades que la integran no se hacen responsables si los mensajes llegan con demora respecto de la fecha de su envio por el remitente, incompletos, eliminados o con algun programa malicioso denominado como virus informatico.
 
