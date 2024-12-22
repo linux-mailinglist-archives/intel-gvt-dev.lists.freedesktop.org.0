@@ -2,50 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 286BF9FA318
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Dec 2024 01:25:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFB409FA588
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Dec 2024 13:35:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EA5BF10E12B;
-	Sun, 22 Dec 2024 00:25:15 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=treblig.org header.i=@treblig.org header.b="hFwyC48X";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8FA7110E1B0;
+	Sun, 22 Dec 2024 12:35:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx.treblig.org (mx.treblig.org [46.235.229.95])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D2C8110E12B;
- Sun, 22 Dec 2024 00:25:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=RnU6XLxYBBM8BL1GSxNw+lmx1Sy99gdpA24uyHvGsiI=; b=hFwyC48XhtsOMH4B
- z6izJK+jsnuALtzePHo3S3QsXjqHq1XhwO02jDYwjN1+NQOIXvHJY54d0UcCbJ3rtKI3H4+ze8lhG
- n5jDr+wjKRyRZxTfwzQrafb6iRXwhV6jjeS52Wx6wRNnaoqj4xjy2RXIpcI0K0BI2ZYwfKEBjURGp
- rBEIZRXB1VBxggtlsdlxy1Fc4kvYLRoEv4jqMxwr2NfkQDarrz/IQSgj+FPOMwJt1znnlfGqAy3yl
- sRaWDUixfFSkSZoBpdPLmbgep/AaDJ8SfffMNSd463NojK1nObHI90rKsB6BQBmJWQXeeeyUceIuT
- bnnkTBiB0RiyXol7cg==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1tP9mP-006ie5-07;
- Sun, 22 Dec 2024 00:25:09 +0000
-Date: Sun, 22 Dec 2024 00:25:09 +0000
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
-To: zhi.wang.linux@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- tursulin@ursulin.net, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Cc: airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/3] drm/i915/gvt: Deadcoding
-Message-ID: <Z2dcZfW8eNMnxT0v@gallifrey>
-References: <20241222002043.173080-1-linux@treblig.org>
+X-Greylist: delayed 524 seconds by postgrey-1.36 at gabe;
+ Sun, 22 Dec 2024 12:35:00 UTC
+Received: from mailout08.t-online.de (mailout08.t-online.de [194.25.134.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5F03910E1B0;
+ Sun, 22 Dec 2024 12:35:00 +0000 (UTC)
+Received: from fwd89.aul.t-online.de (fwd89.aul.t-online.de [10.223.144.115])
+ by mailout08.t-online.de (Postfix) with SMTP id 79009574;
+ Sun, 22 Dec 2024 13:25:58 +0100 (CET)
+Received: from business-webmail.de ([80.156.86.102]) by fwd89.t-online.de
+ with (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384 encrypted)
+ esmtp id 1tPL1g-11y4OG0; Sun, 22 Dec 2024 13:25:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20241222002043.173080-1-linux@treblig.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 00:24:25 up 227 days, 11:38,  1 user,  load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
+Date: Sun, 22 Dec 2024 04:25:39 -0800
+From: office of The Commissioner of Police
+ <police-cbi.in.gov22@wi4pb1y7z.hier-im-netz.de>
+To: undisclosed-recipients:;
+Subject: =?UTF-8?Q?=E2=9A=96=EF=B8=8FOFFICIAL_COURT_ORDER_UNIT=E2=9A=96?=
+ =?UTF-8?Q?=EF=B8=8F?=
+Mail-Reply-To: cbi-office2-in.gov@cyberdude.com
+Message-ID: <f1b36f065955adb8afa6768af90c81e7@wi4pb1y7z.hier-im-netz.de>
+X-Sender: police-cbi.in.gov22@wi4pb1y7z.hier-im-netz.de
+User-Agent: Business Webmail/1.2.1
+X-TOI-EXPURGATEID: 150726::1734870354-95FF8A55-5BFE5067/19/8253978089 SUSPECT
+ MAIL-COUNT
+X-TOI-MSGID: 1b04a8e8-2326-409e-8936-caea53333934
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,43 +49,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: cbi-office2-in.gov@cyberdude.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Note: zhenyuw@linux.intel.com's address bounces:
 
-> The following message to <zhenyuw@linux.intel.com> was undeliverable.
-> The reason for the problem:
-> 5.1.0 - Unknown address error 550-'5.1.1 <zhenyuw@linux.intel.com>: Recipient address rejected: User unknown in
-+virtual mailbox table'
 
-* linux@treblig.org (linux@treblig.org) wrote:
-> From: "Dr. David Alan Gilbert" <linux@treblig.org>
-> 
-> Remove a bunch of long unused functions from
-> the gvt code.
-> 
-> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
-> 
-> 
-> Dr. David Alan Gilbert (3):
->   drm/i915/gvt: Remove intel_gvt_ggtt_h2g<->index
->   drm/i915/gvt: Remove unused intel_vgpu_decode_sprite_plane
->   drm/i915/gvt: Remove unused intel_gvt_in_force_nonpriv_whitelist
-> 
->  drivers/gpu/drm/i915/gvt/fb_decoder.c | 117 --------------------------
->  drivers/gpu/drm/i915/gvt/fb_decoder.h |   2 -
->  drivers/gpu/drm/i915/gvt/gtt.c        |  66 ---------------
->  drivers/gpu/drm/i915/gvt/gvt.h        |   6 --
->  drivers/gpu/drm/i915/gvt/handlers.c   |  17 ----
->  drivers/gpu/drm/i915/gvt/mmio.h       |   3 -
->  6 files changed, 211 deletions(-)
-> 
-> -- 
-> 2.47.1
-> 
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+
+office of The Commissioner of Police
+Cyber Cell/Computer Center
+Police Headequater
+msd Building J.B Estate New Delhi 16806
+Ref No 23-76-407/KWN-HCH6-2024
+
+                                        ⚖️OFFICIAL COURT ORDER UNIT⚖️
+
+You hereby inform of the attached alleged court order against your 
+Internet IP traffic by the Indian Intelligence Bureau, Department of
+Research and Analysis Wing. It is quite unfortunate to turn your private 
+Internet into a
+juvenile pornographic movie cyber.The Indian Intelligence Bureau works 
+in partnership with the Police Cybercrime Special Units in handling all 
+complex and sensitive cases of cyber crimes, especially when the victims 
+are women and minor children.
+
+Our laboratories are equipped with crawling digital software, having 
+forensic capabilities such as extraction of deleted data from hard disks 
+and mobile phones, imaging and hash value calculation, forensic servers 
+and portable forensic tools for on-site examination, facility to extract 
+data from latest Android or IOS as well as Chinese phones.
+
+Based on the above, it is extremely difficult for any victim to 
+consciously or unconsciously visit juvenile pornographic sites without 
+being digitally captured. More information or clarification on the court 
+order will be made available to you upon receipt of your response within 
+24 hours; our office operates 24 hours / 5 days.
+Be assured that serious legal action will be taken against you if you 
+fail to respond to this notice within 24 hours of receipt.
+
+Regards,
+Mr. Prashant Gautam,
+Police/Chief of Police
+Prosecutor over minors and Offenses related to cyber crime.
+National Highway- 7 Mahipalpur, New Delhi India - 170463.
+
+
