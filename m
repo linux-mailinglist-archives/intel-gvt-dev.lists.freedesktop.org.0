@@ -2,65 +2,81 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E993A00896
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Jan 2025 12:28:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58ADFA01FE3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Jan 2025 08:28:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1CC1E10E884;
-	Fri,  3 Jan 2025 11:28:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3EBCE10E5A0;
+	Mon,  6 Jan 2025 07:28:17 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="V3pxG1A9";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="Yr/XKmJw";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-f169.google.com (mail-lj1-f169.google.com
- [209.85.208.169])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6013710E884
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Jan 2025 11:28:17 +0000 (UTC)
-Received: by mail-lj1-f169.google.com with SMTP id
- 38308e7fff4ca-304d760f12aso12033451fa.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 03 Jan 2025 03:28:17 -0800 (PST)
+Received: from mail-pl1-f172.google.com (mail-pl1-f172.google.com
+ [209.85.214.172])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 122E710E5A1;
+ Mon,  6 Jan 2025 07:28:16 +0000 (UTC)
+Received: by mail-pl1-f172.google.com with SMTP id
+ d9443c01a7336-2166f1e589cso244332045ad.3; 
+ Sun, 05 Jan 2025 23:28:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1735903636; x=1736508436; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+dRE9vM4ej2GCNGIhG0asDg2gSJmIFVQko4JmCbi+5Q=;
- b=V3pxG1A9uybv/oKxS+0JT85yBpYQZidmWyqLcKVyQRZS5wZNIgWN5gh4PUoxeLRapR
- /q7eH/wSp/NTfKFOOk4uEu3Ofe8dvmB8+dfumlEC7Qbhe3sn9HmbEjNqtydRmYGyBllZ
- UaEMQlTrJYwWihe5KOkPSGraXeOc96jUPomxdC7fhrj80pzORuIpBvKmfrjh6NpEByE7
- XdLup4kIdomCWk4h8TtwoGjHDp4i55vqR4tXzaBPByVovzYLdnaiKzIZYJd4/XmkM6Id
- DvWmjZ2S2q4mOJa2wm911449MpmLyysteTo9HAS13zuLwKyT60XZ46Vd/I3HTMDH9r82
- xJKw==
+ d=gmail.com; s=20230601; t=1736148436; x=1736753236; darn=lists.freedesktop.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=/7jfOL71tWUOGGkzKVgkd6UKk+XBmLOvILDBWl4XWBQ=;
+ b=Yr/XKmJwbUJYzIR22IsP6fNyyPC8uF4GAn6mhrh8w8iNJ6HDVchDYAODXyEQZfikhB
+ NpCLS81dCe1UrIFbJIolv8suv3mZdd6ygBlQb/eiv8hZolvuTl8vYYsfaaIOJPFlheOC
+ Oga2bxd7Zcwmg/5v2NE74fAANhuMaRev9ME7xrsknbw5TznpYjfapA39n1b4lzf5ORbt
+ Maw3B6jR2dUtR/GN1NVzXrJK0XUEoYGUSz0KDGFw8C3JeMQAIH+3yhFHcKVAiTVjw2ed
+ um+aTRE5k8eMX+U0AhRvXsw0ml+8o4aRak6ayTMPkw2zowtgcZK6SEgcPJi6uXtZfxWm
+ 6Zmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735903636; x=1736508436;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+dRE9vM4ej2GCNGIhG0asDg2gSJmIFVQko4JmCbi+5Q=;
- b=DVXbAF9HpudnOzNvka6N9265Ly7cZVtoOpaODhbOEEBqtV1f33CoxfVOstGUbQFN8O
- y4PYxOyMR/mpxeZ/tr4aG792CXr45sQAgAgVN4a2bUkuwPpI3cmlcFEURINs/J2kiEFZ
- XtBcjLU+1PnpmR1RM5O6zO6a7D2KkKcMABhnmboLLv45d5iuBIbArckuGLtUztgKDyvL
- /57jWd3HgWjAiuBF/K2EFEEeA+tUbsjzRi3p+n/7WHuGYwNyv9mIKAvj7v6HnK50a5Kd
- Im1Pcb4Bjm815oKUZXeaKm1WptI2mxagMikQjZbfZxWNC9lJKQ2RxTocg8LyTM0DRmkA
- DfOg==
+ d=1e100.net; s=20230601; t=1736148436; x=1736753236;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/7jfOL71tWUOGGkzKVgkd6UKk+XBmLOvILDBWl4XWBQ=;
+ b=LXzRjg0j/tpskyi+xIUtkcnNMAIUz1o8zX5WONuzrVkeDd4Um9dsZR7NKgqkHAwwpW
+ bLmYIZawin0RwgRVwYgCuWWaWYg3xwLVe5MbsPiz6On7X3UT3CvT5i9/Xost9zeeevkq
+ duCvCfA5Rg049XyzfSKCuQTjdhZq6tsUGztaN8ZQslb5bIbAMFWLIPK0NSEAHAubSm6n
+ uRCEnZoeKmjmUbTsKNbnpVK03g+VfxGrsQFWxQh7D2pZCrXgQuWP5wLnasPx5Bfqe4B8
+ lUL14r/uqGFK7chqAT+7JyZKsaqBP1JGrIYE+tr7xR0U9ZZncPIPJZhMzcUbjmjKl6Q5
+ tyMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVklbkHXMWsW1ESwWhrouokuc4jVOFQMVvOCiLD1XuwPBG9YzvidauM2yPRKm3ZKfYJVmie6YHv2J+urrLf@lists.freedesktop.org
-X-Gm-Message-State: AOJu0Yxk/kW6ib2Wq3sohkPDbeT+H9iQeFvPK+o7xwxy+RGn6lPnxrqX
- Z4X2Ip3726hRhWTd0ChLo9iu8S+zIXGIndRnFBJqTbeQiHM+fgyiVYrHMXgJw+jAQVpqdP71ERX
- ixnoQ2FN7OsaKbM1TC0jurJ7gXNwwDq3N69hd1w==
-X-Gm-Gg: ASbGncs/GQqPoaH/JvA74ow/L0ZlsPt97Dni1Z+dqIZW+o5lXkxvFtlQlB4S3B0NMcX
- YFuItCMjNhN3698fGGwsQ9pz8g11HbEc+L9k1WMqMQQfElsLEKmVwZmDzudvSMn89pY79Slw=
-X-Google-Smtp-Source: AGHT+IFhP2N9gqr0VcAnd/sa6F5vQkgCho+F9Qr3My9A52fqqcIoeaDg61SaFE+0do9m5auNuE1XvA7oPxvXxqxjXso=
-X-Received: by 2002:a05:6402:2802:b0:5d3:cff5:635e with SMTP id
- 4fb4d7f45d1cf-5d81de065b8mr115100504a12.26.1735903245990; Fri, 03 Jan 2025
- 03:20:45 -0800 (PST)
+ AJvYcCUlAfAcajizGldLTDhY8rVtf3zLzW5pfrHYuzbx9cRun5VWH/AZNAdaQHTwr+XoEpBLZVM+ZbauTGCgJzVXtA==@lists.freedesktop.org,
+ AJvYcCV59r73wOGWasnkCnH0hg+ZrxmJnGI8nNKaxdOZl05Ny8xdsl/7nP5goE1aOE8sLyWIcDSCGFBL3p2H@lists.freedesktop.org,
+ AJvYcCVQ+NhRyEyXxJFCWOly1WpdqJgb2077ND1CcmFsj3wCIDSEmOfunLdbpQcQelqkgpLHnXPRlFVpSpg=@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzaMMf8s/MTNJUY9eJYelBIYPS7k4p35g6WlM5J5DW4ebxTv8eh
+ 0tLXPz3H+ZI4xyWUYX3IzuWt+oLSuyN0pDnPnCM7DR0zLtFnc5II
+X-Gm-Gg: ASbGncu9WFn0PzxxQbJlG10aLlVs6xaft7Ru+kHKDUr18kQM7c3o/5kgpCHOs4qSNyM
+ 5vOQLk4kCYolv9H6623hTflSMbqiEpwo6NY3vjoUaumPJNgo+pnlvsIn86h0gkOhxu86Vx3esjR
+ qa3PVcZkBY0Ca6NljXytffEKePpNS0Ahgn9NnUCxXPGEqy6HjdNcBxAD9FKld9Z4aUSvnENJvJ6
+ wuyScvIt2dVtFM+YgwDwSqDs+00/FAKv4lrDsosE0uaS/Rnlz79VP0weEnbaKhcJalR/2h+0NCj
+ Or60V5y+nNVrDQ==
+X-Google-Smtp-Source: AGHT+IHBSDftZTnXKI/z/DRL650EUOhPG++z/tC+faGjJGBEXnvi9lBhkiv7aWrmSZbPH+T6Qdco7A==
+X-Received: by 2002:a05:6a00:124a:b0:725:f282:1f04 with SMTP id
+ d2e1a72fcca58-72abde846e5mr80960187b3a.18.1736148435657; 
+ Sun, 05 Jan 2025 23:27:15 -0800 (PST)
+Received: from localhost (softbank060124177046.bbtec.net. [60.124.177.46])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72aad815796sm31704909b3a.28.2025.01.05.23.27.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 Jan 2025 23:27:15 -0800 (PST)
+Date: Mon, 6 Jan 2025 16:27:11 +0900
+From: Zhenyu Wang <zhenyuw.linux@gmail.com>
+To: linux@treblig.org
+Cc: zhi.wang.linux@gmail.com, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
+ tursulin@ursulin.net, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, airlied@gmail.com, simona@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] drm/i915/gvt: Deadcoding
+Message-ID: <Z3uFz2hiYH5z1qVn@dell-wzy>
+References: <20241222002043.173080-1-linux@treblig.org>
 MIME-Version: 1.0
-From: XING <azfartahirz@gmail.com>
-Date: Fri, 3 Jan 2025 03:20:34 -0800
-Message-ID: <CAGOUVTf13Cm9TEJYm8UH3d_Nk7XToAt36eD8Rxemmxggw3ebjQ@mail.gmail.com>
-Subject: =?UTF-8?Q?AW=3A_Lukrative_Gesch=C3=A4ftsgelegenheit?=
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="00000000000057826c062acb78ef"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241222002043.173080-1-linux@treblig.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,36 +89,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: msmeixinglin@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000057826c062acb78ef
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Sun, Dec 22, 2024 at 12:20:40AM +0000, linux@treblig.org wrote:
+> From: "Dr. David Alan Gilbert" <linux@treblig.org>
+> 
+> Remove a bunch of long unused functions from
+> the gvt code.
+> 
+> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+> 
+> 
+> Dr. David Alan Gilbert (3):
+>   drm/i915/gvt: Remove intel_gvt_ggtt_h2g<->index
+>   drm/i915/gvt: Remove unused intel_vgpu_decode_sprite_plane
+>   drm/i915/gvt: Remove unused intel_gvt_in_force_nonpriv_whitelist
+>
 
-Ich bin Frau Mei Xing von der CITIBANK (Hongkong). Ich wende mich an Sie
-mit einem lukrativen Gesch=C3=A4ftsangebot, das sich meiner Meinung nach mi=
-t
-Ihren Interessen deckt. Ich w=C3=BCrde mich freuen, dieses Angebot mit Ihne=
-n im
-Detail zu besprechen, um die M=C3=B6glichkeiten einer f=C3=BCr beide Seiten
-vorteilhaften Partnerschaft auszuloten. Bitte z=C3=B6gern Sie nicht, mich p=
-er
-E-Mail zu kontaktieren.
+All three cleanups are fine with me.
 
---00000000000057826c062acb78ef
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Zhenyu Wang <zhenyuw.linux@gmail.com>
 
-<div dir=3D"ltr"><div><br clear=3D"all"></div><div><div dir=3D"ltr" class=
-=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><s=
-pan style=3D"font-family:verdana,sans-serif">Ich bin Frau Mei Xing von der =
-CITIBANK (Hongkong). Ich wende mich an Sie mit einem lukrativen Gesch=C3=A4=
-ftsangebot, das sich meiner Meinung nach mit Ihren Interessen deckt. Ich w=
-=C3=BCrde mich freuen, dieses Angebot mit Ihnen im Detail zu besprechen, um=
- die M=C3=B6glichkeiten einer f=C3=BCr beide Seiten vorteilhaften Partnersc=
-haft auszuloten. Bitte z=C3=B6gern Sie nicht, mich per E-Mail zu kontaktier=
-en.</span></div></div></div></div>
-
---00000000000057826c062acb78ef--
+>  drivers/gpu/drm/i915/gvt/fb_decoder.c | 117 --------------------------
+>  drivers/gpu/drm/i915/gvt/fb_decoder.h |   2 -
+>  drivers/gpu/drm/i915/gvt/gtt.c        |  66 ---------------
+>  drivers/gpu/drm/i915/gvt/gvt.h        |   6 --
+>  drivers/gpu/drm/i915/gvt/handlers.c   |  17 ----
+>  drivers/gpu/drm/i915/gvt/mmio.h       |   3 -
+>  6 files changed, 211 deletions(-)
+> 
+> -- 
+> 2.47.1
+> 
