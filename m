@@ -2,46 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D23D5A0B12E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jan 2025 09:34:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91841A0B452
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jan 2025 11:18:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B62E110E5B3;
-	Mon, 13 Jan 2025 08:34:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4BD5E10E046;
+	Mon, 13 Jan 2025 10:18:00 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=greenpill.in header.i=@greenpill.in header.b="mXn6A+MI";
+	dkim=pass (2048-bit key; unprotected) header.d=kernel.org header.i=@kernel.org header.b="F9aqWR9f";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 938 seconds by postgrey-1.36 at gabe;
- Mon, 13 Jan 2025 08:34:30 UTC
-Received: from sm12.nexus4web.com (kc1.nexus4web.com [103.27.232.137])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DE74210E5B3;
- Mon, 13 Jan 2025 08:34:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=greenpill.in; s=mail;
- h=from:reply-to:subject:date:message-id:mime-version:content-type;
- bh=MrZ4NODyynjODTJvOi1OqnUm2t/D9+CdOYlwXN3ZwZE=;
- b=mXn6A+MI/iWD1LQuugFLjJ6KcqRh1tfl4tQTogBLWZSn0hAjgKeKlEqjyqwLF82heQEG+jilV1asx
- cYevaxwJkWUfXx9JXkeagXYsUC73/Hk+jHUSvbE1YsKszTzAuguAjxNXDrUM9O3/SwEVcACjEFtkSL
- 1jS1s0P2vT9h52G5CMIpdAvsigC7DP+H4b3r3P+e4NzFk9qLa7he9Ru+GuZ3/+j5Fj9fPxjPXG3Ybk
- SiNVcwxrN1gGxU1o71Y59A5L5+g1xcte4Z2Snl0ZngzIGxregdNFgO3Pm0jOFiXwokL+ugamKG1jxl
- ch0XNhTlC0nVGD1b6TBWZ5i6ALDK9kA==
-X-Footer: Z3JlZW5waWxsLmlu
-Received: from [87.249.132.147] ([87.249.132.147])
- (authenticated user account@greenpill.in)
- by sm12.nexus4web.com (Kerio Connect 9.4.2) with ESMTPSA
- for pierre-louis.bossart@linux.intel.com;
- Mon, 13 Jan 2025 13:50:11 +0530
-Date: Mon, 13 Jan 2025 13:50:11 +0530
-Subject: Investment Deal
-X-Mailer: Kerio Connect 9.4.2/Kerio Connect Client
-X-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
- (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
-Message-ID: <2214131171-5952@sm12.nexus4web.com>
-From: account@greenpill.in
-X-Priority: 3
-Importance: Normal
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7693710E046;
+ Mon, 13 Jan 2025 10:17:59 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1B3685C4CCA;
+ Mon, 13 Jan 2025 10:17:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3759C4CED6;
+ Mon, 13 Jan 2025 10:17:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1736763478;
+ bh=mReMEICzRw+0m0DEjJ0DZMWlcFfpkmbkNSz/MeRD4tg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=F9aqWR9f0isUe3iRtEp64bcoEleiEqmcdZv6tHWCoF6K/SBhiPLYOKuDX2TYuTBny
+ KRkIPRKbGmP8BxgaZDtthR6sp3YrNmHDns0s8mjD/t8/E4WQo1r7H9gvDu7poBLSS3
+ tqIAEUbSXIhHgepe/KRG+ZFjPQ5u9tXusb+T/kA67f7I/oyEWqeAQL2jY6geDojpFn
+ XwY3kXYURTejANmSfzJhD9VVXyKiZWZ0B8eGyoSqi4FZ4bNSy8GTBHTxV7Gw5D0zvl
+ QgwZ9IeKtku92j4eHGJOTx2hSHBBiK0vxvdoOFj1yqVx9vTVKPFaETR8fryHqscJjW
+ 1sJJtkQD1ZQ/g==
+Date: Mon, 13 Jan 2025 12:17:49 +0200
+From: Zhi Wang <zhiwang@kernel.org>
+To: Zhenyu Wang <zhenyuw.linux@gmail.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, zhiyuan.lv@intel.com,
+ james.y.wu@intel.com, kevin.tian@intel.com, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, "Dr. David Alan Gilbert" <linux@treblig.org>,
+ zhi.wang.linux@gmail.com, joonas.lahtinen@linux.intel.com,
+ tursulin@ursulin.net, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, airlied@gmail.com, simona@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Lucas De
+ Marchi <lucas.demarchi@intel.com>, Thomas =?ISO-8859-1?Q?Hellstr=F6m?=
+ <thomas.hellstrom@linux.intel.com>
+Subject: Re: GVT-g status (was: Re: [PATCH 0/3] drm/i915/gvt: Deadcoding)
+Message-ID: <20250113121749.00006dec.zhiwang@kernel.org>
+In-Reply-To: <Z4IA6XtXX-e0Du-6@dell-wzy>
+References: <20241222002043.173080-1-linux@treblig.org>
+ <Z2dcZfW8eNMnxT0v@gallifrey> <Z3uGjO36tfhQsnfp@dell-wzy>
+ <Z4A7QDtTrU6w2Yhv@intel.com> <877c73j64o.fsf@intel.com>
+ <Z4IA6XtXX-e0Du-6@dell-wzy>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; boundary="=-47BSNL3m0Trz7XE62rd3"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,62 +66,85 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jooyal005@zohomail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=-47BSNL3m0Trz7XE62rd3
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+On Sat, 11 Jan 2025 14:26:01 +0900
+Zhenyu Wang <zhenyuw.linux@gmail.com> wrote:
 
+> On Fri, Jan 10, 2025 at 12:49:27PM +0200, Jani Nikula wrote:
+> > On Thu, 09 Jan 2025, Rodrigo Vivi <rodrigo.vivi@intel.com> wrote:
+> > > On Mon, Jan 06, 2025 at 04:30:20PM +0900, Zhenyu Wang wrote:
+> > >> On Sun, Dec 22, 2024 at 12:25:09AM +0000, Dr. David Alan Gilbert
+> > >> wrote:
+> > >> > Note: zhenyuw@linux.intel.com's address bounces:
+> > >> > 
+> > >> 
+> > >> yeah, I've left Intel so can't use that box any more, looks
+> > >> Rodrigo hasn't queue up my address change patch yet. Rodrigo?
+> > >
+> > > pushed to drm-intel-next now, although I was assuming this to come
+> > > on a gvt pull request...
+> > >
+> > > what about this patch here? coming in a PR or should I take this
+> > > directly at drm-intel-next as well?
+> > 
+> > AFAICT the last gvt-next pull request was more than two years ago
+> > and gvt-fixes slightly less than one year ago.
+> > 
+> > There's a single cleanup commit in gvt-next applied two years ago
+> > for which there hasn't been a pull request.
+> > 
+> > The GVT github page [1] says, "This repository has been archived by
+> > the owner on Oct 3, 2024. It is now read-only." The intel-gvt-dev
+> > mailing list [2] appears to be mostly spam.
+> > 
+> > Seems to me something like this would be appropriate:
+> > 
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 1c3eab5d2b1a..161206fdaf05 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -11557,11 +11557,10 @@ F:	drivers/gpio/gpio-tangier.h
+> >  INTEL GVT-g DRIVERS (Intel GPU Virtualization)
+> >  M:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+> >  M:	Zhi Wang <zhi.wang.linux@gmail.com>
+> > -L:	intel-gvt-dev@lists.freedesktop.org
+> >  L:	intel-gfx@lists.freedesktop.org
+> > -S:	Supported
+> > +S:	Maintained
+> >  W:	https://github.com/intel/gvt-linux/wiki
+> > -T:	git https://github.com/intel/gvt-linux.git
+> > +T:	git https://gitlab.freedesktop.org/drm/i915/kernel.git
+> >  F:	drivers/gpu/drm/i915/gvt/
+> >
+> 
+> Looks fine with me.
+> 
+> Acked-by: Zhenyu Wang <zhenyuw.linux@gmail.com>
+> 
+> >  INTEL HID EVENT DRIVER
+> > 
+> > But I don't think it would be far from the truth to have "S: Odd
+> > Fixes" either. And the extreme would be to just remove the whole
+> > maintainers entry and have it fall back to the i915 entry.
+> > 
+> > Thoughts?
+> >
+> 
+> When I left Intel, I have raised similar question to manager or
+> related people to see their ideas on how to keep GVT-g maintenance
+> work for upstream, but I didn't get real answers before my last day
+> at Intel...So still cc some intel gvt related people to double
+> confirm.
+> 
+> For me, it's fine to remove the maintainer entry maybe only keep as
+> reviewer?
+> 
+> Thanks to raise up this issue, Jani! 
+> 
 
-Greetings ;
+Works for me as well. I am mostly doing this as a hobby on my Skylake
+desktop in my spare time.
 
-
-Hope my email finds you well. We are brokers affiliated to reliable investo=
-rs from the Europe / Gulf region and Asia who are interested and willing to=
- fund your company in any current project you are undergoing, Our investors=
- are privately seeking means of expanding their investment portfolio.
-
-
-To this end, we seek to know the possibility of going into partnership disc=
-ussion with your company within your present scope of business.
-
-
-Should you be interested in engaging us for a more detailed discussion on t=
-he proposal, we would be happy to do so in whatever medium you find much mo=
-re appropriate for this engagement.
-
-
-As soon as I receive your response direct to this email address{=C2=A0 jooy=
-al005@zohomail.com=C2=A0 =C2=A0}I will direct you to the investor's officia=
-l email contact information to proceed.
-
-
-Yours sincerely,
-
-
-Mohammad Mansoor=
-
---=-47BSNL3m0Trz7XE62rd3
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html><head></head><body><div>Greetings ;</div><div><br></div><div>Hope my =
-email finds you well. We are brokers affiliated to reliable investors from =
-the Europe / Gulf region and Asia who are interested and willing to fund yo=
-ur company in any current project you are undergoing, Our investors are pri=
-vately seeking means of expanding their investment portfolio.</div><div><br=
-></div><div>To this end, we seek to know the possibility of going into part=
-nership discussion with your company within your present scope of business.=
-</div><div><br></div><div>Should you be interested in engaging us for a mor=
-e detailed discussion on the proposal, we would be happy to do so in whatev=
-er medium you find much more appropriate for this engagement.</div><div><br=
-></div><div>As soon as I receive your response direct to this email address=
-{&nbsp; jooyal005@zohomail.com&nbsp; &nbsp;}I will direct you to the invest=
-or's official email contact information to proceed.</div><div><br></div><di=
-v>Yours sincerely,</div><div><br></div><div>Mohammad Mansoor</div></body></=
-html>=
-
---=-47BSNL3m0Trz7XE62rd3--
-
+Z.
