@@ -2,81 +2,66 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12D9DA0A447
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Jan 2025 15:47:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DD08A0A969
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Jan 2025 14:06:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E405D10E206;
-	Sat, 11 Jan 2025 14:47:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75D3E10E309;
+	Sun, 12 Jan 2025 13:06:08 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="FLwjobUA";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="lGnoiPf7";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-f50.google.com (mail-ot1-f50.google.com
- [209.85.210.50])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5FF0010E206;
- Sat, 11 Jan 2025 14:47:39 +0000 (UTC)
-Received: by mail-ot1-f50.google.com with SMTP id
- 46e09a7af769-71e3005916aso588157a34.2; 
- Sat, 11 Jan 2025 06:47:39 -0800 (PST)
+Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
+ [IPv6:2607:f8b0:4864:20::1033])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A7D2010E310
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 12 Jan 2025 13:06:07 +0000 (UTC)
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-2ee709715d9so4744131a91.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 12 Jan 2025 05:06:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736606798; x=1737211598; darn=lists.freedesktop.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jp5U5y+e8zwr6ox9F7HQoNaTrbe9Mw1FMXpkxXDixdg=;
- b=FLwjobUAGOlBpF8zUB/01gV6ibMd2mk2owl+BIjc1ILVqnnYiGroewsVA0rgmDKmiY
- zURRttHoCnBf6WW3CrLuYjsgCpnaHSiY6n33pFpscGkbUyzm6R6vGuDrcY4RjF7Ly2Lz
- QV8/vHiRt4Eaxhi0pYiUTWmNdRZEDxmYG2gMWfrsFyTYz0huAFe2cNA+OGQvoKEWWbSk
- dov58f3U8ZO4YItEp2+vjwUjv57VngsfaGPmLrNorHTaVu/QritQkne3fOUlZqql9raO
- WhDwNMS38xxHUTO9whPQHzTxbZXtGIufQiHXBiMh8gBIwUVDAEhkc+LbLh5x3YxnQsq4
- AIOQ==
+ d=gmail.com; s=20230601; t=1736687167; x=1737291967; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XdvdjD4hafuIDoighnw52A3LQrmtPZqVcXYtP+4TWJU=;
+ b=lGnoiPf7O5Eu4X0JYTU+yPGXkE8EBnj+zckQgdxFEPfOV4elQPmJ/IOv4I8e5N5P4p
+ jdYsHeiunegGbWvSeTx7U/hbFo5remGzuqIT+7thYphtZ9PDIbmYQ9ShUSrpsh4f4o+j
+ P6S9g3mo4JMF3CdSKzjlTP6UQW4SQ1R0lfVAA2LlAlOTE+WI6+tH9fltm6FEaqCfLIfn
+ GqGLhSLT4RXYQ9maPw2w56LkQLtvejBe1NpCX3mcHGkOzao1d9CGgMct5qk3KccGM972
+ s0HllPIU20O7r+JFqil8gKyq1VR8zoZwUg8CbhdJ2Jp2+srE+VwPLgjMiZlBVwQvTPCL
+ aqhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736606798; x=1737211598;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jp5U5y+e8zwr6ox9F7HQoNaTrbe9Mw1FMXpkxXDixdg=;
- b=Yiw0T3iEyWJBOoGxJQB5iXYoZNEkftrLRB+EMb8knfumzD98PCtRxcqaslO11z80ij
- mphPRZ/R1gtYO6GaDe8vFO3XpMRXpz4z9JYokU7ND9+g3bl4lBXvAwxmxEDTj/TpNJwl
- ztZMBOagCrh76+MIXT/1fbYgN/7MyRGiKUdcxknFd6MdyUyXXhwbiBCJiBexvZzls4WU
- sw0eRhQHY+EZ3jifmBJ0GUztUhsDvUPREHZvIyb3BJs+FVS0QyuBcsBBs5Usf1dguslW
- t332rRMld6pXmNngszYAbRhAPCSosELZWipeVGVlY0zKKBwwtb/QI4Kk6oAPK6WkBrO2
- 7xwg==
+ d=1e100.net; s=20230601; t=1736687167; x=1737291967;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=XdvdjD4hafuIDoighnw52A3LQrmtPZqVcXYtP+4TWJU=;
+ b=TZu4FFNZegoVyLHtgjec8wvMAHITUd5Ar8Ll4MIY3FuZxM6iqPTRVRtHCwts8SrJE6
+ BvElCp3ayfyTJwEffFRppdvwMR9p1644qc6y7UX+0b+tKvdnjKAcRzaUYxC7HCkF1/MF
+ e/Pc4e0k5dcsIHZCIZsZ/vVvnOCHrKIH1YGZzIYcnueovD/lM+o0EVJ6Uo3ikzYVUhbA
+ hSKXzeti10tyluKKNJ5Rt/2HJ5hhMDxgrbBF0SA7dD24xAEdQMYYm3xlI+H8lbFwCZf6
+ Rb2WY9gN+OoOEKjoAlCIityl2H3ePs6szSzGpaeqWDeQteYAlLqLrfvPMXEN5sVIzlw8
+ 1M4Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUljfhE4B6ivn6Koei+AWECGUqOjo1Il9lvWlGLnQDd2HzPw8omy11nvMcOgMjIfr7uuKjMAymiTh8=@lists.freedesktop.org,
- AJvYcCUtI/iXnKz4xC5V2gvLJ65w1ezzJuQKgCvLTfAZwRP+6zO/pKOg5PG3GLkU3K94l5F4MnlDbKIm8Z+vL41UEg==@lists.freedesktop.org,
- AJvYcCVLT+C1Ln/cUmWM9YZqcqKreAMzJoej0FNVlJvbGxYBtpPSdPEOgeuocXo/qaaEiLQE36A+zLVjFZZg@lists.freedesktop.org
-X-Gm-Message-State: AOJu0Yz79pELeMFt7WalfRP2isHAIJQhtkHnAUMATNhwP1F/l8HmRIcr
- Da785yp8fmjmP3jp4YuRF67e1GdnvDXcqaPh2DgDKq2/fitWP7Pq5Of+r189SS86N7TTZLE81H2
- TN0WtQX7Gx6TJqzISdUynjySz49Q=
-X-Gm-Gg: ASbGnctwLWbKwEbrXG797PVgVZXAuznbwW757bUcuLqQmjmwTphpWM7/tyOokcLLOzQ
- 34vXEkNmx/fZvokC/+TdmOfBKXSPajEVl/ylY
-X-Google-Smtp-Source: AGHT+IGzeuLLaubbwhpUioR0zRZXONKE5UMQyXeBY955LXeXLQqVkmoMX572/QfoLvEnA7t10ibLg8CyFn78Yk7e7cI=
-X-Received: by 2002:a05:6871:2084:b0:29e:4578:5f74 with SMTP id
- 586e51a60fabf-2aa0665bd45mr8307720fac.4.1736606798434; Sat, 11 Jan 2025
- 06:46:38 -0800 (PST)
+ AJvYcCVI31f1UOKCJQVks+FI8Y+uEdGzsh8ERh/wZ1OlXwxz6xtGDiXT15BSHgmcJ4YqE77+hZ0CnVgu4R2cnAu8@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzFRj1BC/5QzfYJzHPDvvqldgA+JAArcZiMqMh3CAs7xcZbGa3s
+ ZY0GmVeA9AcZX3ga6P2/TYNrZAwSghewFQ+YSzPxqGtoUeHe1lQPCElCzgWpglbVwnke6DEEIbC
+ aIUhjzTLiDCKQFgoe7BVFb8p0AVM=
+X-Gm-Gg: ASbGnctbLbA6kK0wtOx1c+15Kz1j04/ozVo2m+5lfyT2tjx2cu7AMo8TrMC2oQ4XjKg
+ hC5LLhEj87jnNjqbVUq4triIs9i/lSHPO660OcA==
+X-Google-Smtp-Source: AGHT+IH+gyEERfbt5YfKSfbcynxajYKq2J7b7Z/FQ4PJCYfxJyT8zqVVW/00akTEBwAMgftRLQX91Y3uyz9tqF22NKQ=
+X-Received: by 2002:a17:90b:2c84:b0:2ee:f677:aa14 with SMTP id
+ 98e67ed59e1d1-2f548eadfe8mr24111663a91.13.1736687167053; Sun, 12 Jan 2025
+ 05:06:07 -0800 (PST)
 MIME-Version: 1.0
-References: <20241222002043.173080-1-linux@treblig.org>
- <Z2dcZfW8eNMnxT0v@gallifrey>
- <Z3uGjO36tfhQsnfp@dell-wzy> <Z4A7QDtTrU6w2Yhv@intel.com>
- <877c73j64o.fsf@intel.com> <Z4IA6XtXX-e0Du-6@dell-wzy>
-In-Reply-To: <Z4IA6XtXX-e0Du-6@dell-wzy>
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-Date: Sat, 11 Jan 2025 16:46:26 +0200
-X-Gm-Features: AbW1kvYzh9lWYSrsuWnwL3vob-gj7oObd820ZhS3KLmgvqkKvtDuNZJ8vfdV6AI
-Message-ID: <CAN=xO47iZmQv=6AtrK4ouY7vyU8YV0RRR2VD3HLP2cCTxLTJGA@mail.gmail.com>
-Subject: Re: GVT-g status (was: Re: [PATCH 0/3] drm/i915/gvt: Deadcoding)
-To: Zhenyu Wang <zhenyuw.linux@gmail.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, zhiyuan.lv@intel.com,
- james.y.wu@intel.com, 
- kevin.tian@intel.com, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- "Dr. David Alan Gilbert" <linux@treblig.org>, joonas.lahtinen@linux.intel.com,
- tursulin@ursulin.net, 
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, 
- airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, Lucas De Marchi <lucas.demarchi@intel.com>, 
- =?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>
-Content-Type: multipart/alternative; boundary="00000000000055d934062b6f47d7"
+From: "Madam, Everett Lambert" <ruddirajj@gmail.com>
+Date: Sun, 12 Jan 2025 23:21:58 -0800
+X-Gm-Features: AbW1kvZiKBFR3VaHuhHZDu30qqyDhXBc5VWBNLSjMXM0zTTCajdnDAGfhXi3HZo
+Message-ID: <CAFRtJn+iznwGs7=MAddEPo1MPbnWg=mxo2=XZ6CJ9bNeyc5wBA@mail.gmail.com>
+Subject: My Dear Happy New Year,
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000adac57062b81fd5a"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,203 +74,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: ruddirajj@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000055d934062b6f47d7
+--000000000000adac57062b81fd5a
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-I am fine with that as well.
+I am Madam, Everett Lambert, from the United Kingdom.
 
-Zhenyu Wang <zhenyuw.linux@gmail.com> =E4=BA=8E 2025=E5=B9=B41=E6=9C=8811=
-=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=8D=887:26=E5=86=99=E9=81=93=EF=BC=
-=9A
+I invite you to inherit my late client fund valued at the sum of
+$25,500,000.00 USD Twenty Five Million five hundred thousand dollars
+deposited here in one of the prime Banks in the United Kingdom. He was a
+citizen of your country, dealer with  Oil & Gas here in the United Kingdom.
 
-> On Fri, Jan 10, 2025 at 12:49:27PM +0200, Jani Nikula wrote:
-> > On Thu, 09 Jan 2025, Rodrigo Vivi <rodrigo.vivi@intel.com> wrote:
-> > > On Mon, Jan 06, 2025 at 04:30:20PM +0900, Zhenyu Wang wrote:
-> > >> On Sun, Dec 22, 2024 at 12:25:09AM +0000, Dr. David Alan Gilbert
-> wrote:
-> > >> > Note: zhenyuw@linux.intel.com's address bounces:
-> > >> >
-> > >>
-> > >> yeah, I've left Intel so can't use that box any more, looks Rodrigo
-> hasn't
-> > >> queue up my address change patch yet. Rodrigo?
-> > >
-> > > pushed to drm-intel-next now, although I was assuming this to come
-> > > on a gvt pull request...
-> > >
-> > > what about this patch here? coming in a PR or should I take this
-> > > directly at drm-intel-next as well?
-> >
-> > AFAICT the last gvt-next pull request was more than two years ago and
-> > gvt-fixes slightly less than one year ago.
-> >
-> > There's a single cleanup commit in gvt-next applied two years ago for
-> > which there hasn't been a pull request.
-> >
-> > The GVT github page [1] says, "This repository has been archived by the
-> > owner on Oct 3, 2024. It is now read-only." The intel-gvt-dev mailing
-> > list [2] appears to be mostly spam.
-> >
-> > Seems to me something like this would be appropriate:
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 1c3eab5d2b1a..161206fdaf05 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -11557,11 +11557,10 @@ F:  drivers/gpio/gpio-tangier.h
-> >  INTEL GVT-g DRIVERS (Intel GPU Virtualization)
-> >  M:   Zhenyu Wang <zhenyuw.linux@gmail.com>
-> >  M:   Zhi Wang <zhi.wang.linux@gmail.com>
-> > -L:   intel-gvt-dev@lists.freedesktop.org
-> >  L:   intel-gfx@lists.freedesktop.org
-> > -S:   Supported
-> > +S:   Maintained
-> >  W:   https://github.com/intel/gvt-linux/wiki
-> > -T:   git https://github.com/intel/gvt-linux.git
-> > +T:   git https://gitlab.freedesktop.org/drm/i915/kernel.git
-> >  F:   drivers/gpu/drm/i915/gvt/
-> >
->
-> Looks fine with me.
->
-> Acked-by: Zhenyu Wang <zhenyuw.linux@gmail.com>
->
-> >  INTEL HID EVENT DRIVER
-> >
-> > But I don't think it would be far from the truth to have "S: Odd Fixes"
-> > either. And the extreme would be to just remove the whole maintainers
-> > entry and have it fall back to the i915 entry.
-> >
-> > Thoughts?
-> >
->
-> When I left Intel, I have raised similar question to manager or related
-> people to see their ideas on how to keep GVT-g maintenance work for
-> upstream,
-> but I didn't get real answers before my last day at Intel...So still cc
-> some
-> intel gvt related people to double confirm.
->
-> For me, it's fine to remove the maintainer entry maybe only keep as
-> reviewer?
->
-> Thanks to raise up this issue, Jani!
->
+He is married, had a kid and all died in tragic COVID-19 dated April 26th,
+2020.Having died without a WILL Testament, I want to present you to the
+bank as the next of kin to claim the fund as the beneficiary while I stand
+as your representative to take all legal steps to ensure the fund is
+transferred to your account and we will share the funds 60% to you and 40%
+to me.
+For further details, I am waiting for your prompt response with the below
+required information
 
---00000000000055d934062b6f47d7
+
+Your Full Name:
+Your Residence Home Address:
+Your Occupation:
+Your Date of Birth:
+Your Mobile Number:
+Your Country:
+Your whats-app
+
+Best Regards
+Madam, Everett Lambert,
+
+--000000000000adac57062b81fd5a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<p dir=3D"ltr">I am fine with that as well. </p>
-<br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=
-=3D"gmail_attr">Zhenyu Wang &lt;<a href=3D"mailto:zhenyuw.linux@gmail.com">=
-zhenyuw.linux@gmail.com</a>&gt; =E4=BA=8E 2025=E5=B9=B41=E6=9C=8811=E6=97=
-=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=8D=887:26=E5=86=99=E9=81=93=EF=BC=9A<br>=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
-eft:1px #ccc solid;padding-left:1ex">On Fri, Jan 10, 2025 at 12:49:27PM +02=
-00, Jani Nikula wrote:<br>
-&gt; On Thu, 09 Jan 2025, Rodrigo Vivi &lt;<a href=3D"mailto:rodrigo.vivi@i=
-ntel.com" target=3D"_blank" rel=3D"noreferrer">rodrigo.vivi@intel.com</a>&g=
-t; wrote:<br>
-&gt; &gt; On Mon, Jan 06, 2025 at 04:30:20PM +0900, Zhenyu Wang wrote:<br>
-&gt; &gt;&gt; On Sun, Dec 22, 2024 at 12:25:09AM +0000, Dr. David Alan Gilb=
-ert wrote:<br>
-&gt; &gt;&gt; &gt; Note: <a href=3D"mailto:zhenyuw@linux.intel.com" target=
-=3D"_blank" rel=3D"noreferrer">zhenyuw@linux.intel.com</a>&#39;s address bo=
-unces:<br>
-&gt; &gt;&gt; &gt; <br>
-&gt; &gt;&gt; <br>
-&gt; &gt;&gt; yeah, I&#39;ve left Intel so can&#39;t use that box any more,=
- looks Rodrigo hasn&#39;t<br>
-&gt; &gt;&gt; queue up my address change patch yet. Rodrigo?<br>
-&gt; &gt;<br>
-&gt; &gt; pushed to drm-intel-next now, although I was assuming this to com=
-e<br>
-&gt; &gt; on a gvt pull request...<br>
-&gt; &gt;<br>
-&gt; &gt; what about this patch here? coming in a PR or should I take this<=
-br>
-&gt; &gt; directly at drm-intel-next as well?<br>
-&gt; <br>
-&gt; AFAICT the last gvt-next pull request was more than two years ago and<=
-br>
-&gt; gvt-fixes slightly less than one year ago.<br>
-&gt; <br>
-&gt; There&#39;s a single cleanup commit in gvt-next applied two years ago =
-for<br>
-&gt; which there hasn&#39;t been a pull request.<br>
-&gt; <br>
-&gt; The GVT github page [1] says, &quot;This repository has been archived =
-by the<br>
-&gt; owner on Oct 3, 2024. It is now read-only.&quot; The intel-gvt-dev mai=
-ling<br>
-&gt; list [2] appears to be mostly spam.<br>
-&gt; <br>
-&gt; Seems to me something like this would be appropriate:<br>
-&gt; <br>
-&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
-&gt; index 1c3eab5d2b1a..161206fdaf05 100644<br>
-&gt; --- a/MAINTAINERS<br>
-&gt; +++ b/MAINTAINERS<br>
-&gt; @@ -11557,11 +11557,10 @@ F:=C2=A0 drivers/gpio/gpio-tangier.h<br>
-&gt;=C2=A0 INTEL GVT-g DRIVERS (Intel GPU Virtualization)<br>
-&gt;=C2=A0 M:=C2=A0 =C2=A0Zhenyu Wang &lt;<a href=3D"mailto:zhenyuw.linux@g=
-mail.com" target=3D"_blank" rel=3D"noreferrer">zhenyuw.linux@gmail.com</a>&=
-gt;<br>
-&gt;=C2=A0 M:=C2=A0 =C2=A0Zhi Wang &lt;<a href=3D"mailto:zhi.wang.linux@gma=
-il.com" target=3D"_blank" rel=3D"noreferrer">zhi.wang.linux@gmail.com</a>&g=
-t;<br>
-&gt; -L:=C2=A0 =C2=A0<a href=3D"mailto:intel-gvt-dev@lists.freedesktop.org"=
- target=3D"_blank" rel=3D"noreferrer">intel-gvt-dev@lists.freedesktop.org</=
-a><br>
-&gt;=C2=A0 L:=C2=A0 =C2=A0<a href=3D"mailto:intel-gfx@lists.freedesktop.org=
-" target=3D"_blank" rel=3D"noreferrer">intel-gfx@lists.freedesktop.org</a><=
-br>
-&gt; -S:=C2=A0 =C2=A0Supported<br>
-&gt; +S:=C2=A0 =C2=A0Maintained<br>
-&gt;=C2=A0 W:=C2=A0 =C2=A0<a href=3D"https://github.com/intel/gvt-linux/wik=
-i" rel=3D"noreferrer noreferrer" target=3D"_blank">https://github.com/intel=
-/gvt-linux/wiki</a><br>
-&gt; -T:=C2=A0 =C2=A0git <a href=3D"https://github.com/intel/gvt-linux.git"=
- rel=3D"noreferrer noreferrer" target=3D"_blank">https://github.com/intel/g=
-vt-linux.git</a><br>
-&gt; +T:=C2=A0 =C2=A0git <a href=3D"https://gitlab.freedesktop.org/drm/i915=
-/kernel.git" rel=3D"noreferrer noreferrer" target=3D"_blank">https://gitlab=
-.freedesktop.org/drm/i915/kernel.git</a><br>
-&gt;=C2=A0 F:=C2=A0 =C2=A0drivers/gpu/drm/i915/gvt/<br>
-&gt;<br>
-<br>
-Looks fine with me.<br>
-<br>
-Acked-by: Zhenyu Wang &lt;<a href=3D"mailto:zhenyuw.linux@gmail.com" target=
-=3D"_blank" rel=3D"noreferrer">zhenyuw.linux@gmail.com</a>&gt;<br>
-<br>
-&gt;=C2=A0 INTEL HID EVENT DRIVER<br>
-&gt; <br>
-&gt; But I don&#39;t think it would be far from the truth to have &quot;S: =
-Odd Fixes&quot;<br>
-&gt; either. And the extreme would be to just remove the whole maintainers<=
-br>
-&gt; entry and have it fall back to the i915 entry.<br>
-&gt; <br>
-&gt; Thoughts?<br>
-&gt;<br>
-<br>
-When I left Intel, I have raised similar question to manager or related<br>
-people to see their ideas on how to keep GVT-g maintenance work for upstrea=
-m,<br>
-but I didn&#39;t get real answers before my last day at Intel...So still cc=
- some<br>
-intel gvt related people to double confirm.<br>
-<br>
-For me, it&#39;s fine to remove the maintainer entry maybe only keep as rev=
-iewer?<br>
-<br>
-Thanks to raise up this issue, Jani! <br>
-</blockquote></div>
+<div dir=3D"ltr"><div><br clear=3D"all"></div><div><div dir=3D"ltr" class=
+=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">I =
+am Madam, Everett Lambert, from the United Kingdom.<br><br>I invite you to =
+inherit my late client fund valued at the sum of $25,500,000.00 USD Twenty =
+Five Million five hundred thousand dollars deposited here in one of the pri=
+me Banks in the United Kingdom. He was a citizen of your country, dealer wi=
+th=C2=A0 Oil &amp; Gas here in the United Kingdom.<br><br>He is married, ha=
+d a kid and all died in tragic COVID-19 dated April 26th, 2020.Having died =
+without a WILL Testament, I want to present you to the bank as the next of =
+kin to claim the fund as the beneficiary while I stand as your representati=
+ve to take all legal steps to ensure the fund is transferred to your accoun=
+t and we will share the funds 60% to you and 40% to me.<br>For further deta=
+ils, I am waiting for your prompt response with the below required informat=
+ion<br><br><br>Your Full Name:<br>Your Residence Home Address:<br>Your Occu=
+pation:<br>Your Date of Birth:<br>Your Mobile Number:<br>Your Country:<br>Y=
+our whats-app<br><br>Best Regards<br>Madam, Everett Lambert,</div></div></d=
+iv></div>
 
---00000000000055d934062b6f47d7--
+--000000000000adac57062b81fd5a--
