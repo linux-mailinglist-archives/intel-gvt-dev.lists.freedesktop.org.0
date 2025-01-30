@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BDC9A219CB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jan 2025 10:22:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86D20A22B3D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Jan 2025 11:06:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BB5E510E0CA;
-	Wed, 29 Jan 2025 09:22:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 68C5410E921;
+	Thu, 30 Jan 2025 10:06:06 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=astutegenius.pl header.i=@astutegenius.pl header.b="W9KBipiX";
+	dkim=pass (2048-bit key; secure) header.d=taskinium.pl header.i=@taskinium.pl header.b="lGPOzGOH";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 422 seconds by postgrey-1.36 at gabe;
- Wed, 29 Jan 2025 09:22:40 UTC
-Received: from mail.astutegenius.pl (mail.astutegenius.pl [51.195.47.38])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 083A210E0CA
+X-Greylist: delayed 2298 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Jan 2025 10:06:04 UTC
+Received: from mail.taskinium.pl (unknown [217.61.0.75])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8DE7610E921
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Jan 2025 09:22:40 +0000 (UTC)
-Received: by mail.astutegenius.pl (Postfix, from userid 1002)
- id 06DF523C30; Wed, 29 Jan 2025 10:15:28 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=astutegenius.pl;
- s=mail; t=1738142137;
- bh=ZcVTwpfT+rvMIZf+a6thkYIKhQrt2Pg2e0oc9tk5s3U=;
+ Thu, 30 Jan 2025 10:06:04 +0000 (UTC)
+Received: by mail.taskinium.pl (Postfix, from userid 1002)
+ id C7D93861EB; Thu, 30 Jan 2025 10:07:08 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=taskinium.pl; s=mail;
+ t=1738228092; bh=+oYP7ZwnEeonL1pLtE73TJ85xaesKIG0Ys99vCW5hiU=;
  h=Date:From:To:Subject:From;
- b=W9KBipiXcytOqWkNEy731OpR0MReCiClVWOG6OZXPbzqX6gqmj7Yb03GTmRuGI2PU
- aRWe0yJdXDQ/8cZx70x0OhrUpvDWB/SO6YG/4Z78SRd1zLjrm2iP2Js+CJCjUMgqDC
- 97JFjj9FH6LdZVSZ31sTspodDYfCrC8Of8dzmh14QjGEsS34UiZCnOTvX20rkqqlMY
- sfKjBXQisNJnSE4ne80yBOyllnXtLjJd81AIARzTksXyfJGOkUSmndaq+qU20cwRBy
- XLz5up6JcdXYCASf1UWE/mBGTqQO497SnaNy0/NX168J6Dwwv/hbCJGp1WCTAW5wTQ
- 4/YDbFnxmIdyg==
-Received: by mail.astutegenius.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Jan 2025 09:15:22 GMT
-Message-ID: <20250129084500-0.1.fj.4w810.0.kf7ejddirc@astutegenius.pl>
-Date: Wed, 29 Jan 2025 09:15:22 GMT
-From: "Ewelina Koprowska" <ewelina.koprowska@astutegenius.pl>
+ b=lGPOzGOHSt9E3EdntB3EKO+PR2lUuClpU/xLzMO4Xt5sumPvnZaEKTa/xcxRnkAGA
+ Y8amb4cAGU6TvoqMknorcrl8vLvMCeByKWiT8cot2ut9fq2p7dodVnEJ92MRhPsGi7
+ GROTL8er+cgOnBl9oGB6UarODfmXN0G6r3o4Z72/lek2tG4v6GjqtnD4lKXqzxYr0h
+ 397Rxb7ubCSiYFHH3EdxRlzarBKQWTlv1HSpnXl0ZOoo+goonPUEClF+zJ+cyx1X02
+ wJ1nLBvHK49tyGuaZA/RxSLStjOkAy6FzAPahoqq/W9ZByQjF31weFpW85bLS8cC7J
+ 3JXz/msXdz5sA==
+Received: by mail.taskinium.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 30 Jan 2025 09:05:36 GMT
+Message-ID: <20250130084501-0.1.r.8etr.0.6mexqp495k@taskinium.pl>
+Date: Thu, 30 Jan 2025 09:05:36 GMT
+From: "Patryk Wysocki" <patryk.wysocki@taskinium.pl>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Ulga_na_sk=C5=82adki_ZUS?=
-X-Mailer: mail.astutegenius.pl
+Subject: Zapytanie ofertowe 
+X-Mailer: mail.taskinium.pl
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -56,25 +55,16 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,=20
+Dzie=C5=84 dobry,
 
-chcia=C5=82abym wskaza=C4=87 Pa=C5=84stwu mo=C5=BCliwo=C5=9B=C4=87 zarz=C4=
-=85dzania benefitami w =C5=82atwy spos=C3=B3b, poprzez nasze intuicyjne n=
-arz=C4=99dzie, jakim jest karta lunchowa.=20
+Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
+yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
 
-Nasze karty oferuj=C4=85 wygod=C4=99, oszcz=C4=99dno=C5=9Bci i zdrowe wyb=
-ory =C5=BCywieniowe. Dofinansowanie posi=C5=82k=C3=B3w jest korzystne dla=
- obu stron. Karty lunch to dla pracodawcy realne oszcz=C4=99dno=C5=9Bci w=
- postaci zwolnienia z ZUS do 450 z=C5=82 miesi=C4=99cznie na pracownika.=20
+Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
 
-Kart=C4=99 mo=C5=BCna do=C5=82adowa=C4=87 dowoln=C4=85 kwot=C4=85, a niew=
-ykorzystane =C5=9Brodki nie przepadaj=C4=85, lecz przechodz=C4=85 na kole=
-jny miesi=C4=85c.=20
-
-Mog=C4=99 przedstawi=C4=87 ofert=C4=99, kt=C3=B3ra pozwoli zoptymalizowa=C4=
-=87 koszty i zapewni=C4=87 pracownikom po=C5=BC=C4=85dany benefit?
+Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
+owych informacji?=20
 
 
 Pozdrawiam
-Ewelina Koprowska
-Senior HR Manager
+Patryk Wysocki
