@@ -2,31 +2,67 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10A2CA2E18B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Feb 2025 00:43:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC583A2E417
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Feb 2025 07:20:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E4F8310E029;
-	Sun,  9 Feb 2025 23:43:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D350A10E187;
+	Mon, 10 Feb 2025 06:20:37 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="SQ0dAM2g";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4483 seconds by postgrey-1.36 at gabe;
- Sun, 09 Feb 2025 23:43:51 UTC
-Received: from mail.onyx.cz (mail.onyx.cz [91.228.45.200])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C788E10E029;
- Sun,  9 Feb 2025 23:43:49 +0000 (UTC)
-Received: from mail.onyx.cz (localhost [IPv6:::1])
- by mail.onyx.cz (Postfix) with ESMTP id D8302320B28A;
- Sun,  9 Feb 2025 23:29:01 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.onyx.cz D8302320B28A
+Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com
+ [209.85.167.42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3781110E4A7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 10 Feb 2025 06:20:36 +0000 (UTC)
+Received: by mail-lf1-f42.google.com with SMTP id
+ 2adb3069b0e04-5450f0b0a4fso39192e87.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 09 Feb 2025 22:20:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1739168434; x=1739773234; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=+c+eis5n7mDWeqhGOhsNDOwrK8l7ePWxdiIU79gygsg=;
+ b=SQ0dAM2gA8gnGOFx5caMpDNjmrUGLoPpR6JS4uGmOvgFb/qjQmjgDEpAawZIS4qtJ8
+ xi2vgfWocyW4HBE5nn9+Omv8tS3kfKz13C+7z49H7i7AGbv+jxQaSxsu/L9sRl5AD2b4
+ KT7I6+KvJjF5CWSICAGpKhwkHikB25J5yzvNCg//hFSi67tTiXZ6UnrO3oq9vRHbO59u
+ 9VNpE7hLT7uaOzjyXiAK8y09Zk0WyNXBferN7RXXlvwzOakmf2t68nNlERmHBExpewkT
+ aSAY+ZTg+Ctin3rXiuUMXAdQ3r+uj6LtK/6aQ1o4kgBEhXAvISxfwbLCRGHL56oVzYNu
+ oQkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739168434; x=1739773234;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=+c+eis5n7mDWeqhGOhsNDOwrK8l7ePWxdiIU79gygsg=;
+ b=MdcH8nx1y2/iw4Lv40M+mkU+9yj5Sgw1E4VSRrL3M4DDK0ldOGoH+6+9IZWgY3YK1k
+ +5Xb4O2nlxH5yU7x8j2y09CUO2uPY9++z4dXh2nCi3FZOkhVmkF7gO04+8hIWP8Y1eGE
+ ogmGieQ6+1/fFTB7bSFS1sgv0uxHZX3RXnCsSpp3HYKqrLlQjjv1w1kqsMNN9Kuzcjtq
+ qyBu2J/MYjWReCcTyWiyD4nfXagepBcn/xe55KCdoBdsM3+fNP503umAtpX/YV6j03T3
+ k8Jqw55jN1IJW1Qe0xdw8LmqEpc+QZzH7MLvcky02Dn+99a0uUzV6WQmZKMHM7rJ3YtC
+ OYxA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVw4d3/LiOOpWdU9/wywmdPfNnTnr2W7JueTqmI48D0nq1YDHrc7P4rjfvhCa98i6iqNUfzCnhcMaFbCnVl@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YxL6QJir27ptk/u/aizDdLDZ1dAbMbIshQo+Y/Mvf4PN1oyPj8l
+ QK+qiuy/MKVjIJ6m7+bnkdIrQYKu842quie/7a7M1Jct9CO0O3mWH2j+Jjuc/kIZqabZ/CM9FPE
+ SzQYTmqcX4UPdCUO5pDxwjrSyEnA=
+X-Gm-Gg: ASbGncvjfb45U2zDk+HkQcLoh7iPdMZj8bSHOvH9sMfY6lwCkBvmnDEsJuMNuxydQKc
+ ry2CR4KMWcJVrwpv48kEy5KykBvil19JdDiqcn0l+3PSznQrtEvTmVyw2yNiA1n8mCztUym6vx6
+ 8=
+X-Google-Smtp-Source: AGHT+IHaG1jo9N/KwdReJL+fFMxeIgsa1YbAnYWc4PJnQ40Rz6VYfo5idE4xsHf0jjfcj3Ejqv6sDV5j17AYrIo8In8=
+X-Received: by 2002:a05:6512:3b25:b0:545:bb6:89ab with SMTP id
+ 2adb3069b0e04-5450bb68aa5mr353965e87.6.1739168434153; Sun, 09 Feb 2025
+ 22:20:34 -0800 (PST)
 MIME-Version: 1.0
-Date: Sun, 09 Feb 2025 23:29:01 +0100
-From: DHL international tracking <support@hero.onyx.cz>
+From: Changpeng Zhao <changpengzhao39@gmail.com>
+Date: Mon, 10 Feb 2025 08:20:15 +0200
+X-Gm-Features: AWEUYZke6RS4YQgD2tYLiK0tHfeY3J4BmfbADh1OcKBzXhPvwYAOODxbmBwf8S8
+Message-ID: <CAMLY9+OGZ9YJRzQn3SK43XGroP1LaQ7erXdabYaU+Y5oij9y_w@mail.gmail.com>
+Subject: 
 To: undisclosed-recipients:;
-Subject: NEW: You have parcel waiting
-Message-ID: <53b8a68178024c46a0c63e3e5fff7519@hero.onyx.cz>
-X-Sender: support@hero.onyx.cz
-Content-Type: multipart/alternative;
- boundary="=_fe0af7017bc4a6de07fea34a6fefcddc"
+Content-Type: multipart/alternative; boundary="000000000000b8f208062dc3b43c"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,220 +78,34 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_fe0af7017bc4a6de07fea34a6fefcddc
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+--000000000000b8f208062dc3b43c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-
-
-Opdaterede Vilkår og Fortrolighedspolitik
-
-DEAR CUSTOMER,
-
-You have (1) parcel waiting for you at the DHL office.
-
-Confirm your delivery details and pay for the shipping costs on the next 
-page to track and collect your parcel.
-
-Important: You must complete the online verification before it expires 
-here: https://dhl.com/verification [1]
-
-Please take immediate action to ensure your parcel is shipped on 
-10-02-2025.
-
-_Thank you for choosing our premium service_
-
-
-
-Links:
-------
-[1] https://cornerdesigns.co.za/D74859636985778965875896/
---=_fe0af7017bc4a6de07fea34a6fefcddc
+RG9icsO9IGRlbg0KDQpKYWtvIHR2xa9yY2UgQmluYW5jZSwgQ2hhbmdwZW5nIFpoYW8sIHNlIHbE
+m251amkgcG9kcG/FmWUgemHEjcOtbmFqw61jw61jaA0KcG9kbmlrYXRlbMWvIGEga29tdW5pdG7D
+rWNoIGluaWNpYXRpdi4gTcO9bSBwcmltw6FybsOtbSBjw61sZW0gamUgcG9kcG9yb3ZhdA0KaW5v
+dmFjZSBhIG9iY2hvZG7DrSBzbmFoeSwga3RlcsOpIG1hasOtIHBveml0aXZuw60gZG9wYWQgbmEg
+c3BvbGXEjW5vc3QuIFNkw61sZW7DrQ0KxI3DoXN0aSBtw6lobyBib2hhdHN0dsOtIHYga3J5cHRv
+bcSbbsSbIG1pIHDFmWluw6HFocOtIG5lc23DrXJub3UgcmFkb3N0IGEgdnlicmFsIGpzZW0NCnNp
+IHbDoXMgamFrbyBqZWRub2hvIHogcMWZw61qZW1jxa8sIGt0ZcWZw60gb2JkcsW+w60gMzAwIEJU
+QyBrYcW+ZMO9Lg0KDQpQb2t1ZCBwb3TFmWVidWpldGUgZGFsxaHDrSBpbmZvcm1hY2UsIG5ldsOh
+aGVqdGUgc2UgbmEgbsOhcyBvYnLDoXRpdC4NCg0Kc3JkZcSNbsOpIHBvemRyYXZ5LA0KQ2hhbmdw
+ZW5nIFpoYW8NCg==
+--000000000000b8f208062dc3b43c
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset=UTF-8
 
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
-eva,sans-serif'>
-<style type=3D"text/css">@font-face { font-family: Cereal; src: url(https:/=
-/a0.muscache.com/airbnb/static/airbnb-dls-web/build/fonts/Airbnb_Cereal-Boo=
-k-9a1c9cca9bb3d65fefa2aa487617805e.woff2) format("woff2"), url("https://a0.=
-muscache.com/airbnb/static/airbnb-dls-web/build/fonts/Airbnb_Cereal-Book-aa=
-38e86e3f98554f9f7053d7b713b4db.woff") format('woff'); font-weight: normal; =
-font-style: normal; font-display: swap; }
-@font-face { font-family: Cereal; src: url(https://a0.muscache.com/airbnb/s=
-tatic/airbnb-dls-web/build/fonts/Airbnb_Cereal-Medium-50fc004b3082375f12ff0=
-cfb67bf8e56.woff2) format("woff2"), url("https://a0.muscache.com/airbnb/sta=
-tic/airbnb-dls-web/build/fonts/Airbnb_Cereal-Medium-4bc8dafd2e0fd8914bf4d5e=
-dce9acd24.woff") format('woff'); font-weight: 500; font-style: normal; font=
--display: swap; }
-@font-face { font-family: Cereal; src: url(https://a0.muscache.com/airbnb/s=
-tatic/airbnb-dls-web/build/fonts/Airbnb_Cereal-Bold-bdfb98485e7836ba31b456f=
-65cded088.woff2) format("woff2"), url("https://a0.muscache.com/airbnb/stati=
-c/airbnb-dls-web/build/fonts/Airbnb_Cereal-Bold-a188841af78481a25b7bb2316a5=
-f5716.woff") format('woff'); font-weight: 700; font-style: normal; font-dis=
-play: swap; }
-</style>
-<div>&nbsp;</div>
-<style type=3D"text/css">@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1baweun7 { padding-bottom: 24px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1t26zkf7 { padding-top: 4px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1tcl2k0x { padding-top: 24px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1r1rx5rev { font-size: 14px !important; line-height: 20px !i=
-mportant; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1c1n1cc46 { overflow: visible !important; }
+<div dir=3D"ltr">Dobr=C3=BD den<br><br>Jako tv=C5=AFrce Binance, Changpeng =
+Zhao, se v=C4=9Bnuji podpo=C5=99e za=C4=8D=C3=ADnaj=C3=ADc=C3=ADch podnikat=
+el=C5=AF a komunitn=C3=ADch iniciativ. M=C3=BDm prim=C3=A1rn=C3=ADm c=C3=AD=
+lem je podporovat inovace a obchodn=C3=AD snahy, kter=C3=A9 maj=C3=AD pozit=
+ivn=C3=AD dopad na spole=C4=8Dnost. Sd=C3=ADlen=C3=AD =C4=8D=C3=A1sti m=C3=
+=A9ho bohatstv=C3=AD v kryptom=C4=9Bn=C4=9B mi p=C5=99in=C3=A1=C5=A1=C3=AD =
+nesm=C3=ADrnou radost a vybral jsem si v=C3=A1s jako jednoho z p=C5=99=C3=
+=ADjemc=C5=AF, kte=C5=99=C3=AD obdr=C5=BE=C3=AD 300 BTC ka=C5=BEd=C3=BD.<br=
+><br>Pokud pot=C5=99ebujete dal=C5=A1=C3=AD informace, nev=C3=A1hejte se na=
+ n=C3=A1s obr=C3=A1tit.<br><br>srde=C4=8Dn=C3=A9 pozdravy,<br>Changpeng Zha=
+o</div>
 
-  #editbody1 .v1dir.v1c1n1cc46 { border: none !important; border-radius: un=
-set !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1f4lz9tb { font-size: 16px !important; font-size: 1rem !impo=
-rtant; line-height: 24px !important; line-height: 1.5rem !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1fzib3qr { font-size: 18px !important; font-size: 1.125rem !=
-important; line-height: 24px !important; line-height: 1.5rem !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1f1bdudd9 { font-size: 32px !important; font-size: 2rem !imp=
-ortant; line-height: 36px !important; line-height: 2.25rem !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1tf21v15 { padding-top: 0 !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1t1m6arhj { padding-top: 12px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1t109xh4o { padding-top: 24px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1b6si5ex { padding-bottom: 0 !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1bf5nrx0 { padding-bottom: 0 !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1b6ool25 { padding-bottom: 4px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1b1mmw049 { padding-bottom: 12px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1bh5eciz { padding-bottom: 16px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1b1e5ld55 { padding-bottom: 24px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir-ltr.v1c1tim5eq { padding-left: 16px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir-ltr.v1c2ihj2e { padding-right: 16px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1cgz7fyc { padding-top: 32px !important; padding-botto=
-m: 12px !important; }
-}
-@media only screen and (max-width:560px) {
-  #editbody1 .v1dir.v1l1gviw91 { padding-bottom: 12px !important; }
-}
-</style>
-<div id=3D"v1body" style=3D"margin: 0 auto!important; padding: 0;">
-<div style=3D"color: transparent; display: none !important; font-size: 0px;=
- height: 0; opacity: 0; width: 0;">Opdaterede Vilk&aring;r og Fortroligheds=
-politik</div>
-<div style=3D"color: transparent; display: none !important; font-size: 0px;=
- height: 0; opacity: 0; width: 0;"><img style=3D"height: 1px !important; wi=
-dth: 1px !important; border-width: 0 !important; padding: 0 !important; mar=
-gin: 0 !important;" src=3D"http://email.airbnbmail.com/wf/open?upn=3Du001.L=
-rdb3HxYgT1-2BPHwW44sJuciGJSGDKAGgZ3jwcI5Inu0lFoc4-2FLRKjcs0vm818-2BcFq-2BBd=
--2FDAUaRWxT1duMw-2Bo8HstYPbVC0TGsMzT9EXlxMC6ZooqQyEanB-2FeSlSsAPkqcbWLB-2FI=
-9cQ-2B6dvlWv-2BErZYaFti9K2LRpocwweWmX9MpiKb5v-2BGLNX030OLOGMqioxqdM-2FqY1k-=
-2FRWNRxbL-2F-2B7I-2B-2BcAd8wOiW65bJ7MyMBexEeY321ci05jaDHev-2BuXAYFjDpxKFtA7=
-JRF6q1mzcMyHdnSmLZD-2BaHks-2Br-2FCqdH-2BW3bPt0moKZ7nk2bn7VHUfyB5n1eZzUK5KHS=
-ZJzpQc5EZPX9WvdtGorx-2FteZm6X6qslTddoIqI3I2vpDc7yWmSLW1KwKxhy3k2l89tNZo7ceX=
-JDZbYZ6WzuMkx0xBHBev6uVczJiB5naPg0iFuWm6CwPUrlXfOHAomPrhNUTdStgDP3oESa7v3r3=
-PUgrtn494iXiFbF-2FdtSI9FgDqzi-2BawnciUlhabnIX5bj4jaZ-2BF396PS838pRAB-2BBzTS=
-YBCIrzSYtk2DPLAgoYDlMoclGJfwBR3cyKc5w-2FugQX0BVCZ6iFjEdqGPuyg88217x2P6WnUZ6=
-K2LKDK7Mlfi-2FWoEQvtUJp-2F1mF-2F6q1U-2FQ4I2OaylmDJZlc4jYge4dnpEX6fJhhvTbIz2=
-kXSH21hLC8VH7tYhn" width=3D"1" height=3D"1" border=3D"0" /></div>
-<div id=3D"v1app">
-<div dir=3D"ltr">
-<div class=3D"v1c1n1cc46 v1dir v1dir-ltr" style=3D"color: #222222; font-fam=
-ily: Cereal,Helvetica Neue,Helvetica,sans-serif; position: relative; vertic=
-al-align: top; width: 100%; overflow: hidden; box-sizing: border-box; margi=
-n-left: auto; margin-right: auto; padding: 0; border: 1px solid #dddddd; bo=
-rder-radius: 12px; max-width: 640px;">
-<div>
-<div class=3D"v1c1tim5eq v1c2ihj2e v1tf21v15 v1b6si5ex v1dir v1dir-ltr v1ou=
-tlook-row-container" style=3D"background-color: #ffffffff; padding: 0 48px =
-0 48px;">
-<table class=3D"v1g6qqs1l v1dir v1dir-ltr" style=3D"border-collapse: collap=
-se; border-spacing: 0; width: 100%; font-size: inherit;" width=3D"100%" cel=
-lpadding=3D"0">
-<tbody>
-<tr class=3D"v1r19nf6iz v1dir v1dir-ltr" style=3D"margin: 0;">
-<td class=3D"v1c7ku1a8 v1dir v1dir-ltr" style=3D"overflow-wrap: break-word;=
-" width=3D"99%">
-<div class=3D"v1cgz7fyc v1dir v1dir-ltr" style=3D"padding-top: 48px; paddin=
-g-bottom: 24px; text-align: left;"><img style=3D"width: 210px; height: 60px=
-;" src=3D"https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Dhl-log=
-o.svg/2560px-Dhl-logo.svg.png" alt=3D"" /></div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div>
-<div class=3D"v1c1tim5eq v1c2ihj2e v1t109xh4o v1b1e5ld55 v1dir v1dir-ltr v1=
-outlook-row-container" style=3D"background-color: #ffffffff; padding: 32px =
-48px 32px 48px; text-align: left;">
-<h1 class=3D"v1b1hjflwn v1f1bdudd9 v1tf21v15 v1bh5eciz v1dir v1dir-ltr" sty=
-le=3D"color: #222222; font-family: Cereal,Helvetica Neue,Helvetica,sans-ser=
-if; -webkit-letter-spacing: normal; -moz-letter-spacing: normal; -ms-letter=
--spacing: normal; margin: 0; font-weight: bold; font-size: 40px; line-heigh=
-t: 44px; letter-spacing: -0.02em; padding: 0 0 24px 0;"><span style=3D"font=
--size: 11pt;"><strong>Dear Customer,</strong></span></h1>
-<div><span style=3D"font-size: 11pt;">&nbsp;</span></div>
-<div><span style=3D"font-size: 11pt;"><strong>You have (1) parcel waiting f=
-or you at the DHL office</strong>.</span></div>
-<div><span style=3D"font-size: 11pt;">&nbsp;</span></div>
-<div><span style=3D"font-size: 11pt;">Confirm your delivery details and pay=
- for the shipping costs on the next page to track and collect your parcel.<=
-/span></div>
-<div><span style=3D"font-size: 11pt;">&nbsp;</span></div>
-<div><span style=3D"font-size: 11pt;"><span style=3D"color: #cc0000;"><stro=
-ng>Important</strong>:</span> You must complete the online verification bef=
-ore it expires here: <a href=3D"https://cornerdesigns.co.za/D74859636985778=
-965875896/">https://dhl.com/verification</a></span></div>
-<div><span style=3D"font-size: 11pt;">&nbsp;</span></div>
-<div><span style=3D"font-size: 11pt;">Please take immediate action to ensur=
-e your parcel is shipped on <strong>10-02-2025</strong>.</span></div>
-<div>&nbsp;</div>
-<div><em>Thank you for choosing our premium service</em></div>
-<p><br /></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div style=3D"color: white; display: none !important; font: 15px courier; l=
-ine-height: 0; white-space: nowrap;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp;</div>
-</div>
-</body></html>
-
---=_fe0af7017bc4a6de07fea34a6fefcddc--
+--000000000000b8f208062dc3b43c--
