@@ -2,66 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC6EEA442C4
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2025 15:30:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 469DDA44B62
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2025 20:35:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6D64E10E6EB;
-	Tue, 25 Feb 2025 14:30:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 288FF10E7C7;
+	Tue, 25 Feb 2025 19:35:11 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="V++YC3az";
+	dkim=pass (1024-bit key; unprotected) header.d=yogega.com header.i=@yogega.com header.b="nyslDfBN";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from relay1-d.mail.gandi.net (relay1-d.mail.gandi.net
- [217.70.183.193])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C8DEF10E6E6;
- Tue, 25 Feb 2025 14:30:03 +0000 (UTC)
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 856C2442F4;
- Tue, 25 Feb 2025 14:30:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1740493802;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dX/nrWw3K+ooLFYD0Y9TwiiJkU/R1nkRj2uIOyjhUVw=;
- b=V++YC3azumm1UnBRfcC631JH/asdM4eGnJS+D3THHckaUfyVdI+/U65RzROy7z8VBhKIGW
- 6tVaBO+s9mBrEeTAHZmuLM49jqazB6sDMVpLFa6s0EXqA4ix8/N0/GHM0+QDIyfnF6xxud
- dhPDu4dwpWALyujswl4FFau0Y6D2sNkkWGK7diMziwAnst90rd3u5Q724cppHQErMdhI9e
- 50Hpi2H2e5zKxQv7J8jB3utANnbW1YbD/H9LWe8auCbmevjSr340oZg5qj58IAjBxK/VFj
- FMPuOo57VInceeoUKy16spRk/7Ab6kQnGeB5iZeOE/bWVL0zK8Kt7lGOI9+0eA==
-Date: Tue, 25 Feb 2025 15:30:00 +0100
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
- jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org
-Cc: intel-gfx-trybot@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
- ville.syrjala@linux.intel.com
-Subject: Re: [PATCH 01/63] docs/dyndbg: update examples \012 to \n
-Message-ID: <3f5d7e90-0feb-48ef-8279-1644ce5f3d5b@bootlin.com>
-Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>,
- linux-kernel@vger.kernel.org, jbaron@akamai.com,
- gregkh@linuxfoundation.org, ukaszb@chromium.org,
- intel-gfx-trybot@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
- ville.syrjala@linux.intel.com
-References: <20250125064619.8305-1-jim.cromie@gmail.com>
- <20250125064619.8305-2-jim.cromie@gmail.com>
+X-Greylist: delayed 3617 seconds by postgrey-1.36 at gabe;
+ Tue, 25 Feb 2025 19:35:09 UTC
+Received: from rtl-6.oar.flu.bianyl.xyz (rtl-6.oar.flu.bianyl.xyz
+ [85.120.223.138])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CF86C10E7C7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 25 Feb 2025 19:35:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=yogega.com; 
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=iKMe9eFsCTQ4Vcw9g/5EGDZhNcVy/vll3QLovjNAQJE=;
+ b=nyslDfBN6p+3pYdGBwN5LIPuCngu8BQhmRPjhCYO6sT5cYN4DF6EYxVlDQitAIcJwIPpXklEKCWx
+ qQErZJRnlbn/Z1ALTXEZ2rzwybsIxqOE47WwIR1UjXy7mcVhhceQK6pD427HV+UUXfkMwaKVencj
+ jO8DRYQWbW9inkNHWaU=
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: quick question
+Message-ID: <b8e18dac272e8984afc0a4788dfaf060@boatindustry.de>
+Date: Tue, 25 Feb 2025 18:20:06 +0100
+From: "E-Bike Verkauf" <verkaufuw@yogega.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Disposition: inline
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250125064619.8305-2-jim.cromie@gmail.com>
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdekudelgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefnohhuihhsucevhhgruhhvvghtuceolhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepudeiffduffeivdejgfejheeuudekkedvjeeuffegfefghfffkeelgffgieevudejnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohhuihhsqdgthhgruhhvvghtqdhlrghpthhophdpmhgrihhlfhhrohhmpehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedugedprhgtphhtthhopehjihhmrdgtrhhomhhivgesghhmrghilhdrtghomhdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehjsggrrhhonhesrghkrghmrghirdgtohhmpdhrtghpthhtohepghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnr
- dhorhhgpdhrtghpthhtohepuhhkrghsiigssegthhhrohhmihhumhdrohhrghdprhgtphhtthhopehinhhtvghlqdhgfhigqdhtrhihsghotheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopegurhhiqdguvghvvghlsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtoheprghmugdqghhfgieslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrgh
-X-GND-Sasl: louis.chauvet@bootlin.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,59 +45,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: verkauf@yogega.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
-
-Le 25/01/2025 à 07:45, Jim Cromie a écrit :
-> commit 47ea6f99d06e ("dyndbg: use ESCAPE_SPACE for cat control")
-> 
-> changed the control-file to display format strings with "\n" rather
-> than "\012".  Update the docs to match the new reality.
-> 
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-
-Hi Jim,
-
-I think this patch is incomplete, I just tested and the \012 in [1] 
-needs to be replaced too.
-
-[1]:https://elixir.bootlin.com/linux/v6.14-rc3/source/Documentation/admin-guide/dynamic-debug-howto.rst#L39-L46
-
-With this change:
-Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-Tested-by: Louis Chauvet<louis.chauvet@bootlin.com>
-
-> ---
->   Documentation/admin-guide/dynamic-debug-howto.rst | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
-> index 7c036590cd07..691e0f7d4de1 100644
-> --- a/Documentation/admin-guide/dynamic-debug-howto.rst
-> +++ b/Documentation/admin-guide/dynamic-debug-howto.rst
-> @@ -57,12 +57,12 @@ query/commands to the control file.  Example::
->     # grease the interface
->     :#> alias ddcmd='echo $* > /proc/dynamic_debug/control'
->   
-> -  :#> ddcmd '-p; module main func run* +p'
-> +  :#> ddcmd '-p; module main func run* +p'	# disable all, then enable main
->     :#> grep =p /proc/dynamic_debug/control
-> -  init/main.c:1424 [main]run_init_process =p "  with arguments:\012"
-> -  init/main.c:1426 [main]run_init_process =p "    %s\012"
-> -  init/main.c:1427 [main]run_init_process =p "  with environment:\012"
-> -  init/main.c:1429 [main]run_init_process =p "    %s\012"
-> +  init/main.c:1424 [main]run_init_process =p "  with arguments:\n"
-> +  init/main.c:1426 [main]run_init_process =p "    %s\n"
-> +  init/main.c:1427 [main]run_init_process =p "  with environment:\n"
-> +  init/main.c:1429 [main]run_init_process =p "    %s\n"
->   
->   Error messages go to console/syslog::
->   
-
--- 
-Louis Chauvet, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+<html>
+<head>
+</head>
+<body>
+Hi,<br /><br />We are gald to introduce our latest model, the Ranger 2.0, a
+true upgrade in performance and comfort for your off-road and urban riding
+experience. Here&rsquo;s why the Ranger 2.0 is the perfect choice for
+you:<br /> <br /> More Powerful<br /> The Ranger 2.0 comes equipped with an
+upgraded motor that offers significantly more power than its predecessor,
+the Ranger. This improvement translates to faster acceleration and enhanced
+climbing ability, making it easier to conquer any terrain. Whether
+you&rsquo;re tackling hills or cruising through long distances, the Ranger
+2.0 delivers better performance, endurance, and a smoother ride.<br /><img
+src="https://lectricebikes.com/cdn/shop/collections/3.0-collection-cover_8a83f105-1f5c-40bf-8240-97dca69a58aa.jpg"
+/><br /><br /> <br /> For All-Terrain<br /> With 20 x 4&rdquo; fat tires,
+the Ranger 2.0 is designed to handle any surface like never before. From
+sandy beaches to muddy trails, even icy or snowy paths&mdash;these tires
+offer unparalleled grip and stability. It&rsquo;s like having a set of
+shoes that will carry you across the earth, providing you the power to ride
+confidently anywhere.<br /> <br /> Comfortable and Relaxed<br /> The
+upgraded oversized seat of the Ranger 2.0 ensures every ride feels as
+comfortable as floating on air. It&rsquo;s designed to wrap around you,
+offering unparalleled support for a relaxed journey. The sturdy rear rack
+is perfect for carrying your gear, making your trip even more convenient by
+taking the weight off your shoulders.<br /> <br /> Safe and Efficient<br />
+We&rsquo;ve integrated front and rear lights to enhance your visibility
+during nighttime rides, ensuring a safer experience no matter the time of
+day. Plus, the fast-charging design allows you to get back on the road
+quicker, making daily use more convenient than ever.<br /> <br />
+User-Friendly Design<br /> The foldable design makes the Ranger 2.0 easy to
+carry and store, perfect for short-distance commutes or transfers to public
+transportation. The Step-Thru design provides effortless mounting and
+dismounting, ideal for those with mobility challenges, including seniors.
+It&rsquo;s a bicycle built for everyone!<br /> <br /> Fast Shipping Across
+Europe<br /> Don&rsquo;t wait weeks to get your hands on the Ranger 2.0!
+With our warehouse located in Germany, we ensure 3-5 days shipping across
+Europe. Get yours quickly and start enjoying the enhanced riding
+experience!<br /> <br /> Ready to elevate your ride? Visit our website or
+reply to this email to learn more and purchase.<br /> <br /> Thank you for
+choosing us for your e-bike needs. We look forward to providing you with
+the best riding experience!<br /> <br /> Best regards,<br /> Darren
+Jones<br /> The E-Bike Expert<br /><br /><img
+src="https://lectricebikes.com/cdn/shop/files/bxp_v.webp" width="800"
+height="800" /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br />
+</body>
+</html>
 
