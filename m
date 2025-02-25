@@ -2,35 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 634A8A441F2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2025 15:10:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D55DA441FC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2025 15:11:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 27B8410E6C1;
-	Tue, 25 Feb 2025 14:10:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1034710E6C8;
+	Tue, 25 Feb 2025 14:11:38 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="EsmCl6f0";
+	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="fPMZ7W12";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from relay5-d.mail.gandi.net (relay5-d.mail.gandi.net
- [217.70.183.197])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3358210E6B6;
- Tue, 25 Feb 2025 14:10:48 +0000 (UTC)
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 4B422442ED;
- Tue, 25 Feb 2025 14:10:45 +0000 (UTC)
+Received: from relay7-d.mail.gandi.net (relay7-d.mail.gandi.net
+ [217.70.183.200])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 33DE510E6C8;
+ Tue, 25 Feb 2025 14:11:36 +0000 (UTC)
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4961C441D2;
+ Tue, 25 Feb 2025 14:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1740492647;
+ t=1740492695;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VSziKazrLQBPC9Hdv4UIzzMr4t3jz3ERJ3wqC34N1TE=;
- b=EsmCl6f0l6xPYu5owmf2u8KWxNkunWYVtQx1OrwBl8xy6o7hdJowsrZVo5l5LEEjZIHoLE
- w26CoBbEJixvm98R2xjryCUDWAAbN3seBMmJxKIQ+BtYOS/8NAkguXIbtSTzc5F4oOhxYo
- Uo+KzayX66uCFTblz/5iFzFzMxZBa1Gb1tLH0/KkrhOdgubZJ1emd/7fUnWItNpDiZtSCx
- Acer8d5Zs5NAwrCorwrcpmGWrZxUMm0l8gPac6m2t7DFN2LcQq/F9H3DhEMbJi+rihNpgy
- VEG1K8AYmx/AKLXSQy66ugTlgdImKBVXtSvxRiGhLVajSZAUR+wlX4JOEk1X1A==
-Date: Tue, 25 Feb 2025 15:10:44 +0100
+ bh=6RLWBnzHMT4Lq6CI5Bgms/o16OkUBhbIiLtOpET2pFE=;
+ b=fPMZ7W122enahIEvwltDlvOm3T7H22v4SEFh92x0YUz/4DNuofv6+LJYT2nReAh5/7vlph
+ 6UPmeG25AE8deChJMlHCC/+/8He4NSo/2c0+pLELWM5qaoPAThX+w7Ph47RQHKftn7C84u
+ q5nVSnbtKEEmB/NK75H+OBorBCwLHoDO75pGK15aS+eYBUYgXDaonpKYq60XwhmQ+TsS/Q
+ Aj+UFHcA7F/DJ7a+nODu3TlrNK1Glb1YQuCgQbL/AxECG7BIvuBO7XBdZEK8qvQUOrIwUD
+ gAFPL5lTSKHwYRR7W8Dh9fHuDvfxG3XJ8ZD0GzgRQdRkSuIUAkU/wi09euB02A==
+Date: Tue, 25 Feb 2025 15:11:32 +0100
 From: Louis Chauvet <louis.chauvet@bootlin.com>
 To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
  jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org
@@ -39,8 +39,8 @@ Cc: intel-gfx-trybot@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
  intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
  tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
  ville.syrjala@linux.intel.com
-Subject: Re: [PATCH 10/63] dyndbg: silence debugs with no-change updates
-Message-ID: <6277e777-18b5-46c0-9f13-ab6b1c61faf9@bootlin.com>
+Subject: Re: [PATCH 11/63] dyndbg: tighten ddebug_class_name() 1st arg type
+Message-ID: <91e7b038-2270-45ac-8ebb-e49bda98ce99@bootlin.com>
 Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>,
  linux-kernel@vger.kernel.org, jbaron@akamai.com,
  gregkh@linuxfoundation.org, ukaszb@chromium.org,
@@ -51,15 +51,15 @@ Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>,
  tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
  ville.syrjala@linux.intel.com
 References: <20250125064619.8305-1-jim.cromie@gmail.com>
- <20250125064619.8305-11-jim.cromie@gmail.com>
+ <20250125064619.8305-12-jim.cromie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1; format=flowed
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250125064619.8305-11-jim.cromie@gmail.com>
+In-Reply-To: <20250125064619.8305-12-jim.cromie@gmail.com>
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdekudeludcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefnohhuihhsucevhhgruhhvvghtuceolhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepudeiffduffeivdejgfejheeuudekkedvjeeuffegfefghfffkeelgffgieevudejnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohhuihhsqdgthhgruhhvvghtqdhlrghpthhophdpmhgrihhlfhhrohhmpehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedugedprhgtphhtthhopehjihhmrdgtrhhomhhivgesghhmrghilhdrtghomhdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehjsggrrhhonhesrghkrghmrghirdgtohhmpdhrtghpthhtohepghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnr
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdekudeludcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefnohhuihhsucevhhgruhhvvghtuceolhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepudeiffduffeivdejgfejheeuudekkedvjeeuffegfefghfffkeelgffgieevudejnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohhuihhsqdgthhgruhhvvghtqdhlrghpthhophdpmhgrihhlfhhrohhmpehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedugedprhgtphhtthhopehjihhmrdgtrhhomhhivgesghhmrghilhdrtghomhdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehjsggrrhhonhesrghkrghmrghirdgtohhmpdhrtghpthhtohepghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnr
  dhorhhgpdhrtghpthhtohepuhhkrghsiigssegthhhrohhmihhumhdrohhrghdprhgtphhtthhopehinhhtvghlqdhgfhigqdhtrhihsghotheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopegurhhiqdguvghvvghlsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtoheprghmugdqghhfgieslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrgh
 X-GND-Sasl: louis.chauvet@bootlin.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -80,8 +80,8 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
 Le 25/01/2025 à 07:45, Jim Cromie a écrit :
-> In ddebug_apply_class_bitmap(), check for actual changes to the bits
-> before announcing them, to declutter logs.
+> Change function's 1st arg-type, and deref in the caller.
+> The fn doesn't need any other fields in the struct.
 > 
 > no functional change.
 > 
@@ -90,46 +90,39 @@ Le 25/01/2025 à 07:45, Jim Cromie a écrit :
 Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
 
 > ---
->   lib/dynamic_debug.c | 12 +++++++-----
->   1 file changed, 7 insertions(+), 5 deletions(-)
+>   lib/dynamic_debug.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
 > 
 > diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
-> index 1b2fb6502e61..c27965180a49 100644
+> index c27965180a49..a3849ac3be23 100644
 > --- a/lib/dynamic_debug.c
 > +++ b/lib/dynamic_debug.c
-> @@ -595,7 +595,7 @@ static int ddebug_exec_queries(char *query, const char *modname)
->   	return nfound;
->   }
+> @@ -1120,12 +1120,12 @@ static void *ddebug_proc_next(struct seq_file *m, void *p, loff_t *pos)
+>   #define class_in_range(class_id, map)					\
+>   	(class_id >= map->base && class_id < map->base + map->length)
 >   
-> -/* apply a new bitmap to the sys-knob's current bit-state */
-> +/* apply a new class-param setting */
->   static int ddebug_apply_class_bitmap(const struct ddebug_class_param *dcp,
->   				     unsigned long *new_bits, unsigned long *old_bits,
->   				     const char *query_modname)
-> @@ -606,8 +606,9 @@ static int ddebug_apply_class_bitmap(const struct ddebug_class_param *dcp,
->   	int matches = 0;
->   	int bi, ct;
+> -static const char *ddebug_class_name(struct ddebug_iter *iter, struct _ddebug *dp)
+> +static const char *ddebug_class_name(struct ddebug_table *dt, struct _ddebug *dp)
+>   {
+> -	struct ddebug_class_map *map = iter->table->classes;
+> -	int i, nc = iter->table->num_classes;
+> +	struct ddebug_class_map *map = dt->classes;
+> +	int i;
 >   
-> -	v2pr_info("apply bitmap: 0x%lx to: 0x%lx for %s\n", *new_bits, *old_bits,
-> -		  query_modname ?: "");
-> +	if (*new_bits != *old_bits)
-> +		v2pr_info("apply bitmap: 0x%lx to: 0x%lx for %s\n", *new_bits,
-> +			  *old_bits, query_modname ?: "'*'");
+> -	for (i = 0; i < nc; i++, map++)
+> +	for (i = 0; i < dt->num_classes; i++, map++)
+>   		if (class_in_range(dp->class_id, map))
+>   			return map->class_names[dp->class_id - map->base];
 >   
->   	for (bi = 0; bi < map->length; bi++) {
->   		if (test_bit(bi, new_bits) == test_bit(bi, old_bits))
-> @@ -622,8 +623,9 @@ static int ddebug_apply_class_bitmap(const struct ddebug_class_param *dcp,
->   		v2pr_info("bit_%d: %d matches on class: %s -> 0x%lx\n", bi,
->   			  ct, map->class_names[bi], *new_bits);
->   	}
-> -	v2pr_info("applied bitmap: 0x%lx to: 0x%lx for %s\n", *new_bits, *old_bits,
-> -		  query_modname ?: "");
-> +	if (*new_bits != *old_bits)
-> +		v2pr_info("applied bitmap: 0x%lx to: 0x%lx for %s\n", *new_bits,
-> +			  *old_bits, query_modname ?: "'*'");
+> @@ -1159,7 +1159,7 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
+>   	seq_putc(m, '"');
 >   
->   	return matches;
->   }
+>   	if (dp->class_id != _DPRINTK_CLASS_DFLT) {
+> -		class = ddebug_class_name(iter, dp);
+> +		class = ddebug_class_name(iter->table, dp);
+>   		if (class)
+>   			seq_printf(m, " class:%s", class);
+>   		else
 
 -- 
 Louis Chauvet, Bootlin
