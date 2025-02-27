@@ -2,36 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 469DDA44B62
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2025 20:35:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FCFDA47969
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Feb 2025 10:38:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 288FF10E7C7;
-	Tue, 25 Feb 2025 19:35:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 058BD10E30E;
+	Thu, 27 Feb 2025 09:38:17 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=yogega.com header.i=@yogega.com header.b="nyslDfBN";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="IUCeTETk";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3617 seconds by postgrey-1.36 at gabe;
- Tue, 25 Feb 2025 19:35:09 UTC
-Received: from rtl-6.oar.flu.bianyl.xyz (rtl-6.oar.flu.bianyl.xyz
- [85.120.223.138])
- by gabe.freedesktop.org (Postfix) with ESMTP id CF86C10E7C7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 25 Feb 2025 19:35:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=yogega.com; 
- h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=iKMe9eFsCTQ4Vcw9g/5EGDZhNcVy/vll3QLovjNAQJE=;
- b=nyslDfBN6p+3pYdGBwN5LIPuCngu8BQhmRPjhCYO6sT5cYN4DF6EYxVlDQitAIcJwIPpXklEKCWx
- qQErZJRnlbn/Z1ALTXEZ2rzwybsIxqOE47WwIR1UjXy7mcVhhceQK6pD427HV+UUXfkMwaKVencj
- jO8DRYQWbW9inkNHWaU=
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: quick question
-Message-ID: <b8e18dac272e8984afc0a4788dfaf060@boatindustry.de>
-Date: Tue, 25 Feb 2025 18:20:06 +0100
-From: "E-Bike Verkauf" <verkaufuw@yogega.com>
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2C8A810E30E;
+ Thu, 27 Feb 2025 09:38:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1740649095; x=1772185095;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OBo2zyoCu+SPp4PN7iBuz3o7aLcFUGKp8buJ0Lj6l5M=;
+ b=IUCeTETksZnVtTRpDzq60IFbvGiTMdCxdUpOQI1w7Q2u3V/drfxLkVvk
+ q+HahcjREt7Mhe3ZMPccXy9eL6eEdjH04XJ2+LBohuHSdG5JuBqy1gx83
+ UfO/WCzax2/hoHV1xOGf4SlGAYnq/8mdoyQ29dnFfPkT2lwjDWzn7Y1l4
+ wCuwoEO/K1qpTf9e4kE7bfFkymrAyssbXF2bvP4DDBY6Rw2Xo9Iso0EB7
+ O6l1TPbLmOWCkocmHd7Voi/LFuxwPCTb3J2nvha1+Vr5lXnIpPJuwdOPL
+ 4O/47NrQS2f+2yBk9VEaIBRbySIxv0LKePP+H2SWAp7f8cxUEZ/IlyygV g==;
+X-CSE-ConnectionGUID: y6PFWdVMQGu1xzHKU2bS4A==
+X-CSE-MsgGUID: Tolw70w3Twyg4p28W5WOuA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="41784720"
+X-IronPort-AV: E=Sophos;i="6.13,319,1732608000"; d="scan'208";a="41784720"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2025 01:38:14 -0800
+X-CSE-ConnectionGUID: 6VpuyXfeT8mLJS6Bg27VtQ==
+X-CSE-MsgGUID: 7RaBf87yTz+MqgjOtxNhAg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,319,1732608000"; d="scan'208";a="117464501"
+Received: from lfiedoro-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.245.246.181])
+ by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2025 01:38:10 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
+Cc: jani.nikula@intel.com, Dave Airlie <airlied@gmail.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Simona Vetter <simona.vetter@ffwll.ch>,
+ Tvrtko Ursulin <tursulin@ursulin.net>,
+ Zhenyu Wang <zhenyuw.linux@gmail.com>, Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: [PATCH] drm/i915/gvt: update MAINTAINERS
+Date: Thu, 27 Feb 2025 11:38:05 +0200
+Message-Id: <20250227093805.2217658-1-jani.nikula@intel.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/html; charset="UTF-8"
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -45,61 +70,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: verkauf@yogega.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /><br />We are gald to introduce our latest model, the Ranger 2.0, a
-true upgrade in performance and comfort for your off-road and urban riding
-experience. Here&rsquo;s why the Ranger 2.0 is the perfect choice for
-you:<br /> <br /> More Powerful<br /> The Ranger 2.0 comes equipped with an
-upgraded motor that offers significantly more power than its predecessor,
-the Ranger. This improvement translates to faster acceleration and enhanced
-climbing ability, making it easier to conquer any terrain. Whether
-you&rsquo;re tackling hills or cruising through long distances, the Ranger
-2.0 delivers better performance, endurance, and a smoother ride.<br /><img
-src="https://lectricebikes.com/cdn/shop/collections/3.0-collection-cover_8a83f105-1f5c-40bf-8240-97dca69a58aa.jpg"
-/><br /><br /> <br /> For All-Terrain<br /> With 20 x 4&rdquo; fat tires,
-the Ranger 2.0 is designed to handle any surface like never before. From
-sandy beaches to muddy trails, even icy or snowy paths&mdash;these tires
-offer unparalleled grip and stability. It&rsquo;s like having a set of
-shoes that will carry you across the earth, providing you the power to ride
-confidently anywhere.<br /> <br /> Comfortable and Relaxed<br /> The
-upgraded oversized seat of the Ranger 2.0 ensures every ride feels as
-comfortable as floating on air. It&rsquo;s designed to wrap around you,
-offering unparalleled support for a relaxed journey. The sturdy rear rack
-is perfect for carrying your gear, making your trip even more convenient by
-taking the weight off your shoulders.<br /> <br /> Safe and Efficient<br />
-We&rsquo;ve integrated front and rear lights to enhance your visibility
-during nighttime rides, ensuring a safer experience no matter the time of
-day. Plus, the fast-charging design allows you to get back on the road
-quicker, making daily use more convenient than ever.<br /> <br />
-User-Friendly Design<br /> The foldable design makes the Ranger 2.0 easy to
-carry and store, perfect for short-distance commutes or transfers to public
-transportation. The Step-Thru design provides effortless mounting and
-dismounting, ideal for those with mobility challenges, including seniors.
-It&rsquo;s a bicycle built for everyone!<br /> <br /> Fast Shipping Across
-Europe<br /> Don&rsquo;t wait weeks to get your hands on the Ranger 2.0!
-With our warehouse located in Germany, we ensure 3-5 days shipping across
-Europe. Get yours quickly and start enjoying the enhanced riding
-experience!<br /> <br /> Ready to elevate your ride? Visit our website or
-reply to this email to learn more and purchase.<br /> <br /> Thank you for
-choosing us for your e-bike needs. We look forward to providing you with
-the best riding experience!<br /> <br /> Best regards,<br /> Darren
-Jones<br /> The E-Bike Expert<br /><br /><img
-src="https://lectricebikes.com/cdn/shop/files/bxp_v.webp" width="800"
-height="800" /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br />
-</body>
-</html>
+Update GVT-g MAINTAINERS entry to reflect the current status of
+maintenance and repositories.
+
+Cc: Dave Airlie <airlied@gmail.com>
+Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Cc: Simona Vetter <simona.vetter@ffwll.ch>
+Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+Cc: Zhenyu Wang <zhenyuw.linux@gmail.com>
+Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+---
+ MAINTAINERS | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5b69b93f63c6..98374661f5a8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11649,13 +11649,10 @@ F:	drivers/gpio/gpio-tangier.c
+ F:	drivers/gpio/gpio-tangier.h
+ 
+ INTEL GVT-g DRIVERS (Intel GPU Virtualization)
+-M:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+-M:	Zhi Wang <zhi.wang.linux@gmail.com>
+-L:	intel-gvt-dev@lists.freedesktop.org
+-L:	intel-gfx@lists.freedesktop.org
+-S:	Supported
++R:	Zhenyu Wang <zhenyuw.linux@gmail.com>
++R:	Zhi Wang <zhi.wang.linux@gmail.com>
++S:	Odd Fixes
+ W:	https://github.com/intel/gvt-linux/wiki
+-T:	git https://github.com/intel/gvt-linux.git
+ F:	drivers/gpu/drm/i915/gvt/
+ 
+ INTEL HID EVENT DRIVER
+-- 
+2.39.5
 
