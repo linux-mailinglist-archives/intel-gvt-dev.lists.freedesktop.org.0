@@ -2,67 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E583A4AC5A
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Mar 2025 15:46:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45C50A4EB0E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Mar 2025 19:18:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 70ACC10E273;
-	Sat,  1 Mar 2025 14:46:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 008AB10E652;
+	Tue,  4 Mar 2025 18:18:03 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="jhgj75qP";
+	dkim=pass (1024-bit key; unprotected) header.d=eqikj.com header.i=@eqikj.com header.b="IU/5Kl83";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qt1-f181.google.com (mail-qt1-f181.google.com
- [209.85.160.181])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F110410E273
+X-Greylist: delayed 3612 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Mar 2025 18:18:00 UTC
+Received: from gum.zc885.com (gum.zc885.com [212.95.58.25])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5697110E684
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  1 Mar 2025 14:46:23 +0000 (UTC)
-Received: by mail-qt1-f181.google.com with SMTP id
- d75a77b69052e-472087177a5so37464251cf.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 01 Mar 2025 06:46:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1740840383; x=1741445183; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hcT6/gudrgSXrOt5Y8cNwV+CzJCtkclqhxVGdcwXMlU=;
- b=jhgj75qP51aek0qli9oKzyKY4oQDDRdBovlw3kH+/NdNeuv8XRVHSRk7R1Aohe2PPQ
- U/OpjAIAE+Ye61PIz4oWPiNjfpik3B1sP3AzA9AZmYflWQrl6RCVMylI81T+awDaKWjJ
- uMjB04SLGKgmEYya0Ngr4gJ893EzRnaxyXnq+HsICQqPHX5o1h8Gf7RKnC7hEX10uHgY
- BnkTEU6FacdWd2cCsyRrFP++KzQDYL1//Lpm6CmP7/c/mCfb/i4IHP3kkL6bUxQprH6P
- r273OgGQpQKzcFd6V7YGKaNl02mK8ljyAzVId+IvgQeNW0iy1VqiRpzBRgxaSm4wU3rQ
- puHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740840383; x=1741445183;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hcT6/gudrgSXrOt5Y8cNwV+CzJCtkclqhxVGdcwXMlU=;
- b=WKkMBlBmYyckulpgRWlW/dXcbHFQ7G8ZRRFDP0lMqB9o/6i5a07xPdFSu1IKp0qv/2
- w99ShrPURTVmiARrKmZcAlgaemjsiMUbP0QsP2yfIoxbe3FQ7qL4qOKNzZiV/nLRA/U3
- E5F0NzdH9qkF8sMdGQ2SGL9pIgxzUoPEbBfn+pc0LQpGdY9SWTpKiecMOhx1/TcrEf0g
- INGjCMbv6TRtjM17ntC1ArhGe+w4kDBGSW0B9OcDi9SkDdy+2DhEhbSC9KI5XE25X6JV
- 0CvzWJlytp5o43JwRWgrySMmd9a/p3CtuLGCoPSt9EJ1t4uV+FH2j1dhVVy8TaYHbLMm
- 63JQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXJrQ5O5N4H30Q7n4gkrTFwZ/6ndV4k5ahaGiIINhS0xqDfAuet6pfsO/ld3mMb5YU6OBwAzVn+OpQAVMOb@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YyTl5CPGly+YClbuJknKAeLY7UUafJcfIrXAzRZB9PbpkyK77JV
- 3I56lp+Y6OOPiy4TmZJ8CqGMcOJVGWmW4ZfOeJTxV3anc5OySyoj1Z2jOKPlGrai6a/kNbt/9Le
- HM6laIfCCcIZtaFjAPbLkS8B9sek=
-X-Gm-Gg: ASbGncs/tAwl8X+FqUgpMunVT0C2UJeXyVcPh/yeqHP/KQHu7rceqgSUyiEKUArUgOD
- X8uoiC60CVpicJv5kjetzC9PMyW2ovQpMi7oJmva63Iq6s6y6zOehtTIZovcBav7pES/vh3ADWW
- NbzHgNKgrQXpfEvhgaVGIkceHxPjmSJw==
-X-Google-Smtp-Source: AGHT+IHZzNVCZ4+Ez38NEd63++eKphOO78vf1C/QSwwA68Tm4DGHRKAgz95VPVnHO52o9TaK012MjmIdNTXPtbT5brA=
-X-Received: by 2002:a05:622a:1a91:b0:473:85c8:93dc with SMTP id
- d75a77b69052e-474bc0f27d2mr84473161cf.45.1740840382478; Sat, 01 Mar 2025
- 06:46:22 -0800 (PST)
+ Tue,  4 Mar 2025 18:18:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mail; d=eqikj.com;
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=HlZ47qNHyNlOiirFkqL4aBAuTOI0IWOTrE8JDLkVyQk=;
+ b=IU/5Kl83UtFUTQ3CwKpZPInl+3Pb4cUBG75sOqyILOICJduxDspMECYYkkWdJdoPWxntxhzJPrS3
+ aFXDjzfnvC5J+85wTlB92dkCJrSGV3mM1p/xYKoUAbx1CS8EQT3Yon/soHL4ynsFLlXyS7g1qEI0
+ o1gUvuOlZh6qve8AIac=
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: did you have a chance to review our e-bike information?
+Message-ID: <e7e870fda652cee300ba16ecf6ce2110@bbnk.de>
+Date: Tue, 04 Mar 2025 18:15:14 +0100
+From: "Sales Team" <salesks@eqikj.com>
 MIME-Version: 1.0
-From: Gorge Henderson <jamiedimon386@gmail.com>
-Date: Sat, 1 Mar 2025 06:45:52 -0800
-X-Gm-Features: AQ5f1JqDJz1XJBAckNhkWemANd3cbJECurEI7K1fhhzcX0yXtApjr1RJpoib6S8
-Message-ID: <CAPzRcr1G4f6P_euV6ig9neg3DGD80-Ks6neOcrxZz7AtpHipzQ@mail.gmail.com>
-Subject: Attention: Please!!!,
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000009bc3fa062f48fcf4"
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,56 +44,114 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: gorgehenderson88@gmail.com
+Reply-To: ebikesales@eqikj.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000009bc3fa062f48fcf4
-Content-Type: text/plain; charset="UTF-8"
+<html>
+<head>
+</head>
+<body>
+（ Deutsch Version Unten)<br />
+<p><strong>Hello,</strong></p>
+<p>We are excited|thrilled|pleased|delighted|happy|enthusiastic to
+introduce|present|unveil|showcase|reveal one of our
+exclusive|unique|special|distinct|premium electric
+moped|scooter|bike|vehicle|e-scooter models,
+perfect|ideal|suitable|great|fantastic for daily|regular|routine|commuting
+urban transportation|city travel|city commuting,
+relaxing|casual|leisurely|enjoyable weekend
+rides|excursions|trips|adventures, or simply for a
+smooth|comfortable|pleasant|effortless|easy and comfortable|relaxed
+journey|ride|trip.</p>
+<p>Our e-bikes|electric bikes|e-scooters|e-vehicles are
+shipped|sent|dispatched|delivered|transported directly from our EU
+warehouse|distribution center|facility|stock,
+ensuring|guaranteeing|providing|offering fast|quick|rapid|efficient and
+reliable|dependable|trustworthy delivery within 3 to 7 business
+days|working days|weekday shipping across the EU.</p>
+<p>If you are interested|keen|excited|considering purchasing or would like
+an estimate|quote|calculation|approximation for shipping|delivery
+costs|charges, please share|provide|give us your address|location|details,
+and we will gladly|happily|willingly provide|offer|send you a
+detailed|customized|personalized offer based on|tailored to your
+location.</p>
+<p><strong>Vintage Moped E-VX:</strong></p>
+<p>The Vintage Moped E-VX combines|merges|fuses|blends the
+nostalgic|retro|classic charm of a traditional|old-fashioned|vintage
+scooter with cutting-edge|advanced|state-of-the-art|innovative e-bike
+technology, making it the perfect|ideal|great choice for those who
+appreciate|love|adore|value|enjoy vintage|retro aesthetics with a
+modern|contemporary|updated twist. Key|Notable|Prominent features|aspects
+include:</p>
+<p>Motor: 500W motor for smooth|gentle|easy acceleration|start and
+consistent|steady|reliable power, ideal|perfect|suitable for
+flat|level|smooth roads|streets and moderate|mild|light inclines|slopes.<br
+/> Battery: 48V 15AH lithium battery, offering|providing an
+impressive|outstanding|remarkable|significant range|distance of up to 80 km
+on a single|one charge &ndash; perfect|ideal|great for
+longer|extended|longer-distance trips|journeys.<br /> Tires: 22-inch wide
+tires|wheels|rubber provide|offer|ensure excellent|outstanding|superb
+grip|traction and comfort|ease on urban|city|metropolitan roads|streets and
+light|easy trails|paths.<br /> Design: A retro-inspired|classic scooter
+look enhanced|improved with modern|contemporary|state-of-the-art
+functionality. The robust|durable|sturdy|tough frame ensures|guarantees
+longevity|long-lasting durability while maintaining|preserving the
+classic|traditional appearance|style.</p>
+<p>We look forward to|are excited to|can't wait to hear from you.</p>
+<p>Best regards|Sincerely,<br /> Jonathan Weber<br /> Your E-Bike
+Specialist|Electric Bike Expert<br /><br /><br /><img
+src="https://macfoxbike.com/cdn/shop/files/00970.jpg" width="850"
+height="567" /></p>
+<hr />
+<p><strong><br />Hallo,</strong></p>
+<p>Wir sind begeistert|aufgeregt|freuen uns|enthusiastisch, Ihnen eines
+unserer exklusiven|einzigartigen|besonderen|hochwertigen
+Elektro-Moped-Modelle vorzustellen|zu pr&auml;sentieren, das sich
+hervorragend|ideal|perfekt|ausgezeichnet f&uuml;r den
+t&auml;glichen|regelm&auml;&szlig;igen|pendeln
+Stadtverkehr|Stadttransport|Stadtfahrten eignet|passt,
+entspannte|gem&uuml;tliche|erholsame Wochenendausfl&uuml;ge|Fahrten|Trips
+oder einfach f&uuml;r eine angenehme|bequeme|komfortable|leichte
+Fahrt|Reise.</p>
+<p>Unsere E-Bikes|Elektro-Bikes|E-Scooter|E-Fahrzeuge werden direkt aus
+unserem Lager|Verteilzentrum|Lagerhaus in der EU versendet|gesendet, sodass
+Sie mit einer schnellen|z&uuml;gigen|effizienten|schnellen und
+zuverl&auml;ssigen|verl&auml;sslichen Lieferung innerhalb von 3 bis 7
+Werktagen|Arbeitstagen|Werktagen rechnen|erwarten k&ouml;nnen.</p>
+<p>Falls Sie Interesse|Lust|Begeisterung am Kauf haben oder eine
+Sch&auml;tzung|Angebot|Berechnung|Kostenabsch&auml;tzung der
+Versandkosten|Liefergeb&uuml;hren w&uuml;nschen, teilen Sie uns bitte Ihre
+Adresse|Standort mit, und wir erstellen|machen Ihnen gerne ein
+ma&szlig;geschneidertes|personalisierte Angebot basierend auf|entsprechend
+Ihrem Standort.</p>
+<p><strong>Vintage Moped E-VX:</strong></p>
+<p>Das Vintage Moped E-VX vereint|kombiniert|vereint den
+nostalgischen|retro Charme eines klassischen|traditionellen Rollers mit
+modernster|fortschrittlichster|neuerster E-Bike-Technologie und ist die
+perfekte|ideale|beste Wahl f&uuml;r alle, die den Vintage-Stil|klassisches
+Design mit einem modernen|zeitgem&auml;&szlig;en Touch lieben. Die
+herausragenden|wichtigsten|einzigartigen Merkmale dieses Modells sind:</p>
+<p>Motor: 500W Motor f&uuml;r eine sanfte|geschmeidige|leichte
+Beschleunigung|Start und
+konstante|gleichm&auml;&szlig;ige|verl&auml;ssliche Leistung,
+ideal|geeignet f&uuml;r flache|ebene Stra&szlig;en und mittlere|leichte
+Steigungen|H&uuml;gel.<br /> Akku: 48V 15AH Lithium-Batterie, die eine
+beeindruckende|bemerkenswerte Reichweite|Distanz von bis zu 80 km mit einer
+einzigen|vollen Ladung erm&ouml;glicht|bietet &ndash; ideal|perfekt
+f&uuml;r l&auml;ngere|weiterf&uuml;hrende Fahrten.<br /> Reifen: 22-Zoll
+breite Reifen|R&auml;der bieten|gew&auml;hrleisten
+exzellenten|herausragenden Grip|Haftung und Komfort|Bequemlichkeit auf
+st&auml;dtischen|st&auml;dtischen Stra&szlig;en|Boden und
+leichten|einfachen Trails|Wegen.<br /> Design: Ein
+retro-inspirierter|klassischer Roller-Look, der mit
+moderner|zeitgen&ouml;ssischer Technik kombiniert|verbessert wurde. Der
+robuste|stabile Rahmen sorgt f&uuml;r|garantiert
+Langlebigkeit|Dauerhaftigkeit, w&auml;hrend das klassische Aussehen|Design
+bewahrt|aufrechterhalten wird.</p>
+<p>Wir freuen uns auf Ihre R&uuml;ckmeldung|Antwort.</p>
+<p>Mit besten Gr&uuml;&szlig;en|Freundlichen Gr&uuml;&szlig;en,<br />
+Jonathan Weber<br /> Ihr E-Bike-Experte</p>
+</body>
+</html>
 
-Attention: Please!!!,
-
-We got information from Ms Linda Wells that you are dead as She claim to be
-your next of Kin.she send a request to transfer yourself
-
-Here is her account information where she instructed us to transfer your
-fulnd, $10,500,000.00 as your next of Kin.
-
-Account Info.
-Account name:Linda Wells
-Bank name: Bank of America
-Account number:6540988760
-Check Account.
-
-But we want to confirm that you are dead before we proceed to transfer the
-money to her.Please if you are not dead try to reply immediately,So that we
-should cancel every communication with Ms Linda Wells and arrest her for
-trying to claim your fund.
-
-Please try to reconfirm your information below
-Full Name==
-Address===
-Phone number===
-
-Please reply now if you are still alive.
-
-Thanks and God bless
-
---0000000000009bc3fa062f48fcf4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Attention: Please!!!,<br><br>We got information from Ms Li=
-nda Wells that you are dead as She claim to be your next of Kin.she send a =
-request to transfer yourself<br><br>Here is her account information where s=
-he instructed us to transfer your fulnd, $10,500,000.00 as your next of Kin=
-.<br><br>Account Info.<br>Account name:Linda Wells<br>Bank name: Bank of Am=
-erica<br>Account number:6540988760<br>Check Account.<br><br>But we want to =
-confirm that you are dead before we proceed to transfer the money to her.Pl=
-ease if you are not dead try to reply immediately,So that we should cancel =
-every communication with Ms Linda Wells and arrest her for trying to claim =
-your fund.<br><br>Please try to reconfirm your information below<br>Full Na=
-me=3D=3D<br>Address=3D=3D=3D<br>Phone number=3D=3D=3D<br><br>Please reply n=
-ow if you are still alive.<br><br>Thanks and God bless</div>
-
---0000000000009bc3fa062f48fcf4--
