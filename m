@@ -2,47 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3DB9A62DF3
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Mar 2025 15:10:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CF74A635D4
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 16 Mar 2025 14:50:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5B7EB10E05C;
-	Sat, 15 Mar 2025 14:10:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9FFD210E14B;
+	Sun, 16 Mar 2025 13:50:37 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="FbLBusAJ";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 325 seconds by postgrey-1.36 at gabe;
- Sat, 15 Mar 2025 14:10:54 UTC
-Received: from mail.ksm.co.kr (spamout.flowserveksm.co.kr [210.183.48.12])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CC52A10E05C;
- Sat, 15 Mar 2025 14:10:54 +0000 (UTC)
-Received: from 192.168.0.10 (HELO KMAIL2016.ksm.co.kr)
- by spamout.ksm.co.kr with SMTP; Sat, 15 Mar 2025 18:27:04 +0900
-X-SPAMOUT-MARCTIME: 1742030824 (Sat, 15 Mar 2025 18:27:04 +0900)
-X-SPAMOUT-IP: 192.168.0.10 (TRUST)
-X-Original-SENDERIP: 192.168.0.10
-X-SPAMOUT-TLS: ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 Kx=ECDH Au=RSA
- Enc=AESGCM(128) Mac=AEAD
-X-SPAMOUT-COUNTRY: PRIVATE
-X-SPAMOUT-FROM: <fcsales@ksm.co.kr>
-X-SPAMOUT-RELAY: IP
-Received: from User (103.195.236.67) by KMAIL2016.ksm.co.kr (192.168.0.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.44; Sat, 15 Mar
- 2025 18:26:53 +0900
-From: "Mr. Lyon Michael" <fcsales@ksm.co.kr>
-Subject: Dear Esteemed Customer
-Date: Sat, 15 Mar 2025 16:27:03 +0700
+Received: from mail-yw1-f182.google.com (mail-yw1-f182.google.com
+ [209.85.128.182])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 035CA10E00D;
+ Sun, 16 Mar 2025 13:50:34 +0000 (UTC)
+Received: by mail-yw1-f182.google.com with SMTP id
+ 00721157ae682-6f666c94285so33325147b3.3; 
+ Sun, 16 Mar 2025 06:50:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1742133033; x=1742737833; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rLX3l2pfBMyB+u0niGdIBmArIeV1vUvKJ+QVc4dPLqk=;
+ b=FbLBusAJ98fmLw/+Pm6w2ZOUWpYZfbhbzk59BSCAkbsNi8827DuQyVXt4qD6Q160iJ
+ /ELNU4gzJTr8oHZ2AXHH1MeLx/g4ZfuzrpDQoPTxdovTj7Q1B4bFD9Pn1Q5W5y4jNDaZ
+ PZ/R652MkKza9+tOTJ4m5v7ZdElTz5QKy305SWzKUsHCpxeArBvxLYxWZ6uzDgWeDmYw
+ OwbfC8+ehfEgtLAN4RPBKun+wpA4gxV4LGfC+ZJVmejfGrN6UsjncTTAOFPYa6rrnec/
+ lo0iK9xEJ/hsDD5RGSCFgsuDkpAlCIvbgOe320VBdXlD2IadAImNtbaCe4VHBUCAM2Db
+ oFJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1742133033; x=1742737833;
+ h=content-transfer-encoding:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rLX3l2pfBMyB+u0niGdIBmArIeV1vUvKJ+QVc4dPLqk=;
+ b=g/LjG+QoamMI/RV5ECutTmPJ7gYSaDrVjEMbSyY1OAyPrqP8bAAyAded8NF0kNJW4l
+ gabZD35KthMsn1KpSMMrVWMweTpLt/aRSbvnYNqeTSYVF0I7wiWSel3nHvxAwip4WNhp
+ FT10RmAWY7vicw1GZXoijYrYu0fn73IM595DpZcfSpEOA83/H94UFeZmoWNoJDn1hi21
+ De+iTa1DYU0S8YIKyQFuEIjAA7SDe1L1NKCn+OTUPXkh/fdsgMCmO8+HPrDB/YqT6avA
+ bheAa5o7hRi1U+0P3vuY0jt4441k2v5DtpeS7LOBN+pJXlz+dSKVOAJFikv8IBOdm90X
+ IHJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVF4etVY3gZ45Je9D6ah2JIeKDh8QwMscMciCbRDDVeW2WvHjZFLLPKQZGhxdPtW/dIHuY/VdaVh7/n@lists.freedesktop.org,
+ AJvYcCVqo9hLmEbqExVycD6OliOfxw9UjCGrM5L3fUPCKWOW5TalH4v9Rs6OsyQf94TbsZd74y+0+Qt3e/ZJ@lists.freedesktop.org,
+ AJvYcCWmDeVBI9xIwnfmjANBka+/NodIfI28eE1EGCTNS9UK6ARKhMuZrN+MAy+wDoYFgY50sTGGg52CtbkbpVTMpg==@lists.freedesktop.org,
+ AJvYcCWoBID9+vyQNwIvED7nuQoDKJ5ekWrq0m0hCWMb2H+WImI229VpSuDyJVHxfjLalyN0btT8qyd62cOmXEpAy9xY4A==@lists.freedesktop.org,
+ AJvYcCWp02KqQtuMZK/qUGzn2l6PCVwAWkxQuZ3kdntd045/O0DSgnkYNvxhW5iQGXy+QD6MAkVtNgIy@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzrBeIF0nFwAfaZw/aog+d6ILBg6bgLLtcEB/OaTXQNsJlDhYth
+ SNr4WPmShBBVRmvmFJBes7uoY0CW69NiuehbrOGM769j6ekY7Sh1daeakmpOYNhVEjpmHHUOMHS
+ r1PIR9yTspFTH3AK3bWljgJnyz9c=
+X-Gm-Gg: ASbGncvg2e+LxWBT1cf6i8EH6gLYOEnNgUhAPWxtT039fULkFBQuGZr/giweUSD5O19
+ Hj/vajdaTmXXS3hfeXj7g674+LpHvJW2QJF/EBL11zNZkVuGXvIEHVIuYy4xOFnkSKQce6KIAK2
+ yWG+PxqOJoiEZJV0w0UgHfWYOj
+X-Google-Smtp-Source: AGHT+IFevfJ3v8Hv9LgKFZg+7cLf2qLswo+1gbITmoMoW03EnfIEs3SDlro7IWMIN2Oshbrp414T5CBo4CIGtbatwig=
+X-Received: by 2002:a05:690c:4b12:b0:6f9:b12b:8953 with SMTP id
+ 00721157ae682-6ff45fa5378mr119774397b3.20.1742133033646; Sun, 16 Mar 2025
+ 06:50:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <2789e4e1-16c9-49a7-87ad-e3091b42bfab@KMAIL2016.ksm.co.kr>
-To: Undisclosed recipients:;
-X-Originating-IP: [103.195.236.67]
-X-ClientProxiedBy: KMAIL2016.ksm.co.kr (192.168.0.10) To KMAIL2016.ksm.co.kr
- (192.168.0.10)
+References: <20250125064619.8305-1-jim.cromie@gmail.com>
+ <20250125064619.8305-2-jim.cromie@gmail.com>
+ <3f5d7e90-0feb-48ef-8279-1644ce5f3d5b@bootlin.com>
+In-Reply-To: <3f5d7e90-0feb-48ef-8279-1644ce5f3d5b@bootlin.com>
+From: jim.cromie@gmail.com
+Date: Sun, 16 Mar 2025 07:50:06 -0600
+X-Gm-Features: AQ5f1Jq36108HgQS4XUlPlVF14KcwsKwPglARvXoSnSsnAYbHuikctesWZqFJ2k
+Message-ID: <CAJfuBxwu6TVM-uLU0Tpp4MN-wx8M2D0CJeRT0U3rNtVMMQyi=w@mail.gmail.com>
+Subject: Re: [PATCH 01/63] docs/dyndbg: update examples \012 to \n
+To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
+ jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org, 
+ intel-gfx-trybot@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
+ intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch, 
+ tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
+ ville.syrjala@linux.intel.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,23 +90,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lyonmichael01@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Esteemed Customer ,
+On Tue, Feb 25, 2025 at 7:30=E2=80=AFAM Louis Chauvet <louis.chauvet@bootli=
+n.com> wrote:
+>
+>
+>
+> Le 25/01/2025 =C3=A0 07:45, Jim Cromie a =C3=A9crit :
+> > commit 47ea6f99d06e ("dyndbg: use ESCAPE_SPACE for cat control")
+> >
+> > changed the control-file to display format strings with "\n" rather
+> > than "\012".  Update the docs to match the new reality.
+> >
+> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+>
+> Hi Jim,
+>
+> I think this patch is incomplete, I just tested and the \012 in [1]
+> needs to be replaced too.
+>
 
-
-Did you authorize  Mr. Lee Khan Curtis that lives in Canada to pay for your pending electronic funds transfer charges of $910.00 and claim your life-changing compensation funds valued at the sum of US$2.7 Million that was willed to you by the IMF in conjunction with the world bank debt reconciliation department.
-
-
-Quickly respond back to us now so that we will advise you accordingly on what you are required to do before your US$2.7  Million will be released to you in the next 48hours.
-
-
-Get back to me for more clarification via email: lyonmichael01@gmail.com
-
-
-Yours in service
-Mr. Lyon Michael
-Customer Care Manager
-
+fixed here, thanks.
