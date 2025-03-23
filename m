@@ -2,56 +2,78 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A208A6B346
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Mar 2025 04:24:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 12FDFA6CF56
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 23 Mar 2025 13:49:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0CC7610E6DD;
-	Fri, 21 Mar 2025 03:24:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D295A10E1CC;
+	Sun, 23 Mar 2025 12:49:52 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=riscv-rocks.de header.i=@riscv-rocks.de header.b="DMfq/V9f";
+	dkim=pass (1024-bit key; unprotected) header.d=amazonses.com header.i=@amazonses.com header.b="HEiP/ePy";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 535 seconds by postgrey-1.36 at gabe;
- Fri, 21 Mar 2025 03:24:11 UTC
-Received: from relay.hostedemail.com (smtprelay0014.hostedemail.com
- [216.40.44.14])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5169510E310;
- Fri, 21 Mar 2025 03:24:10 +0000 (UTC)
-Received: from omf15.hostedemail.com (a10.router.float.18 [10.200.18.1])
- by unirelay08.hostedemail.com (Postfix) with ESMTP id B4A64141BC9;
- Fri, 21 Mar 2025 03:15:02 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
- omf15.hostedemail.com (Postfix) with ESMTPA id 5C4CA1B; 
- Fri, 21 Mar 2025 03:14:57 +0000 (UTC)
-Message-ID: <cf0501d3245554150b4a19ced0401228fc58b335.camel@perches.com>
-Subject: Re: [PATCH v2 34/59] checkpatch: dont warn about unused macro arg
- on empty body
-From: Joe Perches <joe@perches.com>
-To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org, 
+X-Greylist: delayed 408 seconds by postgrey-1.36 at gabe;
+ Sun, 23 Mar 2025 12:49:48 UTC
+Received: from b224-13.smtp-out.eu-central-1.amazonses.com
+ (b224-13.smtp-out.eu-central-1.amazonses.com [69.169.224.13])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 69F2F10E1CC;
+ Sun, 23 Mar 2025 12:49:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=2kaovp6zxy5nzp5wqunvdq5vkiqbeqln; d=riscv-rocks.de; t=1742733761;
+ h=Date:From:To:Cc:Subject:Message-ID:Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
+ bh=LrAaxJ3uGP1EpZGbKJtAW4zP/hxp5wOoExzud2mX2Xo=;
+ b=DMfq/V9fggKoRozqNK4DYV7YAuDOyzhhtFwgJcX9uCO2VCPwJuWRjq6liTzJBym6
+ o0LQ72CVC06C8Eeog6UBTtC6B7LrQzrg5ODK/57A6blK9PPw0N598FM0xPUynMM30Xp
+ /j//X+/fDYtyvCMKRFRhzNNhBDVEMWY/Gy6kFqiBeLMHQL44QtSecXR5spxN0PqJ5Zn
+ AbC9FmUMsAw0yN6X4gJXv0/hPHuTh362F41bypRM+lSOalyRI3jPIP6eDGUlyMnIZXI
+ MgxJBpQ1jlc8zVvKhezGdC9VUBFCg5SnI5/ls9VHD4/XXtvESNJ4pBHsxcuy7lZXZCA
+ gBoQ8LikmA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=54ecsf3zk7z4mwxwwox7z7bg6e5gwjsz; d=amazonses.com; t=1742733761;
+ h=Date:From:To:Cc:Subject:Message-ID:Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Feedback-ID;
+ bh=LrAaxJ3uGP1EpZGbKJtAW4zP/hxp5wOoExzud2mX2Xo=;
+ b=HEiP/ePyv/5qHXZiNwlxklL8mfQ5s8IY29RDfjipiHPgYTUJMLJh8BhI5EwcD4nf
+ V/qiL4r2Ab4pNWZ8VeNq9DDLZaI8L4UHpFCoWFFnw5RAvWAwwjFo6yXPiI4eH2Vwut7
+ N8CHcUTn55CWd+ENrEg3OIGoTFIay+AMHGP0X0Xs=
+Date: Sun, 23 Mar 2025 12:42:41 +0000
+From: Damian Tometzki <damian@riscv-rocks.de>
+To: Kees Cook <kees@kernel.org>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>, 
+ Zhi Wang <zhi.wang.linux@gmail.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, 
- intel-gfx-trybot@lists.freedesktop.org, Andrew Morton
- <akpm@linux-foundation.org>
-Cc: jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org, 
- louis.chauvet@bootlin.com, daniel.vetter@ffwll.ch, 
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
- ville.syrjala@linux.intel.com, Andy Whitcroft <apw@canonical.com>,
- Dwaipayan Ray	 <dwaipayanray1@gmail.com>, Lukas Bulwahn
- <lukas.bulwahn@gmail.com>
-Date: Thu, 20 Mar 2025 20:14:54 -0700
-In-Reply-To: <20250320185238.447458-35-jim.cromie@gmail.com>
-References: <20250320185238.447458-1-jim.cromie@gmail.com>
- <20250320185238.447458-35-jim.cromie@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-hardening@vger.kernel.org
+Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
+ unterminated strings
+Message-ID: <01070195c306db7f-9f28efdd-9456-4db3-b6c6-343298bd571b-000000@eu-central-1.amazonses.com>
+Mail-Followup-To: Kees Cook <kees@kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.wang.linux@gmail.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
+References: <20250310222355.work.417-kees@kernel.org>
 MIME-Version: 1.0
-X-Stat-Signature: iyw3o7jfnibfiwm8pf6ibncbdu7sr4cj
-X-Rspamd-Server: rspamout04
-X-Spam-Status: No, score=1.40
-X-Rspamd-Queue-Id: 5C4CA1B
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX1/d9AFXY+OSiUh0DxEBRYtGbqh22M41r8M=
-X-HE-Tag: 1742526897-40709
-X-HE-Meta: U2FsdGVkX19v9u9NW6oOmjvrpY1bOxIWEW9ri8JTiu4krXIx0x4kkL3s61ycTUBVYqWZAIJ7C/Ffq/K4gn5g+x1GbdOrO8rxiB8vtXETDudv0bhAPVRTw1fTVd5XJOHb/T08AWWA/4+GAzz9gnI5j6EyCey42Mqds9Lh08qsIzFVVyEcE7VHsKRjN8+S78BB3IBAQZFf7JMHDzXKhyH+lKLH5xdY8wExVk1cTEYPnOiKtwrJVMU1Eqkzz5h/loNI06mGRiIU85CSc6y1/HEX6ycoLpVjDOfobMLd1AORzTdbRT7BLQ4pU6iK/RH+RU7sISAfSyV7gS1CHTH3IGEouccv2lGAGUKbzNYhnppxyhHx9lx4ATXEqmEqFJ7l5CDT4NwyArNrcE9vTgCIoAmzJvnzTrB72hFZaDZ5l3THts2SLb00BePyImuDplXttMbBt7RPNwhWyuDOnZqrhSwXMA==
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250310222355.work.417-kees@kernel.org>
+User-Agent: Mutt
+X-Operating-System: Linux Fedora release 42 (Adams) (Kernel 6.14.0-rc7)
+Organization: Linux hacker
+Feedback-ID: ::1.eu-central-1.yMcBPu/jK26Vj3HVmCFyFk75QMsS8V3QY5HbXP/Qrys=:AmazonSES
+X-SES-Outgoing: 2025.03.23-69.169.224.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,43 +86,80 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Damian Tometzki <damian@riscv-rocks.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 2025-03-20 at 12:52 -0600, Jim Cromie wrote:
-> we currently get:
->   WARNING: Argument 'name' is not used in function-like macro
-> on:
->   #define DRM_CLASSMAP_USE(name)  /* nothing here */
->=20
-> Following this advice is wrong here, and shouldn't be fixed by
-> ignoring args altogether; the macro should properly fail if invoked
-> with 0 or 2+ args.
->=20
-> cc: Andy Whitcroft <apw@canonical.com>
-> cc: Joe Perches <joe@perches.com>
-> cc: Dwaipayan Ray <dwaipayanray1@gmail.com>
-> cc: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-
-Completely sensible, thanks Jim.
-
+On Mon, 10. Mar 15:23, Kees Cook wrote:
+> When a character array without a terminating NUL character has a static
+> initializer, GCC 15's -Wunterminated-string-initialization will only
+> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
+> with __nonstring to and correctly identify the char array as "not a C
+> string" and thereby eliminate the warning.
+> 
+> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117178 [1]
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+> Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+> Cc: David Airlie <airlied@gmail.com>
+> Cc: Simona Vetter <simona@ffwll.ch>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> Cc: intel-gfx@lists.freedesktop.org
+> Cc: dri-devel@lists.freedesktop.org
+> Signed-off-by: Kees Cook <kees@kernel.org>
 > ---
->  scripts/checkpatch.pl | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> index 7b28ad331742..0c4f578ea6e7 100755
-> --- a/scripts/checkpatch.pl
-> +++ b/scripts/checkpatch.pl
-> @@ -6037,7 +6037,7 @@ sub process {
->  				}
-> =20
->  # check if this is an unused argument
-> -				if ($define_stmt !~ /\b$arg\b/) {
-> +				if ($define_stmt !~ /\b$arg\b/ && $define_stmt) {
->  					WARN("MACRO_ARG_UNUSED",
->  					     "Argument '$arg' is not used in function-like macro\n" . "$her=
-ectx");
->  				}
+>  drivers/gpu/drm/i915/gvt/opregion.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/gvt/opregion.c
+> index 509f9ccae3a9..f701638d3145 100644
+> --- a/drivers/gpu/drm/i915/gvt/opregion.c
+> +++ b/drivers/gpu/drm/i915/gvt/opregion.c
+> @@ -43,7 +43,7 @@
+>  #define DEVICE_TYPE_EFP4   0x10
+>  
+>  struct opregion_header {
+> -	u8 signature[16];
+> +	u8 signature[16] __nonstring;
+>  	u32 size;
+>  	u32 opregion_ver;
+>  	u8 bios_ver[32];
+> @@ -222,7 +222,7 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+>  	u8 *buf;
+>  	struct opregion_header *header;
+>  	struct vbt v;
+> -	const char opregion_signature[16] = OPREGION_SIGNATURE;
+> +	const char opregion_signature[16] __nonstring = OPREGION_SIGNATURE;
+>  
+>  	gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
+>  	vgpu_opregion(vgpu)->va = (void *)__get_free_pages(GFP_KERNEL |
+> -- 
+> 2.34.1
+> 
+Hello together,
 
+it doesnt resolve the build issue with gcc15 gcc (GCC) 15.0.1 20250228
+
+CC [M]  drivers/gpu/drm/i915/gvt/scheduler.o
+/home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c: In function ‘intel_vgpu_init_opregion’:
+/home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:35:28: error: initializer-string for array of ‘char’ is too long [-Werror=unterminated-string-initialization]
+   35 | #define OPREGION_SIGNATURE "IntelGraphicsMem"
+      |                            ^~~~~~~~~~~~~~~~~~
+/home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:225:57: note: in expansion of macro ‘OPREGION_SIGNATURE’
+  225 |         const char opregion_signature[16] __nonstring = OPREGION_SIGNATURE;
+      |                                                         ^~~~~~~~~~~~~~~~~~
+  CC [M]  drivers/gpu/drm/i915/gvt/trace_points.o
+cc1: all warnings being treated as errors
+make[7]: *** [/home/damian/kernel/linux/scripts/Makefile.build:207: drivers/gpu/drm/i915/gvt/opregion.o] Error 1
+make[7]: *** Waiting for unfinished jobs....
+  CC [M]  drivers/gpu/drm/i915/gvt/vgpu.o
+make[6]: *** [/home/damian/kernel/linux/scripts/Makefile.build:465: drivers/gpu/drm/i915] Error 2
+make[5]: *** [/home/damian/kernel/linux/s
+
+
+-- 
+VG
+Damian Tometzki
