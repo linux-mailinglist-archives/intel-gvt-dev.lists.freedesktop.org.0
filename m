@@ -2,112 +2,83 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F38AA6DE82
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 16:24:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 97872A6E579
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 22:19:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2E92310E498;
-	Mon, 24 Mar 2025 15:24:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 62F6210E1CD;
+	Mon, 24 Mar 2025 21:19:41 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="HzRntRTI";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="gCvu+rZ+";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from relay6-d.mail.gandi.net (relay6-d.mail.gandi.net
- [217.70.183.198])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7377F10E495;
- Mon, 24 Mar 2025 15:24:31 +0000 (UTC)
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 7F580431EA;
- Mon, 24 Mar 2025 15:24:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1742829870;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=qq8EpEiG1aC5Z/IjfsMqD91CxuYdkrpsKElewh0trrc=;
- b=HzRntRTIKg4fLJyjgfZTixNKmLhq822wf0K5foYb4X2cRUgxn0PLQUU4hPLxst0D35OdE+
- CqYuSaBhmof4OO/roafXPdPVcIT9ZV2Oj7iaNssm3lWouInC/EOod+m3KzDFW7XhOerlXW
- tCIGRxXb98yNFm6L7LidILYeKfWeuT0ZVcCljYOBnxe+rxYtQQKVaNhi7LS2QuolizWOES
- vbmDUtul2gNsSmnHZfaJIZSoCTH3bjGrUi3+WSceOJw/M7KjJir/tNXBAdRbs6U64pgQ0N
- 7cW7xziJHn7jY13PAUOIkrPnY0z3mJZDglSyV0v013GZvm8lkj/eKGCsm0mZQg==
-Message-ID: <d8af7ba3-d7c9-4ed9-b3ed-118ea189ea49@bootlin.com>
-Date: Mon, 24 Mar 2025 16:24:29 +0100
+Received: from mail-oa1-f44.google.com (mail-oa1-f44.google.com
+ [209.85.160.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5FB5610E1CD;
+ Mon, 24 Mar 2025 21:19:38 +0000 (UTC)
+Received: by mail-oa1-f44.google.com with SMTP id
+ 586e51a60fabf-2a01bcd0143so6611855fac.2; 
+ Mon, 24 Mar 2025 14:19:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1742851175; x=1743455975; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=frDCG2qrAq7ODvL1k7fqgwhPml5YBbAy2fSTyQY76yI=;
+ b=gCvu+rZ+4Rls9QFI89dALR8CvHQ3ZdMs7larQJORIDKxdPbKTfeMemaMhxARn0GcbM
+ umnaB4QgxdjVXr9ft3bx5K1sFgREdSp8eOsRXcPFWVPfr3PzbqjrulXk9YtcZlAXztyb
+ uZ+HeKU9YikVxSMTDdgPqf/00wwKW28h2Gd3E0a3kN9+NcAY75XzH9m6cZg+b1Q6orRG
+ Z5vxfrHh98bOYJjeaLZtBtKIZsbGTkDdZyaRD+idBqWzBu+psAogW7C6eVD9FgGuAIHk
+ HU0bg2wienCwOOOdeHqYerrXFRL2XvKGlMA2sWVtCBCwgORJYy1r5f8OyVoPo2hC0m+r
+ d+uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1742851175; x=1743455975;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=frDCG2qrAq7ODvL1k7fqgwhPml5YBbAy2fSTyQY76yI=;
+ b=BhJp04pBPLTuvp8Yq5I4dMzn5trMvMCdLjSvm1w3NFgfcmes91e3Ners6qnKYBfDxj
+ Zy+03QiRlxnZd90a6yb2V8yC+TkoZbuJIQ2MQmZvaDPWUIj569cK3o3pZ/eWBsdDpb/4
+ aqWC3zckgdoxaDtjv8M8ijPo+tg93boeWS4gtoCd45fzXN0sbAtLWbIHK/uNEHONTJUY
+ EVu3C2ryrmVNmCB+Htv8ElzPjeZykbAWqkLEYA2/Ib5nUMB23U8MlWbVF48/hMkvhi6K
+ rt/SB57p7HZiynoZLsklKK73k9L19EBf/vmoq7nYkoJHfGShO4HAiCIwLdNU3t6VECUW
+ rbzA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW185lm7OcFKi78/TMzB8ZkOd9NJhg1kfjrD8/iQFJMXFwQr3MN/45Se8OHdt+fvKgaJyc7hiXbiXicSQNY1A==@lists.freedesktop.org,
+ AJvYcCXHHy+UcyaZZttW1ou9BczZ/o/q0CI6WE/ctaDf27xZCGAbtjf5zmCK9UBv9Esa4ZAxdK1dpCbFcPCI@lists.freedesktop.org,
+ AJvYcCXpl5A+3idlxdMZ/ueAxCKU4vus34KmYNG6pga9dUpm3gyIOPyPghsFu+wHagZDo5DUYILnPo8lvc8=@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YxaRE6teHn4Xtolt6B6dFKoglIUMOEmoailpH/puSha+9QJL4l+
+ oOu+Syc36DrGx5qk7+QIe4SBI0h6KHlTpWaiTiejiv+4unrSh7SVWkJKgJ1Qp8dGMTpo4s81cgd
+ jB//Kj3UGfDQHq2/ZH/ce5lwqJ/o=
+X-Gm-Gg: ASbGncuzOTIcDSOVSTPSY2aXQqjFLhhoNxcf0tQaFt+2PxPcnIw5+qlVSvPcj5YnvOQ
+ k+97p6PRLrQdkK6nCmaBKCBEKHe/iC/hUDNsrq3m1r4hFjP4Yx5LUWCUho7PZ8Z5KO1FRZvpQuY
+ aHER4OT6eRLXWFuLi4b7XSUpJ/VGFTmjdEBg==
+X-Google-Smtp-Source: AGHT+IHXtKrJ0p9DjxyMM87K1KNBq3hW44MMskPQ5xclT26yyj3ABz8zX1xoS7zKdxsxIX9khnDeIgXPNmjCe06FUzM=
+X-Received: by 2002:a05:6870:612c:b0:29e:2594:81e with SMTP id
+ 586e51a60fabf-2c7802c82d8mr9115623fac.13.1742851174510; Mon, 24 Mar 2025
+ 14:19:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-Subject: Re: [PATCH v2 40/59] drm-dyndbg: DRM_CLASSMAP_USE in i915 driver
-To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- intel-gfx-trybot@lists.freedesktop.org
-Cc: jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org,
- daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com,
- jani.nikula@intel.com, ville.syrjala@linux.intel.com
-References: <20250320185238.447458-1-jim.cromie@gmail.com>
- <20250320185238.447458-41-jim.cromie@gmail.com>
-Content-Language: en-US
-Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
- 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
-In-Reply-To: <20250320185238.447458-41-jim.cromie@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdduiedtudefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfhuffvvehfjggtgfesthekredttddvjeenucfhrhhomhepnfhouhhishcuvehhrghuvhgvthcuoehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeetfffhtdeigfehffduuedvkeefgfdvuddugfffteetffdvteffgfejvedugffgffenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghloheplgduledvrdduieekrddtrddvtdgnpdhmrghilhhfrhhomheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudegpdhrtghpthhtohepjhhimhdrtghrohhmihgvsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepughrihdquggvvhgvlheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopegrmhguqdhgfhigsehlihhsthhsr
- dhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepihhnthgvlhdqghhvthdquggvvheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopehinhhtvghlqdhgfhigsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepihhnthgvlhdqghhfgidqthhrhigsohhtsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepjhgsrghrohhnsegrkhgrmhgrihdrtghomh
-X-GND-Sasl: louis.chauvet@bootlin.com
+References: <20250310222355.work.417-kees@kernel.org>
+ <01070195c306db7f-9f28efdd-9456-4db3-b6c6-343298bd571b-000000@eu-central-1.amazonses.com>
+ <87r02ma8s3.fsf@intel.com>
+In-Reply-To: <87r02ma8s3.fsf@intel.com>
+From: Nicolas Chauvet <kwizart@gmail.com>
+Date: Mon, 24 Mar 2025 22:19:23 +0100
+X-Gm-Features: AQ5f1Jo-T7_krtutBjAOPDPvTINCXqSyPXcHRxY3XegGinALPdX7qEtm2x02d_k
+Message-ID: <CABr+WTkggOTDDzgPFmnJo3Dab4QYxLRt=_g7in3bgr0z6jXf+g@mail.gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
+ unterminated strings
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Damian Tometzki <damian@riscv-rocks.de>, Kees Cook <kees@kernel.org>, 
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org, 
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,53 +94,139 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Le lun. 24 mars 2025 =C3=A0 13:54, Jani Nikula
+<jani.nikula@linux.intel.com> a =C3=A9crit :
+>
+> On Sun, 23 Mar 2025, Damian Tometzki <damian@riscv-rocks.de> wrote:
+> > On Mon, 10. Mar 15:23, Kees Cook wrote:
+> >> When a character array without a terminating NUL character has a stati=
+c
+> >> initializer, GCC 15's -Wunterminated-string-initialization will only
+> >> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
+> >> with __nonstring to and correctly identify the char array as "not a C
+> >> string" and thereby eliminate the warning.
+> >>
+> >> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=3D117178 [1]
+> >> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> >> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+> >> Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> >> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> >> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> >> Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+> >> Cc: David Airlie <airlied@gmail.com>
+> >> Cc: Simona Vetter <simona@ffwll.ch>
+> >> Cc: intel-gvt-dev@lists.freedesktop.org
+> >> Cc: intel-gfx@lists.freedesktop.org
+> >> Cc: dri-devel@lists.freedesktop.org
+> >> Signed-off-by: Kees Cook <kees@kernel.org>
+> >> ---
+> >>  drivers/gpu/drm/i915/gvt/opregion.c | 4 ++--
+> >>  1 file changed, 2 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i91=
+5/gvt/opregion.c
+> >> index 509f9ccae3a9..f701638d3145 100644
+> >> --- a/drivers/gpu/drm/i915/gvt/opregion.c
+> >> +++ b/drivers/gpu/drm/i915/gvt/opregion.c
+> >> @@ -43,7 +43,7 @@
+> >>  #define DEVICE_TYPE_EFP4   0x10
+> >>
+> >>  struct opregion_header {
+> >> -    u8 signature[16];
+> >> +    u8 signature[16] __nonstring;
+>
+> Why would this annotation be needed? It's not treated as a string
+> anywhere, and it's u8 not char.
+>
+> >>      u32 size;
+> >>      u32 opregion_ver;
+> >>      u8 bios_ver[32];
+> >> @@ -222,7 +222,7 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vg=
+pu)
+> >>      u8 *buf;
+> >>      struct opregion_header *header;
+> >>      struct vbt v;
+> >> -    const char opregion_signature[16] =3D OPREGION_SIGNATURE;
+> >> +    const char opregion_signature[16] __nonstring =3D OPREGION_SIGNAT=
+URE;
+> >>
+> >>      gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
+> >>      vgpu_opregion(vgpu)->va =3D (void *)__get_free_pages(GFP_KERNEL |
+> >> --
+> >> 2.34.1
+> >>
+> > Hello together,
+> >
+> > it doesnt resolve the build issue with gcc15 gcc (GCC) 15.0.1 20250228
+> >
+> > CC [M]  drivers/gpu/drm/i915/gvt/scheduler.o
+> > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c: In funct=
+ion =E2=80=98intel_vgpu_init_opregion=E2=80=99:
+> > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:35:28: er=
+ror: initializer-string for array of =E2=80=98char=E2=80=99 is too long [-W=
+error=3Dunterminated-string-initialization]
+> >    35 | #define OPREGION_SIGNATURE "IntelGraphicsMem"
+> >       |                            ^~~~~~~~~~~~~~~~~~
+> > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:225:57: n=
+ote: in expansion of macro =E2=80=98OPREGION_SIGNATURE=E2=80=99
+> >   225 |         const char opregion_signature[16] __nonstring =3D OPREG=
+ION_SIGNATURE;
+> >       |                                                         ^~~~~~~=
+~~~~~~~~~~~
+> >   CC [M]  drivers/gpu/drm/i915/gvt/trace_points.o
+> > cc1: all warnings being treated as errors
+> > make[7]: *** [/home/damian/kernel/linux/scripts/Makefile.build:207: dri=
+vers/gpu/drm/i915/gvt/opregion.o] Error 1
+> > make[7]: *** Waiting for unfinished jobs....
+> >   CC [M]  drivers/gpu/drm/i915/gvt/vgpu.o
+> > make[6]: *** [/home/damian/kernel/linux/scripts/Makefile.build:465: dri=
+vers/gpu/drm/i915] Error 2
+> > make[5]: *** [/home/damian/kernel/linux/s
+>
+> What about this?
+>
+> IMO it's anyway good practice to use sizeof(dest) rather than
+> sizeof(src) for memcpy.
+>
+>
+> diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/g=
+vt/opregion.c
+> index 509f9ccae3a9..dbad4d853d3a 100644
+> --- a/drivers/gpu/drm/i915/gvt/opregion.c
+> +++ b/drivers/gpu/drm/i915/gvt/opregion.c
+> @@ -222,7 +222,6 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+>         u8 *buf;
+>         struct opregion_header *header;
+>         struct vbt v;
+> -       const char opregion_signature[16] =3D OPREGION_SIGNATURE;
+>
+>         gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
+>         vgpu_opregion(vgpu)->va =3D (void *)__get_free_pages(GFP_KERNEL |
+> @@ -236,8 +235,10 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu=
+)
+>         /* emulated opregion with VBT mailbox only */
+>         buf =3D (u8 *)vgpu_opregion(vgpu)->va;
+>         header =3D (struct opregion_header *)buf;
+> -       memcpy(header->signature, opregion_signature,
+> -              sizeof(opregion_signature));
+> +
+> +       static_assert(sizeof(header->signature) =3D=3D sizeof(OPREGION_SI=
+GNATURE) - 1);
+> +       memcpy(header->signature, OPREGION_SIGNATURE, sizeof(header->sign=
+ature));
+> +
+>         header->size =3D 0x8;
+>         header->opregion_ver =3D 0x02000000;
+>         header->mboxes =3D MBOX_VBT;
+>
+>
+>
+> --
+> Jani Nikula, Intel
 
+This patch does solve the build issue with gcc-15 on Fedora-42
+(gcc-15.0.1-0.9.fc42.x86_64).
+https://copr.fedorainfracloud.org/coprs/kwizart/kernel-longterm-6.12/build/=
+8812754/
 
-Le 20/03/2025 à 19:52, Jim Cromie a écrit :
-> Following the dyndbg-api-fix, replace DECLARE_DYNDBG_CLASSMAP with
-> DRM_CLASSMAP_USE.  This refs the defined & exported classmap, rather
-> than re-declaring it redundantly, and error-prone-ly.
-> 
-> This resolves the appearance of "class:_UNKNOWN_" in the control file
-> for the driver's drm_dbg()s.
-> 
-> Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
-> 
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-
-Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-
-> ---
->   drivers/gpu/drm/i915/i915_params.c | 12 +-----------
->   1 file changed, 1 insertion(+), 11 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-> index 37746dd619fd..2dc0e2c06e09 100644
-> --- a/drivers/gpu/drm/i915/i915_params.c
-> +++ b/drivers/gpu/drm/i915/i915_params.c
-> @@ -29,17 +29,7 @@
->   #include "i915_params.h"
->   #include "i915_drv.h"
->   
-> -DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> -			"DRM_UT_CORE",
-> -			"DRM_UT_DRIVER",
-> -			"DRM_UT_KMS",
-> -			"DRM_UT_PRIME",
-> -			"DRM_UT_ATOMIC",
-> -			"DRM_UT_VBL",
-> -			"DRM_UT_STATE",
-> -			"DRM_UT_LEASE",
-> -			"DRM_UT_DP",
-> -			"DRM_UT_DRMRES");
-> +DRM_CLASSMAP_USE(drm_debug_classes);
->   
->   #define i915_param_named(name, T, perm, desc) \
->   	module_param_named(name, i915_modparams.name, T, perm); \
-
--- 
-Louis Chauvet, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
-
+Thanks.
