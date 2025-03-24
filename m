@@ -2,63 +2,79 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79367A6D79F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 10:38:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21EC0A6D88C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 11:47:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4A5A010E285;
-	Mon, 24 Mar 2025 09:38:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E404310E041;
+	Mon, 24 Mar 2025 10:47:39 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="gUlne60F";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="Ree0Pcsk";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E875C10E284;
- Mon, 24 Mar 2025 09:38:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1742809090; x=1774345090;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=xum1MmTp1CXfeSxTSdmDj7gdVqmKq5X9Q1ojm4hMPXM=;
- b=gUlne60FRSrRqGmTisBGldV6yttF/4HtkiHHODcLMhU/E0qyGvo/KpIJ
- q1/DTwt3+QhDa4kThH7n30CgsIjwcOblI8vBiHjdZahrS5jXXLuiSt4q1
- iksUV9fg7+paVupnODoGCSHMbyKno0lhIGgR1C84CRlJz59xgicY0nbgY
- 1k6v5uhDK9hVfcC8ismXpMWQ1GqEJYWDIbpoArRQ5pSfQKJJXArKfTwwP
- wSbv1W/giU5jPmLnhlA7u3sZcejVuDflXAhKjBB5xvQMq+FPfUOPsooqt
- hEKtWuSOWJl1MCPhdzXsgH6ItCI6i1Q6wezXc/VOtoWMq8Sqe8wwX8Up5 w==;
-X-CSE-ConnectionGUID: OEkq60sDRbuPMsrkh0OxZg==
-X-CSE-MsgGUID: BienkNrwRomaxD+jtYrDLA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11382"; a="69360145"
-X-IronPort-AV: E=Sophos;i="6.14,271,1736841600"; d="scan'208";a="69360145"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2025 02:38:08 -0700
-X-CSE-ConnectionGUID: zhEpJ0HcRAGBIp/woNBoCQ==
-X-CSE-MsgGUID: XMMtvz8JRlWLvchGy9tF/g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,271,1736841600"; d="scan'208";a="161232106"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.245.246.30])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2025 02:38:04 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Nicolas Chauvet <kwizart@gmail.com>, Zhenyu Wang
- <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi
- <rodrigo.vivi@intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>
-Cc: intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Nicolas Chauvet <kwizart@gmail.com>, stable@vger.kernel.org
-Subject: Re: [PATCH 1/3] Revert "drm/i915/gvt: Fix out-of-bounds buffer
- write into opregion->signature[]"
-In-Reply-To: <20250324083755.12489-2-kwizart@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20250324083755.12489-1-kwizart@gmail.com>
- <20250324083755.12489-2-kwizart@gmail.com>
-Date: Mon, 24 Mar 2025 11:38:01 +0200
-Message-ID: <87ecymbwg6.fsf@intel.com>
+Received: from mail-oa1-f49.google.com (mail-oa1-f49.google.com
+ [209.85.160.49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EDCB110E237;
+ Mon, 24 Mar 2025 10:47:37 +0000 (UTC)
+Received: by mail-oa1-f49.google.com with SMTP id
+ 586e51a60fabf-2c72cb91e9cso2971312fac.1; 
+ Mon, 24 Mar 2025 03:47:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1742813255; x=1743418055; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5jw7vEOJd9+kVHxfxG1vL7hag7BbqohE0PbGawFjKs4=;
+ b=Ree0PcskcAGp9kFdWEBFQXuntEQ2rHpn3cHwy/offbiOyPYF4FLV68Im12I5kKKRq8
+ ws+Um1Ouj6OeBpuJ4VoqOnf1PyK4TiHcF7jM3V5kr1rYX0+fTs1f5Q9oI5lRqY0rVIye
+ KdwhH+P3SawFcmSqzox5Gt9ZtXt/cMnOcPgxlWnqqv37loVu+id3mX6W/WaXvWNuzz2W
+ KcyGbzinWx854uDzMtOwf1FUbkrdQuLII8Ya+kJ9k9Q9Z0j9VBwDYMJ7SrnZt6q2yoHr
+ Wcq66wuCuq91SNZQB3uKxsmGuCyWmaQXRCKn5mQ0yn97I6OgE5oPbTwUglWFqCqGsYM1
+ T7Mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1742813255; x=1743418055;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=5jw7vEOJd9+kVHxfxG1vL7hag7BbqohE0PbGawFjKs4=;
+ b=DsFLsE+mCOLJr+ORW6kFF0HcMaVgca/d/J+hyS8TBp9gyraRUuUvmm2mhDrLIZIU9z
+ dpIfRMbnCfiCdYYThEEEmI5roIWHwZcu4tzg76HxGDJbQpp+Dsih/pNLr6hMHddfM0PP
+ yGvfPCQdw/x6crEtYNw3TryUHUKRjqDUFcUzSGILxh37mg2sdnERNtSm5FGl5DH7y0T8
+ wKnXG8IpzcrFgMt5W+kwgT/Yj+4fwFR4nGYtxrQhi/+RLtCZhrDstOwYML6rNlbCygAp
+ 7U28+uI/p1yNjJFfG9CzyOPOJcwH0ICZEiUmkwoH1C+3XctdaWEQuoslD8Xp1OonHEll
+ oOVA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVRLgpNnrbbv5W2Hjp+/DoFb4RQFwPv03J9pDUezjImZxLmODBFp+xCYjL+DlEhhkvfJUYJiRn5heqEGv/D8g==@lists.freedesktop.org,
+ AJvYcCW/gy0rGSiowdqwIJvZkIJbW/2tSKmKySsz2GnPoQlkf4/SKpGsIzVaoUOBadmynpwDSq2z9c4YuDk=@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YwrKHrkKAFgS9jgGL6EDhTTIIZyhPxX2X01S6O/w5GbleOirnIn
+ G09bRoD+mhkP1I9Ls6mqa1vgRO578vKLB/OzHln3ljY+yeD0BKKQbmOGbkwy7kJ61TrBUatTxHn
+ qKgzEoTzIvuYuKl3i6HFB+evT8D4=
+X-Gm-Gg: ASbGnctAK8zl5kYPIbxL8zuH2V6LF0PAV5JKG4hS+/vAlwuFnNBxdbnTtufVtGr6Ngq
+ 3fpjp73LbItIn0j9wuHz9sHcFdllVR0bTCzrFkYZa3H8YceBWZPFc8gPcKbl/a9E9MVbtfFMn4X
+ KOggf25E8mrht/XJAcoy3wtbc=
+X-Google-Smtp-Source: AGHT+IHdRQL4CSzJPpXSBIfWZCaqqx9IsDza48gb58MoU4sbd7mv0bZ+NfyczdL84bXw8ET1tmLi6+9Sj6+qfwbCaK4=
+X-Received: by 2002:a05:6870:3c89:b0:2b8:41ef:2ca with SMTP id
+ 586e51a60fabf-2c780289b26mr7641268fac.6.1742813254753; Mon, 24 Mar 2025
+ 03:47:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20250324083755.12489-1-kwizart@gmail.com>
+ <20250324083755.12489-3-kwizart@gmail.com>
+ <87pli6bwxi.fsf@intel.com> <87h63ibwma.fsf@intel.com>
+In-Reply-To: <87h63ibwma.fsf@intel.com>
+From: Nicolas Chauvet <kwizart@gmail.com>
+Date: Mon, 24 Mar 2025 11:47:23 +0100
+X-Gm-Features: AQ5f1Jpv52Yi-NV796ol6p6RUqVLUgoluSjVAoOFPu6MP-olcZdD_Qf9lZ9zltk
+Message-ID: <CABr+WTmQ3rZ-UZH2Wv0R6qKegyjCovn3R7PWBeWiciAj+NbtnQ@mail.gmail.com>
+Subject: Re: [PATCH 2/3] [RFC] drm/i915/gvt: Fix opregion_header->signature
+ size
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, intel-gvt-dev@lists.freedesktop.org, 
+ intel-gfx@lists.freedesktop.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,62 +90,30 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 24 Mar 2025, Nicolas Chauvet <kwizart@gmail.com> wrote:
-> This reverts commit ea26c96d59b27e878fe61e8ef0fed840d2281a2f.
+Le lun. 24 mars 2025 =C3=A0 10:34, Jani Nikula
+<jani.nikula@linux.intel.com> a =C3=A9crit :
 >
-> This fix truncates the OPREGION_SIGNATURE to fit into 16 chars instead of
-> enlarging the target field, hence only moving the size missmatch to later.
+> On Mon, 24 Mar 2025, Jani Nikula <jani.nikula@linux.intel.com> wrote:
+> > On Mon, 24 Mar 2025, Nicolas Chauvet <kwizart@gmail.com> wrote:
+> >> Enlarge the signature field to accept the string termination.
+> >>
+> >> Cc: stable@vger.kernel.org
+> >> Fixes: 93615d59912 ("Revert drm/i915/gvt: Fix out-of-bounds buffer wri=
+te into opregion->signature[]")
+> >> Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
+> >
+> > Nope, can't do that. The packed struct is used for parsing data in
+> > memory.
 >
-> As shown with gcc-15:
-> drivers/gpu/drm/i915/gvt/opregion.c: In function intel_vgpu_init_opregion:
-> drivers/gpu/drm/i915/gvt/opregion.c:35:28: error: initializer-string for array of char is too long [-Werror=unterminated-string-initialization]
->    35 | #define OPREGION_SIGNATURE "IntelGraphicsMem"
->       |                            ^~~~~~~~~~~~~~~~~~
-> drivers/gpu/drm/i915/gvt/opregion.c:225:45: note: in expansion of macro OPREGION_SIGNATURE
->   225 |         const char opregion_signature[16] = OPREGION_SIGNATURE;
->       |                                             ^~~~~~~~~~~~~~~~~~
-> cc1: all warnings being treated as errors
+> Okay, so I mixed this up with display/intel_opregion.c. So it's not used
+> for parsing here... but it's used for generating the data in memory, and
+> we can't change the layout or contents.
 >
-> Cc: stable@vger.kernel.org
-> Reported-by: Nicolas Chauvet <kwizart@gmail.com>
-> Fixes: ea26c96d59 ("drm/i915/gvt: Fix out-of-bounds buffer write into opregion->signature[]")
-> Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
+> Regardless, we can't do either patch 2 or patch 3.
 
-This introduces a buffer overflow.
-
-sizeof(OPREGION_SIGNATURE) == 17.
-
-BR,
-Jani.
-
-
-> ---
->  drivers/gpu/drm/i915/gvt/opregion.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/gvt/opregion.c
-> index 509f9ccae3a9..9a8ead6039e2 100644
-> --- a/drivers/gpu/drm/i915/gvt/opregion.c
-> +++ b/drivers/gpu/drm/i915/gvt/opregion.c
-> @@ -222,7 +222,6 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
->  	u8 *buf;
->  	struct opregion_header *header;
->  	struct vbt v;
-> -	const char opregion_signature[16] = OPREGION_SIGNATURE;
->  
->  	gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
->  	vgpu_opregion(vgpu)->va = (void *)__get_free_pages(GFP_KERNEL |
-> @@ -236,8 +235,8 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
->  	/* emulated opregion with VBT mailbox only */
->  	buf = (u8 *)vgpu_opregion(vgpu)->va;
->  	header = (struct opregion_header *)buf;
-> -	memcpy(header->signature, opregion_signature,
-> -	       sizeof(opregion_signature));
-> +	memcpy(header->signature, OPREGION_SIGNATURE,
-> +			sizeof(OPREGION_SIGNATURE));
->  	header->size = 0x8;
->  	header->opregion_ver = 0x02000000;
->  	header->mboxes = MBOX_VBT;
-
--- 
-Jani Nikula, Intel
+Thanks for review.
+So does it means the only "Fix" is to drop Werror, at least for intel/gvt c=
+ode ?
+I have CONFIG_DRM_I915_WERROR not set but CONFIG_DRM_WERROR=3Dy, (same as F=
+edora)
+Unsure why the current Fedora kernel is unaffected by this build failure.
