@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49E1AA6DDE2
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 16:11:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A30A9A6DDEF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 16:14:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 12EBD10E440;
-	Mon, 24 Mar 2025 15:11:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4B41810E2D8;
+	Mon, 24 Mar 2025 15:14:38 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="Jn+0Pamw";
+	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="BFersAPP";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from relay1-d.mail.gandi.net (relay1-d.mail.gandi.net
- [217.70.183.193])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5EE8710E43D;
- Mon, 24 Mar 2025 15:11:04 +0000 (UTC)
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 772C14326A;
- Mon, 24 Mar 2025 15:11:02 +0000 (UTC)
+Received: from relay9-d.mail.gandi.net (relay9-d.mail.gandi.net
+ [217.70.183.199])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 346E910E26F;
+ Mon, 24 Mar 2025 15:14:36 +0000 (UTC)
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 835754438E;
+ Mon, 24 Mar 2025 15:14:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1742829063;
+ t=1742829273;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=lzB/MlgxFjVB17b0nuzk9808ANg/fDT6q8Zmuo0nM5Y=;
- b=Jn+0Pamw6ofwIye7MSSPeuhzKA2zm25rWso7M414k36whV3aWumXa6B7giK9zjFlLzBLMJ
- TuK2MjlKoJq75WrrROMj/Lp3RAaw+xOmOQFDhKLwibBQBbAvJCOXumvsOIvFyzXbJ+vSAi
- bAfeJDrD6eiLQyef/IDQKr/8mPLIdHffXRr0omJLGnjwuLOrqmLUWNJHWtPIEcexnzg8F5
- Z4q2Tju5Yg7dR3UFlZO7gc232XaXNjNSjZxxkj7tdAaTR0Y4zsjlqOiD2wflRgU+7k216n
- a94UV99MJUv5TyaZCJzbvQ10V/qTAPpF8jirk6SdZTxY8FClyFuLMNV4megncA==
-Message-ID: <5ceff8ec-daba-4eaa-8834-ed9276bda7fa@bootlin.com>
-Date: Mon, 24 Mar 2025 16:11:02 +0100
+ bh=X+xRWMfgpazi5bz6X/63u3KzL97Pz3WCruxBOwSplIk=;
+ b=BFersAPPRIenTcZ6S+cXm+yKxMyBJrCNX+eEa738UcDkHCKRbBJStvAFnbg7835ficsuRw
+ mN+1CRSkWq+6HvJZxM2h74XoMvxj84igcyjCpwh4Qyk3h8sl4r+6znCyPfS26opzEpPlJC
+ /bS67m3yGCG2Ej3/cGV8y+ZAyWg35b42bBwE+t3G4pzKrAsnfU7vFLG0+4XaMOhNto2nPj
+ URrY3IiwuSq2/hTTbQbzF4DNlP9+L0hQ2Czphzr6CD9R6s/iSPq/0O2d3TIPXG490dkglc
+ ErS7LpqkVexs4XHnDJz4OA0wFVzD/2vRhVGiZVhYfHTzLWqcPy5rkGiRt8AA4Q==
+Message-ID: <04d92399-72bc-45f6-870c-1dc5c758686f@bootlin.com>
+Date: Mon, 24 Mar 2025 16:14:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Louis Chauvet <louis.chauvet@bootlin.com>
-Subject: Re: [PATCH v2 13/59] dyndbg: add 2 new _DPRINTK_FLAGS_: INCL_LOOKUP, 
- PREFIX_CACHED
+Subject: Re: [PATCH v2 14/59] dyndbg: split _emit_lookup() out of
+ dynamic_emit_prefix()
 To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
  dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
@@ -45,7 +45,7 @@ Cc: jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org,
  daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com,
  jani.nikula@intel.com, ville.syrjala@linux.intel.com
 References: <20250320185238.447458-1-jim.cromie@gmail.com>
- <20250320185238.447458-14-jim.cromie@gmail.com>
+ <20250320185238.447458-15-jim.cromie@gmail.com>
 Content-Language: en-US
 Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
  xsFNBGCG5KEBEAD1yQ5C7eS4rxD0Wj7JRYZ07UhWTbBpbSjHjYJQWx/qupQdzzxe6sdrxYSY
@@ -101,12 +101,12 @@ Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
  PdjUMWb5Ld21PSyCrtGc/hTKwxMoHsOZPy6UB8YJ5omZdsavcjKMrDpybguOfxUmGYs2H3MJ
  ghIUQMMOe0267uQcmMNDPRueGWTLXcuyz0Tpe62Whekc3gNMl0JrNz6Gty8OBb/ETijfSHPE
  qGHYuyAZJo9A/IazHuJ+4n+gm4kQl1WLfxoRMzYHCA==
-In-Reply-To: <20250320185238.447458-14-jim.cromie@gmail.com>
+In-Reply-To: <20250320185238.447458-15-jim.cromie@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdduiedttdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfhuffvvehfjggtgfesthekredttddvjeenucfhrhhomhepnfhouhhishcuvehhrghuvhgvthcuoehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeetfffhtdeigfehffduuedvkeefgfdvuddugfffteetffdvteffgfejvedugffgffenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghloheplgduledvrdduieekrddtrddvtdgnpdhmrghilhhfrhhomheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudegpdhrtghpthhtohepjhhimhdrtghrohhmihgvsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepughrihdquggvvhgvlheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopegrmhguqdhgfhigsehlihhsthhsr
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdduiedtuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfhuffvvehfjggtgfesthekredttddvjeenucfhrhhomhepnfhouhhishcuvehhrghuvhgvthcuoehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeetfffhtdeigfehffduuedvkeefgfdvuddugfffteetffdvteffgfejvedugffgffenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghloheplgduledvrdduieekrddtrddvtdgnpdhmrghilhhfrhhomheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudegpdhrtghpthhtohepjhhimhdrtghrohhmihgvsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepughrihdquggvvhgvlheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopegrmhguqdhgfhigsehlihhsthhsr
  dhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepihhnthgvlhdqghhvthdquggvvheslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopehinhhtvghlqdhgfhigsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepihhnthgvlhdqghhfgidqthhrhigsohhtsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepjhgsrghrohhnsegrkhgrmhgrihdrtghomh
 X-GND-Sasl: louis.chauvet@bootlin.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -127,100 +127,114 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
 Le 20/03/2025 à 19:51, Jim Cromie a écrit :
-> Add _INCL_LOOKUP condition to separate +mfsl flags from +t, allowing
-> (after refactoring) to avoid a needless call-return.
+> Split dynamic_emit_prefix() to separate out _INCL_LOOKUPs:
 > 
-> Add a PREFIX_CACHED bit to remember that a pr-debug callsite is:
+> 1. keep dynamic_emit_prefix() static inline
+>     check _INCL_ANY flags before calling 2
 > 
-> - enabled, with +p
-> - wants a dynamic-prefix, with _INCL_LOOKUP
-> - was previously called
-> - was thus saved in the prefix cache. NOT YET.
-  >
-> This allows (later) to cache part/all of the dynamic-prefix for each
-> pr_debug that gets called.
+> 2. __dynamic_emit_prefix()
+>     prints [TID] or <intr> and trailing space if +t flag
+>     check _INCL_LOOKUP flags before calling 3
 > 
-> NOTES:
+> 3. __dynamic_emit_lookup()
+>     prints ONLY module, function, src, line, and trailing space
+>     TID isn't "callsite" specific info.
+>     result is "cacheable"
 > 
-> dyndbg's dynamic prefixing can get expensive; each enabled callsite's
-> prefix is sprintf'd into stack-mem, every time a pr_debug is called.
+> Notes:
 > 
-> A cache would help, if callsites mark _DPRINTK_FLAGS_PREFIX_CACHED
-> after saving the prefix string.  But not yet.
+> 2,3 are gated, only called when theyve something to emit, so they just
+> add trailing space.  This obsoletes the pos_after_tid var and logic.
 > 
-> -t  thread-id. not part of the "callsite" info, derived from current.
->      doesn't belong in the cache. it would be wrong.
->      can be done in outer: dynamic_emit_prefix()
+> __dynamic_emit_lookup() adds line too, so the result is "whole".
+> While this would enlarge a naive cache vs add-line-after-caching, we
+> dont even have a naive one yet.
 > 
-> -mfsl  module, function, source-file, line
->      we cache these, composed into a sub-string.
->      they are "lookups", currently to descriptor fields,.
->      could be accessor macros to "compressed" tables.
-> 
-> All enabled together, they compose a prefix string like:
-> 
->    # outer   -----inner-------------------
->    "[tid] module:function:sourcfile:line: "
+> And some clever indexing on store() might be able to fold the flags
+> setting in, such that the prefix stored with +mf flags only (-l),
+> could be returned for all pr_debugs in that function which also had
+> +mf flags. While still supporting +mfsl prefixes (with cache
+> expansion) as they're used.
 
-s/sourcfile/sourcesfile/
-
-> 
-> So this patch extracts _DPRINTK_FLAGS_INCL_LOOKUP macro out of
-> _DPRINTK_FLAGS_INCL_ANY macro, then redefs latter.
-> 
-> Next re-refactor dynamic_emit_prefix inner/outer fns accordingly.
-
-This commit introduces two things:
-
-- introduction of _DPRINTK_FLAGS_INCL_LOOKUP, used in a future patch
-- introduction of _DPRINTK_FLAGS_PREFIX_CACHED, not used in this series
-
-I don't think those changes are needed to fix DYNDBG_CLASSMAP, it seems 
-to be an (unfinished?) optimization, so it could make sense to move it 
-to an independent series. Please tell me if I overlooked something!
+Like the previous patch: I think this should be a separate series.
 
 > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 > ---
->   include/linux/dynamic_debug.h | 10 ++++++----
->   1 file changed, 6 insertions(+), 4 deletions(-)
+>   lib/dynamic_debug.c | 40 +++++++++++++++++++++++++---------------
+>   1 file changed, 25 insertions(+), 15 deletions(-)
 > 
-> diff --git a/include/linux/dynamic_debug.h b/include/linux/dynamic_debug.h
-> index c388ab05a6e1..82eabaa6e827 100644
-> --- a/include/linux/dynamic_debug.h
-> +++ b/include/linux/dynamic_debug.h
-> @@ -38,11 +38,13 @@ struct _ddebug {
->   #define _DPRINTK_FLAGS_INCL_LINENO	(1<<3)
->   #define _DPRINTK_FLAGS_INCL_TID		(1<<4)
->   #define _DPRINTK_FLAGS_INCL_SOURCENAME	(1<<5)
-> +#define _DPRINTK_FLAGS_PREFIX_CACHED	(1<<7)
-
-Is there a reason to skip 1 << 6? I don't see any usage of this flag in 
-this series, maybe you can skip it for now and introduce it with the 
-actual implementation of the cache system?
-
-Also, I think it make sense to add some documentation on this define. 
-All the other are controlled by the user, but PREFIX_CACHED is 
-controlled by the "dyndbg core", so maybe add something like:
-
-	/**
-	 * _DPRINTK_FLAGS_PREFIX_CACHED - Mark a printk prefix as cached
-	 * This bit is set by the callsite to avoid regenerating fixed
-	 * part of the prefix at each call
-	 */
-
+> diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+> index 663c125006d0..f7ec2365ab40 100644
+> --- a/lib/dynamic_debug.c
+> +++ b/lib/dynamic_debug.c
+> @@ -850,19 +850,8 @@ static int remaining(int wrote)
+>   	return 0;
+>   }
 >   
-> -#define _DPRINTK_FLAGS_INCL_ANY		\
-> -	(_DPRINTK_FLAGS_INCL_MODNAME | _DPRINTK_FLAGS_INCL_FUNCNAME |\
-> -	 _DPRINTK_FLAGS_INCL_LINENO  | _DPRINTK_FLAGS_INCL_TID |\
-> -	 _DPRINTK_FLAGS_INCL_SOURCENAME)
-> +#define _DPRINTK_FLAGS_INCL_LOOKUP					\
-> +	(_DPRINTK_FLAGS_INCL_MODNAME | _DPRINTK_FLAGS_INCL_FUNCNAME |	\
-> +	 _DPRINTK_FLAGS_INCL_SOURCENAME | _DPRINTK_FLAGS_INCL_LINENO)
-> +#define _DPRINTK_FLAGS_INCL_ANY						\
-> +	(_DPRINTK_FLAGS_INCL_TID | _DPRINTK_FLAGS_INCL_LOOKUP)
+> -static char *__dynamic_emit_prefix(const struct _ddebug *desc, char *buf)
+> +static int __dynamic_emit_lookup(const struct _ddebug *desc, char *buf, int pos)
+>   {
+> -	int pos_after_tid;
+> -	int pos = 0;
+> -
+> -	if (desc->flags & _DPRINTK_FLAGS_INCL_TID) {
+> -		if (in_interrupt())
+> -			pos += snprintf(buf + pos, remaining(pos), "<intr> ");
+> -		else
+> -			pos += snprintf(buf + pos, remaining(pos), "[%d] ",
+> -					task_pid_vnr(current));
+> -	}
+> -	pos_after_tid = pos;
+>   	if (desc->flags & _DPRINTK_FLAGS_INCL_MODNAME)
+>   		pos += snprintf(buf + pos, remaining(pos), "%s:",
+>   				desc->modname);
+> @@ -875,8 +864,29 @@ static char *__dynamic_emit_prefix(const struct _ddebug *desc, char *buf)
+>   	if (desc->flags & _DPRINTK_FLAGS_INCL_LINENO)
+>   		pos += snprintf(buf + pos, remaining(pos), "%d:",
+>   				desc->lineno);
+> -	if (pos - pos_after_tid)
+> -		pos += snprintf(buf + pos, remaining(pos), " ");
+> +
+> +	/* cuz LOOKUP, we've emitted, so add trailing space if room */
+
+s/cuz/because/
+
+> +	if (remaining(pos))
+> +		buf[pos++] = ' ';
+> +
+> +	return pos;
+> +}
+> +
+> +static char *__dynamic_emit_prefix(struct _ddebug *desc, char *buf)
+> +{
+> +	int pos = 0;
+> +
+> +	if (desc->flags & _DPRINTK_FLAGS_INCL_TID) {
+> +		if (in_interrupt())
+> +			pos += snprintf(buf + pos, remaining(pos), "<intr> ");
+> +		else
+> +			pos += snprintf(buf + pos, remaining(pos), "[%d] ",
+> +					task_pid_vnr(current));
+> +	}
+> +
+> +	if (unlikely(desc->flags & _DPRINTK_FLAGS_INCL_LOOKUP))
+> +		pos += __dynamic_emit_lookup(desc, buf, pos);
+> +
+>   	if (pos >= PREFIX_SIZE)
+>   		buf[PREFIX_SIZE - 1] = '\0';
 >   
->   #if defined DEBUG
->   #define _DPRINTK_FLAGS_DEFAULT _DPRINTK_FLAGS_PRINT
+> @@ -885,7 +895,7 @@ static char *__dynamic_emit_prefix(const struct _ddebug *desc, char *buf)
+>   
+>   static inline char *dynamic_emit_prefix(struct _ddebug *desc, char *buf)
+>   {
+> -	if (unlikely(desc->flags & _DPRINTK_FLAGS_INCL_ANY))
+> +	if (desc->flags & _DPRINTK_FLAGS_INCL_ANY)
+
+Why do you remove the unlikely here?
+
+>   		return __dynamic_emit_prefix(desc, buf);
+>   	return buf;
+>   }
 
 -- 
 Louis Chauvet, Bootlin
