@@ -2,65 +2,65 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 143C3A6D650
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 09:38:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 847D3A6D654
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Mar 2025 09:38:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DBB3B10E233;
-	Mon, 24 Mar 2025 08:38:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4C9F410E23A;
+	Mon, 24 Mar 2025 08:38:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="mh2Xl1z+";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="PWdW5k9F";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com
- [209.85.221.51])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 23DA010E233;
- Mon, 24 Mar 2025 08:38:09 +0000 (UTC)
-Received: by mail-wr1-f51.google.com with SMTP id
- ffacd0b85a97d-3914aba1ce4so3418167f8f.2; 
- Mon, 24 Mar 2025 01:38:09 -0700 (PDT)
+Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com
+ [209.85.128.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DFBAD10E236;
+ Mon, 24 Mar 2025 08:38:11 +0000 (UTC)
+Received: by mail-wm1-f43.google.com with SMTP id
+ 5b1f17b1804b1-43d0618746bso26323865e9.2; 
+ Mon, 24 Mar 2025 01:38:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742805488; x=1743410288; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1742805490; x=1743410290; darn=lists.freedesktop.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lI99fnwoye6Q8fICOi58sOTUi88dGA8Wbff6aKoV7EI=;
- b=mh2Xl1z+Q9MyLqF80CU3OANdYN4vLxs+cs3NqbL4qs4lN3U+jt5LNIQiKlAA4f5rtb
- tNeGhusrJ7F6rMxpIeLL9GIqn0m0z/5GIP7D9mgUtCX3D991ZOeDyZwKo9N89AOwVR2V
- FDwHGykUInZwKEGYMbbBh33uK8QsU8O/yOtI34N9Rn8za/08d79zw3bvWL8wq7ruCW4W
- T9M8BQeTdbh28Kg30UXGaD3KbDGOTJTLKPYiyEKDz0+NDvOLxCM/Fq+aIYZI2rKSXGts
- G+Vbe9pewgqvwtxKQgLu5invMU/OmZDQ3ZlRPuY+vRL+NpcK6mAbq+CO0i6QXIWNUh1z
- h9Ng==
+ bh=F8crvv1DnTAIhN9IwGfudPOXUjLvEiE3lOXStQ82280=;
+ b=PWdW5k9FNcB+w1dHvhYd360+xBF+XxNoOG1SGPQYNg81TRiC9gRdDRCFEOlKOG1O1c
+ sr/KNTtx3atL9Pva8NFUN/9wD0Ddlo53WqAAo95+gEdh2z/tIAeObvI5g+0e3+/8bE3z
+ NSi6l7t8lG55qMaA7S3rZF/apAYP+QBFr7TBh5A/AQfJTAcNU8yMJKzaANvOFXvPvTSv
+ HqAAlQqkwx8JkAqyZOYV/r/EqMjoznigKiJiiRQo5FVDKRY6NbuKRRMeuXALI4jTGYGT
+ PZPXZNqC6lsm0qCIJGOry4/So2igLviGZ3RWcMd/TFi9Y7U84zGJKrF8Jvr6uEDfPgFu
+ k60w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742805488; x=1743410288;
+ d=1e100.net; s=20230601; t=1742805490; x=1743410290;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lI99fnwoye6Q8fICOi58sOTUi88dGA8Wbff6aKoV7EI=;
- b=ru2V2afm+USu6gaqWtFIAba/LrxVbm0VuarvWADUHSZTM4kIUpSIyhHYYeIHIZXwyr
- +sDq2jqHU+IHtgLyWCgr0IAmoaaD5iXmSUIaGvdZkjWlIGQcuf6Ci21PYXOGWqEXN0SI
- Aj5x2J7LZoeD8XkEqbvlT3cbCUEkGsURGpz36ddF51JY3Clr9suXT5CA1d/8OJk52zIa
- tjA5LXRi0HC0ZPEUgSg6gEV+JOhPXHHLxVruF/+zLHw+Q9lVpLW8yahelD7ylKnIDzwM
- zPb90GorBKSrpqNGuPw3x/n9QsFes+ElHjsik1w5gntLIIlMUfoEOdytgJ2Aj1DbRraX
- Pi8w==
+ bh=F8crvv1DnTAIhN9IwGfudPOXUjLvEiE3lOXStQ82280=;
+ b=FAInIacwjYHizKSRRYyCVf3Ybr5foTTAY8KgogvxxP4duWuT6VNgMOYeyPOEuItq5+
+ rSYCOJnxBzwWXi6efk4WMxJ8sLRV8md361yXo9g1tSeEANEbNqKxGCVLO6nqfQOj3MQy
+ K3wcFkWW4PBhU8V03Q4OK1YpKMr/Zh4GlplAmuZfR4/f0CHI4H9pO+kSDZEPFgknHtWv
+ +gYwJGbD2AwLMCnMSHgXPkRe/p0/3ALe+ESUpQsP+xXu45+fIeJTFPet2ZUUtSXvicIz
+ ihEolsieKXJjDN3l71Y6Bpx6VHNIj4RO55Mv6v88DVPX7XtwugTbxci+vd8gOskEhvnR
+ jo2g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVcdDHq5N1bgeWGOOpvHU/bvuEZG6aIomvnlwKz5KbWLpAdTbIBGl0aM+dIFnGwEsp77N/hQcPT1Mw=@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YzZgMDf/4WuGEkZRmNGVoVV6BXUqJlQw2L1MkbmNTwI59u5Wetu
- iQUyBopNMTq6H74X+vcPq1snQ+ljZ5N2Fsm4pF47fVmL6e8jjERj
-X-Gm-Gg: ASbGncux4cgD45wh7JWJeTri33xRJUtJ/QTUAPlTDtZfda/skASahBEZeaIPmZx2XnW
- a66RnJ8C8cwIntL4durrG/JWlcUGE4YNK84+Q8pY1AhkRtrteCS8EJDu+u766mK/JUHAiiWTKCG
- 5h0dqUhqDQeLy88fHfdwQCGXYsYymV8ADrTfLztGaR5kWcTRfyEebnwyuqFSRSga9/N6UNRQ9s2
- NbvHNDkevVIZJM9le+jJCyXPByuhmtHNNJbz4dJN2MnmkBlnqU/lXLw2l5xFiq2ITz62f9Vg7Fh
- uqKCjBm+4LudRI2wtNKaYQRh2zW935KQwsnq1yhexJBv1DRcQ/3pP7zCJFqwddh5r3/hkL9b
-X-Google-Smtp-Source: AGHT+IE5dnmZzlumAHOzeYmTNsGGoPkMWQP5cGeN5N9XavHeq3hHLFm7ggnXPVJJElCrQxSW73xyAA==
-X-Received: by 2002:a5d:5987:0:b0:391:43cb:43e3 with SMTP id
- ffacd0b85a97d-3997f940621mr9615494f8f.46.1742805487437; 
- Mon, 24 Mar 2025 01:38:07 -0700 (PDT)
+ AJvYcCV11f+iLWVtGFbDBxaGhexws4YBOWI0uvyut+DU5hvndIrUhNS0fxs/npQmieHHnY0O8QJKZDCu6Kw=@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzfYtRgdBdQo/1NihVZ9S1gXQ5aPTExhNzCyfmCGjtnxZj2NMLE
+ ScYB4qP3EasGhuK7dm1lrXHVFdhucelxTseBO7euYhj41W/GJ2jI
+X-Gm-Gg: ASbGncuE7L00eGVMCB55CDKoshxqCj8RPBI1LrsYUZ2Xil/97UyGFTqJbsAKGIpQM39
+ WXp/94UPvIzaEf1dXqSeDtVzAJGWTZqId5BaR1HVqnx9k6x8r/bBAZT4tjozRvNLah6zjaHmUyW
+ 8I69tJiXYKu2OjmUnOW7UcwjAcrQPcw+TeDfBgBXP9AlxIOfiqFROmZsFqMecYVfyQWBOsv8s6k
+ X9hVbesesQDU0LD14VVCEv3mEleo9vIf2xwIxcYVLtsaNmFv/PC8N2Hlw6pV3vzGjN5HVIECVfS
+ LwC1/FI+iKxAjAqkD32lG4ZJVuuIS1jdywFI//zmz3WjMB3JCtmljavfjY8AKQ==
+X-Google-Smtp-Source: AGHT+IGs1HJeKkqJjMiO8rC3KSzg7HG6dWeZwb3bbz3SIfkpzJ0mP0jvFr5APzI9VrO18/uz84mVqQ==
+X-Received: by 2002:a5d:64a5:0:b0:391:31f2:b99e with SMTP id
+ ffacd0b85a97d-3997f900bd7mr10503751f8f.2.1742805490200; 
+ Mon, 24 Mar 2025 01:38:10 -0700 (PDT)
 Received: from arrakis.kwizart.net (home.kwizart.net. [82.65.38.83])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3997f9b3c2csm10078670f8f.46.2025.03.24.01.38.06
+ ffacd0b85a97d-3997f9b3c2csm10078670f8f.46.2025.03.24.01.38.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Mar 2025 01:38:06 -0700 (PDT)
+ Mon, 24 Mar 2025 01:38:09 -0700 (PDT)
 From: Nicolas Chauvet <kwizart@gmail.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
  Jani Nikula <jani.nikula@linux.intel.com>,
@@ -69,10 +69,9 @@ To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
  Tvrtko Ursulin <tursulin@ursulin.net>
 Cc: intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
  Nicolas Chauvet <kwizart@gmail.com>, stable@vger.kernel.org
-Subject: [PATCH 1/3] Revert "drm/i915/gvt: Fix out-of-bounds buffer write into
- opregion->signature[]"
-Date: Mon, 24 Mar 2025 09:30:01 +0100
-Message-ID: <20250324083755.12489-2-kwizart@gmail.com>
+Subject: [PATCH 2/3] [RFC] drm/i915/gvt: Fix opregion_header->signature size
+Date: Mon, 24 Mar 2025 09:30:02 +0100
+Message-ID: <20250324083755.12489-3-kwizart@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250324083755.12489-1-kwizart@gmail.com>
 References: <20250324083755.12489-1-kwizart@gmail.com>
@@ -93,52 +92,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This reverts commit ea26c96d59b27e878fe61e8ef0fed840d2281a2f.
-
-This fix truncates the OPREGION_SIGNATURE to fit into 16 chars instead of
-enlarging the target field, hence only moving the size missmatch to later.
-
-As shown with gcc-15:
-drivers/gpu/drm/i915/gvt/opregion.c: In function intel_vgpu_init_opregion:
-drivers/gpu/drm/i915/gvt/opregion.c:35:28: error: initializer-string for array of char is too long [-Werror=unterminated-string-initialization]
-   35 | #define OPREGION_SIGNATURE "IntelGraphicsMem"
-      |                            ^~~~~~~~~~~~~~~~~~
-drivers/gpu/drm/i915/gvt/opregion.c:225:45: note: in expansion of macro OPREGION_SIGNATURE
-  225 |         const char opregion_signature[16] = OPREGION_SIGNATURE;
-      |                                             ^~~~~~~~~~~~~~~~~~
-cc1: all warnings being treated as errors
+Enlarge the signature field to accept the string termination.
 
 Cc: stable@vger.kernel.org
-Reported-by: Nicolas Chauvet <kwizart@gmail.com>
-Fixes: ea26c96d59 ("drm/i915/gvt: Fix out-of-bounds buffer write into opregion->signature[]")
+Fixes: 93615d59912 ("Revert drm/i915/gvt: Fix out-of-bounds buffer write into opregion->signature[]")
 Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
 ---
- drivers/gpu/drm/i915/gvt/opregion.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/i915/gvt/opregion.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/gvt/opregion.c
-index 509f9ccae3a9..9a8ead6039e2 100644
+index 9a8ead6039e2..0f11cd6ba383 100644
 --- a/drivers/gpu/drm/i915/gvt/opregion.c
 +++ b/drivers/gpu/drm/i915/gvt/opregion.c
-@@ -222,7 +222,6 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
- 	u8 *buf;
- 	struct opregion_header *header;
- 	struct vbt v;
--	const char opregion_signature[16] = OPREGION_SIGNATURE;
+@@ -43,7 +43,7 @@
+ #define DEVICE_TYPE_EFP4   0x10
  
- 	gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
- 	vgpu_opregion(vgpu)->va = (void *)__get_free_pages(GFP_KERNEL |
-@@ -236,8 +235,8 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
- 	/* emulated opregion with VBT mailbox only */
- 	buf = (u8 *)vgpu_opregion(vgpu)->va;
- 	header = (struct opregion_header *)buf;
--	memcpy(header->signature, opregion_signature,
--	       sizeof(opregion_signature));
-+	memcpy(header->signature, OPREGION_SIGNATURE,
-+			sizeof(OPREGION_SIGNATURE));
- 	header->size = 0x8;
- 	header->opregion_ver = 0x02000000;
- 	header->mboxes = MBOX_VBT;
+ struct opregion_header {
+-	u8 signature[16];
++	u8 signature[32];
+ 	u32 size;
+ 	u32 opregion_ver;
+ 	u8 bios_ver[32];
 -- 
 2.49.0
 
