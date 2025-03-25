@@ -2,82 +2,81 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 130C3A709AA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Mar 2025 19:57:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE722A70A62
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Mar 2025 20:27:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BF5A410E5C3;
-	Tue, 25 Mar 2025 18:57:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 60B7410E5EA;
+	Tue, 25 Mar 2025 19:27:31 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="gSM0c41/";
+	dkim=pass (2048-bit key; unprotected) header.d=riscv-rocks.de header.i=@riscv-rocks.de header.b="hKmcSJA1";
+	dkim=pass (1024-bit key; unprotected) header.d=amazonses.com header.i=@amazonses.com header.b="AVAiw6cD";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-f170.google.com (mail-qk1-f170.google.com
- [209.85.222.170])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8078110E00A;
- Tue, 25 Mar 2025 18:57:14 +0000 (UTC)
-Received: by mail-qk1-f170.google.com with SMTP id
- af79cd13be357-7c542ffec37so633327185a.2; 
- Tue, 25 Mar 2025 11:57:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742929033; x=1743533833; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Wc1b/KonmqQlWVjQyIDNx1PB8OnyCz3qh1Tew/uSRf8=;
- b=gSM0c41/gQS3DbtE+08PualIVWp9K+vaME9sEwID+CaVsWrNT9qRanZhBuw1ybkKva
- tOFUbmrCddmFBxHOdzMeNKlfc5lrCp80ET80a1amO02NenolvpKHArJA1gFL8KMhdwG/
- B5JNvTf+Phj39iIQU22OYgOL2+GB/WVdIoODLgBOa7bIDUEPOHob4JHXu5GPTL+vu89V
- dEC0OAUD/9cRgwrG93UCKeTpt5+8fdzw/+YibLQjBgMDW2PeOdhmeBOZyY5UyzxHQtuc
- 1d0No+pnHivDvJ3fZFi/hxt1pwSxeam4oMwJJo4elbbovSB9E2UUJ943eOpqY5h7bqKD
- oZAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742929033; x=1743533833;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Wc1b/KonmqQlWVjQyIDNx1PB8OnyCz3qh1Tew/uSRf8=;
- b=OeROdaA7TjFtqdrFXROneyRkEZgORwQh+zOn2+sK+xpS9axKIpzD/ScsVBM3lP+LFg
- lYfYwH+gY9Vwy3iBpyrpZhG3G0uaLZ0egysGIFCms1vTbc6b37OSBAiOkBKpi0I24VMN
- 8+4t0nym4oq3pAHDCa6F4dg/kDXCV5FkHz6mPARwtu0c7YC4m2Bpq/aKfaEJx6uV59/m
- UfKIWTAKTaOYXJJ9dDa4gkkRNhEvp6J86Q70sI/bxUc0ZCZkrrwo11g5rhLFkNnh/0hh
- NAqnc7Kwp9V7VKGkD2B5yxCYsny102jdIhyR5xr1VLtL2hO3dZHdx7pvWkmV4xgs5odQ
- MTkg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU8fE6SwTPP/PUHYhy0CTSsp00263oxGBkTjMvMdgXBUmItrtUusFWc1LSVo3gPKZJR0NHnV7RD@lists.freedesktop.org,
- AJvYcCUJMnzJx8vgLb9QjsnoMEFwP/LuC3UEbJp5NzIJpRibdHVvw4MYeMrLxSfQ26i/PMPSDB7nQR7/f+9XQqJGVmxU8w==@lists.freedesktop.org,
- AJvYcCVAsC3EOtTox3jG0U1PfuWWzEmtRAOl5Dj3j5vzbdFbX0LEnzIzhmQGHA1zrpasW5gWIE6IF3GgPxgH@lists.freedesktop.org,
- AJvYcCVhDCp7jgjIlIppA30a6JdB1H7q6lisPdcQUzcvWZyRkAJg3oEhJG5eN97aI32VG/OYQ85H7VbsEzdU@lists.freedesktop.org,
- AJvYcCW68nnnPPqf6gnoJ7lLHuDN/IECj6dSrGA5RfOYsbGmNME1W7oo6pz7NL0zDc95uB93YLwMRTNnEkoOzlyRpg==@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YzUYjBcv2QL8ed/4eZNihXDD+Vkp+bVEW85qRKaQJKVrRkjHtY8
- Bt2CJOEsgZjKvFlDLQLCQ6KdgydGgUfdVCShv0P/SqVrSnL7ncCUmhEqT0SQzvS/sJX3Yk2eOBi
- KLSy5D5MTfhZLWJodeqSpgOoF/bmzksNp
-X-Gm-Gg: ASbGncsYpnUXqUiGWlznx9tKAcZX66IdlWUszhr8R7u4OPs9iemoECHR7OcHzShRLmE
- skSAydTc1t/6+BmT/H+m8th3fPMnGTQRxRfZXrx7Nts/svluE4ZVSxEVQAreIVfkMLdsir6LglR
- u2ngva66HzYxM1edA7rxxpEmBs
-X-Google-Smtp-Source: AGHT+IHZrxz76tlBAchwWlwvG1UO5HlgQQvC8bUrjtin9ky9DD1ICNaN0M4Dchd5qiDKedF02gvCDAitk2nLkn591/E=
-X-Received: by 2002:a05:6122:251b:b0:520:61ee:c7f9 with SMTP id
- 71dfb90a1353d-525a84c5e96mr14236045e0c.7.1742929022532; Tue, 25 Mar 2025
- 11:57:02 -0700 (PDT)
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Tue, 25 Mar 2025 19:27:22 UTC
+Received: from b224-14.smtp-out.eu-central-1.amazonses.com
+ (b224-14.smtp-out.eu-central-1.amazonses.com [69.169.224.14])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6FEB510E5E1;
+ Tue, 25 Mar 2025 19:27:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=2kaovp6zxy5nzp5wqunvdq5vkiqbeqln; d=riscv-rocks.de; t=1742930520;
+ h=Date:From:To:Cc:Subject:Message-ID:Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
+ bh=FdCrWB/PGMqRl9E6yvI0q12+/fCRDq9CWfKgDzpVcYs=;
+ b=hKmcSJA1MuhxsIZPZfj7XEvEo2N6UH79MdWW9aunUqen4zNxJjW5wra5v/QO8qRT
+ yHSCH0G142gjUOtflLMR95TxxWgE6GQhr555Ds6o8gCRnj3sIKuQWRbIKKCAqaW1dwk
+ JjzNQYfx+6fZdXjpwp/nm5g0gr7aRGe4oHB2Tgo4drsF9dKykpVmbFwmBELXa+TxA0I
+ 70COdN52Q+P45OpdGYqpthsQMXJb0zymfGlfgRwmltdIUJGkCcygt9fVSXg8gL4NRVk
+ Mj3BL5cdFR3KWewke+oo2W62KFEfOHSSHXalPODMl0EZCgkbdPeIqsHSjgbGOCYa2dF
+ 09Z1/KaK9Q==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=54ecsf3zk7z4mwxwwox7z7bg6e5gwjsz; d=amazonses.com; t=1742930520;
+ h=Date:From:To:Cc:Subject:Message-ID:Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Feedback-ID;
+ bh=FdCrWB/PGMqRl9E6yvI0q12+/fCRDq9CWfKgDzpVcYs=;
+ b=AVAiw6cD+raTgnEdmxwoAMbu6Kb/WbReAY5v8LAYSDk6+Exstz74K8Fs12KL9V2M
+ 8Os6Q8Yg3H4up1nbWyLjFsciZPWu046fbGEcRjOOoi8dVACNUBFvEWeVDNUCKAXgIzy
+ kMfXfH4L1wztt45u6aiYNQyPuSn8BmIXXrUNZlFo=
+Date: Tue, 25 Mar 2025 19:22:00 +0000
+From: Damian Tometzki <damian@riscv-rocks.de>
+To: Nicolas Chauvet <kwizart@gmail.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, Kees Cook <kees@kernel.org>, 
+ Zhenyu Wang <zhenyuw@linux.intel.com>, 
+ Zhi Wang <zhi.wang.linux@gmail.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-hardening@vger.kernel.org
+Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
+ unterminated strings
+Message-ID: <01070195cec129de-3a185083-9c9f-451c-a7f9-3798f9eb5954-000000@eu-central-1.amazonses.com>
+Mail-Followup-To: Nicolas Chauvet <kwizart@gmail.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Kees Cook <kees@kernel.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.wang.linux@gmail.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
+References: <20250310222355.work.417-kees@kernel.org>
+ <01070195c306db7f-9f28efdd-9456-4db3-b6c6-343298bd571b-000000@eu-central-1.amazonses.com>
+ <87r02ma8s3.fsf@intel.com>
+ <CABr+WTkggOTDDzgPFmnJo3Dab4QYxLRt=_g7in3bgr0z6jXf+g@mail.gmail.com>
 MIME-Version: 1.0
-References: <20250320185238.447458-1-jim.cromie@gmail.com>
- <20250320185238.447458-45-jim.cromie@gmail.com>
- <c3514758-5a22-4acb-8ff0-1f4ddade02f4@bootlin.com>
-In-Reply-To: <c3514758-5a22-4acb-8ff0-1f4ddade02f4@bootlin.com>
-From: jim.cromie@gmail.com
-Date: Tue, 25 Mar 2025 12:56:36 -0600
-X-Gm-Features: AQ5f1JqwCZoNQkWvPRC6s-f7lWQaMvaFRZI7Bln1P_k3mQTyHi7JUmVlxPTmisg
-Message-ID: <CAJfuBxw_OixCp0KsoYu9nH6=hprKJpKt7dkPT0hL-32syCTJ7A@mail.gmail.com>
-Subject: Re: [PATCH v2 44/59] drm-dyndbg: add DRM_CLASSMAP_USE to Xe driver
-To: Louis Chauvet <louis.chauvet@bootlin.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- intel-gfx@lists.freedesktop.org, intel-gfx-trybot@lists.freedesktop.org, 
- jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org, 
- daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
- ville.syrjala@linux.intel.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CABr+WTkggOTDDzgPFmnJo3Dab4QYxLRt=_g7in3bgr0z6jXf+g@mail.gmail.com>
+User-Agent: Mutt
+X-Operating-System: Linux Fedora release 42 (Adams) (Kernel 6.14.0)
+Organization: Linux hacker
+Feedback-ID: ::1.eu-central-1.yMcBPu/jK26Vj3HVmCFyFk75QMsS8V3QY5HbXP/Qrys=:AmazonSES
+X-SES-Outgoing: 2025.03.25-69.169.224.14
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,55 +89,135 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Damian Tometzki <damian@riscv-rocks.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Mar 24, 2025 at 9:24=E2=80=AFAM Louis Chauvet <louis.chauvet@bootli=
-n.com> wrote:
->
->
->
-> Le 20/03/2025 =C3=A0 19:52, Jim Cromie a =C3=A9crit :
-> > Invoke DRM_CLASSMAP_USE from xe_drm_client.c.  When built with
-> > CONFIG_DRM_USE_DYNAMIC_DEBUG=3Dy, this tells dydnbg that Xe uses
-> > has drm.debug calls.
+On Mon, 24. Mar 22:19, Nicolas Chauvet wrote:
+> Le lun. 24 mars 2025 à 13:54, Jani Nikula
+> <jani.nikula@linux.intel.com> a écrit :
 > >
-> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> > ---
-> >   drivers/gpu/drm/xe/xe_drm_client.c | 2 ++
-> >   1 file changed, 2 insertions(+)
+> > On Sun, 23 Mar 2025, Damian Tometzki <damian@riscv-rocks.de> wrote:
+> > > On Mon, 10. Mar 15:23, Kees Cook wrote:
+> > >> When a character array without a terminating NUL character has a static
+> > >> initializer, GCC 15's -Wunterminated-string-initialization will only
+> > >> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
+> > >> with __nonstring to and correctly identify the char array as "not a C
+> > >> string" and thereby eliminate the warning.
+> > >>
+> > >> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117178 [1]
+> > >> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > >> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+> > >> Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> > >> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> > >> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > >> Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+> > >> Cc: David Airlie <airlied@gmail.com>
+> > >> Cc: Simona Vetter <simona@ffwll.ch>
+> > >> Cc: intel-gvt-dev@lists.freedesktop.org
+> > >> Cc: intel-gfx@lists.freedesktop.org
+> > >> Cc: dri-devel@lists.freedesktop.org
+> > >> Signed-off-by: Kees Cook <kees@kernel.org>
+> > >> ---
+> > >>  drivers/gpu/drm/i915/gvt/opregion.c | 4 ++--
+> > >>  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >>
+> > >> diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/gvt/opregion.c
+> > >> index 509f9ccae3a9..f701638d3145 100644
+> > >> --- a/drivers/gpu/drm/i915/gvt/opregion.c
+> > >> +++ b/drivers/gpu/drm/i915/gvt/opregion.c
+> > >> @@ -43,7 +43,7 @@
+> > >>  #define DEVICE_TYPE_EFP4   0x10
+> > >>
+> > >>  struct opregion_header {
+> > >> -    u8 signature[16];
+> > >> +    u8 signature[16] __nonstring;
 > >
-> > diff --git a/drivers/gpu/drm/xe/xe_drm_client.c b/drivers/gpu/drm/xe/xe=
-_drm_client.c
-> > index 2d4874d2b922..756dba5c88f8 100644
-> > --- a/drivers/gpu/drm/xe/xe_drm_client.c
-> > +++ b/drivers/gpu/drm/xe/xe_drm_client.c
-> > @@ -21,6 +21,8 @@
-> >   #include "xe_pm.h"
-> >   #include "xe_trace.h"
+> > Why would this annotation be needed? It's not treated as a string
+> > anywhere, and it's u8 not char.
 > >
-> > +DRM_CLASSMAP_USE(drm_debug_classes);
+> > >>      u32 size;
+> > >>      u32 opregion_ver;
+> > >>      u8 bios_ver[32];
+> > >> @@ -222,7 +222,7 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+> > >>      u8 *buf;
+> > >>      struct opregion_header *header;
+> > >>      struct vbt v;
+> > >> -    const char opregion_signature[16] = OPREGION_SIGNATURE;
+> > >> +    const char opregion_signature[16] __nonstring = OPREGION_SIGNATURE;
+> > >>
+> > >>      gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
+> > >>      vgpu_opregion(vgpu)->va = (void *)__get_free_pages(GFP_KERNEL |
+> > >> --
+> > >> 2.34.1
+> > >>
+> > > Hello together,
+> > >
+> > > it doesnt resolve the build issue with gcc15 gcc (GCC) 15.0.1 20250228
+> > >
+> > > CC [M]  drivers/gpu/drm/i915/gvt/scheduler.o
+> > > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c: In function ‘intel_vgpu_init_opregion’:
+> > > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:35:28: error: initializer-string for array of ‘char’ is too long [-Werror=unterminated-string-initialization]
+> > >    35 | #define OPREGION_SIGNATURE "IntelGraphicsMem"
+> > >       |                            ^~~~~~~~~~~~~~~~~~
+> > > /home/damian/kernel/linux/drivers/gpu/drm/i915/gvt/opregion.c:225:57: note: in expansion of macro ‘OPREGION_SIGNATURE’
+> > >   225 |         const char opregion_signature[16] __nonstring = OPREGION_SIGNATURE;
+> > >       |                                                         ^~~~~~~~~~~~~~~~~~
+> > >   CC [M]  drivers/gpu/drm/i915/gvt/trace_points.o
+> > > cc1: all warnings being treated as errors
+> > > make[7]: *** [/home/damian/kernel/linux/scripts/Makefile.build:207: drivers/gpu/drm/i915/gvt/opregion.o] Error 1
+> > > make[7]: *** Waiting for unfinished jobs....
+> > >   CC [M]  drivers/gpu/drm/i915/gvt/vgpu.o
+> > > make[6]: *** [/home/damian/kernel/linux/scripts/Makefile.build:465: drivers/gpu/drm/i915] Error 2
+> > > make[5]: *** [/home/damian/kernel/linux/s
+> >
+> > What about this?
+> >
+> > IMO it's anyway good practice to use sizeof(dest) rather than
+> > sizeof(src) for memcpy.
+> >
+> >
+> > diff --git a/drivers/gpu/drm/i915/gvt/opregion.c b/drivers/gpu/drm/i915/gvt/opregion.c
+> > index 509f9ccae3a9..dbad4d853d3a 100644
+> > --- a/drivers/gpu/drm/i915/gvt/opregion.c
+> > +++ b/drivers/gpu/drm/i915/gvt/opregion.c
+> > @@ -222,7 +222,6 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+> >         u8 *buf;
+> >         struct opregion_header *header;
+> >         struct vbt v;
+> > -       const char opregion_signature[16] = OPREGION_SIGNATURE;
+> >
+> >         gvt_dbg_core("init vgpu%d opregion\n", vgpu->id);
+> >         vgpu_opregion(vgpu)->va = (void *)__get_free_pages(GFP_KERNEL |
+> > @@ -236,8 +235,10 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+> >         /* emulated opregion with VBT mailbox only */
+> >         buf = (u8 *)vgpu_opregion(vgpu)->va;
+> >         header = (struct opregion_header *)buf;
+> > -       memcpy(header->signature, opregion_signature,
+> > -              sizeof(opregion_signature));
 > > +
->
-> Is xe_drm_client.c the best place to do it? I think the module entry
-> point is a bit better [1].
->
+> > +       static_assert(sizeof(header->signature) == sizeof(OPREGION_SIGNATURE) - 1);
+> > +       memcpy(header->signature, OPREGION_SIGNATURE, sizeof(header->signature));
+> > +
+> >         header->size = 0x8;
+> >         header->opregion_ver = 0x02000000;
+> >         header->mboxes = MBOX_VBT;
+> >
+> >
+> >
+> > --
+> > Jani Nikula, Intel
+> 
+> This patch does solve the build issue with gcc-15 on Fedora-42
+> (gcc-15.0.1-0.9.fc42.x86_64).
+> https://copr.fedorainfracloud.org/coprs/kwizart/kernel-longterm-6.12/build/8812754/
+testet-by Damian Tometzki
+Thanks
+Damian
 
-yes perhaps.  I was drawn by the _client in the file-name.
-Im not sure Im fully consistent, iirc the drivers get it near driver-iinit =
-ops.
+> 
+> Thanks.
 
-
-> [1]:https://elixir.bootlin.com/linux/v6.13.7/source/drivers/gpu/drm/xe/xe=
-_module.c
->
-> >   /**
-> >    * DOC: DRM Client usage stats
-> >    *
->
-> --
-> Louis Chauvet, Bootlin
-> Embedded Linux and Kernel engineering
-> https://bootlin.com
->
->
+-- 
+VG
+Damian Tometzki
