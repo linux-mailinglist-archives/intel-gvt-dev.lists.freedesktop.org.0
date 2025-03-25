@@ -2,80 +2,80 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77149A7092C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Mar 2025 19:42:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 130C3A709AA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Mar 2025 19:57:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3F3E510E295;
-	Tue, 25 Mar 2025 18:42:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BF5A410E5C3;
+	Tue, 25 Mar 2025 18:57:15 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="fSl0vgav";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="gSM0c41/";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yw1-f173.google.com (mail-yw1-f173.google.com
- [209.85.128.173])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 00F9D10E293;
- Tue, 25 Mar 2025 18:42:33 +0000 (UTC)
-Received: by mail-yw1-f173.google.com with SMTP id
- 00721157ae682-6febf391132so52576457b3.1; 
- Tue, 25 Mar 2025 11:42:33 -0700 (PDT)
+Received: from mail-qk1-f170.google.com (mail-qk1-f170.google.com
+ [209.85.222.170])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8078110E00A;
+ Tue, 25 Mar 2025 18:57:14 +0000 (UTC)
+Received: by mail-qk1-f170.google.com with SMTP id
+ af79cd13be357-7c542ffec37so633327185a.2; 
+ Tue, 25 Mar 2025 11:57:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1742928152; x=1743532952; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1742929033; x=1743533833; darn=lists.freedesktop.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PeUoecMq8P9nHeIOh/xIrCNU1yJBHCZceaN06+7PEC4=;
- b=fSl0vgavuB3iu4dNR0lNEVwSQ4pR828QYNB5AYGXfHCvmpHBMlmjAsmAiYeFSwMclX
- AiAlkprSMNBtOuSxwSosYckl6g4VJPDcKmDDXrPuy9SPemmhVeu+h4sCaYrYZ0I2DkfZ
- ej3ELXh10KqCRdmGN7/cADTsygCvdmaMKaRsDw0ThnMzKC/nlzC7n5wLG7NwCtQiqCsi
- 889NdJnXw9TzvtVEpGORG8jqOM612y4PMrSiaMf/kHw2j0THtAYkTy37O3+IYRhqqfm8
- gEznnAcOmNYY50vRnbjgq/9RZS12adwnrqiI3yjLV/6RemlnDV+c72/rArNgyPNtlIMD
- vCkg==
+ bh=Wc1b/KonmqQlWVjQyIDNx1PB8OnyCz3qh1Tew/uSRf8=;
+ b=gSM0c41/gQS3DbtE+08PualIVWp9K+vaME9sEwID+CaVsWrNT9qRanZhBuw1ybkKva
+ tOFUbmrCddmFBxHOdzMeNKlfc5lrCp80ET80a1amO02NenolvpKHArJA1gFL8KMhdwG/
+ B5JNvTf+Phj39iIQU22OYgOL2+GB/WVdIoODLgBOa7bIDUEPOHob4JHXu5GPTL+vu89V
+ dEC0OAUD/9cRgwrG93UCKeTpt5+8fdzw/+YibLQjBgMDW2PeOdhmeBOZyY5UyzxHQtuc
+ 1d0No+pnHivDvJ3fZFi/hxt1pwSxeam4oMwJJo4elbbovSB9E2UUJ943eOpqY5h7bqKD
+ oZAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1742928152; x=1743532952;
+ d=1e100.net; s=20230601; t=1742929033; x=1743533833;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PeUoecMq8P9nHeIOh/xIrCNU1yJBHCZceaN06+7PEC4=;
- b=QljArczqgo7hDDAlzLvdOkOvgIMtBxIcP91SWo2aq/yoRrFxD7D8nRrTX4EQAzEHYl
- ssikcZs2CUREzXoF7AvM34H983+mKgJGVBNkXGsLdugyAV325YG/GAnO+INfwEPH3qiv
- S5Kdi7r0xk6o821OgO6siPb6wo3YLu1A/bpc2gMW8oM1G9BvA0savVA+sy0Cq1B/oEoF
- Fei8lqcuRCQHaEI3lfww21AVYu+yYAxmA/qnJ1qxBDAvzYNJ0DGrxcaA4gftjoQGGKD6
- NT3bIyVWYomedikPqpVtOE/fru5tmyYybKxE6LNFITBvFE2lMlxlZ1mmX+duNnGOrvYM
- DDzQ==
+ bh=Wc1b/KonmqQlWVjQyIDNx1PB8OnyCz3qh1Tew/uSRf8=;
+ b=OeROdaA7TjFtqdrFXROneyRkEZgORwQh+zOn2+sK+xpS9axKIpzD/ScsVBM3lP+LFg
+ lYfYwH+gY9Vwy3iBpyrpZhG3G0uaLZ0egysGIFCms1vTbc6b37OSBAiOkBKpi0I24VMN
+ 8+4t0nym4oq3pAHDCa6F4dg/kDXCV5FkHz6mPARwtu0c7YC4m2Bpq/aKfaEJx6uV59/m
+ UfKIWTAKTaOYXJJ9dDa4gkkRNhEvp6J86Q70sI/bxUc0ZCZkrrwo11g5rhLFkNnh/0hh
+ NAqnc7Kwp9V7VKGkD2B5yxCYsny102jdIhyR5xr1VLtL2hO3dZHdx7pvWkmV4xgs5odQ
+ MTkg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUKzkOMJSD1fc5+eiuqCyU03sEMpN5Cp32yYgcO4TaDGoWgQCPI93d6hPTtnmZNDOK1FVMKBnS4w+XuYJy/LA==@lists.freedesktop.org,
- AJvYcCUNzUHy1f7pYtN9nXz9eS4B4CUYSm9bL+MTFxVI80/3Ps5Pz35TDJp8j06nhcEx4M5J9O9E4GBHkObn@lists.freedesktop.org,
- AJvYcCUiy1Bq6iG313mWuD+AYVBPNGNYATvxcZIKyqvuaCaAwiHNH2ie9qfEjgKnhWjhA5gdAyJ1IdFnJPK+S6CdfeeRbQ==@lists.freedesktop.org,
- AJvYcCVKJsf33ovGu0jLdBlTfabTUOXyFxe4MH/Nm5MK+Zm2H3FP2MYpljx1iNEsPseu8+uaz2/2NscftR5w@lists.freedesktop.org,
- AJvYcCW2nRzfCC66JeNBgtPPPr7Hm2eKrraH9H/W5fxyLTcuE3jc3IMjL2odvvSF2/mjN1pIgkhy0DZj@lists.freedesktop.org
-X-Gm-Message-State: AOJu0Yw57xTMOk8tpT7egdE4Ob0S1JwWgIx/J9OXHLXrxFrIV7fpdu1C
- j/ixKvFP090oGsznLSyKnFJW9Tkbq2k1U1QUp7giIgEtR8gLaUd5NO+y/o+D+1ewC+Nb/m4SjSz
- ZBAdr+9B25ay8gON8T0MXA6L8Lq4=
-X-Gm-Gg: ASbGncv27Z42jc2CvBK5juhkB2JFcOF6c5H0xvMogo8FxoLzWsSNcep5DrCJVbxFxwT
- 5GYYV7YbH/G5kcZGNcZPVkHo29W94i7Dtn++OaSnOPMTOhcKNm1JoH92yU3P0h37ZldnzA/PwE4
- aOBqvhej9o/leSyDOhW8YlSfZo
-X-Google-Smtp-Source: AGHT+IEYJVEdhxBYqC+vn+T0V878WmSY+Hkd8JEVzl5vnSfQjiTFWsv1pJ/9u3CtXGZJrGgT7+9EyoeQDEqXNs0ITcY=
-X-Received: by 2002:a05:690c:4d49:b0:6f9:aecf:ab34 with SMTP id
- 00721157ae682-700bad42af9mr237984777b3.38.1742928151983; Tue, 25 Mar 2025
- 11:42:31 -0700 (PDT)
+ AJvYcCU8fE6SwTPP/PUHYhy0CTSsp00263oxGBkTjMvMdgXBUmItrtUusFWc1LSVo3gPKZJR0NHnV7RD@lists.freedesktop.org,
+ AJvYcCUJMnzJx8vgLb9QjsnoMEFwP/LuC3UEbJp5NzIJpRibdHVvw4MYeMrLxSfQ26i/PMPSDB7nQR7/f+9XQqJGVmxU8w==@lists.freedesktop.org,
+ AJvYcCVAsC3EOtTox3jG0U1PfuWWzEmtRAOl5Dj3j5vzbdFbX0LEnzIzhmQGHA1zrpasW5gWIE6IF3GgPxgH@lists.freedesktop.org,
+ AJvYcCVhDCp7jgjIlIppA30a6JdB1H7q6lisPdcQUzcvWZyRkAJg3oEhJG5eN97aI32VG/OYQ85H7VbsEzdU@lists.freedesktop.org,
+ AJvYcCW68nnnPPqf6gnoJ7lLHuDN/IECj6dSrGA5RfOYsbGmNME1W7oo6pz7NL0zDc95uB93YLwMRTNnEkoOzlyRpg==@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzUYjBcv2QL8ed/4eZNihXDD+Vkp+bVEW85qRKaQJKVrRkjHtY8
+ Bt2CJOEsgZjKvFlDLQLCQ6KdgydGgUfdVCShv0P/SqVrSnL7ncCUmhEqT0SQzvS/sJX3Yk2eOBi
+ KLSy5D5MTfhZLWJodeqSpgOoF/bmzksNp
+X-Gm-Gg: ASbGncsYpnUXqUiGWlznx9tKAcZX66IdlWUszhr8R7u4OPs9iemoECHR7OcHzShRLmE
+ skSAydTc1t/6+BmT/H+m8th3fPMnGTQRxRfZXrx7Nts/svluE4ZVSxEVQAreIVfkMLdsir6LglR
+ u2ngva66HzYxM1edA7rxxpEmBs
+X-Google-Smtp-Source: AGHT+IHZrxz76tlBAchwWlwvG1UO5HlgQQvC8bUrjtin9ky9DD1ICNaN0M4Dchd5qiDKedF02gvCDAitk2nLkn591/E=
+X-Received: by 2002:a05:6122:251b:b0:520:61ee:c7f9 with SMTP id
+ 71dfb90a1353d-525a84c5e96mr14236045e0c.7.1742929022532; Tue, 25 Mar 2025
+ 11:57:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250320185238.447458-1-jim.cromie@gmail.com>
- <20250320185238.447458-34-jim.cromie@gmail.com>
- <2dffcb05-1c31-4704-9081-91107b3ce165@bootlin.com>
-In-Reply-To: <2dffcb05-1c31-4704-9081-91107b3ce165@bootlin.com>
+ <20250320185238.447458-45-jim.cromie@gmail.com>
+ <c3514758-5a22-4acb-8ff0-1f4ddade02f4@bootlin.com>
+In-Reply-To: <c3514758-5a22-4acb-8ff0-1f4ddade02f4@bootlin.com>
 From: jim.cromie@gmail.com
-Date: Tue, 25 Mar 2025 12:42:05 -0600
-X-Gm-Features: AQ5f1JonfOJIFA8uirzWISL6HB1CZ8tZUdwOAeNYz4kp6Txu9CT7sVkQi1xw55c
-Message-ID: <CAJfuBxwHQOqDobL-FZiMA81OaccWw9RRJp2gL__CrQVnM+z33w@mail.gmail.com>
-Subject: Re: [PATCH v2 33/59] docs/dyndbg: add classmap info to howto (TBD)
+Date: Tue, 25 Mar 2025 12:56:36 -0600
+X-Gm-Features: AQ5f1JqwCZoNQkWvPRC6s-f7lWQaMvaFRZI7Bln1P_k3mQTyHi7JUmVlxPTmisg
+Message-ID: <CAJfuBxw_OixCp0KsoYu9nH6=hprKJpKt7dkPT0hL-32syCTJ7A@mail.gmail.com>
+Subject: Re: [PATCH v2 44/59] drm-dyndbg: add DRM_CLASSMAP_USE to Xe driver
 To: Louis Chauvet <louis.chauvet@bootlin.com>
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
  amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
  intel-gfx@lists.freedesktop.org, intel-gfx-trybot@lists.freedesktop.org, 
  jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org, 
  daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com, 
- ville.syrjala@linux.intel.com, linux-doc@vger.kernel.org
+ ville.syrjala@linux.intel.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -93,109 +93,48 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Mar 24, 2025 at 9:23=E2=80=AFAM Louis Chauvet <louis.chauvet@bootli=
+On Mon, Mar 24, 2025 at 9:24=E2=80=AFAM Louis Chauvet <louis.chauvet@bootli=
 n.com> wrote:
 >
 >
 >
 > Le 20/03/2025 =C3=A0 19:52, Jim Cromie a =C3=A9crit :
-> > Describe the 3 API macros providing dynamic_debug's classmaps
+> > Invoke DRM_CLASSMAP_USE from xe_drm_client.c.  When built with
+> > CONFIG_DRM_USE_DYNAMIC_DEBUG=3Dy, this tells dydnbg that Xe uses
+> > has drm.debug calls.
 > >
-> > DYNDBG_CLASSMAP_DEFINE - create & export a classmap
-...
-> > +Dynamic Debug classmaps
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> > ---
+> >   drivers/gpu/drm/xe/xe_drm_client.c | 2 ++
+> >   1 file changed, 2 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/xe/xe_drm_client.c b/drivers/gpu/drm/xe/xe=
+_drm_client.c
+> > index 2d4874d2b922..756dba5c88f8 100644
+> > --- a/drivers/gpu/drm/xe/xe_drm_client.c
+> > +++ b/drivers/gpu/drm/xe/xe_drm_client.c
+> > @@ -21,6 +21,8 @@
+> >   #include "xe_pm.h"
+> >   #include "xe_trace.h"
+> >
+> > +DRM_CLASSMAP_USE(drm_debug_classes);
 > > +
-> > +The "class" keyword selects prdbgs based on author supplied,
-> > +domain-oriented names.  This complements the nested-scope keywords:
-> > +module, file, function, line.
-> > +
-> > +The main difference from the others: class'd prdbgs must be named to
-> > +be changed.  This protects them from generic overwrite:
-> > +
-> > +  # IOW this cannot undo any DRM.debug settings
-> > +  :#> ddcmd -p
 >
-> Patch 30/59 just dropped this behavior no?
-
-Yes, that chunk is obsolete, given my capitulation :-/
-
-
+> Is xe_drm_client.c the best place to do it? I think the module entry
+> point is a bit better [1].
 >
-> > +So each class must be enabled individually (no wildcards):
-> > +
-> > +  :#> ddcmd class DRM_UT_CORE +p
-> > +  :#> ddcmd class DRM_UT_KMS +p
-> > +  # or more selectively
-> > +  :#> ddcmd class DRM_UT_CORE module drm +p
-> > +
-> > +Or the legacy/normal (more convenient) way:
-> > +
-> > +  :#> echo 0x1ff > /sys/module/drm/parameters/debug
-> > +
-> > +Dynamic Debug Classmap API
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D
-> > +
-> > +DRM.debug is built upon:
-> > +  ~23 macros, all passing a DRM_UT_* constant as arg-1.
-> > +  ~5000 calls to them, across drivers/gpu/drm/*
-> > +  bits in /sys/module/drm/parameters/debug control all DRM_UT_* togeth=
-er
-> > +
-> > +The const short ints are good for optimizing compilers; a classmaps
-> > +design goal was to keep that.  So basically .classid =3D=3D=3D categor=
-y.
-> > +
-> > +And since prdbgs are cataloged with just a DRM_UT_* to identify them,
-> > +the "class" keyword maps known classnames to those reserved IDs, and
-> > +by explicitly requiring "class FOO" in queries, we protect FOO class'd
-> > +debugs from overwrite by generic queries.
-> > +
-> > +Its expected that other classmap users will also provide debug-macros
-> > +using an enum-defined categorization scheme like DRM's, and dyndbg can
-> > +be adapted under them similarly.
-> > +
-> > +DYNAMIC_DEBUG_CLASSMAP_DEFINE(var,type,_base,classnames) - this maps
-> > +classnames onto class-ids consecutively, starting at _base, it also
-> > +maps the names onto CLASSMAP_PARAM bits 0..N.
-> > +
-> > +DYNAMIC_DEBUG_CLASSMAP_USE(var) - modules call this to refer to the
-> > +var _DEFINEd elsewhere (and exported).
-> > +
-> > +Classmaps are opt-in: modules invoke _DEFINE or _USE to authorize
-> > +dyndbg to update those classes.  "class FOO" queries are validated
-> > +against the classes, this finds the classid to alter; classes are not
-> > +directly selectable by their classid.
-> > +
-> > +There are 2 types of classmaps:
-> > +
-> > + DD_CLASS_TYPE_DISJOINT_BITS: classes are independent, like DRM.debug
-> > + DD_CLASS_TYPE_LEVEL_NUM: classes are relative, ordered (V3 > V2)
-> > +
-> > +DYNAMIC_DEBUG_CLASSMAP_PARAM - modelled after module_param_cb, it
-> > +refers to a DEFINEd classmap, and associates it to the param's
-> > +data-store.  This state is then applied to DEFINEr and USEr modules
-> > +when they're modprobed.
-> > +
-> > +The PARAM interface also enforces the DD_CLASS_TYPE_LEVEL_NUM relation
-> > +amongst the contained classnames; all classes are independent in the
-> > +control parser itself; there is no implied meaning in names like "V4".
-> > +
-> > +Modules or module-groups (drm & drivers) can define multiple
-> > +classmaps, as long as they share the limited 0..62 per-module-group
-> > +_class_id range, without overlap.
->
-> Maybe clarify that a driver using _USE macro should take care that he
-> only use distinct non-overlaping classmaps?
 
-ack
+yes perhaps.  I was drawn by the _client in the file-name.
+Im not sure Im fully consistent, iirc the drivers get it near driver-iinit =
+ops.
 
+
+> [1]:https://elixir.bootlin.com/linux/v6.13.7/source/drivers/gpu/drm/xe/xe=
+_module.c
 >
-> > +``#define DEBUG`` will enable all pr_debugs in scope, including any
-> > +class'd ones.  This won't be reflected in the PARAM readback value,
-> > +but the class'd pr_debug callsites can be forced off by toggling the
-> > +classmap-kparam all-on then all-off.
+> >   /**
+> >    * DOC: DRM Client usage stats
+> >    *
 >
 > --
 > Louis Chauvet, Bootlin
