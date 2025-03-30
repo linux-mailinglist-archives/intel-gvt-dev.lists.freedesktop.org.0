@@ -2,60 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 843A7A75488
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Mar 2025 07:53:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB909A75A4B
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 30 Mar 2025 16:13:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4F06A10E21D;
-	Sat, 29 Mar 2025 06:53:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 367A610E1B2;
+	Sun, 30 Mar 2025 14:13:15 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="kXVjuHyJ";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from arara2.ipen.br (arara2.ipen.br [200.136.52.33])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A0CDB10E21D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 29 Mar 2025 06:53:22 +0000 (UTC)
-X-ASG-Debug-ID: 1743230976-055fc73d6d8de6001e-pZQmE5
-Received: from arara.ipen.br (webmail.ip.ipen.br [10.0.10.11]) by
- arara2.ipen.br with ESMTP id gJXfcMbXkhpN2KOT for
- <intel-gvt-dev@lists.freedesktop.org>; Sat, 29 Mar 2025 03:53:12 -0300 (BRT)
-X-Barracuda-Envelope-From: Edgar79144@ipen.br
-X-Barracuda-RBL-Trusted-Forwarder: 10.0.10.11
-Received: from ipen.br (unknown [84.239.17.163])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by arara.ipen.br (Postfix) with ESMTPSA id 81602FAD972
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Mar 2025 23:14:29 -0300 (-03)
-X-Barracuda-Effective-Source-IP: UNKNOWN[84.239.17.163]
-X-Barracuda-Apparent-Source-IP: 84.239.17.163
-X-Barracuda-RBL-IP: 84.239.17.163
-From: <Edgar79144@ipen.br>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Understand me..
-Date: 29 Mar 2025 10:14:28 +0800
-X-ASG-Orig-Subj: Understand me..
-Message-ID: <20250329101428.3DEF426C214B34D5@ipen.br>
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com
+ [209.85.214.180])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2157E10E246;
+ Sun, 30 Mar 2025 14:13:14 +0000 (UTC)
+Received: by mail-pl1-f180.google.com with SMTP id
+ d9443c01a7336-2240b4de12bso40813785ad.2; 
+ Sun, 30 Mar 2025 07:13:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1743343993; x=1743948793; darn=lists.freedesktop.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=2Nx8vPnxajDWa/k8RJzbsW2uXLdAUtSH4tESU6OSGGY=;
+ b=kXVjuHyJ6PfRKp21kvoWGLfa6Lvr5/YVe7vs8Igb4evQ5c+2n3U9a66NfXKHdHrfwa
+ SIxm8EirvSZtJ81LCcMM5LSixP+UpwphA3g3UMw2CeGleY+isnqoD+s8AnZHRBrmmU55
+ JI3n3oaCFrhNh32USi2it/c1QgTqrbVulaT0BYT8oLj/sxTvNVFEF5ARZ/1be8Tr/1pS
+ guL7XCdcTxTlQDMDpeOtjfhGOlaTNanDPffxEEjUQx0gM39em8nz5WlKCdv83OXZT59i
+ yu6V2ZNjiz8yC41WZbvYwn/WA/8yJQC4l1xdF4MGUk4oMHQeQFoFgo2o30JkdBmIKIWr
+ dq0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1743343993; x=1743948793;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2Nx8vPnxajDWa/k8RJzbsW2uXLdAUtSH4tESU6OSGGY=;
+ b=aks8GjiN4uwaZiRO9Y0h4iXpabM2J2hk6/+GSdoqYNZASoibn4pwPNx01/LePnAZm5
+ zIke8VCRQJcPsobKEehBmWzJOJjgdxs3M0pBgYumpXaMzXBSOfL/dMs74Cjl45BxtHGm
+ Kfw4hJtKiF0b+4Y+b66cPb63PAdfHnqLLN8B9AMcaUHP8fnmczZR4yyj+Fe/VcWaoxek
+ DhMUELms2zDahtjpyecDzzfnP7zphtIl+IPiPCNtgeUU9VeOcWJOvStmpqX8O4iMy9ns
+ j6gSNuCx+vpjnMLV913M9HGkNEt9FlowXcx83zK1XsgRCYy+JPYkllf/tKLtgZgh0MLt
+ +WOA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUWfNWqYp/kBCb0ykRU4HTDPd1lf6STq2KH94CWazaEECG7jRrhLjgX1RU8PmhtFajz2/8B1EhEY+Y=@lists.freedesktop.org,
+ AJvYcCVTZmWqF/f9yqgVHPc25HrX09sbkhXx+4X5Zd5/bjpvD8DRv9TfGRMcrldIuqDfWGoU5j3syDYMrTs8NeRsQw==@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzXD3f3IZUMobPEeh4D+hCPGzSDVfpvRxEJAVoJwo27+/nxa0mu
+ pFL6lNsvFk2tCRb/ASy0SA/xmRQ87YV/JssN/HSsCzWuqJJpTDmLVBBF6Q==
+X-Gm-Gg: ASbGncvPCCYtEIzZiDg5xNGT1PSv9fxGuhVAcnDB/uGk+7BHMztWMrqtsv3BmxUArpc
+ 6jiARlUzLej5LaOuupy9wfJ9+ib8IdqqRmvqnypj+wGVpTdNiVXINNfbK+kq+wtUvUhPDrVG1iC
+ ePemd47vVDSxeByNUMqWO4ooLEnEmoYfN83qYMZ8VTYI7oj/tBHx69AKRTpjO7GJiOz2x6z6wir
+ zO/t1Q2OX/VkzapYeY9lc6ZqtOv7k2jpnvULcM5x/DLEawkjedr+1sxS2wqSLl6U7eto7IauGNQ
+ I0lC309/pgsGCKhgkP152Ec9IsrCO6kWoNJr7Fo0HAF5H12S/3cJVGEB/5puVLcYe/ZdUr5P2cz
+ pQzWdz5U=
+X-Google-Smtp-Source: AGHT+IHWwlOnQkYLWScexb/klDOaANwyyCGzTceTKgTXJ7oydhM5+BJ97edgW53oBzkCOVIEIR7fAQ==
+X-Received: by 2002:a05:6a21:3a8a:b0:1ee:ef0b:7bf7 with SMTP id
+ adf61e73a8af0-2009f640527mr8487129637.19.1743343993395; 
+ Sun, 30 Mar 2025 07:13:13 -0700 (PDT)
+Received: from localhost (om126233180002.36.openmobile.ne.jp. [126.233.180.2])
+ by smtp.gmail.com with UTF8SMTPSA id
+ 41be03b00d2f7-af93ba10863sm4816856a12.74.2025.03.30.07.13.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 30 Mar 2025 07:13:13 -0700 (PDT)
+Date: Sun, 30 Mar 2025 23:13:07 +0900
+From: Zhenyu Wang <zhenyuw.linux@gmail.com>
+To: Jani Nikula <jani.nikula@intel.com>
+Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Dave Airlie <airlied@gmail.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Simona Vetter <simona.vetter@ffwll.ch>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: update MAINTAINERS
+Message-ID: <Z-lRc1uD6sVvawHZ@dell-wzy>
+References: <20250227093805.2217658-1-jani.nikula@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Barracuda-Connect: webmail.ip.ipen.br[10.0.10.11]
-X-Barracuda-Start-Time: 1743231192
-X-Barracuda-URL: https://10.40.40.18:443/cgi-mod/mark.cgi
-X-Barracuda-Scan-Msg-Size: 281
-X-Virus-Scanned: by bsmtpd at ipen.br
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-BRTS-Evidence: 972e22d4f33883f22c71db90d7d19665-273-txt
-X-Barracuda-Spam-Score: 1.20
-X-Barracuda-Spam-Status: No, SCORE=1.20 using global scores of TAG_LEVEL=1000.0
- QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=BSF_SC7_SA298e, DEAR_FRIEND,
- NO_REAL_NAME
-X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.45577
- Rule breakdown below
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- 0.00 NO_REAL_NAME           From: does not include a real name
- 1.00 DEAR_FRIEND            BODY: Dear Friend? That's not very dear!
- 0.20 BSF_SC7_SA298e         Custom Rule SA298e
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250227093805.2217658-1-jani.nikula@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,15 +90,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: eduardoedgar428@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Friend,
-I trust this message reaches you in excellent health. I am eager=20
-to initiate an exclusive collaboration on a private project that=20
-could be mutually beneficial. I would like to request your=20
-consent to share the relevant details.
+On Thu, Feb 27, 2025 at 11:38:05AM +0200, Jani Nikula wrote:
+> Update GVT-g MAINTAINERS entry to reflect the current status of
+> maintenance and repositories.
+> 
+> Cc: Dave Airlie <airlied@gmail.com>
+> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> Cc: Simona Vetter <simona.vetter@ffwll.ch>
+> Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+> Cc: Zhenyu Wang <zhenyuw.linux@gmail.com>
+> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+> ---
 
-Best regards,
-Edgar Eduardo
+Sorry for late reply. I was quite busy on personal things during last month
+that almost no chance to put hands on keyboard. ;)
+
+As I think both Zhi and I agreed before, this is totally fine with me.
+
+Acked-by: Zhenyu Wang <zhenyuw.linux@gmail.com>
+
+Thanks!
+
+>  MAINTAINERS | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 5b69b93f63c6..98374661f5a8 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -11649,13 +11649,10 @@ F:	drivers/gpio/gpio-tangier.c
+>  F:	drivers/gpio/gpio-tangier.h
+>  
+>  INTEL GVT-g DRIVERS (Intel GPU Virtualization)
+> -M:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+> -M:	Zhi Wang <zhi.wang.linux@gmail.com>
+> -L:	intel-gvt-dev@lists.freedesktop.org
+> -L:	intel-gfx@lists.freedesktop.org
+> -S:	Supported
+> +R:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+> +R:	Zhi Wang <zhi.wang.linux@gmail.com>
+> +S:	Odd Fixes
+>  W:	https://github.com/intel/gvt-linux/wiki
+> -T:	git https://github.com/intel/gvt-linux.git
+>  F:	drivers/gpu/drm/i915/gvt/
+>  
+>  INTEL HID EVENT DRIVER
+> -- 
+> 2.39.5
+> 
