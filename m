@@ -2,64 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FFF7A776BA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Apr 2025 10:46:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6ECDA776CB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Apr 2025 10:47:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DC43F10E521;
-	Tue,  1 Apr 2025 08:46:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA9B110E51E;
+	Tue,  1 Apr 2025 08:47:50 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="ZunZtjGb";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="N6MIjHKe";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9FA2F10E518;
- Tue,  1 Apr 2025 08:46:10 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B1DDC10E51C;
+ Tue,  1 Apr 2025 08:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1743497170; x=1775033170;
+ t=1743497270; x=1775033270;
  h=from:to:cc:subject:in-reply-to:references:date:
  message-id:mime-version;
- bh=Q7VbP+OM6RZM51VIVzDa4IreTwBZkx3kkLxPIuuKwFQ=;
- b=ZunZtjGbMHckHlY8/OQJ6Kr54TmyVMFBJmXP25ngK3R3U2fh3cD2gTIi
- bmvKnPRadBPhyBWvErZR12WP+KMSO6pOH9zaLtVwoJgpQ7v58oT8E4KAg
- U4x4N8FY37BvK4NzBhV39EExakh1lXzSxkY+cyfQiKNQ5notoSQIeSTxj
- 6ZRF1cRd0GTtYQcQbK8ENLtiUSr87q+649lvtPlveoYfqLlfQwMrVjyJc
- TUp01kJ+VWCiP891H2dQDkiQMGqqf6BDQNQhIshi5jdzSF5JlyFDQ3ae1
- 7gs7cLu8RBdYVueDlOIdBzE6pivZSpcUET+NvotaVqZtdd8JJ6rV5voND Q==;
-X-CSE-ConnectionGUID: FIliFjTlTvWi0NOOEU0l3g==
-X-CSE-MsgGUID: QcgnWlW3RL2CATMk3rv6hQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11390"; a="44718587"
-X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="44718587"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2025 01:46:10 -0700
-X-CSE-ConnectionGUID: qTj9HiagTA6x9dSJxwZcIw==
-X-CSE-MsgGUID: LSxATFcBRZWdu+Owe3rvZQ==
+ bh=ZC6KW82XXEy4x+ukZzXf5jGigKEUV/aJpTmCSL59A2g=;
+ b=N6MIjHKeprDwdnfAJPlzWaQddJ1p0J+ymtdh7cZzVMpEw5B8X8eEinju
+ oAyMNeR9iSvutI6y65l4V4lzvCHGnY32T0CGtPwSeMGnXMdmhrc6fo2Qt
+ XxExA8NtBplLwHAHd4qGhH5hVA4DcCMG/mz1RykrwcmmYSp9Yr+iASrAB
+ PowIx/qMZxa54kx0Yj3ERJjbm67XCQjxds2B/RzARDgE0HfIbouWqPg3E
+ oprFsu0Nv6rKFwRPO/UG+7r0JzehL/t8FlF75TWwnwp3s1RXs4Z7ZoRzM
+ dy4Qc38v0F7orbH8wzdsqiHPckFCdsmldBmzGzO00YnVRFhkwsMDRw8jD A==;
+X-CSE-ConnectionGUID: X7/nSFwlTxSZwyQMh+wU2Q==
+X-CSE-MsgGUID: xBkqsKcHTzm/d6BATlDP0w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11390"; a="44522871"
+X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="44522871"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2025 01:47:49 -0700
+X-CSE-ConnectionGUID: 63H3Bq8kTLyDjxMClZcM/g==
+X-CSE-MsgGUID: Uib4Te/nRIGwb/epJJ9Ksw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="131041277"
+X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="157253725"
 Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost)
  ([10.245.246.7])
- by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2025 01:46:06 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thorsten Leemhuis <linux@leemhuis.info>, Kees Cook <kees@kernel.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>, Joonas Lahtinen
- <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org, Justin
- Forbes <jforbes@redhat.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
- unterminated strings
-In-Reply-To: <37e1da82-736f-44a4-af51-036f9e3182f4@leemhuis.info>
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2025 01:47:46 -0700
+From: Jani Nikula <jani.nikula@intel.com>
+To: Zhenyu Wang <zhenyuw.linux@gmail.com>
+Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Dave Airlie <airlied@gmail.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, Simona Vetter <simona.vetter@ffwll.ch>, Tvrtko
+ Ursulin <tursulin@ursulin.net>, Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: update MAINTAINERS
+In-Reply-To: <Z-lRc1uD6sVvawHZ@dell-wzy>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20250310222355.work.417-kees@kernel.org>
- <37e1da82-736f-44a4-af51-036f9e3182f4@leemhuis.info>
-Date: Tue, 01 Apr 2025 11:46:03 +0300
-Message-ID: <87ecyc46d0.fsf@intel.com>
+References: <20250227093805.2217658-1-jani.nikula@intel.com>
+ <Z-lRc1uD6sVvawHZ@dell-wzy>
+Date: Tue, 01 Apr 2025 11:47:43 +0300
+Message-ID: <878qok46a8.fsf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -77,40 +73,64 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 31 Mar 2025, Thorsten Leemhuis <linux@leemhuis.info> wrote:
-> On 10.03.25 23:23, Kees Cook wrote:
->> When a character array without a terminating NUL character has a static
->> initializer, GCC 15's -Wunterminated-string-initialization will only
->> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
->> with __nonstring to and correctly identify the char array as "not a C
->> string" and thereby eliminate the warning.
+On Sun, 30 Mar 2025, Zhenyu Wang <zhenyuw.linux@gmail.com> wrote:
+> On Thu, Feb 27, 2025 at 11:38:05AM +0200, Jani Nikula wrote:
+>> Update GVT-g MAINTAINERS entry to reflect the current status of
+>> maintenance and repositories.
 >> 
->> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117178 [1]
->> [...]
->> Signed-off-by: Kees Cook <kees@kernel.org>
+>> Cc: Dave Airlie <airlied@gmail.com>
+>> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+>> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+>> Cc: Simona Vetter <simona.vetter@ffwll.ch>
+>> Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+>> Cc: Zhenyu Wang <zhenyuw.linux@gmail.com>
+>> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
+>> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+>> ---
 >
-> To provide another small data point:
+> Sorry for late reply. I was quite busy on personal things during last month
+> that almost no chance to put hands on keyboard. ;)
 >
-> Tested-by: Thorsten Leemhuis <linux@leemhuis.info>
+> As I think both Zhi and I agreed before, this is totally fine with me.
 >
-> A "Compile-Tested-by", to be precise: after a handful similar patches
-> reached mainline recently this is the only one I still need to compile
-> the pretty broad Fedora rawhide config on rawhide using the GCC 15
-> pre-release it currently includes. The latter or the final will
-> hopefully soon also reach Fedora 42 beta as well and bring the "[1]"
-> mentioned in the patch description above to F42 -- which will be
-> released in a few weeks, so I guess it would be nice to have this patch
-> mainlined rather sooner that later to avoid more people running into this.
+> Acked-by: Zhenyu Wang <zhenyuw.linux@gmail.com>
 
-Thanks for testing, though I've merged [1] instead.
+Thanks for the acks, pushed to drm-intel-next.
 
 BR,
 Jani.
 
 
-
-[1] https://lore.kernel.org/r/20250327124739.2609656-1-jani.nikula@intel.com
-
+>
+> Thanks!
+>
+>>  MAINTAINERS | 9 +++------
+>>  1 file changed, 3 insertions(+), 6 deletions(-)
+>> 
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 5b69b93f63c6..98374661f5a8 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -11649,13 +11649,10 @@ F:	drivers/gpio/gpio-tangier.c
+>>  F:	drivers/gpio/gpio-tangier.h
+>>  
+>>  INTEL GVT-g DRIVERS (Intel GPU Virtualization)
+>> -M:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+>> -M:	Zhi Wang <zhi.wang.linux@gmail.com>
+>> -L:	intel-gvt-dev@lists.freedesktop.org
+>> -L:	intel-gfx@lists.freedesktop.org
+>> -S:	Supported
+>> +R:	Zhenyu Wang <zhenyuw.linux@gmail.com>
+>> +R:	Zhi Wang <zhi.wang.linux@gmail.com>
+>> +S:	Odd Fixes
+>>  W:	https://github.com/intel/gvt-linux/wiki
+>> -T:	git https://github.com/intel/gvt-linux.git
+>>  F:	drivers/gpu/drm/i915/gvt/
+>>  
+>>  INTEL HID EVENT DRIVER
+>> -- 
+>> 2.39.5
+>> 
 
 -- 
 Jani Nikula, Intel
