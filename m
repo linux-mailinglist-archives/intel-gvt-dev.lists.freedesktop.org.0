@@ -2,32 +2,66 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFD27A775CE
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Apr 2025 09:59:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FFF7A776BA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Apr 2025 10:46:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7B8F510E50B;
-	Tue,  1 Apr 2025 07:59:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC43F10E521;
+	Tue,  1 Apr 2025 08:46:11 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="ZunZtjGb";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 393 seconds by postgrey-1.36 at gabe;
- Tue, 01 Apr 2025 07:59:25 UTC
-Received: from mail.ventrazo.pl (mail.ventrazo.pl [162.19.155.125])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CB29810E50C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Apr 2025 07:59:25 +0000 (UTC)
-Received: by mail.ventrazo.pl (Postfix, from userid 1002)
- id C8ABD24456; Tue,  1 Apr 2025 09:51:10 +0200 (CEST)
-Received: by mail.ventrazo.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Apr 2025 07:50:38 GMT
-Message-ID: <20250401084500-0.1.hs.3vjhz.0.q7qt5qznql@OriginatePro.pl>
-Date: Tue,  1 Apr 2025 07:50:38 GMT
-From: "Marcin Wojciechowski" <marcin.wojciechowski@ventrazo.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.OriginatePro.pl
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9FA2F10E518;
+ Tue,  1 Apr 2025 08:46:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1743497170; x=1775033170;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=Q7VbP+OM6RZM51VIVzDa4IreTwBZkx3kkLxPIuuKwFQ=;
+ b=ZunZtjGbMHckHlY8/OQJ6Kr54TmyVMFBJmXP25ngK3R3U2fh3cD2gTIi
+ bmvKnPRadBPhyBWvErZR12WP+KMSO6pOH9zaLtVwoJgpQ7v58oT8E4KAg
+ U4x4N8FY37BvK4NzBhV39EExakh1lXzSxkY+cyfQiKNQ5notoSQIeSTxj
+ 6ZRF1cRd0GTtYQcQbK8ENLtiUSr87q+649lvtPlveoYfqLlfQwMrVjyJc
+ TUp01kJ+VWCiP891H2dQDkiQMGqqf6BDQNQhIshi5jdzSF5JlyFDQ3ae1
+ 7gs7cLu8RBdYVueDlOIdBzE6pivZSpcUET+NvotaVqZtdd8JJ6rV5voND Q==;
+X-CSE-ConnectionGUID: FIliFjTlTvWi0NOOEU0l3g==
+X-CSE-MsgGUID: QcgnWlW3RL2CATMk3rv6hQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11390"; a="44718587"
+X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="44718587"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2025 01:46:10 -0700
+X-CSE-ConnectionGUID: qTj9HiagTA6x9dSJxwZcIw==
+X-CSE-MsgGUID: LSxATFcBRZWdu+Owe3rvZQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,292,1736841600"; d="scan'208";a="131041277"
+Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost)
+ ([10.245.246.7])
+ by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2025 01:46:06 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Thorsten Leemhuis <linux@leemhuis.info>, Kees Cook <kees@kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Zhi Wang <zhi.wang.linux@gmail.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org, Justin
+ Forbes <jforbes@redhat.com>, Nicolas Chauvet <kwizart@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
+ unterminated strings
+In-Reply-To: <37e1da82-736f-44a4-af51-036f9e3182f4@leemhuis.info>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20250310222355.work.417-kees@kernel.org>
+ <37e1da82-736f-44a4-af51-036f9e3182f4@leemhuis.info>
+Date: Tue, 01 Apr 2025 11:46:03 +0300
+Message-ID: <87ecyc46d0.fsf@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,16 +77,40 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+On Mon, 31 Mar 2025, Thorsten Leemhuis <linux@leemhuis.info> wrote:
+> On 10.03.25 23:23, Kees Cook wrote:
+>> When a character array without a terminating NUL character has a static
+>> initializer, GCC 15's -Wunterminated-string-initialization will only
+>> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
+>> with __nonstring to and correctly identify the char array as "not a C
+>> string" and thereby eliminate the warning.
+>> 
+>> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117178 [1]
+>> [...]
+>> Signed-off-by: Kees Cook <kees@kernel.org>
+>
+> To provide another small data point:
+>
+> Tested-by: Thorsten Leemhuis <linux@leemhuis.info>
+>
+> A "Compile-Tested-by", to be precise: after a handful similar patches
+> reached mainline recently this is the only one I still need to compile
+> the pretty broad Fedora rawhide config on rawhide using the GCC 15
+> pre-release it currently includes. The latter or the final will
+> hopefully soon also reach Fedora 42 beta as well and bring the "[1]"
+> mentioned in the patch description above to F42 -- which will be
+> released in a few weeks, so I guess it would be nice to have this patch
+> mainlined rather sooner that later to avoid more people running into this.
 
-Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
-yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
+Thanks for testing, though I've merged [1] instead.
 
-Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
+BR,
+Jani.
 
-Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
-owych informacji?=20
-=20
 
-Pozdrawiam serdecznie
-Marcin Wojciechowski
+
+[1] https://lore.kernel.org/r/20250327124739.2609656-1-jani.nikula@intel.com
+
+
+-- 
+Jani Nikula, Intel
