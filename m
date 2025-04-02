@@ -2,104 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 346FFA777BC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Apr 2025 11:28:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F8DBA793EF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Apr 2025 19:42:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 038B110E53A;
-	Tue,  1 Apr 2025 09:28:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 000D610E877;
+	Wed,  2 Apr 2025 17:42:07 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=leemhuis.info header.i=@leemhuis.info header.b="F1tZAL7k";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="bFnvxJv9";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
- [80.237.130.52])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6055D10E531;
- Tue,  1 Apr 2025 09:28:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
- Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
- References; bh=OQmjQ53C4jHN6jFVTqWcXEFwQwdDwwsRmFvi0np2P+8=; t=1743499717;
- x=1743931717; b=F1tZAL7kZAXTNeoJxEi8JazfugO98Is53LaZr0AUFQjKO/Jxz6K+5QOqnTwIW
- d6iAYiCm2e/97BC9/L41sO2BncQUNrtGRKheutQetFDPb2vRaNppJiWK6Gr9lpXxBlbYmwVBzcpJm
- nyO8RA6UQESLgZahezBvW9XTghNa9sZbSnE6FrNFe4MdPFMNwWKFcXr1vU7MFLqK/bNtj0n67zv+Q
- tbLIFu53u7Tamq5fWSiwOxGKxQtfNLTPr9G1xcZqoqv723x2/iMLov1DKetAMhvD/DKSMVA4/7CFc
- AjUL1jKKCQXHL9N78oDT87TjXw7Rxt3elqrS1rPOeOiGQoOfqw==;
-Received: from [2a02:8108:8984:1d00:a0cf:1912:4be:477f]; authenticated
- by wp530.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_128_GCM:128)
- id 1tzXuy-003ke3-1D; Tue, 01 Apr 2025 11:28:24 +0200
-Message-ID: <c02e66a7-903c-43c1-8b8a-81ef5084d719@leemhuis.info>
-Date: Tue, 1 Apr 2025 11:28:23 +0200
+Received: from mail-io1-f50.google.com (mail-io1-f50.google.com
+ [209.85.166.50])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 11AAF10E86F;
+ Wed,  2 Apr 2025 17:42:07 +0000 (UTC)
+Received: by mail-io1-f50.google.com with SMTP id
+ ca18e2360f4ac-85db7a3da71so1806339f.1; 
+ Wed, 02 Apr 2025 10:42:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1743615726; x=1744220526; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=E6x8J8MxvjMee+RIlbh/Ob/Mr8Kug11gtk+t9RRnsrQ=;
+ b=bFnvxJv9tO21t+9Iq92fpQ0YxALdc51WDXEw36BudadXBg43VlxaOqXSXAf7dR4i95
+ 8XT4Nq2hTy0k0Hy08hEkxjHNUrR544qE62rJSrhyebF6E1XFmHH+Zh8qAsbp6TRYPJZX
+ 6kT7BYU9rbPm0Q7QIpup7YJljgRvUy1de+nQbOpdY6OnVcH4bjxYGscHfITmgjML5ALR
+ CokGK2sRL77jkDxPw5csQPzCq1hKI57jtc/XXCICSPEeonfx9ZWqVgdW5BnkiolqEKgC
+ IxrUPzXnSQa0oOYPCMFDZhJS7rVhBRTTATtSP0Gdl9eAQo7CsnX+3unJuTSZYJ708w6J
+ gcEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1743615726; x=1744220526;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=E6x8J8MxvjMee+RIlbh/Ob/Mr8Kug11gtk+t9RRnsrQ=;
+ b=SJv8AB1H971vYhtANkpdAlTCeyal3XEgPAaHvbdZn/ESckcDB9XxuoOoSdA8wkVCH3
+ 3Shvu/vrXjFnBPyg3lpvL+mSIA+zFR4dSC9pcgvrkYW03k9hW7Bk4CLsDp9JnC0zPenI
+ DTgKf3UwTpCSa7i4m3xqM5eqMNpyhcQSW/Yl9FtvMFVyve/34OJTzTOnXoJIspd7go/2
+ zcw1hO8+o8g2SbpHdudYDA3xzEccPhcklapjydDkptBHfrWUe+jOt/WMLR3u9CodyLbg
+ dXZi3Ie/X1bGhROb0Qze9hKVA2gm2wfZr9/uf70wlDW3R/JYm9hWzxS2poUPqyEdKBLh
+ YA+g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUOXzvwO1nsgvrxkMwTpQGy/PhcXHeIdodErAjorjVdj1LQpsF7ym3bi4jobfUGJjlR2sCOd7iEU2ed@lists.freedesktop.org,
+ AJvYcCWm8Q94Ts8AHztY/alEO2vWHZZ2Q92FjslEwHHZh29n6aqkKuPdm7EXFisPjHhZhpG/2qBIbRhhJLWH6gY/1g==@lists.freedesktop.org,
+ AJvYcCXcTbeOOY9fWwPCibllLwHI2hwVUlsZ3Wbbry8zMimIUAnuqxOWKq6gVqJ5rV0Az8RD+K/twNnB@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YyaHzPIRezSunYa+8uKZY5deq6ThwodtQ2ZzZU3O/ucaIPZS0O9
+ FBSfZxotVlaC300o1I2jaM4SRl7PtKQUYS+sgM2iPMsqujY1i1/W
+X-Gm-Gg: ASbGncvZ/aL6A30JlZfeuaC6p7JpaWAQsCQ9mHdNG8fhqfM45BLZneY9XImqv8Dug35
+ Rg+YMY3+PF2JchjPwMWz6wS4MXxmRSzGpGwDp0p8LEm80N3j/GwqNJ5BhML1F0YGwl/Z4vyTmtg
+ fqd9KFkRDuj14p75hOrwH1vO1fpQ9/Ada4XRox4ZcNQcLVtypeio+F2dRPgvmEaVqh5BRJaac/4
+ GW/zPWLKKC74QSXSXDjNMs+cvtmOucV300TEOggwVBPID42AiThHWcTLll9c2yWthG9xev2YJo2
+ ERDkhxFKaWh9uTjWp+Oe7y9j5kI4LkMnOxsdItKgnQNUmqFhkTM+FiFKqbqSTUWJS6qhaO8mpHF
+ Msg==
+X-Google-Smtp-Source: AGHT+IGRIBIMVU0N2WBIhZ2hkHivR9ifuc8aWmuVUT36I6whqo6KXVDeyNrmxfx2q4qyUelroTb/tw==
+X-Received: by 2002:a05:6e02:3807:b0:3d3:f040:5878 with SMTP id
+ e9e14a558f8ab-3d5e0a04e26mr206539215ab.21.1743615725874; 
+ Wed, 02 Apr 2025 10:42:05 -0700 (PDT)
+Received: from gandalf.. (c-67-165-245-5.hsd1.co.comcast.net. [67.165.245.5])
+ by smtp.googlemail.com with ESMTPSA id
+ e9e14a558f8ab-3d5d5af8369sm33439725ab.71.2025.04.02.10.42.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Apr 2025 10:42:05 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org,
+ louis.chauvet@bootlin.com, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com,
+ jani.nikula@intel.com, ville.syrjala@linux.intel.com,
+ Jim Cromie <jim.cromie@gmail.com>
+Subject: [PATCH v3 00/54] Fix CONFIG_DRM_USE_DYNAMIC_DEBUG=y
+Date: Wed,  2 Apr 2025 11:41:02 -0600
+Message-ID: <20250402174156.1246171-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/i915/gvt: Add __nonstring annotations for
- unterminated strings
-To: Jani Nikula <jani.nikula@linux.intel.com>, Kees Cook <kees@kernel.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org,
- Justin Forbes <jforbes@redhat.com>, Nicolas Chauvet <kwizart@gmail.com>
-References: <20250310222355.work.417-kees@kernel.org>
- <37e1da82-736f-44a4-af51-036f9e3182f4@leemhuis.info>
- <87ecyc46d0.fsf@intel.com>
-From: Thorsten Leemhuis <linux@leemhuis.info>
-Content-Language: de-DE, en-US
-Autocrypt: addr=linux@leemhuis.info; keydata=
- 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 n7RI
-In-Reply-To: <87ecyc46d0.fsf@intel.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de;linux@leemhuis.info;1743499717;0eca9112;
-X-HE-SMSGID: 1tzXuy-003ke3-1D
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,37 +93,257 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 01.04.25 10:46, Jani Nikula wrote:
-> On Mon, 31 Mar 2025, Thorsten Leemhuis <linux@leemhuis.info> wrote:
->> On 10.03.25 23:23, Kees Cook wrote:
->>> When a character array without a terminating NUL character has a static
->>> initializer, GCC 15's -Wunterminated-string-initialization will only
->>> warn if the array lacks the "nonstring" attribute[1]. Mark the arrays
->>> with __nonstring to and correctly identify the char array as "not a C
->>> string" and thereby eliminate the warning.
->>>
->>> Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117178 [1]
->>> [...]
->>> Signed-off-by: Kees Cook <kees@kernel.org>
->>
->> To provide another small data point:
->>
->> Tested-by: Thorsten Leemhuis <linux@leemhuis.info>
->>
->> A "Compile-Tested-by", to be precise: after a handful similar patches
->> reached mainline recently this is the only one I still need to compile
->> the pretty broad Fedora rawhide config on rawhide using the GCC 15
->> pre-release it currently includes. The latter or the final will
->> hopefully soon also reach Fedora 42 beta as well and bring the "[1]"
->> mentioned in the patch description above to F42 -- which will be
->> released in a few weeks, so I guess it would be nice to have this patch
->> mainlined rather sooner that later to avoid more people running into this.
-> 
-> Thanks for testing, though I've merged [1] instead.
-> 
-> [1] https://lore.kernel.org/r/20250327124739.2609656-1-jani.nikula@intel.com
 
-Yeah, sorry, I only spotted that one two hours ago and started a test
-compile a while ago, but seems I'm too late here. Whatever, happens. :-D
+This series fixes dynamic-debug's support for DRM debug-categories.
+Classmaps-v1 evaded full review, and got committed in 2 chunks:
 
-Many thx for taking care of that! Ciao, Thorsten
+  b7b4eebdba7b..6ea3bf466ac6	# core dyndbg changes
+  0406faf25fb1..ee7d633f2dfb	# drm adoption
+
+Then DRM-CI found a regression when booting with drm.debug=<initval>;
+the pr_debug callsites' static-keys under the drm-dbgs in drm.ko got
+enabled, but those in drivers & helpers did not, since they weren't
+yet modprobed, and didn't yet exist.
+
+new in v3:
+
+I've flip-flopped again (evolved) on class "protection"
+
+Simply put, /sys/module/drm/parameters/debug is ABI.
+
+If that is true, its an inviolate user expectation that their settings
+are authoritative, and we cannot slide dynamic-debug in underneath
+without accepting that constraint, special-cases and interface
+annoyances not withstanding.
+
+That said, w/o a PARAM, there is no ABI, so classmap use-cases without
+one are left unprotected, so that they can be adjusted without
+explicit "class FOO" queries.  This should satisfy the
+keep-both-pieces crowd.
+
+Note also: theres only 1 reason to want to get under the ABI: you want
+to turn off some of a class's debugs, because they enlarge and clutter
+the logs you must review.
+
+   # iirc, these are high volume
+   :#> echo module driverX class DRM_UT_VBL -p > control
+
+But this isnt actually needed in this case; DRM_UT_VBL is already
+pretty specific, and controllable directly from drm.debug.
+
+Someday "mfsl" flags might apply to drm-dbg, but all drm's logging
+prefixes are currently hardcoded, and may be semi-ABI, since
+log-watchers might key on particular formats (however suboptimal that
+might be).
+
+This change is expressed separately, in a new patch:
+  0028-dyndbg-restore-classmap-protection-when-theres-a-.patch
+	
+Minor changes:
+. more late cleanup patches pulled forward in parts
+. split doc of 2 parsing features
+. merge parsing features, tests, docs
+. added v2 reviewed-by tags.
+. dropped extraneous patches
+
+For your testing convenience, its here:
+https://github.com/jimc/linux.git
+commit 5cbe833ce591cdb076310b7dcf479fd566f10a22 (HEAD -> dd-fix-614, ghlinux/dd-fix-614)
+
+-v2 is here:
+https://lore.kernel.org/lkml/20250320185238.447458-1-jim.cromie@gmail.com/
+
+
+Design Review / Restatemment:
+
+My primary design goal for dyndbg-classmaps was DIRECT support of DRM,
+with NO api changes, starting with the enum drm_debug_category typing,
+and keeping as much of the existing macro stack as unaltered as possible.
+
+Some UUID-ish thing was OO-scope; pessimizing unseen optimizations on
+compile-time constant ints (that could fit in a byte), across DRM's
+macro stack, with ~5k expansions, would be ungood.
+
+Immediate consequences:
+
+= unique integers are *hard* to coordinate across the whole kernel.
+
+= 0 is not special - DRM_UT_CORE is already used.
+  other users probably want it too
+  
+= 0..N are special - in several ways:
+  1. DRM_UT_<*> is 0..10
+     its the natural range, everybody wants it.
+  2. they're exposed in sysfs knobs.
+     ie: echo 0x1ff > /sys/module/drm/parameters/debug
+     all classmap-param users get 0..N on their knob.
+
+= DRM_UT_<*> has only 10 categories/classes
+  small enough for DIRECT storage inside the _ddebug descriptor
+
+= DRM's enum gives us both class-names and class/category values.
+  classnames === stringified DRM_UT_<*>
+  class_ids  === bare DRM_UT_<*>
+  all future classmap users are expected to follow this model.
+  
+To accommodate the "special" contraints, we need to "privatize" the
+class_id's, per module/group.  We can do this in a few steps:
+
+= modules declare their map: classnames => Ids.
+  author defined, user oriented
+  classnames/strings is wide, expressive, *flat* interface
+  2-levels used: DRM_UT_*, no 3-levels yet;
+  _UT could vary, but has no meaning now.
+
+We can use the known (and desired) ordering/contiguity of the 0..Ns
+here, and of the array of classnames, to simplify the specification of
+the map:
+
+  _CLASSMAP_DEFINE (_base-ID/start-of-range, list-of-classnames)
+
+no sparse maps, no reorder-maps, nothing extra to think about.  Just
+consecutive classnames mapped to consecutive class_ids / categories.
+
+= dyndbg refuses direct selection by class_ids.
+  this privatizes the numbers
+  "speak my class-name if you expect a response".
+
+= dyndbg requires "grammar access only"
+  no other control exists, not contemplated.
+  ie: "class DRM_UT_CORE +p" >control
+  ie: "name the class to change it"
+  class-param handler writes cmd-strings per changed class bit.
+
+= classname --> class_id lookup "validates" the user.
+  unknown classnames can be discarded, per module.
+  other modules get the same,
+  no other class-user would accidentally know "DRM_UT_CORE"
+
+= with private class_ids per module.
+  a small 0..N range is enough.
+  32 is a practical limit for a single classmap,
+  if you think "echo 0x12345678 > $sysknob" is practical.
+  16 is more practical, DRM has 10.
+  we have 63.
+  This allows ...
+
+= multiple classmaps are supported
+  as long as the mapped class_ids dont conflict.
+  a fair requirement for a narrow, future use-case.
+  this is now verified in this patchset.
+  7x 8-bit classes is workable (if you'd like)
+
+= "legacy" class.
+  all existing (un-class'd) pr_debugs.
+  class_id is a 6-bit integer,
+  so all existing pr_debugs need a default.
+  63 = 2^6-1 is our _DFLT
+  0..62 is then available for named classes. (0 is not special)
+  63 is "legacy".
+
+
+
+Jim Cromie (54):
+  vmlinux.lds.h: fixup HEADERED_SECTION{,_BY} macros
+  docs/dyndbg: update examples \012 to \n
+  docs/dyndbg: explain flags parse 1st
+  test-dyndbg: fixup CLASSMAP usage error
+  dyndbg: reword "class unknown," to "class:_UNKNOWN_"
+  dyndbg: make ddebug_class_param union members same size
+  dyndbg: drop NUM_TYPE_ARRAY
+  dyndbg: reduce verbose/debug clutter
+  dyndbg: refactor param_set_dyndbg_classes and below
+  dyndbg: tighten fn-sig of ddebug_apply_class_bitmap
+  dyndbg: replace classmap list with a vector
+  dyndbg: macrofy a 2-index for-loop pattern
+  dyndbg,module: make proper substructs in _ddebug_info
+  dyndbg: hoist classmap-filter-by-modname up to ddebug_add_module
+  dyndbg: ddebug_table.mod_name down to _ddebug_info
+  dyndbg-API: remove DD_CLASS_TYPE_(DISJOINT|LEVEL)_NAMES and code
+  dyndbg-API: replace DECLARE_DYNDBG_CLASSMAP
+  selftests-dyndbg: add tools/testing/selftests/dynamic_debug/*
+  dyndbg: detect class_id reservation conflicts
+  dyndbg: check DYNAMIC_DEBUG_CLASSMAP_DEFINE args at compile-time
+  dyndbg-test: change do_prints testpoint to accept a loopct
+  dyndbg-API: promote DYNAMIC_DEBUG_CLASSMAP_PARAM to API
+  dyndbg: treat comma as a token separator
+  dyndbg: split multi-query strings with %
+  selftests-dyndbg: add test_mod_submod
+  dyndbg: change __dynamic_func_call_cls* macros into expressions
+  dyndbg: drop "protection" of class'd pr_debugs from legacy queries
+  dyndbg: restore classmap protection when theres a controlling_param
+  docs/dyndbg: add classmap info to howto
+  drm: use correct ccflags-y spelling
+  drm-dyndbg: adapt drm core to use dyndbg classmaps-v2
+  drm-dyndbg: adapt DRM to invoke DYNAMIC_DEBUG_CLASSMAP_PARAM
+  drm-print: fix config-dependent unused variable
+  drm-dyndbg: DRM_CLASSMAP_USE in amdgpu driver
+  drm-dyndbg: DRM_CLASSMAP_USE in i915 driver
+  drm-dyndbg: DRM_CLASSMAP_USE in drm_crtc_helper
+  drm-dyndbg: DRM_CLASSMAP_USE in drm_dp_helper
+  drm-dyndbg: DRM_CLASSMAP_USE in nouveau
+  drm-dyndbg: add DRM_CLASSMAP_USE to Xe driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to virtio_gpu
+  drm-dyndbg: add DRM_CLASSMAP_USE to simpledrm
+  drm-dyndbg: add DRM_CLASSMAP_USE to bochs
+  drm-dyndbg: add DRM_CLASSMAP_USE to etnaviv
+  drm-dyndbg: add DRM_CLASSMAP_USE to gma500 driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to radeon
+  drm-dyndbg: add DRM_CLASSMAP_USE to vmwgfx driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to vkms driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to udl driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to mgag200 driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to the gud driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to the qxl driver
+  drm-dyndbg: add DRM_CLASSMAP_USE to the drm_gem_shmem_helper driver
+  drm: restore CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
+  drm: RFC - make drm_dyndbg_user.o for drm-*_helpers, drivers
+
+ .../admin-guide/dynamic-debug-howto.rst       | 143 +++-
+ MAINTAINERS                                   |   3 +-
+ drivers/gpu/drm/Kconfig                       |   3 +-
+ drivers/gpu/drm/Makefile                      |  12 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  12 +-
+ drivers/gpu/drm/display/drm_dp_helper.c       |  12 +-
+ drivers/gpu/drm/drm_crtc_helper.c             |  12 +-
+ drivers/gpu/drm/drm_dyndbg_user.c             |  11 +
+ drivers/gpu/drm/drm_gem_shmem_helper.c        |   1 +
+ drivers/gpu/drm/drm_print.c                   |  38 +-
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c         |   2 +
+ drivers/gpu/drm/gma500/psb_drv.c              |   2 +
+ drivers/gpu/drm/gud/gud_drv.c                 |   2 +
+ drivers/gpu/drm/i915/i915_params.c            |  12 +-
+ drivers/gpu/drm/mgag200/mgag200_drv.c         |   2 +
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  12 +-
+ drivers/gpu/drm/qxl/qxl_drv.c                 |   2 +
+ drivers/gpu/drm/radeon/radeon_drv.c           |   2 +
+ drivers/gpu/drm/tiny/bochs.c                  |   2 +
+ drivers/gpu/drm/tiny/simpledrm.c              |   2 +
+ drivers/gpu/drm/udl/udl_main.c                |   2 +
+ drivers/gpu/drm/virtio/virtgpu_drv.c          |   2 +
+ drivers/gpu/drm/vkms/vkms_drv.c               |   2 +
+ drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           |   2 +
+ drivers/gpu/drm/xe/xe_drm_client.c            |   2 +
+ include/asm-generic/vmlinux.lds.h             |  12 +-
+ include/drm/drm_print.h                       |  12 +
+ include/linux/dynamic_debug.h                 | 216 ++++--
+ kernel/module/main.c                          |  15 +-
+ lib/Kconfig.debug                             |  24 +-
+ lib/Makefile                                  |   3 +
+ lib/dynamic_debug.c                           | 637 +++++++++++-------
+ lib/test_dynamic_debug.c                      | 203 ++++--
+ lib/test_dynamic_debug_submod.c               |  21 +
+ tools/testing/selftests/Makefile              |   1 +
+ .../testing/selftests/dynamic_debug/Makefile  |   9 +
+ tools/testing/selftests/dynamic_debug/config  |   7 +
+ .../dynamic_debug/dyndbg_selftest.sh          | 373 ++++++++++
+ 38 files changed, 1353 insertions(+), 477 deletions(-)
+ create mode 100644 drivers/gpu/drm/drm_dyndbg_user.c
+ create mode 100644 lib/test_dynamic_debug_submod.c
+ create mode 100644 tools/testing/selftests/dynamic_debug/Makefile
+ create mode 100644 tools/testing/selftests/dynamic_debug/config
+ create mode 100755 tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
+
+-- 
+2.49.0
+
