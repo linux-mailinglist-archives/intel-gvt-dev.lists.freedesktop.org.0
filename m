@@ -2,44 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2C35AB96FC
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 May 2025 09:58:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09207ABAE01
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 May 2025 07:21:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A85C810E9D6;
-	Fri, 16 May 2025 07:58:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B1BA010E1E4;
+	Sun, 18 May 2025 05:20:58 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=dealify.pl header.i=@dealify.pl header.b="N8OkJBD8";
+	dkim=fail reason="signature verification failed" (1024-bit key; unprotected) header.d=tusmobil.club header.i=@tusmobil.club header.b="fnH5G0xo";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 560 seconds by postgrey-1.36 at gabe;
- Fri, 16 May 2025 07:58:21 UTC
-Received: from mail.dealify.pl (mail.dealify.pl [51.195.90.172])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4F48F10E9D6
+X-Greylist: delayed 131791 seconds by postgrey-1.36 at gabe;
+ Sun, 18 May 2025 05:20:54 UTC
+Received: from cpanel.tusmobil.club (mail.tusmobil.club [91.185.195.17])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3D2FE10E1E4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 May 2025 07:58:21 +0000 (UTC)
-Received: by mail.dealify.pl (Postfix, from userid 1002)
- id 31C01A4229; Fri, 16 May 2025 09:46:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=dealify.pl; s=mail;
- t=1747381594; bh=AqGviIC0sHDwdGf4Aqo+8mwxHxRDNjjMQDvzcH0lkCw=;
- h=Date:From:To:Subject:From;
- b=N8OkJBD8nL9IrVa2F8E3ClF70+CfvnF5v+f+9rvJwshfnfsG6GUAjxOiuKZu6apkh
- r09AEAZJQHpFuuLWmPaamlRybg/pHnnL2M7qc1zrmw8psDVqkVsb+8o+nNfHHpS+WU
- XRoFBmVw/0/L3J5ndo3+vm5LGpKpB5i2PZPWbZ9D7wqWCBd4algGY9VvtzmlGW6ncm
- cSQovyYjY0bTbMPgszc1etTHOGt0XJEYoGFlHwhtzyDKGvSsrC8r7GYpxnGdtUb+yw
- Z4rzdW0Zxtw+gv1D8Xk3fHJqnV+0TZOTK4xORXuNKuVe0P+QSQj1xHjaFbyBdOJ3+d
- GQn8seNOO+41g==
-Received: by mail.dealify.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 May 2025 07:45:59 GMT
-Message-ID: <20250516084500-0.1.ll.2cw8u.0.l7468jdmmj@dealify.pl>
-Date: Fri, 16 May 2025 07:45:59 GMT
-From: "Weronika Kubiak" <weronika.kubiak@dealify.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Wszcz=C4=99cie_post=C4=99powania_restrukturyzacyjnego_?=
-X-Mailer: mail.dealify.pl
+ Sun, 18 May 2025 05:20:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=tusmobil.club; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=RqpKEJjfiRi+s1QneoCtK6TR/m24z0IqICA4C/fzfhY=; b=fnH5G0xorXkqje/CRLp0kprzYT
+ VPaJpW+8H/KTK/FcBZsqZkit00Eso33iFvDHKPzwePL0p8qM8F/M2col7Lx2ceUu0suwCy1PyIfi4
+ wchIT//fm2Y9eYfa4pHqL2UbHFeMzGh09fXYQxXYvZR3wu2m6YVJFz2Qlhwz9WRN2l1M=;
+Received: from [84.38.132.48] (port=60535)
+ by cpanel.tusmobil.club with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.93)
+ (envelope-from <jchavez@lanrosh.com>) id 1uFyAS-0005Nw-9m
+ for intel-gvt-dev@lists.freedesktop.org; Fri, 16 May 2025 18:44:16 +0200
+From: Dr.Allen Cheng <preskarm@tusmobil.club>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: RE: [CORRESPONDENCE]
+Date: 16 May 2025 19:44:18 +0300
+Message-ID: <20250516194418.6DBC41C2CEBCA632@lanrosh.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/html
 Content-Transfer-Encoding: quoted-printable
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - cpanel.tusmobil.club
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - lanrosh.com
+X-Get-Message-Sender-Via: cpanel.tusmobil.club: authenticated_id:
+ preskarm@tusmobil.club
+X-Authenticated-Sender: cpanel.tusmobil.club: preskarm@tusmobil.club
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-From-Rewrite: rewritten was: [jchavez@lanrosh.com],
+ actual sender does not match
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,26 +66,18 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: "Dr.Allen Cheng" <allencheng01577@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+<!DOCTYPE HTML>
 
-kontaktuj=C4=99 si=C4=99 w sprawie mo=C5=BCliwo=C5=9Bci obni=C5=BCenia Pa=
-=C5=84stwa zobowi=C4=85za=C5=84 finansowych.
-
-Jako kancelaria prawna na co dzie=C5=84 skutecznie zajmujemy si=C4=99 zaw=
-ieszaniem sp=C5=82at kredyt=C3=B3w i po=C5=BCyczek, umorzeniem odsetek lu=
-b cz=C4=99=C5=9Bci zobowi=C4=85za=C5=84 oraz ochron=C4=85 przed egzekucj=C4=
-=85 maj=C4=85tku firm.
-
-Podj=C4=99cie wsp=C3=B3=C5=82pracy z naszymi specjalistami, pomo=C5=BCe P=
-a=C5=84stwu osi=C4=85gn=C4=85=C4=87 wy=C5=BCsz=C4=85 wydajno=C5=9B=C4=87 =
-oraz znaczne oszcz=C4=99dno=C5=9Bci czasu i koszt=C3=B3w.
-
-Ch=C4=99tnie przeanalizujemy Pa=C5=84stwa sytuacj=C4=99 i przedstawimy pl=
-an dzia=C5=82ania. S=C4=85 Pa=C5=84stwo zainteresowani?
-
-
-Pozdrawiam
-Weronika Kubiak
+<html><head><title></title>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body style=3D"margin: 0.4em;"><p>Hello intel-gvt-dev,</p><p>I sent you a m=
+essage a few hours ago but I haven't gotten a response yet, or you didn't g=
+et it? I would like to know if any concerns have prevented you from respond=
+ing. Could you read my letter and reply? I want to make an inquiry</p><p>Th=
+anks.</p><p>Dr.Allen Cheng</p><p>Research Assistant &amp; Dermatologist<br>=
+FGP Industries LTD</p><p></p><p></p></body></html>
