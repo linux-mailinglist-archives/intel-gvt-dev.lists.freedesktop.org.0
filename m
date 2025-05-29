@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A244AC1E84
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 May 2025 10:21:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC823AC79E4
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 May 2025 09:39:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3AB1210E201;
-	Fri, 23 May 2025 08:21:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 72FDD10E718;
+	Thu, 29 May 2025 07:39:22 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=bizentu.pl header.i=@bizentu.pl header.b="NPx1ithX";
+	dkim=pass (2048-bit key; secure) header.d=taskify.pl header.i=@taskify.pl header.b="6SFDUsTo";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 363 seconds by postgrey-1.36 at gabe;
- Fri, 23 May 2025 08:21:49 UTC
-Received: from mail.bizentu.pl (mail.bizentu.pl [217.61.97.61])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A5FC410E201
+X-Greylist: delayed 429 seconds by postgrey-1.36 at gabe;
+ Thu, 29 May 2025 07:39:21 UTC
+Received: from mail.taskify.pl (mail.taskify.pl [94.177.225.127])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 15E6910E718
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 May 2025 08:21:49 +0000 (UTC)
-Received: by mail.bizentu.pl (Postfix, from userid 1002)
- id 7FF2883802; Fri, 23 May 2025 10:15:34 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizentu.pl; s=mail;
- t=1747988145; bh=rSfifNUXYHFtswyW84zH+YmzL4KFPKP8KLdIFIjUmR4=;
+ Thu, 29 May 2025 07:39:21 +0000 (UTC)
+Received: by mail.taskify.pl (Postfix, from userid 1002)
+ id 4FA1984DDB; Thu, 29 May 2025 09:31:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=taskify.pl; s=mail;
+ t=1748503931; bh=7Cq0DHB5k0l5CQs6BVZUFt4lPJTtmejSvjf3feeP/U8=;
  h=Date:From:To:Subject:From;
- b=NPx1ithX1IlyuduEHSzJdEiIBI7Shydmw+7Xu2FimMQkSrvva2tfQoYZ9CGhQsray
- vp1Xpiq3QqUb20o0MdBvCZ/i8G7OGEoAMDPm0ozgd/+5I1L62dvELiDPwk9HsIc8Q6
- 0Z416fnFBdudVJrg58KvKKPjygGDCMbUhXwRojP1mWjfvXM5/jzNlgd4AxvY6c8nEw
- O1xGWc2lOU9EAssQbczugOEY12ud+Z9lF0ak/+93sdyUa82v4gZtMaaciOsTkye4r/
- 2t5PCdVh02lhnjs6Ge8Eljj91C46A4lGAbmlEJqLlPS0N3+RqLZs9yLIpRclpATiLI
- Nn9u06FUNnecw==
-Received: by mail.bizentu.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 May 2025 08:15:17 GMT
-Message-ID: <20250523084500-0.1.cd.x0ei.0.3qfojapu9l@bizentu.pl>
-Date: Fri, 23 May 2025 08:15:17 GMT
-From: "Tomasz Szczerkowski" <tomasz.szczerkowski@bizentu.pl>
+ b=6SFDUsToOdpDf+wFTvBKERnnv5AmUzaYGCTI5C6fm5NxfkJ5Lcd+OpunDsE+5sJeT
+ 4OURr5I13/jC5WgaXwvBpdF3VwulG9FNE8XOPu3ajffC3h3Kw8QyGt36u3DS5CkhgG
+ eJw5dyzhpNYarUDxIWTgGTwVF6pzNYqbU1G+eMtiWKhiEbK9at42IRYTkLYcdH9rKH
+ V/s5caDm6wQOM6GJhTbBC/u8VCpNsHMTY4e48QaJoRfafdtIP1H6AtF3g9Ppn5Cqgd
+ OnKzv1IyodZNamvSmBUHN5+gChxR3X7eBcMCLdlBa9Ah9wspTduNT0G/NyD3vII+iC
+ KueYsds60s8EA==
+Received: by mail.taskify.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 May 2025 07:30:32 GMT
+Message-ID: <20250529084500-0.1.gf.2guja.0.be755sbk7q@taskify.pl>
+Date: Thu, 29 May 2025 07:30:32 GMT
+From: "Kamil Nakielski" <kamil.nakielski@taskify.pl>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Magazyny klasy A+
-X-Mailer: mail.bizentu.pl
+Subject: Zatrudnienie nowej osoby
+X-Mailer: mail.taskify.pl
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -55,21 +55,15 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,=20
+Dzie=C5=84 dobry,
 
-dla firm z bran=C5=BCy e-commerce udost=C4=99pniamy magazyny klasy A+ w s=
-trategicznej lokalizacji na =C5=9Al=C4=85sku, w Gliwicach.=20
+kontaktuj=C4=99 si=C4=99 w sprawie zatrudnienia pracownik=C3=B3w z Ukrain=
+y w Pa=C5=84stwa zak=C5=82adzie.
 
-Dysponujemy nowoczesnym sprz=C4=99tem prze=C5=82adunkowym, =C5=9Bwiadczym=
-y profesjonalne us=C5=82ugi magazynowe, fulfillment oraz inne przynosz=C4=
-=85ce warto=C5=9B=C4=87 dodan=C4=85 us=C5=82ugi.
+Stale obs=C5=82ugujemy firmy produkcyjne w tym temacie. Je=C5=9Bli potrze=
+bujecie Pa=C5=84stwo dodatkowego personelu do pracy, prosz=C4=99 o wiadom=
+o=C5=9B=C4=87.=20
 
-Czy m=C3=B3g=C5=82bym przedstawi=C4=87 Pa=C5=84stwu ofert=C4=99 na magazy=
-nowanie z wykorzystaniem rega=C5=82=C3=B3w wysokiego sk=C5=82adowania wra=
-z z obs=C5=82ug=C4=85 =C5=82adunk=C3=B3w ponadgabarytowych?=20
 
-Mo=C5=BCemy porozmawia=C4=87?
-
-=20
 Pozdrawiam
-Tomasz Szczerkowski
+Kamil Nakielski
