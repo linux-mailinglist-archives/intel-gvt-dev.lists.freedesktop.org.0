@@ -2,41 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC823AC79E4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 May 2025 09:39:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA94DAC899B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 May 2025 10:02:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 72FDD10E718;
-	Thu, 29 May 2025 07:39:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8B74610E08E;
+	Fri, 30 May 2025 08:02:22 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=taskify.pl header.i=@taskify.pl header.b="6SFDUsTo";
+	dkim=pass (2048-bit key; secure) header.d=markpolvist.pl header.i=@markpolvist.pl header.b="eAfVo3EL";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 429 seconds by postgrey-1.36 at gabe;
- Thu, 29 May 2025 07:39:21 UTC
-Received: from mail.taskify.pl (mail.taskify.pl [94.177.225.127])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 15E6910E718
+Received: from mail.markpolvist.pl (mail.markpolvist.pl [135.125.237.75])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6A18C10E08E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 May 2025 07:39:21 +0000 (UTC)
-Received: by mail.taskify.pl (Postfix, from userid 1002)
- id 4FA1984DDB; Thu, 29 May 2025 09:31:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=taskify.pl; s=mail;
- t=1748503931; bh=7Cq0DHB5k0l5CQs6BVZUFt4lPJTtmejSvjf3feeP/U8=;
+ Fri, 30 May 2025 08:02:16 +0000 (UTC)
+Received: by mail.markpolvist.pl (Postfix, from userid 1002)
+ id 097AD49275; Fri, 30 May 2025 10:01:48 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=markpolvist.pl;
+ s=mail; t=1748592128;
+ bh=tl1eLkGH4FhhT99dfgnuK/Wz/ldAmdeTx8L7jBLVjLc=;
  h=Date:From:To:Subject:From;
- b=6SFDUsToOdpDf+wFTvBKERnnv5AmUzaYGCTI5C6fm5NxfkJ5Lcd+OpunDsE+5sJeT
- 4OURr5I13/jC5WgaXwvBpdF3VwulG9FNE8XOPu3ajffC3h3Kw8QyGt36u3DS5CkhgG
- eJw5dyzhpNYarUDxIWTgGTwVF6pzNYqbU1G+eMtiWKhiEbK9at42IRYTkLYcdH9rKH
- V/s5caDm6wQOM6GJhTbBC/u8VCpNsHMTY4e48QaJoRfafdtIP1H6AtF3g9Ppn5Cqgd
- OnKzv1IyodZNamvSmBUHN5+gChxR3X7eBcMCLdlBa9Ah9wspTduNT0G/NyD3vII+iC
- KueYsds60s8EA==
-Received: by mail.taskify.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 May 2025 07:30:32 GMT
-Message-ID: <20250529084500-0.1.gf.2guja.0.be755sbk7q@taskify.pl>
-Date: Thu, 29 May 2025 07:30:32 GMT
-From: "Kamil Nakielski" <kamil.nakielski@taskify.pl>
+ b=eAfVo3ELM552a8DL/5/bLaK9+MEHnBu9C7t5wFPuV9/A6Pmx/O9CnKZ22sH359xlg
+ 5CG5XXN/lbtfp5Zzg9QSN/yiSdrKTT0X8rwxquLIghz9BsK3jeGMd9hL7u5nYvB2d6
+ 8sZlbA9iMvaaSNHIvATmZNrEYDMQZww02ULwez7wko0foVp5H1LZ4KKTLvsSy7VDgS
+ geTLHf/3oSerHq+CfIN/ExGpGpRUnH29pQ2zpVBnrZYNejtSFS0HSSgjt0+NyoeOc3
+ L6XGX/HIKCz4y0Ln2Xqhyezp5aJ1ekRtTdEu63FNESIK+zdm/5c0yw3wm95L7tomRi
+ qL1ExcuEeVOCQ==
+Received: by mail.markpolvist.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 30 May 2025 08:01:22 GMT
+Message-ID: <20250530084500-0.1.e4.25njd.0.lwfnfnhos4@markpolvist.pl>
+Date: Fri, 30 May 2025 08:01:22 GMT
+From: "Kamil Szary" <kamil.szary@markpolvist.pl>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Zatrudnienie nowej osoby
-X-Mailer: mail.taskify.pl
+Subject: =?UTF-8?Q?Pytanie_o_ofert=C4=99?=
+X-Mailer: mail.markpolvist.pl
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -57,13 +56,13 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 Dzie=C5=84 dobry,
 
-kontaktuj=C4=99 si=C4=99 w sprawie zatrudnienia pracownik=C3=B3w z Ukrain=
-y w Pa=C5=84stwa zak=C5=82adzie.
+Czy potrzebuj=C4=85 Pa=C5=84stwo aktualnie nowych klient=C3=B3w?
 
-Stale obs=C5=82ugujemy firmy produkcyjne w tym temacie. Je=C5=9Bli potrze=
-bujecie Pa=C5=84stwo dodatkowego personelu do pracy, prosz=C4=99 o wiadom=
-o=C5=9B=C4=87.=20
+Skutecznie pomagamy rozpoczyna=C4=87 rozmowy handlowe z klientami zainter=
+esowanymi Pa=C5=84stwa ofert=C4=85.
+
+Zapraszam do kontaktu zwrotnego.
 
 
 Pozdrawiam
-Kamil Nakielski
+Kamil Szary
