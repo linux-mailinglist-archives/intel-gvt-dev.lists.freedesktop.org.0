@@ -2,59 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18247AD9385
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jun 2025 19:10:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D08CADA2FA
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Jun 2025 20:29:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E698D10E183;
-	Fri, 13 Jun 2025 17:10:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DF39910E163;
+	Sun, 15 Jun 2025 18:29:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 751 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jun 2025 17:10:30 UTC
 Received: from yudhisthira.itb.ac.id (yudhisthira.itb.ac.id [167.205.1.122])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 50DAE10E183
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A4DB310E163
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jun 2025 17:10:30 +0000 (UTC)
-X-ASG-Debug-ID: 1749833766-0ef5d704b6000d0001-pZQmE5
+ Sun, 15 Jun 2025 18:29:44 +0000 (UTC)
+X-ASG-Debug-ID: 1750011934-0ef5d76d6a00010004-pZQmE5
 Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29]) by
- yudhisthira.itb.ac.id with ESMTP id 0DflLW6Ms6aIpypS (version=TLSv1.2
- cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
- Fri, 13 Jun 2025 23:56:06 +0700 (WIB)
+ yudhisthira.itb.ac.id with ESMTP id EdwOf6wCC5UgGV1O;
+ Mon, 16 Jun 2025 01:26:27 +0700 (WIB)
 X-Barracuda-Envelope-From: kaprodi@ar.itb.ac.id
 X-Barracuda-Effective-Source-IP: mbox3.itb.ac.id[167.205.59.29]
 X-Barracuda-Apparent-Source-IP: 167.205.59.29
 Received: from localhost (localhost [127.0.0.1])
- by mbox3.itb.ac.id (Postfix) with ESMTP id F404380215A3E;
- Fri, 13 Jun 2025 07:24:42 +0700 (WIB)
+ by mbox3.itb.ac.id (Postfix) with ESMTP id 9FABA801C47F0;
+ Fri, 13 Jun 2025 06:19:25 +0700 (WIB)
 Received: from mbox3.itb.ac.id ([127.0.0.1])
  by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id HP580snzhK-b; Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+ with ESMTP id MuLV2AkjBJJP; Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
 Received: from localhost (localhost [127.0.0.1])
- by mbox3.itb.ac.id (Postfix) with ESMTP id 844B780215FDB;
- Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+ by mbox3.itb.ac.id (Postfix) with ESMTP id 80601801C3E7E;
+ Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
 X-Virus-Scanned: amavisd-new at mbox3.itb.ac.id
 Received: from mbox3.itb.ac.id ([127.0.0.1])
  by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id FlCXNbRG_owJ; Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+ with ESMTP id 6SfaFHqcq_8w; Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
 Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29])
- by mbox3.itb.ac.id (Postfix) with ESMTP id C34AB80215A35;
- Fri, 13 Jun 2025 07:24:32 +0700 (WIB)
-Date: Fri, 13 Jun 2025 07:24:32 +0700 (WIB)
+ by mbox3.itb.ac.id (Postfix) with ESMTP id C195D801C3E44;
+ Fri, 13 Jun 2025 06:19:21 +0700 (WIB)
+Date: Fri, 13 Jun 2025 06:19:21 +0700 (WIB)
 From: Admin Zimbra <kaprodi@ar.itb.ac.id>
-Message-ID: <1462324738.379806.1749774272727.JavaMail.zimbra@ar.itb.ac.id>
+Message-ID: <249150771.378394.1749770361700.JavaMail.zimbra@ar.itb.ac.id>
 Subject: Your mailbox is scheduled for deactivation within the next 24 hours
 MIME-Version: 1.0
 X-ASG-Orig-Subj: Your mailbox is scheduled for deactivation within the next 24
  hours
 Content-Type: multipart/alternative; 
- boundary="=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126"
+ boundary="=_910a9048-2c4b-4aed-802b-8246cec8d436"
 X-Originating-IP: [197.210.52.198]
 X-Mailer: Zimbra 8.8.6_GA_1906 (ZimbraWebClient - GC137 (Win)/8.8.6_GA_1906)
-Thread-Index: H6QWNuE7e18EF5SfMK2agUAfQla+FA==
+Thread-Index: kq6RLnJTCSRTRBBBzi52JGxlBYjPTQ==
 Thread-Topic: Your mailbox is scheduled for deactivation within the next 24
  hours
 X-Barracuda-Connect: mbox3.itb.ac.id[167.205.59.29]
-X-Barracuda-Start-Time: 1749833766
+X-Barracuda-Start-Time: 1750011987
 X-Barracuda-URL: https://167.205.1.122:443/cgi-mod/mark.cgi
 X-Barracuda-License: Expired
 X-Barracuda-BRTS-Status: 1
@@ -77,7 +74,7 @@ Reply-To: ogunlanaadebowalejohn@fthcapital.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126
+--=_910a9048-2c4b-4aed-802b-8246cec8d436
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
@@ -102,7 +99,7 @@ Act now to retain access to your emails and prevent data loss.
 Best regards, 
 ADMIN 
 
---=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126
+--=_910a9048-2c4b-4aed-802b-8246cec8d436
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -144,4 +141,4 @@ to your emails and prevent data loss.</strong></p><p style=3D"color: #22222=
 2; font-family: Arial, Helvetica, sans-serif; font-size: small;"><strong>Be=
 st regards,</strong><br><strong>ADMIN</strong></p></div></div></body></html=
 >
---=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126--
+--=_910a9048-2c4b-4aed-802b-8246cec8d436--
