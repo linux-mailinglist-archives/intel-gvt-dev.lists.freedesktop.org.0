@@ -2,38 +2,65 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F10CEAD8D8C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jun 2025 15:47:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18247AD9385
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jun 2025 19:10:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CFE2110E1A0;
-	Fri, 13 Jun 2025 13:46:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=lists.freedesktop.org;
-	s=20240201; t=1749822419;
-	bh=rVonqnfu0sr/J/o4A3JjYgI5uUtcqP9/Ct8WjED/FAg=;
-	h=From:To:Subject:List-Id:List-Unsubscribe:List-Archive:List-Post:
-	 List-Help:List-Subscribe:Date:From;
-	b=rTE+RyA7tmWrlhcX7AAwREXMHfhjCDd3f9Camgcf4AbaEnwjFeshfYe98NJfouJZ0
-	 WO9cMG2HZ6MHngWhZjW/c1SOY+JCTkhKcqgGQm0FN+Z9fRb53EJUsnVJmyqSAiBaN1
-	 ISuqyAKurxGTiBAGjm4+OnS+M12dBo08GylOZTxaJN06etWiUXFgp8sTBkE9l+1gVi
-	 ulwxBL1kORVp/ulmsZ2IhOZaUL7b0P6lqwn3cwtf8qJj9cLkOYeT6yG7BDlgQpnyXh
-	 YVc+MzHwuuB7wwnjjhAJAr0bLnskMbN2htA8fLTGrjq1TtqqMBO+VbIqQISFvua2c5
-	 4VpvMblTC0ibw==
+	by gabe.freedesktop.org (Postfix) with ESMTP id E698D10E183;
+	Fri, 13 Jun 2025 17:10:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 7386 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jun 2025 13:46:58 UTC
-Received: from [10.88.0.4] (109.175.168.34.bc.googleusercontent.com
- [34.168.175.109])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1937B10E1A0
+X-Greylist: delayed 751 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jun 2025 17:10:30 UTC
+Received: from yudhisthira.itb.ac.id (yudhisthira.itb.ac.id [167.205.1.122])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 50DAE10E183
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jun 2025 13:46:58 +0000 (UTC)
-Content-Type: multipart/related;
- boundary="===============6050791401104191281=="
+ Fri, 13 Jun 2025 17:10:30 +0000 (UTC)
+X-ASG-Debug-ID: 1749833766-0ef5d704b6000d0001-pZQmE5
+Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29]) by
+ yudhisthira.itb.ac.id with ESMTP id 0DflLW6Ms6aIpypS (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
+ Fri, 13 Jun 2025 23:56:06 +0700 (WIB)
+X-Barracuda-Envelope-From: kaprodi@ar.itb.ac.id
+X-Barracuda-Effective-Source-IP: mbox3.itb.ac.id[167.205.59.29]
+X-Barracuda-Apparent-Source-IP: 167.205.59.29
+Received: from localhost (localhost [127.0.0.1])
+ by mbox3.itb.ac.id (Postfix) with ESMTP id F404380215A3E;
+ Fri, 13 Jun 2025 07:24:42 +0700 (WIB)
+Received: from mbox3.itb.ac.id ([127.0.0.1])
+ by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id HP580snzhK-b; Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+Received: from localhost (localhost [127.0.0.1])
+ by mbox3.itb.ac.id (Postfix) with ESMTP id 844B780215FDB;
+ Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+X-Virus-Scanned: amavisd-new at mbox3.itb.ac.id
+Received: from mbox3.itb.ac.id ([127.0.0.1])
+ by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id FlCXNbRG_owJ; Fri, 13 Jun 2025 07:24:33 +0700 (WIB)
+Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29])
+ by mbox3.itb.ac.id (Postfix) with ESMTP id C34AB80215A35;
+ Fri, 13 Jun 2025 07:24:32 +0700 (WIB)
+Date: Fri, 13 Jun 2025 07:24:32 +0700 (WIB)
+From: Admin Zimbra <kaprodi@ar.itb.ac.id>
+Message-ID: <1462324738.379806.1749774272727.JavaMail.zimbra@ar.itb.ac.id>
+Subject: Your mailbox is scheduled for deactivation within the next 24 hours
 MIME-Version: 1.0
-From: "Lists ." <no-reply@lists.freedesktop.org>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: =?utf-8?q?=5Bintel-gvt-dev=40lists=2Efreedesktop=2Eorg=5D=3A_Please_confirm_three_=283=29_Pending_Messages=2E?=
-X-Priority: 2
+X-ASG-Orig-Subj: Your mailbox is scheduled for deactivation within the next 24
+ hours
+Content-Type: multipart/alternative; 
+ boundary="=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126"
+X-Originating-IP: [197.210.52.198]
+X-Mailer: Zimbra 8.8.6_GA_1906 (ZimbraWebClient - GC137 (Win)/8.8.6_GA_1906)
+Thread-Index: H6QWNuE7e18EF5SfMK2agUAfQla+FA==
+Thread-Topic: Your mailbox is scheduled for deactivation within the next 24
+ hours
+X-Barracuda-Connect: mbox3.itb.ac.id[167.205.59.29]
+X-Barracuda-Start-Time: 1749833766
+X-Barracuda-URL: https://167.205.1.122:443/cgi-mod/mark.cgi
+X-Barracuda-License: Expired
+X-Barracuda-BRTS-Status: 1
+X-Barracuda-BRTS-URL-Found: bursaparkeustasi.com (*Spam.Unknown)
+X-Virus-Scanned: by bsmtpd at itb.ac.id
+X-Barracuda-Scan-Msg-Size: 3707
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,45 +73,75 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: ogunlanaadebowalejohn@fthcapital.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20250613134659.CFE2110E1A0@gabe.freedesktop.org>
-Date: Fri, 13 Jun 2025 13:46:59 +0000 (UTC)
 
---===============6050791401104191281==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
+--=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-PEhUTUw+PEhFQUQ+CiAgICA8TUVUQSBuYW1lPUdFTkVSQVRPUiBjb250ZW50PSJNU0hUTUwgMTEu
-MDAuMTA1NzAuMTAwMSI+PC9IRUFEPgogICAgPEJPRFk+CiAgICA8RElWIHN0eWxlPSJGT05ULVNJ
-WkU6IDE2cHg7IEZPTlQtRkFNSUxZOiBoZWx2ZXRpY2E7IENPTE9SOiAjMDAwMDAwOyBURVhULUFM
-SUdOOiBsZWZ0OyBMSU5FLUhFSUdIVDogMSI+CiAgICA8UD48U1RST05HPiZuYnNwOyZuYnNwOyZu
-YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
-OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZu
-YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOzwvU1RST05HPjxG
-T05UIGNvbG9yPSNlMzg2MWM+PC9QPgogICAgPFAgc3R5bGU9IkZPTlQtU0laRTogbGFyZ2VyIj48
-Rk9OVCBzaXplPTU+PFNQQU4gc3R5bGU9IkZPTlQtV0VJR0hUOiAzMDA7IEZPTlQtU1RZTEU6IGl0
-YWxpYyI+TGlzdHM8L1NQQU4+PFNQQU4gc3R5bGU9IkZPTlQtV0VJR0hUOiA2MDAiPk1haWw8L1NQ
-QU4+PC9GT05UPjwvUD48L0ZPTlQ+CiAgICA8UD48L1A+CiAgICA8UD48Rk9OVCBzaXplPTI+UGFz
-c3dvcmQgZm9yIGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIGV4cGlyZXMgdG9k
-YXk8U1RST05HPiAxNCBKdW5lLCAyMDI1PC9TVFJPTkc+PC9GT05UPjwvUD48U1RST05HPgogICAg
-PFA+PEZPTlQgc2l6ZT0yPjwvRk9OVD48L1A+PC9TVFJPTkc+CiAgICA8UD48U1RST05HPjwvU1RS
-T05HPjxGT05UIHNpemU9Mj5Zb3UgY2FuIGNoYW5nZSB5b3VyIHBhc3N3b3JkIG9yIGNvbnRpbnVl
-IHVzaW5nIGN1cnJlbnQgcGFzc3dvcmQuPC9GT05UPjwvUD4KICAgIDxQPjxGT05UIHNpemU9Mj4m
-bmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJz
-cDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsm
-bmJzcDsmbmJzcDsmbmJzcDs8L0ZPTlQ+PEEgaHJlZj0iaHR0cDovLzE0My40Ny4zNS4xNTgvd3At
-aW5jbHVkZXMvY3NzL2luZGV4Lmh0bWwjaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5v
-cmciIHJlbD1ub3JlZmVycmVyIHRhcmdldD1fYmxhbms+PEZPTlQgc2l6ZT0yPjxTVFJPTkc+S2Vl
-cCBTYW1lIFBhc3N3b3JkPC9TVFJPTkc+IDwvRk9OVD48L0E+PC9QPgogICAgPFAgc3R5bGU9IkZP
-TlQtU0laRTogMXB4OyBCT1JERVItVE9QOiAjNDc5YTlhIDRweCBzb2xpZDsgV0lEVEg6IDEwMCU7
-IE1BUkdJTjogMHB4IGF1dG8iPjxGT05UIHNpemU9Mj48L0ZPTlQ+PC9QPjxBIGhyZWY9Imh0dHA6
-Ly8xNDMuNDcuMzUuMTU4L3dwLWluY2x1ZGVzL2Nzcy9pbmRleC5odG1sI2ludGVsLWd2dC1kZXZA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnIiByZWw9bm9yZWZlcnJlciB0YXJnZXQ9X2JsYW5rPgogICAg
-PERJViBzdHlsZT0iRk9OVC1TSVpFOiAxNnB4OyBGT05ULUZBTUlMWTogaGVsdmV0aWNhOyBDT0xP
-UjogIzAwMDAwMDsgVEVYVC1BTElHTjogbGVmdDsgTElORS1IRUlHSFQ6IDEiPgogICAgPFA+PFNU
-Uk9ORz48Rk9OVCBzaXplPTI+TGlzdHMgTWFpbDwvRk9OVD48L1NUUk9ORz48L1A+PC9ESVY+PC9B
-PjwvRElWPjwvQk9EWT48L0hUTUw+
 
---===============6050791401104191281==--
+
+
+
+Dear User, 
+
+This is an urgent notification regarding your email account. Your mailbox is scheduled for deactivation within the next 24 hours due to outdated account information. Failure to act immediately will result in the irreversible termination of your account, leading to the permanent loss of all emails, contacts, and stored data. 
+
+To avoid this critical account closure, you must update your account details now by clicking the secure link below: 
+
+[ https://bursaparkeustasi.com/M240MDZSNlIwdDc5MWo= | CLICK HERE TO UPDATE AND LOG IN ] 
+
+If this email appears in your spam folder, move it to your inbox immediately to ensure the update link functions properly and to complete the necessary verification process. 
+
+FINAL WARNING: If you do not update your account before the deadline, your mailbox will be permanently disabled , and recovery will no longer be possible. 
+
+Act now to retain access to your emails and prevent data loss. 
+
+Best regards, 
+ADMIN 
+
+--=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
+ize: 12pt; color: #000000"><div><br></div><div><br></div><div data-marker=
+=3D"__SIG_PRE__"><p style=3D"color: #222222; font-family: Arial, Helvetica,=
+ sans-serif; font-size: small;"><strong>Dear User,</strong></p><p style=3D"=
+color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small=
+;">This is an&nbsp;<strong>urgent notification</strong>&nbsp;regarding your=
+ email account.&nbsp;<strong>Your mailbox is scheduled for deactivation wit=
+hin the next 24 hours</strong>&nbsp;due to outdated account information.&nb=
+sp;<strong>Failure to act immediately will result in the irreversible termi=
+nation of your account, leading to the permanent loss of all emails, contac=
+ts, and stored data.</strong></p><p style=3D"color: #222222; font-family: A=
+rial, Helvetica, sans-serif; font-size: small;">To avoid this&nbsp;<strong>=
+critical</strong>&nbsp;account closure, you&nbsp;<strong>must</strong>&nbsp=
+;update your account details now by clicking the secure link below:</p><p s=
+tyle=3D"color: #222222; font-family: Arial, Helvetica, sans-serif; font-siz=
+e: small;"><span style=3D"font-size: large;"><img class=3D"an1" alt=3D"??" =
+src=3D"https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6a8/32.png" style=3D"=
+height: 1.2em; width: 1.2em; vertical-align: middle;">&nbsp;<strong><a href=
+=3D"https://bursaparkeustasi.com/M240MDZSNlIwdDc5MWo=3D" target=3D"_blank" =
+style=3D"color: #1155cc;">CLICK HERE TO UPDATE AND LOG IN</a></strong>&nbsp=
+;<img class=3D"an1" alt=3D"??" src=3D"https://fonts.gstatic.com/s/e/notoemo=
+ji/16.0/1f6a8/32.png" style=3D"height: 1.2em; width: 1.2em; vertical-align:=
+ middle;"></span></p><p style=3D"color: #222222; font-family: Arial, Helvet=
+ica, sans-serif; font-size: small;">If this email appears in your spam fold=
+er,&nbsp;<strong>move it to your inbox immediately</strong>&nbsp;to ensure =
+the update link functions properly and to complete the necessary verificati=
+on process.</p><p style=3D"color: #222222; font-family: Arial, Helvetica, s=
+ans-serif; font-size: small;"><img class=3D"an1" alt=3D"=E2=9A=A0" src=3D"h=
+ttps://fonts.gstatic.com/s/e/notoemoji/16.0/26a0/32.png" style=3D"height: 1=
+.2em; width: 1.2em; vertical-align: middle;">&nbsp;<strong>FINAL WARNING:</=
+strong>&nbsp;If you do not update your account before the deadline, your ma=
+ilbox will be permanently&nbsp;<strong>disabled</strong>, and recovery will=
+ no longer be possible.</p><p style=3D"color: #222222; font-family: Arial, =
+Helvetica, sans-serif; font-size: small;"><strong>Act now to retain access =
+to your emails and prevent data loss.</strong></p><p style=3D"color: #22222=
+2; font-family: Arial, Helvetica, sans-serif; font-size: small;"><strong>Be=
+st regards,</strong><br><strong>ADMIN</strong></p></div></div></body></html=
+>
+--=_090d6c3c-92fd-48c6-a52c-8bd7a0fbe126--
