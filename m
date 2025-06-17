@@ -2,62 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D08CADA2FA
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Jun 2025 20:29:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B079ADC45A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jun 2025 10:15:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DF39910E163;
-	Sun, 15 Jun 2025 18:29:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1ED4C10E530;
+	Tue, 17 Jun 2025 08:15:33 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; secure) header.d=bizvista.pl header.i=@bizvista.pl header.b="snmAhO5J";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from yudhisthira.itb.ac.id (yudhisthira.itb.ac.id [167.205.1.122])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A4DB310E163
+X-Greylist: delayed 513 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Jun 2025 08:15:32 UTC
+Received: from mail.bizvista.pl (mail.bizvista.pl [135.125.236.103])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 90D4310E530
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Jun 2025 18:29:44 +0000 (UTC)
-X-ASG-Debug-ID: 1750011934-0ef5d76d6a00010004-pZQmE5
-Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29]) by
- yudhisthira.itb.ac.id with ESMTP id EdwOf6wCC5UgGV1O;
- Mon, 16 Jun 2025 01:26:27 +0700 (WIB)
-X-Barracuda-Envelope-From: kaprodi@ar.itb.ac.id
-X-Barracuda-Effective-Source-IP: mbox3.itb.ac.id[167.205.59.29]
-X-Barracuda-Apparent-Source-IP: 167.205.59.29
-Received: from localhost (localhost [127.0.0.1])
- by mbox3.itb.ac.id (Postfix) with ESMTP id 9FABA801C47F0;
- Fri, 13 Jun 2025 06:19:25 +0700 (WIB)
-Received: from mbox3.itb.ac.id ([127.0.0.1])
- by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id MuLV2AkjBJJP; Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
-Received: from localhost (localhost [127.0.0.1])
- by mbox3.itb.ac.id (Postfix) with ESMTP id 80601801C3E7E;
- Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
-X-Virus-Scanned: amavisd-new at mbox3.itb.ac.id
-Received: from mbox3.itb.ac.id ([127.0.0.1])
- by localhost (mbox3.itb.ac.id [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 6SfaFHqcq_8w; Fri, 13 Jun 2025 06:19:22 +0700 (WIB)
-Received: from mbox3.itb.ac.id (mbox3.itb.ac.id [167.205.59.29])
- by mbox3.itb.ac.id (Postfix) with ESMTP id C195D801C3E44;
- Fri, 13 Jun 2025 06:19:21 +0700 (WIB)
-Date: Fri, 13 Jun 2025 06:19:21 +0700 (WIB)
-From: Admin Zimbra <kaprodi@ar.itb.ac.id>
-Message-ID: <249150771.378394.1749770361700.JavaMail.zimbra@ar.itb.ac.id>
-Subject: Your mailbox is scheduled for deactivation within the next 24 hours
+ Tue, 17 Jun 2025 08:15:32 +0000 (UTC)
+Received: by mail.bizvista.pl (Postfix, from userid 1002)
+ id A075B47FDC; Tue, 17 Jun 2025 10:06:13 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizvista.pl; s=mail;
+ t=1750147617; bh=/VWuu91p9z70l5DLoCEVoIC3JL45iKaV1r4mCkdy8Lo=;
+ h=Date:From:To:Subject:From;
+ b=snmAhO5JZrfxxiQPHubDvhjBIAmg++dgBtRHw0oOe08P9DUFZ7WzQAoQIoILm56Is
+ ygORV5RSOVbQLaWwxDGqGj4+pRNbo8lS9UnGNz6MjV+VIeXlZy/wXGO1lROyrhjtFJ
+ AZ2UsCRLfhCOkX6fejcP4DBfahUV0nN4EaWVOb3wliZwLic9nGtEEXhGQCaSulBLvC
+ vMuJPOFwJ2x18e5ewpHN2tYJ30w4pnKgOSIJLA4d8aVwPNjd0bqiq06M55wzDwRCYa
+ hcX6prQy4IJBVq+4qJZOLW/y6yaCDMQS2gBiCMVgWJSyTgpOiYMAah5plk2yzvVfzS
+ XvVDrzUOV12+Q==
+Received: by mail.bizvista.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 17 Jun 2025 08:05:54 GMT
+Message-ID: <20250617084500-0.1.9x.qxsk.0.jzl67l9a47@bizvista.pl>
+Date: Tue, 17 Jun 2025 08:05:54 GMT
+From: =?UTF-8?Q?"=C5=81ucja_Grabowska"?= <lucja.grabowska@bizvista.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Pakiet telemedyczny 
+X-Mailer: mail.bizvista.pl
 MIME-Version: 1.0
-X-ASG-Orig-Subj: Your mailbox is scheduled for deactivation within the next 24
- hours
-Content-Type: multipart/alternative; 
- boundary="=_910a9048-2c4b-4aed-802b-8246cec8d436"
-X-Originating-IP: [197.210.52.198]
-X-Mailer: Zimbra 8.8.6_GA_1906 (ZimbraWebClient - GC137 (Win)/8.8.6_GA_1906)
-Thread-Index: kq6RLnJTCSRTRBBBzi52JGxlBYjPTQ==
-Thread-Topic: Your mailbox is scheduled for deactivation within the next 24
- hours
-X-Barracuda-Connect: mbox3.itb.ac.id[167.205.59.29]
-X-Barracuda-Start-Time: 1750011987
-X-Barracuda-URL: https://167.205.1.122:443/cgi-mod/mark.cgi
-X-Barracuda-License: Expired
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-BRTS-URL-Found: bursaparkeustasi.com (*Spam.Unknown)
-X-Virus-Scanned: by bsmtpd at itb.ac.id
-X-Barracuda-Scan-Msg-Size: 3707
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +52,30 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ogunlanaadebowalejohn@fthcapital.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_910a9048-2c4b-4aed-802b-8246cec8d436
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Szanowni Pa=C5=84stwo,
+
+chcia=C5=82abym przedstawi=C4=87 Pa=C5=84stwu kompleksowy program wsparci=
+a dla pracownik=C3=B3w, kt=C3=B3ry przynosi wymierne korzy=C5=9Bci biznes=
+owe.
+
+Oferujemy nielimitowany dost=C4=99p do konsultacji z lekarzami ponad 30 s=
+pecjalizacji, od pediatrii przez neurologi=C4=99, po psychologi=C4=99 i o=
+rtopedi=C4=99. Przygotowali=C5=9Bmy zr=C3=B3=C5=BCnicowane pakiety medycz=
+ne, kt=C3=B3re doskonale wpisuj=C4=85 si=C4=99 w indywidualne potrzeby ka=
+=C5=BCdej organizacji.=20
+
+Pracodawca zyskuje zmotywowany zesp=C3=B3=C5=82, znacz=C4=85ce ograniczen=
+ie zwolnie=C5=84 lekarskich oraz urlop=C3=B3w oraz realn=C4=85 optymaliza=
+cj=C4=99 koszt=C3=B3w zwi=C4=85zanych z opiek=C4=85 zdrowotn=C4=85. Praco=
+wnicy natomiast otrzymuj=C4=85 cenny benefit, kt=C3=B3ry sprawia, =C5=BCe=
+ czuj=C4=85 si=C4=99 doceniani i zadbani.
+
+Czy chcieliby Pa=C5=84stwo pozna=C4=87 szczeg=C3=B3=C5=82y naszych rozwi=C4=
+=85za=C5=84?
 
 
-
-
-
-Dear User, 
-
-This is an urgent notification regarding your email account. Your mailbox is scheduled for deactivation within the next 24 hours due to outdated account information. Failure to act immediately will result in the irreversible termination of your account, leading to the permanent loss of all emails, contacts, and stored data. 
-
-To avoid this critical account closure, you must update your account details now by clicking the secure link below: 
-
-[ https://bursaparkeustasi.com/M240MDZSNlIwdDc5MWo= | CLICK HERE TO UPDATE AND LOG IN ] 
-
-If this email appears in your spam folder, move it to your inbox immediately to ensure the update link functions properly and to complete the necessary verification process. 
-
-FINAL WARNING: If you do not update your account before the deadline, your mailbox will be permanently disabled , and recovery will no longer be possible. 
-
-Act now to retain access to your emails and prevent data loss. 
-
-Best regards, 
-ADMIN 
-
---=_910a9048-2c4b-4aed-802b-8246cec8d436
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
-ize: 12pt; color: #000000"><div><br></div><div><br></div><div data-marker=
-=3D"__SIG_PRE__"><p style=3D"color: #222222; font-family: Arial, Helvetica,=
- sans-serif; font-size: small;"><strong>Dear User,</strong></p><p style=3D"=
-color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small=
-;">This is an&nbsp;<strong>urgent notification</strong>&nbsp;regarding your=
- email account.&nbsp;<strong>Your mailbox is scheduled for deactivation wit=
-hin the next 24 hours</strong>&nbsp;due to outdated account information.&nb=
-sp;<strong>Failure to act immediately will result in the irreversible termi=
-nation of your account, leading to the permanent loss of all emails, contac=
-ts, and stored data.</strong></p><p style=3D"color: #222222; font-family: A=
-rial, Helvetica, sans-serif; font-size: small;">To avoid this&nbsp;<strong>=
-critical</strong>&nbsp;account closure, you&nbsp;<strong>must</strong>&nbsp=
-;update your account details now by clicking the secure link below:</p><p s=
-tyle=3D"color: #222222; font-family: Arial, Helvetica, sans-serif; font-siz=
-e: small;"><span style=3D"font-size: large;"><img class=3D"an1" alt=3D"??" =
-src=3D"https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6a8/32.png" style=3D"=
-height: 1.2em; width: 1.2em; vertical-align: middle;">&nbsp;<strong><a href=
-=3D"https://bursaparkeustasi.com/M240MDZSNlIwdDc5MWo=3D" target=3D"_blank" =
-style=3D"color: #1155cc;">CLICK HERE TO UPDATE AND LOG IN</a></strong>&nbsp=
-;<img class=3D"an1" alt=3D"??" src=3D"https://fonts.gstatic.com/s/e/notoemo=
-ji/16.0/1f6a8/32.png" style=3D"height: 1.2em; width: 1.2em; vertical-align:=
- middle;"></span></p><p style=3D"color: #222222; font-family: Arial, Helvet=
-ica, sans-serif; font-size: small;">If this email appears in your spam fold=
-er,&nbsp;<strong>move it to your inbox immediately</strong>&nbsp;to ensure =
-the update link functions properly and to complete the necessary verificati=
-on process.</p><p style=3D"color: #222222; font-family: Arial, Helvetica, s=
-ans-serif; font-size: small;"><img class=3D"an1" alt=3D"=E2=9A=A0" src=3D"h=
-ttps://fonts.gstatic.com/s/e/notoemoji/16.0/26a0/32.png" style=3D"height: 1=
-.2em; width: 1.2em; vertical-align: middle;">&nbsp;<strong>FINAL WARNING:</=
-strong>&nbsp;If you do not update your account before the deadline, your ma=
-ilbox will be permanently&nbsp;<strong>disabled</strong>, and recovery will=
- no longer be possible.</p><p style=3D"color: #222222; font-family: Arial, =
-Helvetica, sans-serif; font-size: small;"><strong>Act now to retain access =
-to your emails and prevent data loss.</strong></p><p style=3D"color: #22222=
-2; font-family: Arial, Helvetica, sans-serif; font-size: small;"><strong>Be=
-st regards,</strong><br><strong>ADMIN</strong></p></div></div></body></html=
->
---=_910a9048-2c4b-4aed-802b-8246cec8d436--
+Pozdrawiam
+=C5=81ucja Grabowska
