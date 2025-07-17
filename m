@@ -2,31 +2,68 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B229B09196
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Jul 2025 18:20:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E513B095C9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Jul 2025 22:35:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D19C310E318;
-	Thu, 17 Jul 2025 16:20:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 231EF10E89F;
+	Thu, 17 Jul 2025 20:35:49 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="ccX4pQNa";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 14747 seconds by postgrey-1.36 at gabe;
- Thu, 17 Jul 2025 16:20:52 UTC
-Received: from managergram.com.vps2584185.fastwebserver.de
- (vps2584185.fastwebserver.de [213.202.211.26])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B8BB210E318
+Received: from mail-oo1-f52.google.com (mail-oo1-f52.google.com
+ [209.85.161.52])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4462C10E8A0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 17 Jul 2025 16:20:52 +0000 (UTC)
-Received: by managergram.com.vps2584185.fastwebserver.de (Postfix,
- from userid 33) id 16707956ED; Thu, 17 Jul 2025 09:22:44 +0000 (UTC)
-Date: Thu, 17 Jul 2025 09:20:18 +0000
-To: intel-gvt-dev@lists.freedesktop.org
-From: =?UTF-8?B?RGV2aXPCoHNpZ27DqcKgK8KgdmlyZW1lbnTCoGFjb21wdGUg4pyF?=
- <noreplay@wetransfer.fr>
-Subject: =?UTF-8?B?Vm91cyBhdmV6IHJlw6d1IHVuZSBmYWN0dXJlIPCfp74=?=
-Message-ID: <f3d13889dd397887530e9c4dd7d357b7@wetransfer.fr>
+ Thu, 17 Jul 2025 20:35:48 +0000 (UTC)
+Received: by mail-oo1-f52.google.com with SMTP id
+ 006d021491bc7-6159466e80aso650550eaf.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 17 Jul 2025 13:35:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1752784547; x=1753389347; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Wf0o2zbRydKURzArs5aBIetWavcYZL1rsMpY2AMfJdM=;
+ b=ccX4pQNa7yf+DtDQwXrFa7ErwXgNuq3hPCe1hinDXZ99kMx85SH2FH+Rg3NrZDqhSd
+ HRPLy1OjrXPHIVFrf0JZ2yNsGeyotmhtgYb1yGE3fjbasdB0mqg4/i1oiGFzEDecHuup
+ oRQlu0u1F9O63xrX7fp1Eoc/Khz9UBxzFWw3uDcE2bVpVXrVhB4wAILl7tGGcxjcfV2b
+ ZLqw9bLszX0q+HB5YDajdYTwOoSompj4R1MPKxkGJryRb74FSOTzfoX5Md6rvMZwj+Jt
+ 0D20+d2IprgGp1hZwoNR8Cbd/BK8svMrr2nsxno0/09wW8Vl4S7wfzyvvvHEzCWOUH5M
+ suog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752784547; x=1753389347;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Wf0o2zbRydKURzArs5aBIetWavcYZL1rsMpY2AMfJdM=;
+ b=Tlc2Pc4PNTr6qCSCXjU9/wjojCCevfbnG80GHYAPcaSNqLShE1sO2C+WnCtChpgaOZ
+ DIkLoIIqwml0T2hj96indve/OnFRrivnkalGpMPJTCuvNDMaMo57EPC1LiLQk5Y0CSE0
+ k2jmwEv3iwOzE1Llm573JtX5aSCYoSBjin+Fb7HpI0rjLVdaQ8bW4Twq/fw5+pAbE8C8
+ 66O3YgO3xnASs6FZKzrR/qipMOuSIfc3RGRBAboGyjrGCxqJUxE8++ezUXpVF/7spymX
+ g/R7spBx7bFx4jHmTqArMTRubaU0QCxgJ+qWwFfTVrhEXwe2MLQFVm/J9W7BxUGv7ans
+ FSuQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU4ygGg9XR3vrgvMrr5KRyk3FssIiRnNB2EDjYkghA8xiZMLEunvWAacOluhnFnSMZIACifTac8+JsadfIu@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YwRnKLlPuwt+iKm09CW4w5sTt7LeY+Ow12cSoC96yxrHxGluyYY
+ AFOrHRIvJP9czc1vXFONBALtD+y7eivGqrKuMAOmHGaw53KskJL9xSoVyhfZUEvSUFJnvpWaJlx
+ YUMLOdRtZbTwynmdg9Ir/TOfW+mbb6zk=
+X-Gm-Gg: ASbGncsEaoKMJg0l0vtGZKxVWDXMbHs4X8ZGgoQTIpEjutjjeFg42jGoXbFjZO7l8er
+ Bleel+PmYT2Xp5sWaFjsRPgNOM8hS24NfEq1wLpKwAYGXVZDQwOQiaWHPQlKlCN3NIefZtjjnVS
+ nmNGs2XAgtBk698Z8We5IYkkCt1ynNACLJ6URFyxHhDvvp4nZ3DofhuzIypfSenQM+SUxN5UGyT
+ HczErQmAzUNarxxsA==
+X-Google-Smtp-Source: AGHT+IFbKmokvFE+UD6IPVc3GBuClU1jriVNzTbQG6FtxCWEBjioTgWtXC7cPJDCKDTJi/wsT4HeDepUzEJJdGdWLkc=
+X-Received: by 2002:a05:6820:2004:b0:615:b293:1f17 with SMTP id
+ 006d021491bc7-615b2932180mr2023471eaf.8.1752784547342; Thu, 17 Jul 2025
+ 13:35:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="17930e1d522349ba27e245ecdd6140172"
+From: Pastor Cecil Williams <mrmaxwilson40@gmail.com>
+Date: Thu, 17 Jul 2025 13:35:35 -0700
+X-Gm-Features: Ac12FXwNZtLoaaeax4vwDeCnJ_3aQ9bi2fyJ073BAmW3q7OO22L6kM-gAcM5t2M
+Message-ID: <CAMuiqwqN+obD9gxVWRrxrL=Z=fOORyHqqi8Y8FhojOqmoA=N8A@mail.gmail.com>
+Subject: I wish you a happy day.
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000004fef34063a25f429"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,110 +76,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: pastorcecilwilliams@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
+--0000000000004fef34063a25f429
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
---17930e1d522349ba27e245ecdd6140172
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+Dear.
 
-DQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KQm9uam91ciwNCkplIHZvdXMgam9pbnMsIHBh
-ciBsZSBiaWFpcyBkZSBXZVRyYW5zZmVyLCBsZSBkZXZpcyBzaWduJmVhY3V0ZTsgZXQgbCdhdmlz
-IGRlIHZpcmVtZW50IGVuIHZvdHJlIGZhdmV1ci4NCkNsYXNzZW1lbnQgZHUgZG9jdW1lbnQuT2Jq
-ZXQgOiZuYnNwO0RldmlzJm5ic3A7c2lnbiZlYWN1dGU7Jm5ic3A7KyZuYnNwO3ZpcmVtZW50Jm5i
-c3A7YWNvbXB0ZQ0KRGF0ZSA6IDE3LzA3LzIwMjVUJmVhY3V0ZTtsJmVhY3V0ZTtjaGFyZ2VyJm5i
-c3A7bGUmbmJzcDtkb2N1bWVudCBpY2kNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQo=
+How are you doing today, I do hope that my mail meets you and your
+household well and in good health?
 
+I'm happy to inform you about my success in getting those funds transferred
+under the cooperation of a new partner from Switzerland.
 
---17930e1d522349ba27e245ecdd6140172
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+Presently i'm in Paraguay for investment projects with my own share of the
+total sum which i am investing the money in real Estate Business.
+Meanwhile, I didn't forget your past efforts and attempts to assist in
+transferring those funds despite that it failed us somehow.
 
-PHRhYmxlIGJvcmRlcj0iMCIgd2lkdGg9IjEwMCUiIGNlbGxzcGFjaW5nPSIwIiBjZWxscGFkZGlu
-Zz0iMCI+DQo8dGJvZHk+DQo8dHI+DQo8dGQgYWxpZ249ImNlbnRlciI+DQo8dGFibGUgYm9yZGVy
-PSIwIiB3aWR0aD0iNDgwIiBjZWxsc3BhY2luZz0iMCIgY2VsbHBhZGRpbmc9IjAiPg0KPHRib2R5
-Pg0KPHRyPg0KPHRkIGFsaWduPSJsZWZ0Ij48YnIgLz4NCjx0YWJsZSBib3JkZXI9IjAiIHdpZHRo
-PSI0ODAiIGNlbGxzcGFjaW5nPSIwIiBjZWxscGFkZGluZz0iMCIgYWxpZ249ImNlbnRlciI+DQo8
-dGJvZHk+DQo8dHI+DQo8dGQgYWxpZ249ImxlZnQiPjxpbWcgc3R5bGU9ImRpc3BsYXk6IGJsb2Nr
-OyBtYXJnaW4tbGVmdDogYXV0bzsgbWFyZ2luLXJpZ2h0OiBhdXRvOyIgc3JjPSJodHRwczovL2xv
-Z293aWsuY29tL2NvbnRlbnQvdXBsb2Fkcy9pbWFnZXMvNzg5X3dlX3RyYW5zZmVyLmpwZyIgYWx0
-PSJXZSBUcmFuc2ZlciBMb2dvIFBORyB2ZWN0b3IgaW4gU1ZHLCBQREYsIEFJLCBDRFIgZm9ybWF0
-IiB3aWR0aD0iODMiIGhlaWdodD0iNjIiIC8+PC90ZD4NCjwvdHI+DQo8dHI+DQo8dGQgYWxpZ249
-ImxlZnQiPg0KPHA+Qm9uam91ciw8L3A+DQo8cD5KZSB2b3VzIGpvaW5zLCBwYXIgbGUgYmlhaXMg
-ZGUgV2VUcmFuc2ZlciwgbGUgZGV2aXMgc2lnbiZlYWN1dGU7IGV0IGwnYXZpcyBkZSB2aXJlbWVu
-dCBlbiB2b3RyZSBmYXZldXIuPC9wPg0KPHA+PGJyIC8+Q2xhc3NlbWVudCBkdSBkb2N1bWVudC48
-YnIgLz48YnIgLz48c3BhbiBjbGFzcz0iY29ycmVjdGVkLXBocmFzZSIgZGF0YS1lbmQ9IjEzNyIg
-ZGF0YS1vcmlnaW5hbHRleHQ9Ik9iamV0OiIgZGF0YS1zdGFydD0iMTMyIiBkYXRhLXRleHQ9Ik9i
-amV0IDogIj48YnV0dG9uIGNsYXNzPSJjb3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dCBj
-b3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dF9idWJibGVkIiBhcmlhLWRlc2NyaWJlZGJ5
-PSJwaHJhc2VCdWJibGUiIGRhdGEtZ3JvdXA9IkF1dG9Db3JyZWN0ZWQiIGRhdGEtc3VnZ2VzdGlv
-bnM9IjEiIGRhdGEtdHlwZT0iIiBhcmlhLWxhYmVsPSJDb3JyZWN0ZWQgbWlzdGFrZSBPYmpldCA6
-ICI+T2JqZXQgOjxiciAvPjwvYnV0dG9uPjwvc3Bhbj48c3BhbiBjbGFzcz0iY29ycmVjdGVkLXBo
-cmFzZSBjb3JyZWN0ZWQtcGhyYXNlX3N5bm9ueW1zLW1vZGUiIGRhdGEtZW5kPSIxNDIiIGRhdGEt
-b3JpZ2luYWx0ZXh0PSJEZXZpcyIgZGF0YS1zdGFydD0iMTM4IiBkYXRhLXRleHQ9IiI+PHNwYW4g
-Y2xhc3M9ImNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0IGNvcnJlY3RlZC1waHJhc2Vf
-X2Rpc3BsYXllZC10ZXh0X25vLWNvcnJlY3Rpb24gY29ycmVjdGVkLXBocmFzZV9fZGlzcGxheWVk
-LXRleHRfc3lub255bXMtbW9kZSI+Jm5ic3A7RGV2aXM8L3NwYW4+PC9zcGFuPiZuYnNwOzxzcGFu
-IGNsYXNzPSJjb3JyZWN0ZWQtcGhyYXNlIGNvcnJlY3RlZC1waHJhc2Vfc3lub255bXMtbW9kZSIg
-ZGF0YS1lbmQ9IjE0OCIgZGF0YS1vcmlnaW5hbHRleHQ9InNpZ24mZWFjdXRlOyIgZGF0YS1zdGFy
-dD0iMTQ0IiBkYXRhLXRleHQ9IiI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJhc2VfX2Rpc3Bs
-YXllZC10ZXh0IGNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0X25vLWNvcnJlY3Rpb24g
-Y29ycmVjdGVkLXBocmFzZV9fZGlzcGxheWVkLXRleHRfc3lub255bXMtbW9kZSI+c2lnbiZlYWN1
-dGU7PC9zcGFuPjwvc3Bhbj4mbmJzcDs8c3BhbiBjbGFzcz0iY29ycmVjdGVkLXBocmFzZSIgZGF0
-YS1lbmQ9IjE1MCIgZGF0YS1vcmlnaW5hbHRleHQ9IisiIGRhdGEtc3RhcnQ9IjE1MCIgZGF0YS10
-ZXh0PSIiPjxzcGFuIGNsYXNzPSJjb3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dCBjb3Jy
-ZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dF9uby1jb3JyZWN0aW9uIj4rPC9zcGFuPjwvc3Bh
-bj4mbmJzcDs8c3BhbiBjbGFzcz0iY29ycmVjdGVkLXBocmFzZSBjb3JyZWN0ZWQtcGhyYXNlX3N5
-bm9ueW1zLW1vZGUiIGRhdGEtZW5kPSIxNTkiIGRhdGEtb3JpZ2luYWx0ZXh0PSJ2aXJlbWVudCIg
-ZGF0YS1zdGFydD0iMTUyIiBkYXRhLXRleHQ9IiI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJh
-c2VfX2Rpc3BsYXllZC10ZXh0IGNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0X25vLWNv
-cnJlY3Rpb24gY29ycmVjdGVkLXBocmFzZV9fZGlzcGxheWVkLXRleHRfc3lub255bXMtbW9kZSI+
-dmlyZW1lbnQ8L3NwYW4+PC9zcGFuPiZuYnNwOzxzcGFuIGNsYXNzPSJjb3JyZWN0ZWQtcGhyYXNl
-IGNvcnJlY3RlZC1waHJhc2Vfc3lub255bXMtbW9kZSIgZGF0YS1lbmQ9IjE2NyIgZGF0YS1vcmln
-aW5hbHRleHQ9ImFjb21wdGUiIGRhdGEtc3RhcnQ9IjE2MSIgZGF0YS10ZXh0PSIiPjxzcGFuIGNs
-YXNzPSJjb3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dCBjb3JyZWN0ZWQtcGhyYXNlX19k
-aXNwbGF5ZWQtdGV4dF9uby1jb3JyZWN0aW9uIGNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10
-ZXh0X3N5bm9ueW1zLW1vZGUiPmFjb21wdGU8L3NwYW4+PC9zcGFuPjxiciAvPjxzcGFuIGNsYXNz
-PSJjb3JyZWN0ZWQtcGhyYXNlIGNvcnJlY3RlZC1waHJhc2Vfc3lub255bXMtbW9kZSIgZGF0YS1l
-bmQ9IjE5MCIgZGF0YS1vcmlnaW5hbHRleHQ9IlBybyIgZGF0YS1zdGFydD0iMTg4IiBkYXRhLXRl
-eHQ9IiI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0IGNvcnJl
-Y3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0X25vLWNvcnJlY3Rpb24gY29ycmVjdGVkLXBocmFz
-ZV9fZGlzcGxheWVkLXRleHRfc3lub255bXMtbW9kZSI+PGJyIC8+PGJyIC8+PC9zcGFuPjwvc3Bh
-bj48L3A+DQo8cD48c3BhbiBjbGFzcz0iY29ycmVjdGVkLXBocmFzZSIgZGF0YS1lbmQ9IjIwNyIg
-ZGF0YS1vcmlnaW5hbHRleHQ9IkRhdGU6MDYvMTAvMjAyNCIgZGF0YS1zdGFydD0iMTkzIiBkYXRh
-LXRleHQ9IkRhdGUgOiAwNi8xMC8yMDI0Ij48YnV0dG9uIGNsYXNzPSJjb3JyZWN0ZWQtcGhyYXNl
-X19kaXNwbGF5ZWQtdGV4dCBjb3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dF9idWJibGVk
-IiBhcmlhLWRlc2NyaWJlZGJ5PSJwaHJhc2VCdWJibGUiIGRhdGEtZ3JvdXA9IkF1dG9Db3JyZWN0
-ZWQiIGRhdGEtc3VnZ2VzdGlvbnM9IjEiIGRhdGEtdHlwZT0iIiBhcmlhLWxhYmVsPSJDb3JyZWN0
-ZWQgbWlzdGFrZSBEYXRlIDogMDYvMTAvMjAyNCI+RGF0ZSA6IDE3LzA3LzIwMjU8L2J1dHRvbj48
-L3NwYW4+PGJyIC8+PGJyIC8+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9zaXRlcy5nb29nbGUuY29t
-L3ZpZXcvZmljaGllcmRvY3VtZW50MDgvYWNjdWVpbCI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1w
-aHJhc2UgY29ycmVjdGVkLXBocmFzZV9zeW5vbnltcy1tb2RlIiBkYXRhLWVuZD0iMjIwIiBkYXRh
-LW9yaWdpbmFsdGV4dD0iVCZlYWN1dGU7bCZlYWN1dGU7Y2hhcmdlciIgZGF0YS1zdGFydD0iMjEw
-IiBkYXRhLXRleHQ9IiI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10
-ZXh0IGNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0X25vLWNvcnJlY3Rpb24gY29ycmVj
-dGVkLXBocmFzZV9fZGlzcGxheWVkLXRleHRfc3lub255bXMtbW9kZSI+VCZlYWN1dGU7bCZlYWN1
-dGU7Y2hhcmdlcjwvc3Bhbj48L3NwYW4+Jm5ic3A7PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJh
-c2UgY29ycmVjdGVkLXBocmFzZV9zeW5vbnltcy1tb2RlIiBkYXRhLWVuZD0iMjIzIiBkYXRhLW9y
-aWdpbmFsdGV4dD0ibGUiIGRhdGEtc3RhcnQ9IjIyMiIgZGF0YS10ZXh0PSIiPjxzcGFuIGNsYXNz
-PSJjb3JyZWN0ZWQtcGhyYXNlX19kaXNwbGF5ZWQtdGV4dCBjb3JyZWN0ZWQtcGhyYXNlX19kaXNw
-bGF5ZWQtdGV4dF9uby1jb3JyZWN0aW9uIGNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0
-X3N5bm9ueW1zLW1vZGUiPmxlPC9zcGFuPjwvc3Bhbj4mbmJzcDs8c3BhbiBjbGFzcz0iY29ycmVj
-dGVkLXBocmFzZSBjb3JyZWN0ZWQtcGhyYXNlX3N5bm9ueW1zLW1vZGUiIGRhdGEtZW5kPSIyMzIi
-IGRhdGEtb3JpZ2luYWx0ZXh0PSJkb2N1bWVudCIgZGF0YS1zdGFydD0iMjI1IiBkYXRhLXRleHQ9
-IiI+PHNwYW4gY2xhc3M9ImNvcnJlY3RlZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0IGNvcnJlY3Rl
-ZC1waHJhc2VfX2Rpc3BsYXllZC10ZXh0X25vLWNvcnJlY3Rpb24gY29ycmVjdGVkLXBocmFzZV9f
-ZGlzcGxheWVkLXRleHRfc3lub255bXMtbW9kZSI+ZG9jdW1lbnQgaWNpPC9zcGFuPjwvc3Bhbj48
-L2E+PGJyIC8+PGJyIC8+PGJyIC8+PC9wPg0KPC90ZD4NCjwvdHI+DQo8dHI+DQo8dGQgYWxpZ249
-ImxlZnQiPjxpbWcgc3R5bGU9ImZsb2F0OiBsZWZ0OyIgc3JjPSJodHRwczovL2xvZ293aWsuY29t
-L2NvbnRlbnQvdXBsb2Fkcy9pbWFnZXMvNzg5X3dlX3RyYW5zZmVyLmpwZyIgYWx0PSJXZSBUcmFu
-c2ZlciBMb2dvIFBORyB2ZWN0b3IgaW4gU1ZHLCBQREYsIEFJLCBDRFIgZm9ybWF0IiB3aWR0aD0i
-ODMiIGhlaWdodD0iNjIiIC8+PGJyIC8+PGJyIC8+PC90ZD4NCjwvdHI+DQo8L3Rib2R5Pg0KPC90
-YWJsZT4NCjwvdGQ+DQo8L3RyPg0KPC90Ym9keT4NCjwvdGFibGU+DQo8L3RkPg0KPC90cj4NCjwv
-dGJvZHk+DQo8L3RhYmxlPg==
+I decided to reward you with a sum of (USD$850,000.00) Eight Hundred and
+fifty thousand United States dollars on your behalf, this is a compensation
+to thank you for your earlier response and assistance over the funds
+proposal.
 
+I am giving you this little money not that I am rich now but a kind of
+thanksgiving to testify the goodness of almighty God in my life and to
+prove the genuine and truthfulness over all the funds proposal.
 
+Meanwhile, I have deposited your ATM card to my pastor office, so please
+kindly contact Rev. Pastor Cecil Williams who used to be a Good-Father to
+me when i was in C=C3=B4te d=E2=80=99Ivoire, at ( pastorcecilwilliams@gmail=
+.com)  for
+collection of your international bank ATM card, you can cash this ATM card
+in any bank of your choice in your country.
 
---17930e1d522349ba27e245ecdd6140172--
+I appreciated your kind efforts at that time very much. so feel free and
+get in touch with my Pastor Cecil Williams and instruct him where to send
+the bank ATM card to you.
+
+Below is Pastor Cecil Williams contact details
+Name: Cecil Williams
+Address: Officially the Republic of C=C3=B4te d'Ivoire
+Email:  pastorcecilwilliams@gmail.com
+
+Please do let me know immediately you receive it so that we can share the
+joy after all the suffernes at that time. At the moment, I'm very busy here
+because of the investment projects which me and the new partner are having
+at hand, so feel free to get in touch with my Pastor Cecil Williams, he
+will send the bank ATM card to you without any delay.
+
+Stay in good health
+
+Best Regards.
+
+--0000000000004fef34063a25f429
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Dear.<br><br>How are you doing today, I do hope that my ma=
+il meets you and your household well and in good health?<br><br>I&#39;m hap=
+py to inform you about my success in getting those funds transferred under =
+the cooperation of a new partner from Switzerland.<br><br>Presently i&#39;m=
+ in Paraguay for investment projects with my own share of the total sum whi=
+ch i am investing the money in real Estate Business. Meanwhile, I didn&#39;=
+t forget your past efforts and attempts to assist in transferring those fun=
+ds despite that it failed us somehow.<br><br>I decided to reward you with a=
+ sum of (USD$850,000.00) Eight Hundred and fifty thousand United States dol=
+lars on your behalf, this is a compensation to thank you for your earlier r=
+esponse and assistance over the funds proposal.<br><br>I am giving you this=
+ little money not that I am rich now but a kind of thanksgiving to testify =
+the goodness of almighty God in my life and to prove the genuine and truthf=
+ulness over all the funds proposal.<br><br>Meanwhile, I have deposited your=
+ ATM card to my pastor office, so please kindly contact Rev. Pastor Cecil W=
+illiams who used to be a Good-Father to me when i was in C=C3=B4te d=E2=80=
+=99Ivoire, at ( <a href=3D"mailto:pastorcecilwilliams@gmail.com">pastorceci=
+lwilliams@gmail.com</a>) =C2=A0for collection of your international bank AT=
+M card, you can cash this ATM card in any bank of your choice in your count=
+ry.<br><br>I appreciated your kind efforts at that time very much. so feel =
+free and get in touch with my Pastor Cecil Williams and instruct him where =
+to send the bank ATM card to you.<br><br>Below is Pastor Cecil Williams con=
+tact details<br>Name: Cecil Williams<br>Address: Officially the Republic of=
+ C=C3=B4te d&#39;Ivoire<br>Email: =C2=A0<a href=3D"mailto:pastorcecilwillia=
+ms@gmail.com">pastorcecilwilliams@gmail.com</a><br><br>Please do let me kno=
+w immediately you receive it so that we can share the joy after all the suf=
+fernes at that time. At the moment, I&#39;m very busy here because of the i=
+nvestment projects which me and the new partner are having at hand, so feel=
+ free to get in touch with my Pastor Cecil Williams, he will send the bank =
+ATM card to you without any delay.<br><br>Stay in good health<br><br>Best R=
+egards.<br></div>
+
+--0000000000004fef34063a25f429--
