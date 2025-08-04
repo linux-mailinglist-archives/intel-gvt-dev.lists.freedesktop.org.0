@@ -2,90 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6A48B19239
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Aug 2025 06:00:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E7D9B1A939
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Aug 2025 20:38:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 812E110E4DE;
-	Sun,  3 Aug 2025 03:59:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AAA2C10E37D;
+	Mon,  4 Aug 2025 18:38:39 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="SzLDC3l2";
+	dkim=pass (1024-bit key; unprotected) header.d=wujunhong.com header.i=@wujunhong.com header.b="Cae35PQr";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-f179.google.com (mail-il1-f179.google.com
- [209.85.166.179])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0754D10E4DA;
- Sun,  3 Aug 2025 03:59:58 +0000 (UTC)
-Received: by mail-il1-f179.google.com with SMTP id
- e9e14a558f8ab-3e3f152700fso12489755ab.0; 
- Sat, 02 Aug 2025 20:59:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754193597; x=1754798397; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=p6zBJEgANuVffuY9NQJyHG8/+Xeax9coZJWuW6ZJ2WM=;
- b=SzLDC3l22MaKFjvgO5c5XhUoUqNGeRQ/Ps5dg6AjSI9kX2G+zT5+UUOoWFfylmvWB0
- 3iOvM9+UEmILWB8admPVOe6pa9Fdc6rjwJJsOlMco/CiahA4hJGbRmintJbPErNVktoy
- UtlJC1Bp67BwvkbpkzYP87IJw45AzO55biuL0rel1KaSXMvPl9isKXIaPxq8Xc79s2or
- MUNZ2aAN+YseUarIQJiUPYvvumTYFUUx8yYaK+2pzIrnmj284H12EXartEYn7nFScwnt
- YFOg64PfHoV1u2J2R7SCBh/glVhs1Sur7YemrRBQ3NBIAnMtFeeWo6eG1C7QQRGLuXrM
- DB8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754193597; x=1754798397;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=p6zBJEgANuVffuY9NQJyHG8/+Xeax9coZJWuW6ZJ2WM=;
- b=Nv8kTryvDn/SbfIlmEAf8Y3VbN5g+/PsUDWzeEvoPWcXvLfwiWXjjsSdTjIfQtzwOb
- aD69jPP977mXsmfSr6YmLDmXjRhxDnG/Rv89cNJZHjcv4d102Fk2KFs+0ASClNMGKaU3
- gEYM85uaWCOAQEWpZx1AFAWUZIz8yvn5/JcPvPpkShzH4kFYHNtL+IQnMnceHPq9SyP/
- sVIVDRTQ3MZfREFI7nKU65zgHAOyOem/Pl/J3Wr0TgteFc49pDqH06OrgpEz7J2xeR7Z
- DUvSlbHGJZIZs1ZfXb11MYGqREsqD8TM3sjbbdC3GcGPNNwooXrhvcFfAFAA7DqE58xU
- cONQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUcb3VnuyR9+Eyn1qD59X/gFrx9SoIlXNv7NAvvPAZ+vMdah85XLeMRXoBvtplMfHEwrxP/2SlcjWmQ2HCBpQ==@lists.freedesktop.org,
- AJvYcCW604kGVv+iu+7/Ezq+DBNnmqwvl9mNLAOXxsQGVp4dYSqXocL0pMOpYrYx/9RKzNv8UUcKUnfj@lists.freedesktop.org,
- AJvYcCWrPP+srOizS6ob5uKWpLFtpa7nlmI+r0QxOZujT6B6AOJxOUWsPc//YPasPn/Q/B7DIF3krJkfIsba@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YzetdHpgcWFwSQaC7Asdeov3nDV1Gy+JxwEKWsTB1AcFP1aT93h
- ZaogkDMgTcijOBdeYCTU8N5SFPcWahhK0i/klMzpZ0TrVjfJ5I/t4YzV
-X-Gm-Gg: ASbGncujqbyJOwmzsOvGyeXWan/SZChgVSfhXjvHjdELDb5TdxGPa37bWIdo2n+QM6I
- iRlQE2nyCeG+nZ8LIwKNDVWw8zzNn1rBwxgzHtHKrPL3yLsSlrBjxHLqHUFjkuJYjNi3Dc598vI
- V9vNEy4GnKJBab5WZiETcgvNsJHE1L+nQ/bMy/LoWfIXg3Msp3Jskp8yyLz3pSeIkG3guHdabdx
- UoXea8g05ZrWMmQCgoa8w3Y+lNar+GfDQ10H94gh/YrxIPNaa0+RNVZhXG3/y6m6kE1kFfaq8DC
- 2IRoV7uVNTZLjvgppBbgytyqFHdhN00VQwnYlGjV451gEf13HKt+stVUo95zMB4m71Wote7eh7V
- 1Iwz9AW5ueTsF7iRg+hej8YavPn8Lju/1udLaXkkAKnnzt+wG9k4wImA8Q5RMm/MpWPvYZcP/od
- DwPnTynDTuy7Id
-X-Google-Smtp-Source: AGHT+IGUOgHvStYGi2AGuiva7QKSCj6X9DfG9+bxlaldERvaqq+8SW2QK11YiYCBPzmbmAT64CKkJw==
-X-Received: by 2002:a05:6602:6c01:b0:881:4a70:4651 with SMTP id
- ca18e2360f4ac-88168309e74mr805665539f.3.1754193597187; 
- Sat, 02 Aug 2025 20:59:57 -0700 (PDT)
-Received: from frodo.raven-morpho.ts.net (c-67-165-245-5.hsd1.co.comcast.net.
- [67.165.245.5]) by smtp.googlemail.com with ESMTPSA id
- 8926c6da1cb9f-50a55df0940sm2268319173.106.2025.08.02.20.59.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 20:59:56 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, jbaron@akamai.com,
- gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com
-Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com,
- jani.nikula@intel.com, ville.syrjala@linux.intel.com,
- seanpaul@chromium.org, robdclark@gmail.com, groeck@google.com,
- yanivt@google.com, bleung@google.com, quic_saipraka@quicinc.com,
- will@kernel.org, catalin.marinas@arm.com, quic_psodagud@quicinc.com,
- maz@kernel.org, arnd@arndb.de, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, mingo@redhat.com, jim.cromie@gmail.com
-Subject: [PATCH v4 58/58] accel: add -DDYNAMIC_DEBUG_MODULE to subdir-cflags -
- RFC
-Date: Sat,  2 Aug 2025 21:58:16 -0600
-Message-ID: <20250803035816.603405-59-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250803035816.603405-1-jim.cromie@gmail.com>
-References: <20250803035816.603405-1-jim.cromie@gmail.com>
+X-Greylist: delayed 3088 seconds by postgrey-1.36 at gabe;
+ Mon, 04 Aug 2025 18:38:37 UTC
+Received: from loe.zhongyuehui.net (loe.zhongyuehui.net [192.154.230.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B993F10E37D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  4 Aug 2025 18:38:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=wujunhong.com; 
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=yXbR2TpUVpgjTigl7Z8K0vlaHjK/2VzosObrIdh3FOU=;
+ b=Cae35PQr7HqmmXNSigKNfmtXEIXae55VeX8yGcGweMwj+PP3bFFowIRuMSit8oDzegBBYfVi5mqP
+ CqN0vn5MkmQV/Dn8QudoCx3vQNwQIkZqMGEMIe0CYIT8Cl1puNJ9GsJbGk0D0ftRpK9SzQ1XXKEX
+ dyGwBW9suhEw2QzgeIc=
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: offer your customers the best in e-mobility
+Message-ID: <d376848d6eda7cee6f10e22a889cecee@blacksprucedogsledding.com>
+Date: Mon, 04 Aug 2025 19:00:30 +0200
+From: "Thomas" <verkauf@wujunhong.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,75 +45,109 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: bikeverkauf@wujunhong.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Currently amdxdna uses drm_dbg, so it needs this cflag in order to
-compile; it currently gets the cflag from its own Makefile.
-
-If other accel modules want to use DRM.debug, they will need this flag
-too, so add it in accel/Makefile.
-
-NOTE: ivpu has its own CLASS-ish dbg system:
-
-./drivers/accel/ivpu$ grep IVPU_DBG_ *
-ivpu_drv.c:MODULE_PARM_DESC(dbg_mask, "Driver debug mask. See IVPU_DBG_* macros.");
-ivpu_drv.h:#define IVPU_DBG_REG	 BIT(0)
-ivpu_drv.h:#define IVPU_DBG_IRQ	 BIT(1)
-ivpu_drv.h:#define IVPU_DBG_MMU	 BIT(2)
-ivpu_drv.h:#define IVPU_DBG_FILE	 BIT(3)
-ivpu_drv.h:#define IVPU_DBG_MISC	 BIT(4)
-ivpu_drv.h:#define IVPU_DBG_FW_BOOT BIT(5)
-ivpu_drv.h:#define IVPU_DBG_PM	 BIT(6)
-ivpu_drv.h:#define IVPU_DBG_IPC	 BIT(7)
-ivpu_drv.h:#define IVPU_DBG_BO	 BIT(8)
-ivpu_drv.h:#define IVPU_DBG_JOB	 BIT(9)
-ivpu_drv.h:#define IVPU_DBG_JSM	 BIT(10)
-ivpu_drv.h:#define IVPU_DBG_KREF	 BIT(11)
-ivpu_drv.h:#define IVPU_DBG_RPM	 BIT(12)
-ivpu_drv.h:#define IVPU_DBG_MMU_MAP BIT(13)
-ivpu_drv.h:	if (unlikely(IVPU_DBG_##type & ivpu_dbg_mask))                         \
-
-./drivers/accel/ivpu$ grep ivpu_dbg * | cut -f1,2 -d, | cut -d: -f2- | perl -pe 's/\s+/ /' | sort -u
-extern int ivpu_dbg_mask;
- if (unlikely(IVPU_DBG_##type & ivpu_dbg_mask))                         \
-int ivpu_dbg_mask;
- ivpu_dbg_bo(vdev, bo
- ivpu_dbg(vdev, BO
- ivpu_dbg(vdev, FILE
- ivpu_dbg(vdev, FW_BOOT
- ivpu_dbg(vdev, IPC
- ivpu_dbg(vdev, IRQ
- ivpu_dbg(vdev, JOB
- ivpu_dbg(vdev, JSM
- ivpu_dbg(vdev, KREF
- ivpu_dbg(vdev, MISC
- ivpu_dbg(vdev, MMU
- ivpu_dbg(vdev, MMU_MAP
- ivpu_dbg(vdev, PM
- ivpu_dbg(vdev, REG
-module_param_named(dbg_mask, ivpu_dbg_mask
-static inline void ivpu_dbg_bo(struct ivpu_device *vdev, struct ivpu_bo *bo
-
-This looks readily convertible to a dyndbg classmap and controlling kparam.
-
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/accel/Makefile | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/accel/Makefile b/drivers/accel/Makefile
-index a301fb6089d4c..e437549cba8ac 100644
---- a/drivers/accel/Makefile
-+++ b/drivers/accel/Makefile
-@@ -1,5 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0-only
- 
-+subdir-cflags-$(CONFIG_DYNAMIC_DEBUG_CORE) == -DDYNAMIC_DEBUG_MODULE
-+
- obj-$(CONFIG_DRM_ACCEL_AMDXDNA)		+= amdxdna/
- obj-$(CONFIG_DRM_ACCEL_HABANALABS)	+= habanalabs/
- obj-$(CONFIG_DRM_ACCEL_IVPU)		+= ivpu/
--- 
-2.50.1
+<html>
+<head>
+</head>
+<body>
+<p>Dear Sir or Madam,</p>
+<p>We are a professional and experienced eBike manufacturer with an annual
+=
+production capacity of over 80,000 units. Our products are successfully
+exp=
+orted to the EU, the USA, Australia, South Africa, the Middle East, and
+man=
+y other global markets.</p>
+<p>Currently, we collaborate with several hundred dealers and partners
+acro=
+ss Europe and North America. To ensure fast and reliable service, we
+operat=
+e our own warehouses in the EU, the UK, and the USA, enabling us to
+deliver=
+ orders within just <b>3 to 7 working days</b> to these regions.</p>
+<p>If you're interested in our eBikes, we would be happy to provide a
+custo=
+mized offer. Simply share your location, and we'll calculate the most
+compe=
+titive pricing for you.</p>
+<p>We are also continuously seeking authorized distribution partners in
+new=
+ markets. If you're open to adding high-quality eBikes to your product
+rang=
+e, we&rsquo;d be glad to explore potential cooperation with you.<br /><br
+/=
+><br /><img
+src=3D"https://img.autogidas.lt/4_26_271953742/-niubility-b26-2=
+022.jpg" width=3D"1000" height=3D"1000" /></p>
+<p>Below is one of our <b>best-selling models</b>, currently in stock at
+ou=
+r EU warehouse:</p>
+<div align=3D"center"><hr size=3D"1" width=3D"100%" noshade=3D"noshade"
+ali=
+gn=3D"center" /></div>
+<p><b>26-Inch Fat Tire eBike &ndash; 48V 15Ah Battery | 500W Motor</b></p>
+<ul>
+<li><b>Powerful Motor:</b>&nbsp;Equipped with a 500W brushless motor (peak
+=
+1000W), this eBike reaches speeds up to 35&ndash;40 km/h (unlocked).
+Perfec=
+t for hills, rough terrain, or urban commuting.</li>
+<li><b>Long-Lasting Battery:</b>&nbsp;The removable 48V 15Ah Li-ion
+battery=
+ (IPX5 waterproof) offers up to 90 km range in pedal assist mode or
+approx.=
+ 45&ndash;50 km in full electric mode. Charging time: about 6.5
+hours.</li>
+<li><b>Safety First:</b>&nbsp;Features include dual disc brakes, a
+lockable=
+ front suspension fork, strong headlights, and turn signal indicators
+&ndas=
+h; making night or off-road riding safer.</li>
+<li><b>Built to Handle More:</b>&nbsp;26&rdquo; fat tires (4.0&rdquo;),
+fro=
+nt and rear fenders, and a rear rack make this eBike perfect for
+commuting,=
+ weekend rides, or outdoor adventures.</li>
+<li><b>Versatile Riding Modes:</b>&nbsp;5 riding modes including cruise
+con=
+trol, walk assist, pedal assist, and manual riding. Paired with a 7-speed
+g=
+ear system &ndash; ideal for city, mountain, and beach environments.</li>
+<li><b>Easy Setup and Support:</b>&nbsp;The bike comes pre-assembled.
+Tools=
+, a manual, and a step-by-step assembly video are included. Max load: 150
+k=
+g; recommended rider height: 160&ndash;185 cm. 12-month warranty
+included.<=
+/li>
+</ul>
+<div align=3D"center"><hr size=3D"1" width=3D"100%" noshade=3D"noshade"
+ali=
+gn=3D"center" /></div>
+<p>If you're interested in a quote or partnership opportunities, kindly to
+=
+reach out. We look forward to hearing from you!</p>
+<p>Best regards,</p>
+<p>Thomas Stein<br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/>=
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br=
+ /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/>=
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br=
+ /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/>=
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br=
+ /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/>=
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br=
+ /><br /><br /><br />Send address to unlist</p>
+</body>
+</html>
 
