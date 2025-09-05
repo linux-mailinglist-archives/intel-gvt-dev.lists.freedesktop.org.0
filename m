@@ -2,65 +2,118 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29A99B449FF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Sep 2025 00:56:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF1A4B46528
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Sep 2025 23:07:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0411510E286;
-	Thu,  4 Sep 2025 22:56:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9FFB710EC51;
+	Fri,  5 Sep 2025 21:07:17 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=hmlca.com header.i=@hmlca.com header.b="LRcJKYcG";
+	dkim=pass (2048-bit key; unprotected) header.d=bootlin.com header.i=@bootlin.com header.b="J/6afEi2";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1376 seconds by postgrey-1.36 at gabe;
- Thu, 04 Sep 2025 22:56:28 UTC
-Received: from s.wfbtzhss.outbound-mail.sendgrid.net
- (s.wfbtzhss.outbound-mail.sendgrid.net [159.183.224.102])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 07D8A10E286
+X-Greylist: delayed 543 seconds by postgrey-1.36 at gabe;
+ Fri, 05 Sep 2025 21:07:17 UTC
+Received: from smtpout-02.galae.net (smtpout-02.galae.net [185.246.84.56])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4871710EC51
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  4 Sep 2025 22:56:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hmlca.com;
- h=from:subject:content-type:mime-version:date:to:cc:content-type:date:
- from:subject:to;
- s=s1; bh=tFLIFs5nNuZXIxdFcFIGlMVo03qb6/dM/h1TCESm0wk=;
- b=LRcJKYcGtEFYatoV5KZPtYlOIKJSQ+FpxKIAnXSPSFm0cHnq+xXgYnZOim3crDyB338j
- 5MPzURE1QCsIkdMQ0Mzb88ovNQZk5lFe8S7OvZYvPSltiJUqpSBwlT6vX2k9vku8zISwPl
- zDMVc1H95GVpplXIOickxuPy4Cm+QyCyFgC3F6PZGB50Grs9ws7MeJrZ5aLjQbd6ENI3ed
- dRdRxCMTNXq8YPALG4p77d6z9YvKDwZujkSUBE1yhrL09tm+zGgnb6IK+Zjt5dPtuz55LA
- NxZ1xif4yWa7qKCRgubyH/lnobiQR7Z0uBpyalplr1Qyq0AA2E2tOJA7uSS/NLYA==
-Received: by recvd-6bf44c8976-8tjz4 with SMTP id
- recvd-6bf44c8976-8tjz4-1-68BA13BA-11
- 2025-09-04 22:33:30.378910458 +0000 UTC m=+7970624.568122713
-Received: from whm002.searchcontrol.com (unknown) by geopod-ismtpd-2 (SG)
- with ESMTP id Ttbbz625SPCqN9EYzubKEg
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 04 Sep 2025 22:33:30.333 +0000 (UTC)
-Received: from [191.101.130.161] (port=51677 helo=WIN-D3V9N0F63N3)
- by whm002.searchcontrol.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.98.2)
- (envelope-from <rachelle@hmlca.com>) id 1uuIOZ-00000009tiY-04Oh
- for intel-gvt-dev@lists.freedesktop.org;
- Thu, 04 Sep 2025 18:25:30 -0400
-From: Lists  Message Center <rachelle@hmlca.com>
-Subject: Attention: Access Re-activation
- "intel%2Dgvt%2Ddev@lists.freedesktop.org": 05 September 2025
-Content-Type: multipart/alternative;
- boundary="tgaDhIo1Cg=_3lknxrqW4o88XaihXZAA7p"
+ Fri,  5 Sep 2025 21:07:17 +0000 (UTC)
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+ by smtpout-02.galae.net (Postfix) with ESMTPS id 265641A0DCB;
+ Fri,  5 Sep 2025 20:58:13 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+ by smtpout-01.galae.net (Postfix) with ESMTPS id DDA0F6060B;
+ Fri,  5 Sep 2025 20:58:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon)
+ with ESMTPSA id 2BB64102F1C84; 
+ Fri,  5 Sep 2025 22:57:46 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+ t=1757105891; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+ content-transfer-encoding:content-language:in-reply-to:references:autocrypt;
+ bh=CXOJmH8o5Y2K44CEV/UVJmY5m3bChX0jwiI1W9AUJAo=;
+ b=J/6afEi2bHNULLFhuT2tta9wf/V570JY4L81okAmR6RQnLZX13nJ00LwIfYjkeehcTRmq/
+ HY3c5Equ3ugMMc7N+tU3OgAjjfbFVMpekUISSmqon05BjG96mQxK2QZ0KsDh6iWuakpX/y
+ JkIK49N/+mBRM4GoECp8P/hD55C4419F4xBqkc4su9p5tI3yWqb5Nsxbrkf1wTVEXPDkkA
+ SvvQzMRj6qft4ip3sN+sdez4N3oBpgItwyYm0F7gTu038QqJixCWPefRf7xeiVFaatMBmc
+ QkdLkASIXe7ZPKHcR/f4ChjALZ0uiX5JGKr4Ai2xhKTPKX6V13yn8i24KmAhFA==
+Message-ID: <f3e1cb1f-4691-4c1b-9b67-feed0c687ff2@bootlin.com>
+Date: Fri, 5 Sep 2025 22:57:45 +0200
 MIME-Version: 1.0
-Date: Thu, 04 Sep 2025 22:33:30 +0000 (UTC)
-Priority: urgent
-X-Priority: 2
-Importance: high
-Message-Id: <2025040915252949811CF905$4BD26D9C61@hmlca.com>
-X-SG-EID: =?us-ascii?Q?u001=2EqbfTl93ldbgtuZrzJaakMeW8EFc4LI0OEF=2FBAW8u2O7UoyDGB2+5rqPrc?=
- =?us-ascii?Q?TuLi=2FbaaH=2FLGAuN89YnGPuZhcjTWwQnPpm86eWR?=
- =?us-ascii?Q?qyo0rU7Ew2CSee5eLen33MHibSYnqqIWkdv5Xry?=
- =?us-ascii?Q?f1rjKRHdeO=2FVed5EDqz8VhHNn2t7B5Idp93Nvcq?=
- =?us-ascii?Q?twfQxNAb3eqoEqZVkXr4Kx8mRtDwU+N5GMroFr5?=
- =?us-ascii?Q?Qur5=2F7IRjagK1a7RwpF4OdrS6tapoL8l3p1CdmY?=
- =?us-ascii?Q?ttpdFV6mmgDsNhzvOV4uoZQHHw=3D=3D?=
-To: intel-gvt-dev@lists.freedesktop.org
-X-Entity-ID: u001.TqksHct2g15qD+FSDWu26g==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 07/58] dyndbg: tweak pr_fmt to avoid expansion conflicts
+To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
+ jbaron@akamai.com, gregkh@linuxfoundation.org, ukaszb@chromium.org
+Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ daniel.vetter@ffwll.ch, tvrtko.ursulin@linux.intel.com,
+ jani.nikula@intel.com, ville.syrjala@linux.intel.com, seanpaul@chromium.org,
+ robdclark@gmail.com, groeck@google.com, yanivt@google.com,
+ bleung@google.com, quic_saipraka@quicinc.com, will@kernel.org,
+ catalin.marinas@arm.com, quic_psodagud@quicinc.com, maz@kernel.org,
+ arnd@arndb.de, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, mingo@redhat.com
+References: <20250803035816.603405-1-jim.cromie@gmail.com>
+ <20250803035816.603405-8-jim.cromie@gmail.com>
+Content-Language: en-US
+From: Louis Chauvet <louis.chauvet@bootlin.com>
+Autocrypt: addr=louis.chauvet@bootlin.com; keydata=
+ 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
+In-Reply-To: <20250803035816.603405-8-jim.cromie@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,71 +129,38 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format
-
---tgaDhIo1Cg=_3lknxrqW4o88XaihXZAA7p
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
 
 
-Webmail
+Le 03/08/2025 à 05:57, Jim Cromie a écrit :
+> Disambiguate pr_fmt(fmt) arg, by changing it to _FMT_, to avoid naming
+> confusion with many later macros also using that argname.
+> 
+> no functional change
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 
-Dear User, intel%2Dgvt%2Ddev@lists.freedesktop.org
+Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
 
-Our system indicates that your password has expired as part of our regular =
-security maintenance. To continue accessing your webmail account without in=
-terruption, please take a moment to verify or update your password.
+> ---
+>   lib/dynamic_debug.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+> index 55df35df093b0..2751056a5240d 100644
+> --- a/lib/dynamic_debug.c
+> +++ b/lib/dynamic_debug.c
+> @@ -11,7 +11,7 @@
+>    * Copyright (C) 2013 Du, Changbin <changbin.du@gmail.com>
+>    */
+>   
+> -#define pr_fmt(fmt) "dyndbg: " fmt
+> +#define pr_fmt(_FMT_) "dyndbg: " _FMT_
+>   
+>   #include <linux/kernel.h>
+>   #include <linux/module.h>
 
-Keep or Update Password https://u45627169.ct.sendgrid.net/ls/click?upn=3Du0=
-01.ilzQdWVrM538qTJ1Qrct2Yfz-2BHnwyknDhf-2FAwz08GdhZUeW-2FBhrIgkqF2lrCXBHM9v=
-RwO-2Fd0YxmKXvCmlUqVHNKY8h0ZuFcDVOzcIplKDoWzsoEomIZpA33roMKsdApeXpedETvSPd-=
-2FZmoG9eGTGPg-3D-3DPd8w_ja3UvijAZlgEozKc7iy5EtawH0dWw8gSQkAIkknkAXi93NR4RYY=
-Kq0gaV-2BAr7pKoXbuSNeqYpPxxXX-2Bmb-2Bh-2FwyVkV9wpdQOjLPT1MDsx1H9qunM-2FV93Y=
-RXs7cnwCVGO8Syvo7F7NNpWwSRWJNy-2BUrL9lEkufq8oKMsKMHOdN2X5U-2FUPxykHVJoA9vVC=
-GuDHq-2FebdWtnZy69kRxZ500zSw7FdcWX8ztM1hCE-2FCD3y9eU-3D
-
-=A9 2025 Lists Webmail. All rights reserved.
-
-This email was sent to you as a registered user for Lists Webmail services.
-
---tgaDhIo1Cg=_3lknxrqW4o88XaihXZAA7p
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-
-<!DOCTYPE html> <html><head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
- <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"> <title>Attenti=
-on: Access Re-activation "intel%2Dgvt%2Ddev@lists.freedesktop.org": 05 Sept=
-ember 2025</title>
- </head>
- <body> <div class=3D"container"> <div class=3D"content"> <h1><span style=
-=3D"color: rgb(41, 105, 176);">Webmail</span></h1> <p>Dear User, intel%2Dgv=
-t%2Ddev@lists.freedesktop.org</p><p>Our system indicates that your password=
- has expired as part of our regular security maintenance. To continue acces=
-sing your webmail account without interruption, please take a moment to ver=
-ify or update your password.</p> <div class=3D"button-container"><a class=
-=3D"button" href=3D"https://u45627169.ct.sendgrid.net/ls/click?upn=3Du001.i=
-lzQdWVrM538qTJ1Qrct2Yfz-2BHnwyknDhf-2FAwz08GdhZUeW-2FBhrIgkqF2lrCXBHM9vRwO-=
-2Fd0YxmKXvCmlUqVHNKY8h0ZuFcDVOzcIplKDoWzsoEomIZpA33roMKsdApeXpedETvSPd-2FZm=
-oG9eGTGPg-3D-3DE4VB_ja3UvijAZlgEozKc7iy5EtawH0dWw8gSQkAIkknkAXi93NR4RYYKq0g=
-aV-2BAr7pKoXbuSNeqYpPxxXX-2Bmb-2Bh-2Fw2eW-2FfifOtVmosgSOE7J9YHwgbIqxEtlzOlA=
-4Unjku0DsRGK5TPK0k8NKuJO3EFCoeGs-2BUwL-2Bioxm3uky-2FO1WyPtUFhh1SZPfKDvc633-=
-2BzPUqfmFJ-2BZLxsOQuKMVoJFjVAq8l-2BecH7-2BOUK1V8-2ByF01A-3D">Keep or Update=
- Password</a></div> </div> </div> <div class=3D"footer"> <p>&copy; 2025 Lis=
-ts Webmail. All rights reserved.</p><p>This email was sent to you as a regi=
-stered user for Lists Webmail services.</p> </div> <img src=3D"https://u456=
-27169.ct.sendgrid.net/wf/open?upn=3Du001.9rRUiEkZ7yyrEMeYR-2BisnaCl6jdvE88v=
-JTCOv6UMjmbFjbhRbKwTByiAjDeYJrTi5lIFXlT5jKSTesDa357QYr5x6ILDOGoSXRyTh5Ll0wE=
-OcQCoEMN2FJIeFKjfUvIa77hlBxNbctBU1WV2x5q1svwewsBgtnZuXji5-2FV7eHk48AGotGq-2=
-FS9jYMeXL-2B25C3830C8-2BKr12KScLKQulxz0OpwT-2F5R-2By8Ejzqgvqt91HI-3D" alt=
-=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;=
-width:1px !important;border-width:0 !important;margin-top:0 !important;marg=
-in-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;p=
-adding-top:0 !important;padding-bottom:0 !important;padding-right:0 !import=
-ant;padding-left:0 !important;"/></body>
-</html>
-
---tgaDhIo1Cg=_3lknxrqW4o88XaihXZAA7p--
+-- 
+Louis Chauvet, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
