@@ -2,39 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9E9AB541DD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Sep 2025 07:11:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 731B4B5802A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Sep 2025 17:15:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 838CE10E42F;
-	Fri, 12 Sep 2025 05:11:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30D0710E4E4;
+	Mon, 15 Sep 2025 15:15:52 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (4096-bit key; unprotected) header.d=csxkg.net header.i=@csxkg.net header.b="BOhv2uyW";
+	dkim=pass (4096-bit key; unprotected) header.d=uwbswd.com header.i=@uwbswd.com header.b="B3CDwNLa";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3614 seconds by postgrey-1.36 at gabe;
- Fri, 12 Sep 2025 05:11:31 UTC
-Received: from fug.elabio.com (fug.elabio.com [85.158.109.167])
- by gabe.freedesktop.org (Postfix) with ESMTP id E48CD10E42F
+X-Greylist: delayed 3646 seconds by postgrey-1.36 at gabe;
+ Mon, 15 Sep 2025 15:15:50 UTC
+Received: from mar.456jk.com (mar.456jk.com [193.42.36.24])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E024710E4FD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 Sep 2025 05:11:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=csxkg.net; 
+ Mon, 15 Sep 2025 15:15:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=uwbswd.com; 
  h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=GlrqsNjQhGLK++FnapspIqpTrDX88j9zSp6vWIc8Flo=;
- b=BOhv2uyWm+loIzYyiG8nX92OQcBxpzxEJ/NranE2j5ge1x3yTLvjzLOT56ip5Al01NE9UfOEFkJu
- xLkvjOx0UJUd4QIfuYi5edk2/mBfCdpnVGKMz/sTBXUdsqXBu/84FtHoZBDTjIXSKCyX0zHdHR9T
- ExkXh0691MGDaIFAKZDNmfW//Z0Vy3q9m9FXC0vd01xf3RAyX+ktHMrBfe4aUkFe62zMklygwUz5
- o3vO+jSb3aPf4lTrW3dlUKeTDZYIG3JjKJanzwLRPIOilv2B5Jxja+5zzt1+COwTnXaI1GnLXt3v
- F0KdEau9VJiK9yto+TeUuC4jijrpmMvv4J77ULl/I0K5TqwBxoENwfr00Gg9wXkreU8B5Qxc+LCi
- +AD2RlrUADZd8PLwmqKFF3kU3GNxNmf0gx9UT1tHKjBuIIRXMNXNkRj5LRepEzeTHoqqR+RehP3d
- WBiLtJSH1udSeaZEWfHZTWabLc/mJfYrSUR2hfg8vhLhm28fgCbCfBQXnZitqEeu3NzeN4vU4Xl2
- BbStIEzSdzKrwoKgyYujEZSZrW0lZic/apX6KakxOaZBqTe7V2WGPo0vmAm91rRuPLrD4IopEHNi
- 10aVvlhtiM63cRkt1iEweYE/evg3B+U5ElYDHaMnNHW3TZtMgX+J4nOLR2pPfa2ckFW12JpX+Uo=
+ bh=Qo0kXkTika4RlSHQx5HB9873cXdqb4NB1WjBxNeBd2A=;
+ b=B3CDwNLaVpHeg7S2RS87lmJPuFD92+yq7kRF+U/NymLhSb8gGMYFWDNJcWRmAyUsB+zx6f9wwfXk
+ FytXFGc2u0rT3QZ54kLTdqKXbxkBrfEOgi0OdO4ZoZs4FXXyTAG/nxY5/282mbtYCwrmUzz+YXTW
+ FoWaMUM809pCRX3r7ADs5zPIjyl0/RA34yFJPz5fdo3Fu85kZCh+GCXjwoArQUyn9xwgTeihmvqY
+ NL77podFA8K5b2DvmehS65fr+LyVkiB3BrRZwcGgKqeUgrWf/KNnj+Af+pAVTbZ71Vy+I0sWcAIY
+ pKJmC92jKRZh4lAxn+5kUVzYuU2AYAHnT8LlvuIjaZMspH5E7O0d1FsFrVVv3XzJNs+g5dFzFkEv
+ 4C5NItk8iSCQHAHCoEFoH1QTXdf9KYewsnLgsqlgskvfccCYc18L7BAqGP3UbUTIqTXZVwFd4Jmg
+ fgP7VjLoHMhidDwpn2GB92KESOfcFakw5g3YnT2OHmSfEUfn1CGTAyQ4bVym5d1bCy00bIWhXlHr
+ Gi/a4bnDYKQ5OFWwBaiT0uB/7hlEa6pQc2eoD5ce9tIvVNsmdvk1G6tHx1V+CS9eWSqqf4oBNN8D
+ 7WM79rzvmgMMKmDLSuQZRiDRHOMOiASC1wruBa5FIbmusaf/2UgJ0Pd5Ri2NQBZ/gy2wzWj/sh8=
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Are there any questions? p
-Message-ID: <dfe20cd27d6148d12fb7470a5a52d4e3@unknowserver033>
-Date: Fri, 12 Sep 2025 05:47:35 +0200
-From: "Leo L" <eprooa@csxkg.net>
+Subject: Are there any details you'd like to explore about our products? ac
+Message-ID: <09f407c7f2f7095bbe6d3a196d0e498a@server881>
+Date: Mon, 15 Sep 2025 14:20:22 +0200
+From: "JQ" <ttoark@uwbswd.com>
 MIME-Version: 1.0
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -50,7 +50,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: eprosale@csxkg.net
+Reply-To: contact@uwbswd.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -58,68 +58,61 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 <head>
 </head>
 <body>
-<p>I hope this message finds you well.</p>
-<p>We are a professional manufacturer of electric pedal assistant bicycles,
-exporting to Europe, North America, and Australia. <br />With years of
-experience, we have built long-term relationships with hundreds of
-customers and distributors across these regions. <br />To better serve our
-partners, we have established warehouses both in Europe and the United
-States.</p>
-<p>For our European customers, shipping is especially convenient&mdash;all
-shippments within the EU can be reached to door in just 3&ndash;7 days, <br
-/>directly from our local warehouse. This means no long waiting times, no
-customs procedures.</p>
-<p>20-Inch Moped Fat Tire Model<br />Equipped with a 48V 15.5AH removable
-lithium battery for a long riding range.<br />A 501W high-performance motor
-delivers strong power for city commuting, hills, and outdoor adventures.<br
-/>Compact, stylish design with fat tires that provide excellent stability
-and comfort across multiple terrains.<br /><br /><img
-src="https://kiwihoverboard.co.nz/wp-content/uploads/2023/03/V8-Fat-Tire-e-Bike.jpg"
-width="800" height="800" /></p>
+<p>We are a professional manufacturer focused on the design and production
+of electric pedal assistant bicycles, <br />supplying customers and
+distributors across Europe, North America, and Australia. With years of
+experience in the industry, <br />we have established long-term cooperation
+with hundreds of businesses worldwide, offering them reliable products, <br
+/>competitive pricing, and strong after-sales support.</p>
+<p>To ensure fast and efficient service, we maintain warehouses in both
+Europe and the United States. <br />This means that for our European
+customers, de livery is especially convenient&mdash;all orders can be
+shipped directly from <br />our EU warehouse and arrive within 3&ndash;7
+days. No long waiting times, no complicated customs clearance, just smooth
+and secure d elivery to your doorstep.</p>
+<p>At present, we are pleased to introduce two of our best-selling models
+available in our European warehouse:</p>
 <p>&nbsp;</p>
-<p>26 Inch Fat Tire Mountain Model<br />Built with a 501W powerful motor
-and the same 48V 15.5AH lithium battery, ensuring reliable endurance.<br
-/>The 26-inch wheels with fat tires offer outstanding traction, making it
-suitable for mountain trails, snowy paths, and sandy beaches.<br /><br
-/><img src="https://ketelesbike.com/cdn/shop/files/K8002000W.jpg"
-width="800" height="800" /></p>
+<p>1. 20-Inch Moped-Style Fat Tire Electric Pedal Assistant Bicycle</p>
+<p>Equipped with a 48V 16AH removable lithium battery, providing excellent
+endurance for longer rides.</p>
+<p>A 550W powerful motor delivers strong performance, whether for urban
+commuting, climbing hills, or leisure rides in the countryside.</p>
+<p>Compact design with fat tires, ensuring superior grip, stability, and
+riding comfort across various road conditions.</p>
+<p>Stylish and practical, this model is especially suitable for city riders
+looking for both convenience and excitement.<br /><br /><img
+src="https://ampedcycle.net/wp-content/uploads/2025/08/991A9682-1-scaled.jpg"
+width="1000" height="667" /><br /><br /></p>
+<p>&nbsp;</p>
+<p>2. 26-Inch Fat Tire Mountain Electric Pedal Assistant Bicycle</p>
+<p>Built with a 550W motor and the same 48V 16AH lithium battery,
+guaranteeing steady power and durability.</p>
+<p>Large 26-inch fat tires provide outstanding traction, making it perfect
+for snow, sand, mountain trails, and rough terrain.</p>
+<p>Designed for versatility, this bicycle combines the thrill of off-road
+adventure with the reliability needed for daily commuting.<br /><br /><br
+/><img
+src="https://www.ebikescootermall.com/cdn/shop/files/poleejiek-dp2602-green-1.jpg"
+width="1000" height="1000" /></p>
+<p>&nbsp;</p>
 <p>Both models are designed with safety, comfort, and practicality in mind,
-combining modern technology with durability to suit <br />different riding
-needs&mdash;whether for commuting in the city, weekend leisure, or off-road
-exploration.<br />If you are interested in purchasing. Once we have your
-address, we will calculate the best possible price for you.</p>
-<p>In addition, if you are considering becoming an authorized distributor
-in your local area, we welcome the opportunity to work with you. <br />Many
-of our current partners started by purchasing just a few units and later
-grew into regional distributors.<br />Looking forward to your reply and to
-the possibility of working together.</p>
-<p>Best regards,<br />Leo Lao<br />Pedal Assistant Bicycles<br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br />If you are interested in
-purchasing. Once we have your address, we will calculate the best possible
-price for you.<br />If you are interested in purchasing. Once we have your
-address, we will calculate the best possible price for you.<br />If you are
-interested in purchasing. Once we have your address, we will calculate the
-best possible price for you.</p>
+combining advanced technology with robust frames <br />to meet the needs of
+different riders. Whether you are looking to expand your product range,
+supply local customers, <br />or explore new opportunities in your market,
+these bicycles offer excellent potential.</p>
+<p>If you are interested in purchasing, please contact us with your d
+elivery address, and we will provide you with the best possible price.</p>
+<p>In addition, we are actively seeking partners who would like to become
+authorized distributors in their local regions. <br />Many of our current
+partners started with a small order and grew into long-term business
+cooperation with stable sales and repeat customers. <br />We would be glad
+to explore how we can support your business with competitive products, fast
+local de livery, and reliable service.</p>
+<p>Please reach out with any questions or to request a quotation.</p>
+<p>We look forward to the possibility of working with you.</p>
+<p>Best regards,<br />Jonathan Qian<br />Factory of&nbsp;electric pedal
+assistant bicycles.<br /><br /><br /></p>
 </body>
 </html>
 
