@@ -2,70 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B032BCA738
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Oct 2025 19:58:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47A85BCA73E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Oct 2025 19:58:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 561A510EACB;
-	Thu,  9 Oct 2025 17:58:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 27AAF10EACE;
+	Thu,  9 Oct 2025 17:58:57 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="f5aeN0Nh";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="ck5GEFnx";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-f44.google.com (mail-io1-f44.google.com
- [209.85.166.44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A3FB10EADC
+Received: from mail-il1-f180.google.com (mail-il1-f180.google.com
+ [209.85.166.180])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5C53610EAD9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Oct 2025 17:58:55 +0000 (UTC)
-Received: by mail-io1-f44.google.com with SMTP id
- ca18e2360f4ac-90926724bceso112603339f.1
+ Thu,  9 Oct 2025 17:58:56 +0000 (UTC)
+Received: by mail-il1-f180.google.com with SMTP id
+ e9e14a558f8ab-42f95010871so3432735ab.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 09 Oct 2025 10:58:55 -0700 (PDT)
+ Thu, 09 Oct 2025 10:58:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760032734; x=1760637534; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1760032735; x=1760637535; darn=lists.freedesktop.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pU2dh1AcXNpIKiB0LgzN/RHkM4liyYcW5Vvv24TZfyg=;
- b=f5aeN0NhO9k3xDakgGg4s6SDBZtldx7Df2GD+RkXJrDR8jy9nwele2/aj3LRRCXVmm
- Szndy2dVazeQgHhPG338Vd+JKHbcOcy93lZIy8lq4S1xtqSzMWCiffKSjhoCU79FW4ok
- Y4Tv7JyPWGFrLdIkeuRS9bJFAYSoROnx2gNEXboe19zK7XM58tUYFyh3Zo8veWxJrofI
- AawR8CmGuLqfbf11OysWhzW5bSNvDWjzE+9yNXidX3jxMw/R4xDmNMFnR/K1oVB60l7S
- EEYCeWvXkIOveY/r7LtQQmJc/Lonn1Gru6Afel5vmqCWQJpXn5vsSxRFg6uT0LdloDIZ
- Ht+w==
+ bh=qxHzW7+krO7PJKBXdtqexN2OJeKAsxXfOckL+sZhGvs=;
+ b=ck5GEFnxHxvXvPy9qpw3zmCKjuHbXXq9n0ZX0Px+NQxAGivQ49j+2qdGNGHyzqN2P7
+ C8TA4HNLQ3+gegEybdwUMb/AzNa5GbXWBBhxt5OWp9h18TSW+c2f+Ma/bcMJGhAd72mO
+ Xm4iC7vTXZPDHu9gwUor4XNBtL8IJkKxCzpqIBr6w87pLfQpZEdViXv+epSwZqBSEszS
+ uXilV3W2JiGHEzVivlssw4Pq0Akvqi5S9o8n2gafdAV96twoyncm5ad8t4Grp08sDypm
+ gBLv/F+UBEg4BXaocCPozY55rt2pQ1i69ih9hyMp4tzl2aQq1QG4ugVFmIeB5yZ6VFO/
+ 9hYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760032734; x=1760637534;
+ d=1e100.net; s=20230601; t=1760032735; x=1760637535;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pU2dh1AcXNpIKiB0LgzN/RHkM4liyYcW5Vvv24TZfyg=;
- b=l5EOwm+CBthN10AGHVEBDBAnh7hNBfMCMJIxBSt/Xybyuhe/FRGN5z+brsFKicYH/J
- gHuwDPxCmMxQlsaNB/pENjh3ByQfI6ESNLwp4JDg5DwFKqxf+UYndU6SRnFCjaLb3aTw
- PVgrIh/4g7y6a0YtHKG+ypKAs/dw0vTGpsKRcBnNtjQO7LmGfOsaKwgB3i9X3dSOlyCR
- BZQ7W9aNg4vxhCzomyaxNjS1y4+WCdp0nW7R4qE4z/C2Joh+P6AhMHQUhuO3TGRbRHMT
- A+c8qZZMV7UaqgJFrrgWo3NPuBWakuPrpMCN/Rh653KFbgPXYZU2T9XMQ8vold4YfinF
- pkUQ==
+ bh=qxHzW7+krO7PJKBXdtqexN2OJeKAsxXfOckL+sZhGvs=;
+ b=mOzqpXckinAwXu1WyUSRaC86KwFw0njoUgz/NQqH6w/81qkp8uBi3PI83bfR7Uz4yZ
+ OzAElKXMHauYvNGqlQaeWqrZ1TIRtll1xilZybONY/WPQKBxvhRMR79+k35jOpt2UBGE
+ QjEHTFq6oUatP41B/CR3qhXRs4sB4O6nb118x0tI65ZsULUB6bvOKedS6bZGoWMS0zBH
+ 71/QfhmdYR9+dUHwtRGS7eL3LFvo83LEoQwtOVMsErIK2hWF3F1xIPFJkogRk+HZiUpf
+ gZJkjjA0J1+Rg0FDWoh1M+ZByYnlbZmH+jmwgUl9SwhUwEU0tE7qHB/qfEmu6wEUMiD1
+ xgoQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVx3Xg6Q0abdpveNVF+8t6ZkaOe+r+CS2BOiXcbWWE8JviXOc1Qtm2Q0xW3QrUnivxdIYCW6GM3SDQrsA4O@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YwIfL3poXShxFX+JMrQuBpQ09jpJLV7iyF+nOzaJm3C7ND3CEw7
- AOiy6rz3e0twFmgXSpdwmlmiJ7INuJJGqenjxSezNLiiFpuh8EEFmadS
-X-Gm-Gg: ASbGncstJ//AUVhFQDgP7s6eoILuYvu5ioEaNzZnNZJbu5NV5HxXkKNei9bi0vQz1Gm
- 4lD3T1qyknwhhmwtcorDyxFk9VpQuhndzy8aBVxS0QZxPIBSAUjz86luWGU2GpM1n5C0MnWIqJu
- PSeq+YND2UQsJOgRwvWyhx25LZkUamxLBXQObURns0ziJAwSdF0f6Ftb/g7iw3/YrE9Tr70LB5W
- 22I3Flqs/mxA4QXKu1p5DGMdWFFBkZr5CgO35MBDTOQJee1GVDavmEYbvWTMVOzs23BXvK0+XwQ
- wYvO5xPSzpZICaMk/eL9lJuzUtmVltyUqdJk79QtBzT1gJdYXkDaV9ghT3zumzJXyegLELGF1R4
- 9O0SC7GQxXhF8SX3aC0nfsAIPyS6fs011bFw6bzVFOUAEvmX9aW8Tux1AaHpl8a5ZBQCk0DDwv6
- 9kOjvZnBHOILLet29ATHGazPQkrfLiG7QFF4cF+g==
-X-Google-Smtp-Source: AGHT+IGG3nRCWoDD4V/nkCQ4bWDSLxtN1n0qdt7xwh20BiNzOL9cD9tMw7g0yxq5IwKvmpy6qvXj6A==
-X-Received: by 2002:a05:6e02:270a:b0:425:951f:52fa with SMTP id
- e9e14a558f8ab-42f87376e77mr84960835ab.14.1760032734175; 
- Thu, 09 Oct 2025 10:58:54 -0700 (PDT)
+ AJvYcCWfxdduHlSpsoHPNbDTwv0mBcGsm88V1T0C+ZXbThpS8kjZtD6t/ScXUqA4daxs9bERjDgtSIgvyTkABQuK@lists.freedesktop.org
+X-Gm-Message-State: AOJu0Yw6IyNkX+sp3rkFKXa0SSi/ACoW6iZCpxkCFdTkLtH0lZ4qI0Zp
+ zCXpPTP+OB/rtA4hrZ7ddE2ChNmBBJe2FrWAQoXhAGXKeDe1UJuCRwlJ
+X-Gm-Gg: ASbGnculXTELXY6FKVEawUFTwfaOM5P9wFGlYwDdFH8oDElv+KouYUlSYPRl5Z1DAFh
+ hkzS27723udRcY0k+fqkKyaWOXpKOrRwzCpQjYDcGVx9J2tX+UI5hKNHlZKtHADVMTlNdG8z6xM
+ NYRIBwk3WoFLHXApOcY90FaYhamWKT6FyyXAql4Y6CTPVStWFY7xJva+vkYXru46Ki9yfGnO44j
+ XT99OUbpKuIViGG0EHyb61YOKMM5ZDB+Qvgi9LwTOLxXisVjEGs1U2GfJnEqoQkb0VaDx+wI8xN
+ Luy7Ue2JTWDxoKifIbfl0ogvt/N86DzXY+TF2LBkFeGniRXK8Pu8GvqkebdrzU1bKzfjjHvJ5oK
+ GXWPTUqdlEUlKIMvLH/c33f/cMZIy2PYhRsWspfg0x5jLjdUzCvZ11OV3Qmz96Vpkvo8YiUUziC
+ EyXuOKhXGHl+fguGm3IgEhN9iOPcc=
+X-Google-Smtp-Source: AGHT+IFEQVqHItn96Kc8TDNYahdPGtpH8o28572tm7Q+v8IZnToKzjnD+Tl3S+JyYpse/uqZNmWfdQ==
+X-Received: by 2002:a05:6e02:1b0d:b0:424:6c8e:617f with SMTP id
+ e9e14a558f8ab-42f87368781mr57791605ab.8.1760032735463; 
+ Thu, 09 Oct 2025 10:58:55 -0700 (PDT)
 Received: from godzilla.raven-morpho.ts.net
  (c-98-38-17-99.hsd1.co.comcast.net. [98.38.17.99])
  by smtp.googlemail.com with ESMTPSA id
- 8926c6da1cb9f-58f7200c4afsm30256173.35.2025.10.09.10.58.53
+ 8926c6da1cb9f-58f7200c4afsm30256173.35.2025.10.09.10.58.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Oct 2025 10:58:53 -0700 (PDT)
+ Thu, 09 Oct 2025 10:58:54 -0700 (PDT)
 From: Jim Cromie <jim.cromie@gmail.com>
 To: jbaron@akamai.com
 Cc: gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com,
@@ -74,9 +74,9 @@ Cc: gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com,
  intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
  tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
  ville.syrjala@linux.intel.com, Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v5 07/30] dyndbg: tweak pr_fmt to avoid expansion conflicts
-Date: Thu,  9 Oct 2025 11:58:11 -0600
-Message-ID: <20251009175834.1024308-8-jim.cromie@gmail.com>
+Subject: [PATCH v5 08/30] dyndbg: reduce verbose/debug clutter
+Date: Thu,  9 Oct 2025 11:58:12 -0600
+Message-ID: <20251009175834.1024308-9-jim.cromie@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251009175834.1024308-1-jim.cromie@gmail.com>
 References: <20251009175834.1024308-1-jim.cromie@gmail.com>
@@ -97,29 +97,125 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Disambiguate pr_fmt(fmt) arg, by changing it to _FMT_, to avoid naming
-confusion with many later macros also using that argname.
+currently, for verbose=3, these are logged (blank lines for clarity):
+
+ dyndbg: query 0: "class DRM_UT_CORE +p" mod:*
+ dyndbg: split into words: "class" "DRM_UT_CORE" "+p"
+
+ dyndbg: op='+'
+ dyndbg: flags=0x1
+ dyndbg: *flagsp=0x1 *maskp=0xffffffff
+
+ dyndbg: parsed: func="" file="" module="" format="" lineno=0-0 class=...
+ dyndbg: no matches for query
+ dyndbg: no-match: func="" file="" module="" format="" lineno=0-0 class=...
+ dyndbg: processed 1 queries, with 0 matches, 0 errs
+
+That is excessive, so this patch:
+ - shrinks 3 lines of 2nd stanza to single line
+ - drops 1st 2 lines of 3rd stanza
+   3rd line is like 1st, with result, not procedure.
+   2nd line is just status, retold in 4th, with more info.
+
+New output:
+
+ dyndbg: query 0: "class DRM_UT_CORE +p" mod:*
+ dyndbg: split into words: "class" "DRM_UT_CORE" "+p"
+ dyndbg: op='+' flags=0x1 *flagsp=0x1 *maskp=0xffffffff
+ dyndbg: no-match: func="" file="" module="" format="" lineno=0-0 class=...
+ dyndbg: processed 1 queries, with 0 matches, 0 errs
+
+Also reduce verbose=3 messages in ddebug_add_module
+
+When modprobing a module, dyndbg currently logs/says "add-module", and
+then "skipping" if the module has no prdbgs.  Instead just check 1st
+and return quietly.
 
 no functional change
 
 Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
 ---
- lib/dynamic_debug.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+-v2 squash several verbose cleanups together
+---
+ lib/dynamic_debug.c | 21 ++++++---------------
+ 1 file changed, 6 insertions(+), 15 deletions(-)
 
 diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
-index 55df35df093b..2751056a5240 100644
+index 2751056a5240..d9268d051a10 100644
 --- a/lib/dynamic_debug.c
 +++ b/lib/dynamic_debug.c
-@@ -11,7 +11,7 @@
-  * Copyright (C) 2013 Du, Changbin <changbin.du@gmail.com>
-  */
+@@ -264,9 +264,6 @@ static int ddebug_change(const struct ddebug_query *query,
+ 	}
+ 	mutex_unlock(&ddebug_lock);
  
--#define pr_fmt(fmt) "dyndbg: " fmt
-+#define pr_fmt(_FMT_) "dyndbg: " _FMT_
+-	if (!nfound && verbose)
+-		pr_info("no matches for query\n");
+-
+ 	return nfound;
+ }
  
- #include <linux/kernel.h>
- #include <linux/module.h>
+@@ -499,7 +496,6 @@ static int ddebug_parse_flags(const char *str, struct flag_settings *modifiers)
+ 		pr_err("bad flag-op %c, at start of %s\n", *str, str);
+ 		return -EINVAL;
+ 	}
+-	v3pr_info("op='%c'\n", op);
+ 
+ 	for (; *str ; ++str) {
+ 		for (i = ARRAY_SIZE(opt_array) - 1; i >= 0; i--) {
+@@ -513,7 +509,6 @@ static int ddebug_parse_flags(const char *str, struct flag_settings *modifiers)
+ 			return -EINVAL;
+ 		}
+ 	}
+-	v3pr_info("flags=0x%x\n", modifiers->flags);
+ 
+ 	/* calculate final flags, mask based upon op */
+ 	switch (op) {
+@@ -529,7 +524,7 @@ static int ddebug_parse_flags(const char *str, struct flag_settings *modifiers)
+ 		modifiers->flags = 0;
+ 		break;
+ 	}
+-	v3pr_info("*flagsp=0x%x *maskp=0x%x\n", modifiers->flags, modifiers->mask);
++	v3pr_info("op='%c' flags=0x%x maskp=0x%x\n", op, modifiers->flags, modifiers->mask);
+ 
+ 	return 0;
+ }
+@@ -539,7 +534,7 @@ static int ddebug_exec_query(char *query_string, const char *modname)
+ 	struct flag_settings modifiers = {};
+ 	struct ddebug_query query = {};
+ #define MAXWORDS 9
+-	int nwords, nfound;
++	int nwords;
+ 	char *words[MAXWORDS];
+ 
+ 	nwords = ddebug_tokenize(query_string, words, MAXWORDS);
+@@ -557,10 +552,7 @@ static int ddebug_exec_query(char *query_string, const char *modname)
+ 		return -EINVAL;
+ 	}
+ 	/* actually go and implement the change */
+-	nfound = ddebug_change(&query, &modifiers);
+-	vpr_info_dq(&query, nfound ? "applied" : "no-match");
+-
+-	return nfound;
++	return ddebug_change(&query, &modifiers);
+ }
+ 
+ /* handle multiple queries in query string, continue on error, return
+@@ -1234,11 +1226,10 @@ static int ddebug_add_module(struct _ddebug_info *di, const char *modname)
+ {
+ 	struct ddebug_table *dt;
+ 
+-	v3pr_info("add-module: %s.%d sites\n", modname, di->num_descs);
+-	if (!di->num_descs) {
+-		v3pr_info(" skip %s\n", modname);
++	if (!di->num_descs)
+ 		return 0;
+-	}
++
++	v3pr_info("add-module: %s %d sites\n", modname, di->num_descs);
+ 
+ 	dt = kzalloc(sizeof(*dt), GFP_KERNEL);
+ 	if (dt == NULL) {
 -- 
 2.51.0
 
