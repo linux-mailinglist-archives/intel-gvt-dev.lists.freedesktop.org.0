@@ -2,70 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9AD0BCA72C
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Oct 2025 19:58:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B032BCA738
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Oct 2025 19:58:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2898C10EAD7;
-	Thu,  9 Oct 2025 17:58:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 561A510EACB;
+	Thu,  9 Oct 2025 17:58:56 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="BSnAPg4y";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="f5aeN0Nh";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-f173.google.com (mail-il1-f173.google.com
- [209.85.166.173])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1293310EAD8
+Received: from mail-io1-f44.google.com (mail-io1-f44.google.com
+ [209.85.166.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4A3FB10EADC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Oct 2025 17:58:54 +0000 (UTC)
-Received: by mail-il1-f173.google.com with SMTP id
- e9e14a558f8ab-425911e5661so4815165ab.1
+ Thu,  9 Oct 2025 17:58:55 +0000 (UTC)
+Received: by mail-io1-f44.google.com with SMTP id
+ ca18e2360f4ac-90926724bceso112603339f.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 09 Oct 2025 10:58:54 -0700 (PDT)
+ Thu, 09 Oct 2025 10:58:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760032733; x=1760637533; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1760032734; x=1760637534; darn=lists.freedesktop.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VFKSLN6BiOw7bUnN4PQUQFUZxRNUkszMTNMdPxBofl8=;
- b=BSnAPg4y3FbHu7LGYkZQnNA5KbAuOIMHsNwWGMgmJi/cTdzfaZicoo2h/Y0coDO2ey
- DmbdiyjEythU9uqxMtxyrWJgOEuySrgZMrYAXqrVOUw9EYl5xIZ04yeEjuDnfQObNXhJ
- szGWz5MuMjT/pYV5ama0lw6NGZ5UvteNFVCnSBaqUsTFPXSOXULIuw1cTZIy8fIrZq3R
- Mz+WLZt/GbBhMWzfxf8bnOwQeWSXFnMTYcJIUAAmY4On7+pj6eyrNz5Sxqxej+9D1vNL
- pKN7YU5BCS6Jw2ULXwkwFjPkN6ZVpr9Ej6PJe+Hm6dQyIdAPBLbiRbi4oWJVfM6tL+4O
- zIHg==
+ bh=pU2dh1AcXNpIKiB0LgzN/RHkM4liyYcW5Vvv24TZfyg=;
+ b=f5aeN0NhO9k3xDakgGg4s6SDBZtldx7Df2GD+RkXJrDR8jy9nwele2/aj3LRRCXVmm
+ Szndy2dVazeQgHhPG338Vd+JKHbcOcy93lZIy8lq4S1xtqSzMWCiffKSjhoCU79FW4ok
+ Y4Tv7JyPWGFrLdIkeuRS9bJFAYSoROnx2gNEXboe19zK7XM58tUYFyh3Zo8veWxJrofI
+ AawR8CmGuLqfbf11OysWhzW5bSNvDWjzE+9yNXidX3jxMw/R4xDmNMFnR/K1oVB60l7S
+ EEYCeWvXkIOveY/r7LtQQmJc/Lonn1Gru6Afel5vmqCWQJpXn5vsSxRFg6uT0LdloDIZ
+ Ht+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760032733; x=1760637533;
+ d=1e100.net; s=20230601; t=1760032734; x=1760637534;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VFKSLN6BiOw7bUnN4PQUQFUZxRNUkszMTNMdPxBofl8=;
- b=Qa5T44PiK0664RVryFybxMVJj5+4tyGZqVZs8RYB6CHSXvCOjLUSAMhUXsGy5noRy5
- WDFDt7SkvcBKVHAryqCET8giXiBlrnFSIwt9ZtGR/O/NQE/Iy3nm8itnz4YgPJByGs/n
- BRLhf8xcebJcDVexW7o1nYekMMdK/bH6+UP2ajpUz0wi/BxrJTuJX5wzuXiFdrzkJJ5O
- GA87PMx83BHC4MLna0coMBDBn2cR34cD4rx8J1m8suaJ+D3ekT8XiK2j1PUnquq1mbep
- VGV5RXk+7BbvpWSwr+R1RPnXrdX4fg6H8EgouSkaBNGq7BI6HHpv8CzQWM8Feh+4I0Dy
- zw2A==
+ bh=pU2dh1AcXNpIKiB0LgzN/RHkM4liyYcW5Vvv24TZfyg=;
+ b=l5EOwm+CBthN10AGHVEBDBAnh7hNBfMCMJIxBSt/Xybyuhe/FRGN5z+brsFKicYH/J
+ gHuwDPxCmMxQlsaNB/pENjh3ByQfI6ESNLwp4JDg5DwFKqxf+UYndU6SRnFCjaLb3aTw
+ PVgrIh/4g7y6a0YtHKG+ypKAs/dw0vTGpsKRcBnNtjQO7LmGfOsaKwgB3i9X3dSOlyCR
+ BZQ7W9aNg4vxhCzomyaxNjS1y4+WCdp0nW7R4qE4z/C2Joh+P6AhMHQUhuO3TGRbRHMT
+ A+c8qZZMV7UaqgJFrrgWo3NPuBWakuPrpMCN/Rh653KFbgPXYZU2T9XMQ8vold4YfinF
+ pkUQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZwDLZGU9Z7ZJaSh+Kl3iXwLITy7+ayXrM94J2Rk97eay+NZdwGKb26+eszFvKoB4Ku10lOXC9uWUYSMNO@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YwVI0H1Ed0oNnl4TITROTjTpgphRtf+k7kWuCHLGakvg87d+Tc4
- OI6cpOqtKAgHJ58wZBMwqMA3erQxI5yoD2rH0lpPnt19PReLHftUzOyK
-X-Gm-Gg: ASbGnct4avm1ZZJUijvgH4Ccasu+n6MFlYqbPahvEF3zFcGxAHIe6z+sj71rrbvKRFP
- ftfXoYqoVZ1goTIGFGFrSynAgMM7/L+CyWYT9nWPlFPsNlpTxE6USUATqSCCLLVznMAMsbN88J2
- yDuvI47aWSu2+xvrK4JMSOZNficTfAnUeeRIHIBo+5eZINCHCDH/bQU6i0u2hWAYeT7FA5hbP05
- 5dYERWklwPG89FoXFOrmHJY91e/QYimAjjcNYFkMO5sAYCQW8aAu3OgJCJ4UjaEUph2V6YVltxq
- Vnb/fVhtwduRWtNE2UfORO9jCWIMpB2SwkDt2JHxQl+/1ax1fA2EBihQrcIsh7XDx9mwfRJT645
- LXlsOpFCxDZwFm2CL4PGrw6YlPymXI04MSruJd12pt/aapjxBiAhi/bED+NCtklhDUgRcvFxFn2
- QoNJvRvJ049cQx53exEHnI6q7BN2DS1glNM1Dg7A==
-X-Google-Smtp-Source: AGHT+IEFgHidntDfvFhDlZruUCJmrkaroGW1qP4eIEz2kkTaQPPkZf7Zvr9cHn+uTBEE/+gwDo4uRw==
-X-Received: by 2002:a05:6e02:1a89:b0:42e:72ee:cde6 with SMTP id
- e9e14a558f8ab-42f8736aa0bmr82269925ab.12.1760032733126; 
- Thu, 09 Oct 2025 10:58:53 -0700 (PDT)
+ AJvYcCVx3Xg6Q0abdpveNVF+8t6ZkaOe+r+CS2BOiXcbWWE8JviXOc1Qtm2Q0xW3QrUnivxdIYCW6GM3SDQrsA4O@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YwIfL3poXShxFX+JMrQuBpQ09jpJLV7iyF+nOzaJm3C7ND3CEw7
+ AOiy6rz3e0twFmgXSpdwmlmiJ7INuJJGqenjxSezNLiiFpuh8EEFmadS
+X-Gm-Gg: ASbGncstJ//AUVhFQDgP7s6eoILuYvu5ioEaNzZnNZJbu5NV5HxXkKNei9bi0vQz1Gm
+ 4lD3T1qyknwhhmwtcorDyxFk9VpQuhndzy8aBVxS0QZxPIBSAUjz86luWGU2GpM1n5C0MnWIqJu
+ PSeq+YND2UQsJOgRwvWyhx25LZkUamxLBXQObURns0ziJAwSdF0f6Ftb/g7iw3/YrE9Tr70LB5W
+ 22I3Flqs/mxA4QXKu1p5DGMdWFFBkZr5CgO35MBDTOQJee1GVDavmEYbvWTMVOzs23BXvK0+XwQ
+ wYvO5xPSzpZICaMk/eL9lJuzUtmVltyUqdJk79QtBzT1gJdYXkDaV9ghT3zumzJXyegLELGF1R4
+ 9O0SC7GQxXhF8SX3aC0nfsAIPyS6fs011bFw6bzVFOUAEvmX9aW8Tux1AaHpl8a5ZBQCk0DDwv6
+ 9kOjvZnBHOILLet29ATHGazPQkrfLiG7QFF4cF+g==
+X-Google-Smtp-Source: AGHT+IGG3nRCWoDD4V/nkCQ4bWDSLxtN1n0qdt7xwh20BiNzOL9cD9tMw7g0yxq5IwKvmpy6qvXj6A==
+X-Received: by 2002:a05:6e02:270a:b0:425:951f:52fa with SMTP id
+ e9e14a558f8ab-42f87376e77mr84960835ab.14.1760032734175; 
+ Thu, 09 Oct 2025 10:58:54 -0700 (PDT)
 Received: from godzilla.raven-morpho.ts.net
  (c-98-38-17-99.hsd1.co.comcast.net. [98.38.17.99])
  by smtp.googlemail.com with ESMTPSA id
- 8926c6da1cb9f-58f7200c4afsm30256173.35.2025.10.09.10.58.52
+ 8926c6da1cb9f-58f7200c4afsm30256173.35.2025.10.09.10.58.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Oct 2025 10:58:52 -0700 (PDT)
+ Thu, 09 Oct 2025 10:58:53 -0700 (PDT)
 From: Jim Cromie <jim.cromie@gmail.com>
 To: jbaron@akamai.com
 Cc: gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com,
@@ -74,9 +74,9 @@ Cc: gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com,
  intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
  tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
  ville.syrjala@linux.intel.com, Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v5 06/30] dyndbg: drop NUM_TYPE_ARRAY
-Date: Thu,  9 Oct 2025 11:58:10 -0600
-Message-ID: <20251009175834.1024308-7-jim.cromie@gmail.com>
+Subject: [PATCH v5 07/30] dyndbg: tweak pr_fmt to avoid expansion conflicts
+Date: Thu,  9 Oct 2025 11:58:11 -0600
+Message-ID: <20251009175834.1024308-8-jim.cromie@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251009175834.1024308-1-jim.cromie@gmail.com>
 References: <20251009175834.1024308-1-jim.cromie@gmail.com>
@@ -97,33 +97,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-ARRAY_SIZE works here, since array decl is complete.
+Disambiguate pr_fmt(fmt) arg, by changing it to _FMT_, to avoid naming
+confusion with many later macros also using that argname.
 
 no functional change
 
 Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
 ---
- include/linux/dynamic_debug.h | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ lib/dynamic_debug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/linux/dynamic_debug.h b/include/linux/dynamic_debug.h
-index b9afc7731b7c..ac199293d203 100644
---- a/include/linux/dynamic_debug.h
-+++ b/include/linux/dynamic_debug.h
-@@ -107,11 +107,9 @@ struct ddebug_class_map {
- 		.mod_name = KBUILD_MODNAME,				\
- 		.base = _base,						\
- 		.map_type = _maptype,					\
--		.length = NUM_TYPE_ARGS(char*, __VA_ARGS__),		\
-+		.length = ARRAY_SIZE(_var##_classnames),		\
- 		.class_names = _var##_classnames,			\
- 	}
--#define NUM_TYPE_ARGS(eltype, ...)				\
--        (sizeof((eltype[]){__VA_ARGS__}) / sizeof(eltype))
+diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+index 55df35df093b..2751056a5240 100644
+--- a/lib/dynamic_debug.c
++++ b/lib/dynamic_debug.c
+@@ -11,7 +11,7 @@
+  * Copyright (C) 2013 Du, Changbin <changbin.du@gmail.com>
+  */
  
- /* encapsulate linker provided built-in (or module) dyndbg data */
- struct _ddebug_info {
+-#define pr_fmt(fmt) "dyndbg: " fmt
++#define pr_fmt(_FMT_) "dyndbg: " _FMT_
+ 
+ #include <linux/kernel.h>
+ #include <linux/module.h>
 -- 
 2.51.0
 
