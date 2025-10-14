@@ -2,86 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB872BCA7C0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Oct 2025 19:59:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0192CBD9572
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Oct 2025 14:29:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9540810EAE0;
-	Thu,  9 Oct 2025 17:59:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AFB5210E5E1;
+	Tue, 14 Oct 2025 12:29:43 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="Mpjb1Ysk";
+	dkim=pass (2048-bit key; unprotected) header.d=snny.net header.i=@snny.net header.b="NOC0p88g";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-f177.google.com (mail-il1-f177.google.com
- [209.85.166.177])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9BF3310EAE9
+X-Greylist: delayed 3602 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Oct 2025 12:29:38 UTC
+Received: from pih.lszszy.cn (pih.lszszy.cn [104.160.18.105])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7BA0610E5DF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Oct 2025 17:59:20 +0000 (UTC)
-Received: by mail-il1-f177.google.com with SMTP id
- e9e14a558f8ab-42e726431bdso6886825ab.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 09 Oct 2025 10:59:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760032760; x=1760637560; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/3z8Tk8lrK8AXvTeNfDXtN9XLGvTU1P/hpcdsNXRN/Q=;
- b=Mpjb1YskGp9pDgIvV6DS4y63O6kT/6clp+WUMW+4tWeDuOjQIZlgezOVUBfECP777C
- Yvh8mG2G1k/vnsaI88olP3JVF7RHEAklRCsS0+t+0lJum7Pfmj+lzs4GxfI+LrP6ckbi
- chkxvQ0wkym1YUJHk/HWjvHGKCZ6okKlmnlP4LWmKvWWaWg/juTB7vDVFT9wn+g2cmiU
- OvFKLn/pXPwpE1MWcgQRzNFIfw1AEwJQQkLVfG83xOKk6obJiEKAEgW0xcTtYa29Spz2
- tQVD9Ixlc/l8zJkTLrr8MTXyJU9dlKsDgcm1qJ4c/ESgSl+jC8GKRX1CHSaYJMC63flR
- JmQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760032760; x=1760637560;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/3z8Tk8lrK8AXvTeNfDXtN9XLGvTU1P/hpcdsNXRN/Q=;
- b=Jk8JVYJBI/f3zleW/OhwH27F2yc0+BM4Ms+CW/c3Sf8cfhYSSO8V9Ic5w0sHey4hDX
- oyat0vWL5scmlVhPdo51WeQeRwyf3anyxDDcFM9RkEsk3/qT4QWEoObiAB0l8sHtASDZ
- 82wN+r9yzYTFZHmmjQ900f6WOEXEML1nRftN8upT4oEMJxhPSv1qCQ+HFvX15qrvueCK
- FFsq2g6lyWfQU27Rz0OOGWW6Llzo99VS+rE+EBhB3/ktD+gsZcgFFknNK4xIldAV1e+K
- +X4gIdD6wr2ISSz2jYhI5T1PMIVuY843QZXrNshjC3+cnWGc0XLIlUyL6lfJVNrvkDt8
- XVWg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUiDROXwySdqrs7hSjSthbgwjYxI5g84J1jpCwpORXxTQP3JluSAFPX1tehMCic6bXp2jZE2uaJAxnAZNvr@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YwzjnKER7/90KqxFF1lapq3ngqasFsC8l0rZt3WJyvweu6dJzyg
- NRnSqvqEGSBb/UZ9yhRr6hBnrfmp+KTZl6viNtIYtBNDtXf4iuk+uivS
-X-Gm-Gg: ASbGnctIKn4AK4KBPM3O5h4fJb3vEVQm8caPuxv0sJW8MK4albsd+ycSJ7erUhNiFdt
- LqZLbaj93R8VZSuf/E3D9/4WOCnyPSohrwQPyNro82u28fXEqXylgQ4YEz2zaFtTN8XHXPSUrg6
- nt9K9cwXoGFd6G3Fn5KvfWHr+vLlVGzjRROkEDgXJDXqmSk6eblcm1oLD7eEQ5CrfvNz5laha21
- KzdnZ8u/X9zG/tDRPj6K1WJ5kMI1LETbF45LWgOaw2/1luoCxE82KTdeIUEF42nLyWod0xNK/oH
- mg+pC0JnKTIQpu5OZsXaxyd+OEUhngmgvEC7zvUf8H76O+3cuOuaq7k4HuSzCnNwdxcXqTI58KS
- MwMLmjoWpXmMdt1a3DwTL8zxCsVRoa+qw2MOIVgYHkU5zEMK8GRPa9IJbbokJBtIdF65t79O2vr
- lW72CWo6gVpsgDuI/cANOjQaVKYl8=
-X-Google-Smtp-Source: AGHT+IFR+shW7+C0q+f1Fmrt23B3YTQHyjOfr3zpgzC23vGg6C8CMdPg7iTrZ94nDfkkiwmOyi5W4Q==
-X-Received: by 2002:a05:6e02:4405:20b0:42f:9888:48f1 with SMTP id
- e9e14a558f8ab-42f98884980mr10397445ab.1.1760032759717; 
- Thu, 09 Oct 2025 10:59:19 -0700 (PDT)
-Received: from godzilla.raven-morpho.ts.net
- (c-98-38-17-99.hsd1.co.comcast.net. [98.38.17.99])
- by smtp.googlemail.com with ESMTPSA id
- 8926c6da1cb9f-58f7200c4afsm30256173.35.2025.10.09.10.59.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Oct 2025 10:59:19 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com
-Cc: gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch,
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
- ville.syrjala@linux.intel.com, Jim Cromie <jim.cromie@gmail.com>,
- linux-doc@vger.kernel.org
-Subject: [PATCH v5 30/30] docs/dyndbg: add classmap info to howto
-Date: Thu,  9 Oct 2025 11:58:34 -0600
-Message-ID: <20251009175834.1024308-31-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251009175834.1024308-1-jim.cromie@gmail.com>
-References: <20251009175834.1024308-1-jim.cromie@gmail.com>
+ Tue, 14 Oct 2025 12:29:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=xneelo; d=snny.net;
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=B1z32AUB858bnjuVonIdxrJkBKe1UEfseZ49b7otEYQ=;
+ b=NOC0p88gJPWDZ1/LyrvWIfNBQPBzpem4ooHwnmKPH8IHEreVkCmCo2sWKKV8zcocE6F4nUfWTTMl
+ qAYuwjnu512IwFlwp+S2IAlPpPUbGm612iXWVAwrEtdOMOM3O+Y50APFT8yWdVvW7XjaE7Y/s7lR
+ MeBsJ022jUuKGP8uiLHEc+cHu4BOuQUbDNpC+cE2i5jOk3c7+Zg5uo85ajUC4fQe9ZFXTzd8ZrXa
+ JhJfOVVkAhkKNmBoMcwuCPzAYm/VnBaDkRg/gRQEe5LmUg74wQ7ATbvkHi/7Cq8ZBBOVpYih9Ksr
+ 8W5DpXwx4ZDpX90y08urHsYAP6iyMwHqp3EPow==
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: 130 mountain electric velo
+Message-ID: <92092f936b9fe93085c103728bf9bde3@unknown12>
+Date: Tue, 14 Oct 2025 12:35:06 +0200
+From: "Hannah Young" <contact@snny.net>
 MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -95,202 +46,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: info@snny.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Describe the 3 API macros providing dynamic_debug's classmaps
-
-DYNAMIC_DEBUG_CLASSMAP_DEFINE - create & export a classmap
-DYNAMIC_DEBUG_CLASSMAP_USE    - refer to exported map
-DYNAMIC_DEBUG_CLASSMAP_PARAM  - bind control param to the classmap
-DYNAMIC_DEBUG_CLASSMAP_PARAM_REF + use module's storage - __drm_debug
-
-NB: The _DEFINE & _USE model makes the user dependent on the definer,
-just like EXPORT_SYMBOL(__drm_debug) already does.
-
-cc: linux-doc@vger.kernel.org
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
-v3- rework protection around PARAM
-
-v0.5 adjustments per Randy Dunlap
-v0.7 checkpatch fixes
-v0.8 more
-v0.9 rewords
-
-fixup-howto
----
- .../admin-guide/dynamic-debug-howto.rst       | 129 ++++++++++++++++--
- 1 file changed, 116 insertions(+), 13 deletions(-)
-
-diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
-index 1ceadf4f28f9..adac32a5cd23 100644
---- a/Documentation/admin-guide/dynamic-debug-howto.rst
-+++ b/Documentation/admin-guide/dynamic-debug-howto.rst
-@@ -146,7 +146,9 @@ keywords are:::
-   "1-30" is valid range but "1 - 30" is not.
- 
- 
--The meanings of each keyword are:
-+Keywords:::
-+
-+The meanings of each keyword are::
- 
- func
-     The given string is compared against the function name
-@@ -194,16 +196,6 @@ format
- 	format "nfsd: SETATTR"  // a neater way to match a format with whitespace
- 	format 'nfsd: SETATTR'  // yet another way to match a format with whitespace
- 
--class
--    The given class_name is validated against each module, which may
--    have declared a list of known class_names.  If the class_name is
--    found for a module, callsite & class matching and adjustment
--    proceeds.  Examples::
--
--	class DRM_UT_KMS	# a DRM.debug category
--	class JUNK		# silent non-match
--	// class TLD_*		# NOTICE: no wildcard in class names
--
- line
-     The given line number or range of line numbers is compared
-     against the line number of each ``pr_debug()`` callsite.  A single
-@@ -218,6 +210,24 @@ line
- 	line -1605          // the 1605 lines from line 1 to line 1605
- 	line 1600-          // all lines from line 1600 to the end of the file
- 
-+class
-+
-+    The given class_name is validated against each module, which may
-+    have declared a list of class_names it accepts.  If the class_name
-+    accepted by a module, callsite & class matching and adjustment
-+    proceeds.  Examples::
-+
-+	class DRM_UT_KMS	# a drm.debug category
-+	class JUNK		# silent non-match
-+	// class TLD_*		# NOTICE: no wildcard in class names
-+
-+.. note ::
-+
-+    Unlike other keywords, classes are "name-to-change", not
-+    "omitting-constraint-allows-change".  See Dynamic Debug Classmaps
-+
-+Flags:::
-+
- The flags specification comprises a change operation followed
- by one or more flag characters.  The change operation is one
- of the characters::
-@@ -238,11 +248,15 @@ The flags are::
-   s    Include the source file name
-   l    Include line number
- 
-+Notes:
-+
-+To query without changing	``+_`` or ``-_``.
-+To clear all flags		``=_`` or ``-fslmpt``.
-+
- For ``print_hex_dump_debug()`` and ``print_hex_dump_bytes()``, only
- the ``p`` flag has meaning, other flags are ignored.
- 
--Note the regexp ``^[-+=][fslmpt_]+$`` matches a flags specification.
--To clear all flags at once, use ``=_`` or ``-fslmpt``.
-+The regexp ``^[-+=][fslmpt_]+$`` matches a flags specification.
- 
- 
- Debug messages during Boot Process
-@@ -394,3 +408,92 @@ just a shortcut for ``print_hex_dump(KERN_DEBUG)``.
- For ``print_hex_dump_debug()``/``print_hex_dump_bytes()``, format string is
- its ``prefix_str`` argument, if it is constant string; or ``hexdump``
- in case ``prefix_str`` is built dynamically.
-+
-+Dynamic Debug Classmaps
-+=======================
-+
-+The "class" keyword selects prdbgs based on author supplied,
-+domain-oriented names.  This complements the nested-scope keywords:
-+module, file, function, line.
-+
-+The main difference from the others: classes must be named to be
-+changed.  This protects them from unintended overwrite:
-+
-+  # IOW this cannot undo any drm.debug settings
-+  :#> ddcmd -p
-+
-+This protection is needed; /sys/module/drm/parameters/debug is ABI.
-+drm.debug is authoritative when dyndbg is not used, dyndbg-under-DRM
-+is an implementation detail, and must not behave erratically, just
-+because another admin fed >control something unrelated.
-+
-+So each class must be enabled individually (no wildcards):
-+
-+  :#> ddcmd class DRM_UT_CORE +p
-+  :#> ddcmd class DRM_UT_KMS +p
-+  # or more selectively
-+  :#> ddcmd class DRM_UT_CORE module drm +p
-+
-+That makes direct >control wordy and annoying, but it is a secondary
-+interface; it is not intended to replace the ABI, just slide in
-+underneath and reimplement the guaranteed behavior.  So DRM would keep
-+using the convenient way, and be able to trust it.
-+
-+  :#> echo 0x1ff > /sys/module/drm/parameters/debug
-+
-+That said, since the sysfs/kparam is the ABI, if the author omits the
-+CLASSMAP_PARAM, theres no ABI to guard, and he probably wants a less
-+pedantic >control interface.  In this case, protection is dropped.
-+
-+Dynamic Debug Classmap API
-+==========================
-+
-+DYNAMIC_DEBUG_CLASSMAP_DEFINE(clname,type,_base,classnames) - this maps
-+classnames (a list of strings) onto class-ids consecutively, starting
-+at _base.
-+
-+DYNAMIC_DEBUG_CLASSMAP_USE(clname) & _USE_(clname,_base) - modules
-+call this to refer to the var _DEFINEd elsewhere (and exported).
-+
-+DYNAMIC_DEBUG_CLASSMAP_PARAM(clname) - creates the sysfs/kparam,
-+maps/exposes bits 0..N as class-names.
-+
-+Classmaps are opt-in: modules invoke _DEFINE or _USE to authorize
-+dyndbg to update those classes.  "class FOO" queries are validated
-+against the classes, this finds the classid to alter; classes are not
-+directly selectable by their classid.
-+
-+NB: It is an inherent API limitation (due to int class_id defn) that
-+the following are possible:
-+
-+  // these errors should be caught in review
-+  __pr_debug_cls(0, "fake DRM_UT_CORE msg");  // this works
-+  __pr_debug_cls(62, "un-known classid msg"); // this compiles, does nothing
-+
-+There are 2 types of classmaps:
-+
-+ DD_CLASS_TYPE_DISJOINT_BITS: classes are independent, like drm.debug
-+ DD_CLASS_TYPE_LEVEL_NUM: classes are relative, ordered (V3 > V2)
-+
-+DYNAMIC_DEBUG_CLASSMAP_PARAM - modelled after module_param_cb, it
-+refers to a DEFINEd classmap, and associates it to the param's
-+data-store.  This state is then applied to DEFINEr and USEr modules
-+when they're modprobed.
-+
-+The PARAM interface also enforces the DD_CLASS_TYPE_LEVEL_NUM relation
-+amongst the contained classnames; all classes are independent in the
-+control parser itself.  There is no implied meaning in names like "V4"
-+or "PL_ERROR" vs "PL_WARNING".
-+
-+Modules or module-groups (drm & drivers) can define multiple
-+classmaps, as long as they (all the classmaps) share the limited 0..62
-+per-module-group _class_id range, without overlap.
-+
-+If a module encounters a conflict between 2 classmaps its _USEing or
-+_DEFINEing, it can invoke the extended _USE_(name,_base) macro to
-+de-conflict the respective ranges.
-+
-+``#define DEBUG`` will enable all pr_debugs in scope, including any
-+class'd ones.  This won't be reflected in the PARAM readback value,
-+but the class'd pr_debug callsites can be forced off by toggling the
-+classmap-kparam all-on then all-off.
--- 
-2.51.0
+<html>
+<head>
+</head>
+<body>
+Hello,<br /><br />As a leading brand in the electric velo industry, we have
+warehouses across Europe, we ensure fast and efficient shipping to any
+destination within the EU, with most purchase arriving within 3-5 days.<br
+/><br />If you&rsquo;re looking to enhance your product lineup with
+top-quality electric velos, we&rsquo;d be thrilled to connect with you. Our
+pricing is competitive and customized for your location, ensuring you
+receive the best value. Additionally, we are actively seeking authorized
+distributors worldwide and are eager to explore potential business
+opportunities with you.<br /><br />Let us introduce two of our premier
+models, both available for immediate dispatch from our European
+warehouse:<br /><br />AdventureMax 2000:<br /><br />This 20-inch
+all-terrain electric velo is designed for those who seek thrilling outdoor
+adventures. Powered by a 48V 18Ah battery and a 500W motor, the
+AdventureMax 2000 is built to conquer even the most challenging off-road
+environments. Its 20-inch heavy-duty tires provide exceptional traction
+across various terrains, from muddy paths to rocky inclines. With a durable
+frame, this velo ensures reliability whether you're navigating city streets
+or venturing off the beaten path. If your customers crave excitement and
+exploration, the AdventureMax 2000 is sure to impress with its performance
+and modern design.<br /><br />MountainKing 26:<br /><br />A 26-inch
+electric mountain velo engineered for serious riders who demand superior
+performance and durability. Equipped with a 48V 18Ah battery and a 500W
+motor, the MountainKing 26 excels at tackling steep hills and rough trails.
+Its 26-inch knobby tires offer outstanding control, while the sleek design
+enhances both stability and comfort. Whether your customers are embarking
+on an adrenaline-pumping mountain adventure or enjoying a relaxing
+countryside ride, the MountainKing 26 provides the perfect mix of power and
+smooth handling, making it the ideal choice for outdoor enthusiasts.<br
+/><br />If you&rsquo;re interested in purchasing our electric velos, please
+reply to this email with your location details, and we&rsquo;ll provide a
+tailored pricing.<br /><br />Best regards,<br /><br /><br />Hannah Young<br
+/>E-Velo Department<br /><br /><img
+src="https://kaijielaisi.com/wp-content/uploads/2024/07/v3-1.jpg" /><br
+/><img src="https://kaijielaisi.com/wp-content/uploads/2024/07/v3-2.jpg"
+/><br /><img
+src="https://kaijielaisi.com/wp-content/uploads/2024/07/v3-6.jpg" /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><img
+src="https://kaijielaisi.com/wp-content/uploads/2024/07/20240722165305.jpg"
+/><br />
+</body>
+</html>
 
