@@ -2,42 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD4E8BE6F19
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Oct 2025 09:32:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAB3DBEB5BC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Oct 2025 21:09:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 95E9A10EB34;
-	Fri, 17 Oct 2025 07:32:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9753E10E187;
+	Fri, 17 Oct 2025 19:09:35 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=zynotix.com header.i=@zynotix.com header.b="LNnjeLkH";
+	dkim=pass (2048-bit key; unprotected) header.d=945yx.com header.i=@945yx.com header.b="lC1vo/ER";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.zynotix.com (mail.zynotix.com [79.137.80.196])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A6E7410EB34
+X-Greylist: delayed 3609 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Oct 2025 19:09:34 UTC
+Received: from ver.zhalve.com (ver.zhalve.com [192.154.231.182])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A70E610E187
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Oct 2025 07:32:14 +0000 (UTC)
-Received: by mail.zynotix.com (Postfix, from userid 1002)
- id 6A79D25202; Fri, 17 Oct 2025 09:30:44 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=zynotix.com; s=mail;
- t=1760686302; bh=xZTLqM3E7aVDYIB/jnD5MiDi3FAIGgatFm751EDj2YQ=;
- h=Date:From:To:Subject:From;
- b=LNnjeLkHnOgMGGFNQ4zxo00OJtrWwfG34Box9r/JhL3bKWHlL1ZvUGZGokryUWKJY
- olQSbp5UvZhSoNbZhFJt1xqjUw/5Lr1ghKij9eU+aQvgAucxa1e1tC3G/yuVnyv3ZX
- daN/It4120yumaae60M3//ENsELQ4+UbOvBPmEgoasCDSAFKEq14xRCsMxGZVE1Scx
- F09IOhxipOAO/gaSHXav43plqokHStuCxRtQvNYK8FtIkXygbW7wYB1ijQ00e5MtuR
- Hmz0teSi7EY/JAbAUC2SFN7m0Z76mDxa1NeYGzd+r7iFEfcdEqxAaF9Gb0pQ/PDfKQ
- mzNUaIzUTAvIw==
-Received: by mail.zynotix.com for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Oct 2025 07:30:18 GMT
-Message-ID: <20251017084501-0.1.ci.sxy2.0.e2eis89mjb@zynotix.com>
-Date: Fri, 17 Oct 2025 07:30:18 GMT
-From: =?UTF-8?Q?"Magdalena_Ko=C5=82adczyk"?= <magdalena.koladczyk@zynotix.com>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Informacja_z_ksi=C4=99gowo=C5=9Bci?=
-X-Mailer: mail.zynotix.com
+ Fri, 17 Oct 2025 19:09:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mail; d=945yx.com;
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=GOrmoWEWDvbMDOLr1MRNMbM5D0JamvH+8LUntuRNNzU=;
+ b=lC1vo/ERHNNaBzcRpmJy4xNcZsjsfeA3I7PYwhISNg8t7+auQW5JDMzNQQ6fjdkwUbCJc4MJ0xSp
+ AG/mzX2weFl1U/TyKhn5H75rw3vRul5bPen5HwtKXA2XdQkQDPv0qrfQ+zRLAO+Is7/Hqq8Ciw7w
+ /gmsZ/4F6/T3/rYlikBD6XKgyW1WNy5CRbW8rEGAk+G/8o4v58whyeAJI7P5DCb/IUVZo1od/RBh
+ K0MwLuZbtL6RmfxgUrYR0Rn56+iY61J3TbAGJr2rJ9YhrAolOonhqvad/UAFiwnRGdBkElJgBW4Z
+ STi0cx/J40KPv3rD7UjDUD0FIRYXmFxHYIs/SA==
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?UTF-8?B?MzIgRUZhaHJyw6RkZXJu?=
+Message-ID: <9b4124cb2ad3e2a19fd2c4b6c94cc239@unkown2>
+Date: Fri, 17 Oct 2025 18:00:02 +0200
+From: "Tim" <verzkauf@945yx.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; format=flowed; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,26 +46,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: enquiry@945yx.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+( english finds below )
 
-prowadz=C4=99 biuro ksi=C4=99gowe, kt=C3=B3re specjalizuje si=C4=99 w obs=
-=C5=82udze biznesu Pa=C5=84stwa formatu.
+Guten Tag,
 
-Wraz z zespo=C5=82em zapewniamy wsparcie, kt=C3=B3re wykracza daleko poza=
- samo przygotowanie rozlicze=C5=84 i procesowanie dokumentacji.
+Wir sind ein führender Anbieter hochwertiger Elektrofahrräder und
+produzieren
+jährlich etwa 20.000 Einheiten. Unsere Produkte erfreuen sich in Europa
+großer Beliebtheit,
+und dank unseres Lagers in Deutschland können wir eine schnelle Lieferung
+innerhalb von 3 bis 7 Tagen garantieren.
+Unser Sortiment umfasst eine breite Auswahl an Elektrofahrrädern, darunter
+Fatbike-Modelle
+in verschiedenen Größen, vollgefederte Fahrräder und kompakte
+Klappräder.
+Darüber hinaus bieten wir leistungsstarke Elektroscooter und Dirtbikes an.
 
-Redukujemy do minimum czas i =C5=9Brodki, jakie nasi Klienci przeznaczaj=C4=
-=85 na obs=C5=82ug=C4=99 finansowo-ksi=C4=99gow=C4=85 i kadrowo-p=C5=82ac=
-ow=C4=85.=20
+Unsere Akkus und Motoren lassen sich flexibel an Ihre spezifischen
+Anforderungen anpassen.
 
-Z racji mojego do=C5=9Bwiadczenia przy wsp=C3=B3=C5=82pracy z firmami o t=
-akim rodzaju dzia=C5=82alno=C5=9Bci, chcia=C5=82abym przedstawi=C4=87 kil=
-ka warto=C5=9Bciowych i sprawdzonych rozwi=C4=85za=C5=84.
+Falls Sie Interesse an unseren Produkten haben oder eine Partnerschaft als
+Vertriebspartner anstreben, stehen wir Ihnen gerne für ein
+maßgeschneidertes Angebot zur Verfügung.
 
-Czy mo=C5=BCemy porozmawia=C4=87 o obs=C5=82udze Pa=C5=84stwa firmy?
+Mit besten Grüßen,
+Tim Liu
+EFahrrädern Vertrieb
 
-Pozdrawiam
-Magdalena Ko=C5=82adczyk
+
+
+Hello,
+
+We are a prominent manufacturer of premium electric bicycles, with an
+annual production capacity of 20,000 units.
+Our products are in high demand across Europe, and with our warehouse
+located in Germany,
+we are able to ensure shipment within 3 to 7 days. We offer a diverse range
+of electric bicycles,
+including fat-tire models in various sizes, full-suspension bikes, and
+compact folding bikes.
+Additionally, we provide powerful electric scooters and dirt bikes. Our
+batteries and motors are
+versatile and can be tailored to suit your specific needs.
+
+If you are interested in our products or would like to explore a
+partnership as a distributor,
+please reach out for a customized quote.
+
+Best regards,
+Tim Liu
+EFahrrädern Vertrieb
+
+
