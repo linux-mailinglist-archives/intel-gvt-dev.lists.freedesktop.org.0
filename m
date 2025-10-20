@@ -2,44 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6300BEFC50
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Oct 2025 09:59:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 363C6BF2B75
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Oct 2025 19:30:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 92D3910E30C;
-	Mon, 20 Oct 2025 07:59:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E1AA510E4AB;
+	Mon, 20 Oct 2025 17:30:07 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=launchiq.pl header.i=@launchiq.pl header.b="dt3xvZZ4";
+	dkim=pass (2048-bit key; unprotected) header.d=111651.com header.i=@111651.com header.b="L7E22ouw";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 440 seconds by postgrey-1.36 at gabe;
- Mon, 20 Oct 2025 07:59:49 UTC
-Received: from mail.launchiq.pl (mail.launchiq.pl [57.129.61.186])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 077B610E30C
+X-Greylist: delayed 3604 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Oct 2025 17:30:06 UTC
+Received: from wif.145524.com (wif.145524.com [85.158.109.138])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 27D3710E4A7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Oct 2025 07:59:49 +0000 (UTC)
-Received: by mail.launchiq.pl (Postfix, from userid 1002)
- id DCA7723763; Mon, 20 Oct 2025 07:51:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=launchiq.pl; s=mail;
- t=1760946746; bh=ZuZkQDHl688X8iv+9GSidqvHy9EH7Y+AjIbC+KR/QpI=;
- h=Date:From:To:Subject:From;
- b=dt3xvZZ41lKTqV2xHDHbIX0X9F1cAG2U/atVSSNROcpDgoF5cD/W9F2t7mEXvnxME
- G3QJBlpOHlFadpz623DLBbj0a+RSMiaqC+UsogesiXpy+lmlu8BzbMLTLGJ/aRKVGA
- n2lYK9nUmiuIkC3rdkVvy6XiknZx21ovc5ViosQwtRKkK60Ym7j4wc7qnMS+a+onj4
- 7cuv0nkm7ZD021E5E2fSgLzdDP1FIVCXLlQjCbffnfYLYvoAcsj51s2SoRgNcqxKgu
- Wv+gJT114n+7XVPAWNcWBhO9ry5q0CQfbfOn0Mj0Z2+MoLGjoNNa7lm6Dib2M6FOLn
- NXYpEaYnO8TJA==
-Received: by mail.launchiq.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Oct 2025 07:51:22 GMT
-Message-ID: <20251020064500-0.1.59.pz8w.0.2jo8hlpqov@launchiq.pl>
-Date: Mon, 20 Oct 2025 07:51:22 GMT
-From: "Grzegorz Sutor" <grzegorz.sutor@launchiq.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Stabilne ceny energii
-X-Mailer: mail.launchiq.pl
+ Mon, 20 Oct 2025 17:30:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mail; d=111651.com;
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=GZ93hZQs//LmlAfMV+nSxGx04gRUQ2itFCx2JkIVSUg=;
+ b=L7E22ouwV1MLdG05JzxgagY4j7WG0O4LZnj+tQhQYPa1tTKglE3VQDdI9wJC+SksBggqgcdq4Xf5
+ qV0mVwyeN8o9ZYL1MHXsNlZPBkfaQTr6FdwIZhtJScqf72bP94aokWMRtIuSJBsyQL0pBFf3N3g1
+ 01LfXdDF60loWe0GNPe99HWju3oNjycIhxVxbUiGVOV7AfE5oP4VhhCYWZI3LKa9zC0fkCECjAdt
+ srLcfkBdnpkQbfcqEqwSQCGY5qdAZiObw7PcPLe/uG9HSaHx2h7YQzrbTUW9eDcdJCo1fKRaYinZ
+ X9BV5RBaJ123hNjSlx9igRVHlvFDjQ32IEZhbA==
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?UTF-8?B?OTIgRUZhaHJyw6RkZXJuIFZlcnRyaWVic3RlYW0=?=
+Message-ID: <4b32ad8bb83bcc62854ffdf68578b4dd@unkown3>
+Date: Mon, 20 Oct 2025 15:07:02 +0200
+From: "Martin K" <sales55@111651.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; format=flowed; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,22 +46,68 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: inquiry@111651.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+-english version see below
 
-chcia=C5=82bym kr=C3=B3tko przedstawi=C4=87 mo=C5=BCliwo=C5=9B=C4=87 wsp=C3=
-=B3=C5=82pracy w ramach wirtualnego kontraktu zakupu energii (vPPA), kt=C3=
-=B3ry pozwala firmom stabilizowa=C4=87 koszty energii na 5-7 lat.
+Guten Tag,
 
-Je=C5=BCeli by=C5=82oby to interesuj=C4=85ce, ch=C4=99tnie um=C3=B3wi=C4=99=
- si=C4=99 na kr=C3=B3tk=C4=85 rozmow=C4=99, aby pokaza=C4=87, jak taki mo=
-del mo=C5=BCe wygl=C4=85da=C4=87 dla przedsi=C4=99biorstw o rocznym zu=C5=
-=BCyciu energii w zakresie 3=E2=80=9330 GWh.
+als erfahrener Hersteller hochwertiger Elektrofahrräder bieten wir ein
+umfassendes
+Sortiment moderner Elektrofahrräder an. Jährlich verlassen rund 25.000
+Einheiten unsere Produktion,
+die in ganz Europa auf wachsendes Interesse stoßen.
+Dank unseres Logistikzentrums in Deutschland gewährleisten wir eine
+schnelle Lieferung –
+in der Regel innerhalb von 3 bis 7 Werktagen.
 
-Czy mog=C4=99 skontaktowa=C4=87 si=C4=99 w tej sprawie telefonicznie?
+Unser Portfolio umfasst vielseitige Modelle: robuste Fatbikes in
+verschiedenen Größen,
+vollgefederte Mountainbikes sowie platzsparende Klappräder. Ergänzend
+führen wir leistungsstarke
+Elektroscooter und Dirtbikes. Akku- und Motoroptionen können flexibel an
+Ihre Anforderungen angepasst werden,
+um die optimale Kombination aus Leistung und Komfort zu erzielen.
+
+Sollten Sie Interesse an einer geschäftlichen Zusammenarbeit oder am
+Vertrieb unserer Produkte haben,
+freuen wir uns über Ihre Kontaktaufnahme. Gerne erstellen wir Ihnen ein
+individuelles Angebot.
+
+Mit freundlichen Grüßen,
+Martin Keller
+ElectroMotion Vertriebsteam
 
 
-Z wyrazami szacunku.
-Grzegorz Sutor
+
+Hello,
+
+We are an established manufacturer specializing in high-quality electric
+bicycles,
+offering a wide selection of innovative e-mobility solutions. Every year,
+approximately
+25,000 of our electric bicycles are produced and distributed across Europe,
+where demand
+continues to grow. With our distribution center based in Germany, we are
+able to ensure
+rapid shipment within 3 to 7 business days.
+
+Our product range includes a variety of models such as durable fat-tire
+electric bicycles,
+full-suspension mountain electric bicycles, and space-saving folding
+designs.
+We also supply high-performance electric scooters and dirt bikes.
+Both our batteries and motors can be customized to meet your exact
+specifications,
+providing the perfect balance of power and efficiency.
+
+If you are interested in becoming a partner or would like to receive a
+tailored quotation,
+we would be delighted to hear from you.
+
+Kind regards,
+Martin Keller
+ElectroMotion Department
+
