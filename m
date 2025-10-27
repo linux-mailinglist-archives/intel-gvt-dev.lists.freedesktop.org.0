@@ -2,35 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61299C0928D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Oct 2025 17:18:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64596C0F6AD
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Oct 2025 17:45:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 172F910E28F;
-	Sat, 25 Oct 2025 15:18:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1CE4710E51C;
+	Mon, 27 Oct 2025 16:45:52 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=603004.com header.i=@603004.com header.b="lHOlBIdg";
+	dkim=pass (2048-bit key; unprotected) header.d=hwm01.com header.i=@hwm01.com header.b="LOzzXWoa";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3602 seconds by postgrey-1.36 at gabe;
- Sat, 25 Oct 2025 15:17:59 UTC
-Received: from trl.laoyangceping.top (trl.laoyangceping.top [155.254.22.190])
- by gabe.freedesktop.org (Postfix) with ESMTP id A990610E28F
+X-Greylist: delayed 11159 seconds by postgrey-1.36 at gabe;
+ Mon, 27 Oct 2025 16:45:17 UTC
+Received: from oum.oyhe.cn (oum.oyhe.cn [45.10.20.52])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 43C6410E523
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Oct 2025 15:17:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mail; d=603004.com;
+ Mon, 27 Oct 2025 16:45:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=hwm01.com;
  h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=YMFDVPkHGLQ6zlktwX/FSA3LNDn1Tb4OMx3VzB21aDg=;
- b=lHOlBIdgv2/O7ZonrCr4E20i2y5zELF+ZPJb5Tzxvra7rJgW5RrywHrMmjxxE/2RzWEVmWhkfzEN
- 81kXFCAFEyZigye8lVQWjHC8jB0HWxMYLixg8qNvDHiPx7twwEI97oqE+o7bIbFuSAI9EalghoHn
- w8HncglmroHX7kEp+Sxwgst1+yHN6WLykeL6CssZsTRM0TFV6Cq70E8W2zHTrroktoh8Fa6v+9yw
- 2O0dPN0OONWF2ofGmpaNVc3NwvD3tNXBO2ABkXSi1KTt06Oqd0J2WCW/zm5xmZT63Cyspm1XJKTd
- jmgG/qUKRJCVnKccVemNNdAh2+UH35SIjG5Cfg==
+ bh=GBfom6E/J0riUmMiJ0LnZPP3rP/tANxluHjizd66iso=;
+ b=LOzzXWoaxGwTVhHlKqd7EzlICRO5ynt+o40BqUUDpZMEmIZ3749GG/beCBLGu2YfQJ12+HQkbBQg
+ 3Ih9yyF89g/Y7NAPAagf6UfIA4QwIDWCVOGYn0NFCTViC2FZ2DUBQO/Kb4skOeN6JLUc5ffNx+Eh
+ SUHNlIIvksoyYyiulGzVL+knOirBvqJk6/+wyUlaIC5Hly+BZEkifcUM+HcHyX/exNVTlXvBa+4b
+ 4vIfGi8uth52qXx0HJKBFNdU8JgsTo3cZiyDWXbi+mltAqD/BAmSm3aBSVsicrAFgqFp+8ByRxPT
+ aD8q/U+dTUuEQ6atzfIkBL+xFXC5M4geNg6eYQ==
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: =?UTF-8?B?VmVyc2FuZCBhdXMgZGV1dHNjaGVtIEJlc3RhbmQsIGtlaW4gSW1wb3J0c3RyZXNzIOKAkyBTaGlwcyBmcm9tIEdlcm1hbiBzdG9jaywgbm8gaW1wb3J0IGhhc3NsZQ==?=
-Message-ID: <b36deb4d9796d4478f6da5b0dd5d038b@3munkon>
-Date: Sat, 25 Oct 2025 15:59:02 +0200
-From: "Jonas" <contact3@603004.com>
+Subject: =?UTF-8?B?SnVzdCBjaGVja2luZyBpbiBvbiBsYXN0IHdlZWvigJlzIGVtYWlsIChkaWQgaXQgbGFuZCBvaz8p?=
+Message-ID: <31d246412406db3adab517eb8d28d929@rapidmail.com>
+Date: Mon, 27 Oct 2025 14:21:02 +0100
+From: "Silver Forest Mobility Stock" <dushanioz@hwm01.com>
 MIME-Version: 1.0
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -46,67 +46,84 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: info@603004.com
+Reply-To: tech@hwm01.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-(English version is below)<br /><br />Hallo aus dem EU-Lager,<br /><br
-/>sofort verf&uuml;gbar ab Bestand: das gefragte Mountain-E-Bike NordTrail
-26. Ausgestattet mit 26-Zoll-Laufr&auml;dern, einem 500-W-Antrieb sowie
-einem 48-V-/18-Ah-Akku.<br />Innerhalb Europas liegt die Lieferzeit
-typischerweise bei etwa 3&ndash;5 Tagen.<br /><br /><img
-src="https://www.qlifebike.com/cdn/shop/files/83d343a357423ae913456e7860c3e850_e018f481-594b-41ab-bf2d-196d1f4f8ef4.jpg"
-width="500" height="391" /><br /><br />NordTrail 26 &ndash;
-&Uuml;berblick<br />&nbsp;Sicheres, wendiges Fahren auf engen Trails<br
-/>&nbsp;Verl&auml;sslicher Grip auf Schotter und Waldpassagen<br
-/>&nbsp;Klar ablesbares Display mit allen Basiswerten<br />&nbsp;Fein
-abgestufte Schaltung, kraftvolle Bremsen<br />&nbsp;Bereifung f&uuml;r
-gemischte Untergr&uuml;nde, Lichtanlage f&uuml;r D&auml;mmerung &amp;
-Stadtverkehr<br />Vor Auslieferung erfolgt eine vollst&auml;ndige
-Endpr&uuml;fung: Rahmencheck, Elektronik, Bremsen und Funktionslauf.<br
-/><br />Staffelpreise ab EU-Bestand (inkl. Versand &amp; Einfuhrabgaben,
-Versand ab Deutschland)<br />&nbsp;ab 3 St&uuml;ck: 590 EUR pro
-St&uuml;ck<br />&nbsp;ab 10 St&uuml;ck: 530 EUR pro St&uuml;ck<br
-/>&nbsp;ab 20 St&uuml;ck: 490 EUR pro St&uuml;ck<br />Einzelbestellungen
-sind m&ouml;glich; f&uuml;r 1 St&uuml;ck f&auml;llt eine zus&auml;tzliche
-Versandpauschale an.<br /><br />Zur Bestellung antworten Sie bitte auf
-diese E-Mail mit gew&uuml;nschter St&uuml;ckzahl und vollst&auml;ndiger
-Lieferadresse.<br />Wir starten den Versandprozess und best&auml;tigen den
-Zeitplan.<br /><br />Freundliche Gr&uuml;&szlig;e<br />Jonas Adler<br
-/>Aventra Mobility Group<br /><br /><br /><br />Hello from our EU stock,<br
-/><br />now ready ex-warehouse: the NordTrail 26 mountain e-bike, featuring
-26" wheels, a 500 W drive unit, and a 48 V / 18 Ah battery.<br />EU
-delivery typically completes in approximately 3&ndash;5 days.<br /><br
-/>NordTrail 26 &ndash; At a glance<br />&nbsp;Nimble handling on tight
-singletrack<br />&nbsp;Confident traction on gravel and woodland routes<br
-/>&nbsp;Easy-to-read display for key ride data<br />&nbsp;Precise gearing
-and strong, consistent braking<br />&nbsp;Tires tuned for mixed surfaces;
-lighting for dusk and urban use<br />Each bike undergoes a full pre-ship
-inspection: frame verification, electronics, brakes, and functional
-run-through.<br /><br />Tiered pricing from EU inventory (shipping &amp;
-duties included; ships from Germany)<br />&nbsp;3+ units: 590 EUR each<br
-/>&nbsp;10+ units: 530 EUR each<br />&nbsp;20+ units: 490 EUR each<br
-/>Single-unit purchases are available; one unit includes an additional
-shipping surcharge.<br /><br />To purchase, simply reply to this email with
-your required quantity and full address. We&rsquo;ll initiate dispatch and
-confirm the schedule.<br /><br />Best regards,<br />Jonas Adler<br
-/>Aventra Mobility Group<br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br />to unlist send address
+<!DOCTYPE html>
+<html lang="de" style="margin:0;padding:0;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stonewolf twenty six</title>
+  </head>
+  <body
+style="margin:0;padding:0;background-color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;
+line-height:1.45;color:#111111;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"
+style="background-color: #f5f5f5; padding: 24px 0px; width: 100%;">
+<tbody>
+<tr>
+<td align="center">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"
+style="background-color: #ffffff; border-radius: 6px; overflow: hidden;
+border: 1px solid #e0e0e0; width: 600px;">
+<tbody>
+<tr>
+<td style="background-color: #111111; color: #ffffff; padding: 16px 20px;
+font-size: 16px; font-weight: bold; text-align: left;">Aus EU Lager:
+Stonewolf twenty six<br /> From EU stock: Stonewolf twenty six</td>
+</tr>
+<tr>
+<td style="padding: 20px 20px 0 20px; text-align: center;"><img
+src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/518342868_10103497196772092_8388120428375102722_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=aa7b47&amp;_nc_ohc=Jn_yEn86n5cQ7kNvwEJRl5h&amp;_nc_oc=Adksx9IuES89OqPTYic8wVn-QaJ1GM0itLsjK-7L9CzfKBy9oKrYe_1G5l9RMNkm_RA&amp;_nc_zt=23&amp;_nc_ht=scontent-iad3-2.xx&amp;_nc_gid=k3IlZUSZdKoONMfLmmE-mA&amp;oh=00_AfcYU20chG7QAw89o6Lc-gAJhR2l2qTO32WkGGRu2klLRA&amp;oe=690500D4"
+alt="Stonewolf twenty six Hauptansicht / main view" style="max-width: 100%;
+border: 0; outline: none; text-decoration: none; display: block;
+border-radius: 4px;" width="500" height="500" /></td>
+</tr>
+<tr>
+<td style="padding: 20px 20px 0 20px; font-size: 15px; color: #111111;
+text-align: left;">
+<p style="margin: 0 0 14px 0; font-size: 15px; color: #111111; font-weight:
+bold;">Deutsch</p>
+<p style="margin: 0 0 14px 0;">Guten Tag,</p>
+<p style="margin: 0 0 14px 0;"><strong>Stonewolf twenty six</strong>
+kombiniert eine stabile Mountain-Geometrie in sechsundzwanzig Zoll mit
+einem f&uuml;nf hundert Watt Hinterrad-Antrieb und einem herausnehmbaren
+Achtundvierzig-Volt-Akku mit achtzehn Ampere Stunden. Ideal f&uuml;r
+Stadtverkehr, Kieswege und Anstiege.</p>
+<p style="margin: 0 0 14px 0;">Versand ab Deutschland, Zustellung in der
+Europ&auml;ischen Union gew&ouml;hnlich nach drei bis f&uuml;nf Tagen.</p>
+<p style="margin: 0 0 14px 0;">Angebot gew&uuml;nscht? Bitte geplante Menge
+und Zieladresse senden.</p>
+<p style="margin: 0 0 24px 0;">Viele Gr&uuml;&szlig;e<br /> <strong>Felix
+Werner</strong><br /> Rhineberg Distribution</p>
+<hr style="border: none; border-top: 1px solid #e0e0e0; margin: 10px 0 20px
+0;" />
+<p style="margin: 0 0 14px 0; font-size: 15px; color: #111111; font-weight:
+bold;">English</p>
+<p style="margin: 0 0 14px 0;">Hello,</p>
+<p style="margin: 0 0 14px 0;">the <strong>Stonewolf twenty six</strong>
+features a twenty six inch chassis, a five hundred watt rear hub, and a
+removable forty eight volt eighteen amp hour energy pack. Balanced for city
+use and gravel paths.</p>
+<p style="margin: 0 0 14px 0;">Ships from Germany with typical European
+Union arrival in about three to five days.</p>
+<p style="margin: 0 0 14px 0;">Request a quote by replying with intended
+quantity and destination address.</p>
+<p style="margin: 0 0 14px 0;">Best regards<br /> <strong>Felix
+Werner</strong><br /> Rhineberg Distribution</p>
+</td>
+</tr>
+<tr>
+<td style="height: 24px;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
 
