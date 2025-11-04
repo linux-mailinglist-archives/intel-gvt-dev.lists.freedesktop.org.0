@@ -2,38 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64596C0F6AD
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Oct 2025 17:45:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D24CC30066
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 04 Nov 2025 09:47:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1CE4710E51C;
-	Mon, 27 Oct 2025 16:45:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4483910E55D;
+	Tue,  4 Nov 2025 08:47:18 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=hwm01.com header.i=@hwm01.com header.b="LOzzXWoa";
+	dkim=pass (2048-bit key; secure) header.d=zentro24.pl header.i=@zentro24.pl header.b="oZ4tpVjU";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 11159 seconds by postgrey-1.36 at gabe;
- Mon, 27 Oct 2025 16:45:17 UTC
-Received: from oum.oyhe.cn (oum.oyhe.cn [45.10.20.52])
- by gabe.freedesktop.org (Postfix) with ESMTP id 43C6410E523
+X-Greylist: delayed 597 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Nov 2025 08:47:16 UTC
+Received: from mail.zentro24.pl (mail.zentro24.pl [94.177.238.198])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9BA5510E55D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Oct 2025 16:45:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=hwm01.com;
- h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=GBfom6E/J0riUmMiJ0LnZPP3rP/tANxluHjizd66iso=;
- b=LOzzXWoaxGwTVhHlKqd7EzlICRO5ynt+o40BqUUDpZMEmIZ3749GG/beCBLGu2YfQJ12+HQkbBQg
- 3Ih9yyF89g/Y7NAPAagf6UfIA4QwIDWCVOGYn0NFCTViC2FZ2DUBQO/Kb4skOeN6JLUc5ffNx+Eh
- SUHNlIIvksoyYyiulGzVL+knOirBvqJk6/+wyUlaIC5Hly+BZEkifcUM+HcHyX/exNVTlXvBa+4b
- 4vIfGi8uth52qXx0HJKBFNdU8JgsTo3cZiyDWXbi+mltAqD/BAmSm3aBSVsicrAFgqFp+8ByRxPT
- aD8q/U+dTUuEQ6atzfIkBL+xFXC5M4geNg6eYQ==
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: =?UTF-8?B?SnVzdCBjaGVja2luZyBpbiBvbiBsYXN0IHdlZWvigJlzIGVtYWlsIChkaWQgaXQgbGFuZCBvaz8p?=
-Message-ID: <31d246412406db3adab517eb8d28d929@rapidmail.com>
-Date: Mon, 27 Oct 2025 14:21:02 +0100
-From: "Silver Forest Mobility Stock" <dushanioz@hwm01.com>
+ Tue,  4 Nov 2025 08:47:16 +0000 (UTC)
+Received: by mail.zentro24.pl (Postfix, from userid 1002)
+ id 6D8F6832BB; Tue,  4 Nov 2025 09:36:58 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=zentro24.pl; s=mail;
+ t=1762245430; bh=Q6bV6bAAmvv9IXDh6kMg2M1FJxSoLbfUIGwkPra0wkA=;
+ h=Date:From:To:Subject:From;
+ b=oZ4tpVjUw8mdSfy/hnpviDT/x5dHjWqroZt0eD3/1CzSZiqlazORGb79oHaYGpgzL
+ DZlDn8l7FbSqgWozCfegy3HR44jj5pxbahlb4JP93bAjXsdBRTJfpoxoKULhhH1AdI
+ uyUHzzTWho/rPTMGpGiGWkJIG1ZQtgpc++gUd/A4GXtUvMHwVZFzUQ1nNt1I0maglm
+ msdFwoyr0dn679JqWQKlQthL8r0SDyoRAMtF5gz8jKINmYkLPQR69wRmo0FRhQYh9Q
+ ySdYg0w1rzhpDFWxTxJgvZuVRPaCFCjoIAnx1xvQResgMYb5kf9J0l8jPVXiWKwRT5
+ mVhgPIERykszw==
+Received: by mail.zentro24.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  4 Nov 2025 08:35:49 GMT
+Message-ID: <20251104085138-0.1.dt.1o4nn.0.dqe87nh866@zentro24.pl>
+Date: Tue,  4 Nov 2025 08:35:49 GMT
+From: "Tomasz Borgul" <tomasz.borgul@zentro24.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Dodatkowe_=C5=9Brodki_?=
+X-Mailer: mail.zentro24.pl
 MIME-Version: 1.0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,84 +52,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: tech@hwm01.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE html>
-<html lang="de" style="margin:0;padding:0;">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Stonewolf twenty six</title>
-  </head>
-  <body
-style="margin:0;padding:0;background-color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;
-line-height:1.45;color:#111111;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0"
-style="background-color: #f5f5f5; padding: 24px 0px; width: 100%;">
-<tbody>
-<tr>
-<td align="center">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0"
-style="background-color: #ffffff; border-radius: 6px; overflow: hidden;
-border: 1px solid #e0e0e0; width: 600px;">
-<tbody>
-<tr>
-<td style="background-color: #111111; color: #ffffff; padding: 16px 20px;
-font-size: 16px; font-weight: bold; text-align: left;">Aus EU Lager:
-Stonewolf twenty six<br /> From EU stock: Stonewolf twenty six</td>
-</tr>
-<tr>
-<td style="padding: 20px 20px 0 20px; text-align: center;"><img
-src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/518342868_10103497196772092_8388120428375102722_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=aa7b47&amp;_nc_ohc=Jn_yEn86n5cQ7kNvwEJRl5h&amp;_nc_oc=Adksx9IuES89OqPTYic8wVn-QaJ1GM0itLsjK-7L9CzfKBy9oKrYe_1G5l9RMNkm_RA&amp;_nc_zt=23&amp;_nc_ht=scontent-iad3-2.xx&amp;_nc_gid=k3IlZUSZdKoONMfLmmE-mA&amp;oh=00_AfcYU20chG7QAw89o6Lc-gAJhR2l2qTO32WkGGRu2klLRA&amp;oe=690500D4"
-alt="Stonewolf twenty six Hauptansicht / main view" style="max-width: 100%;
-border: 0; outline: none; text-decoration: none; display: block;
-border-radius: 4px;" width="500" height="500" /></td>
-</tr>
-<tr>
-<td style="padding: 20px 20px 0 20px; font-size: 15px; color: #111111;
-text-align: left;">
-<p style="margin: 0 0 14px 0; font-size: 15px; color: #111111; font-weight:
-bold;">Deutsch</p>
-<p style="margin: 0 0 14px 0;">Guten Tag,</p>
-<p style="margin: 0 0 14px 0;"><strong>Stonewolf twenty six</strong>
-kombiniert eine stabile Mountain-Geometrie in sechsundzwanzig Zoll mit
-einem f&uuml;nf hundert Watt Hinterrad-Antrieb und einem herausnehmbaren
-Achtundvierzig-Volt-Akku mit achtzehn Ampere Stunden. Ideal f&uuml;r
-Stadtverkehr, Kieswege und Anstiege.</p>
-<p style="margin: 0 0 14px 0;">Versand ab Deutschland, Zustellung in der
-Europ&auml;ischen Union gew&ouml;hnlich nach drei bis f&uuml;nf Tagen.</p>
-<p style="margin: 0 0 14px 0;">Angebot gew&uuml;nscht? Bitte geplante Menge
-und Zieladresse senden.</p>
-<p style="margin: 0 0 24px 0;">Viele Gr&uuml;&szlig;e<br /> <strong>Felix
-Werner</strong><br /> Rhineberg Distribution</p>
-<hr style="border: none; border-top: 1px solid #e0e0e0; margin: 10px 0 20px
-0;" />
-<p style="margin: 0 0 14px 0; font-size: 15px; color: #111111; font-weight:
-bold;">English</p>
-<p style="margin: 0 0 14px 0;">Hello,</p>
-<p style="margin: 0 0 14px 0;">the <strong>Stonewolf twenty six</strong>
-features a twenty six inch chassis, a five hundred watt rear hub, and a
-removable forty eight volt eighteen amp hour energy pack. Balanced for city
-use and gravel paths.</p>
-<p style="margin: 0 0 14px 0;">Ships from Germany with typical European
-Union arrival in about three to five days.</p>
-<p style="margin: 0 0 14px 0;">Request a quote by replying with intended
-quantity and destination address.</p>
-<p style="margin: 0 0 14px 0;">Best regards<br /> <strong>Felix
-Werner</strong><br /> Rhineberg Distribution</p>
-</td>
-</tr>
-<tr>
-<td style="height: 24px;"></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</body>
-</html>
+Dzie=C5=84 dobry,
 
+czy aktualnie rozwa=C5=BCaj=C4=85 Pa=C5=84stwo dodatkowe =C5=BAr=C3=B3d=C5=
+=82o kapita=C5=82u?
+
+Zapewniamy finansowanie dla firm z sektora M=C5=9AP =E2=80=93 nawet do 40=
+0 000 z=C5=82 bez zb=C4=99dnej biurokracji.=20
+
+Decyzj=C4=99 otrzymuj=C4=85 Pa=C5=84stwo w 24 godziny, a wniosek mo=C5=BC=
+na z=C5=82o=C5=BCy=C4=87 ca=C5=82kowicie online.
+
+Czy mog=C4=99 przedstawi=C4=87 szczeg=C3=B3=C5=82y dotycz=C4=85ce warunk=C3=
+=B3w i procesu uzyskania finansowania?
+
+
+Pozdrawiam
+Tomasz Borgul
