@@ -2,26 +2,24 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A366C35591
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 05 Nov 2025 12:27:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37CE0C35594
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 05 Nov 2025 12:27:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1046210E02B;
-	Wed,  5 Nov 2025 11:27:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A9CF10E02B;
+	Wed,  5 Nov 2025 11:27:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 398 seconds by postgrey-1.36 at gabe;
- Wed, 05 Nov 2025 11:27:18 UTC
 Received: from s179.coreserver.jp (s179.coreserver.jp [202.172.28.180])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1211810E02B
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2519710E02B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Nov 2025 11:27:17 +0000 (UTC)
-Received: (qmail 432866 invoked by uid 89); 5 Nov 2025 20:20:37 +0900
+ Wed,  5 Nov 2025 11:27:28 +0000 (UTC)
+Received: (qmail 450993 invoked by uid 89); 5 Nov 2025 20:20:48 +0900
 Received: from unknown (HELO s179.coreserver.jp) ()
- by s179.coreserver.jp with SMTP; 5 Nov 2025 20:20:37 +0900
+ by s179.coreserver.jp with SMTP; 5 Nov 2025 20:20:48 +0900
 Received: from 212.85.217.58 (SquirrelMail authenticated user reiko@kxn.jp)
- by s179.coreserver.jp with HTTP; Wed, 5 Nov 2025 11:20:37 -0000
-Message-ID: <1c34f74927fec1fcef84ba83944c7834.squirrel@s179.coreserver.jp>
-Date: Wed, 5 Nov 2025 11:20:37 -0000
+ by s179.coreserver.jp with HTTP; Wed, 5 Nov 2025 11:20:48 -0000
+Message-ID: <dfec2fda8f47677137cb993a33ff5cba.squirrel@s179.coreserver.jp>
+Date: Wed, 5 Nov 2025 11:20:48 -0000
 Subject: BEST REGARDS
 From: "Mr Kofi john Thomas" <reiko@kxn.jp>
 User-Agent: SquirrelMail/1.4.22
