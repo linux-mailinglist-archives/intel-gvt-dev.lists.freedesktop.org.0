@@ -2,32 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37CE0C35594
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 05 Nov 2025 12:27:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D91BFC4124B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 07 Nov 2025 18:48:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1A9CF10E02B;
-	Wed,  5 Nov 2025 11:27:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A350410EB4D;
+	Fri,  7 Nov 2025 17:48:17 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (1024-bit key; unprotected) header.d=carpet-cleaning-80740.shop header.i=bastienmoreau@carpet-cleaning-80740.shop header.b="YxPlICYU";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from s179.coreserver.jp (s179.coreserver.jp [202.172.28.180])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2519710E02B
+X-Greylist: delayed 7217 seconds by postgrey-1.36 at gabe;
+ Fri, 07 Nov 2025 17:48:16 UTC
+Received: from byi.fumieas.cn (byi.fumieas.cn [103.136.42.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5E69B10EB4D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Nov 2025 11:27:28 +0000 (UTC)
-Received: (qmail 450993 invoked by uid 89); 5 Nov 2025 20:20:48 +0900
-Received: from unknown (HELO s179.coreserver.jp) ()
- by s179.coreserver.jp with SMTP; 5 Nov 2025 20:20:48 +0900
-Received: from 212.85.217.58 (SquirrelMail authenticated user reiko@kxn.jp)
- by s179.coreserver.jp with HTTP; Wed, 5 Nov 2025 11:20:48 -0000
-Message-ID: <dfec2fda8f47677137cb993a33ff5cba.squirrel@s179.coreserver.jp>
-Date: Wed, 5 Nov 2025 11:20:48 -0000
-Subject: BEST REGARDS
-From: "Mr Kofi john Thomas" <reiko@kxn.jp>
-User-Agent: SquirrelMail/1.4.22
+ Fri,  7 Nov 2025 17:48:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim;
+ d=carpet-cleaning-80740.shop; 
+ h=To:Subject:Message-ID:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:Date;
+ i=bastienmoreau@carpet-cleaning-80740.shop; 
+ bh=6fDH4qMKtWEkTsBahic9KMHWxB8Is2KpyvDpID7qE98=;
+ b=YxPlICYUPbHzXEW/BQTuWXfNFKxcUXpBpnooJcr5NbWHouUxrraFG/+g/dk7L/3nO8dsByHEY3GE
+ 1HCj8mtGggg0OMAB3U34P+MUVgZcb/MsDn7N8cVAKhn5IwLnGNlTWZIE5yUSAaYNHMH0hzWnB5iH
+ BQAAhtdV7z6GFRUMVrk=
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Sortiment breit: city bis cargo
+Message-ID: <d24aecb8930f46ce26ce74e4ebea9d5e@adastraradio.com>
+From: "Ostapel Holmwell" <bastienmoreau@carpet-cleaning-80740.shop>
 MIME-Version: 1.0
-Content-Type: text/plain;charset=ISO-2022-JP
+Content-Type: text/plain; format=flowed; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Priority: 3 (Normal)
-Importance: Normal
+Date: Fri, 7 Nov 2025 12:45:33 -0500
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,53 +46,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: johnkofithomas@gmail.com
+Reply-To: contact@gz-qkmxjt.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+English version below
 
+Guten Tag,
 
+unsere Jahresleistung beträgt 10 900 elektrische Fahrräder; wir begleiten
+in der EU Händlernetze und Unternehmensflotten mit kurzen Reaktionszeiten.
+Da der Ursprung Deutschland ist, liegt das übliche Ankunftsfenster bei
+drei bis fünf Tagen. Für ein präzises Angebot senden Sie bitte
+Stückzahl und vollständige Zieladresse; wir melden den Gesamtbetrag
+zurück. Interesse an einer autorisierten Partnerschaft ist willkommen.
 
-BEST REGARDS,
+Portfolio: Fat-Tire, Moped-Style-Fat-Tire, Vollfederung, faltbare
+Vollfederung, Mittelmotor-Softtail, Cargo und Trike. Je nach Einsatz
+wählen wir passende Akku- und Antriebsvarianten. Vor der Übergabe erfolgt
+ein Kurztest von Rahmen, Bremsen, Licht und Steuerung; auf Wunsch legen wir
+eine kompakte Erstaufbau-Notiz bei.
 
-This mail may be a surprise to you because you did not give me the
-permission to do so and neither do you know me but before I tell you about
-myself I want you to please forgive me for sending this mail without your
-permission. I am writing this letter in confidence believing that if it is
-the will of God for you to help me and my family, God  almighty will bless
-and reward you abundantly. I need an honest and trustworthy person like
-you to entrust this huge transfer project unto.
+Beigefügt erhalten Sie unseren aktuellen Katalog.
 
-My name is Mr kofi John Thomas, The Branch Manager of a Financial
-Institution. I got your contact through a reliable source called database
-through Ghana chamber of commerce. I am a Ghanaian married with 3 kids. I
-am writing to solicit your assistance in the transfer of US$15,500,000.00
-Dollars. This fund is the excess of what my branch in which I am the
-manager made as profit this half year (ie 2025 financial year). After I
-submitted an annual half year report for this 2025 on the 6th June 2025 to
-my head office in Accra-Ghana, I watched with keen interest as they never
-knew of this excess. I placed this amount of US$15,500,000.00 Dollars on
-an Escrow Coded account without a beneficiary (Anonymous) to avoid a
-trace.
+Mit besten Grüßen
+Mara Dietrich
+Ostwind Mobility BV
 
-As an officer of the bank, I cannot be directly connected to this money
-thus I am impelled to request for your assistance to receive this money
-into your bank account on my behalf. I agree that 40% of this money will
-be for you as a foreign partner, in respect to the provision of a foreign
-account, and 60% would be for me and I will join you in your country once
-the fund arrives in your account for an investment plan. I do need to
-stress that there is practically no risk involved in this.
+Hello,
 
-It's going to be a bank-to-bank transfer OR E-online Transfer. All I need
-from you is to stand as the original depositor of this fund so that the
-fund can be transferred to your account.
+our annual output is 10,900 electric bicycles, serving EU dealer networks
+and corporate fleets. With Germany as origin, the typical arrival window is
+three to five days. To receive pricing, reply with quantity and full
+destination address; we will return the total. Authorized partner interest
+is encouraged.
 
-If you accept this offer, I will appreciate your timely response to me.
-This is why and the only reason why I contacted you, I am willing to go
-into partnership investment with you owing to your wealth of experience,
-So please if you are interested in assisting on this venture kindly
-contact me back for a brief discussion on how to proceed.
+Range includes fat-tire, moped-style fat-tire, dual-suspension, folding
+dual-suspension, mid-drive soft-tail, cargo and trike. We match battery and
+drive to the intended use. Before handover we run a brief check on frame,
+braking, lights and controller; a concise first-setup note can be included.
 
-Best regards,
-Mr kofi John Thomas
+Attached is our catalog for reference.
+
+Kind regards
+Mara Dietrich
+Ostwind Mobility BV
 
