@@ -2,37 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 154C0C639B8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Nov 2025 11:47:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B310C6F2AC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Nov 2025 15:12:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E66D610E1B3;
-	Mon, 17 Nov 2025 10:47:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3BCA510E634;
+	Wed, 19 Nov 2025 14:12:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=emolution.top header.i=pschfer@emolution.top header.b="kmHbPIgL";
+	dkim=pass (1024-bit key; unprotected) header.d=lawn-care-4208.online header.i=tklein@lawn-care-4208.online header.b="DrjW7hx5";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1605 seconds by postgrey-1.36 at gabe;
- Mon, 17 Nov 2025 10:47:45 UTC
-Received: from gcc.bitstarzz.top (gcc.bitstarzz.top [85.158.109.116])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9793210E03A
+X-Greylist: delayed 4089 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Nov 2025 14:12:11 UTC
+Received: from mho.xosoapp.top (mho.xosoapp.top [85.158.109.71])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1263C10E62B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Nov 2025 10:47:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=emolution.top; 
+ Wed, 19 Nov 2025 14:12:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim;
+ d=lawn-care-4208.online; 
  h=To:Subject:Message-ID:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:Date;
- i=pschfer@emolution.top; 
- bh=XZnXsb7Z/IDcfqY1WSi73V+r7xbIt5BKbmd1qNdNWik=;
- b=kmHbPIgL0vgibGyw+zQoxnbcjvd1GsP0rnzDx1tLhaJKU810kkCSCIrifY3H6oKE3rNpTKO42bpb
- aT4SQQXNpJlW0Vtyi83kSxObW5wKYjkkMQtxoBlUoVJxwjrmnmtZu7OvhMvRPMWFZipsJe/x31DD
- Ox9q7dCQggV9x1BMs30=
+ i=tklein@lawn-care-4208.online; 
+ bh=4h+oAzbUaMaFbu8WW5MX9noyYOjpw7h53G+NCkz/C4s=;
+ b=DrjW7hx5BHXuPuhaShYm4zI6L0Cgkon99oTYYMNyoOwPjCzLQrC07Ff1HDnM9vIUljpZ+hp7E2wm
+ +lVVWhQpcpcWd9SEuOgLLmDsmsoWE1/zVdLU7j+BKEaTrIcrfA14vzAtHSXDvSAz+00Dae5cFu5c
+ ykb+CNMpRqwC4IxnHR4=
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: =?UTF-8?B?RSBGYWhycsOkZGVyIG9yZ2FuaXNpZXJ0IGbDvHIgZWZmaXppZW50ZSBNYXJrdHZlcnNvcmd1bmcgRWxlY3RyaWMgY3ljbGVzIG9yZ2FuaXplZCBmb3IgZWZmaWNpZW50IG1hcmtldCBzdXBwbHk=?=
-Message-ID: <88811663df1a028e0a3c6528fbfd9292@warbirdsresourcegroup.org>
-From: "=?UTF-8?B?UmVuYXRlIFNjaMOkZmZsZXI=?=" <pschfer@emolution.top>
+Subject: =?UTF-8?B?RGV1dHNjaGVzIExhZ2VyIGbDvHIgZWxla3RyaXNjaGUgRmFocnLDpGRlciBlcm3DtmdsaWNodCBrdXJ6ZSBFVSBXZWdlIEdlcm1hbiB3YXJlaG91c2UgZm9yIGVsZWN0cmljIGN5Y2xlcyBlbmFibGVzIHNob3J0IEVVIHJvdXRlcw==?=
+Message-ID: <432d85380c2ee0a96dad9ddea1460c79@verticaletoureiffel.fr>
+From: "=?UTF-8?B?TWlsYSBLw6RzdG5lcg==?=" <tklein@lawn-care-4208.online>
 MIME-Version: 1.0
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Date: Mon, 17 Nov 2025 05:44:37 -0500
+Date: Wed, 19 Nov 2025 09:08:58 -0500
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,7 +46,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: vertrieb@xw-fashion.com
+Reply-To: contact@pcc241205-46.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -53,50 +54,58 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 <head>
 </head>
 <body>
-<p><b><br /><img src="https://e-ridez.com/cdn/shop/products/Aspen2.jpg"
-width="400" height="400" /><img
-src="https://www.bikeyardonline.co.uk/cdn/shop/files/rocket-88s-fat-boy-electric-bike-250w-1157149452.png"
-width="400" height="370" /><br /><br />Deutsch</b></p>
-<p>Guten Tag<br /> wir m&ouml;chten Ihnen zwei Modelle vorstellen die
-sofort aus unserem deutschen Lager verschickt werden k&ouml;nnen.<br /> Das
-kompakte 20 inch Fat Tire Moped Modell mit 48V 18Ah und 500W eignet sich
-ideal f&uuml;r Pendelstrecken.<br /> F&uuml;r l&auml;ngere oder
-anspruchsvollere Fahrten bieten wir ein 26 inch Fat Tire MTB mit gleicher
-Energiekapazit&auml;t an.<br /> Beide Modelle sind auf Lager und erreichen
-Sie europaweit in wenigen Tagen.<br /> Wenn Sie H&auml;ndler werden
-m&ouml;chten oder Preise ben&ouml;tigen melden Sie sich gern.</p>
-<p>Mit freundlichen Gr&uuml;&szlig;en<br /> Leonhard Witt<br /> Eurovelo
-Dynamics</p>
-<p><b>English</b></p>
-<p>Hello<br /> we would like to introduce two units available for immediate
-dispatch from our German warehouse.<br /> The compact 20 inch fat tire
-moped style cycle with 48V 18Ah and 500W is ideal for commuting.<br /> For
-extended rides our 26 inch fat tire MTB with identical specifications is an
-excellent choice.<br /> Both models are ready to ship and generally arrive
-across Europe within a few days.<br /> If you need pricing or want to
-discuss dealership please contact us.</p>
-<p>Best regards<br /> Leonhard Witt<br /> Eurovelo Dynamics<br /><br /><br
-/><br /><br /><br /><img
-src="https://e-ridez.com/cdn/shop/products/Aspen2.jpg" width="400"
-height="400" /><img
-src="https://www.bikeyardonline.co.uk/cdn/shop/files/rocket-88s-fat-boy-electric-bike-250w-1157149452.png"
-width="400" height="370" /><br /><img
-src="https://www.cycrown.com/cdn/shop/files/7_8065de48-4db7-4bb0-8476-4647edcf23ba.png"
-width="500" height="500" /><img
-src="https://pedalandchain.co.uk/cdn/shop/files/3_600x.jpg" width="450"
-height="450" /></p>
-<p>&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;<br
-/> This communication was transmitted securely and checked for data
-consistency.<br /> We follow strict European standards regarding privacy
-and system safety.<br /> Please minimize printing to reduce environmental
-impact.<br /> We maintain encrypted channels and controlled retention
-periods.<br /> No analytical tracking or advertising elements are
-present.<br /> For unlist requests simply reply with the address to
-remove.<br /> System validations are carried out routinely to maintain
-reliability.<br /> Thank you for your cooperation in responsible
-communication practices.<br />
-&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;</p>
-<p>&nbsp;</p>
+<p data-start="2974" data-end="3000"><strong data-start="2974"
+data-end="2985">Deutsch</strong><br data-start="2985" data-end="2988" />
+Guten Tag,</p>
+<p data-start="3002" data-end="3272">wir halten in unserem deutschen Lager
+zwei elektrische Fahrr&auml;der vorr&auml;tig, beide mit einer Reichweite
+von etwa 50 km. Die genauen Modelle erkennen Sie auf den unten
+eingef&uuml;gten Bildern. Die Mengen sind im Moment &uuml;berschaubar,
+daher lohnt sich eine fr&uuml;hzeitige Anfrage.</p>
+<p data-start="3274" data-end="3601">Wir kooperieren regelm&auml;&szlig;ig
+mit Wiederverk&auml;ufern und kleineren wie gr&ouml;&szlig;eren
+H&auml;ndlern in der gesamten EU. Wenn Sie ein Angebot w&uuml;nschen,
+senden Sie uns bitte Ihre vollst&auml;ndige Zustelladresse, damit wir einen
+Preis inklusive Transport kalkulieren k&ouml;nnen. Der Versand in
+europ&auml;ische L&auml;nder dauert in der Regel circa 5 bis 7 Tage.</p>
+<p data-start="3603" data-end="3664">Viele Gr&uuml;&szlig;e<br
+data-start="3614" data-end="3617" /> <strong data-start="3617"
+data-end="3635">Nadine Wallner</strong><br data-start="3635"
+data-end="3638" /> <strong data-start="3638" data-end="3664">EuroRide
+Technikcenter</strong></p>
+<p data-start="3666" data-end="3688"><strong data-start="3666"
+data-end="3677">English</strong><br data-start="3677" data-end="3680" />
+Hello,</p>
+<p data-start="3690" data-end="3937">our German warehouse currently keeps
+two electric cycles in stock, each with an approximate riding range of 50
+km. You can see the exact models in the photos placed below. Quantities are
+limited at the moment, so an early inquiry is recommended.</p>
+<p data-start="3939" data-end="4227">We frequently cooperate with resellers
+and traders of various sizes throughout the EU. If you would like to
+receive an offer, please send us your full receiving address so that we can
+calculate pricing including transport. Shipping to European countries
+usually takes about 5 to 7 days.</p>
+<p data-start="4229" data-end="4291">Kind regards<br data-start="4241"
+data-end="4244" /> <strong data-start="4244" data-end="4262">Nadine
+Wallner</strong><br data-start="4262" data-end="4265" /> <strong
+data-start="4265" data-end="4291">EuroRide Technikcenter<br /><br /><br
+/><strong data-start="1587" data-end="1613"><br /><br /><img
+src="https://roll-road.com/cdn/shop/files/roll-road-shark3.0-moped-style-ebike2_c6f8acf0-4652-4c6a-8fc6-2df17c6cfa3b.jpg"
+width="450" height="338" /><img
+src="https://quietkat.com/cdn/shop/files/Quietkat_Ibex0212_1220x.jpg"
+width="450" height="300" /></strong></strong></p>
+<p data-start="4293" data-end="4990"><em data-start="4992"
+data-end="5040"><br />Electronic Transfer and Environment:</em></p>
+<p data-start="4992" data-end="5605">Our systems use modern security
+mechanisms such as encryption and filtering, but there is always some
+residual risk in any internet communication. Please handle our pricing and
+contact data with care and do not forward it to unauthorized parties. If
+you no longer wish to receive information from us, send us your address
+including the note <strong data-start="5384"
+data-end="5394">remove</strong>, so we can remove it consistently from our
+mailing lists. By relying on email instead of paper letters, we help to
+conserve resources. Please avoid printing this message if digital access is
+sufficient for you.</p>
 </body>
 </html>
 
