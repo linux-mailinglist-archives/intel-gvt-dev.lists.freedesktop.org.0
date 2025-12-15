@@ -2,44 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AB74CBD4A9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Dec 2025 10:55:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1092BCBD7FE
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Dec 2025 12:31:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3069910E254;
-	Mon, 15 Dec 2025 09:55:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 686FA10E42F;
+	Mon, 15 Dec 2025 11:31:07 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=biznix.pl header.i=@biznix.pl header.b="Qfcl+9KZ";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="d1FPXBhN";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1387 seconds by postgrey-1.36 at gabe;
- Mon, 15 Dec 2025 09:55:38 UTC
-Received: from mail.biznix.pl (mail.biznix.pl [51.178.29.214])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1B12F10E254
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 15 Dec 2025 09:55:38 +0000 (UTC)
-Received: by mail.biznix.pl (Postfix, from userid 1002)
- id 3A5C526BB1; Mon, 15 Dec 2025 10:16:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=biznix.pl; s=mail;
- t=1765790302; bh=j0nOpV9PwRoNaXc5IzIKxaCrBNDZgjzq26cewevyV9s=;
- h=Date:From:To:Subject:From;
- b=Qfcl+9KZGOXI8f/FLWAKE2MnekmDsrPB0dHfEGO0VgMHzoo9nV/EPQkrYMi9mds2v
- iaE1VZOc7XMjDx02ACSvnVmv3Z9tEPIDztVubkTU030BqSLYqz9qD4W4urSyZ4ZMre
- tMs4b8Sj3XAb3lIyCBKKSlPPtuKXBtuDWh+iXDk1xEO7Grt4Or9JdDarq22PKa5HmR
- 3n9/5tO7mySHYvybIpk7L5v0Ou/BRf4oUN2kJRuA1hYGxy1nTY0jngrnknf0UBS8dZ
- jAe0AfVAKc4ZZTt44LNGFMcNuIXUTGv1+GQcCvxPvtLQ0/S9B28SPoUcRJqZPAP+wN
- 5HhEwPnySsfvQ==
-Received: by mail.biznix.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 15 Dec 2025 09:15:59 GMT
-Message-ID: <20251215084500-0.1.l8.3ag1u.0.0ti67gn73m@biznix.pl>
-Date: Mon, 15 Dec 2025 09:15:59 GMT
-From: "Piotr Stanek" <piotr.stanek@biznix.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Odbi=C3=B3r_w_paczkomacie_?=
-X-Mailer: mail.biznix.pl
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8890D10E3F4;
+ Mon, 15 Dec 2025 11:31:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1765798265; x=1797334265;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=G1nikKrpos+4eEcRr66hTbk1bo3WNaRaPW8upBd7gd4=;
+ b=d1FPXBhNnzTZzJKZbs8loXkfsNlpKQIhl+VvwJdMTI8U+PQKffKDLK/b
+ FkyKvFdp6n1eIz/UH4uV9PC+NLjnckMRYPBHj14uRmrY6hYEspO2kxvDj
+ B5mhAqbERgW1FyYqtyEuIy9twCbHMbbzIFX0DX1/e9Ri8YD6XtcnnFvh0
+ gSQRk5WBc932TaG3g8JrYEe3ccJhQe/13xpyq8Q7Ymw2BGjmF7cAg6yjv
+ 5jB3XECd7dJlf0PRW8j5zXNZvUvxUi9eIgfZwVdp6E2qgojP1dzwLrXBv
+ szsSO/0UfJxMavZoUYoKoujEJUZsgG5DhuQ9nTSIVmhrNx8JLZK1EkZJv Q==;
+X-CSE-ConnectionGUID: aDxSE37WTPyURB9JGuV3Ag==
+X-CSE-MsgGUID: S3z+1o7IRrGGtKIeqJOmZA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11642"; a="67732755"
+X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="67732755"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2025 03:31:05 -0800
+X-CSE-ConnectionGUID: XAwHH+r+RJKgI18Uc1H/iA==
+X-CSE-MsgGUID: nLzwftedRWeFwNoqWERNfA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="235090377"
+Received: from srr4-3-linux-103-aknautiy.iind.intel.com ([10.223.34.160])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2025 03:31:03 -0800
+From: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org
+Cc: jani.nikula@linux.intel.com,
+	Ankit Nautiyal <ankit.k.nautiyal@intel.com>
+Subject: [PATCH 0/5] Prepare GVT for display modularization
+Date: Mon, 15 Dec 2025 16:48:36 +0530
+Message-ID: <20251215111842.2099789-1-ankit.k.nautiyal@intel.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,18 +67,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+GVT currently relies on display internals through register macros and helpers
+like for_each_pipe(). This tight coupling makes modularization difficult
+because GVT should not access struct intel_display directly.
+Add an API for GVT code to expose DISPLAY_RUNTIME_INFO()->pipe_mask.
+This series introduces changes to make GVT independent of display internals
+while keeping existing macros usable:
 
-jako lider w us=C5=82ugach kurierskich w Polsce przygotowali=C5=9Bmy elas=
-tyczne rozwi=C4=85zanie dla przedsi=C4=99biorc=C3=B3w.
+- Abstract offset calculations in display using
+  INTEL_DISPLAY_DEVICE_*_OFFSET() macros.
+- Add APIs for GVT to compute offsets and pipe mask via functions.
+- Update GVT to use these APIs by overriding helper macros and
+  for_each_pipe().
 
-Stworzyli=C5=9Bmy abonament =C5=82=C4=85cz=C4=85cy dostawy do Paczkomat 2=
-4/7 oraz obs=C5=82ug=C4=99 kuriersk=C4=85 - jeden dostawca, jedna faktura=
- i przewidywalne, sta=C5=82e koszty.=20
+Ankit Nautiyal (5):
+  drm/i915/display: Abstract pipe/trans/cursor offset calculation
+  drm/i915/display: Add APIs to be used by gvt to get the register
+    offsets
+  drm/i915/gvt: Add header to use display offset functions in macros
+  drm/i915/gvt: Change for_each_pipe to use pipe_mask API
+  drm/i915/gvt/display_helpers: Cast argument to enum pipe for
+    pipe-offset macro
 
-Czy mog=C4=99 przedstawi=C4=87, co mo=C5=BCemy zaproponowa=C4=87 wzgl=C4=99=
-dem Pa=C5=84stwa potrzeb?
+ drivers/gpu/drm/i915/Makefile                 |  1 +
+ .../drm/i915/display/intel_display_device.h   | 17 +++++++
+ .../drm/i915/display/intel_display_limits.c   |  0
+ .../drm/i915/display/intel_display_reg_defs.h | 15 ++----
+ drivers/gpu/drm/i915/display/intel_gvt_api.c  | 40 ++++++++++++++++
+ drivers/gpu/drm/i915/display/intel_gvt_api.h  | 21 +++++++++
+ drivers/gpu/drm/i915/gvt/cmd_parser.c         |  2 +
+ drivers/gpu/drm/i915/gvt/display.c            |  2 +
+ drivers/gpu/drm/i915/gvt/display_helpers.h    | 46 +++++++++++++++++++
+ drivers/gpu/drm/i915/gvt/fb_decoder.c         |  2 +
+ drivers/gpu/drm/i915/gvt/handlers.c           |  2 +
+ 11 files changed, 137 insertions(+), 11 deletions(-)
+ create mode 100644 drivers/gpu/drm/i915/display/intel_display_limits.c
+ create mode 100644 drivers/gpu/drm/i915/display/intel_gvt_api.c
+ create mode 100644 drivers/gpu/drm/i915/display/intel_gvt_api.h
+ create mode 100644 drivers/gpu/drm/i915/gvt/display_helpers.h
 
+-- 
+2.45.2
 
-Pozdrawiam
-Piotr Stanek
