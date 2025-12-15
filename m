@@ -2,60 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7441CCBDAA9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Dec 2025 13:01:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E441FCBDAD3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Dec 2025 13:03:21 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F8B910E46F;
-	Mon, 15 Dec 2025 12:01:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2AC3489D56;
+	Mon, 15 Dec 2025 12:03:14 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="ffhclWew";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="JIGdFLl0";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9D84110E474;
- Mon, 15 Dec 2025 12:01:09 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 765ED89D56;
+ Mon, 15 Dec 2025 12:03:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1765800069; x=1797336069;
+ t=1765800193; x=1797336193;
  h=from:to:cc:subject:in-reply-to:references:date:
  message-id:mime-version;
- bh=a7J9cXlVxiyjvS/iWvxTSaNoNMJG7z0g5HLTqv/VcMI=;
- b=ffhclWewVwMbV/6SQHcE5wx027oRflNKOCDi6Y6SnDU4GStAIkSswMIW
- bxAtaiBFjmOmLP+Rc3kgw8Bl8X+XPrHQ29/unkI2dEa+JLYLMaBuiSQUL
- MFCViChm35lWZm/ns6zIL7A7LiHWF7M6DEs55FD1Ll81xxjuzx3K7PXN+
- B7zSl9G1igF8rIGHtPIgPN9ceXIp6FjGJjIipT8ChDx7on8RqgC4K162u
- Smfy2rOrnnmBAjtGp2+EvioVBmvA1hEbkgrAzgECBwxN70f6kI+ZKlJJ+
- JinpO5mjdLz5wcB0+Q+2jnA0UlYg4qoPAxt38WNwZcY/mSti5IYylaQff A==;
-X-CSE-ConnectionGUID: Udr1iRpUTRCxq2ecWdaWPA==
-X-CSE-MsgGUID: 1y6mZ7CYTFuEPL4ZOw1cvQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11642"; a="67853354"
-X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="67853354"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2025 04:01:09 -0800
-X-CSE-ConnectionGUID: O2aiBP/QTCyMN4+FjRPJMw==
-X-CSE-MsgGUID: t0HWtlv+RauYEELHzD334g==
+ bh=ozKUF7eNY0QPa+yES6PcH5XsVJDrbyaiHTWXMzQ7gyU=;
+ b=JIGdFLl0+KxFETitWS7rHWkI/+KuaSi3bGzG/IliQRYluOCQqFqPeOV0
+ 6bBF8LyPofb5DKkybTvbANYveKTFgxw/0gq5SmodG1T0p3P+0w8tnyHow
+ FecbdiD/7iG50TXA7d/BMYcsDoL4U3GjcHtScUhDLSap61RFzvLwyZZTt
+ 3WzXFOKSJYfPNCRW7ton+SFjwynTqL5911FmUqEfm7kzuvyb6BRCiT89d
+ Hrr4lmnH+sIAJgdYisiTZ9StKdoQB7utRmkoAMCNm/IwfBDK9dWLb+y7b
+ I5KsdF3X1fwLESLHEToEIB8+Pc+mSyfqUotxGrFpnXdtQsEVbk8XVSvcU w==;
+X-CSE-ConnectionGUID: bmjQSsCVSoS+qDpeN9l8fQ==
+X-CSE-MsgGUID: bUQVIqECRAeaySuGKO0r1g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11642"; a="85110693"
+X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="85110693"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2025 04:03:13 -0800
+X-CSE-ConnectionGUID: k0FsacDCSFGCqmEEcUTOOA==
+X-CSE-MsgGUID: RaNv+ci5Srq5d9SoSQnWuQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="197323698"
+X-IronPort-AV: E=Sophos;i="6.21,150,1763452800"; d="scan'208";a="198223354"
 Received: from mjarzebo-mobl1.ger.corp.intel.com (HELO localhost)
  ([10.245.246.106])
- by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2025 04:01:00 -0800
+ by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2025 04:03:11 -0800
 From: Jani Nikula <jani.nikula@linux.intel.com>
 To: Ankit Nautiyal <ankit.k.nautiyal@intel.com>,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
  intel-xe@lists.freedesktop.org
 Cc: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
-Subject: Re: [PATCH 4/5] drm/i915/gvt: Change for_each_pipe to use pipe_mask
- API
-In-Reply-To: <20251215111842.2099789-5-ankit.k.nautiyal@intel.com>
+Subject: Re: [PATCH 5/5] drm/i915/gvt/display_helpers: Cast argument to enum
+ pipe for pipe-offset macro
+In-Reply-To: <20251215111842.2099789-6-ankit.k.nautiyal@intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
  6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 References: <20251215111842.2099789-1-ankit.k.nautiyal@intel.com>
- <20251215111842.2099789-5-ankit.k.nautiyal@intel.com>
-Date: Mon, 15 Dec 2025 14:00:55 +0200
-Message-ID: <2785d3cddb6199bc7e6cef3374dbff46d4cae205@intel.com>
+ <20251215111842.2099789-6-ankit.k.nautiyal@intel.com>
+Date: Mon, 15 Dec 2025 14:03:08 +0200
+Message-ID: <9498ecce59866b5fac5410fa9d75c6d7d5a0e11e@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -74,73 +74,50 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Mon, 15 Dec 2025, Ankit Nautiyal <ankit.k.nautiyal@intel.com> wrote:
-> Add a new API to get pipe_mask from DISPLAY_RUNTIME_INFO() for GVT.
-> Update the for_each_pipe() macro in GVT to call this API, instead of
-> accessing DISPLAY_RUNTIME_INFO()->pipe_mask directly.
+> TRANSCONF() expands via _MMIO_PIPE2, i.e., it uses pipe-based addressing.
+> In GVT, some call sites pass an enum transcoder to TRANSCONF(), which now
+> routes through INTEL_DISPLAY_DEVICE_PIPE_OFFSET() and ultimately calls
+> intel_display_device_pipe_offset(), whose parameter type is enum pipe.
 >
-> This keeps the macro usable in GVT without exposing display internals
-> and prepares for display modularization.
+> This results in -Werror=enum-conversion.
+>
+> To address this, cast the index to enum pipe in the GVT-side macro
+> override.
+>
+> This works for all cases as TRANSCODER_{A,B,C,D} all have 1:1 mapping to
+> PIPE_{A,B,C,D} except for TRANSCODER_EDP.
+>
+> There is one place which uses TRANSCONF() with TRANSCODER_EDP, which
+> appears to be incorrect. In any case, the cast preserves the previous
+> behaviour.
+
+Maybe the question to ask is if TRANSCONF() using _MMIO_PIPE2() is
+correct or not?
+
+BR,
+Jani.
+
 >
 > Signed-off-by: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
 > ---
->  drivers/gpu/drm/i915/display/intel_gvt_api.c | 6 ++++++
->  drivers/gpu/drm/i915/display/intel_gvt_api.h | 1 +
->  drivers/gpu/drm/i915/gvt/display_helpers.h   | 7 +++++++
->  3 files changed, 14 insertions(+)
+>  drivers/gpu/drm/i915/gvt/display_helpers.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/gpu/drm/i915/display/intel_gvt_api.c b/drivers/gpu/drm/i915/display/intel_gvt_api.c
-> index 8abea318fbc2..0b09bbf2c29a 100644
-> --- a/drivers/gpu/drm/i915/display/intel_gvt_api.c
-> +++ b/drivers/gpu/drm/i915/display/intel_gvt_api.c
-> @@ -32,3 +32,9 @@ u32 intel_display_device_mmio_base(struct intel_display *display)
->  	return DISPLAY_MMIO_BASE(display);
->  }
->  EXPORT_SYMBOL_GPL(intel_display_device_mmio_base);
-> +
-> +u8 intel_display_runtime_info_pipe_mask(struct intel_display *display)
-> +{
-> +	return DISPLAY_RUNTIME_INFO(display)->pipe_mask;
-> +}
-
-I don't think gvt needs to know it's about "runtime info". Maybe make it
-just intel_display_device_pipe_mask()?
-
-Though I'm also wondering about making it even more abstracted with
-something like intel_display_device_pipe_valid(), and using that for the
-various other cases that check pipes in GVT. But maybe the patch at hand
-is a good start.
-
-> +EXPORT_SYMBOL_GPL(intel_display_runtime_info_pipe_mask);
-> diff --git a/drivers/gpu/drm/i915/display/intel_gvt_api.h b/drivers/gpu/drm/i915/display/intel_gvt_api.h
-> index e9a1122a988d..8ceda30a969b 100644
-> --- a/drivers/gpu/drm/i915/display/intel_gvt_api.h
-> +++ b/drivers/gpu/drm/i915/display/intel_gvt_api.h
-> @@ -16,5 +16,6 @@ u32 intel_display_device_pipe_offset(struct intel_display *display, enum pipe pi
->  u32 intel_display_device_trans_offset(struct intel_display *display, enum transcoder trans);
->  u32 intel_display_device_cursor_offset(struct intel_display *display, enum pipe pipe);
->  u32 intel_display_device_mmio_base(struct intel_display *display);
-> +u8 intel_display_runtime_info_pipe_mask(struct intel_display *display);
->  
->  #endif /* __INTEL_GVT_API_H__ */
 > diff --git a/drivers/gpu/drm/i915/gvt/display_helpers.h b/drivers/gpu/drm/i915/gvt/display_helpers.h
-> index 6f68a1e8751a..d11ebb03b946 100644
+> index d11ebb03b946..fb75cc9f97cc 100644
 > --- a/drivers/gpu/drm/i915/gvt/display_helpers.h
 > +++ b/drivers/gpu/drm/i915/gvt/display_helpers.h
-> @@ -36,4 +36,11 @@ struct display;
->  #define INTEL_DISPLAY_DEVICE_CURSOR_OFFSET(display, pipe) \
->  	intel_display_device_cursor_offset((display), (pipe))
+> @@ -21,8 +21,8 @@ struct display;
+>  #ifdef INTEL_DISPLAY_DEVICE_PIPE_OFFSET
+>  #undef INTEL_DISPLAY_DEVICE_PIPE_OFFSET
+>  #endif
+> -#define INTEL_DISPLAY_DEVICE_PIPE_OFFSET(display, pipe) \
+> -	intel_display_device_pipe_offset((display), (pipe))
+> +#define INTEL_DISPLAY_DEVICE_PIPE_OFFSET(display, idx) \
+> +	intel_display_device_pipe_offset((display), (enum pipe)(idx))
 >  
-> +#ifdef for_each_pipe
-
-Ditto about ifdefs here as with previous patch.
-
-> +#undef for_each_pipe
-> +#endif
-> +#define for_each_pipe(display, __p) \
-> +	for ((__p) = 0; (__p) < I915_MAX_PIPES; (__p)++) \
-> +		for_each_if(intel_display_runtime_info_pipe_mask((display)) & BIT(__p))
-> +
->  #endif /* __DISPLAY_HELPERS_H__ */
+>  #ifdef INTEL_DISPLAY_DEVICE_TRANS_OFFSET
+>  #undef INTEL_DISPLAY_DEVICE_TRANS_OFFSET
 
 -- 
 Jani Nikula, Intel
