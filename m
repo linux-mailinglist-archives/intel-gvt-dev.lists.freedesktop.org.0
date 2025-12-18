@@ -2,54 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02BF0CCAEA9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Dec 2025 09:35:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D840CCCAEAE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Dec 2025 09:35:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE50D10E79E;
-	Thu, 18 Dec 2025 08:35:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BB31510E7B3;
+	Thu, 18 Dec 2025 08:35:33 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="dVYbE204";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="n4fPRQFL";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8B4FF10E730;
- Thu, 18 Dec 2025 08:35:30 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C04B510E7A9;
+ Thu, 18 Dec 2025 08:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1766046930; x=1797582930;
+ t=1766046933; x=1797582933;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=92W6jN8/o0iLPg0WuYs1cNn0G96rLR7ZA14oq6QjV+M=;
- b=dVYbE204Eg1qZOmosVmDSDlYou9xlk2ACQu0rnpY4pyUxDRv3cFHtChE
- sH9xSmQfx75tuufrv/Yaw120lUOnUuakvTUHjsPXul5divdX93A0qwnt5
- HGdFBNDrQ59rL1/3pPQa4cHeUXKM6TgpBtvGS1G53AftG3PNWEX4R1U1o
- u4RsjgFSWuFYcg/cB45ZYzuvpv0x46BzRHaHdEHD0bupg8CAKiWO6dmlT
- tF3BVrWi0GD8X8N0X5rm1vHNH5MTJLNVU6yxtexri4ZguMEwZIEHJwozU
- rYChL8M/RDEXYXVJIqF9awY+ooli4ppZ8mcFaEvcbcXxDaFHNLrL6Anvy w==;
-X-CSE-ConnectionGUID: DPQWPTTJQBySuCWZdSglMg==
-X-CSE-MsgGUID: Y6cM0hPyRImVeL+/WrOyvA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="79365801"
-X-IronPort-AV: E=Sophos;i="6.21,158,1763452800"; d="scan'208";a="79365801"
+ bh=XxPBduQrsYFcvXT5lKCC1hAiBYzV75NG1TurQcf2qYw=;
+ b=n4fPRQFL8sXasV8pS055G/4wfY+0+AmmLWw2gu1aojnxDAxYXi2hmap/
+ NNybi3uUKIFhUKzjQeruYOB+gNfxrLWhk8H8QKqnSmFO7JnxRwXGX1Jqk
+ ZPRU4AIcfuOQw2WyD8HyYqsKEX5Ba6BTpMk2c7n+Iklj5dNjjwZtTWHQU
+ gqvPaxmuwrWlHk1QISvEc4zMFv/YljjuoNfcnaY61Srqovq5mcP2XXm26
+ im9BnDczHuo/bCplZW7Vc8x6/mdql5v7+t5HB7j5SZwjnWmfpCp5esdfX
+ KwMQm+wDcKZ7ZiMdvWdmThDTs8+o+ZIXFi2l67NTLR7D1u5JPyY/3orDY w==;
+X-CSE-ConnectionGUID: WE5amPmeSP2bRkoa7iGkDQ==
+X-CSE-MsgGUID: WwhGv/bBQLuXNAZcpQ53tw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="79365808"
+X-IronPort-AV: E=Sophos;i="6.21,158,1763452800"; d="scan'208";a="79365808"
 Received: from orviesa005.jf.intel.com ([10.64.159.145])
  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2025 00:35:30 -0800
-X-CSE-ConnectionGUID: kTl6vDOoTkiR8nLKYjPVrg==
-X-CSE-MsgGUID: XMB8vonhSyKWfsQ10DTpBQ==
+ 18 Dec 2025 00:35:32 -0800
+X-CSE-ConnectionGUID: 9Db9Eqa6QkW6RDR60cf40A==
+X-CSE-MsgGUID: mq6rsT90SNGtmvMf5zBhcg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,158,1763452800"; d="scan'208";a="203597768"
+X-IronPort-AV: E=Sophos;i="6.21,158,1763452800"; d="scan'208";a="203597779"
 Received: from srr4-3-linux-103-aknautiy.iind.intel.com ([10.223.34.160])
  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2025 00:35:28 -0800
+ 18 Dec 2025 00:35:30 -0800
 From: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
 To: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
  intel-xe@lists.freedesktop.org
 Cc: jani.nikula@linux.intel.com,
 	Ankit Nautiyal <ankit.k.nautiyal@intel.com>
-Subject: [PATCH 4/7] drm/i915/gvt/display_helpers: Cast argument to enum pipe
- for pipe-offset macro
-Date: Thu, 18 Dec 2025 13:52:57 +0530
-Message-ID: <20251218082302.2327243-5-ankit.k.nautiyal@intel.com>
+Subject: [PATCH 5/7] drm/i915/gvt: Change for_each_pipe to use pipe_valid API
+Date: Thu, 18 Dec 2025 13:52:58 +0530
+Message-ID: <20251218082302.2327243-6-ankit.k.nautiyal@intel.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251218082302.2327243-1-ankit.k.nautiyal@intel.com>
 References: <20251218082302.2327243-1-ankit.k.nautiyal@intel.com>
@@ -70,43 +69,109 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-TRANSCONF() expands via _MMIO_PIPE2, i.e., it uses pipe-based addressing.
-In GVT, some call sites pass an enum transcoder to TRANSCONF(), which now
-routes through INTEL_DISPLAY_DEVICE_PIPE_OFFSET() and ultimately calls
-intel_display_device_pipe_offset(), whose parameter type is enum pipe.
+Add a new API to check if a given pipe is valid using
+DISPLAY_RUNTIME_INFO() for GVT.
 
-This results in -Werror=enum-conversion.
+Update GVT to use this API instead of accessing
+`DISPLAY_RUNTIME_INFO->pipe_mask` directly in the `for_each_pipe` macro.
 
-To address this, cast the index to enum pipe in the GVT-side macro
-override.
+Since `for_each_pipe` is defined in i915/display/intel_display.h, which
+also contains other macros used by gvt/display.c, we cannot drop the
+intel_display.h header yet. This causes a build error because
+`for_each_pipe` is included from both i915/display/intel_display.h and
+gvt/display_helpers.h.
 
-This works for all cases as TRANSCODER_{A,B,C,D} all have 1:1 mapping to
-PIPE_{A,B,C,D} except for TRANSCODER_EDP.
+To resolve this, rename the GVT macro to `gvt_for_each_pipe` and make it
+call the new API. This avoids exposing display internals and prepares for
+display modularization.
 
-There is one place which uses TRANSCONF() with TRANSCODER_EDP, which
-appears to be incorrect. In any case, the cast preserves the previous
-behaviour.
+v2:
+ - Expose API to check if pipe is valid rather than the runtime info
+   pipe mask. (Jani)
+ - Rename the macro to `gvt_for_each_pipe` to resolve build error.
 
 Signed-off-by: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/display_helpers.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/display/intel_gvt_api.c | 11 +++++++++++
+ drivers/gpu/drm/i915/display/intel_gvt_api.h |  1 +
+ drivers/gpu/drm/i915/gvt/display.c           |  6 +++---
+ drivers/gpu/drm/i915/gvt/display_helpers.h   |  4 ++++
+ 4 files changed, 19 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/gpu/drm/i915/display/intel_gvt_api.c b/drivers/gpu/drm/i915/display/intel_gvt_api.c
+index 8abea318fbc2..45f12f239a2d 100644
+--- a/drivers/gpu/drm/i915/display/intel_gvt_api.c
++++ b/drivers/gpu/drm/i915/display/intel_gvt_api.c
+@@ -32,3 +32,14 @@ u32 intel_display_device_mmio_base(struct intel_display *display)
+ 	return DISPLAY_MMIO_BASE(display);
+ }
+ EXPORT_SYMBOL_GPL(intel_display_device_mmio_base);
++
++bool intel_display_device_pipe_valid(struct intel_display *display, enum pipe pipe)
++{
++	u8 pipe_mask = DISPLAY_RUNTIME_INFO(display)->pipe_mask;
++
++	if (pipe < PIPE_A || pipe >= I915_MAX_PIPES)
++		return false;
++
++	return !!(pipe_mask & BIT(pipe));
++}
++EXPORT_SYMBOL_GPL(intel_display_device_pipe_valid);
+diff --git a/drivers/gpu/drm/i915/display/intel_gvt_api.h b/drivers/gpu/drm/i915/display/intel_gvt_api.h
+index e9a1122a988d..a53687f7d934 100644
+--- a/drivers/gpu/drm/i915/display/intel_gvt_api.h
++++ b/drivers/gpu/drm/i915/display/intel_gvt_api.h
+@@ -16,5 +16,6 @@ u32 intel_display_device_pipe_offset(struct intel_display *display, enum pipe pi
+ u32 intel_display_device_trans_offset(struct intel_display *display, enum transcoder trans);
+ u32 intel_display_device_cursor_offset(struct intel_display *display, enum pipe pipe);
+ u32 intel_display_device_mmio_base(struct intel_display *display);
++bool intel_display_device_pipe_valid(struct intel_display *display, enum pipe pipe);
+ 
+ #endif /* __INTEL_GVT_API_H__ */
+diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
+index 9d6b22b2e4d0..11855c71e05e 100644
+--- a/drivers/gpu/drm/i915/gvt/display.c
++++ b/drivers/gpu/drm/i915/gvt/display.c
+@@ -200,7 +200,7 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 			  GEN8_DE_PORT_HOTPLUG(HPD_PORT_B) |
+ 			  GEN8_DE_PORT_HOTPLUG(HPD_PORT_C));
+ 
+-		for_each_pipe(display, pipe) {
++		gvt_for_each_pipe(display, pipe) {
+ 			vgpu_vreg_t(vgpu, TRANSCONF(display, pipe)) &=
+ 				~(TRANSCONF_ENABLE | TRANSCONF_STATE_ENABLE);
+ 			vgpu_vreg_t(vgpu, DSPCNTR(display, pipe)) &= ~DISP_ENABLE;
+@@ -516,7 +516,7 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 		vgpu_vreg_t(vgpu, PCH_ADPA) &= ~ADPA_CRT_HOTPLUG_MONITOR_MASK;
+ 
+ 	/* Disable Primary/Sprite/Cursor plane */
+-	for_each_pipe(display, pipe) {
++	gvt_for_each_pipe(display, pipe) {
+ 		vgpu_vreg_t(vgpu, DSPCNTR(display, pipe)) &= ~DISP_ENABLE;
+ 		vgpu_vreg_t(vgpu, SPRCTL(pipe)) &= ~SPRITE_ENABLE;
+ 		vgpu_vreg_t(vgpu, CURCNTR(display, pipe)) &= ~MCURSOR_MODE_MASK;
+@@ -672,7 +672,7 @@ void intel_vgpu_emulate_vblank(struct intel_vgpu *vgpu)
+ 	int pipe;
+ 
+ 	mutex_lock(&vgpu->vgpu_lock);
+-	for_each_pipe(display, pipe)
++	gvt_for_each_pipe(display, pipe)
+ 		emulate_vblank_on_pipe(vgpu, pipe);
+ 	mutex_unlock(&vgpu->vgpu_lock);
+ }
 diff --git a/drivers/gpu/drm/i915/gvt/display_helpers.h b/drivers/gpu/drm/i915/gvt/display_helpers.h
-index 97ebc92768fc..3af878e3d78e 100644
+index 3af878e3d78e..a910f8b8833d 100644
 --- a/drivers/gpu/drm/i915/gvt/display_helpers.h
 +++ b/drivers/gpu/drm/i915/gvt/display_helpers.h
-@@ -17,8 +17,8 @@
- #ifdef INTEL_DISPLAY_DEVICE_PIPE_OFFSET
- #undef INTEL_DISPLAY_DEVICE_PIPE_OFFSET
- #endif
--#define INTEL_DISPLAY_DEVICE_PIPE_OFFSET(display, pipe) \
--	intel_display_device_pipe_offset((display), (pipe))
-+#define INTEL_DISPLAY_DEVICE_PIPE_OFFSET(display, idx) \
-+	intel_display_device_pipe_offset((display), (enum pipe)(idx))
+@@ -32,4 +32,8 @@
+ #define INTEL_DISPLAY_DEVICE_CURSOR_OFFSET(display, pipe) \
+ 	intel_display_device_cursor_offset((display), (pipe))
  
- #ifdef INTEL_DISPLAY_DEVICE_TRANS_OFFSET
- #undef INTEL_DISPLAY_DEVICE_TRANS_OFFSET
++#define gvt_for_each_pipe(display, __p) \
++	for ((__p) = 0; (__p) < I915_MAX_PIPES; (__p)++) \
++		for_each_if(intel_display_device_pipe_valid((display), (enum pipe)(__p)))
++
+ #endif /* __DISPLAY_HELPERS_H__ */
 -- 
 2.45.2
 
