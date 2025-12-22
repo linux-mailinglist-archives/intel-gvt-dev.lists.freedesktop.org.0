@@ -2,69 +2,69 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B996ACD4FA8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Dec 2025 09:22:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D278DCD4FAE
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Dec 2025 09:22:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A298E10E566;
-	Mon, 22 Dec 2025 08:22:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B098B10E566;
+	Mon, 22 Dec 2025 08:22:30 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="WNXZVyYM";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="hKLtnzj6";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A569D10E568
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 38D8210E55A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 Dec 2025 08:22:16 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id
- d2e1a72fcca58-7aab7623f42so4295008b3a.2
+ Mon, 22 Dec 2025 08:22:29 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id
+ d2e1a72fcca58-7aae5f2633dso3689671b3a.3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 Dec 2025 00:22:16 -0800 (PST)
+ Mon, 22 Dec 2025 00:22:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1766391736; x=1766996536; darn=lists.freedesktop.org;
+ d=gmail.com; s=20230601; t=1766391748; x=1766996548; darn=lists.freedesktop.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HpOUBSAqvR/6qLOY5JhuGvZqZpKLgLxKB67YbPHT84s=;
- b=WNXZVyYMCJnMr495GarObyXtvFnj28rivxbWiqdDzAfnISPvm/yzdfxZVhQbaH/qk+
- u4Wtt5ub6vsascVn49sNzTXbrFewY1ZeoLAiE2VEVjD3EukEgQqyfZRV6oH686F9UFiE
- mVDUq6zFDpLfA6WnuVLkU11mI+lbUTEVByZhHyBuD9apD8KMTy6JdkwvuHxUzkvfJ5bM
- DwS8FO3g3zAnFDFUGbDsX1eSXFe/j4e7kMNXaMx8VIl1seSR/hH3rU8rMbi/A3wqfzNN
- Tcuv2NPyhK4lcdtPD6JcWZ5WyqQs9fYl02d5jmhvMzKo4ARUsZkKzwEzklaHCqDLO1Li
- ZBiA==
+ bh=U7ftMB0O2RO6V6KEGBmyXf/qaI8CtnkfkNTYnuarQaQ=;
+ b=hKLtnzj6qWyMUEvZ6n0Wha1kMlHHX8NKuPU8vc8FRKwL2LQSRQyKyks78b1aY0c8dr
+ chQ55OikODbpoTWW8/nAHK16cENFU1MarSWDvCrKpserunbDfv4SZSAu5x+w67YMtweQ
+ jmwrRZCXQcpN8+Caie5ianEJZkX/4tzsSEhQ30wPUuso3kj1fv91NYG/v4HdzJc96Tky
+ qZbFs1N+24vqVc2nHe2unGyhpXtD711aXWKfwtFAtEjTd5YZCV35AefseMQr88pBnH6v
+ oet93qmIkMiAMlcSDyqgY90pUcM8E4UFUfwTFgG9SeALcsXn6MZWwAYqPnM24IZjFvZl
+ TVNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766391736; x=1766996536;
+ d=1e100.net; s=20230601; t=1766391748; x=1766996548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HpOUBSAqvR/6qLOY5JhuGvZqZpKLgLxKB67YbPHT84s=;
- b=p9b4JdRz2DS50/y1iiHuQwppqSlJ4oNMiv3vCUZ595prE20OIaTB7Bzvca9JZ08rln
- wmM3rWZUipNkm3DJ1g+ZjHgJtB0Ms8V1FCtXwnxD9ayDt865gRMSskcFNmAThFuRWWtt
- HU8sY4ZhX/FWDmHCl8irLe0/28lvlZ+AA0fR0mMHyQtdeICDMrtMdEgu/qEqtYV0ywXp
- mA276hIWckfUBsF/yNGJ6zIEEOlxigaJIbimyisP+Z/RVqwls0cQ+bYGn98qOLGuVcIR
- WdG+5hilNSKai/jd8ce/LqjYyrhOHB43Q3kvUtFNQusgu8aTMsiOIxzEslx7F7p6DMjv
- oPSQ==
+ bh=U7ftMB0O2RO6V6KEGBmyXf/qaI8CtnkfkNTYnuarQaQ=;
+ b=mUXoiIzW4RtUyCxSAPV0D3AgnA7/47lT2y6tngJ0O9UOPYagoaYRACCQdFG9SyYRr6
+ AdL6j1Ednkshbselm+BfULslDGh7FRfaXwBmYf6k+NbfZqVG9zx8F0nT9osGElwy3FRk
+ GrODesw6a/PkLgZ+KWPdJ2oW4YCT7vUgrYa55u44sSM18x03xpqP+hhLNrgwxIvGNxJ+
+ RxwobcWszL+ONblbM9G8FjVDQyY51d8LrxavYFge98MagdqN2jIPsl5e4d6bUv7Wa5nr
+ wehfP6EQAkzVa2owpHDcY6JbiXiEfIcmaXHwwWOwg6gb5kiY8XQ5VUEv7tWm/YyEcYKx
+ q/hg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWLGw9INtzY5oMjGsK2I5lNRFU4YMdA2PznhqwDyyaS6ju6Xe2uDjxnDmN9GnX/63A0j7Wlq28zMpSxB6am@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YxqOUTcbi0Eg1U8uc3hdlWkTz0Pordk/g0Xw9eWd058UJgZ+9/h
- 7SuQYfwhK9C84P886dw478zU3ICxjLdxvVLHaFzy7vJqruT8QkHmSMSX
-X-Gm-Gg: AY/fxX7t+qGxn1iO2H6u5KBxxRONWNMzmYF8RcHjYsqGYSQKXIzedLv50swRRu3a3g0
- zfA/E1L0dPNWeRKIPpUvH0wsaDVuXc8nPzuTc04gUBlFo3K5TNLlcZPM8ytVFRxgrBRsz+dM/XH
- sQjCxo+nt5J/DaeRXGJ8AWNEHq/gtvYqvsSrTmTtJTASpIT3kMr5HtfqMsXunvOhuQiMzCEXn43
- B/4I/y/XomZD+swAb+/W9hj8xuRU1e2ZPm9dTdd/+JQCsCNgsshiJHDpaP1jjEEEeuP+YVfq4eB
- aYhbkGpeMBbYGAJ/4XIP0NmFTrMi+PC9OTuZtZDexydyGQOq7niilRuhvZHIOXhobGh6KfNyNyX
- KggLFKbTEQfU1+TH/22+uKze3sNbjpkIP7ijJXSqfk9Sz/JUHGao7TgqdmMgnqPqUFqCftWmgOg
- QLrcG+n+x5
-X-Google-Smtp-Source: AGHT+IFHqnkLVdqcXm7bGw59SVF2bpwuPS776EDpm2DBSj3/f5x17l2ZGosn+Y6e7lRKYamOLqvnUw==
-X-Received: by 2002:a05:6a00:ac85:b0:7e8:4433:8fa3 with SMTP id
- d2e1a72fcca58-7ff6607e4demr9148599b3a.43.1766391735766; 
- Mon, 22 Dec 2025 00:22:15 -0800 (PST)
+ AJvYcCVQjDyfynR2PtT6J1HcVlkxkUit/6X6t/2ff/q9SX1soqqx0V7ryyOszRQReR/7fmhVinjaAo949p0OwDyu@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YyjNQlWcrt+QW5G3y9cRAO2JnKoR/WbTN1F3GTkwgiH5kKRpwUc
+ RUZc1Yn2rRCQutwEnyprB65XaXOLSxUOu0TA00xmBOte9N6UkY8V+/mz
+X-Gm-Gg: AY/fxX7e5KKowpVNqhrnSXboJUbpCqu6Uj1ygaTgjmYCCBwRQm6flVkKpTih3a+appX
+ geUuHDCMTf41y/l4zfINKdgkhYTbKChkXSVGD3p1znMY7uQVDA2zmb4rxSlSiKgs0iThV0kg66R
+ hv59kJJHCRgH+6/f9YniMdNldtephh4ZBJSxfmFBCN2bIbZ7tL+6wQ5s9S8vG78cTESLzeLDYRF
+ VEQtM+wpPOXRFta93Ipf0tysqdmZz8TTeCEsqZvv4rYyRZ1R4t6SSfxX0UjLnqIVXP9kO6K+4s3
+ VUqND8td1qaQirgtns1xuuKzlKnjAER4NpcyXm+y4x0vMmv1Gjt+pFAKWt1OuJL6PBmZY1p/jis
+ d+JU6KPLJYW9gPEo3vWJys4H4/SagHlLDrUV/V1tzA4vkZbKRIfh2I7gifq9h6aSXnwNJeVUgFt
+ MX3F32hj+6
+X-Google-Smtp-Source: AGHT+IFIaB8eWc1HtVa50QiWjAkChZ0TUx+nROmHgF5xveLYAYPTgHVZsZQQy8Wrx7bUcj5BQhCb5g==
+X-Received: by 2002:a05:6a00:a24e:b0:7ab:63fe:d7d5 with SMTP id
+ d2e1a72fcca58-7ff648ed939mr9692669b3a.20.1766391748333; 
+ Mon, 22 Dec 2025 00:22:28 -0800 (PST)
 Received: from frodo ([2404:4400:417e:3d00:8b90:7f55:1261:772f])
  by smtp.googlemail.com with ESMTPSA id
- d2e1a72fcca58-7ff7e493123sm9540699b3a.50.2025.12.22.00.22.04
+ d2e1a72fcca58-7ff7e493123sm9540699b3a.50.2025.12.22.00.22.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Dec 2025 00:22:15 -0800 (PST)
+ Mon, 22 Dec 2025 00:22:27 -0800 (PST)
 From: Jim Cromie <jim.cromie@gmail.com>
 To: linux-kernel@vger.kernel.org, jbaron@akamai.com,
  gregkh@linuxfoundation.org, ukaszb@chromium.org, louis.chauvet@bootlin.com
@@ -77,9 +77,9 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  will@kernel.org, catalin.marinas@arm.com, quic_psodagud@quicinc.com,
  maz@kernel.org, arnd@arndb.de, linux-arm-kernel@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, mingo@redhat.com, jim.cromie@gmail.com
-Subject: [PATCH v7 05/31] test-dyndbg: fixup CLASSMAP usage error
-Date: Mon, 22 Dec 2025 21:20:22 +1300
-Message-ID: <20251222082049.1782440-6-jim.cromie@gmail.com>
+Subject: [PATCH v7 06/31] dyndbg: reword "class unknown, " to "class:_UNKNOWN_"
+Date: Mon, 22 Dec 2025 21:20:23 +1300
+Message-ID: <20251222082049.1782440-7-jim.cromie@gmail.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251222082049.1782440-3-jim.cromie@gmail.com>
 References: <20251222082049.1782440-3-jim.cromie@gmail.com>
@@ -100,42 +100,33 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-commit 6ea3bf466ac6 ("dyndbg: test DECLARE_DYNDBG_CLASSMAP, sysfs nodes")
+When a dyndbg classname is unknown to a kernel module (as before
+previous patch), the callsite is un-addressable via >control queries.
 
-A closer look at test_dynamic_debug.ko logging output reveals a macro
-usage error:
-
-lib/test_dynamic_debug.c:105 [test_dynamic_debug]do_cats =p "LOW msg\n" class:MID
-lib/test_dynamic_debug.c:106 [test_dynamic_debug]do_cats =p "MID msg\n" class:HI
-lib/test_dynamic_debug.c:107 [test_dynamic_debug]do_cats =_ "HI msg\n" class unknown, _id:13
-
-107 says: HI is unknown, and 105,106 have a LOW/MID and MID/HI skew.
-
-DECLARE_DYNDBG_CLASSMAP() _base arg must equal the enum's 1st value,
-in this case it was _base + 1.  This leaves HI class un-selectable.
-
-NB: the macro could better validate its arguments.
+The control-file displays this condition as "class unknown,"
+currently.  That spelling is sub-optimal/too-generic, so change it to
+"class:_UNKNOWN_" to loudly announce the erroneous situation, and to
+make it uniquely greppable.
 
 Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-Tested-by: Louis Chauvet <louis.chauvet@bootlin.com>
 Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 ---
- lib/test_dynamic_debug.c | 2 +-
+ lib/dynamic_debug.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/lib/test_dynamic_debug.c b/lib/test_dynamic_debug.c
-index 77c2a669b6af..396144cf351b 100644
---- a/lib/test_dynamic_debug.c
-+++ b/lib/test_dynamic_debug.c
-@@ -75,7 +75,7 @@ DD_SYS_WRAP(disjoint_bits, p);
- DD_SYS_WRAP(disjoint_bits, T);
+diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+index eb5146bcfaca..cb171088850c 100644
+--- a/lib/dynamic_debug.c
++++ b/lib/dynamic_debug.c
+@@ -1165,7 +1165,7 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
+ 		if (class)
+ 			seq_printf(m, " class:%s", class);
+ 		else
+-			seq_printf(m, " class unknown, _id:%d", dp->class_id);
++			seq_printf(m, " class:_UNKNOWN_ _id:%d", dp->class_id);
+ 	}
+ 	seq_putc(m, '\n');
  
- /* symbolic input, independent bits */
--enum cat_disjoint_names { LOW = 11, MID, HI };
-+enum cat_disjoint_names { LOW = 10, MID, HI };
- DECLARE_DYNDBG_CLASSMAP(map_disjoint_names, DD_CLASS_TYPE_DISJOINT_NAMES, 10,
- 			"LOW", "MID", "HI");
- DD_SYS_WRAP(disjoint_names, p);
 -- 
 2.52.0
 
