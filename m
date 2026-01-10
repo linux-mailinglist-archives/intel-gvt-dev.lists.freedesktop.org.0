@@ -2,61 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AD3CCEE53E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 02 Jan 2026 12:24:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7C27D0D633
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 10 Jan 2026 13:58:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DD7A010E078;
-	Fri,  2 Jan 2026 11:24:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AB65A10E06B;
+	Sat, 10 Jan 2026 12:58:34 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="mmCKFYUJ";
+	dkim=fail reason="key not found in DNS" (0-bit key; unprotected) header.d=mail.mp.hn header.i=@mail.mp.hn header.b="szmXZGNw";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DB3A810E039;
- Fri,  2 Jan 2026 11:24:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767353069; x=1798889069;
- h=from:to:subject:in-reply-to:references:date:message-id:
- mime-version; bh=aUV6jIfwJYtJCB8EOUaG/Gib8B1MSI59NYafDXROZrE=;
- b=mmCKFYUJtfiDNnRJEWreGfAO1bQDGrWuqRClT50R957tRiXCxaHsIGsQ
- vIvDsQl43OsRL4VA7QHV8vDr8xX7fqsHo6Oi+DsTEBRqB6bKpPZan+/1O
- 8bRd+yIWERz8bmKLV+2Xd/7kenso9XKBeU80NsnVxIiuelMAGe/f7L5TS
- JuP2iQxyrmo4s2rO+PHHTT0i6/8xyBAcwN3KjMKucm1bkKz8fkMbers1y
- 86ZvTf5H4QH+41UXJOYm5FaRRZ3n19zmkUo1dFyj+eJyclQSj4AXgC2NB
- 6aEb94yTfG28EuImIejte9hl0SMTV8lHwQRtoIfqI0WEAMfJ5enN+JyoL A==;
-X-CSE-ConnectionGUID: Wq9K2flcQqKtEngpgveTXg==
-X-CSE-MsgGUID: tCZ9itEYQS6+X4GnKXFkmw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11658"; a="94317303"
-X-IronPort-AV: E=Sophos;i="6.21,197,1763452800"; d="scan'208";a="94317303"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jan 2026 03:24:28 -0800
-X-CSE-ConnectionGUID: 9wkP1fZZQE6fgQThESJx1Q==
-X-CSE-MsgGUID: bCtsvre7Qr2C3SuBLKt1yw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,197,1763452800"; d="scan'208";a="202266340"
-Received: from mjarzebo-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.245.246.226])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jan 2026 03:24:27 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: "Nautiyal, Ankit K" <ankit.k.nautiyal@intel.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH 0/7] Prepare GVT for display modularization
-In-Reply-To: <97e62d7a-d6f4-4356-985c-1b605d9d07a1@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20251218082302.2327243-1-ankit.k.nautiyal@intel.com>
- <54c40d40-f365-49cc-93d0-b40a8db54585@intel.com>
- <803681dce30df69342611e5dd132440e2c94ccc5@intel.com>
- <97e62d7a-d6f4-4356-985c-1b605d9d07a1@intel.com>
-Date: Fri, 02 Jan 2026 13:24:23 +0200
-Message-ID: <3e52d815fc723b7961a37458ae32998f83954499@intel.com>
+X-Greylist: delayed 29776 seconds by postgrey-1.36 at gabe;
+ Sat, 10 Jan 2026 12:58:33 UTC
+Received: from mail.mp.hn (mail.mp.hn [190.92.22.6])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7161E10E06B;
+ Sat, 10 Jan 2026 12:58:33 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mp.hn (Postfix) with ESMTP id 834B33AC4F73;
+ Fri,  9 Jan 2026 20:07:51 -0600 (CST)
+Received: from mail.mp.hn ([127.0.0.1])
+ by localhost (mail.mp.hn [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id rZ7NUgoP4Ouw; Fri,  9 Jan 2026 20:07:51 -0600 (CST)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mp.hn (Postfix) with ESMTP id 35EEF3AC58B2;
+ Fri,  9 Jan 2026 20:07:51 -0600 (CST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.mp.hn 35EEF3AC58B2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.mp.hn;
+ s=BF4225C8-0936-11ED-80C2-AF0015B3317E; t=1768010871;
+ bh=1dOGrIhopVip8nrUZ29YN+ZuZqpKynqozffBanjdNRo=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=szmXZGNwLwJ10WkeqlFpQWidMLGJsl/sv+Xp5AA0v5JSdKhGBD/De7Q3yN/R9jmi+
+ /uPri5wyeVj/9OtpWjmQWLTH/Hq/xfMG08jrdfYJkk3r6b9gGa9VA0HrYg1ro+o15I
+ HyQeN6acocW+lsZVRZpUFYYvvCh/VvG19D7lBjHSH3IsdcE8Vy3HdsG6bwPE89CeuW
+ VMzgfJRDIbnZizniVBc1+YzasQijg4Xm/a7A9NV/10/uFL2/VuzreCMSsxj0FDYJOS
+ QCkYmWMAD6B/XeSEjLGr+TFkdFpxKa38Ne9xY3IgWpMjsD1WU2we3qnWMxQZNuJRtZ
+ jWcGKQwIFfe9Q==
+X-Virus-Scanned: amavisd-new at mp.hn
+Received: from mail.mp.hn ([127.0.0.1])
+ by localhost (mail.mp.hn [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id QAKLj_omGy-3; Fri,  9 Jan 2026 20:07:51 -0600 (CST)
+Received: from MAC4754.localdomain (unknown [120.235.44.42])
+ by mail.mp.hn (Postfix) with ESMTPSA id DE4E73AC57FB;
+ Fri,  9 Jan 2026 20:07:14 -0600 (CST)
+Content-Type: multipart/alternative; boundary="===============0379000577=="
 MIME-Version: 1.0
-Content-Type: text/plain
+Subject: =?utf-8?q?Zur_Erinnerung=3A_Herzlichen_Gl=C3=BCckwunsch!?=
+To: Recipients <fzeron@mail.mp.hn>
+From: "Euro Millions" <fzeron@mail.mp.hn>
+Date: Sat, 10 Jan 2026 10:06:38 +0800
+Message-Id: <20260110020714.DE4E73AC57FB@mail.mp.hn>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,22 +63,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: yuliakadulia@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 02 Jan 2026, "Nautiyal, Ankit K" <ankit.k.nautiyal@intel.com> wrote:
-> In the new year I intend not to repeat older mistakes (but may be to 
-> make new ones :)).
+You will not see this in a MIME-aware mail reader.
+--===============0379000577==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-I'm on board with that! :D
+Herzlichen Gl=FCckwunsch! Sie haben 650.000,00 =20AC bei der monatlichen Eu=
+roMillions/Google-Gewinnspielziehung am 24. Dezember 2025 gewonnen.
+ Bitte geben Sie die folgenden Informationen an, damit Ihr Gewinn =FCberwie=
+sen werden kann:
+ Vollst=E4ndiger Name:
+Adresse:
+Geschlecht:
+Alter:
+Telefonnummer:
+ John Andrew
+Online-Koordinator
 
-> Wish you a Happy New Year!
+--===============0379000577==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-Thanks, you too!
-
-BR,
-Jani.-
-
-
--- 
-Jani Nikula, Intel
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8"/></head><BODY><P>Herzlichen Gl=C3=BCckwunsch! Sie haben 650.000,0=
+0 =E2=82=AC bei der monatlichen EuroMillions/Google-Gewinnspielziehung am 2=
+4. Dezember 2025 gewonnen.</P>
+<P>Bitte geben Sie die folgenden Informationen an, damit Ihr Gewinn =C3=BCb=
+erwiesen werden kann:</P>
+<P>Vollst=C3=A4ndiger Name:<BR>Adresse:<BR>Geschlecht:<BR>Alter:<BR>Telefon=
+nummer:</P>
+<P>John Andrew<BR>Online-Koordinator</P></BODY></HTML>
+--===============0379000577==--
