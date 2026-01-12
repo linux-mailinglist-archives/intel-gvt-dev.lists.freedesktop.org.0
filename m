@@ -2,141 +2,122 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73122D0F820
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Jan 2026 18:22:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C4CDD12A6A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Jan 2026 13:58:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0830010E054;
-	Sun, 11 Jan 2026 17:22:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0962A10E3C0;
+	Mon, 12 Jan 2026 12:58:31 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=estg.moe.gov.sa header.i=@estg.moe.gov.sa header.b="1xvbwtVr";
+	dkim=pass (2048-bit key; unprotected) header.d=outlook.com header.i=@outlook.com header.b="WfmnnsF2";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from AM0PR83CU005.outbound.protection.outlook.com
- (mail-westeuropeazon11020092.outbound.protection.outlook.com [52.101.69.92])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A75010E054;
- Sun, 11 Jan 2026 17:22:31 +0000 (UTC)
+Received: from TYPPR03CU001.outbound.protection.outlook.com
+ (mail-japaneastazolkn19012048.outbound.protection.outlook.com [52.103.43.48])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0339210E3C0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 12 Jan 2026 12:58:29 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=yUqHHX4nAVRCpJZzcSaqQdtXAPf2uDtJU4P7+KTpbZ3Z2CiTynOh304zIZzhWDDJbQKQYYmLyYf7F6EcxzYRrdyBWDEK7lKDQtyiswQ7QWLRiXDES2KVa/jvnQeiT4hSnAio8JlM+hqW9EC+qqwW2o4Vt6OrdP6778PALsrJtIs7yuTdgf5Vq9E6/qswmyTixlzLHuivyXquGctME9sgAjc4n3t7hRJACKtHF8WAmi2FUGcwYuA0FvzJ6KrFkZJUEyA6/8hOXUs7CPkFrH3xMbZ7KyNeDf7N2DsdTDUIRuw/VioCTncVazQXjLOQDZMLCG3dSc++/ULN/85cdq3aVw==
+ b=tldaRZa5IvD9zFKCXuvFgfhcB2gS9Wbbcsl3yXRHBGOmkWSUYo7F9KzUEhJFmF4DB1AgbRq6H+DRepatzURZnKdx4QbT/WPG1bliTKKVJbJcCmYfKCh96mlCO0qLo6IPPRWnzTgseLNY/zUPzjRI3NFKUJ5Oo1B471kk9L1QdUYx6RHPYEFH773GQ2Y72SSyfnA3wGXUEMXYTpYYwtcLy4J/uNGaUgcRld08qLbTLXgaV/82c9NqHtlhi8/Kfnt6OS/zQxBi6FgMX/ZwKF/UsUitu/Wh2MitDMpA+Q2y8j7bQ7Xgs7saiGIR9UP7hzT30Kw05UdR7AIaV5EHu7aHDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jiY366ZuN1w3nqagB5/VdVNnUmfHWRa6Z1EkeP7HppY=;
- b=TRvu8sHCtw4aVbuKD8bFzppVXREgaFm4MF1xiLY9hQegF7pgOAy1WieJiahFlbfAm/0m0LI8qGgtd3DHCJDbcyLqN2LqbQGw4OdIaWrFItHzv2mPznM0Sq2YvRjMwbaVc8EcZB1rWrcnTZDTK1DYGsXbN9eUlmQGeZa6CucmN7K/CQgavPfiUjrO8CAwuihH17pq4GLktsp6VUT1joflkr9MMvv2gkKvfo9WoNIiK7sLj15ZPbO5djt3lylAPFdPuPeT+QKEeKslFIFB7K5L90cjhTjxiL6yZfGLHeCrVvqGBhZV18AWaaAWWhnOqSxFdkIwU4kLlaK8xfJDNjCiEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=estg.moe.gov.sa; dmarc=pass action=none
- header.from=estg.moe.gov.sa; dkim=pass header.d=estg.moe.gov.sa; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=estg.moe.gov.sa;
+ bh=GRf3T4VQa2KfnH2jwz7Ymcc8GNRXINPy/lSmpd8uYic=;
+ b=iThHVMPDSfasY+7o9Cqz/GxNksb9KPA+753FoTfi7Yh3IrFYq/3ax0eKdd6wrOskZEYUh4KfihC4XcY9O2GAluLNWhTdj/UZz7gRJZiWlHcL71Mcr3XOHtuubQgkTBXbCkWUp82ukogNBSWGoD7vD40Uk8vgR2jmdPN4kp7bQ3VEd+ogv2EGfpDlZeaTG1AcMnvbCRP8GivLrNF4BcahTRgUooauEG+/gm9/Rjjy4GjrUaWJfHI7P1xXOO23s+ibDlrBu9EHlKFLEmmOi5VLWJu3NlRYdUa6L33uwiB5cI9Pmp1vSdXLsla8fSfxy7WFt4AHVXxAyDefxu2mdZHsRg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jiY366ZuN1w3nqagB5/VdVNnUmfHWRa6Z1EkeP7HppY=;
- b=1xvbwtVr0sdb5XoFa8fMgeQoVb9CSNeOxhQqV1wPr/x+OIcHZKJlR/DUMxG8VXu14Ko1WZzKXkQQCSMnejQhRQ8XxjHatSEWn8ciYtSEFnaxODVkooYrGy9V6xmxgbXZ/CpNiZKnrr5tzyZxZEKqxhX/tJfRy8b4Q7jW5CyScAO1+o+T63Bj4m5B9pyVWs6CubkkdBJkLDKMetkH+V8zaxMSvx2DbrkAsLEVMcS2VzL4b5sxXlRDWAaspi5fy4yFu3LA3eBCrToLDBzKpIBneaJ6/oXzxfE9lJz9VTSW1mY6d00kVDFDhxGyUmDPUVbI5+J4h+64wwVZsEqwuYtBrw==
-Received: from GVXPR02MB10763.eurprd02.prod.outlook.com (2603:10a6:150:150::6)
- by PA4PR02MB7069.eurprd02.prod.outlook.com (2603:10a6:102:bf::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Sun, 11 Jan
- 2026 17:22:28 +0000
-Received: from GVXPR02MB10763.eurprd02.prod.outlook.com
- ([fe80::9a0:e7f8:6df5:8a66]) by GVXPR02MB10763.eurprd02.prod.outlook.com
- ([fe80::9a0:e7f8:6df5:8a66%4]) with mapi id 15.20.9499.003; Sun, 11 Jan 2026
- 17:22:28 +0000
-From: =?windows-1256?B?08fR5SDI5Mogx+Ha5sfP?= <S4454635@estg.moe.gov.sa>
-Subject: RFQ 2026 FHS NEW ORDER INQUIRY.
-Thread-Topic: RFQ 2026 FHS NEW ORDER INQUIRY.
-Thread-Index: AQHcgx7T8+ik3vrohkS490r3ObK0mQ==
-Date: Sun, 11 Jan 2026 17:22:28 +0000
-Message-ID: <GVXPR02MB107631ECBE81F627EF877C7BC9880A@GVXPR02MB10763.eurprd02.prod.outlook.com>
-Accept-Language: ar-SA, en-US
-Content-Language: ar-SA
+ bh=GRf3T4VQa2KfnH2jwz7Ymcc8GNRXINPy/lSmpd8uYic=;
+ b=WfmnnsF2aMELyytoZmD9V4xYLCGF8QGZzke8L28VN66ZF+bh7cEm59epwFReRKvbbFqWjtH7KdtYa/EfHCPWKNbiKPDYu6uLLXlJhQ6m8RZLo3T6mYwFeBz9JCfwrRp4104cKRTuHPi1fB2gzUC0+FYjnWWFVmXnVZWuuJnOCBL5qQjiVMLx2m/d6U4TrB0wiaM11issivQZ8eoNSCdKb17ZdYiAQOJKC3NXdcf/ld0vQiSSMuAhmkUK4wgbCOQ42Nm9RRzljjIG6Xvqwr+xGMtiNsTQzRz2X71Pj8CSEfSxSI0wz02o7CRlH5vqL8bFoKfzzU8LB7rKz/JjKt2N4Q==
+Received: from SEYPR03MB8325.apcprd03.prod.outlook.com (2603:1096:101:1a5::6)
+ by SEYPR03MB7889.apcprd03.prod.outlook.com (2603:1096:101:165::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
+ 2026 12:58:26 +0000
+Received: from SEYPR03MB8325.apcprd03.prod.outlook.com
+ ([fe80::f3a9:bc03:1769:f850]) by SEYPR03MB8325.apcprd03.prod.outlook.com
+ ([fe80::f3a9:bc03:1769:f850%6]) with mapi id 15.20.9478.004; Mon, 12 Jan 2026
+ 12:58:26 +0000
+From: Beatrice Vega <Beatrice.vega12@outlook.com>
+To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Subject: Would Love Your Feedback 
+Thread-Topic: Would Love Your Feedback 
+Thread-Index: AdyDwx+/poLwPbtsSv25vq6VAYDOGQ==
+Date: Mon, 12 Jan 2026 12:58:26 +0000
+Message-ID: <SEYPR03MB83252442A87410D1B68CBBDDEB81A@SEYPR03MB8325.apcprd03.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=estg.moe.gov.sa;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: GVXPR02MB10763:EE_|PA4PR02MB7069:EE_
-x-ms-office365-filtering-correlation-id: 78b01aac-5b53-4b4e-ed46-08de5135ff0d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
+x-ms-traffictypediagnostic: SEYPR03MB8325:EE_|SEYPR03MB7889:EE_
+x-ms-office365-filtering-correlation-id: d8565709-3f3b-42d9-062f-08de51da46de
 x-microsoft-antispam: BCL:0;
- ARA:13230040|41320700013|366016|1800799024|7416014|786006|376014|8096899003|27013499003|38070700021|3613699012;
-x-microsoft-antispam-message-info: =?windows-1256?Q?ABC/GAEDQ0LsNQzLfNG0REtDc18zc4flLTNInVNQGF3Kufukbeje9pQ2?=
- =?windows-1256?Q?cqSxqnT0MzgCgFooy5dCPzIiSZy5G5AnSXry4u1JBwPdFYW3Axx+YN/b?=
- =?windows-1256?Q?NuKosNElsupupHSQhuDqHS731SCJLGf64sIwgeF+YunM3C4bMPN41jNi?=
- =?windows-1256?Q?Eqd4dGbpNzdxRXAsgmIssyMeHpPA/zC5i6SBCv2WTjYqkS3swirlCzmS?=
- =?windows-1256?Q?ksrT3f1iGO2MLCWW4a8fKpINe42L/VRhe721NISNJOrCDDaiaeQ06IZt?=
- =?windows-1256?Q?OqfAi2QvxE1z2jx9KFig4rVCpdhDwAbY5PHJAJ9/aRi7KBhi7f+dAnBl?=
- =?windows-1256?Q?kocVMOFsPiJxLdAx7IfKWtlcaH1qgsZaxhRtzZu85tKHXv9LxrY9NPmi?=
- =?windows-1256?Q?fZsM7YFxFCh395QY0bcO7e/NANOfzxgk+pfrCb8vFk/KatvB9T9WnwFq?=
- =?windows-1256?Q?QuueH9cfH4ZwWLuqHP5sxdx7x0l3ZodXqU3FkguNqb+sJj2TXG3RkEJS?=
- =?windows-1256?Q?zDykpV0aQayVP+cz5X2cNHCR1OWscOwTe8/XlCV8YOIkGJsfyJ3ArnB/?=
- =?windows-1256?Q?s6kShAQUSuP0Fkv6mPFnYedbSfAn9JwcL51+gXFJYbxq2JTUl0+S8ogc?=
- =?windows-1256?Q?jpkbJRU+4s1PGgchXd5iRxlBz2yJAbSroZxmeRfCj/O9jpldSOWsiHx5?=
- =?windows-1256?Q?SYuBWDdCIHwXgzPMpDxIs5Kk2a8YyaAl50NeQnFeYe1m3lDXGFb/AUkm?=
- =?windows-1256?Q?jOrYW0xgey6NaI1OyiFNicK0xOtDvs/KSF0c1ie3m2aOvKgRk8tv/xdQ?=
- =?windows-1256?Q?N5oOYh8Dvc0DtuwzfSZM6fmPmqnfzcipgVId6l74/pekd8w63p4tj0iZ?=
- =?windows-1256?Q?KsiebZCNLSU2Vp3SLBgWNRgYCAAtHtPZvd5seNHuN9kmsmbgxBRjfwFi?=
- =?windows-1256?Q?SWewR1DvZXlprTTQhH7I42aqpVcOlJBzWaNnwzU2JHwK6XAr0qtRbIPt?=
- =?windows-1256?Q?QVKs7pBLBt37ePtuoq10VxyjsUiHYwXx11V0pTDMwFRIbvbvAEacZpen?=
- =?windows-1256?Q?F5L53M5lJQaAmwZfMydp/G0ZscNfgayYs82HUbYJkYZHOmRuU5M/mpaR?=
- =?windows-1256?Q?eRPLB31tFmngrcGeSeG7HEJDhJ3TpWRnGzMq3LBuSHfz/NK7NhKyuqig?=
- =?windows-1256?Q?VMZ4sYwHWVYA0RYND1TsG9oiZCXMZhyBcQjPjj0fH4MF8Ah4CF4finhq?=
- =?windows-1256?Q?I4XRGbsC2wOzhBnP0rDmA/fF5/Zi3WlfONTo1xXHvtwuAPRY8nhK6lcH?=
- =?windows-1256?Q?cJFTFu3djLqqFnVkbVy9zG5KW03mGqD37yQRkV0BQOlAktQmg9p/mWJr?=
- =?windows-1256?Q?9I8GvZaZ8ghx0EaasTH76JqfJP32BEkH2acSllDw55quSS60OUx7hyCp?=
- =?windows-1256?Q?+hLl+fh644IO+Za0PleiL+C2Jy3rwuLKvVHz4Dqp/rHs9xYGKYODbo5v?=
- =?windows-1256?Q?WAgGw1lLHiWcMjVDg44PwcquX3dTWyNoBKYk0OJOdBQetO30nPnovRRe?=
- =?windows-1256?Q?yPm2VNUENPCzfG4XHCQorwyOtHc4CPDsweQ7v4iInwFLAJ1tkG3Kgksc?=
- =?windows-1256?Q?eGmw+X8TJ85tpH1CKbaj3/t/JcFlJ9yX3/ZW0irNXii6sw=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:GVXPR02MB10763.eurprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(41320700013)(366016)(1800799024)(7416014)(786006)(376014)(8096899003)(27013499003)(38070700021)(3613699012);
- DIR:OUT; SFP:1102; 
+ ARA:14566002|461199028|15080799012|31061999003|39105399006|13091999003|8060799015|8062599012|37102599003|19110799012|20031999003|12121999013|440099028|3412199025|40105399003|19111999003|102099032|13041999003;
+x-microsoft-antispam-message-info: =?us-ascii?Q?y+kUSWfteaOVnyQSwJlyAdNQ+B1jeXT2tubhuwfNJ/SC7esKEtGkA6A3ePTL?=
+ =?us-ascii?Q?p6c+tGzfYz8Jl5w6rdptUtnU3JrYAEuqsxbmPjdeH6KjLZKrEPDdHQtHiYDB?=
+ =?us-ascii?Q?9AJQrt6brLa7Dd/TwU3JUC28x1rL1NnkW9qR7QQto5WQeIc/wAoRhRF+i/Bp?=
+ =?us-ascii?Q?fgGKEUpBgTgylCwJavqWxkQxPgGWvMH9JfQng3CukD/xYxoXPItzfq9VWeCi?=
+ =?us-ascii?Q?NW0e7oZlBXZM7s6IQW9Ki4hZ/szowOHsp318yRUeM/vrdtcEcPA8/K57/l8D?=
+ =?us-ascii?Q?6B5X8/7IeB4O6j5f0mKx3tWJGCvhnXFPYVmJAPt9wrH9QobIvtwCt025iE7x?=
+ =?us-ascii?Q?3lkrVQeBwjD0UlrBWihzCJqSgeTo3dUMhl2jchSK3GbtU4UWz+XtYcoWeGcK?=
+ =?us-ascii?Q?2Q0TX++3hWyVZ41cGtV2FVrDErhaSjKtFI5ubXv+TNmv94STqcIYTADBQUoi?=
+ =?us-ascii?Q?c2VQM+Vf2v1lDWeil6DrrTyxKy96MxLYt7rbRuAlgMe8rP9VQGy2v9oT64YO?=
+ =?us-ascii?Q?v3o2QtGMisaZHNzfZ0mBVGLxFcPictYhbggCcPKFiZu/BRkOovnEk6IIMOlR?=
+ =?us-ascii?Q?rFwF+KRZ3Lw0dtodMct8dmFR5y12xx7WOlwmjxvYD0oNKnbCbc4L8Fj2uktp?=
+ =?us-ascii?Q?FfwhKGvev2Ixa9548a7G2ES4ILbV6wiAeHR+ONlCXZBAgAmRGJZyxdQ6VoXH?=
+ =?us-ascii?Q?RntlCKOz3se7KpL0/LyuzNDkxrrmZYJ2VAon8cwQhxsdbeQpcpl+E4k3vCBX?=
+ =?us-ascii?Q?TSjeKhyoomRXlJbg97tq/kyKzhLP9ZJd02dcx9CRE4q0g05DV7iifnn/qOrE?=
+ =?us-ascii?Q?qpS8HsskDHp+FYQqq+Ey8ipDSjWVzSb9K62ojV9lFfqJ33Z+IfS/eEbwehtK?=
+ =?us-ascii?Q?kmzH+8SmYtf9pADN0BOXpjz3I337Vc+0V7+biHJ74XP1rUcKAdtW1Ii478mq?=
+ =?us-ascii?Q?bmHbetb6sQonDXYV7uc3+2QkNaqQ4rYWZtC9kMSuF8fDZ5rPG0DzLM48HGEo?=
+ =?us-ascii?Q?IpLa9nyp0LrRhkR2xPDF6ct8Nv3GhW2p31J744Ki2fzj06CIwCgtCs+nxuOS?=
+ =?us-ascii?Q?HRpq9ZPsmIAjJ+MyL7bHt7zPdlWw2Y6p6NO9Fuo8ELseKNBgRvwIxfFKp+EE?=
+ =?us-ascii?Q?tUJPbi6P4LyWi4APzRzXkFRuEgGQnS2qmv6RNro/I3JCiDlmGhqVmwhM9cBh?=
+ =?us-ascii?Q?o/7Y3YeKzOWxOblOigBaJktGT5I8/j1YcgR50q6WdF0LvrehnWXFVOBdsycT?=
+ =?us-ascii?Q?2JOQOiBTIDvzkms9mT9rKH1OZFJzPaW+5clu0XhZdCy1sB+yGYbai8YqDI1h?=
+ =?us-ascii?Q?Tb8bM7scpIRoZQ7jfqHqMn6fNAvSzXGbx4lKyWUat2MXutQlqv9B5cSi5mqR?=
+ =?us-ascii?Q?d/Z9QKOk18eCz7AJJ7lAiFcZG2f6?=
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?windows-1256?Q?miLTfcBiPWrFxAyPEYBsDuyl+dkV0evf66nn70MptZWZ6gb0eQljxvkI?=
- =?windows-1256?Q?Caxuw40nL8KWyAzlJHjr5GgZKe6eOQcogwzGbBGfxJSWGIi0XOTZ8pwg?=
- =?windows-1256?Q?D1nlojHVzQAYqvoLFipsRXfr3Gp1pz/S8tPdsOQ63yrc3TcjPPqd16/V?=
- =?windows-1256?Q?Mw7y1EpkGiiKjMED9lBX+tn/NFSLxsJbFicweAhqtxJ+BdX2RDVy6jfN?=
- =?windows-1256?Q?0yJ+F0ybqIQTi69R6yOybb/j5nE6wCqXNaJj3xo7KPhRtsUIgyqLtCdx?=
- =?windows-1256?Q?kfVtSYR/EsvgzrDZ3c1dE01D3sK7i9OxuDKEbDPxsyULzrO4HxMKkaD6?=
- =?windows-1256?Q?xhdTdOzuz8Moc097HpR3Cqjovbq7M+ibdW40/jNSACEgfJ6GdrPbRIZx?=
- =?windows-1256?Q?eUR0McflHrLXprZioQgzkN8h67DJYQphfoc1hRe8bx0cbI027ZtaLfbW?=
- =?windows-1256?Q?mXy676fSJb9jg36JZ125ClxsW1hrxhZIMbeNwdpLKuc9D0AapbxGNPzl?=
- =?windows-1256?Q?QeNY6CagCvHJ4brYO4uXK6tHyq6izH+Mw19cXhVNGXcxHRFG9n1gzoAQ?=
- =?windows-1256?Q?PbpTVZJaytKHUN3dHfTAfUeJoI2sXoLY+bJjxCnUEXK1BcwY+emWFacJ?=
- =?windows-1256?Q?O/c9XQaTrooReSzwyEAFUrK//lsoivb3RanwLHDzJ5ySYep3DyVekIG7?=
- =?windows-1256?Q?GdeTZBJnJi1hVcunfzGB6ueaeBdxvFDnLjfIle5oSh1m9oYMYtIommiM?=
- =?windows-1256?Q?xF2pV7LMHAN1yv7FGzDjNdIk/YI0QKU+2zrxhE3GzuID2CKZLOnrVuao?=
- =?windows-1256?Q?hViJEji6rO0i43MBwDQWYJ1FH9Ei7zgiBOCTCnhh0gBiaChwIPFfHLTx?=
- =?windows-1256?Q?tIUaD4B+jH0Y0bStt0J3zIEOfFSmELs3loyCBHiu76ZpswJAOYBF5hJD?=
- =?windows-1256?Q?ZKCEAIQhsYf/kOdQCRJ6gGrPojlfA6HlSa/43YJ8eOIh9eAmLZJALV9B?=
- =?windows-1256?Q?T6DnGb0TBsNVPXfRM330otRs0M7J7o/n5vhU9dMbXRAWNhX1RUZSbZaK?=
- =?windows-1256?Q?Pn8jIxsKaxcQekRRlQHYpnQXSjgpBttu7N71L/6r97trU/SkYcqTy/Q2?=
- =?windows-1256?Q?Mn+jgu1sKZMUSwf2imbDe1RGjTpIBctPduipUo9IryEejpOuO8Jj92dh?=
- =?windows-1256?Q?WSFI5qj1j0VUwFTynJe5gtXeJklk2UDM11SHPZ9dfolU0jx8DLVd4Zlm?=
- =?windows-1256?Q?RyGtYv4lu6FJONTSqPxzF/6Em74sjuj3RDyAC6iLbRvuBPxMXzqhaCpM?=
- =?windows-1256?Q?WD55fzUZHtzWj4iKB3kq2pP1RrX1DjYt8m3+Ybj+PXAi+g/8XVPCPmxk?=
- =?windows-1256?Q?OFN3Xd3TpqJAEyPPjj0BkuB1+gfUND8W4ouHMkt+gPT6OUsHieQhANx5?=
- =?windows-1256?Q?IHRZ5PlINxTOfHWbsJXvPh7Fn8Zmk4/bgZTke8KYmIoro2z75u9awhuJ?=
- =?windows-1256?Q?bshmaZ0VJhd5QkFTYxYVe4wEx9xRh4ySc38AgOOsGx8PeKF0Q1hyqZH0?=
- =?windows-1256?Q?2Pg7db/OH/q2cDveDelxap9a5yzAVgmY4xB/kMEdQHkRuIdkW4fsRmAN?=
- =?windows-1256?Q?NDDt3Zdrg+JTHBtUNJUcN69ovOfahciMRKnRtwcV4hNuzUeWcJumFeV/?=
- =?windows-1256?Q?IpQf4UGrz5jruN/j1oc2fpUDN75cZeoFmcVgE3MZNBj1M5uOCJDuql+S?=
- =?windows-1256?Q?08qR6UW5gO6qmWm+E8C04nITpnzrJ5SK7NNaBbNl41e6GRhErdIsGJl0?=
- =?windows-1256?Q?WpvpFKrKMCDlF65i15tVTNIwHjXdKqTvyLMPGKxRHaTY6WDx?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Dz3OaYo5jRFeXmZfIcGHIUpqalg7nmxxzeYPe8WZqvlPzLkLaOTTYlj2C5JM?=
+ =?us-ascii?Q?oBMDSJ+KUfip3qSdcy9NwsBlPlirxYnNJYYz4PsVTx8Z1z/Cb48h4FP1gIl5?=
+ =?us-ascii?Q?FAwm8Zha7fT/DcoxE/fEMlDgptpFo4y2WL9/ocDcWtxk8KbZU3cXn8DGvLqT?=
+ =?us-ascii?Q?r9gSRfPasAjUMR+po/tA/sydyGB0s166Fkn4kWmFVWlzCDjcykSSNtjmncG3?=
+ =?us-ascii?Q?JpdMA4nCCGLrVGufuvex3sUg6t2+fIMiHtmeyDOIARaS1jBqp4g5oSdBXs52?=
+ =?us-ascii?Q?50o3CD8o0MQqZDmPfwd5Xn5ZA2TUh4g7Yx20JNIypiYyu1gXjPm73g6i4XLH?=
+ =?us-ascii?Q?rx0Uq29Luq1Z+5ZO4QH5mt1hxt/DKavykqPdUhKpX+rk9c6NR9+WceI90Abm?=
+ =?us-ascii?Q?s6X/CxQGYJhW15/829wyHcQWucTyBxZYlJYP8xOnJSH14aTpIICK4wxI5R5I?=
+ =?us-ascii?Q?vMxJu2rad9iEnrfh3mm7anrY+lzDsgykEHZyvNR7AX+N5Sab8k6Chyr+yHgG?=
+ =?us-ascii?Q?ZT2wb+Kq1YSMimTXDkHfjfTLWFiCo04RyCNw7r7fGQYFM3Nk3qMuT9UeMWJv?=
+ =?us-ascii?Q?yvI2N6d4NieiITZuzQiB2XMuEk40nvuBo2q19vi1ZzOLo/nFgBSuTpu4uifU?=
+ =?us-ascii?Q?aa+ojawX737/Mg6uWEwJUVY3T45Q/nsTz+LYL5iHX3CWKeYdNWT32NAPXj/D?=
+ =?us-ascii?Q?OTpmW9v/V5IG4ORgo0T9eJ/dIJoEdXXS08xXCteV6mfQ3xLLBR5LOGad1hfH?=
+ =?us-ascii?Q?LMWv5Rbe065Qi4GQJUcHhvM7Pb75cv504ITqFEVj1T5qtvKlMJ1VP2bSGLoP?=
+ =?us-ascii?Q?YUIzdJgJMd2duwzy4UIFWzpByxCA6fS6EuL/nNkmuqC3L+aHpT6JQKc5R48L?=
+ =?us-ascii?Q?n3sbAcBjmGpf2i40XNF0g80qyMDhL7tY8ZfbB2SoTbDKnk42Q0OSZyqkfAd4?=
+ =?us-ascii?Q?BKdQmTSFxLNNYMU3BV2JPdS7BdArIvIhbsXb6BjTfS+NxdusFwJcpIaJFcB3?=
+ =?us-ascii?Q?NV0vaNzUKsBz0XwvmsPOiAr/YWFdw30rdmg45dRyLE9eYasfEa/FHb+I7qnN?=
+ =?us-ascii?Q?7WuCJRiI7MflnS35EzfqdfwME+/2AiLCWN2IeLZFfiAP3kTZX8KHsw7gvlqz?=
+ =?us-ascii?Q?INgGFgjWhd4BjDLDR1uONdadV2znFIN7T4E6WGlS6r/4Ucp4sjY654wM0sY/?=
+ =?us-ascii?Q?m5Vv6Rn5zq1ZepYlueTYLOjL8ZgO8x+j2E/ICpfkOvjwMKTa9UgWnuB1ULGd?=
+ =?us-ascii?Q?75iqtb5aeGYAOKW/ZtVk/FZln8sm3J9gu5x0wJPu/okBU+09KDQuL33Sv7ym?=
+ =?us-ascii?Q?mZlA9seEok+9ahe85vJvZ1huba7QlxcoW/SocYb9v3OrcexWWOJ5LNG5Bod/?=
+ =?us-ascii?Q?BZWN5f/P0eFsBWUd6LdCBCYJwTto?=
 Content-Type: multipart/alternative;
- boundary="_000_GVXPR02MB107631ECBE81F627EF877C7BC9880AGVXPR02MB10763eu_"
+ boundary="_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_"
 MIME-Version: 1.0
-X-OriginatorOrg: estg.moe.gov.sa
+X-OriginatorOrg: outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: GVXPR02MB10763.eurprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 78b01aac-5b53-4b4e-ed46-08de5135ff0d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jan 2026 17:22:28.6826 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB8325.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: d8565709-3f3b-42d9-062f-08de51da46de
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2026 12:58:26.6224 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b6875bbb-f371-480d-aba1-2972ce042c2b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MIYGqRJ99IMYdI5iJOXeO5ttBPgHkhCtYcDSbq91PQp4cS2yfdtHDFAPC8zWgmJsHI7BxxNtfBLR38Y5JRY5JgtY3++VXheqM+Y26iPqbe0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR02MB7069
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7889
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,123 +133,56 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---_000_GVXPR02MB107631ECBE81F627EF877C7BC9880AGVXPR02MB10763eu_
-Content-Type: text/plain; charset="windows-1256"
+--_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
-Good day,
+Greetings Intelgvtdev,
 
-Please we are interested in purchasing your products as carefully listed on=
- your site.
+I hope this message finds you well. I wanted to check in regarding the mess=
+age I sent earlier about the Yamaha piano that belonged to my friend's late=
+ husband. This instrument holds profound sentimental value for her, and she=
+'d love for it to find a new home with someone who will cherish it as much =
+as her late husband did.
 
-Kindly Provide us with your best export prices, minimum order quantity. We =
-are considering a couple of quotes received and your prompt response will b=
-e appreciated
-Do you have a company catalogue ? Please send to our WhatsApp +447542414560
-We thank you and look forward to hearing from you shortly in order to exped=
-ite this matter. It will be highly appreciated.
+Please let me know if you're interested or know someone who might be.
 
-You can reach us on our WhatsApp: +447542414560 for faster communication.
+Thanks for your time; any suggestions would mean a lot.
 
-Waiting for your feedback on whatsapp
+Warmest regards,
+Ms. Beatrice
 
-Best Regards
-Mr. Lori Tyler
-International Sales Manager
-FHS International Co. Ltd
-WhatsApp: +447542414560
-
---_000_GVXPR02MB107631ECBE81F627EF877C7BC9880AGVXPR02MB10763eu_
-Content-Type: text/html; charset="windows-1256"
+--_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_
+Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dwindows-1=
-256">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"MS Exchange Server version 16.0.19426.2=
+0218">
+<title></title>
 </head>
-<body dir=3D"rtl">
-<div style=3D"direction: rtl; font-family: Aptos, Aptos_EmbeddedFont, Aptos=
-_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb=
-(0, 0, 0);" class=3D"elementToProof">
-Good day,</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Please we are interested in purchasing your products as carefully listed on=
- your site.</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Kindly Provide us with your best export prices, minimum order quantity. We =
-are considering a couple of quotes received and your prompt response will b=
-e appreciated</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Do you have a company catalogue ? Please send to our WhatsApp +447542414560=
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-We thank you and look forward to hearing from you shortly in order to exped=
-ite this matter. It will be highly appreciated.</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-You can reach us on our WhatsApp: +447542414560 for faster communication.</=
-div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Waiting for your feedback on whatsapp</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Best Regards</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-Mr. Lori Tyler</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-International Sales Manager</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-FHS International Co. Ltd</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
-WhatsApp: +447542414560</div>
+<body>
+<!-- Converted from text/rtf format -->
+<p><font face=3D"Aptos">Greetings Intelgvtdev,</font> </p>
+<p><font face=3D"Aptos">I hope this message finds you well. I wanted to che=
+ck in regarding the message I sent earlier about the Yamaha piano that belo=
+nged to my friend&#8217;s late husband. This instrument holds profound sent=
+imental value for her, and she&#8217;d love for
+ it to find a new home with someone who will cherish it as much as her late=
+ husband did.</font></p>
+<p><font face=3D"Aptos">Please let me know if you&#8217;re interested or kn=
+ow someone who might be.</font>
+</p>
+<p><font face=3D"Aptos">Thanks for your time; any suggestions would mean a =
+lot.</font>
+</p>
+<p><font face=3D"Aptos">Warmest regards,</font> <br>
+<font face=3D"Aptos">Ms. Beatrice</font> </p>
 </body>
 </html>
 
---_000_GVXPR02MB107631ECBE81F627EF877C7BC9880AGVXPR02MB10763eu_--
+--_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_--
