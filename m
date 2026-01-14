@@ -2,122 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C4CDD12A6A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Jan 2026 13:58:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD871D1C35A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Jan 2026 04:10:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0962A10E3C0;
-	Mon, 12 Jan 2026 12:58:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 022F110E213;
+	Wed, 14 Jan 2026 03:10:57 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=outlook.com header.i=@outlook.com header.b="WfmnnsF2";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="HMAhUAF9";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from TYPPR03CU001.outbound.protection.outlook.com
- (mail-japaneastazolkn19012048.outbound.protection.outlook.com [52.103.43.48])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0339210E3C0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Jan 2026 12:58:29 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tldaRZa5IvD9zFKCXuvFgfhcB2gS9Wbbcsl3yXRHBGOmkWSUYo7F9KzUEhJFmF4DB1AgbRq6H+DRepatzURZnKdx4QbT/WPG1bliTKKVJbJcCmYfKCh96mlCO0qLo6IPPRWnzTgseLNY/zUPzjRI3NFKUJ5Oo1B471kk9L1QdUYx6RHPYEFH773GQ2Y72SSyfnA3wGXUEMXYTpYYwtcLy4J/uNGaUgcRld08qLbTLXgaV/82c9NqHtlhi8/Kfnt6OS/zQxBi6FgMX/ZwKF/UsUitu/Wh2MitDMpA+Q2y8j7bQ7Xgs7saiGIR9UP7hzT30Kw05UdR7AIaV5EHu7aHDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GRf3T4VQa2KfnH2jwz7Ymcc8GNRXINPy/lSmpd8uYic=;
- b=iThHVMPDSfasY+7o9Cqz/GxNksb9KPA+753FoTfi7Yh3IrFYq/3ax0eKdd6wrOskZEYUh4KfihC4XcY9O2GAluLNWhTdj/UZz7gRJZiWlHcL71Mcr3XOHtuubQgkTBXbCkWUp82ukogNBSWGoD7vD40Uk8vgR2jmdPN4kp7bQ3VEd+ogv2EGfpDlZeaTG1AcMnvbCRP8GivLrNF4BcahTRgUooauEG+/gm9/Rjjy4GjrUaWJfHI7P1xXOO23s+ibDlrBu9EHlKFLEmmOi5VLWJu3NlRYdUa6L33uwiB5cI9Pmp1vSdXLsla8fSfxy7WFt4AHVXxAyDefxu2mdZHsRg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GRf3T4VQa2KfnH2jwz7Ymcc8GNRXINPy/lSmpd8uYic=;
- b=WfmnnsF2aMELyytoZmD9V4xYLCGF8QGZzke8L28VN66ZF+bh7cEm59epwFReRKvbbFqWjtH7KdtYa/EfHCPWKNbiKPDYu6uLLXlJhQ6m8RZLo3T6mYwFeBz9JCfwrRp4104cKRTuHPi1fB2gzUC0+FYjnWWFVmXnVZWuuJnOCBL5qQjiVMLx2m/d6U4TrB0wiaM11issivQZ8eoNSCdKb17ZdYiAQOJKC3NXdcf/ld0vQiSSMuAhmkUK4wgbCOQ42Nm9RRzljjIG6Xvqwr+xGMtiNsTQzRz2X71Pj8CSEfSxSI0wz02o7CRlH5vqL8bFoKfzzU8LB7rKz/JjKt2N4Q==
-Received: from SEYPR03MB8325.apcprd03.prod.outlook.com (2603:1096:101:1a5::6)
- by SEYPR03MB7889.apcprd03.prod.outlook.com (2603:1096:101:165::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
- 2026 12:58:26 +0000
-Received: from SEYPR03MB8325.apcprd03.prod.outlook.com
- ([fe80::f3a9:bc03:1769:f850]) by SEYPR03MB8325.apcprd03.prod.outlook.com
- ([fe80::f3a9:bc03:1769:f850%6]) with mapi id 15.20.9478.004; Mon, 12 Jan 2026
- 12:58:26 +0000
-From: Beatrice Vega <Beatrice.vega12@outlook.com>
-To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Subject: Would Love Your Feedback 
-Thread-Topic: Would Love Your Feedback 
-Thread-Index: AdyDwx+/poLwPbtsSv25vq6VAYDOGQ==
-Date: Mon, 12 Jan 2026 12:58:26 +0000
-Message-ID: <SEYPR03MB83252442A87410D1B68CBBDDEB81A@SEYPR03MB8325.apcprd03.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEYPR03MB8325:EE_|SEYPR03MB7889:EE_
-x-ms-office365-filtering-correlation-id: d8565709-3f3b-42d9-062f-08de51da46de
-x-microsoft-antispam: BCL:0;
- ARA:14566002|461199028|15080799012|31061999003|39105399006|13091999003|8060799015|8062599012|37102599003|19110799012|20031999003|12121999013|440099028|3412199025|40105399003|19111999003|102099032|13041999003;
-x-microsoft-antispam-message-info: =?us-ascii?Q?y+kUSWfteaOVnyQSwJlyAdNQ+B1jeXT2tubhuwfNJ/SC7esKEtGkA6A3ePTL?=
- =?us-ascii?Q?p6c+tGzfYz8Jl5w6rdptUtnU3JrYAEuqsxbmPjdeH6KjLZKrEPDdHQtHiYDB?=
- =?us-ascii?Q?9AJQrt6brLa7Dd/TwU3JUC28x1rL1NnkW9qR7QQto5WQeIc/wAoRhRF+i/Bp?=
- =?us-ascii?Q?fgGKEUpBgTgylCwJavqWxkQxPgGWvMH9JfQng3CukD/xYxoXPItzfq9VWeCi?=
- =?us-ascii?Q?NW0e7oZlBXZM7s6IQW9Ki4hZ/szowOHsp318yRUeM/vrdtcEcPA8/K57/l8D?=
- =?us-ascii?Q?6B5X8/7IeB4O6j5f0mKx3tWJGCvhnXFPYVmJAPt9wrH9QobIvtwCt025iE7x?=
- =?us-ascii?Q?3lkrVQeBwjD0UlrBWihzCJqSgeTo3dUMhl2jchSK3GbtU4UWz+XtYcoWeGcK?=
- =?us-ascii?Q?2Q0TX++3hWyVZ41cGtV2FVrDErhaSjKtFI5ubXv+TNmv94STqcIYTADBQUoi?=
- =?us-ascii?Q?c2VQM+Vf2v1lDWeil6DrrTyxKy96MxLYt7rbRuAlgMe8rP9VQGy2v9oT64YO?=
- =?us-ascii?Q?v3o2QtGMisaZHNzfZ0mBVGLxFcPictYhbggCcPKFiZu/BRkOovnEk6IIMOlR?=
- =?us-ascii?Q?rFwF+KRZ3Lw0dtodMct8dmFR5y12xx7WOlwmjxvYD0oNKnbCbc4L8Fj2uktp?=
- =?us-ascii?Q?FfwhKGvev2Ixa9548a7G2ES4ILbV6wiAeHR+ONlCXZBAgAmRGJZyxdQ6VoXH?=
- =?us-ascii?Q?RntlCKOz3se7KpL0/LyuzNDkxrrmZYJ2VAon8cwQhxsdbeQpcpl+E4k3vCBX?=
- =?us-ascii?Q?TSjeKhyoomRXlJbg97tq/kyKzhLP9ZJd02dcx9CRE4q0g05DV7iifnn/qOrE?=
- =?us-ascii?Q?qpS8HsskDHp+FYQqq+Ey8ipDSjWVzSb9K62ojV9lFfqJ33Z+IfS/eEbwehtK?=
- =?us-ascii?Q?kmzH+8SmYtf9pADN0BOXpjz3I337Vc+0V7+biHJ74XP1rUcKAdtW1Ii478mq?=
- =?us-ascii?Q?bmHbetb6sQonDXYV7uc3+2QkNaqQ4rYWZtC9kMSuF8fDZ5rPG0DzLM48HGEo?=
- =?us-ascii?Q?IpLa9nyp0LrRhkR2xPDF6ct8Nv3GhW2p31J744Ki2fzj06CIwCgtCs+nxuOS?=
- =?us-ascii?Q?HRpq9ZPsmIAjJ+MyL7bHt7zPdlWw2Y6p6NO9Fuo8ELseKNBgRvwIxfFKp+EE?=
- =?us-ascii?Q?tUJPbi6P4LyWi4APzRzXkFRuEgGQnS2qmv6RNro/I3JCiDlmGhqVmwhM9cBh?=
- =?us-ascii?Q?o/7Y3YeKzOWxOblOigBaJktGT5I8/j1YcgR50q6WdF0LvrehnWXFVOBdsycT?=
- =?us-ascii?Q?2JOQOiBTIDvzkms9mT9rKH1OZFJzPaW+5clu0XhZdCy1sB+yGYbai8YqDI1h?=
- =?us-ascii?Q?Tb8bM7scpIRoZQ7jfqHqMn6fNAvSzXGbx4lKyWUat2MXutQlqv9B5cSi5mqR?=
- =?us-ascii?Q?d/Z9QKOk18eCz7AJJ7lAiFcZG2f6?=
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Dz3OaYo5jRFeXmZfIcGHIUpqalg7nmxxzeYPe8WZqvlPzLkLaOTTYlj2C5JM?=
- =?us-ascii?Q?oBMDSJ+KUfip3qSdcy9NwsBlPlirxYnNJYYz4PsVTx8Z1z/Cb48h4FP1gIl5?=
- =?us-ascii?Q?FAwm8Zha7fT/DcoxE/fEMlDgptpFo4y2WL9/ocDcWtxk8KbZU3cXn8DGvLqT?=
- =?us-ascii?Q?r9gSRfPasAjUMR+po/tA/sydyGB0s166Fkn4kWmFVWlzCDjcykSSNtjmncG3?=
- =?us-ascii?Q?JpdMA4nCCGLrVGufuvex3sUg6t2+fIMiHtmeyDOIARaS1jBqp4g5oSdBXs52?=
- =?us-ascii?Q?50o3CD8o0MQqZDmPfwd5Xn5ZA2TUh4g7Yx20JNIypiYyu1gXjPm73g6i4XLH?=
- =?us-ascii?Q?rx0Uq29Luq1Z+5ZO4QH5mt1hxt/DKavykqPdUhKpX+rk9c6NR9+WceI90Abm?=
- =?us-ascii?Q?s6X/CxQGYJhW15/829wyHcQWucTyBxZYlJYP8xOnJSH14aTpIICK4wxI5R5I?=
- =?us-ascii?Q?vMxJu2rad9iEnrfh3mm7anrY+lzDsgykEHZyvNR7AX+N5Sab8k6Chyr+yHgG?=
- =?us-ascii?Q?ZT2wb+Kq1YSMimTXDkHfjfTLWFiCo04RyCNw7r7fGQYFM3Nk3qMuT9UeMWJv?=
- =?us-ascii?Q?yvI2N6d4NieiITZuzQiB2XMuEk40nvuBo2q19vi1ZzOLo/nFgBSuTpu4uifU?=
- =?us-ascii?Q?aa+ojawX737/Mg6uWEwJUVY3T45Q/nsTz+LYL5iHX3CWKeYdNWT32NAPXj/D?=
- =?us-ascii?Q?OTpmW9v/V5IG4ORgo0T9eJ/dIJoEdXXS08xXCteV6mfQ3xLLBR5LOGad1hfH?=
- =?us-ascii?Q?LMWv5Rbe065Qi4GQJUcHhvM7Pb75cv504ITqFEVj1T5qtvKlMJ1VP2bSGLoP?=
- =?us-ascii?Q?YUIzdJgJMd2duwzy4UIFWzpByxCA6fS6EuL/nNkmuqC3L+aHpT6JQKc5R48L?=
- =?us-ascii?Q?n3sbAcBjmGpf2i40XNF0g80qyMDhL7tY8ZfbB2SoTbDKnk42Q0OSZyqkfAd4?=
- =?us-ascii?Q?BKdQmTSFxLNNYMU3BV2JPdS7BdArIvIhbsXb6BjTfS+NxdusFwJcpIaJFcB3?=
- =?us-ascii?Q?NV0vaNzUKsBz0XwvmsPOiAr/YWFdw30rdmg45dRyLE9eYasfEa/FHb+I7qnN?=
- =?us-ascii?Q?7WuCJRiI7MflnS35EzfqdfwME+/2AiLCWN2IeLZFfiAP3kTZX8KHsw7gvlqz?=
- =?us-ascii?Q?INgGFgjWhd4BjDLDR1uONdadV2znFIN7T4E6WGlS6r/4Ucp4sjY654wM0sY/?=
- =?us-ascii?Q?m5Vv6Rn5zq1ZepYlueTYLOjL8ZgO8x+j2E/ICpfkOvjwMKTa9UgWnuB1ULGd?=
- =?us-ascii?Q?75iqtb5aeGYAOKW/ZtVk/FZln8sm3J9gu5x0wJPu/okBU+09KDQuL33Sv7ym?=
- =?us-ascii?Q?mZlA9seEok+9ahe85vJvZ1huba7QlxcoW/SocYb9v3OrcexWWOJ5LNG5Bod/?=
- =?us-ascii?Q?BZWN5f/P0eFsBWUd6LdCBCYJwTto?=
-Content-Type: multipart/alternative;
- boundary="_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A54E810E002;
+ Wed, 14 Jan 2026 03:10:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1768360256; x=1799896256;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=5y56OksY9B1oKiFWb8cqXbT1btFFkWU0cSAIJvSlNos=;
+ b=HMAhUAF94DFoPUO30kyW7BfayYrV+/K+SimgLJVLUfblIqg/SdZBRDmb
+ vqKsf0NNP8P6C90SSnt4ETHTTQ4lxlS7VF8+JsWHdedcvocz0JDlrOs6v
+ 32WKb4F3OQEnfqHnQ3e2HggRR3YMRjs7MBsB+D+Ztlgy1qb97ckmYe6TX
+ Ly8qx2Qs1A3z50JzrG1Wg5AuQLh9BCBmIuU7cmasMLM5nfn7ja1S2DrsB
+ vmWeb3LHmg0I/YLNiMaQCvPpnym9tmJPhRXQbWgb3K4+uhTRUWPAIc5LL
+ th3IOiDbNPXeTWET9NG7MWIaCVFkcfjd7kBeBPsLSDmysO1KYgXfpPyWP A==;
+X-CSE-ConnectionGUID: jfbJljXrRSmk8ffhJaNR0Q==
+X-CSE-MsgGUID: l6v0+yvQSkiU7U2l9I+LLg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11670"; a="73496320"
+X-IronPort-AV: E=Sophos;i="6.21,224,1763452800"; d="scan'208";a="73496320"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2026 19:10:55 -0800
+X-CSE-ConnectionGUID: j+XXvZLvTjS2zr58Od9S4A==
+X-CSE-MsgGUID: QKKGyT9sRei4fn5fkFF7fQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,224,1763452800"; d="scan'208";a="242089517"
+Received: from srr4-3-linux-103-aknautiy.iind.intel.com ([10.223.34.160])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2026 19:10:53 -0800
+From: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
+To: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org
+Cc: jani.nikula@linux.intel.com,
+	Ankit Nautiyal <ankit.k.nautiyal@intel.com>
+Subject: [PATCH] drm/i915/gvt_mmio_table: Use the gvt versions of the display
+ macros
+Date: Wed, 14 Jan 2026 08:24:56 +0530
+Message-ID: <20260114025456.1639171-1-ankit.k.nautiyal@intel.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB8325.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: d8565709-3f3b-42d9-062f-08de51da46de
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2026 12:58:26.6224 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7889
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,56 +68,42 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Include gvt/display_helpers.h so that the display register macros in
+intel_gvt_mmio_table.c expand through the exported display functions.
+This lets us keep the existing macro calls while avoiding direct
+access to display internals, helping the display modularization work.
 
-Greetings Intelgvtdev,
+Signed-off-by: Ankit Nautiyal <ankit.k.nautiyal@intel.com>
+---
+ drivers/gpu/drm/i915/intel_gvt_mmio_table.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-I hope this message finds you well. I wanted to check in regarding the mess=
-age I sent earlier about the Yamaha piano that belonged to my friend's late=
- husband. This instrument holds profound sentimental value for her, and she=
-'d love for it to find a new home with someone who will cherish it as much =
-as her late husband did.
+diff --git a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+index 478d00f89a4b..052596ac83a0 100644
+--- a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
++++ b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+@@ -11,12 +11,12 @@
+ #include "display/intel_color_regs.h"
+ #include "display/intel_crt_regs.h"
+ #include "display/intel_cursor_regs.h"
+-#include "display/intel_display_core.h"
+ #include "display/intel_display_regs.h"
+ #include "display/intel_display_types.h"
+ #include "display/intel_dmc_regs.h"
+ #include "display/intel_dp_aux_regs.h"
+ #include "display/intel_dpio_phy.h"
++#include "display/intel_fbc.h"
+ #include "display/intel_fbc_regs.h"
+ #include "display/intel_fdi_regs.h"
+ #include "display/intel_lvds_regs.h"
+@@ -32,6 +32,7 @@
+ #include "gt/intel_engine_regs.h"
+ #include "gt/intel_gt_regs.h"
+ 
++#include "gvt/display_helpers.h"
+ #include "gvt/reg.h"
+ 
+ #include "i915_drv.h"
+-- 
+2.45.2
 
-Please let me know if you're interested or know someone who might be.
-
-Thanks for your time; any suggestions would mean a lot.
-
-Warmest regards,
-Ms. Beatrice
-
---_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"MS Exchange Server version 16.0.19426.2=
-0218">
-<title></title>
-</head>
-<body>
-<!-- Converted from text/rtf format -->
-<p><font face=3D"Aptos">Greetings Intelgvtdev,</font> </p>
-<p><font face=3D"Aptos">I hope this message finds you well. I wanted to che=
-ck in regarding the message I sent earlier about the Yamaha piano that belo=
-nged to my friend&#8217;s late husband. This instrument holds profound sent=
-imental value for her, and she&#8217;d love for
- it to find a new home with someone who will cherish it as much as her late=
- husband did.</font></p>
-<p><font face=3D"Aptos">Please let me know if you&#8217;re interested or kn=
-ow someone who might be.</font>
-</p>
-<p><font face=3D"Aptos">Thanks for your time; any suggestions would mean a =
-lot.</font>
-</p>
-<p><font face=3D"Aptos">Warmest regards,</font> <br>
-<font face=3D"Aptos">Ms. Beatrice</font> </p>
-</body>
-</html>
-
---_000_SEYPR03MB83252442A87410D1B68CBBDDEB81ASEYPR03MB8325apcp_--
