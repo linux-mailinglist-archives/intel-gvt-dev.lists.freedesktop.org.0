@@ -2,67 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id QPeIDVi/gGl3AgMAu9opvQ
+	id oIy9H6MHhWlW7gMAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Feb 2026 16:14:32 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Feb 2026 22:12:03 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF880CE029
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Feb 2026 16:14:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA848F77F1
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Feb 2026 22:12:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DB25110E2CD;
-	Mon,  2 Feb 2026 15:14:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B5D5E10E08C;
+	Thu,  5 Feb 2026 21:05:26 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="PKJIxC3Q";
+	dkim=pass (2048-bit key; unprotected) header.d=dustyfishbj.pro header.i=aaa76@dustyfishbj.pro header.b="NpSh6K0S";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A46D10E2CD
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Thu, 05 Feb 2026 21:05:25 UTC
+Received: from mail.dustyfishbj.pro (denim.cozystonehm.com [170.130.89.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9A03410E08C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Feb 2026 15:14:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770045250; x=1801581250;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=YWHzaPoctVzoqtEZaOXV/rrsMeyvPBuUDEtJtDhfQRA=;
- b=PKJIxC3QenBQeJqXU3yjO3yn/ddSb1wroyV7z0524MADxdDiQCgPnDex
- Pge3v2DfZ4GR5fF7ATJYz5rW3yCU2FbkqzBqG7Stz3uGl6yzqRhWAM36w
- UnEdMWk8SNRK+sa/jQMCA1Ym3taJo1evONxBNkUj30TJlx/KJNKbUREqj
- ZaAjfO4FDFwCZJ0VVxz+HXxSrGAVaypnOtRmbBPlqpgxbdwjrKeeZ4EmT
- Zi6umC7kGJ4kd1meMeXfLkCniW+1fZWsuyahWXybPQVjyDBqAyTKmGwub
- e+j4M5Ts442I8Ms4ZrELxkUAjGxI+jK9Gz7LuyOgFfFdoCqP9Gl1oZ6+I g==;
-X-CSE-ConnectionGUID: A+J8sdVcRWekj2QCoeKX+w==
-X-CSE-MsgGUID: Zm6GB35fQmGel24/Tr089g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11690"; a="93856980"
-X-IronPort-AV: E=Sophos;i="6.21,269,1763452800"; d="scan'208";a="93856980"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2026 07:14:09 -0800
-X-CSE-ConnectionGUID: mhuihvSuR1eFLyKiVg+11g==
-X-CSE-MsgGUID: 5A06XyioTnuUZocmJMkIaA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,269,1763452800"; d="scan'208";a="208646934"
-Received: from jkrzyszt-mobl2.ger.corp.intel.com (HELO localhost)
- ([10.245.246.153])
- by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2026 07:14:06 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Ingyu Jang <ingyujang25@korea.ac.kr>, intel-gvt-dev@lists.freedesktop.org
-Cc: zhenyuw.linux@gmail.com, zhi.wang.linux@gmail.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- tursulin@ursulin.net, Ingyu Jang <ingyujang25@korea.ac.kr>
-Subject: Re: [Question] Dead code in intel_gvt_init() for
- intel_gvt_init_irq() error check?
-In-Reply-To: <20260131172858.3370637-1-ingyujang25@korea.ac.kr>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260131172858.3370637-1-ingyujang25@korea.ac.kr>
-Date: Mon, 02 Feb 2026 17:14:03 +0200
-Message-ID: <77e282c7481e7e12300c11c35072efcbe08df966@intel.com>
+ Thu,  5 Feb 2026 21:05:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mx1; d=dustyfishbj.pro;
+ h=From:Reply-To:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
+ i=aaa76@dustyfishbj.pro;
+ bh=zyt8r5mwSgw/Nkphu6NLeP3BmCBGfWEqXDWokL0Z/Z0=;
+ b=NpSh6K0Sy/q/3hd5dBNItoJuirwibPZERqZpViIQxNs/URmoHb0HsKqGSPHGqn5zUf3nWrcGB6Kr
+ qqQpVo90jnyHHiBZh1CasTl1LmuYz1me27YS11QHjsZRR8U9F3Ih82XX/xhgyBmjjtyppX23YwfC
+ WYJ6FPs57XI4xRebdfP6NqMJAeL6Cygkl2tCwMcXjOkpPIs2alLK0YZlr2A4ORVXCN+QaLDkf68W
+ 1p3J79BAsfu3bG6PN+C0FWI/Z+EyCpeWOqNHcgvJCqnd5Cxupi/WqCC+gXMDSGqF4s86ohpQYQTd
+ kdnxPeAX0ftbLr2sTyDAyKPUmavF/P4ZPkXqsw==
+From: AAA Customer Support <aaa76@dustyfishbj.pro>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Roadside kit shipment update
+Date: Thu, 5 Feb 2026 16:00:16 -0500
+Message-ID: <RPzTQL94_o6Cg8khrfnHB4suS.17cb@pdf3.dustyfishbj.pro>
+X-Request-ID: 249625d5-47c3-44bb-a167-153f24237c5a
+X-Distribution: list
+X-Mail-Source: edge-6
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/alternative;
+ boundary="tLVjh--sGQrwygkXaSLBWD3X468Jdci-.wy2"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,84 +55,324 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: aaa76@dustyfishbj.pro
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.69 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	SUBJECT_ENDS_QUESTION(1.00)[];
-	DMARC_POLICY_ALLOW(-0.50)[intel.com,none];
-	R_MISSING_CHARSET(0.50)[];
+X-Spamd-Result: default: False [13.29 / 15.00];
+	URIBL_BLACK(7.50)[dustyfishbj.pro:replyto,dustyfishbj.pro:url,dustyfishbj.pro:dkim];
+	ABUSE_SURBL(5.00)[www.dustyfishbj.pro:url,pdf3.dustyfishbj.pro:mid,dustyfishbj.pro:replyto,dustyfishbj.pro:dkim];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
-	R_DKIM_ALLOW(-0.20)[intel.com:s=Intel];
-	MIME_GOOD(-0.10)[text/plain];
+	MANY_INVISIBLE_PARTS(0.10)[2];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	DMARC_POLICY_ALLOW(0.00)[dustyfishbj.pro,quarantine];
 	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_CC(0.00)[gmail.com,linux.intel.com,intel.com,ursulin.net,korea.ac.kr];
-	ARC_NA(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_COUNT_THREE(0.00)[4];
-	FORWARDED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	HAS_ORG_HEADER(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:ingyujang25@korea.ac.kr,m:zhenyuw.linux@gmail.com,m:zhi.wang.linux@gmail.com,m:joonas.lahtinen@linux.intel.com,m:rodrigo.vivi@intel.com,m:tursulin@ursulin.net,m:zhenyuwlinux@gmail.com,m:zhiwanglinux@gmail.com,s:lists@lfdr.de];
-	DKIM_TRACE(0.00)[intel.com:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	FORGED_SENDER(0.00)[jani.nikula@linux.intel.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	R_DKIM_ALLOW(0.00)[dustyfishbj.pro:s=mx1];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jani.nikula@linux.intel.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	ARC_NA(0.00)[];
+	GREYLIST(0.00)[pass,body];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_ONE(0.00)[1];
+	DKIM_TRACE(0.00)[dustyfishbj.pro:+];
 	MISSING_XM_UA(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[8];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aaa76@dustyfishbj.pro,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	HAS_REPLYTO(0.00)[aaa76@dustyfishbj.pro];
+	RCVD_COUNT_TWO(0.00)[2];
+	NEURAL_HAM(-0.00)[-0.701];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:dkim,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
-X-Rspamd-Queue-Id: AF880CE029
-X-Rspamd-Action: no action
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,dustyfishbj.pro:replyto,dustyfishbj.pro:url,dustyfishbj.pro:dkim,pdf3.dustyfishbj.pro:mid]
+X-Rspamd-Queue-Id: CA848F77F1
+X-Rspamd-Action: add header
+X-Spam: Yes
 
-On Sun, 01 Feb 2026, Ingyu Jang <ingyujang25@korea.ac.kr> wrote:
-> Hi,
->
-> I noticed that in drivers/gpu/drm/i915/gvt/kvmgt.c, the function
-> intel_gvt_init() checks the return value of intel_gvt_init_irq()
-> (at line 1858):
->
->     ret = intel_gvt_init_irq(gvt);
->     if (ret)
->         goto out_free_firmware;
->
-> However, looking at intel_gvt_init_irq() in
-> drivers/gpu/drm/i915/gvt/interrupt.c (line 717), the function
-> always returns 0 and has no error paths.
->
-> What's interesting is that the function's documentation comment
-> (line 714-715) states:
->     "Returns:
->      Zero on success, negative error code if failed."
->
-> This suggests the function was designed to return error codes, but
-> the current implementation only returns 0. The error check in
-> intel_gvt_init() is therefore unreachable.
->
-> Is this intentional defensive coding for potential future changes,
-> or should the documentation be updated to reflect that the function
-> always succeeds? Alternatively, should the function be changed to
-> void since it never fails?
+--tLVjh--sGQrwygkXaSLBWD3X468Jdci-.wy2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-It may have had failure modes in the past, it may have failure modes
-again in the future. I would just leave it be.
+Your=20AAA=20Offer
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20AAA
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Your=20AAA=20Em=
+ergency=20Car=20Kit
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Valid=20From=20=
+now=20through=20this=20week
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Thank=20you=20f=
+or=20being=20a=20loyal=20AAA=20member!=20We=20are=20pleased=20to=20provide=
+=20this=20emergency=20roadside=20car=20kit=20to=20help=20you=20stay=20secur=
+e=20while=20traveling.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20By=20spending=
+=20a=20few=20moments=20to=20finish=20a=20short=20survey,=20you'll=20assist=
+=20us=20in=20enhancing=20and=20maintaining=20excellent=20service.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20Receive=20Yours=20Now
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20What=E2=80=99s=
+=20in=20Your=20AAA=20Emergency=20Roadside=20Kit
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Be=20prepared=
+=20for=20the=20unforeseen.=20Your=20provided=20kit=20is=20crafted=20to=20ha=
+ndle=20the=20most=20frequent=20roadside=20situations:
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=208-gauge=20jumper=20cables=20(10=20ft)=20fo=
+r=20rapid=20battery=20boosts
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20High-visibility=20reflective=20triangle=20=
+=20small=20LED=20flashlight
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Tire=20pressure=20gauge=20=20valve-stem=20=
+caps=20for=20simple=20checks
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Multi-bit=20tool=20set=20(screwdriver,=20p=
+liers)=20=20strong=20tape
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20First-aid=20pouch=20(bandages,=20wipes,=20=
+gauze)
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Thermal=20blanket,=20poncho,=20and=20textu=
+red=20work=20gloves
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Bungee=20cord,=20zip=20ties,=20and=20emerg=
+ency=20whistle
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20All=20stored=20in=20a=20sturdy,=20trunk-re=
+ady=20carry=20case
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Not=
+e:=20This=20kit=20is=20a=20benefit=20of=20your=20AAA=20membership.=20Comple=
+te=20the=20survey=20to=20have=20yours=20sent=20directly.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20The=20little=20=
+engine=20chugged=20up=20the=20hill,=20its=20wheels=20turning=20with=20stead=
+y=20purpose.=20At=20the=20top,=20a=20vast=20new=20valley=20stretched=20befo=
+re=20it,=20painted=20in=20morning=20colors.=20The=20journey=20was=20its=20o=
+wn=20reward,=20a=20quiet=20truth=20learned=20with=20each=20mile.=20The=20tr=
+acks=20gleamed=20ahead,=20inviting=20and=20endless.=20There=20was=20always=
+=20another=20hill,=20another=20horizon.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20A=20paper=20boa=
+t=20sailed=20on=20a=20rain-filled=20gutter,=20a=20captain=20of=20leaves=20a=
+t=20the=20helm.=20It=20navigated=20past=20pebbles=20and=20twigs,=20a=20flee=
+ting=20voyage=20under=20a=20gray=20sky.=20The=20water=20carried=20it=20gent=
+ly=20around=20a=20corner,=20out=20of=20sight.=20Some=20adventures=20are=20s=
+mall,=20quiet,=20and=20perfectly=20complete.
 
-BR,
-Jani.
+http://www.dustyfishbj.pro/qim
 
+--tLVjh--sGQrwygkXaSLBWD3X468Jdci-.wy2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<!DOCTYPE=20html>
+<html=20lang=3D"en">
+<head>
+=20=20=20=20<meta=20charset=3D"UTF-8">
+=20=20=20=20<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20=
+initial-scale=3D1.0">
+=20=20=20=20<title>Your=20AAA=20Offer</title>
+=20=20=20=20<style>
+=20=20=20=20=20=20=20=20@media=20only=20screen=20and=20(max-width:=20600px)=
+=20{
+=20=20=20=20=20=20=20=20=20=20=20=20.container=20{=20width:=20100%=20!impor=
+tant;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20.two-column=20{=20display:=20block=20!i=
+mportant;=20width:=20100%=20!important;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20.column=20{=20display:=20block=20!impor=
+tant;=20width:=20100%=20!important;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20.mobile-stack=20{=20display:=20block=20=
+!important;=20width:=20100%=20!important;=20}
+=20=20=20=20=20=20=20=20}
+=20=20=20=20</style>
+</head>
+<body=20style=3D"margin:0;=20padding:0;=20background-color:#f5f5f5;=20font-=
+family:=20Arial,=20sans-serif;">
+=20=20=20=20<center>
+=20=20=20=20=20=20=20=20<table=20role=3D"presentation"=20align=3D"center"=
+=20border=3D"0"=20cellpadding=3D"0"=20cellspacing=3D"0"=20width=3D"550"=20c=
+lass=3D"container"=20style=3D"max-width:550px;=20width:100%;=20background-c=
+olor:#ffffff;=20border-collapse:collapse;">
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Logo=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
+yle=3D"padding:=2030px=2020px=2010px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<div=20style=3D=
+"font-size:38pt;=20font-weight:bold;=20color:#C62828;">AAA</div>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Header=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
+yle=3D"background-color:#000000;=20padding:25px=2020px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<h1=20style=3D"=
+margin:0;=20font-size:26px;=20color:#ffffff;=20line-height:1.3;">Your=20AAA=
+=20Emergency=20Car=20Kit</h1>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Sub=20Header=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
+yle=3D"padding:15px=2020px=205px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:0;=20color:#757575;=20font-size:16px;">Valid=20From=20now=20through=
+=20this=20week</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Main=20Body=20Section=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding:25px=
+=2030px;=20border:1px=20solid=20#e0e0e0;=20margin:20px;=20border-radius:8px=
+;=20box-shadow:=200=202px=208px=20rgba(0,0,0,0.05);">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:0=200=2018px=200;=20font-size:16px;=20line-height:1.6;=20color:#333;"=
+>Thank=20you=20for=20being=20a=20loyal=20AAA=20member!=20We=20are=20pleased=
+=20to=20provide=20this=20emergency=20roadside=20car=20kit=20to=20help=20you=
+=20stay=20secure=20while=20traveling.</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:0=200=2025px=200;=20font-size:16px;=20line-height:1.6;=20color:#333;"=
+>By=20spending=20a=20few=20moments=20to=20finish=20a=20short=20survey,=20yo=
+u'll=20assist=20us=20in=20enhancing=20and=20maintaining=20excellent=20servi=
+ce.</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!--=20CTA=20Bu=
+tton=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<table=20role=
+=3D"presentation"=20align=3D"center"=20border=3D"0"=20cellpadding=3D"0"=20c=
+ellspacing=3D"0"=20style=3D"margin:20px=20auto=2010px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20align=3D"center"=20style=3D"background-color:#D32F2F;=20bord=
+er-radius:6px;=20padding:14px=2032px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<a=20href=3D"http://www.dustyfishbj.pro/qim"=20style=
+=3D"color:#ffffff;=20text-decoration:none;=20font-size:18px;=20font-weight:=
+bold;=20display:inline-block;">Receive=20Yours=20Now</a>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</table>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Visual=20Separator=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
+yle=3D"padding:10px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<div=20style=3D=
+"height:4px;=20width:80px;=20background-color:#e0e0e0;=20border-radius:2px;=
+"></div>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20New=20Pattern:=20Two-Column=20In=
+fo=20Block=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding:10px=
+=2030px=2030px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<h2=20style=3D"=
+margin:0=200=2015px=200;=20font-size:24px;=20color:#212121;=20text-align:ce=
+nter;">What=E2=80=99s=20in=20Your=20AAA=20Emergency=20Roadside=20Kit</h2>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:0=200=2025px=200;=20color:#757575;=20font-size:16px;=20text-align:cen=
+ter;">Be=20prepared=20for=20the=20unforeseen.=20Your=20provided=20kit=20is=
+=20crafted=20to=20handle=20the=20most=20frequent=20roadside=20situations:</=
+p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<table=20role=
+=3D"presentation"=20class=3D"two-column"=20width=3D"100%"=20border=3D"0"=20=
+cellpadding=3D"0"=20cellspacing=3D"0"=20style=3D"border-collapse:collapse;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr=
+=20class=3D"mobile-stack">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20class=3D"column"=20width=3D"48%"=20valign=3D"top"=20style=3D=
+"padding-right:4%;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<ul=20style=3D"margin:0=200=2020px=200;=20padding-left=
+:20px;=20color:#333;=20font-size:15px;=20line-height:1.7;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">8-gaug=
+e=20jumper=20cables=20(10=20ft)=20for=20rapid=20battery=20boosts</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">High-v=
+isibility=20reflective=20triangle=20=20small=20LED=20flashlight</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">Tire=
+=20pressure=20gauge=20=20valve-stem=20caps=20for=20simple=20checks</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">Multi-=
+bit=20tool=20set=20(screwdriver,=20pliers)=20=20strong=20tape</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</ul>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20class=3D"column"=20width=3D"48%"=20valign=3D"top">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<ul=20style=3D"margin:0;=20padding-left:20px;=20color:=
+#333;=20font-size:15px;=20line-height:1.7;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">First-=
+aid=20pouch=20(bandages,=20wipes,=20gauze)</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">Therma=
+l=20blanket,=20poncho,=20and=20textured=20work=20gloves</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">Bungee=
+=20cord,=20zip=20ties,=20and=20emergency=20whistle</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<li=20style=3D"margin-bottom:10px;">All=20=
+stored=20in=20a=20sturdy,=20trunk-ready=20carry=20case</li>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</ul>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</table>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Callout=20Card=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding:0=20=
+30px=2030px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<div=20style=3D=
+"background-color:#f9f9f9;=20border-left:4px=20solid=20#C62828;=20padding:2=
+0px;=20border-radius:0=206px=206px=200;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=
+=20style=3D"margin:0;=20font-size:16px;=20line-height:1.6;=20color:#333;"><=
+strong>Note:</strong>=20This=20kit=20is=20a=20benefit=20of=20your=20AAA=20m=
+embership.=20Complete=20the=20survey=20to=20have=20yours=20sent=20directly.=
+</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</div>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20<!--=20Micro-section=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding:20px=
+=2030px;=20background-color:#f5f5f5;=20font-size:9px;=20color:#f5f5f5;=20li=
+ne-height:1.4;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:0;">The=20little=20engine=20chugged=20up=20the=20hill,=20its=20wheels=
+=20turning=20with=20steady=20purpose.=20At=20the=20top,=20a=20vast=20new=20=
+valley=20stretched=20before=20it,=20painted=20in=20morning=20colors.=20The=
+=20journey=20was=20its=20own=20reward,=20a=20quiet=20truth=20learned=20with=
+=20each=20mile.=20The=20tracks=20gleamed=20ahead,=20inviting=20and=20endles=
+s.=20There=20was=20always=20another=20hill,=20another=20horizon.</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<p=20style=3D"m=
+argin:8px=200=200=200;">A=20paper=20boat=20sailed=20on=20a=20rain-filled=20=
+gutter,=20a=20captain=20of=20leaves=20at=20the=20helm.=20It=20navigated=20p=
+ast=20pebbles=20and=20twigs,=20a=20fleeting=20voyage=20under=20a=20gray=20s=
+ky.=20The=20water=20carried=20it=20gently=20around=20a=20corner,=20out=20of=
+=20sight.=20Some=20adventures=20are=20small,=20quiet,=20and=20perfectly=20c=
+omplete.</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20</table>
+=20=20=20=20</center>
+=20=20=20=20<img=20src=3D"http://www.dustyfishbj.pro/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.png"=
+=20width=3D"1"=20height=3D"1"=20style=3D"display:none"=20alt=3D"">
+</body>
+</html>
 
--- 
-Jani Nikula, Intel
+--tLVjh--sGQrwygkXaSLBWD3X468Jdci-.wy2--
