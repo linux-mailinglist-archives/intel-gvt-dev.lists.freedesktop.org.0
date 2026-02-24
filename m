@@ -2,46 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id uIABB/oMnWnLMgQAu9opvQ
+	id LzwqMpsMnmkfTQQAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Feb 2026 03:29:14 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Feb 2026 21:39:55 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78E1818103A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Feb 2026 03:29:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CB5318C712
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Feb 2026 21:39:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 18AD710E47F;
-	Tue, 24 Feb 2026 02:23:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 357B910E32E;
+	Tue, 24 Feb 2026 20:39:52 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=jessicalonda.com header.i=marriotwelcome@jessicalonda.com header.b="vszKtoX4";
+	dkim=pass (2048-bit key; unprotected) header.d=novamotive.uk header.i=harryanddavi@novamotive.uk header.b="f4F/zpc8";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 322 seconds by postgrey-1.36 at gabe;
- Tue, 24 Feb 2026 02:23:20 UTC
-Received: from track.jessicalonda.com (lateleenvivo.bond [85.121.242.55])
- by gabe.freedesktop.org (Postfix) with ESMTP id 500D110E47F
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 24 Feb 2026 20:39:51 UTC
+Received: from mail.novamotive.uk (whistle.Skybrixes.com [23.90.39.44])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2B09B10E32E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Feb 2026 02:23:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtapofza5vmay;
- d=jessicalonda.com; 
- h=Date:Reply-To:To:Message-ID:Subject:From:List-Unsubscribe:MIME-Version:
- Content-Type; i=marriotwelcome@jessicalonda.com;
- bh=DShA+9S2lBuoO/qDwQKuu1YlZL8xQp9gQftR7oVZtrs=;
- b=vszKtoX443eHIoJj8tdxO/T6eZ16BTby4epK+Ev3ZNPlpT7LmuwC4Vz55emUV+9BCoPoZ4S0yYBa
- VHbOTteI0sTFoTfUy/wVzlgyBC2YDqDXPtODQwlgltBajezgIPApxWIUECjfTBVAb9BAkgkdYPaY
- eMRw7O2qAgbIXgpNuTJN/bcoSGZNPilC88A28MhgXHlsiIMEPEx00eBlQ38w2r9H/W2WK32T53tP
- GGoXO3+ncXBZcucA8//pFfGJoAF2AoL0dohdhRklIu0MtoQ3H2os8Dg9XOOYcc/hm1XC6s13EKM/
- Kn2F/SebbzmVIZ4uHyVdxWbv1r033ZjwC5sYeQ==
-Date: Mon, 23 Feb 2026 21:13:43 -0500
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
+ Tue, 24 Feb 2026 20:39:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=v2602; d=novamotive.uk;
+ h=Date:From:Reply-To:To:Subject:Message-ID:MIME-Version:Content-Type;
+ i=harryanddavi@novamotive.uk;
+ bh=Q84dlGa7axkURTTCpBUjRHfPDT6lTVM1Am+TNqep328=;
+ b=f4F/zpc8wAS54wpv2cVA58wR9HoEW3qEIbg86sPGVGOLfB/91KdKZ7KoV5ac0V3yw9ODqwMza/15
+ FA4NPq65BxD/aVlH67ISrtZIGkHT44mWsHBCupON9uJ1kCV3EGvuBQVmcbiCumPEh1X3ncfujqCg
+ zwdBYQGiGawg0ikIsAWUJ7iz7sk+peStl88pJZsNWdpewKMLK9JC3YbEcRo3fefZn88gRptJOqcM
+ 4KuL8BWShFrZcU0rsrmqgsuvEmwFj09sgFm1mSEIJptej/chW244+eEPZQoH4Oqze87D8i4ILa/Y
+ PPyE1PiEEN+65+Tvzj+lZfxvFYI+k/Ld+vGL7g==
+Date: Tue, 24 Feb 2026 15:34:45 -0500
+From: Harry and David <harryanddavi@novamotive.uk>
 To: intel-gvt-dev@lists.freedesktop.org
-Message-ID: <cqjfcsksihmzlsjfwtmeqltx_3440240@jessicalonda.com>
-Subject: We have a thank-you gift for you from Marriott
-From: Marriot Welcome <marriotwelcome@jessicalonda.com>
+Subject: Status update on your gift basket
+Message-ID: <jaKWNMJX.2c@hr0b.novamotive.uk>
+X-Request-ID: 67002c2b-75aa-400b-9529-5a24e08f64c7
+Feedback-ID: cqyh0:novamotive.uk:mail
+X-UUID: f1f2ff52a9f19
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="----=_MixedBoundary_frvrbjjeegwwoxmdmu_386582"
+ boundary="----=_Part.qq55kp.482217-wSoJc8ReQ6uAQxf9bjwNrAYt-M43"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,177 +55,369 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marriotwelcome@jessicalonda.com
+Reply-To: harryanddavi@novamotive.uk
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [13.29 / 15.00];
-	URIBL_BLACK(7.50)[jessicalonda.com:mid,jessicalonda.com:url,jessicalonda.com:replyto];
-	ABUSE_SURBL(5.00)[jessicalonda.com:mid,jessicalonda.com:replyto,www.jessicalonda.com:url];
-	R_DKIM_REJECT(1.00)[jessicalonda.com:s=mtapofza5vmay];
+X-Spamd-Result: default: False [14.29 / 15.00];
+	URIBL_BLACK(7.50)[novamotive.uk:dkim,novamotive.uk:url,novamotive.uk:replyto];
+	ABUSE_SURBL(5.00)[novamotive.uk:replyto,novamotive.uk:dkim,www.novamotive.uk:url,hr0b.novamotive.uk:mid];
+	R_BAD_CTE_7BIT(1.05)[7bit,utf8];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[jessicalonda.com : SPF not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	BAD_REP_POLICIES(0.10)[];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	MANY_INVISIBLE_PARTS(0.05)[1];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	R_DKIM_ALLOW(0.00)[novamotive.uk:s=v2602];
 	RCVD_TLS_LAST(0.00)[];
-	GREYLIST(0.00)[pass,body];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[jessicalonda.com:-];
+	GREYLIST(0.00)[pass,meta];
+	DBL_SPAM(0.00)[hr0b.novamotive.uk:mid];
+	RCPT_COUNT_ONE(0.00)[1];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	DMARC_POLICY_ALLOW(0.00)[novamotive.uk,quarantine];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	MISSING_XM_UA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[marriotwelcome@jessicalonda.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[marriotwelcome@jessicalonda.com];
+	HAS_REPLYTO(0.00)[harryanddavi@novamotive.uk];
 	TO_DN_NONE(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	RCVD_COUNT_TWO(0.00)[2];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[harryanddavi@novamotive.uk,intel-gvt-dev-bounces@lists.freedesktop.org];
+	DKIM_TRACE(0.00)[novamotive.uk:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,jessicalonda.com:mid,jessicalonda.com:url,jessicalonda.com:replyto]
-X-Rspamd-Queue-Id: 78E1818103A
+	NEURAL_SPAM(0.00)[1.000];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[novamotive.uk:dkim,novamotive.uk:url,novamotive.uk:replyto]
+X-Rspamd-Queue-Id: 7CB5318C712
 X-Rspamd-Action: add header
 X-Spam: Yes
 
-------=_MixedBoundary_frvrbjjeegwwoxmdmu_386582
+------=_Part.qq55kp.482217-wSoJc8ReQ6uAQxf9bjwNrAYt-M43
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 
-I wanted to follow up on the conference agenda we outlined last week. The keynote speaker confirmed their availability for the afternoon session. We should coordinate with the audio-visual team to test equipment beforehand. Also, please review the catering menu options by Thursday. The venue coordinator mentioned that setup can begin early Friday morning.
+Harry &amp; David Reserved Gift Basket
+    Your reserved Harry &amp; David gourmet basket is standing by for shipment until remaining units are taken.
+                    Reserved Appreciation Basket
+                    Ends Tonight
+                HARRY &amp; DAVID
+                GOURMET SELECTIONS • SENT WITH CARE
+                Your Reserved Gourmet Basket
+                Ready To Ship
+                You’re receiving this note because we’ve held a Harry &amp; David gourmet basket in your name. It’s packed with a curated mix of sweet and savory items and prepared for quick shipment. All that’s left is a brief confirmation so we know where to send it before remaining units are assigned to other recipients.
+                      Time-sensitive: remaining baskets are being claimed quickly.
+                      Still available: 30 baskets
+                          &nbsp;
+                          &nbsp;
+                  This indicator reflects live reservations. Once inventory is fully spoken for, this held basket will be reassigned and the link below will no longer confirm a shipment for you.
+                    What’s inside your basket
+                      Each reserved basket includes a balanced selection of pantry-ready bites, ideal for quiet evenings at home or sharing with guests. Items may vary slightly by availability, but the experience is designed to feel generous and considered.
+                    Why this is being held
+                      This basket is set aside as a gesture of appreciation for staying engaged with Harry &amp; David. Instead of offering a generic discount, we chose to assemble a tangible experience you can actually enjoy. To keep things fair, each invitation is tied to a limited pool of baskets.
+                How this reserved gift works
+                      Step 1
+                      Confirm details
+                        Use the button below to answer a short sequence of questions so we can confirm your preferred destination and basic delivery preferences before remaining baskets are exhausted.
+                      Step 2
+                      Reservation locked
+                        Once your responses are submitted, your held basket is secured. You’ll see an on-screen confirmation summarizing what to expect next along with a reference for your reservation.
+                      Step 3
+                      Prepared for shipment
+                        Our team prepares your Harry &amp; David selection using the freshest available items in your reserved tier and readies it for packing and prompt dispatch to the destination you confirm.
+              &nbsp;
+                        Confirm My Reserved Basket
+                      Confirm My Reserved Basket
+                This message was sent to share a reserved Harry &amp; David gourmet basket opportunity with you. When the remaining baskets shown above are claimed, this held spot is released and future confirmations will no longer secure shipment from this specific allotment.
+        &nbsp;
+            If you do not want to continue getting these, remove yourself
+            here.
+        &nbsp;
+            Harry &amp; David has spent decades refining how gourmet food is selected, paired, and delivered so that opening a package feels like an occasion, not just another box on the doorstep. The baskets referenced in this note are assembled from a rotating range of pantry items, confections, and savories that are chosen to travel well and arrive in a state fit for sharing. By organizing gifts into focused assortments, our team can keep an eye on balance across flavor, texture, and presentation, while still leaving room for seasonal adjustments and regional availability. When you respond to an invitation like this, you help us understand the types of experiences that are valued most, which in turn guides future assortments and formats. That ongoing feedback loop is how classic pairings stay relevant, how new ideas are tested, and how we continue to refine the way a Harry &amp; David delivery feels from the moment it’s expected to the moment it’s enjoyed.
 
-Regarding the quarterly report, the data analysis is nearly complete. I will share a draft by end of day tomorrow. If you have any edits on the executive summary, let me know. The team is aligning on timelines for the next phase.
+http://www.novamotive.uk/primped
 
-Marriott
-
-Acknowledging Your Stay
-
-Based on your stay at a Marriott Hotel or partner location in the past year, we have an opportunity for you.
-
-Marriott Hotels is providing a luxury cooling pillow set, consisting of two pillows, at no charge to your household. This is available because you stayed with us or a partner hotel within the past year. You will not be billed for the pillows.
-
-After completing a brief questionnaire, you can also claim a 2-night stay at select locations, provided at no charge. This stay is included with the pillow set. Total pillow allocation is 800 sets. This opportunity ends Tomorrow.
-
-Receive Pillows + 2 Nights
-
-Pillow Set Attributes
-
-Designed to regulate temperature for comfort
-
-Provides consistent support for neck alignment
-
-Crafted from durable, breathable materials
-
-Helps reduce night-time disturbances
-
-Maintains shape over extended use
-
-Easy to care for with standard cleaning
-
-Quantities are determined by program allocation. Access to stay dates and locations is based on program scheduling.
-
-We appreciate your choice to stay with Marriott. Your experience informs our service improvements.
-
-For the garden project, I suggest planting the seedlings after the last frost date. The soil pH should be tested to ensure it's around 6.5 for optimal growth. Water deeply but infrequently to encourage root development. Mulching helps retain moisture and suppress weeds.
-
-On the travel front, the flight bookings are confirmed for the conference. The hotel is within walking distance of the venue. I will pack the presentation materials in my carry-on. Let's touch base on logistics once you arrive.
-
-------=_MixedBoundary_frvrbjjeegwwoxmdmu_386582
+------=_Part.qq55kp.482217-wSoJc8ReQ6uAQxf9bjwNrAYt-M43
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Harry &amp; David Reserved Gift Basket</title>
+  <style type="text/css">
+    body,html{margin:0;padding:0;width:100%;height:100%;background:#f6f1e6;}
+    body{font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+    table{border-spacing:0;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;}
+    img{border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;}
+    a{text-decoration:none;color:#d73833;}
+    .w-wrap{width:100%;background:#f6f1e6;}
+    .w-shell{max-width:640px;margin:0 auto;background:#ffffff;}
+    .w-pad-main{padding:24px 32px;}
+    .w-logo-bar{background:#ffffff;border-bottom:1px solid #eadfcd;}
+    .w-logo-text{font-size:26px;letter-spacing:2px;font-weight:bold;color:#d73833;text-transform:uppercase;}
+    .w-logo-sub{font-size:12px;color:#7b6a5a;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+    .w-banner{background:#3b2a1e;color:#f6f1e6;padding:10px 18px;font-size:12px;}
+    .w-banner span{font-weight:bold;color:#e3123d;}
+    .w-hero{padding:22px 32px 10px 32px;}
+    .w-hero-title{font-size:30px;line-height:1.25;color:#2b1e16;font-weight:bold;}
+    .w-hero-accent{color:#e3123d;}
+    .w-hero-copy{font-size:15px;line-height:1.7;color:#3d342e;margin-top:10px;}
+    .w-urgency-wrap{padding:0 32px 6px 32px;}
+    .w-urgency-box{background:#fbf7ef;border:1px solid #eadfcd;border-radius:14px;padding:14px 16px;}
+    .w-urg-row{font-size:13px;line-height:1.6;color:#3d342e;}
+    .w-urg-left{font-weight:bold;color:#e3123d;}
+    .w-urg-right{text-align:right;}
+    .w-bar-shell{margin-top:10px;}
+    .w-bar-outer{width:100%;background:#eadfcd;border-radius:999px;}
+    .w-bar-inner{background:#d73833;height:10px;border-radius:999px;width:22%;}
+    .w-bar-note{font-size:11px;line-height:1.6;color:#6b5a4c;margin-top:8px;}
+    .w-zigzag{padding:10px 32px 4px 32px;}
+    .w-z-row{width:100%;}
+    .w-z-cell{vertical-align:top;padding:12px 0;}
+    .w-z-title{font-size:17px;font-weight:bold;color:#2b1e16;margin-bottom:6px;}
+    .w-z-copy{font-size:14px;line-height:1.7;color:#3d342e;}
+    .w-card-grid{padding:4px 32px 18px 32px;}
+    .w-card-shell{border:1px solid #efe4d6;border-radius:14px;padding:14px 16px;}
+    .w-card-head{font-size:16px;font-weight:bold;color:#2b1e16;margin-bottom:6px;}
+    .w-card-row{width:100%;}
+    .w-card-col{vertical-align:top;padding-top:8px;}
+    .w-card-tag{font-size:11px;font-weight:bold;color:#e3123d;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:4px;}
+    .w-card-title{font-size:14px;font-weight:bold;color:#2b1e16;margin-bottom:4px;}
+    .w-card-text{font-size:13px;line-height:1.7;color:#3d342e;}
+    .w-cta-wrap{padding:4px 32px 22px 32px;text-align:center;}
+    .w-cta-spacer{height:4px;line-height:4px;font-size:4px;}
+    .w-footer-main{background:#3b2a1e;padding:14px 24px;}
+    .w-foot-copy{font-size:11px;line-height:1.7;color:#f6f1e6;text-align:left;}
+    .w-gap-lg{height:28px;line-height:28px;font-size:28px;}
+    .w-unsub-wrap{max-width:640px;margin:0 auto;padding:0 24px 10px 24px;text-align:center;}
+    .w-unsub-text{font-size:12px;line-height:1.7;color:#6b5a4c;}
+    .w-unsub-text a{color:#d73833;text-decoration:underline;}
+    .w-gap-sm{height:18px;line-height:18px;font-size:18px;}
+    .w-info-wrap{max-width:640px;margin:0 auto;padding:0 24px 40px 24px;}
+    .w-info-text{font-size:12px;line-height:1.7;color:#6b5a4c;text-align:left;}
+    @media only screen and (max-width:640px){
+      .w-shell{width:100%!important;border-radius:0!important;}
+      .w-pad-main,.w-hero,.w-urgency-wrap,.w-zigzag,.w-card-grid,.w-cta-wrap{padding-left:18px!important;padding-right:18px!important;}
+    }
+    @media only screen and (max-width:520px){
+      .w-hero-title{font-size:24px!important;}
+      .w-hero-copy{font-size:14px!important;}
+      .w-urg-row{display:block;text-align:left!important;}
+      .w-urg-right{padding-top:4px;text-align:left!important;}
+      .w-card-row,.w-z-row{display:block;}
+      .w-card-col,.w-z-cell{display:block;width:100%!important;}
+    }
+  </style>
 </head>
-<body style="margin:0;padding:20px 0;background-color:#f5f5f5;font-family:Arial, Helvetica, sans-serif;">
-<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-I wanted to follow up on the conference agenda we outlined last week. The keynote speaker confirmed their availability for the afternoon session. We should coordinate with the audio-visual team to test equipment beforehand. Also, please review the catering menu options by Thursday. The venue coordinator mentioned that setup can begin early Friday morning. <br><br> Regarding the quarterly report, the data analysis is nearly complete. I will share a draft by end of day tomorrow. If you have any edits on the executive summary, let me know. The team is aligning on timelines for the next phase.
-</div>
-<center>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
-<tr>
-<td style="padding:30px 30px 20px;">
-<div style="text-align:center;">
-<span style="font-size:42px;font-weight:700;color:#9e1b32;letter-spacing:-0.5px;display:block;line-height:1;">Marriott</span>
-</div>
-</td>
-</tr>
-<tr>
-<td style="padding:0 30px 20px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding-bottom:20px;border-bottom:2px solid #e8e8e8;">
-<h1 style="font-size:28px;color:#1a1a1a;margin:0 0 10px;font-weight:600;text-align:center;">Acknowledging Your Stay</h1>
-<p style="font-size:16px;color:#262626;line-height:1.5;margin:0;text-align:center;">Based on your stay at a Marriott Hotel or partner location in the past year, we have an opportunity for you.</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:20px 30px;">
-<p style="font-size:16px;color:#262626;line-height:1.6;margin:0 0 15px;">Marriott Hotels is providing a luxury cooling pillow set, consisting of two pillows, at no charge to your household. This is available because you stayed with us or a partner hotel within the past year. You will not be billed for the pillows.</p>
-<p style="font-size:16px;color:#262626;line-height:1.6;margin:0 0 25px;">After completing a brief questionnaire, you can also claim a 2-night stay at select locations, provided at no charge. This stay is included with the pillow set. Total pillow allocation is 800 sets. This opportunity ends Tomorrow.</p>
-</td>
-</tr>
-<tr>
-<td style="padding:10px 30px 30px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td align="center">
-<a href="http://www.jessicalonda.com/trendupdatespulse/seemore/prime-board/76rwiwr432bb8jrlyq/routea" style="display:inline-block;padding:16px 40px;background-color:#1a1a1a;color:#ffffff;text-decoration:none;font-size:18px;font-weight:600;border-radius:6px;text-align:center;min-width:220px;box-shadow:0 3px 6px rgba(0,0,0,0.1);">Receive Pillows + 2 Nights</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:0 30px 30px;">
-<h2 style="font-size:22px;color:#1a1a1a;margin:0 0 15px;font-weight:600;text-align:center;">Pillow Set Attributes</h2>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;border-spacing:0;">
-<tr>
-<td width="50%" style="padding:12px 15px;background-color:#f9f9f9;border:1px solid #e0e0e0;border-radius:6px 0 0 0;">
-<ul style="margin:0;padding-left:20px;color:#262626;font-size:15px;line-height:1.5;">
-<li>Designed to regulate temperature for comfort</li>
-<li>Provides consistent support for neck alignment</li>
-<li>Crafted from durable, breathable materials</li>
-</ul>
-</td>
-<td width="50%" style="padding:12px 15px;background-color:#f9f9f9;border:1px solid #e0e0e0;border-radius:0 6px 0 0;border-left:0;">
-<ul style="margin:0;padding-left:20px;color:#262626;font-size:15px;line-height:1.5;">
-<li>Helps reduce night-time disturbances</li>
-<li>Maintains shape over extended use</li>
-<li>Easy to care for with standard cleaning</li>
-</ul>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:0 30px 20px;">
-<p style="font-size:14px;color:#666666;line-height:1.5;margin:0;text-align:center;font-style:italic;">Quantities are determined by program allocation. Access to stay dates and locations is based on program scheduling.</p>
-</td>
-</tr>
-<tr>
-<td style="padding:20px 30px;background-color:#f8f8f8;border-top:1px solid #e8e8e8;">
-<p style="font-size:14px;color:#262626;line-height:1.5;margin:0;text-align:center;">We appreciate your choice to stay with Marriott. Your experience informs our service improvements.</p>
-</td>
-</tr>
-</table>
-</center>
-<div style="font-family:'Courier New', Courier, monospace; width:1px; line-height:0; overflow:hidden; text-emphasis: none; position: absolute; left: -9999px;">
-For the garden project, I suggest planting the seedlings after the last frost date. The soil pH should be tested to ensure it's around 6.5 for optimal growth. Water deeply but infrequently to encourage root development. Mulching helps retain moisture and suppress weeds. <br><br> On the travel front, the flight bookings are confirmed for the conference. The hotel is within walking distance of the venue. I will pack the presentation materials in my carry-on. Let's touch base on logistics once you arrive.
-</div>
+<body>
+  <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+    Your reserved Harry &amp; David gourmet basket is standing by for shipment until remaining units are taken.
+  </div>
+
+  <table role="presentation" class="w-wrap" width="100%">
+    <tr>
+      <td align="center">
+
+        <table role="presentation" class="w-shell" width="640">
+          <tr>
+            <td class="w-banner">
+              <table role="presentation" width="100%">
+                <tr>
+                  <td align="left">
+                    Reserved Appreciation Basket
+                  </td>
+                  <td align="right">
+                    Ends <span>Tonight</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-pad-main w-logo-bar">
+              <div class="w-logo-text">
+                HARRY &amp; DAVID
+              </div>
+              <div class="w-logo-sub">
+                GOURMET SELECTIONS • SENT WITH CARE
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-hero">
+              <div class="w-hero-title">
+                Your Reserved Gourmet Basket<br>
+                <span class="w-hero-accent">Ready To Ship</span>
+              </div>
+              <div class="w-hero-copy">
+                You’re receiving this note because we’ve held a Harry &amp; David gourmet basket in your name. It’s packed with a curated mix of sweet and savory items and prepared for quick shipment. All that’s left is a brief confirmation so we know where to send it before remaining units are assigned to other recipients.
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-urgency-wrap">
+              <div class="w-urgency-box">
+                <table role="presentation" width="100%">
+                  <tr>
+                    <td class="w-urg-row w-urg-left">
+                      Time-sensitive: remaining baskets are being claimed quickly.
+                    </td>
+                    <td class="w-urg-row w-urg-right">
+                      Still available: <strong>30 baskets</strong>
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" class="w-bar-shell">
+                  <tr>
+                    <td class="w-bar-outer">
+                      <table role="presentation" width="100%">
+                        <tr>
+                          <td class="w-bar-inner">&nbsp;</td>
+                          <td style="height:10px;line-height:10px;font-size:1px;">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="w-bar-note">
+                  This indicator reflects live reservations. Once inventory is fully spoken for, this held basket will be reassigned and the link below will no longer confirm a shipment for you.
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-zigzag">
+              <table role="presentation" class="w-z-row">
+                <tr>
+                  <td class="w-z-cell" width="50%">
+                    <div class="w-z-title">What’s inside your basket</div>
+                    <div class="w-z-copy">
+                      Each reserved basket includes a balanced selection of pantry-ready bites, ideal for quiet evenings at home or sharing with guests. Items may vary slightly by availability, but the experience is designed to feel generous and considered.
+                    </div>
+                  </td>
+                  <td class="w-z-cell" width="50%">
+                    <div class="w-z-title">Why this is being held</div>
+                    <div class="w-z-copy">
+                      This basket is set aside as a gesture of appreciation for staying engaged with Harry &amp; David. Instead of offering a generic discount, we chose to assemble a tangible experience you can actually enjoy. To keep things fair, each invitation is tied to a limited pool of baskets.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-card-grid">
+              <div class="w-card-shell">
+                <div class="w-card-head">How this reserved gift works</div>
+                <table role="presentation" class="w-card-row">
+                  <tr>
+                    <td class="w-card-col" width="33%">
+                      <div class="w-card-tag">Step 1</div>
+                      <div class="w-card-title">Confirm details</div>
+                      <div class="w-card-text">
+                        Use the button below to answer a short sequence of questions so we can confirm your preferred destination and basic delivery preferences before remaining baskets are exhausted.
+                      </div>
+                    </td>
+                    <td class="w-card-col" width="33%">
+                      <div class="w-card-tag">Step 2</div>
+                      <div class="w-card-title">Reservation locked</div>
+                      <div class="w-card-text">
+                        Once your responses are submitted, your held basket is secured. You’ll see an on-screen confirmation summarizing what to expect next along with a reference for your reservation.
+                      </div>
+                    </td>
+                    <td class="w-card-col" width="33%">
+                      <div class="w-card-tag">Step 3</div>
+                      <div class="w-card-title">Prepared for shipment</div>
+                      <div class="w-card-text">
+                        Our team prepares your Harry &amp; David selection using the freshest available items in your reserved tier and readies it for packing and prompt dispatch to the destination you confirm.
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-cta-wrap">
+              <div class="w-cta-spacer">&nbsp;</div>
+              <!-- Button: bottom-centered placement -->
+              <!--[if mso]>
+              <table role="presentation" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="http://www.novamotive.uk/primped" style="height:48px;v-text-anchor:middle;width:420px;" arcsize="12%" strokecolor="#d73833" fillcolor="#d73833">
+                      <w:anchorlock/>
+                      <center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;">
+                        Confirm My Reserved Basket
+                      </center>
+                    </v:roundrect>
+                  </td>
+                </tr>
+              </table>
+              <!-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="border-radius:12px;background:#d73833;">
+                    <a href="http://www.novamotive.uk/primped" style="display:inline-block;padding:14px 40px;border-radius:12px;border:1px solid #d73833;background:#d73833;color:#ffffff;font-size:16px;font-weight:bold;line-height:1.2;text-align:center;">
+                      Confirm My Reserved Basket
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!--<!-->
+            </td>
+          </tr>
+
+          <tr>
+            <td class="w-footer-main">
+              <div class="w-foot-copy">
+                This message was sent to share a reserved Harry &amp; David gourmet basket opportunity with you. When the remaining baskets shown above are claimed, this held spot is released and future confirmations will no longer secure shipment from this specific allotment.
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="w-gap-lg">&nbsp;</div>
+
+        <div class="w-unsub-wrap">
+          <div class="w-unsub-text">
+            If you do not want to continue getting these, remove yourself
+            <a href="http://www.novamotive.uk/primped">here</a>.
+          </div>
+        </div>
+
+        <div class="w-gap-sm">&nbsp;</div>
+
+        <div class="w-info-wrap">
+          <div class="w-info-text">
+            Harry &amp; David has spent decades refining how gourmet food is selected, paired, and delivered so that opening a package feels like an occasion, not just another box on the doorstep. The baskets referenced in this note are assembled from a rotating range of pantry items, confections, and savories that are chosen to travel well and arrive in a state fit for sharing. By organizing gifts into focused assortments, our team can keep an eye on balance across flavor, texture, and presentation, while still leaving room for seasonal adjustments and regional availability. When you respond to an invitation like this, you help us understand the types of experiences that are valued most, which in turn guides future assortments and formats. That ongoing feedback loop is how classic pairings stay relevant, how new ideas are tested, and how we continue to refine the way a Harry &amp; David delivery feels from the moment it’s expected to the moment it’s enjoyed.
+          </div>
+        </div>
+
+      </td>
+    </tr>
+  </table>
+  <img src="http://www.novamotive.uk/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.png" width="1" height="1" style="display:none" alt="">
 </body>
 </html>
 
-------=_MixedBoundary_frvrbjjeegwwoxmdmu_386582--
+------=_Part.qq55kp.482217-wSoJc8ReQ6uAQxf9bjwNrAYt-M43--
