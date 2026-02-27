@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GOS6IHlsoGk3jgQAu9opvQ
+	id gDzIOZTwoWnYxQQAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Feb 2026 16:53:29 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Feb 2026 20:29:24 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD6AF1A9273
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Feb 2026 16:53:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E76F51BCCB3
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Feb 2026 20:29:21 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2442D10E999;
-	Thu, 26 Feb 2026 15:53:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F135210EBFD;
+	Fri, 27 Feb 2026 19:21:27 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=rcciapp.com header.i=aaacourtesyassistance@rcciapp.com header.b="npIzB+ix";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=luckyvio.com header.i=cstccospecial@luckyvio.com header.b="DHTulay7";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 316 seconds by postgrey-1.36 at gabe;
- Thu, 26 Feb 2026 15:53:25 UTC
-Received: from out1.rcciapp.com (mail.rcciapp.com [45.93.8.206])
- by gabe.freedesktop.org (Postfix) with ESMTP id B6BAF10E999
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Fri, 27 Feb 2026 19:21:17 UTC
+Received: from mail2.luckyvio.com (mail.luckyvio.com [130.51.100.197])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 29B4910EBFE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 Feb 2026 15:53:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaz9z5e257yp;
- d=rcciapp.com; 
- h=MIME-Version:Message-ID:List-Unsubscribe:Reply-To:To:Date:Subject:From:
- Content-Type; i=aaacourtesyassistance@rcciapp.com;
- bh=m7rqYYTnmUhz8AxmT8MjKxGWdHm2hdlpuGCwQGrKGA0=;
- b=npIzB+ixcJCUns/teZyxQ5ZgnDjf7l0Um46oITycBUVWzCGZFVQL1/F9z70hzXoPDMOwM0/Le9tS
- 9XxpLO5VvFCB79eZD+16ce8R+Yd2tGsALNbfcFwyws4gFmzrPygPo/95g1XXbAA8C9F1We3eVx2Q
- QLzyMFmxqgEsbjGlQDMgSGN3XTftrjupj8UqgxVJNRzqapn+BYUIZEHKjipjN3q0wEcRA2P2eAgD
- cawXJ8SeEttjTscu2Lcr6h28SV9rETZx2sHG4BE8oSqVjc4AwDLLspVM62GAImyiFcH4c+uBY+Y4
- GWBfN5FyMbRt/WGsCwd+f+ctGFuIjIst7FAJKw==
-MIME-Version: 1.0
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Message-ID: <5lrziqhxawhik7ay1u3g3binkdfy517481@rcciapp.com>
+ Fri, 27 Feb 2026 19:21:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaf5jnbjutmu;
+ d=luckyvio.com; 
+ h=Subject:To:Date:MIME-Version:Reply-To:List-Unsubscribe:From:Message-ID:
+ Content-Type; i=cstccospecial@luckyvio.com;
+ bh=9fUflJTcvKMjGc1jINEB7HPQjrA63o0gwZ/hb8DPpw4=;
+ b=DHTulay7y/nEM2pP3jxBqyduyPO3IKOE7pVVYp5za5a+jbZ9V+TDxt6KZAJwJH4/jYaDnL1L+kU6
+ +enn6KHHx6bUkC8SLdBFEho73gpmC7iWaxeOTGliwwCu3efN/arARx0APQScsDNDkoYJLAWlmHxU
+ y1Kr3FhNQLZF6y6+WHALqwEKABdnr8w4Ir+PdENpEeAgh4/7yVvTr0s/W5hv4bpgagNRP7gwhgba
+ L9iorkUklzzsCvBqm3KQg+RZEdoZlwlWB0Ozt+ojUG3qvKs2on7pIdTmKlA7DzDrngnoa4niMv0r
+ fgQieWCxVXw1xnMGyNMpPS2dTSvUNV9MCC7Ecw==
+Subject: Important information about your C0STC0 membership update
 To: intel-gvt-dev@lists.freedesktop.org
-Date: Thu, 26 Feb 2026 10:48:03 -0500
-Subject: Details about the courtesy road kit for AAA licensed drivers
-From: AAA Courtesy Assistance <aaacourtesyassistance@rcciapp.com>
+Date: Fri, 27 Feb 2026 14:00:02 -0500
+MIME-Version: 1.0
+From: C0STC0 Co Special <cstccospecial@luckyvio.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <068960_sllezhhidqjpcmflgoecdoelgoecdoe@luckyvio.com>
 Content-Type: multipart/alternative;
- boundary="----=_RelatedBoundary-oog8f2jf11wwuv4iafubf.SegmentBoundary"
+ boundary="----=_MixedPart_2534_671703573.zrxvqhaowivqidsxobekdr"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,290 +54,140 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: aaacourtesyassistance@rcciapp.com
+Reply-To: cstccospecial@luckyvio.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [6.84 / 15.00];
-	ABUSE_SURBL(5.00)[www.rcciapp.com:url,rcciapp.com:mid,rcciapp.com:replyto];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[rcciapp.com:s=mtaz9z5e257yp];
+X-Spamd-Result: default: False [13.70 / 15.00];
+	URIBL_BLACK(7.50)[luckyvio.com:mid,luckyvio.com:url,luckyvio.com:replyto];
+	ABUSE_SURBL(5.00)[www.luckyvio.com:url,luckyvio.com:mid,luckyvio.com:replyto];
+	R_DKIM_REJECT(1.00)[luckyvio.com:s=mtaf5jnbjutmu];
+	R_PARTS_DIFFER(0.41)[70.5%];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[rcciapp.com : SPF not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[luckyvio.com : SPF not aligned (relaxed),none];
 	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
+	DKIM_TRACE(0.00)[luckyvio.com:-];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	DKIM_TRACE(0.00)[rcciapp.com:-];
 	RCPT_COUNT_ONE(0.00)[1];
-	ARC_NA(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	GREYLIST(0.00)[pass,meta];
+	GREYLIST(0.00)[pass,body];
+	ARC_NA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
 	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[cstccospecial@luckyvio.com];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[aaacourtesyassistance@rcciapp.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_NEQ_ENVFROM(0.00)[cstccospecial@luckyvio.com,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[aaacourtesyassistance@rcciapp.com];
+	NEURAL_SPAM(0.00)[1.000];
 	TO_DN_NONE(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,rcciapp.com:mid,rcciapp.com:url,rcciapp.com:replyto]
-X-Rspamd-Queue-Id: CD6AF1A9273
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,luckyvio.com:mid,luckyvio.com:url,luckyvio.com:replyto]
+X-Rspamd-Queue-Id: E76F51BCCB3
 X-Rspamd-Action: add header
 X-Spam: Yes
 
-------=_RelatedBoundary-oog8f2jf11wwuv4iafubf.SegmentBoundary
+------=_MixedPart_2534_671703573.zrxvqhaowivqidsxobekdr
 Content-Type: text/plain; charset="UTF-8"
 
-I can break down the plan step by step so it is easy to follow. Start by checking available windows for each task and mark the ones that need a dedicated block of time. For the items that require coordination, list the people involved and a brief note on what they need to prepare. If any step depends on receiving materials, note the expected lead time and a fallback option. Keep the list compact and update it after each meeting. Share the short version with the team and keep a longer version for your records. That way everyone knows the next action and nothing gets duplicated.
-Remember to leave a little buffer on scheduling so delays do not cascade.
+Costco Wholesale Membership Update
 
-AAA
-AAA
-AAA
+Hey, I got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I've checked the route and there's that one section under maintenance, but the detour is straightforward and only adds about seven minutes. We should probably pack some extra water, the forecast suggests it will be warmer than initially thought. I'll bring the large cooler if you can handle the folding chairs. Also, remind me to grab the portable speaker from the garage before I leave, I charged it last night. Let me know if you want to coordinate on snacks or if we're each bringing our own stuff. I'm leaning towards everyone contributing to a shared platter to simplify things. What's your take on that?
 
-Trusted roadside services for residents in your community
+Did you finally decide on which game to bring? I know you were debating between the two. I'm easy either way, but the card one might be better if more people show up than expected. My cousin might join us, but he'll confirm tomorrow morning. I'll text you as soon as I hear. The parking situation should be fine if we arrive when we planned. I scouted it out last week and there were plenty of spots. Oh, and don't forget the sunscreen. I learned that lesson the hard way last time. My shoulders were sore for days. Anyway, looking forward to it. Shoot me a text when you're heading out.
 
-You qualify for a Courtesy Roadside Kit
+COSTCO WHOLESALE
 
-As a resident of the program area, you are eligible to receive an AAA Courtesy Roadside Kit. This kit is provided at no charge to eligible residents through a regional support program. It is intended to give straightforward, practical items to help with basic roadside situations.
+Membership Update Notification
 
-See what’s included
+We are contacting you regarding recent updates to your membership. We apologize for any oversight in our previous communications.
 
-The kit is assembled to cover common roadside needs. Below is a list of components you can expect to find. If you would like more information or wish to confirm your eligibility, follow the link above to review program details.
+Account Summary
 
-Reflective safety vest
+Membership ID: GOLD-7842-91A5
 
-Tire pressure gauge
+Status: Executive | Auto-Renew Active
 
-Compact first aid kit
+Primary Warehouse: #0719
 
-LED safety flashlight
+Your member perks have been updated. As part of this change, you have an opportunity to recover $100 in Costco Shop Card rewards for the 2026 membership year, in addition to a 12-month membership confirmation.
 
-Emergency blanket
+Review Membership Details
 
-Basic tool kit (screwdriver, pliers)
+Please use the link above to view your complete membership details and the available offer. This is a service notification regarding your account.
 
-Jumper cable set
+Costco Wholesale Membership Services
+This is an automated account notification.
 
-Tire inflator pouch
+So about the project timeline you asked for, I've mapped out the next three phases. The initial design review needs to happen before we can commit to a vendor. I've scheduled a brief sync for tomorrow afternoon to walk through the wireframes. Can you make it at 2 PM? If not, let me know and I'll see if we can shift it to the morning. The feedback from the last round was really helpful, by the way. I've incorporated most of the changes, specifically around the user flow on the second screen.
 
-Road hazard triangle
+The materials list is almost finalized. I'm waiting on one quote for the specialty items, which should come in by end of day. Once we have that, we can proceed with the procurement request. Have you had a chance to check the storage room for the older components? We might be able to repurpose some of the brackets and fasteners, which would cut down on cost and waste. Let me know what you find. Also, don't forget to bring the calibration tool to the site on Wednesday. The technician specifically asked for it. I'll send a calendar reminder for the delivery window as soon as I get the confirmation from logistics.
 
-Weatherproof gloves
+On a separate note, the team lunch is still on for Friday. I put in the order for the sandwiches, but we need a final headcount. Could you check with your group and let me know by Thursday if anyone has dietary restrictions we haven't accounted for? I chose that new place downtown that does the roasted vegetable platter. I think it will be a good option for everyone. Let's touch base briefly before the lunch to go over the agenda for the afternoon brainstorming session.
 
-Tow strap
-
-Instruction card with local resources
-
-Note: availability is determined by program allocations in your area and is managed through the regional support team.
-
-Thank you for taking a moment to review this program. We hope the kit gives added confidence when you are on the road.
-
-AAA — here to support drivers in your community
-
-I can walk through the checklist you asked about and give a straightforward plan. Start by listing the items that must be done this week and mark which ones need input from others. For tasks that require a venue or tools, confirm availability and schedule a brief window to secure what is needed. If someone else is handling part of a task, note their name and the expected handoff date. Keep updates short and send them twice a week so everyone stays aligned. If an obstacle appears, name it and propose two possible responses. That keeps decisions moving without overloading the group.
-Make a quick summary at the end so the team can scan progress.
-
-------=_RelatedBoundary-oog8f2jf11wwuv4iafubf.SegmentBoundary
+------=_MixedPart_2534_671703573.zrxvqhaowivqidsxobekdr
 Content-Type: text/html; charset="UTF-8"
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco Wholesale Membership Update</title>
 </head>
-<body style="margin:0; padding:0; background-color:#f6f9fc; font-family: Georgia, 'Times New Roman', Times, serif; color:#333333; -webkit-font-smoothing:antialiased;">
-<div style="display:none; font-family: 'Trebuchet MS', sans-serif;">
-I can break down the plan step by step so it is easy to follow. Start by checking available windows for each task and mark the ones that need a dedicated block of time. For the items that require coordination, list the people involved and a brief note on what they need to prepare. If any step depends on receiving materials, note the expected lead time and a fallback option. Keep the list compact and update it after each meeting. Share the short version with the team and keep a longer version for your records. That way everyone knows the next action and nothing gets duplicated.<br>Remember to leave a little buffer on scheduling so delays do not cascade.
+<body style="margin:0; padding:20px 0; background-color:#f5f5f5; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#333;">
+<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
+Hey, I got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I've checked the route and there's that one section under maintenance, but the detour is straightforward and only adds about seven minutes. We should probably pack some extra water, the forecast suggests it will be warmer than initially thought. I'll bring the large cooler if you can handle the folding chairs. Also, remind me to grab the portable speaker from the garage before I leave, I charged it last night. Let me know if you want to coordinate on snacks or if we're each bringing our own stuff. I'm leaning towards everyone contributing to a shared platter to simplify things. What's your take on that?
+<br><br>
+Did you finally decide on which game to bring? I know you were debating between the two. I'm easy either way, but the card one might be better if more people show up than expected. My cousin might join us, but he'll confirm tomorrow morning. I'll text you as soon as I hear. The parking situation should be fine if we arrive when we planned. I scouted it out last week and there were plenty of spots. Oh, and don't forget the sunscreen. I learned that lesson the hard way last time. My shoulders were sore for days. Anyway, looking forward to it. Shoot me a text when you're heading out.
 </div>
-
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="background-color:#f6f9fc; padding:28px 12px;">
-  <tr>
-    <td align="center">
-      <table role="presentation" width="620" cellpadding="0" cellspacing="0" border="0" style="max-width:620px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #d6e0ea;">
-        <tr>
-          <td style="padding:22px 28px; background-color:#eef6fb; text-align:center;">
-            <div style="display:inline-block; padding:8px 16px; border-radius:6px; background-color:#063a72;">
-              <div style="font-size:28px; letter-spacing:2px; color:#ffffff; font-weight:700;">
-                <span style="color:#063a72; background-color:transparent; padding-right:6px;">AAA</span>
-                <span style="color:#063a72; background-color:transparent; padding-right:6px;">AAA</span>
-                <span style="color:#063a72; background-color:transparent;">AAA</span>
-              </div>
-            </div>
-            <div style="margin-top:12px; font-size:14px; color:#666666;">
-              Trusted roadside services for residents in your community
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:28px 28px 16px 28px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td style="vertical-align:top;">
-                  <h1 style="margin:0; font-size:22px; line-height:1.2; color:#063a72; font-weight:700;">You qualify for a Courtesy Roadside Kit</h1>
-                  <div style="height:8px;"></div>
-                  <div style="display:inline-block; width:44px; height:6px; background-color:#c71a1a; border-radius:3px;"></div>
-                  <p style="margin:16px 0 0 0; color:#666666; font-size:15px; line-height:1.5;">
-                    As a resident of the program area, you are eligible to receive an AAA Courtesy Roadside Kit. This kit is provided at no charge to eligible residents through a regional support program. It is intended to give straightforward, practical items to help with basic roadside situations.
-                  </p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:0 28px 18px 28px; text-align:center;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
-              <tr>
-                <td align="center">
-                  <a href="http://www.rcciapp.com/signalsfeed/start/feed/e554daed13935bea9788c5ff8f8d088fc/routec" style="display:inline-block; text-decoration:none; background-color:#c71a1a; color:#ffffff; font-weight:700; padding:14px 22px; border-radius:8px; min-height:44px; line-height:20px; box-shadow:0 2px 6px rgba(199,26,26,0.18); font-size:16px;">
-                    See what’s included
-                  </a>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:0 28px 22px 28px;">
-            <p style="margin:0 0 12px 0; color:#444444; font-size:15px; line-height:1.5;">
-              The kit is assembled to cover common roadside needs. Below is a list of components you can expect to find. If you would like more information or wish to confirm your eligibility, follow the link above to review program details.
-            </p>
-
-            <table role="presentation" width="100%" cellpadding="8" cellspacing="0" border="0" style="border-collapse:separate; border-spacing:8px; margin-top:12px;">
-              <tr>
-                <td style="padding:0;">
-                  <table role="presentation" width="100%" cellpadding="10" cellspacing="0" border="0" style="border:1px solid #d6e0ea; border-radius:6px; overflow:hidden;">
-                    <tr>
-                      <td style="background-color:#ffffff; vertical-align:top; padding:12px;">
-                        <table role="presentation" width="100%" cellpadding="6" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width:50%; vertical-align:top; padding-right:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Reflective safety vest
-                              </div>
-                            </td>
-                            <td style="width:50%; vertical-align:top; padding-left:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Tire pressure gauge
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Compact first aid kit
-                              </div>
-                            </td>
-                            <td style="padding-left:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                LED safety flashlight
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Emergency blanket
-                              </div>
-                            </td>
-                            <td style="padding-left:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Basic tool kit (screwdriver, pliers)
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Jumper cable set
-                              </div>
-                            </td>
-                            <td style="padding-left:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Tire inflator pouch
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Road hazard triangle
-                              </div>
-                            </td>
-                            <td style="padding-left:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Weatherproof gloves
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right:8px;">
-                              <div style="background-color:#ffffff; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Tow strap
-                              </div>
-                            </td>
-                            <td style="padding-left:8px;">
-                              <div style="background-color:#eef6fb; border:1px solid #d6e0ea; border-radius:6px; padding:10px; color:#333333; font-size:14px;">
-                                Instruction card with local resources
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-
-            <p style="margin:12px 0 0 0; color:#666666; font-size:13px; line-height:1.4;">
-              Note: availability is determined by program allocations in your area and is managed through the regional support team.
-            </p>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:22px 28px 18px 28px; background-color:#ffffff;">
-            <p style="margin:0; color:#444444; font-size:14px; line-height:1.5;">
-              Thank you for taking a moment to review this program. We hope the kit gives added confidence when you are on the road.
-            </p>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:0;">
-            <div style="height:8px; background-color:#063a72;"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td style="padding:12px 28px 28px 28px; background-color:#063a72; color:#ffffff; text-align:center; font-size:13px;">
-            AAA — here to support drivers in your community
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+<center>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; margin:0 auto;">
+<tr>
+<td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff; border:1px solid #e0e0e0; border-top:4px solid #0073c1;">
+<tr>
+<td style="padding:30px;">
+<div style="text-align:center; margin-bottom:25px;">
+<div style="font-family:Arial, Helvetica, sans-serif; font-size:28px; font-weight:bold; color:#e31837; display:inline-block; padding-bottom:8px; border-bottom:3px solid #0073c1;">COSTCO WHOLESALE</div>
+</div>
+<h1 style="font-size:20px; font-weight:bold; color:#333; margin-top:0; margin-bottom:20px; padding-bottom:15px; border-bottom:1px solid #eee;">Membership Update Notification</h1>
+<p style="margin-bottom:20px;">We are contacting you regarding recent updates to your membership. We apologize for any oversight in our previous communications.</p>
+<div style="background-color:#f9f9f9; border-left:4px solid #0073c1; padding:15px; margin:25px 0; font-size:15px;">
+<p style="margin-top:0; margin-bottom:10px; font-weight:bold;">Account Summary</p>
+<p style="margin:5px 0;">Membership ID: GOLD-7842-91A5</p>
+<p style="margin:5px 0;">Status: Executive | Auto-Renew Active</p>
+<p style="margin:5px 0;">Primary Warehouse: #0719</p>
+</div>
+<p style="margin-bottom:20px;">Your member perks have been updated. As part of this change, you have an opportunity to recover $100 in Costco Shop Card rewards for the 2026 membership year, in addition to a 12-month membership confirmation.</p>
+<div style="text-align:center; margin:30px 0;">
+<a href="http://www.luckyvio.com/dailyreport/readnow/focus_feed/biizpupfrhebnewblcwagggtoyvum/panel" style="background-color:#e31837; color:#ffffff; text-decoration:none; padding:15px 30px; font-size:17px; font-weight:bold; border-radius:4px; display:inline-block;">Review Membership Details</a>
+</div>
+<p style="font-size:15px; color:#666; margin-bottom:0;">Please use the link above to view your complete membership details and the available offer. This is a service notification regarding your account.</p>
+<p style="font-size:14px; color:#999; margin-top:25px; padding-top:20px; border-top:1px solid #eee;">Costco Wholesale Membership Services<br>This is an automated account notification.</p>
+</td>
+</tr>
 </table>
-
-<div style="position:absolute; left:-9999px; top:-9999px; font-family: 'Times New Roman', Times, serif;">
-I can walk through the checklist you asked about and give a straightforward plan. Start by listing the items that must be done this week and mark which ones need input from others. For tasks that require a venue or tools, confirm availability and schedule a brief window to secure what is needed. If someone else is handling part of a task, note their name and the expected handoff date. Keep updates short and send them twice a week so everyone stays aligned. If an obstacle appears, name it and propose two possible responses. That keeps decisions moving without overloading the group.<br>Make a quick summary at the end so the team can scan progress.
+</td>
+</tr>
+</table>
+</center>
+<div style="font-family: 'Trebuchet MS', sans-serif; display:none;">
+So about the project timeline you asked for, I've mapped out the next three phases. The initial design review needs to happen before we can commit to a vendor. I've scheduled a brief sync for tomorrow afternoon to walk through the wireframes. Can you make it at 2 PM? If not, let me know and I'll see if we can shift it to the morning. The feedback from the last round was really helpful, by the way. I've incorporated most of the changes, specifically around the user flow on the second screen.
+<br><br>
+The materials list is almost finalized. I'm waiting on one quote for the specialty items, which should come in by end of day. Once we have that, we can proceed with the procurement request. Have you had a chance to check the storage room for the older components? We might be able to repurpose some of the brackets and fasteners, which would cut down on cost and waste. Let me know what you find. Also, don't forget to bring the calibration tool to the site on Wednesday. The technician specifically asked for it. I'll send a calendar reminder for the delivery window as soon as I get the confirmation from logistics.
+<br><br>
+On a separate note, the team lunch is still on for Friday. I put in the order for the sandwiches, but we need a final headcount. Could you check with your group and let me know by Thursday if anyone has dietary restrictions we haven't accounted for? I chose that new place downtown that does the roasted vegetable platter. I think it will be a good option for everyone. Let's touch base briefly before the lunch to go over the agenda for the afternoon brainstorming session.
 </div>
 </body>
 </html>
 
-------=_RelatedBoundary-oog8f2jf11wwuv4iafubf.SegmentBoundary--
+------=_MixedPart_2534_671703573.zrxvqhaowivqidsxobekdr--
