@@ -2,46 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 4EpaDILOpWm1GwAAu9opvQ
+	id SNajJBzjpWkvHgAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 18:53:06 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 20:21:00 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 787D11DE193
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 18:53:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D90201DECAB
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 20:20:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AAB3110E571;
-	Mon,  2 Mar 2026 17:53:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0F14210E154;
+	Mon,  2 Mar 2026 19:20:58 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=familyassist.net header.i=marriotwelcomesyoutoday@familyassist.net header.b="IZH+/oVM";
+	dkim=pass (2048-bit key; unprotected) header.d=redvergecore.name header.i=enduranceveh@redvergecore.name header.b="AmTxwPQv";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 02 Mar 2026 17:53:03 UTC
-Received: from track.familyassist.net (mail.familyassist.net [62.182.80.143])
- by gabe.freedesktop.org (Postfix) with ESMTP id 163FB10E571
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Mar 2026 19:20:56 UTC
+Received: from mail.redvergecore.name (rhubarb.Digitaraloop.com
+ [173.232.79.47])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6F0EE10E154
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Mar 2026 17:53:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta9uj4p4qkls;
- d=familyassist.net; 
- h=List-Unsubscribe:Date:Message-ID:Subject:Reply-To:To:From:MIME-Version:
- Content-Type; i=marriotwelcomesyoutoday@familyassist.net;
- bh=WpzZ2rfhTFARmp1TpoVjQP/Qmfr5ziqjgjc/zvSFrv8=;
- b=IZH+/oVMpW52EvKbrfLtMBaQiRu1LQZYTaRmqn9obb3Eh+ghXVzRtK6KiAzzi4mpGZdPFiKyJhxC
- wVUXMHG7z9Z4qkKdeMl4bTKSKlIZlJmt4p22xSMW5mznBz5tBAne8I2xxA4k2uxlK66fL+2viUam
- 5CZiqGZizz97Xh2oAUenjTfiMTRZimI9MxPlAGdZKKanMpZA/v2aZryq5YfJtfT85SxGO1W+6UK3
- uqHAR0yNdu01oWn1bs/P267ZUpuYsY0zzMlPBZprQGOwyBVQAThzoa6xRQI04Smyf4049rT5+r4W
- SYzWRvwXCC9oqJO6iiHXK0vwtXFs7o9ZIxfU9g==
-Date: Mon, 2 Mar 2026 12:45:01 -0500
-Message-ID: <wjqiu_296720_swjqiuscqldak@familyassist.net>
-Subject: Your Marriott thank-you gift is here
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
+ Mon,  2 Mar 2026 19:20:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=redvergecore.name;
+ h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
+ i=enduranceveh@redvergecore.name;
+ bh=GdK09TpHUVlloYW6lAF0xKMRVYKr/443G7CLmBwtZ7M=;
+ b=AmTxwPQvHbq8270tDlEIrWziX9xmfEsgWKKD661dQidsurn3sKiPQZsm1k6HSWFroVu9R6B+hDyp
+ +uiHTrHt63qPqeQeB7K/u3IMvDthAR6uZMmQkH8cR4M8DcXJGnt6jPkYAu5oBlR/Am4Ry2+4ZWLP
+ wc4r8mpBuoJPmBa7DCtWwH4K4NtBxr6/QOsKEBQhc1gt7zQSRWWDUQ7k7Ho+VebPooieZUInyK6x
+ 4EO8smiSdSBm2xSSNiwtg/20VQ16CEITQdfyk30zDUWVFlZJdAtxJWAAmIOuqznVa3Zrke1ndzhI
+ Yogfzr5mdUTvLnlmT30FOFsZX9FhOhawe0wnKw==
 To: intel-gvt-dev@lists.freedesktop.org
-From: Marriot Welcomes You Today <marriotwelcomesyoutoday@familyassist.net>
+From: Endurance Vehicle protection Partners <enduranceveh@redvergecore.name>
+Date: Mon, 2 Mar 2026 14:15:50 -0500
+Subject: Prepare for breakdowns with an Endurance Auto Warranty and save
+ thousands in repair costs
+Message-ID: <48aan9RE-l035.htLA6L7enbw6cKgb@10.redvergecore.name>
+X-Request-ID: 13926223-c152-4b89-9874-9378b8d4c1a5
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="----=_BlockPart748b4f0522b27d04e746be00f3.fdskujceb6ocjvq6o1tnkwbc"
+ boundary="xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,178 +55,377 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marriotwelcomesyoutoday@familyassist.net
+Reply-To: enduranceveh@redvergecore.name
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 787D11DE193
+X-Rspamd-Queue-Id: D90201DECAB
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [6.84 / 15.00];
-	ABUSE_SURBL(5.00)[familyassist.net:replyto,familyassist.net:mid,www.familyassist.net:url];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[familyassist.net:s=mta9uj4p4qkls];
+X-Spamd-Result: default: False [13.19 / 15.00];
+	URIBL_BLACK(7.50)[redvergecore.name:dkim,redvergecore.name:url,redvergecore.name:replyto];
+	ABUSE_SURBL(5.00)[redvergecore.name:dkim,redvergecore.name:replyto,www.redvergecore.name:url,10.redvergecore.name:mid];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[familyassist.net : SPF not aligned (relaxed),none];
 	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	DKIM_TRACE(0.00)[familyassist.net:-];
-	RCPT_COUNT_ONE(0.00)[1];
-	ARC_NA(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	DMARC_POLICY_ALLOW(0.00)[redvergecore.name,quarantine];
 	GREYLIST(0.00)[pass,meta];
+	R_DKIM_ALLOW(0.00)[redvergecore.name:s=k1];
+	RCPT_COUNT_ONE(0.00)[1];
+	DBL_SPAM(0.00)[10.redvergecore.name:mid];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	ARC_NA(0.00)[];
+	DKIM_TRACE(0.00)[redvergecore.name:+];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	NEURAL_SPAM(0.00)[1.000];
-	MISSING_XM_UA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[marriotwelcomesyoutoday@familyassist.net,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[marriotwelcomesyoutoday@familyassist.net];
 	TO_DN_NONE(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[enduranceveh@redvergecore.name,intel-gvt-dev-bounces@lists.freedesktop.org];
+	HAS_REPLYTO(0.00)[enduranceveh@redvergecore.name];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,familyassist.net:replyto,familyassist.net:url,familyassist.net:mid]
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[redvergecore.name:dkim,redvergecore.name:url,redvergecore.name:replyto,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
 X-Rspamd-Action: add header
 X-Spam: Yes
 
-------=_BlockPart748b4f0522b27d04e746be00f3.fdskujceb6ocjvq6o1tnkwbc
+--xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I was reviewing the itinerary for the upcoming project review. The main presentation is scheduled for 10 AM in the west conference room.
-We should have the printed materials ready by 9:30 at the latest. I’ll confirm the AV setup with facilities tomorrow morning.
-The client mentioned they would be bringing two additional team members, so we need to adjust the seating chart accordingly.
-I’ve asked catering to provide the standard refreshments, plus the specific coffee blend they preferred last time.
-Let me know if you’ve finalized the quarterly metrics slides; I’d like to incorporate them into the opening summary.
+Endurance=20Auto=20Warranty
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20ENDURANCE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Save=20Thousandson=20Vehicle=20Repairs
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20WE=20STEP=20IN=20WHERE=20YOUR=20AUTOINSURA=
+NCE=20FALLS=20SHORT!
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20YOUR=20SPECIAL=20O=
+FFER
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20$300=20OFF=20ANY=20COVERAGE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Why=20Endurance:
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20As=20low=20as=20$7=
+9=20per=20installment
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2024-hour=20roadside=
+=20support
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2030-day=20money-bac=
+k=20period
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Protects=20engine,=
+=20transmission,=20air-conditioner,=20plus=20more.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20Accepted=20at=20your=20dealership=20andby=20any=20ASE=
+=20approved=20mechanic
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=2030-Day=20Money=20Back=20Promise
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
 
-Marriot
+http://www.redvergecore.name/soothe
 
-Hotels & Resorts
-
-A Gesture for Our Guests
-
-You are eligible to receive a set of two luxury cooling pillows, provided at no charge to your household. This is available because your travels included a stay at a Marriot Hotel or a partner hotel in the last twelve months.
-
-After you complete a brief questionnaire, you may also claim a two-night stay at select locations. You will not be billed for the pillows or the qualifying stay nights. This program concludes tomorrow. One pillow set per household. The total allocation for this gesture is 800 sets.
-
-Redeem Pillow Set + Stay
-
-Pillow Set Attributes
-
-Advanced phase-change materials regulate temperature throughout the night.
-
-Hypoallergenic fill promotes cleaner sleep and reduces irritants.
-
-Breathable fabric cover enhances air circulation.
-
-Ergonomic design provides consistent support for head and neck.
-
-Moisture-wicking properties help maintain a dry sleep surface.
-
-Durable construction ensures shape retention over extended use.
-
-Available pillow sets are determined by program parameters. Access to stay dates and locations is based on program scheduling.
-
-We value your recent visit. Your perspective helps us enhance the guest experience.
-
-© Marriot International. All rights reserved.
-
-Regarding the neighborhood park renovation, the final plans were approved last Tuesday.
-The new playground equipment is scheduled for installation the week of the 15th, weather permitting.
-The walking path will be widened and resurfaced with that rubberized material we discussed.
-The community board is still finalizing the landscaping choices, focusing on native, drought-resistant plants.
-The dedication ceremony is tentatively planned for the first Saturday of next month, pending completion.
-We should coordinate with the local school about involving the children in a planting activity that day.
-
-------=_BlockPart748b4f0522b27d04e746be00f3.fdskujceb6ocjvq6o1tnkwbc
+--xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang="en">
+<html=20lang=3D"en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+=20=20=20=20<meta=20charset=3D"UTF-8">
+=20=20=20=20<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20=
+initial-scale=3D1.0">
+=20=20=20=20<title>Endurance=20Auto=20Warranty</title>
+=20=20=20=20<style>
+=20=20=20=20=20=20=20=20body,=20table,=20td,=20a=20{=20-webkit-text-size-ad=
+just:=20100%;=20-ms-text-size-adjust:=20100%;=20}
+=20=20=20=20=20=20=20=20table,=20td=20{=20mso-table-lspace:=200pt;=20mso-ta=
+ble-rspace:=200pt;=20}
+=20=20=20=20=20=20=20=20img=20{=20-ms-interpolation-mode:=20bicubic;=20bord=
+er:=200;=20height:=20auto;=20line-height:=20100%;=20outline:=20none;=20text=
+-decoration:=20none;=20}
+=20=20=20=20=20=20=20=20table=20{=20border-collapse:=20collapse=20!importan=
+t;=20}
+=20=20=20=20=20=20=20=20body=20{=20height:=20100%=20!important;=20margin:=
+=200=20!important;=20padding:=200=20!important;=20width:=20100%=20!importan=
+t;=20}
+=20=20=20=20=20=20=20=20a[x-apple-data-detectors]=20{=20color:=20inherit=20=
+!important;=20text-decoration:=20none=20!important;=20font-size:=20inherit=
+=20!important;=20font-family:=20inherit=20!important;=20font-weight:=20inhe=
+rit=20!important;=20line-height:=20inherit=20!important;=20}
+=20=20=20=20=20=20=20=20div[style*=3D"margin:=2016px=200;"]=20{=20margin:=
+=200=20!important;=20}
+
+=20=20=20=20=20=20=20=20/*=20Responsive=20*/
+=20=20=20=20=20=20=20=20@media=20screen=20and=20(max-width:=20600px)=20{
+=20=20=20=20=20=20=20=20=20=20=20=20.wrapper=20{=20width:=20100%=20!importa=
+nt;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20.mobile-padding=20{=20padding-left:=201=
+5px=20!important;=20padding-right:=2015px=20!important;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20h1=20{=20font-size:=2026px=20!important=
+;=20}
+=20=20=20=20=20=20=20=20=20=20=20=20h2=20{=20font-size:=2022px=20!important=
+;=20}
+=20=20=20=20=20=20=20=20}
+=20=20=20=20</style>
 </head>
-<body style="margin:0; padding:20px 0; background-color:#f8f8f8; font-family:'Trebuchet MS', Arial, sans-serif;">
-<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-I was reviewing the itinerary for the upcoming project review. The main presentation is scheduled for 10 AM in the west conference room. <br> We should have the printed materials ready by 9:30 at the latest. I’ll confirm the AV setup with facilities tomorrow morning. <br> The client mentioned they would be bringing two additional team members, so we need to adjust the seating chart accordingly. <br> I’ve asked catering to provide the standard refreshments, plus the specific coffee blend they preferred last time. <br> Let me know if you’ve finalized the quarterly metrics slides; I’d like to incorporate them into the opening summary.
-</div>
-<center>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-collapse:separate; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(26,26,26,0.05);">
-<tr>
-<td style="padding:32px 40px 24px; text-align:center; border-bottom:1px solid #eaeaea;">
-<h1 style="margin:0 0 8px 0; font-size:42px; font-weight:300; letter-spacing:-0.5px; color:#C1203A;">Marriot</h1>
-<p style="margin:0; font-size:16px; color:#262626; font-style:italic;">Hotels & Resorts</p>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 32px;">
-<h2 style="margin:0 0 16px 0; font-size:28px; line-height:1.3; color:#1A1A1A; font-family:Georgia, 'Times New Roman', Times, serif;">A Gesture for Our Guests</h2>
-<p style="margin:0 0 24px 0; font-size:18px; line-height:1.6; color:#444;">
-You are eligible to receive a set of two luxury cooling pillows, provided at no charge to your household. This is available because your travels included a stay at a Marriot Hotel or a partner hotel in the last twelve months.
-</p>
-<div style="background-color:#f9f9f9; border-left:4px solid #C1203A; padding:20px; margin:32px 0; border-radius:0 4px 4px 0;">
-<p style="margin:0; font-size:16px; line-height:1.6; color:#262626;">
-After you complete a brief questionnaire, you may also claim a two-night stay at select locations. You will not be billed for the pillows or the qualifying stay nights. This program concludes tomorrow. One pillow set per household. The total allocation for this gesture is 800 sets.
-</p>
-</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:40px 0; text-align:center;">
-<tr>
-<td>
-<a href="http://www.familyassist.net/dispatch/explorenow/short/qn7-3a721-ol6an-d8d2-2dytiq/map" style="background-color:#1A1A1A; color:#ffffff; text-decoration:none; padding:18px 48px; font-size:18px; font-weight:bold; border-radius:8px; display:inline-block; line-height:1; box-shadow:0 3px 6px rgba(0,0,0,0.1);">Redeem Pillow Set + Stay</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:0 40px 40px;">
-<h3 style="margin:0 0 20px 0; font-size:22px; color:#1A1A1A; font-family:Georgia, 'Times New Roman', Times, serif;">Pillow Set Attributes</h3>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td width="48%" style="vertical-align:top; padding:16px; background-color:#fafafa; border:1px solid #eee; border-radius:6px;">
-<ul style="margin:0; padding-left:20px; color:#333; font-size:15px; line-height:1.7;">
-<li>Advanced phase-change materials regulate temperature throughout the night.</li>
-<li>Hypoallergenic fill promotes cleaner sleep and reduces irritants.</li>
-<li>Breathable fabric cover enhances air circulation.</li>
-</ul>
-</td>
-<td width="4%"></td>
-<td width="48%" style="vertical-align:top; padding:16px; background-color:#fafafa; border:1px solid #eee; border-radius:6px;">
-<ul style="margin:0; padding-left:20px; color:#333; font-size:15px; line-height:1.7;">
-<li>Ergonomic design provides consistent support for head and neck.</li>
-<li>Moisture-wicking properties help maintain a dry sleep surface.</li>
-<li>Durable construction ensures shape retention over extended use.</li>
-</ul>
-</td>
-</tr>
-</table>
-<p style="margin:24px 0 0 0; font-size:14px; line-height:1.6; color:#666; font-style:italic;">
-Available pillow sets are determined by program parameters. Access to stay dates and locations is based on program scheduling.
-</p>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 40px; background-color:#f5f5f5; text-align:center; border-top:1px solid #eaeaea;">
-<p style="margin:0 0 12px 0; font-size:15px; color:#555;">
-We value your recent visit. Your perspective helps us enhance the guest experience.
-</p>
-<p style="margin:0; font-size:13px; color:#888;">
-© Marriot International. All rights reserved.
-</p>
-</td>
-</tr>
-</table>
-</center>
-<div style="font-family:'Courier New', Courier, monospace; width:1px; line-height:0; overflow:hidden; text-emphasis: none; visibility:hidden;">
-Regarding the neighborhood park renovation, the final plans were approved last Tuesday. <br> The new playground equipment is scheduled for installation the week of the 15th, weather permitting. <br> The walking path will be widened and resurfaced with that rubberized material we discussed. <br> The community board is still finalizing the landscaping choices, focusing on native, drought-resistant plants. <br> The dedication ceremony is tentatively planned for the first Saturday of next month, pending completion. <br> We should coordinate with the local school about involving the children in a planting activity that day.
-</div>
+<body=20style=3D"margin:=200;=20padding:=200;=20background-color:=20#f4f4f4=
+;">
+=20=20=20=20<center>
+=20=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspa=
+cing=3D"0"=20width=3D"100%">
+=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
+yle=3D"padding:=200;=20margin:=200;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<table=20border=
+=3D"0"=20cellpadding=3D"0"=20cellspacing=3D"0"=20width=3D"100%"=20class=3D"=
+wrapper"=20style=3D"max-width:=20600px;=20margin:=200=20auto;=20background-=
+color:=20#ffffff;=20font-family:=20Arial,=20Helvetica,=20sans-serif;">
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20Header=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20align=3D"center"=20style=3D"padding:=2014px;=20font-size:=20=
+45px;=20font-weight:=20bolder;=20color:#00405F;=20letter-spacing:=202px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20ENDURANCE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20Hero=20Section=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20bgcolor=3D"#003f5c"=20align=3D"center"=20class=3D"mobile-pad=
+ding"=20style=3D"padding:=2030px=2020px;=20color:=20#ffffff;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<h1=20style=3D"margin:=200;=20font-size:=2032px;=20fon=
+t-weight:=20bold;=20line-height:=201.2;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Save=20Thousands<br>on=20Vehicle=20Repairs
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</h1>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<p=20style=3D"margin:=2015px=200;=20font-size:=2014px;=
+=20font-weight:=20bold;=20text-transform:=20uppercase;=20letter-spacing:=20=
+1px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20WE=20STEP=20IN=20WHERE=20YOUR=20AUTO<br>IN=
+SURANCE=20FALLS=20SHORT!
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</p>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspacin=
+g=3D"0"=20width=3D"100%"=20style=3D"max-width:=20300px;=20border-top:=201px=
+=20solid=20#ffffff;=20margin-top:=2020px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20style=
+=3D"padding-top:=2015px;=20font-size:=2014px;=20font-weight:=20bold;=20text=
+-transform:=20uppercase;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20YOUR=20SPECIAL=20O=
+FFER
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</table>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<h2=20style=3D"margin:=2010px=200=2020px;=20font-size:=
+=2028px;=20font-weight:=20bold;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20$300=20OFF=20ANY=20COVERAGE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</h2>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<a=20href=3D"http://www.redvergecore.name/soothe"=20st=
+yle=3D"background-color:=20#ff8c00;=20color:=20#ffffff;=20display:=20inline=
+-block;=20padding:=2015px=2030px;=20text-decoration:=20none;=20font-weight:=
+=20bold;=20font-size:=2016px;=20border-radius:=205px;=20text-transform:=20u=
+ppercase;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</a>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20Why=20Endurance=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20bgcolor=3D"#e0e0e0"=20align=3D"center"=20class=3D"mobile-pad=
+ding"=20style=3D"padding:=2030px=2020px;=20color:=20#003f5c;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<h3=20style=3D"margin:=200=200=2020px;=20font-size:=20=
+24px;=20font-weight:=20bold;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20Why=20Endurance:
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</h3>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspacin=
+g=3D"0"=20width=3D"100%"=20style=3D"max-width:=20520px;=20margin:=200=20aut=
+o;=20text-align:=20left;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
+"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
+=2010px;=20font-size:=2016px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20As=20low=20as=20$7=
+9=20per=20installment
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
+"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
+=2010px;=20font-size:=2016px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2024-hour=20roadside=
+=20support
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
+"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
+=2010px;=20font-size:=2016px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2030-day=20money-bac=
+k=20period
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
+"top">&bull;</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"font-size:=2016=
+px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Protects=20engine,=
+=20transmission,=20air-conditioner,=20plus=20more.
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</table>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20Acceptance=20Banner=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20bgcolor=3D"#003f5c"=20align=3D"center"=20style=3D"padding:=
+=2020px;=20color:=20#ffffff;=20font-size:=2018px;=20font-weight:=20bold;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20Accepted=20at=20your=20dealership=20and<br>by=20any=20=
+ASE=20approved=20mechanic
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20Money-Back=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20bgcolor=3D"#ffffff"=20align=3D"center"=20style=3D"padding:=
+=2010px=2020px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<h1=20style=3D"margin:=200;=20font-size:=2024px;=20col=
+or:#003f5c;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20<u>30-Day=20Money=20Back=20Promise</u>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</h1>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
+-=20CTA=20-->
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20<td=20bgcolor=3D"#ffffff"=20align=3D"center"=20style=3D"padding:=
+=2020px=2020px=2040px;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20<a=20href=3D"http://www.redvergecore.name/soothe"=20st=
+yle=3D"background-color:=20#ff8c00;=20color:=20#ffffff;=20display:=20inline=
+-block;=20padding:=2015px=2030px;=20text-decoration:=20none;=20font-weight:=
+=20bold;=20font-size:=2016px;=20border-radius:=205px;=20text-transform:=20u=
+ppercase;">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20</a>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
+r>
+
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</table>
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
+=20=20=20=20=20=20=20=20=20=20=20=20</tr>
+=20=20=20=20=20=20=20=20</table>
+=20=20=20=20</center>
+=20=20=20=20<img=20src=3D"http://www.redvergecore.name/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.pn=
+g"=20width=3D"1"=20height=3D"1"=20style=3D"display:none"=20alt=3D"">
+=20=20=20=20<br><br><br>
 </body>
 </html>
 
-------=_BlockPart748b4f0522b27d04e746be00f3.fdskujceb6ocjvq6o1tnkwbc--
+--xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq--
