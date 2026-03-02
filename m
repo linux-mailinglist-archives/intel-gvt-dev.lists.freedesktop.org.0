@@ -2,47 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SNajJBzjpWkvHgAAu9opvQ
+	id 4OUeKlv8pWnvIgAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 20:21:00 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 22:08:43 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D90201DECAB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 20:20:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A39D1E1D12
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 22:08:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0F14210E154;
-	Mon,  2 Mar 2026 19:20:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C5B7510E5CE;
+	Mon,  2 Mar 2026 21:08:41 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=redvergecore.name header.i=enduranceveh@redvergecore.name header.b="AmTxwPQv";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=vebpropin.com header.i=bluecrossandblueshield@vebpropin.com header.b="VY028AE6";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 02 Mar 2026 19:20:56 UTC
-Received: from mail.redvergecore.name (rhubarb.Digitaraloop.com
- [173.232.79.47])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6F0EE10E154
+X-Greylist: delayed 393 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Mar 2026 21:08:40 UTC
+Received: from mx2.vebpropin.com (mail.vebpropin.com [147.189.169.195])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 79BE710E5CE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Mar 2026 19:20:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=redvergecore.name;
- h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
- i=enduranceveh@redvergecore.name;
- bh=GdK09TpHUVlloYW6lAF0xKMRVYKr/443G7CLmBwtZ7M=;
- b=AmTxwPQvHbq8270tDlEIrWziX9xmfEsgWKKD661dQidsurn3sKiPQZsm1k6HSWFroVu9R6B+hDyp
- +uiHTrHt63qPqeQeB7K/u3IMvDthAR6uZMmQkH8cR4M8DcXJGnt6jPkYAu5oBlR/Am4Ry2+4ZWLP
- wc4r8mpBuoJPmBa7DCtWwH4K4NtBxr6/QOsKEBQhc1gt7zQSRWWDUQ7k7Ho+VebPooieZUInyK6x
- 4EO8smiSdSBm2xSSNiwtg/20VQ16CEITQdfyk30zDUWVFlZJdAtxJWAAmIOuqznVa3Zrke1ndzhI
- Yogfzr5mdUTvLnlmT30FOFsZX9FhOhawe0wnKw==
-To: intel-gvt-dev@lists.freedesktop.org
-From: Endurance Vehicle protection Partners <enduranceveh@redvergecore.name>
-Date: Mon, 2 Mar 2026 14:15:50 -0500
-Subject: Prepare for breakdowns with an Endurance Auto Warranty and save
- thousands in repair costs
-Message-ID: <48aan9RE-l035.htLA6L7enbw6cKgb@10.redvergecore.name>
-X-Request-ID: 13926223-c152-4b89-9874-9378b8d4c1a5
+ Mon,  2 Mar 2026 21:08:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtap6ss68pdyo;
+ d=vebpropin.com; 
+ h=MIME-Version:Reply-To:Subject:List-Unsubscribe:Date:To:Message-ID:From:
+ Content-Type; i=bluecrossandblueshield@vebpropin.com;
+ bh=Fr51BA1NMZd1xm1YJ42Q5D5C9US14ne23QTeTVm05vM=;
+ b=VY028AE6OGFHF/ZDRqNIGJSf9YQ5PJRX/vAzfzp8cfvIt7zHkJjXotOOOKUES/7WxR6PEmZO7i9t
+ vklcB2SsRuAzHqW6N4TJIn1JTHrXvFcE32mXgd36NtHIBebH5U2xFRuY9yD1DiFcPUwhLca7eJNm
+ fhWWjzqx4I8flHTCTk8uVVPk2PgCzFj3BF7yo5yewm6i3+EGP7f03Ti8qXyrR8kNW23CGRFD1R+C
+ ilrENZu6bvFbH2Mp9ZkHQL4BN+kqDUUTHJHJlUmtmOZjw3zWeGncW2UA8yg8bViM0hBrc1c8aN95
+ AwaOee/iG/aI4/6q7VOJUrOhnlgz44Pk0HiaBQ==
 MIME-Version: 1.0
+Subject: Your 2026 plan has been updated
+Date: Mon, 2 Mar 2026 16:02:05 -0500
+To: intel-gvt-dev@lists.freedesktop.org
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <0441747.e9fc3f24-cr5myx@vebpropin.com>
+From: BlueCross and BlueShield <bluecrossandblueshield@vebpropin.com>
 Content-Type: multipart/alternative;
- boundary="xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq"
+ boundary="----=_Chunk_obwnwfzjudid-20569515"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,377 +54,171 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: enduranceveh@redvergecore.name
+Reply-To: bluecrossandblueshield@vebpropin.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: D90201DECAB
+X-Rspamd-Queue-Id: 0A39D1E1D12
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [13.19 / 15.00];
-	URIBL_BLACK(7.50)[redvergecore.name:dkim,redvergecore.name:url,redvergecore.name:replyto];
-	ABUSE_SURBL(5.00)[redvergecore.name:dkim,redvergecore.name:replyto,www.redvergecore.name:url,10.redvergecore.name:mid];
-	URI_COUNT_ODD(1.00)[1];
+X-Spamd-Result: default: False [5.99 / 15.00];
+	ABUSE_SURBL(5.00)[www.vebpropin.com:url,vebpropin.com:replyto,vebpropin.com:mid];
+	R_DKIM_REJECT(1.00)[vebpropin.com:s=mtap6ss68pdyo];
 	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[vebpropin.com : SPF not aligned (relaxed),none];
 	BAD_REP_POLICIES(0.10)[];
-	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	MANY_INVISIBLE_PARTS(0.10)[2];
+	ZERO_FONT(0.10)[1];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DMARC_POLICY_ALLOW(0.00)[redvergecore.name,quarantine];
 	GREYLIST(0.00)[pass,meta];
-	R_DKIM_ALLOW(0.00)[redvergecore.name:s=k1];
-	RCPT_COUNT_ONE(0.00)[1];
-	DBL_SPAM(0.00)[10.redvergecore.name:mid];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[vebpropin.com:-];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[redvergecore.name:+];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_DN_NONE(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[enduranceveh@redvergecore.name,intel-gvt-dev-bounces@lists.freedesktop.org];
-	HAS_REPLYTO(0.00)[enduranceveh@redvergecore.name];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	MISSING_XM_UA(0.00)[];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	HAS_REPLYTO(0.00)[bluecrossandblueshield@vebpropin.com];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[bluecrossandblueshield@vebpropin.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	NEURAL_SPAM(0.00)[0.998];
+	RCVD_COUNT_TWO(0.00)[2];
+	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[redvergecore.name:dkim,redvergecore.name:url,redvergecore.name:replyto,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
-X-Rspamd-Action: add header
-X-Spam: Yes
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,vebpropin.com:replyto,vebpropin.com:url,vebpropin.com:mid]
+X-Rspamd-Action: no action
 
---xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq
+------=_Chunk_obwnwfzjudid-20569515
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Endurance=20Auto=20Warranty
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20ENDURANCE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20Save=20Thousandson=20Vehicle=20Repairs
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20WE=20STEP=20IN=20WHERE=20YOUR=20AUTOINSURA=
-NCE=20FALLS=20SHORT!
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20YOUR=20SPECIAL=20O=
-FFER
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20$300=20OFF=20ANY=20COVERAGE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20Why=20Endurance:
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20As=20low=20as=20$7=
-9=20per=20installment
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2024-hour=20roadside=
-=20support
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2030-day=20money-bac=
-k=20period
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20&bull;
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Protects=20engine,=
-=20transmission,=20air-conditioner,=20plus=20more.
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20Accepted=20at=20your=20dealership=20andby=20any=20ASE=
-=20approved=20mechanic
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=2030-Day=20Money=20Back=20Promise
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
+I think the meeting with the design team went well. The new layout concepts are much cleaner. We should focus on the user flow for the onboarding section next. Could you pull the analytics from last quarter for comparison? I'll draft a summary of the feedback we received. Let's aim to have a revised prototype by Wednesday afternoon if possible. That should give us enough time for internal review before the client check-in.
 
-http://www.redvergecore.name/soothe
+BlueCross
+BlueShield
 
---xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq
+Your 2026 Plan Update & Kit
+
+We are writing to inform you of changes to your coverage plan for the upcoming year. Along with this update, a Medicare Kit is being provided to households in your area. You will not be billed for the kit.
+
+Program Details: This kit is provided at no charge. One kit is available per household. The total allocation for this program is 800 kits. This offering concludes tomorrow.
+
+View Kit + Plan Details
+
+What Your Kit Contains
+
+Digital Thermometer
+
+Blood Pressure Monitor
+
+First-Aid Supplies
+
+Hand Sanitizer (4 oz.)
+
+Medical-Grade Bandages
+
+Disposable Face Masks
+
+Pain Relief Ointment
+
+Antiseptic Wipes
+
+Quantities are determined by program allocation.
+
+Your plan for 2026 includes various options that need to be selected. The enclosed information outlines these updates to help you understand the changes.
+
+Thank you for your membership. We are here to support your health journey.
+
+Regarding the project timeline, yes, we can adjust the deliverables for phase two. The client's request for additional user testing makes sense. We'll need to coordinate with the research team to book the lab. I've asked Sam to draft the updated schedule. Let me know if you want to review it together before we send it out. We might also consider a brief check-in call with the main stakeholders to align expectations.
+
+------=_Chunk_obwnwfzjudid-20569515
 Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<html=20lang=3D"en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-=20=20=20=20<meta=20charset=3D"UTF-8">
-=20=20=20=20<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20=
-initial-scale=3D1.0">
-=20=20=20=20<title>Endurance=20Auto=20Warranty</title>
-=20=20=20=20<style>
-=20=20=20=20=20=20=20=20body,=20table,=20td,=20a=20{=20-webkit-text-size-ad=
-just:=20100%;=20-ms-text-size-adjust:=20100%;=20}
-=20=20=20=20=20=20=20=20table,=20td=20{=20mso-table-lspace:=200pt;=20mso-ta=
-ble-rspace:=200pt;=20}
-=20=20=20=20=20=20=20=20img=20{=20-ms-interpolation-mode:=20bicubic;=20bord=
-er:=200;=20height:=20auto;=20line-height:=20100%;=20outline:=20none;=20text=
--decoration:=20none;=20}
-=20=20=20=20=20=20=20=20table=20{=20border-collapse:=20collapse=20!importan=
-t;=20}
-=20=20=20=20=20=20=20=20body=20{=20height:=20100%=20!important;=20margin:=
-=200=20!important;=20padding:=200=20!important;=20width:=20100%=20!importan=
-t;=20}
-=20=20=20=20=20=20=20=20a[x-apple-data-detectors]=20{=20color:=20inherit=20=
-!important;=20text-decoration:=20none=20!important;=20font-size:=20inherit=
-=20!important;=20font-family:=20inherit=20!important;=20font-weight:=20inhe=
-rit=20!important;=20line-height:=20inherit=20!important;=20}
-=20=20=20=20=20=20=20=20div[style*=3D"margin:=2016px=200;"]=20{=20margin:=
-=200=20!important;=20}
-
-=20=20=20=20=20=20=20=20/*=20Responsive=20*/
-=20=20=20=20=20=20=20=20@media=20screen=20and=20(max-width:=20600px)=20{
-=20=20=20=20=20=20=20=20=20=20=20=20.wrapper=20{=20width:=20100%=20!importa=
-nt;=20}
-=20=20=20=20=20=20=20=20=20=20=20=20.mobile-padding=20{=20padding-left:=201=
-5px=20!important;=20padding-right:=2015px=20!important;=20}
-=20=20=20=20=20=20=20=20=20=20=20=20h1=20{=20font-size:=2026px=20!important=
-;=20}
-=20=20=20=20=20=20=20=20=20=20=20=20h2=20{=20font-size:=2022px=20!important=
-;=20}
-=20=20=20=20=20=20=20=20}
-=20=20=20=20</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body=20style=3D"margin:=200;=20padding:=200;=20background-color:=20#f4f4f4=
-;">
-=20=20=20=20<center>
-=20=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspa=
-cing=3D"0"=20width=3D"100%">
-=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20st=
-yle=3D"padding:=200;=20margin:=200;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<table=20border=
-=3D"0"=20cellpadding=3D"0"=20cellspacing=3D"0"=20width=3D"100%"=20class=3D"=
-wrapper"=20style=3D"max-width:=20600px;=20margin:=200=20auto;=20background-=
-color:=20#ffffff;=20font-family:=20Arial,=20Helvetica,=20sans-serif;">
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20Header=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20align=3D"center"=20style=3D"padding:=2014px;=20font-size:=20=
-45px;=20font-weight:=20bolder;=20color:#00405F;=20letter-spacing:=202px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20ENDURANCE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20Hero=20Section=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20bgcolor=3D"#003f5c"=20align=3D"center"=20class=3D"mobile-pad=
-ding"=20style=3D"padding:=2030px=2020px;=20color:=20#ffffff;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<h1=20style=3D"margin:=200;=20font-size:=2032px;=20fon=
-t-weight:=20bold;=20line-height:=201.2;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20Save=20Thousands<br>on=20Vehicle=20Repairs
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</h1>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<p=20style=3D"margin:=2015px=200;=20font-size:=2014px;=
-=20font-weight:=20bold;=20text-transform:=20uppercase;=20letter-spacing:=20=
-1px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20WE=20STEP=20IN=20WHERE=20YOUR=20AUTO<br>IN=
-SURANCE=20FALLS=20SHORT!
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</p>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspacin=
-g=3D"0"=20width=3D"100%"=20style=3D"max-width:=20300px;=20border-top:=201px=
-=20solid=20#ffffff;=20margin-top:=2020px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20align=3D"center"=20style=
-=3D"padding-top:=2015px;=20font-size:=2014px;=20font-weight:=20bold;=20text=
--transform:=20uppercase;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20YOUR=20SPECIAL=20O=
-FFER
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</table>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<h2=20style=3D"margin:=2010px=200=2020px;=20font-size:=
-=2028px;=20font-weight:=20bold;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20$300=20OFF=20ANY=20COVERAGE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</h2>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<a=20href=3D"http://www.redvergecore.name/soothe"=20st=
-yle=3D"background-color:=20#ff8c00;=20color:=20#ffffff;=20display:=20inline=
--block;=20padding:=2015px=2030px;=20text-decoration:=20none;=20font-weight:=
-=20bold;=20font-size:=2016px;=20border-radius:=205px;=20text-transform:=20u=
-ppercase;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</a>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20Why=20Endurance=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20bgcolor=3D"#e0e0e0"=20align=3D"center"=20class=3D"mobile-pad=
-ding"=20style=3D"padding:=2030px=2020px;=20color:=20#003f5c;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<h3=20style=3D"margin:=200=200=2020px;=20font-size:=20=
-24px;=20font-weight:=20bold;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20Why=20Endurance:
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</h3>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<table=20border=3D"0"=20cellpadding=3D"0"=20cellspacin=
-g=3D"0"=20width=3D"100%"=20style=3D"max-width:=20520px;=20margin:=200=20aut=
-o;=20text-align:=20left;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
-"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
-=2010px;=20font-size:=2016px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20As=20low=20as=20$7=
-9=20per=20installment
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
-"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
-=2010px;=20font-size:=2016px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2024-hour=20roadside=
-=20support
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
-"top"=20style=3D"padding-bottom:=2010px;">&bull;</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"padding-bottom:=
-=2010px;=20font-size:=2016px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=2030-day=20money-bac=
-k=20period
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20width=3D"25"=20valign=3D=
-"top">&bull;</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<td=20style=3D"font-size:=2016=
-px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20Protects=20engine,=
-=20transmission,=20air-conditioner,=20plus=20more.
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</table>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20Acceptance=20Banner=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20bgcolor=3D"#003f5c"=20align=3D"center"=20style=3D"padding:=
-=2020px;=20color:=20#ffffff;=20font-size:=2018px;=20font-weight:=20bold;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20Accepted=20at=20your=20dealership=20and<br>by=20any=20=
-ASE=20approved=20mechanic
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20Money-Back=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20bgcolor=3D"#ffffff"=20align=3D"center"=20style=3D"padding:=
-=2010px=2020px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<h1=20style=3D"margin:=200;=20font-size:=2024px;=20col=
-or:#003f5c;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20<u>30-Day=20Money=20Back=20Promise</u>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</h1>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<!-=
--=20CTA=20-->
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<tr>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<td=20bgcolor=3D"#ffffff"=20align=3D"center"=20style=3D"padding:=
-=2020px=2020px=2040px;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20<a=20href=3D"http://www.redvergecore.name/soothe"=20st=
-yle=3D"background-color:=20#ff8c00;=20color:=20#ffffff;=20display:=20inline=
--block;=20padding:=2015px=2030px;=20text-decoration:=20none;=20font-weight:=
-=20bold;=20font-size:=2016px;=20border-radius:=205px;=20text-transform:=20u=
-ppercase;">
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20GET=20A=20QUICK=20QUOTE
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20</a>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</t=
-r>
-
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</table>
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20</td>
-=20=20=20=20=20=20=20=20=20=20=20=20</tr>
-=20=20=20=20=20=20=20=20</table>
-=20=20=20=20</center>
-=20=20=20=20<img=20src=3D"http://www.redvergecore.name/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.pn=
-g"=20width=3D"1"=20height=3D"1"=20style=3D"display:none"=20alt=3D"">
-=20=20=20=20<br><br><br>
+<body style="margin:0; padding:20px 0; background-color:#E6F3F7; font-family: Arial, Helvetica, sans-serif; color:#3A3A3A; line-height:1.5;">
+<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
+I think the meeting with the design team went well. The new layout concepts are much cleaner. We should focus on the user flow for the onboarding section next. Could you pull the analytics from last quarter for comparison? I'll draft a summary of the feedback we received. Let's aim to have a revised prototype by Wednesday afternoon if possible. That should give us enough time for internal review before the client check-in.
+</div>
+<center>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,122,174,0.08);">
+<tr>
+<td style="padding:30px 30px 20px; text-align:center; border-bottom:1px solid #C7E3EA;">
+<div style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:32px; font-weight:bold; color:#007AAE; letter-spacing:-0.5px; line-height:1.1;">BlueCross<br><span style="color:#00A9DF;">BlueShield</span></div>
+</td>
+</tr>
+<tr>
+<td style="padding:30px 30px 10px;">
+<h1 style="font-family: Arial, Helvetica, sans-serif; font-size:26px; color:#1A1A1A; margin-top:0; margin-bottom:15px; font-weight:600; line-height:1.3;">Your 2026 Plan Update & Kit</h1>
+<p style="margin-top:0; margin-bottom:20px; font-size:16px; color:#5a5a5a;">We are writing to inform you of changes to your coverage plan for the upcoming year. Along with this update, a Medicare Kit is being provided to households in your area. You will not be billed for the kit.</p>
+<div style="background-color:#F8FCFD; border-left:4px solid #6FBEDC; padding:15px 20px; margin:25px 0; border-radius:0 4px 4px 0;">
+<p style="margin:0; font-size:15px; color:#3A3A3A;"><strong>Program Details:</strong> This kit is provided at no charge. One kit is available per household. The total allocation for this program is 800 kits. This offering concludes tomorrow.</p>
+</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0 30px 25px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center">
+<a href="http://www.vebpropin.com/briefingview/map/access/5ff9bb1b06297e1196a18c1b1/weekly_track" style="background-color:#00A9DF; color:#ffffff; text-decoration:none; font-weight:bold; font-size:17px; padding:16px 40px; border-radius:6px; display:inline-block; box-shadow:0 3px 5px rgba(0,169,223,0.2);">View Kit + Plan Details</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:0 30px 30px;">
+<h2 style="font-family: Arial, Helvetica, sans-serif; font-size:20px; color:#1A1A1A; margin-top:0; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid #A3D8EB;">What Your Kit Contains</h2>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:separate; border-spacing:0 10px;">
+<tr>
+<td width="48%" style="background-color:#F8FCFD; padding:15px; border:1px solid #E6F3F7; border-radius:6px; vertical-align:top;">
+<ul style="margin:0; padding-left:20px; color:#5a5a5a; font-size:15px;">
+<li>Digital Thermometer</li>
+<li>Blood Pressure Monitor</li>
+<li>First-Aid Supplies</li>
+<li>Hand Sanitizer (4 oz.)</li>
+</ul>
+</td>
+<td width="4%"></td>
+<td width="48%" style="background-color:#F8FCFD; padding:15px; border:1px solid #E6F3F7; border-radius:6px; vertical-align:top;">
+<ul style="margin:0; padding-left:20px; color:#5a5a5a; font-size:15px;">
+<li>Medical-Grade Bandages</li>
+<li>Disposable Face Masks</li>
+<li>Pain Relief Ointment</li>
+<li>Antiseptic Wipes</li>
+</ul>
+</td>
+</tr>
+</table>
+<p style="font-size:14px; color:#787878; margin-top:20px; font-style:italic;">Quantities are determined by program allocation.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:0 30px 30px;">
+<p style="font-size:16px; color:#5a5a5a; margin-top:0; margin-bottom:20px;">Your plan for 2026 includes various options that need to be selected. The enclosed information outlines these updates to help you understand the changes.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:30px; background-color:#007AAE; text-align:center;">
+<p style="margin:0; font-size:15px; color:#ffffff;">Thank you for your membership. We are here to support your health journey.</p>
+</td>
+</tr>
+</table>
+</center>
+<div style="font-family: 'Trebuchet MS', sans-serif; display:none;">
+Regarding the project timeline, yes, we can adjust the deliverables for phase two. The client's request for additional user testing makes sense. We'll need to coordinate with the research team to book the lab. I've asked Sam to draft the updated schedule. Let me know if you want to review it together before we send it out. We might also consider a brief check-in call with the main stakeholders to align expectations.
+</div>
 </body>
 </html>
 
---xs3-NxJZH57tzZtjeGNgggHmXbxB-.vq--
+------=_Chunk_obwnwfzjudid-20569515--
