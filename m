@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wAHrDL3/pWl5IwAAu9opvQ
+	id CPPnF+ElpmlrLAAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 22:23:09 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 01:05:53 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 957D41E2A48
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 02 Mar 2026 22:23:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA46E1E6F7B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 01:05:52 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4900C10E5D4;
-	Mon,  2 Mar 2026 21:23:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2873E10E095;
+	Tue,  3 Mar 2026 00:05:51 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=rnodernssolution.com header.i=cstcspecialdetails@rnodernssolution.com header.b="KMtBvBhM";
+	dkim=pass (2048-bit key; unprotected) header.d=oakaxiss.pro header.i=eas8n@oakaxiss.pro header.b="iHKbuKG+";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 339 seconds by postgrey-1.36 at gabe;
- Mon, 02 Mar 2026 21:23:06 UTC
-Received: from email.rnodernssolution.com (unknown [153.51.52.164])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2A68010E5D2
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 03 Mar 2026 00:05:49 UTC
+Received: from mail.oakaxiss.pro (sachet.Vastiblesea.com [173.232.79.97])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 51CD910E095
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Mar 2026 21:23:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtawju9fbjecy;
- d=rnodernssolution.com; 
- h=Reply-To:Message-ID:MIME-Version:Date:Subject:To:List-Unsubscribe:From:
- Content-Type; i=cstcspecialdetails@rnodernssolution.com;
- bh=wFTxMcxn1WEq8yUTLtC8bNMtBJxZtKMxbQrA78etvMg=;
- b=KMtBvBhMIrGiNUthdj0RgsIkNlSpjyzkL1rrIvClYZEsaXAi0bvm5Xc4n30wjRd5U+WPKJfq5Dmk
- lNUB2V3eUHtlg0rMMZqBav9+1YO4E+trBr+7+MAw+vWkeVBf6lcNbXpQA3U+hGfWOEbakMDQSpjC
- qvndNDI+50Rv2k+1kX/eRqjIiwuaeh/tZzXbrNqA7Og6HXHF3k3qF6n5CL91VxTIqYnLu+d4o8Xw
- wlclCj6WY5/L9lAOtqKw9P8fNT2vJchXxXgQTh6pq2YSLx49fdjrnEo4N5YeWGgNLk6OmnITEF5L
- 4nURXZH3vuSsG5jy1c4mB8m+Os+MtATVH4kwPA==
-Message-ID: <833501240119060944zayauaa3nv8xrcqekyhlxo@rnodernssolution.com>
-MIME-Version: 1.0
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Date: Mon, 2 Mar 2026 16:11:29 -0500
-Subject: A note about your upcoming membership
+ Tue,  3 Mar 2026 00:05:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mx1; d=oakaxiss.pro;
+ h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
+ i=eas8n@oakaxiss.pro;
+ bh=qpv0mnoLeM1/KUyu1macKKAQAxkq+J251L7L6oYPcqA=;
+ b=iHKbuKG+VvzNYHtmFu4wHHM2rzj2770NUJog0mUfx+BkkWGTzMG7fy01mKuIvO0i6XmmeFAyqOCb
+ Kc/Em6Tu566O+f6tHEdKFnpoyqGMOZKa8xtlr3h8LGiS9edsjVKKyhEWcJS3RIxKaKJZxg9qMVcj
+ LBDckRFqpZcdLCpEFngamq0ldFyz1NrKN0P9+tD+iLjUNg5ioUN0Op3O6sGqwBcbFtzULI4lZNeU
+ jZJQjJjck2ngef3GdTYS3FDxPBeBt9zsrJyVKKLnLqSCwKAEuCLbQFoA7H47wcGNEaHsQ9VcJK61
+ LM3hKrc0iQDoyn2aPQdHjwnfbJYt3DsgrfyPAg==
 To: intel-gvt-dev@lists.freedesktop.org
-From: C0STC0 Special Details <cstcspecialdetails@rnodernssolution.com>
+From: Endurance Auto ServicesAffiliates <eas8n@oakaxiss.pro>
+Date: Mon, 2 Mar 2026 19:00:43 -0500
+Subject: Auto Protection for You and Your Family... Get a FREE Quote Today
+Message-ID: <5HZdR5GD-0k.dTa5QpAmrhVzmf2v@mail.oakaxiss.pro>
+X-Request-ID: 07678902-1e88-4f82-bd6c-a2a4b42f4917
+X-Queue-ID: q-g21qq9
+MIME-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="----=_TransferPartgsc8vg3psdy7ehyxp.a9e9151b51d03fb743f4c51598153"
+ boundary="-54MU-Dk4VRkbMDGxLCcZ4BxWq9nVF--Igi"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,115 +54,209 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cstcspecialdetails@rnodernssolution.com
+Reply-To: eas8n71@oakaxiss.pro
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 957D41E2A48
+X-Rspamd-Queue-Id: AA46E1E6F7B
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [13.44 / 15.00];
-	URIBL_BLACK(7.50)[rnodernssolution.com:replyto,rnodernssolution.com:url,rnodernssolution.com:mid];
-	ABUSE_SURBL(5.00)[www.rnodernssolution.com:url,rnodernssolution.com:replyto,rnodernssolution.com:mid];
-	R_DKIM_REJECT(1.00)[rnodernssolution.com:s=mtawju9fbjecy];
+X-Spamd-Result: default: False [13.19 / 15.00];
+	URIBL_BLACK(7.50)[oakaxiss.pro:dkim,oakaxiss.pro:url,oakaxiss.pro:replyto];
+	ABUSE_SURBL(5.00)[oakaxiss.pro:dkim,oakaxiss.pro:replyto,mail.oakaxiss.pro:mid,www.oakaxiss.pro:url];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[rnodernssolution.com : SPF not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	BAD_REP_POLICIES(0.10)[];
-	ZERO_FONT(0.10)[1];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DKIM_TRACE(0.00)[rnodernssolution.com:-];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCVD_TLS_LAST(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	RCPT_COUNT_ONE(0.00)[1];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	DMARC_POLICY_ALLOW(0.00)[oakaxiss.pro,quarantine];
+	R_DKIM_ALLOW(0.00)[oakaxiss.pro:s=mx1];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
 	ARC_NA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[cstcspecialdetails@rnodernssolution.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	NEURAL_SPAM(0.00)[0.995];
+	GREYLIST(0.00)[pass,meta];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_ONE(0.00)[1];
+	DKIM_TRACE(0.00)[oakaxiss.pro:+];
+	NEURAL_SPAM(0.00)[1.000];
+	MISSING_XM_UA(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
+	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[eas8n@oakaxiss.pro,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	HAS_REPLYTO(0.00)[eas8n71@oakaxiss.pro];
+	TO_DN_NONE(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	HAS_REPLYTO(0.00)[cstcspecialdetails@rnodernssolution.com]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[oakaxiss.pro:dkim,oakaxiss.pro:url,oakaxiss.pro:replyto,mail.oakaxiss.pro:mid,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
 X-Rspamd-Action: add header
 X-Spam: Yes
 
-------=_TransferPartgsc8vg3psdy7ehyxp.a9e9151b51d03fb743f4c51598153
+---54MU-Dk4VRkbMDGxLCcZ4BxWq9nVF--Igi
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 
-Hey, I got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I'll double-check the route on the map for any road closures. Should I bring the larger cooler or will the small one be enough for what you're planning? Let me know if you want me to pick up anything on my way over.
+Endurance Auto Protection
+                    ENDURANCE
+                        Save Thousandson Auto Repair Bills
+                        WE STEP IN WHERE YOUR CARINSURANCE FALLS BEHIND!
+                                YOUR SAVINGS
+                        $300 OFF ANY PLAN
+                                    GET A CUSTOM QUOTE
+                        Why Endurance:
+                            &bull;
+                                As low as $79 per month
+                            &bull;
+                                24-hour roadside support
+                            &bull;
+                                30-day money-back period
+                            &bull;
+                                Protects engine, transmission, air-conditioner, plus more.
+                    Accepted at your dealership andby any ASE approved mechanic
+                        30-Day Money Back Period
+                        GET A CUSTOM QUOTE
 
-COSTCO WHOLESALE
+http://www.oakaxiss.pro/linings
 
-Your Member Benefits Review
-
-An informational notice for our warehouse members.
-
-As a valued Costco member in a participating location, you are invited to share your opinions. Qualified participants may receive the following items, with no payment required:
-
-A Keurig Coffee Maker for the first 2,000 qualifying participants.
-
-A 12-month membership term provided at no charge to eligible members.
-
-Participation is subject to regional availability and member eligibility.
-
-Begin Your Questionnaire
-
-We appreciate your time and your continued membership with Costco Wholesale.
-
-Regarding the project timeline you asked about, the draft should be ready for initial review by Thursday afternoon. I've scheduled a brief check-in for Wednesday to align on the key sections. The main challenge right now is sourcing the reference data from the old archives, but I have a call with the records team tomorrow. I'll send a summary after that call so we can adjust the outline if needed.
-
-------=_TransferPartgsc8vg3psdy7ehyxp.a9e9151b51d03fb743f4c51598153
+---54MU-Dk4VRkbMDGxLCcZ4BxWq9nVF--Igi
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endurance Auto Protection</title>
+    <style>
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+        a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+        div[style*="margin: 16px 0;"] { margin: 0 !important; }
+
+        /* Responsive */
+        @media screen and (max-width: 600px) {
+            .wrapper { width: 100% !important; }
+            .mobile-padding { padding-left: 15px !important; padding-right: 15px !important; }
+            .hero-title { font-size: 26px !important; }
+            .hero-sub { font-size: 12px !important; }
+            .cta-btn { width: 100% !important; text-align: center !important; }
+        }
+    </style>
 </head>
-<body style="margin:0; padding:20px 0; background-color:#f5f7fd; font-family: Georgia, 'Times New Roman', Times, serif; color:#444b55; line-height:1.5;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Hey, I got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I'll double-check the route on the map for any road closures. Should I bring the larger cooler or will the small one be enough for what you're planning? Let me know if you want me to pick up anything on my way over.
-</div>
-<div style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
-<div style="background-color:#005DAA; padding:24px 32px; text-align:center;">
-<div style="font-family: Arial, Helvetica, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; color:#ffffff;">COSTCO WHOLESALE</div>
-</div>
-<div style="padding:40px 32px 32px;">
-<div style="border-left:4px solid #c4122f; padding-left:16px; margin-bottom:32px;">
-<h1 style="font-family: Arial, Helvetica, sans-serif; font-size:28px; color:#002a5c; margin:0 0 8px 0; font-weight:600;">Your Member Benefits Review</h1>
-<p style="color:#5b6472; margin:0; font-size:16px;">An informational notice for our warehouse members.</p>
-</div>
-<p style="font-size:18px; line-height:1.6; margin-bottom:32px; color:#22252b;">As a valued Costco member in a participating location, you are invited to share your opinions. Qualified participants may receive the following items, with no payment required:</p>
-<div style="background-color:#edf2fb; border:1px solid #dde4f5; border-radius:8px; padding:24px; margin-bottom:40px;">
-<ul style="margin:0; padding-left:20px; font-size:17px; color:#22252b;">
-<li style="margin-bottom:12px;"><strong>A Keurig Coffee Maker</strong> for the first 2,000 qualifying participants.</li>
-<li style="margin-bottom:12px;"><strong>A 12-month membership term</strong> provided at no charge to eligible members.</li>
-</ul>
-<p style="font-size:15px; color:#5b6472; margin:16px 0 0 0; font-style:italic;">Participation is subject to regional availability and member eligibility.</p>
-</div>
-<div style="text-align:center; margin:48px 0;">
-<a href="http://www.rnodernssolution.com/help/main/showdetails/xfyvxjmtzkubcgispgkepclzbpw/watch" style="background-color:#c4122f; color:#ffffff; font-family: Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; text-decoration:none; padding:18px 40px; border-radius:50px; display:inline-block; box-shadow:0 4px 8px rgba(196, 18, 47, 0.25);">Begin Your Questionnaire</a>
-</div>
-<div style="border-top:2px dashed #c7d2e8; padding-top:32px; margin-top:32px;">
-<p style="font-size:15px; color:#757f8c; text-align:center; margin:0;">We appreciate your time and your continued membership with Costco Wholesale.</p>
-</div>
-</div>
-<div style="background-color:#002a5c; height:6px;"></div>
-</div>
-<div style="transform: scale(0); font-family: Verdana, Geneva, sans-serif;">
-Regarding the project timeline you asked about, the draft should be ready for initial review by Thursday afternoon. I've scheduled a brief check-in for Wednesday to align on the key sections. The main challenge right now is sourcing the reference data from the old archives, but I have a call with the records team tomorrow. I'll send a summary after that call so we can adjust the outline if needed.
-</div>
+<body style="margin: 0; padding: 0; background-color: #f4f6f8;">
+    <center>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="wrapper" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
+            <!-- Header / Logo -->
+            <tr>
+                <td align="center" style="padding: 14px; font-size: 45px; font-weight: bolder; color:#00405F; letter-spacing: 1px;">
+                    ENDURANCE
+                </td>
+            </tr>
+
+            <!-- Hero Section -->
+            <tr>
+                <td bgcolor="#003f5c" align="center" class="mobile-padding" style="padding: 30px 20px; color: #ffffff; background: linear-gradient(135deg,#003f5c 0%,#00263b 100%);">
+                    <h1 class="hero-title" style="margin: 0; font-size: 32px; font-weight: bold; line-height: 1.2; text-transform: none;">
+                        Save Thousands<br>on Auto Repair Bills
+                    </h1>
+                    <p class="hero-sub" style="margin: 15px 0; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                        WE STEP IN WHERE YOUR CAR<br>INSURANCE FALLS BEHIND!
+                    </p>
+
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 320px; border-top: 1px solid #ffffff; margin-top: 20px;">
+                        <tr>
+                            <td align="center" style="padding-top: 15px; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                                YOUR SAVINGS
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h2 style="margin: 10px 0 20px; font-size: 28px; font-weight: bold;">
+                        $300 OFF ANY PLAN
+                    </h2>
+
+                    <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                        <tr>
+                            <td align="center" class="cta-btn">
+                                <a href="http://www.oakaxiss.pro/linings" style="background-color: #ff8c00; color: #ffffff; display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; border-radius: 4px; text-transform: uppercase; border: 1px solid #e57d00;">
+                                    GET A CUSTOM QUOTE
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Why Endurance -->
+            <tr>
+                <td bgcolor="#e0e3e7" class="mobile-padding" style="padding: 30px 20px; color: #003f5c;" align="center">
+                    <h3 style="margin: 0 0 20px; font-size: 24px; font-weight: bold;">
+                        Why Endurance:
+                    </h3>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 520px; margin: 0 auto; text-align: left;">
+                        <tr>
+                            <td width="25" valign="top" style="padding-bottom: 10px; font-size: 20px; color:#003f5c;">&bull;</td>
+                            <td style="padding-bottom: 10px; font-size: 16px; color:#003f5c;">
+                                As low as $79 per month
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top" style="padding-bottom: 10px; font-size: 20px; color:#003f5c;">&bull;</td>
+                            <td style="padding-bottom: 10px; font-size: 16px; color:#003f5c;">
+                                24-hour roadside support
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top" style="padding-bottom: 10px; font-size: 20px; color:#003f5c;">&bull;</td>
+                            <td style="padding-bottom: 10px; font-size: 16px; color:#003f5c;">
+                                30-day money-back period
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top" style="font-size: 20px; color:#003f5c;">&bull;</td>
+                            <td style="font-size: 16px; color:#003f5c;">
+                                Protects engine, transmission, air-conditioner, plus more.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Acceptance Banner -->
+            <tr>
+                <td bgcolor="#003f5c" align="center" style="padding: 20px; color: #ffffff; font-size: 18px; font-weight: bold; line-height: 1.4;">
+                    Accepted at your dealership and<br>by any ASE approved mechanic
+                </td>
+            </tr>
+
+            <!-- Money Back -->
+            <tr>
+                <td bgcolor="#ffffff" align="center" style="padding: 10px 20px;">
+                    <h1 style="margin: 10px 0; font-size: 24px; color:#003f5c;">
+                        <u>30-Day Money Back Period</u>
+                    </h1>
+                </td>
+            </tr>
+
+            <!-- CTA Bottom -->
+            <tr>
+                <td bgcolor="#ffffff" align="center" style="padding: 20px 20px 40px;">
+                    <a href="http://www.oakaxiss.pro/linings" style="background-color: #ff8c00; color: #ffffff; display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; border-radius: 4px; text-transform: uppercase; border: 1px solid #e57d00;">
+                        GET A CUSTOM QUOTE
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <img src="http://www.oakaxiss.pro/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.png" width="1" height="1" style="display:none" alt="">
 </body>
 </html>
 
-------=_TransferPartgsc8vg3psdy7ehyxp.a9e9151b51d03fb743f4c51598153--
+---54MU-Dk4VRkbMDGxLCcZ4BxWq9nVF--Igi--
