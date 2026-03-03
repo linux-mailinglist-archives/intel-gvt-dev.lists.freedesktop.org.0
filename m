@@ -2,46 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id DfDtCm4pp2m3fQAAu9opvQ
+	id ePoGNgRTp2lsgwAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 19:33:18 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 22:30:44 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DA711F5595
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 19:33:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A3631F78C4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 03 Mar 2026 22:30:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7DC6B10E8A1;
-	Tue,  3 Mar 2026 18:33:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 12D4710E8E3;
+	Tue,  3 Mar 2026 21:30:43 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=lanaita.com header.i=cstcspecials@lanaita.com header.b="ZkJUpDKc";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=virtropolis.net header.i=specialfromcstc@virtropolis.net header.b="hwUXOnOT";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Tue, 03 Mar 2026 18:33:13 UTC
-Received: from inbound.lanaita.com (pinupvebprosto.site [45.136.70.84])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4AC6510E8A1
+X-Greylist: delayed 527 seconds by postgrey-1.36 at gabe;
+ Tue, 03 Mar 2026 21:30:34 UTC
+Received: from relay1.virtropolis.net (thetalltreeinforest.space
+ [45.136.113.169])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 73D4F10E8E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Mar 2026 18:33:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaco072o0a4c;
- d=lanaita.com; 
- h=Subject:Reply-To:MIME-Version:Message-ID:To:Date:List-Unsubscribe:From:
- Content-Type; i=cstcspecials@lanaita.com;
- bh=QyPL6058UiFa8hFsJzEFeSdV4pcimOi/ACkL09si8Z0=;
- b=ZkJUpDKcqNC9xUWjX1i9ADblbKx1HDcply7W4nK35FmM2iFWjXaxKCsZxZ6N4cuiPl+IsgL4wxfF
- zw6ile1wvgLitwimCurf6zeJV3QvCkIj2gQvW6AV4aOkSeTDvHbXVMMUW66TIe+JtjitSlrVrBUD
- mYWApliDoHwOxwBo8Ax8FivnKAJ1DPEDEv6v2htUq1vaCMWV2f6ta9rJAkDqc071EIfZllM3eJcx
- rBJKLq4QkE8/9eRnqefX/wmRQ/NtLeIrefW+eK7Vg7Xbcvr9Ue2rHQz3VbF54+l56UnZB8XMK+To
- eb0xtPBbT7p7A0UPDBXX3xmSTTomWlzZbgrrsg==
-Subject: Updates to your Costco membership
+ Tue,  3 Mar 2026 21:30:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaqv6dpkb6oo;
+ d=virtropolis.net; 
+ h=Message-ID:Subject:From:Reply-To:List-Unsubscribe:MIME-Version:Date:To:
+ Content-Type; i=specialfromcstc@virtropolis.net;
+ bh=Sq5e7MsyE6fRhD3vNL+1xWIyFY5BUvtKlrpZMnfgwF4=;
+ b=hwUXOnOThvBgLqCFN6uy8Qc665FCc6a95Lgdt+cpt/NsEyxUmiFFzFyDcMQwukvneVuWYNc7hgyv
+ wadSL4bGzov+spjWnd4eCU2ybdpIf21qcJqgzEn7Xdidsynes1dFxe/s70dbAxY3AdStg1O0s++u
+ 7s2DZAbCuyGMZQkLGY0foPMTfyE4cYJqCks780rWYDx8GQcCA562mLKGzvoUkNWgwPDXZM+4jcgs
+ H5IY0McKGSt6YwOg7Q0j4s2yKL+kf9R/rSBrCZ7lwWOGubyhdM5UVoFMLqidIN1hnv4segISFuBb
+ Pvoqjrjld/88HMh9WyK370w6JvfMvyhIQg8Tiw==
+Message-ID: <788412-3bwsb8ikf5qj1ykt4d8mwh6-crwuqvemaqtosjeltqgliwo@virtropolis.net>
+Subject: Your membership details are being updated
+From: Special From C0STC0 <specialfromcstc@virtropolis.net>
 MIME-Version: 1.0
-Message-ID: <260906130835.45f3d5e9daee-0056182@lanaita.com>
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Date: Tue, 3 Mar 2026 16:21:34 -0500
 To: intel-gvt-dev@lists.freedesktop.org
-Date: Tue, 3 Mar 2026 13:27:47 -0500
-From: C0STC0 Specials <cstcspecials@lanaita.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
 Content-Type: multipart/alternative;
- boundary="=_DataBoundary_86577740_808912.kgmvurfac"
+ boundary="----=_StreamBoundary.784557270pooe1z380fmrbjomnhf4rsgle8238397"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,157 +55,120 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cstcspecials@lanaita.com
+Reply-To: specialfromcstc@virtropolis.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 6DA711F5595
+X-Rspamd-Queue-Id: 4A3631F78C4
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [14.80 / 15.00];
-	URIBL_BLACK(7.50)[lanaita.com:replyto,lanaita.com:url,lanaita.com:mid];
-	ABUSE_SURBL(5.00)[lanaita.com:replyto,lanaita.com:mid,www.lanaita.com:url];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[lanaita.com:s=mtaco072o0a4c];
-	R_PARTS_DIFFER(0.26)[62.8%];
+X-Spamd-Result: default: False [6.22 / 15.00];
+	ABUSE_SURBL(5.00)[virtropolis.net:replyto,virtropolis.net:mid,www.virtropolis.net:url];
+	R_DKIM_REJECT(1.00)[virtropolis.net:s=mtaqv6dpkb6oo];
+	R_PARTS_DIFFER(0.23)[61.7%];
 	MAILLIST(-0.20)[mailman];
 	BAD_REP_POLICIES(0.10)[];
-	DMARC_POLICY_SOFTFAIL(0.10)[lanaita.com : SPF not aligned (relaxed),none];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[virtropolis.net : SPF not aligned (relaxed),none];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	ZERO_FONT(0.10)[1];
 	MANY_INVISIBLE_PARTS(0.10)[2];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,meta];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	HAS_REPLYTO(0.00)[cstcspecials@lanaita.com];
-	TO_DN_NONE(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[cstcspecials@lanaita.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	DKIM_TRACE(0.00)[lanaita.com:-];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	GREYLIST(0.00)[pass,meta];
+	DKIM_TRACE(0.00)[virtropolis.net:-];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[specialfromcstc@virtropolis.net];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[specialfromcstc@virtropolis.net,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	NEURAL_SPAM(0.00)[1.000];
+	RCVD_COUNT_TWO(0.00)[2];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[lanaita.com:replyto,lanaita.com:url,lanaita.com:mid,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,virtropolis.net:replyto,virtropolis.net:url,virtropolis.net:mid]
 X-Rspamd-Action: add header
 X-Spam: Yes
 
---=_DataBoundary_86577740_808912.kgmvurfac
+------=_StreamBoundary.784557270pooe1z380fmrbjomnhf4rsgle8238397
 Content-Type: text/plain; charset="UTF-8"
 
 Costco Wholesale Membership Update
 
-Hey, got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I've checked the route and there shouldn't be any closures that affect us. Did you want me to bring the larger cooler or the compact one? The forecast looks clear so we shouldn't need the rain covers, but I'll pack them just in case. Let me know if you've confirmed with the others about the meeting point. I can swing by and pick up anyone who needs a ride, my car has plenty of space. We should probably decide on lunch beforehand too, whether we pack sandwiches or stop somewhere. I'm leaning towards packing to save time. Also, remind me to bring that book you wanted to borrow, I'll leave it in my bag so I don't forget. Looking forward to it, it's been too long since we all got together for something like this. The park should be nice this time of year, not too crowded. I'll charge my camera battery tonight.
+Hey, got your note about the weekend plans. I think the earlier start time is much better, especially with the traffic we usually hit on that route. I'll make sure to pack the extra cooler for drinks, and I have the new folding chairs in the garage ready to go. Did you check if the permit area allows grills, or should we plan for the portable gas one instead? My cousin mentioned the parking fills up fast, so aiming to get there by 9 is smart. I can bring the canopy too, just in case the forecast shifts. Let me know if you need me to pick up anything else on my way. I'll be coming from the east side so I can grab ice and any last-minute snacks. Should be a good time if the weather holds.
 
 COSTCO WHOLESALE
 
-Dear Valued Member,
+Important Membership Update
 
-We are writing to you regarding recent updates to your membership. We apologize for any oversight in our prior communications.
+We apologize for any oversight in our recent communications regarding your membership.
+
+This message outlines recent changes to your membership benefits. As part of an addition to your membership, you have an opportunity to recover $100 in Costco rewards for the 2026 year.
 
 Your Membership Summary
 
-Account: M-****-4572-81A
+Member Status: Executive
 
-Status: Executive (Active)
+Member ID: W-781450329
 
-Primary Cardholder: On File
-
-Your member perks have been updated. As part of this, you now have an opportunity to recover $100 in Costco Rewards for the 2026 year. This includes a $100 Costco Shop Card and a 12-month membership benefit.
-
-Please review your updated membership details.
+Your member perks are changing. You can recover a $100 Costco Shop Card and a 12-month membership benefit.
 
 Review Membership Updates
 
 Thank you for your membership.
+Costco Wholesale Member Services
 
-Sincerely,
-The Costco Wholesale Member Services Team
+So about the project timeline you asked about, the client feedback came in and they're mostly happy with the initial mockups. We need to adjust the color palette on the second screen to match their brand guidelines more closely. I've scheduled a quick sync for tomorrow at 11 to go over the changes with the design team. Can you make sure the development specs are updated by end of day? Also, the meeting room for the workshop next week is confirmed on the third floor. I'll bring the printed materials and the portable whiteboard. Let me know if you need me to order lunch for the team. I was thinking the sandwich place around the corner. The new intern starts on Monday, so I'll make sure they have access to the shared drive and the project management tool. It should be a straightforward week if we keep to the checklist.
 
-© Costco Wholesale. All rights reserved.
-
-About your question on the garden project, the soil test results came back and it looks like we need to add more compost to that back corner. The pH is a bit off. I can pick some up this weekend if you want. Also, the trellis for the climbing plants should be delivered soon. Do you prefer the wooden one or the metal one we looked at? I think the metal will last longer. We should also plan the watering schedule before the hotter weather arrives. Did the new timer work for the drip system? Let me know if you need help setting it up. I'm free most afternoons next week. The seedlings I started are coming along nicely, they should be ready to transplant in a couple of weeks. We might need to thin out the carrots a bit more. It's looking like it will be a good harvest this year if we stay on top of it. I'm excited to see how the new variety of tomatoes turns out.
-
---=_DataBoundary_86577740_808912.kgmvurfac
+------=_StreamBoundary.784557270pooe1z380fmrbjomnhf4rsgle8238397
 Content-Type: text/html; charset="UTF-8"
 
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Costco Wholesale Membership Update</title>
 </head>
 <body style="margin:0; padding:20px 0; background-color:#f5f5f5; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#333;">
 <div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Hey, got your note about the weekend plans. I think the earlier start time is much better, it gives us more daylight for the main activity. I've checked the route and there shouldn't be any closures that affect us. Did you want me to bring the larger cooler or the compact one? The forecast looks clear so we shouldn't need the rain covers, but I'll pack them just in case. Let me know if you've confirmed with the others about the meeting point. I can swing by and pick up anyone who needs a ride, my car has plenty of space. We should probably decide on lunch beforehand too, whether we pack sandwiches or stop somewhere. I'm leaning towards packing to save time. Also, remind me to bring that book you wanted to borrow, I'll leave it in my bag so I don't forget. Looking forward to it, it's been too long since we all got together for something like this. The park should be nice this time of year, not too crowded. I'll charge my camera battery tonight.
+Hey, got your note about the weekend plans. I think the earlier start time is much better, especially with the traffic we usually hit on that route. I'll make sure to pack the extra cooler for drinks, and I have the new folding chairs in the garage ready to go. Did you check if the permit area allows grills, or should we plan for the portable gas one instead? My cousin mentioned the parking fills up fast, so aiming to get there by 9 is smart. I can bring the canopy too, just in case the forecast shifts. Let me know if you need me to pick up anything else on my way. I'll be coming from the east side so I can grab ice and any last-minute snacks. Should be a good time if the weather holds.
 </div>
 <center>
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; margin:0 auto;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-collapse:collapse; border:1px solid #00447c; border-top:6px solid #00447c;">
 <tr>
-<td>
-<table width="100%" cellpadding="20" cellspacing="0" border="0" style="background-color:#ffffff; border:1px solid #e0e0e0; border-top:4px solid #0073c1;">
-<tr>
-<td align="center" style="padding-bottom:10px;">
-<div style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#e31837; font-size:28px; line-height:1.1; border-bottom:2px solid #0073c1; padding-bottom:8px; display:inline-block;">COSTCO WHOLESALE</div>
-</td>
-</tr>
-<tr>
-<td style="padding-top:5px;">
-<p style="margin:0 0 20px 0; font-size:16px;">Dear Valued Member,</p>
-<p style="margin:0 0 20px 0; font-size:16px;">We are writing to you regarding recent updates to your membership. We apologize for any oversight in our prior communications.</p>
-</td>
-</tr>
-<tr>
-<td style="background-color:#f8f9fa; padding:15px; border-left:4px solid #0073c1; margin:20px 0; font-size:16px;">
-<p style="margin:0 0 10px 0; font-weight:bold; color:#333;">Your Membership Summary</p>
-<p style="margin:0; font-size:15px;">Account: <span style="color:#0073c1;">M-****-4572-81A</span><br>
-Status: <span style="color:#0073c1;">Executive (Active)</span><br>
-Primary Cardholder: On File</p>
-</td>
-</tr>
-<tr>
-<td>
-<p style="margin:0 0 20px 0; font-size:16px;">Your member perks have been updated. As part of this, you now have an opportunity to recover $100 in Costco Rewards for the 2026 year. This includes a $100 Costco Shop Card and a 12-month membership benefit.</p>
-<p style="margin:0 0 30px 0; font-size:16px;">Please review your updated membership details.</p>
-</td>
-</tr>
-<tr>
-<td align="center" style="padding:25px 0;">
-<a href="http://www.lanaita.com/signalstream/prime_center/stepahead/0duy_5ff_iba/route" style="background-color:#e31837; color:#ffffff; text-decoration:none; padding:15px 30px; font-size:18px; font-weight:bold; border-radius:4px; display:inline-block;">Review Membership Updates</a>
-</td>
-</tr>
-<tr>
-<td>
-<p style="margin:0 0 20px 0; font-size:16px;">Thank you for your membership.</p>
-<p style="margin:0; font-size:16px;">Sincerely,<br>The Costco Wholesale Member Services Team</p>
-</td>
-</tr>
-</table>
-<table width="100%" cellpadding="20" cellspacing="0" border="0" style="background-color:#ffffff; border-top:1px solid #e0e0e0; font-size:14px; color:#666;">
-<tr>
-<td align="center">
-<p style="margin:0;">&copy; Costco Wholesale. All rights reserved.</p>
-</td>
-</tr>
-</table>
+<td style="padding:30px;">
+<div style="text-align:center; margin-bottom:25px;">
+<div style="display:inline-block; font-weight:bold; font-size:28px; color:#e31837; letter-spacing:-0.5px; border-bottom:3px solid #00447c; padding-bottom:8px;">COSTCO<span style="color:#00447c;"> WHOLESALE</span></div>
+</div>
+<h1 style="font-size:20px; color:#00447c; margin-top:0; margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #e0e0e0;">Important Membership Update</h1>
+<p style="margin-top:0; margin-bottom:20px;">We apologize for any oversight in our recent communications regarding your membership.</p>
+<p style="margin-top:0; margin-bottom:20px;">This message outlines recent changes to your membership benefits. As part of an addition to your membership, you have an opportunity to recover $100 in Costco rewards for the 2026 year.</p>
+<div style="background-color:#f8f8f8; border-left:4px solid #0073c1; padding:15px; margin:25px 0; font-size:15px;">
+<p style="margin-top:0; margin-bottom:10px; font-weight:bold; color:#00447c;">Your Membership Summary</p>
+<p style="margin-top:0; margin-bottom:5px;">Member Status: <span style="color:#333;">Executive</span></p>
+<p style="margin-top:0; margin-bottom:0;">Member ID: <span style="color:#333;">W-781450329</span></p>
+</div>
+<p style="margin-top:0; margin-bottom:25px;">Your member perks are changing. You can recover a $100 Costco Shop Card and a 12-month membership benefit.</p>
+<div style="text-align:center; margin:30px 0;">
+<a href="http://www.virtropolis.net/snapshots/clear_node/getinfo/insightwire/gskqoi01xbvmw3d2lmps2j7sq/module" style="background-color:#e31837; color:#ffffff; text-decoration:none; padding:15px 30px; font-weight:bold; font-size:17px; border-radius:4px; display:inline-block;">Review Membership Updates</a>
+</div>
+<p style="margin-top:0; margin-bottom:0; font-size:15px; color:#666;">Thank you for your membership.<br>Costco Wholesale Member Services</p>
 </td>
 </tr>
 </table>
 </center>
-<div style="font-family: 'Trebuchet MS', sans-serif; display:none;">
-About your question on the garden project, the soil test results came back and it looks like we need to add more compost to that back corner. The pH is a bit off. I can pick some up this weekend if you want. Also, the trellis for the climbing plants should be delivered soon. Do you prefer the wooden one or the metal one we looked at? I think the metal will last longer. We should also plan the watering schedule before the hotter weather arrives. Did the new timer work for the drip system? Let me know if you need help setting it up. I'm free most afternoons next week. The seedlings I started are coming along nicely, they should be ready to transplant in a couple of weeks. We might need to thin out the carrots a bit more. It's looking like it will be a good harvest this year if we stay on top of it. I'm excited to see how the new variety of tomatoes turns out.
+<div style="display:none; font-family: 'Trebuchet MS', sans-serif;">
+So about the project timeline you asked about, the client feedback came in and they're mostly happy with the initial mockups. We need to adjust the color palette on the second screen to match their brand guidelines more closely. I've scheduled a quick sync for tomorrow at 11 to go over the changes with the design team. Can you make sure the development specs are updated by end of day? Also, the meeting room for the workshop next week is confirmed on the third floor. I'll bring the printed materials and the portable whiteboard. Let me know if you need me to order lunch for the team. I was thinking the sandwich place around the corner. The new intern starts on Monday, so I'll make sure they have access to the shared drive and the project management tool. It should be a straightforward week if we keep to the checklist.
 </div>
 </body>
 </html>
 
---=_DataBoundary_86577740_808912.kgmvurfac--
+------=_StreamBoundary.784557270pooe1z380fmrbjomnhf4rsgle8238397--
