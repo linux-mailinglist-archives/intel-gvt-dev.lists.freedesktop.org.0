@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GHW9LQl6p2lshwAAu9opvQ
+	id QAueAvKOqGmzvgAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 04 Mar 2026 01:17:13 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 04 Mar 2026 20:58:42 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F5441F8CC6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 04 Mar 2026 01:17:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7088020751A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 04 Mar 2026 20:58:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D237C10E8FB;
-	Wed,  4 Mar 2026 00:17:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 48C4C10EA95;
+	Wed,  4 Mar 2026 19:58:40 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=forgevue.forum header.i=blueshieldbluecross@forgevue.forum header.b="GNyemAG3";
+	dkim=pass (2048-bit key; unprotected) header.d=fitvora.fit header.i=welcommarriot@fitvora.fit header.b="esDqm/77";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 04 Mar 2026 00:17:10 UTC
-Received: from outbound.forgevue.forum (unknown [45.13.214.212])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4D51D10E8FB
+X-Greylist: delayed 948 seconds by postgrey-1.36 at gabe;
+ Wed, 04 Mar 2026 19:58:35 UTC
+Received: from mx2.fitvora.fit (beforeoraftertheholiday.online
+ [195.123.240.130])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5DF9510EA95
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  4 Mar 2026 00:17:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtafbbibzj6ap;
- d=forgevue.forum; 
- h=MIME-Version:To:Subject:Reply-To:Message-ID:List-Unsubscribe:Date:From:
- Content-Type; i=blueshieldbluecross@forgevue.forum;
- bh=XdIPk1EJMowkUfAcwBVUAzYM8Cthq1RI+hYSPOr8tVk=;
- b=GNyemAG3l4Z4mQpzzK+q22U3XaS9aqTBzjRjop/+UiN9kncYFW9uW2RkVhbb3qq0G46S6xDiUyIo
- C3kFdNfyUIactUrWCOXChhz2HdSwznO2FG8FrhjuHHxUFhvEi1u77HYJI8xhpI2XlDTpA6diUjf1
- Q1CSfuZC4ejjwKndMX5ONYk4jQc3cxuYMTGUdIU0Q8QivMEZxQpHeHVl7/7iyokeVpiJJQ2ai6Ia
- 8RPQxFQdYxKndzye1sEp72upaTq/pm9MYAFGVW9UTYp8snSQQy5CZKfBmHoXD38Lhrmt/gsHZag6
- IgLE4E4egiqnu/idjHz36mSKvDM2v6LU+e95mw==
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
+ Wed,  4 Mar 2026 19:58:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaabo8ew1yby;
+ d=fitvora.fit; 
+ h=From:MIME-Version:Date:Subject:Reply-To:To:Message-ID:Content-Type;
+ i=welcommarriot@fitvora.fit;
+ bh=peosMSgYdWoxa5mCLI7/Tr3wohX4wogG2gIdlWxHGfA=;
+ b=esDqm/774Ryn1+ygK+xNIZQybXx2OdFB7MmaH9YrQe+YbLszPp9u3Rlc+VA9CAKTQnM5DGhRRZz2
+ V9QZk9ZbW0pjAg4nzELNPuBlJ7u9JVxbDSShl/8X7//UDvTw+DGO2sOExwEi2hp7NRJJOfKQrvcN
+ luUHHrbdr3EwKak8cp+zCXF1mG1OSwb138TxGdQ+zHmZ4HPFW/6sMn2vBHFStVDa3k1TW6T4fajn
+ RVtMyi5ea/fR+1IDKosEe+jTBL02nFDDM1rj43zp20Tov4SETB7rtLkUA13L/K4Vc+tELOpUrW0v
+ txGfi+n1MQ4kGwq4SFAvPpkcH1ClB6GjCcJHDw==
+From: Welcom Marriot <welcommarriot@fitvora.fit>
 MIME-Version: 1.0
+Date: Wed, 4 Mar 2026 14:42:36 -0500
+Subject: Thanks again for staying with Marriott
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Time to review your 2026 plan options
-Message-ID: <812382.d9c6494e3561f5a1ee1c.e6p05ouwkrbgqj61xoisl0a@forgevue.forum>
-Date: Tue, 3 Mar 2026 19:12:02 -0500
-From: Blue Shield Blue Cross <blueshieldbluecross@forgevue.forum>
+Message-ID: <748181-250425001625_ou547rsyfrvucx@fitvora.fit>
 Content-Type: multipart/alternative;
- boundary="----=_HeaderBoundary.doealwjgsbviqwewamkehdtcs80772440"
+ boundary="----=_BodyBoundary_2840_127782.szuzelcpjcvhijglytaeaqagm"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,154 +54,305 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: blueshieldbluecross@forgevue.forum
+Reply-To: welcommarriot@fitvora.fit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 0F5441F8CC6
+X-Rspamd-Queue-Id: 7088020751A
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.74 / 15.00];
+X-Spamd-Result: default: False [-0.26 / 15.00];
 	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[forgevue.forum:s=mtafbbibzj6ap];
-	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177];
+	DMARC_POLICY_ALLOW(-0.50)[fitvora.fit,none];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
+	R_DKIM_ALLOW(-0.20)[fitvora.fit:s=mtaabo8ew1yby];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[forgevue.forum : SPF not aligned (relaxed),none];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	ZERO_FONT(0.10)[1];
-	MANY_INVISIBLE_PARTS(0.10)[2];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	DKIM_TRACE(0.00)[forgevue.forum:-];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	NEURAL_SPAM(0.00)[1.000];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	ARC_NA(0.00)[];
+	DKIM_TRACE(0.00)[fitvora.fit:+];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_ONE(0.00)[1];
+	NEURAL_SPAM(0.00)[0.918];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	HAS_REPLYTO(0.00)[welcommarriot@fitvora.fit];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[blueshieldbluecross@forgevue.forum,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_NEQ_ENVFROM(0.00)[welcommarriot@fitvora.fit,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FROM_HAS_DN(0.00)[];
 	MISSING_XM_UA(0.00)[];
-	TO_DN_NONE(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	RCVD_COUNT_TWO(0.00)[2];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	TO_DN_NONE(0.00)[];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	MID_RHS_MATCH_FROM(0.00)[];
-	HAS_REPLYTO(0.00)[blueshieldbluecross@forgevue.forum]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,fitvora.fit:dkim,fitvora.fit:mid,fitvora.fit:url,fitvora.fit:replyto]
 X-Rspamd-Action: no action
 
-------=_HeaderBoundary.doealwjgsbviqwewamkehdtcs80772440
+------=_BodyBoundary_2840_127782.szuzelcpjcvhijglytaeaqagm
 Content-Type: text/plain; charset="UTF-8"
 
-I think the best approach is to schedule the project review for next Tuesday afternoon. That gives everyone enough time to compile their updates. We can use the main conference room if it's available, otherwise the small one by the kitchen works too. Let me know if you need me to bring any specific documents or if you want to adjust the agenda items. I'll send a calendar invite once we confirm.
+Yes, Thursday works for me.
 
-BlueCross
-BlueShield
+I can meet after 3:30 once the calendar invite comes through, and I will bring the notes from last week.
 
-Your 2026 Plan Information & Kit
+If the room is taken, we can use the lobby seating and keep it to 25 minutes.
 
-We are writing to inform you of updates to your coverage plan for the coming year. As part of this annual review, a Medicare Kit is being provided to households in your area. You will not be billed for the kit.
+For the outline, I suggest we start with the open questions, then agree on who owns each follow-up and the due dates.
 
-Program Details: This kit is provided at no charge. One kit is allocated per household. The total program allocation is 800 kits. This offering concludes tomorrow.
+I also want to confirm whether we are still aiming to share a draft by Tuesday.
 
-What Your Kit Contains
+Marriot
 
-The kit includes a selection of useful medical supplies to have on hand.
+Previous-stay guest notice
 
-• Adhesive Bandage Strips
+Ends Tomorrow
 
-• Digital Thermometer
+1 set per household
 
-• Antiseptic Wipes
+ 
 
-• First Aid Instruction Guide
+A comfort kit is available based on your recent stay
 
-• Gauze Pads
+Because you stayed at a Marriot Hotel or a Marriot partnered hotel within the past year, you may receive a 2‑pillow luxury cooling pillow set provided at no charge. To have the set shipped, please complete a very quick questionnaire.
 
-• Medical Tape
+After the questionnaire is completed, you can also claim a 2‑night stay at select locations provided at no charge. You will not be billed for the pillows or the qualifying stay nights.
 
-• Disposable Gloves
+Redeem your pillows + 2 nights
 
-• Pain Reliever Packets
+Allocation note: total pillow allocation is 500 sets for this program, determined by distribution scheduling. Stay dates and participating locations are also based on program scheduling.
 
-Quantities are determined by the program's allocation.
+What’s included in the cooling pillow set
 
-View Kit & Plan Details
+Temperature-balancing feel
 
-Along with your kit, your 2026 plan coverage information is available for your review. This outlines the various options and selections pertinent to your coverage.
+Helps reduce heat buildup for a cooler sleep surface.
 
-Thank you for being a member of our community. We are here to support your health journey.
+Breathable construction
 
-Regarding the weekend plans, yes, the farmer's market starts at 8 am. I can meet you there by the main entrance. They usually have great seasonal produce this time of year. After that, we could grab coffee at that new place on Maple Street. Don't forget to bring your reusable bags. Let me know if you're running late.
+Promotes airflow so the pillow doesn’t feel stuffy.
 
-------=_HeaderBoundary.doealwjgsbviqwewamkehdtcs80772440
+Comfortable, supportive loft
+
+Designed to keep head and neck alignment more consistent.
+
+Smooth, soft cover
+
+A refined hand-feel intended for a luxury bedding experience.
+
+Moisture-aware comfort
+
+Materials are chosen to help manage warm-night humidity.
+
+Two-pillows, matched set
+
+A coordinated pair for consistent feel across the bed.
+
+To confirm shipment details, the questionnaire focuses on simple items like delivery information and basic sleep preferences. One pillow set is provided per household.
+
+Thank you for choosing to stay at a Marriot Hotel. Your feedback helps us keep improving the guest experience.
+
+ 
+
+I looked into the route you suggested and it makes sense if we want fewer transfers.
+
+The only tradeoff is the later departure, but I can adjust my schedule and still arrive before dinner.
+
+If you are fine with it, I will book the seats together and send you the confirmation number so you can add it to your calendar.
+
+Also, let me know whether you prefer the morning museum slot or the afternoon one, since tickets are timed and I want us to have enough walking breaks.
+
+------=_BodyBoundary_2840_127782.szuzelcpjcvhijglytaeaqagm
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting" content="yes">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 </head>
-<body style="margin:0; padding:20px 0; background-color:#E6F3F7; font-family: Georgia, 'Times New Roman', Times, serif; color:#3A3A3A; line-height:1.5;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-I think the best approach is to schedule the project review for next Tuesday afternoon. That gives everyone enough time to compile their updates. We can use the main conference room if it's available, otherwise the small one by the kitchen works too. Let me know if you need me to bring any specific documents or if you want to adjust the agenda items. I'll send a calendar invite once we confirm.
-</div>
-<center>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,122,174,0.08);">
-<tr>
-<td style="padding:32px 40px 24px; text-align:center; background-color:#ffffff; border-bottom:1px solid #C7E3EA;">
-<div style="font-size:32px; font-weight:bold; color:#007AAE; letter-spacing:-0.5px; line-height:1.1;">BlueCross<br><span style="color:#00A9DF;">BlueShield</span></div>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 32px;">
-<h1 style="font-family: Arial, Helvetica, sans-serif; font-size:26px; color:#1A1A1A; margin-top:0; margin-bottom:16px; line-height:1.3; font-weight:600;">Your 2026 Plan Information & Kit</h1>
-<p style="font-size:16px; color:#5a5a5a; margin-bottom:24px;">We are writing to inform you of updates to your coverage plan for the coming year. As part of this annual review, a Medicare Kit is being provided to households in your area. You will not be billed for the kit.</p>
-<div style="background-color:#F8FCFE; border-left:4px solid #6FBEDC; padding:20px; margin:32px 0; border-radius:0 4px 4px 0;">
-<p style="margin:0; font-size:15px; color:#3A3A3A;"><strong>Program Details:</strong> This kit is provided at no charge. One kit is allocated per household. The total program allocation is 800 kits. This offering concludes tomorrow.</p>
-</div>
-<h2 style="font-family: Arial, Helvetica, sans-serif; font-size:20px; color:#007AAE; margin-top:32px; margin-bottom:16px; font-weight:600;">What Your Kit Contains</h2>
-<p style="font-size:16px; color:#5a5a5a; margin-bottom:20px;">The kit includes a selection of useful medical supplies to have on hand.</p>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:24px 0 32px; border-collapse:separate; border-spacing:0;">
-<tr>
-<td style="width:50%; padding:12px 16px; background-color:#F8FCFE; border:1px solid #E6F3F7; border-right:0; border-bottom:0; font-size:15px;">• Adhesive Bandage Strips</td>
-<td style="width:50%; padding:12px 16px; background-color:#F8FCFE; border:1px solid #E6F3F7; border-bottom:0; font-size:15px;">• Digital Thermometer</td>
-</tr>
-<tr>
-<td style="padding:12px 16px; background-color:#ffffff; border:1px solid #E6F3F7; border-right:0; border-bottom:0; font-size:15px;">• Antiseptic Wipes</td>
-<td style="padding:12px 16px; background-color:#ffffff; border:1px solid #E6F3F7; border-bottom:0; font-size:15px;">• First Aid Instruction Guide</td>
-</tr>
-<tr>
-<td style="padding:12px 16px; background-color:#F8FCFE; border:1px solid #E6F3F7; border-right:0; border-bottom:0; font-size:15px;">• Gauze Pads</td>
-<td style="padding:12px 16px; background-color:#F8FCFE; border:1px solid #E6F3F7; border-bottom:0; font-size:15px;">• Medical Tape</td>
-</tr>
-<tr>
-<td style="padding:12px 16px; background-color:#ffffff; border:1px solid #E6F3F7; border-right:0; font-size:15px;">• Disposable Gloves</td>
-<td style="padding:12px 16px; background-color:#ffffff; border:1px solid #E6F3F7; font-size:15px;">• Pain Reliever Packets</td>
-</tr>
-</table>
-<p style="font-size:14px; color:#787878; font-style:italic; margin-top:8px;">Quantities are determined by the program's allocation.</p>
-<div style="text-align:center; margin:40px 0 32px;">
-<a href="http://www.forgevue.forum/directory/watch/revisitlive/rw3u6s-9afe9e-35m-685475-dxb6/primetrack" style="background-color:#00A9DF; color:#ffffff; font-family: Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; text-decoration:none; padding:16px 40px; border-radius:6px; display:inline-block; box-shadow:0 3px 6px rgba(0,169,223,0.2);">View Kit & Plan Details</a>
-</div>
-<p style="font-size:16px; color:#5a5a5a; margin-bottom:24px;">Along with your kit, your 2026 plan coverage information is available for your review. This outlines the various options and selections pertinent to your coverage.</p>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 40px; text-align:center; background-color:#F8FCFE; border-top:1px solid #C7E3EA;">
-<p style="margin:0 0 16px; font-size:15px; color:#5a5a5a;">Thank you for being a member of our community. We are here to support your health journey.</p>
-<div style="height:4px; width:120px; background-color:#007AAE; margin:0 auto; border-radius:2px;"></div>
-</td>
-</tr>
-</table>
-</center>
-<div style="font-family: 'Trebuchet MS', sans-serif; display:none;">
-Regarding the weekend plans, yes, the farmer's market starts at 8 am. I can meet you there by the main entrance. They usually have great seasonal produce this time of year. After that, we could grab coffee at that new place on Maple Street. Don't forget to bring your reusable bags. Let me know if you're running late.
-</div>
+<body style="margin:0;padding:0;background-color:#ffffff;color:#1F1F1F;">
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial, Helvetica, sans-serif;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
+    Yes, Thursday works for me.<br>
+    I can meet after 3:30 once the calendar invite comes through, and I will bring the notes from last week.<br>
+    If the room is taken, we can use the lobby seating and keep it to 25 minutes.<br>
+    For the outline, I suggest we start with the open questions, then agree on who owns each follow-up and the due dates.<br>
+    I also want to confirm whether we are still aiming to share a draft by Tuesday.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+    <tr>
+      <td align="center" style="padding:24px 10px 30px 10px;">
+        <table role="presentation" width="620" cellpadding="0" cellspacing="0" border="0" style="width:620px;max-width:620px;background-color:#ffffff;border:1px solid #E7E1E1;border-radius:16px;overflow:hidden;">
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="background-color:#ffffff;padding:18px 22px 14px 22px;border-bottom:4px solid #B21F3A;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" align="left" style="padding:0;">
+                          <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:30px;line-height:34px;font-weight:700;letter-spacing:0.3px;color:#D82A49;">
+                            Marriot
+                          </div>
+                          <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:12.5px;line-height:16px;color:#262626;padding-top:4px;">
+                            Previous-stay guest notice
+                          </div>
+                        </td>
+                        <td valign="middle" align="right" style="padding:0;">
+                          <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:12.5px;line-height:16px;color:#262626;">
+                            Ends Tomorrow
+                          </div>
+                          <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:12px;line-height:16px;color:#262626;padding-top:3px;">
+                            1 set per household
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:18px 22px 0 22px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E7E1E1;border-radius:14px;">
+                      <tr>
+                        <td style="padding:18px 18px 16px 18px;background-color:#FBFAFA;border-radius:14px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="padding:0 0 10px 0;">
+                                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                                  <tr>
+                                    <td style="width:10px;background-color:#7A1627;border-radius:10px;" width="10">&nbsp;</td>
+                                    <td style="padding-left:10px;font-family:Georgia, 'Times New Roman', Times, serif;font-size:20px;line-height:26px;font-weight:700;color:#1F1F1F;">
+                                      A comfort kit is available based on your recent stay
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:14.5px;line-height:22px;color:#262626;padding:0 0 12px 0;">
+                                Because you stayed at a Marriot Hotel or a Marriot partnered hotel within the past year, you may receive a <strong>2‑pillow luxury cooling pillow set</strong> provided <strong>at no charge</strong>. To have the set shipped, please complete a very quick questionnaire.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:14.5px;line-height:22px;color:#262626;padding:0 0 14px 0;">
+                                After the questionnaire is completed, you can also <strong>claim a 2‑night stay at select locations</strong> provided <strong>at no charge</strong>. You will not be billed for the pillows or the qualifying stay nights.
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td align="center" style="padding:4px 0 2px 0;">
+                                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+                                  <tr>
+                                    <td align="center" bgcolor="#ffffff" style="border:2px solid #7A1627;border-radius:12px;box-shadow:0 2px 0 rgba(26,26,26,0.10);">
+                                      <a href="http://www.fitvora.fit/in/notice-signal/details/e36b24d47984a2a232e0ada9c0/quick-center" style="display:inline-block;padding:13px 20px;font-family:Georgia, 'Times New Roman', Times, serif;font-size:15px;line-height:18px;font-weight:700;color:#1F1F1F;text-decoration:none;border-radius:12px;min-height:44px;">
+                                        Redeem your pillows + 2 nights
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:12.5px;line-height:18px;color:#262626;padding:12px 0 0 0;">
+                                Allocation note: total pillow allocation is <strong>500</strong> sets for this program, determined by distribution scheduling. Stay dates and participating locations are also based on program scheduling.
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:16px 22px 0 22px;">
+                    <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:16px;line-height:22px;font-weight:700;color:#1F1F1F;padding:0 0 10px 0;">
+                      What’s included in the cooling pillow set
+                    </div>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E7E1E1;border-radius:14px;overflow:hidden;">
+                      <tr>
+                        <td style="padding:0;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#ffffff;border-bottom:1px solid #E7E1E1;border-right:1px solid #E7E1E1;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Temperature-balancing feel</strong><br>
+                                Helps reduce heat buildup for a cooler sleep surface.
+                              </td>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#FBFAFA;border-bottom:1px solid #E7E1E1;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Breathable construction</strong><br>
+                                Promotes airflow so the pillow doesn’t feel stuffy.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#FBFAFA;border-bottom:1px solid #E7E1E1;border-right:1px solid #E7E1E1;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Comfortable, supportive loft</strong><br>
+                                Designed to keep head and neck alignment more consistent.
+                              </td>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#ffffff;border-bottom:1px solid #E7E1E1;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Smooth, soft cover</strong><br>
+                                A refined hand-feel intended for a luxury bedding experience.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#ffffff;border-right:1px solid #E7E1E1;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Moisture-aware comfort</strong><br>
+                                Materials are chosen to help manage warm-night humidity.
+                              </td>
+                              <td width="50%" valign="top" style="padding:12px 14px;background-color:#FBFAFA;font-family:Georgia, 'Times New Roman', Times, serif;font-size:13.5px;line-height:19px;color:#262626;">
+                                <strong style="color:#1F1F1F;">Two-pillows, matched set</strong><br>
+                                A coordinated pair for consistent feel across the bed.
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <div style="font-family:Georgia, 'Times New Roman', Times, serif;font-size:14px;line-height:22px;color:#262626;padding:14px 0 0 0;">
+                      To confirm shipment details, the questionnaire focuses on simple items like delivery information and basic sleep preferences. One pillow set is provided per household.
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:18px 22px 22px 22px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E7E1E1;">
+                      <tr>
+                        <td style="padding-top:14px;font-family:Georgia, 'Times New Roman', Times, serif;font-size:12.5px;line-height:18px;color:#262626;">
+                          Thank you for choosing to stay at a Marriot Hotel. Your feedback helps us keep improving the guest experience.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top:10px;">
+                          <div style="height:8px;line-height:8px;background-color:#B21F3A;border-radius:0 0 14px 14px;">&nbsp;</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; width:1px; line-height:0; overflow:hidden; text-emphasis:none; max-height:0;">
+    I looked into the route you suggested and it makes sense if we want fewer transfers.<br>
+    The only tradeoff is the later departure, but I can adjust my schedule and still arrive before dinner.<br>
+    If you are fine with it, I will book the seats together and send you the confirmation number so you can add it to your calendar.<br>
+    Also, let me know whether you prefer the morning museum slot or the afternoon one, since tickets are timed and I want us to have enough walking breaks.
+  </div>
 </body>
 </html>
 
-------=_HeaderBoundary.doealwjgsbviqwewamkehdtcs80772440--
+------=_BodyBoundary_2840_127782.szuzelcpjcvhijglytaeaqagm--
