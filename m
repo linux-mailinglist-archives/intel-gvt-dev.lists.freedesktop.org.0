@@ -2,45 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id ILg/OAOlqWl5BQEAu9opvQ
+	id 2B9oE8XeqWm4GgEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 16:45:07 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 20:51:33 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 403F9214C67
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 16:45:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC82B217CB7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 20:51:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 92E1910EBD9;
-	Thu,  5 Mar 2026 15:45:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4023F10E23E;
+	Thu,  5 Mar 2026 19:51:31 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=nexusbost.cv header.i=lowesegospeciaiteam@nexusbost.cv header.b="MsbGjd75";
+	dkim=pass (2048-bit key; unprotected) header.d=aussiewagerpro-au.com header.i=lowesegospecialoffer@aussiewagerpro-au.com header.b="kU2vnAJI";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 502 seconds by postgrey-1.36 at gabe;
- Thu, 05 Mar 2026 15:44:59 UTC
-Received: from em.nexusbost.cv (unknown [79.133.202.22])
- by gabe.freedesktop.org (Postfix) with ESMTP id C78A310EBD9
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 05 Mar 2026 19:51:30 UTC
+Received: from mx2.aussiewagerpro-au.com (mail.aussiewagerpro-au.com
+ [87.118.85.192])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9117C10E23E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Mar 2026 15:44:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtadtrfroseaq;
- d=nexusbost.cv; 
- h=Reply-To:From:Message-ID:MIME-Version:To:Date:Subject:Content-Type;
- i=lowesegospeciaiteam@nexusbost.cv;
- bh=1D39VqnuaHQ4uys5WN/vYlmrvmFf3UV389Uk+Vsj5IU=;
- b=MsbGjd75HzQjFZPk8NYE+hIX9QFMZftZ2X8rV8qDckXA9K0jdlCYRBeL5H8H9NpDoN82DJSUm+Bl
- MhiVVleaFgEL981tE7CzhKa3hRTZpDJ6Cv1AodtFevnCMoKysyer2RuPBIZsAEt/DRuCPIuGXq7K
- eCWDwZyAE7oXWywsY9jjYEpP1XUTACcr3lRgJjR46sm7ei5kqMYrYkaP7aYS/xuLjtvTnyiME0Vf
- g6z018e1tyS1RrAbQ/julGMUdTYKHwMRsw7EF4unSyOxXtY4Z6Bk7WoOt25HHO6sSaEsKmt9JUaZ
- 0U7HSwLO5jv4rS96yjb7SKBBsxAeouhF+vJOmQ==
-From: Lowes EGO SpeciaI Team <lowesegospeciaiteam@nexusbost.cv>
-Message-ID: <20260327130343-7cmvqtjck2b48al864@nexusbost.cv>
-MIME-Version: 1.0
+ Thu,  5 Mar 2026 19:51:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta4njuwgea3u;
+ d=aussiewagerpro-au.com; 
+ h=From:To:Reply-To:Date:MIME-Version:Message-ID:Subject:Content-Type;
+ i=lowesegospecialoffer@aussiewagerpro-au.com;
+ bh=COGlPrvqwBEW6qAk7d1PdtMuUNPDiT5HwIo+Ni0mG64=;
+ b=kU2vnAJIkuFwD7Uq2dUBPWs7v7BsQXsZ+MUKogx7kehW7aKxwOlisEvB/aHwLVt3D5WlRwwDwLJ3
+ UK8j8u4ts3VnNFyLgoMDhW4lq3OQ9uVnmAt0W2qndnWB6YXo4mkaW8Z3FtKWLOiyCE9gyRPpiyjl
+ teJUuflzYTW76RqNuZcWxmoP6rgvtSCKA4q/asw2c2IA2VpA06tFDy7dDVqUeieyXGbjPnwj9KdW
+ pvLhKV1sr4q4oYFwtXdDoOiuZMdyvoqBIRZR28xXeNC22Q9pOypuwbxLnzHwxvzs4/01PHEh+rsd
+ yHqiDeE/GknzfI3JUgR77nxrJy+fJIDOl2Zbjw==
+From: Lowes EGO Special Offer <lowesegospecialoffer@aussiewagerpro-au.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Date: Thu, 5 Mar 2026 10:36:27 -0500
-Subject: Good news, your EGO Power+ blower order is on its way
+Date: Thu, 5 Mar 2026 14:46:14 -0500
+MIME-Version: 1.0
+Message-ID: <9tebdajtqs9zswxoudqhbwo8592407@aussiewagerpro-au.com>
+Subject: Your EGO Power+ Blower and $85 Card Is On The Way, From Lowes
 Content-Type: multipart/alternative;
- boundary="----=_PayloadBoundary4a194b0fac55b54627.7620335n95mqzzhrezqwmh10zsbu"
+ boundary="----=_AltBoundary_9e1b4e4089f7da6193deb58.tqevdfbat1mak3xadlsru"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,157 +54,141 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lowesegospeciaiteam@nexusbost.cv
+Reply-To: lowesegospecialoffer@aussiewagerpro-au.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 403F9214C67
+X-Rspamd-Queue-Id: AC82B217CB7
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [5.74 / 15.00];
-	ABUSE_SURBL(5.00)[nexusbost.cv:dkim,nexusbost.cv:mid,nexusbost.cv:replyto,www.nexusbost.cv:url];
+X-Spamd-Result: default: False [6.74 / 15.00];
+	ABUSE_SURBL(5.00)[aussiewagerpro-au.com:dkim,aussiewagerpro-au.com:mid,aussiewagerpro-au.com:replyto,www.aussiewagerpro-au.com:url];
 	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	SUBJECT_HAS_CURRENCY(1.00)[];
 	MAILLIST(-0.20)[mailman];
-	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	BAD_REP_POLICIES(0.10)[];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DMARC_POLICY_ALLOW(0.00)[nexusbost.cv,none];
+	DKIM_TRACE(0.00)[aussiewagerpro-au.com:+];
+	DMARC_POLICY_ALLOW(0.00)[aussiewagerpro-au.com,none];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	R_DKIM_ALLOW(0.00)[nexusbost.cv:s=mtadtrfroseaq];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[nexusbost.cv:+];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	R_DKIM_ALLOW(0.00)[aussiewagerpro-au.com:s=mta4njuwgea3u];
+	GREYLIST(0.00)[pass,meta];
+	RCPT_COUNT_ONE(0.00)[1];
+	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	MISSING_XM_UA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	HAS_REPLYTO(0.00)[lowesegospecialoffer@aussiewagerpro-au.com];
 	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[lowesegospeciaiteam@nexusbost.cv,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[lowesegospeciaiteam@nexusbost.cv];
 	TO_DN_NONE(0.00)[];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[lowesegospecialoffer@aussiewagerpro-au.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	NEURAL_SPAM(0.00)[1.000];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	MISSING_XM_UA(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,nexusbost.cv:dkim,nexusbost.cv:mid,nexusbost.cv:url,nexusbost.cv:replyto]
-X-Rspamd-Action: no action
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,aussiewagerpro-au.com:dkim,aussiewagerpro-au.com:mid,aussiewagerpro-au.com:url,aussiewagerpro-au.com:replyto]
+X-Rspamd-Action: add header
+X-Spam: Yes
 
-------=_PayloadBoundary4a194b0fac55b54627.7620335n95mqzzhrezqwmh10zsbu
+------=_AltBoundary_9e1b4e4089f7da6193deb58.tqevdfbat1mak3xadlsru
 Content-Type: text/plain; charset="UTF-8"
 
 Lowe's
 
-Yes, I can handle the room setup if you want.
+Yep, I can cover that. For the room setup, I’d keep the table closer to the wall so there’s a clear path by the door.
 
-If we keep it simple, I’ll bring the notepad and a couple of markers, and we can use the smaller table so it doesn’t feel cramped.
+If you want the notes to be easy to find, I can put them into one shared document with short headings and a quick list at the top.
 
-About the agenda, I’d start with the open items from last time, then go point by point so nobody talks over each other.
+About the snack idea, I’d skip anything messy and go with simple items that won’t leave crumbs everywhere.
 
-For the task list, I’ll write the next steps as we go and read them back at the end to make sure it matches what everyone heard.
+If you’re wondering about timing, I can be ready a little earlier to help get things arranged and do a quick check on the sound.
 
-If you’re wondering about timing, we can keep each topic short and park anything that needs a deeper dive for a follow-up.
+Also, the best way to handle questions is to park them in a separate section and circle back at the end so the main points don’t get lost.
 
-Also, let me know if you prefer a quiet corner or closer to the windows; I’m fine either way.
-
-I’ll be there a little early so we’re not rushing.
+Let me know if you want me to bring extra pens and a spare notepad, I’ve got plenty.
 
 LOWE'S
 
-Shopper follow-up
+Customer follow-up
 
-Get an EGO Power+ Blower + store card for a 1-minute questionnaire
+Get an EGO Power+ Blower plus an $85 store card
 
-You’re receiving this because you’ve shopped at Lowe's before. Share quick feedback about your recent experience in a short questionnaire that takes about a minute.
+Thanks for shopping at Lowe's. Please share quick feedback about your recent Lowe's experience in a short questionnaire that takes about a minute.
 
-Your participation details
+Reference details
 
-Reference ID: LW-4829-AX1
+Member ID: LW-482913
 
-Status: Pending
+Response Code: QP-7H2K
 
-Estimated time: ~1 minute
+About the EGO Power+ Leaf Blower: lightweight handling with strong airflow for clearing leaves and debris from patios, driveways, and walkways.
 
-About the EGO Power+ Leaf Blower
+Start the 1‑minute questions
 
-Lightweight handling with strong airflow to help clear leaves and debris from walkways, decks, and drive areas. It’s designed for quick pickup tasks without the hassle of cords.
-
-Start the 1-minute questions
-
-Please keep this email for your records.
-
-If you did not request this, you can ignore it.
+Please have your Member ID ready so your response is matched correctly.
 
 Lowe's Customer Care
 
-This message is for a previous Lowe's shopper and includes a single access link to the questionnaire.
+This message is tied to the reference details shown above.
 
-I can take care of the snack list, and I think we should keep it balanced so it works for everyone.
+On the topic of the schedule, I’d keep it simple: one main list for tasks, then a separate list for anything that can wait.
 
-If you’re asking what to bring, I’d do fruit, something crunchy, and a couple of non-messy options so the tables stay clean.
+If you’re asking whether we should bring extra materials, I’d say yes for the basics, especially tape and a couple of extension cords for the workspace.
 
-For drinks, plain water plus a caffeine option should cover most preferences without making it complicated.
+For the team update, I can send a short recap with bullet points so nobody has to dig through a long thread.
 
-If someone has restrictions, just tell me what to avoid and I’ll adjust the choices so nobody feels left out.
+If the room gets noisy, we can move the discussion to the smaller corner and keep the louder activity near the entry.
 
-About timing, I can pick everything up earlier in the day and set it out right before the meeting starts so it stays fresh.
+And for the final check, I’ll make sure the file names are consistent so they sort properly and are easy to search later.
 
-If you want labels, I can add small cards that list ingredients in plain terms.
+Just tell me what you prefer: one combined checklist or separate ones for each person.
 
-Also, tell me how many people you expect so I don’t overdo it or come up short.
-
-------=_PayloadBoundary4a194b0fac55b54627.7620335n95mqzzhrezqwmh10zsbu
+------=_AltBoundary_9e1b4e4089f7da6193deb58.tqevdfbat1mak3xadlsru
 Content-Type: text/html; charset="UTF-8"
 
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
   <title>Lowe's</title>
 </head>
-<body style="margin:0; padding:0; background-color:#F4F7FB;">
+<body style="margin:0; padding:0; background-color:#F5F7FA;">
   <div style="opacity:0; height:0; line-height:0; overflow:hidden; font-family: Arial, sans-serif;">
-    Yes, I can handle the room setup if you want.<br>
-    If we keep it simple, I’ll bring the notepad and a couple of markers, and we can use the smaller table so it doesn’t feel cramped.<br>
-    About the agenda, I’d start with the open items from last time, then go point by point so nobody talks over each other.<br>
-    For the task list, I’ll write the next steps as we go and read them back at the end to make sure it matches what everyone heard.<br>
-    If you’re wondering about timing, we can keep each topic short and park anything that needs a deeper dive for a follow-up.<br>
-    Also, let me know if you prefer a quiet corner or closer to the windows; I’m fine either way.<br>
-    I’ll be there a little early so we’re not rushing.
+    Yep, I can cover that. For the room setup, I’d keep the table closer to the wall so there’s a clear path by the door.<br>
+    If you want the notes to be easy to find, I can put them into one shared document with short headings and a quick list at the top.<br>
+    About the snack idea, I’d skip anything messy and go with simple items that won’t leave crumbs everywhere.<br>
+    If you’re wondering about timing, I can be ready a little earlier to help get things arranged and do a quick check on the sound.<br>
+    Also, the best way to handle questions is to park them in a separate section and circle back at the end so the main points don’t get lost.<br>
+    Let me know if you want me to bring extra pens and a spare notepad, I’ve got plenty.
   </div>
 
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; background-color:#F4F7FB;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; background-color:#F5F7FA;">
     <tr>
       <td align="center" style="padding:24px 12px;">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:600px; max-width:600px; background-color:#FFFFFF; border:1px solid #D6E3F3;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px; max-width:600px; border-collapse:collapse; background-color:#FFFFFF; border:1px solid #E3E7EE;">
           <tr>
-            <td style="padding:20px 18px; background-color:#004990;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+            <td style="padding:18px 18px 10px 18px; background-color:#004990;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
                 <tr>
                   <td align="left" style="padding:0;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-                      <tr>
-                        <td style="padding:0;">
-                          <div style="width:150px; height:44px; position:relative;">
-                            <div style="position:absolute; left:0; top:0; width:150px; height:44px; background-color:#FFFFFF;"></div>
-                            <div style="position:absolute; left:8px; top:6px; width:134px; height:32px; background-color:#004990;"></div>
-                            <div style="position:absolute; left:18px; top:11px; font-family: Arial, Helvetica, sans-serif; font-size:20px; line-height:22px; font-weight:700; letter-spacing:0.5px; color:#FFFFFF;">
-                              LOWE&#39;S
-                            </div>
-                            <div style="position:absolute; left:14px; top:6px; width:0; height:0; border-left:14px solid transparent; border-right:14px solid transparent; border-bottom:12px solid #FFFFFF;"></div>
-                            <div style="position:absolute; left:122px; top:6px; width:0; height:0; border-left:14px solid transparent; border-right:14px solid transparent; border-bottom:12px solid #FFFFFF;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
+                    <div aria-label="Lowe's" style="display:inline-block;">
+                      <div style="display:inline-block; background-color:#004990; padding:0; margin:0;">
+                        <div style="display:inline-block; background-color:#FFFFFF; color:#004990; font-family: Arial, Helvetica, sans-serif; font-size:22px; line-height:22px; font-weight:800; letter-spacing:0.5px; padding:10px 14px 10px 14px; border-radius:8px; border:2px solid #FFFFFF;">
+                          LOWE&#39;S
+                        </div>
+                      </div>
+                    </div>
                   </td>
-                  <td align="right" style="padding:0; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:22px; color:#FFFFFF;">
-                    Shopper follow-up
+                  <td align="right" style="padding:0; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:22px; color:#FFFFFF; font-weight:700;">
+                    Customer follow-up
                   </td>
                 </tr>
               </table>
@@ -211,72 +196,57 @@ Content-Type: text/html; charset="UTF-8"
           </tr>
 
           <tr>
-            <td style="padding:22px 18px 8px 18px; font-family: Arial, Helvetica, sans-serif; color:#1B2B3A;">
-              <div style="font-size:22px; line-height:28px; font-weight:700; color:#004990;">
-                Get an EGO Power+ Blower + store card for a 1-minute questionnaire
+            <td style="padding:18px; font-family: Arial, Helvetica, sans-serif; color:#1B2A3A;">
+              <div style="font-size:22px; line-height:28px; font-weight:800; color:#004990; margin:0 0 10px 0;">
+                Get an EGO Power+ Blower plus an $85 store card
               </div>
-            </td>
-          </tr>
 
-          <tr>
-            <td style="padding:0 18px 14px 18px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#1B2B3A;">
-              You’re receiving this because you’ve shopped at Lowe&#39;s before. Share quick feedback about your recent experience in a short questionnaire that takes about a minute.
-            </td>
-          </tr>
+              <div style="font-size:16px; line-height:24px; margin:0 0 14px 0;">
+                Thanks for shopping at Lowe&#39;s. Please share quick feedback about your recent Lowe&#39;s experience in a short questionnaire that takes about a minute.
+              </div>
 
-          <tr>
-            <td style="padding:0 18px 16px 18px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; background-color:#F4F7FB; border:1px solid #D6E3F3;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; margin:0 0 16px 0;">
                 <tr>
-                  <td style="padding:14px 14px 10px 14px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:22px; color:#1B2B3A;">
-                    <div style="font-weight:700; color:#004990; font-size:18px; line-height:24px;">Your participation details</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0 14px 14px 14px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#1B2B3A;">
-                    Reference ID: <span style="font-weight:700; color:#004990;">LW-4829-AX1</span><br>
-                    Status: <span style="font-weight:700; color:#004990;">Pending</span><br>
-                    Estimated time: <span style="font-weight:700; color:#004990;">~1 minute</span>
+                  <td style="padding:12px; border:1px solid #E3E7EE; background-color:#F5F7FA;">
+                    <div style="font-size:16px; line-height:24px; margin:0; font-weight:700; color:#1B2A3A;">
+                      Reference details
+                    </div>
+                    <div style="font-size:16px; line-height:24px; margin:6px 0 0 0; color:#1B2A3A;">
+                      Member ID: <span style="font-weight:800; color:#004990;">LW-482913</span><br>
+                      Response Code: <span style="font-weight:800; color:#004990;">QP-7H2K</span>
+                    </div>
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
 
-          <tr>
-            <td style="padding:0 18px 14px 18px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#1B2B3A;">
-              <div style="font-weight:700; color:#004990; font-size:18px; line-height:24px; margin:0 0 6px 0;">About the EGO Power+ Leaf Blower</div>
-              Lightweight handling with strong airflow to help clear leaves and debris from walkways, decks, and drive areas. It’s designed for quick pickup tasks without the hassle of cords.
-            </td>
-          </tr>
+              <div style="font-size:16px; line-height:24px; margin:0 0 12px 0;">
+                About the EGO Power+ Leaf Blower: lightweight handling with strong airflow for clearing leaves and debris from patios, driveways, and walkways.
+              </div>
 
-          <tr>
-            <td align="center" style="padding:6px 18px 18px 18px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; margin:8px 0 12px 0;">
                 <tr>
-                  <td align="center" bgcolor="#004990" style="border-radius:4px;">
-                    <a href="http://www.nexusbost.cv/forum/77d4cb205eeb98c54f14f3185757368b/follow/instant_track/lane" style="display:inline-block; padding:14px 18px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:20px; font-weight:700; color:#FFFFFF; text-decoration:none;">
-                      Start the 1-minute questions
+                  <td align="left">
+                    <a href="http://www.aussiewagerpro-au.com/support_board/visit/hv3hxoshyfl0sg4wxa0s6omy5sgbx" style="display:inline-block; background-color:#004990; color:#FFFFFF; text-decoration:none; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:20px; font-weight:800; padding:14px 18px; border-radius:6px; border:2px solid #004990;">
+                      Start the 1‑minute questions
                     </a>
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
 
-          <tr>
-            <td style="padding:0 18px 18px 18px; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#1B2B3A;">
-              <div style="border-top:1px solid #D6E3F3; padding-top:12px;">
-                Please keep this email for your records.<br>
-                If you did not request this, you can ignore it.
+              <div style="font-size:16px; line-height:24px; margin:0; color:#1B2A3A;">
+                Please have your Member ID ready so your response is matched correctly.
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:14px 18px; background-color:#F4F7FB; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height:22px; color:#1B2B3A;">
-              <div style="font-weight:700; color:#004990;">Lowe&#39;s Customer Care</div>
-              This message is for a previous Lowe&#39;s shopper and includes a single access link to the questionnaire.
+            <td style="padding:14px 18px; background-color:#F5F7FA; border-top:1px solid #E3E7EE; font-family: Arial, Helvetica, sans-serif; color:#1B2A3A;">
+              <div style="font-size:16px; line-height:22px; margin:0;">
+                Lowe&#39;s Customer Care
+              </div>
+              <div style="font-size:16px; line-height:22px; margin:6px 0 0 0; color:#1B2A3A;">
+                This message is tied to the reference details shown above.
+              </div>
             </td>
           </tr>
         </table>
@@ -284,16 +254,15 @@ Content-Type: text/html; charset="UTF-8"
     </tr>
   </table>
 
-  <div style="clip-path: inset(100%); clip: rect(1px, 1px, 1px, 1px); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; font-family: 'Arial Black', Gadget, sans-serif;">
-    I can take care of the snack list, and I think we should keep it balanced so it works for everyone.<br>
-    If you’re asking what to bring, I’d do fruit, something crunchy, and a couple of non-messy options so the tables stay clean.<br>
-    For drinks, plain water plus a caffeine option should cover most preferences without making it complicated.<br>
-    If someone has restrictions, just tell me what to avoid and I’ll adjust the choices so nobody feels left out.<br>
-    About timing, I can pick everything up earlier in the day and set it out right before the meeting starts so it stays fresh.<br>
-    If you want labels, I can add small cards that list ingredients in plain terms.<br>
-    Also, tell me how many people you expect so I don’t overdo it or come up short.
+  <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:0; height:0; line-height:0; overflow:hidden;">
+    On the topic of the schedule, I’d keep it simple: one main list for tasks, then a separate list for anything that can wait.<br>
+    If you’re asking whether we should bring extra materials, I’d say yes for the basics, especially tape and a couple of extension cords for the workspace.<br>
+    For the team update, I can send a short recap with bullet points so nobody has to dig through a long thread.<br>
+    If the room gets noisy, we can move the discussion to the smaller corner and keep the louder activity near the entry.<br>
+    And for the final check, I’ll make sure the file names are consistent so they sort properly and are easy to search later.<br>
+    Just tell me what you prefer: one combined checklist or separate ones for each person.
   </div>
 </body>
 </html>
 
-------=_PayloadBoundary4a194b0fac55b54627.7620335n95mqzzhrezqwmh10zsbu--
+------=_AltBoundary_9e1b4e4089f7da6193deb58.tqevdfbat1mak3xadlsru--
