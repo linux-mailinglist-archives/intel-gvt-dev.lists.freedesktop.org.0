@@ -2,87 +2,102 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id uP2CMBUzqmm8NAEAu9opvQ
+	id 0C3rOQ51qmmuRwEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 02:51:17 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 07:32:46 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CE1121A654
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 02:51:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92BB321C142
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 07:32:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 51B1810E2EB;
-	Fri,  6 Mar 2026 01:51:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3A03910E374;
+	Fri,  6 Mar 2026 06:32:45 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="SqztcIfP";
+	dkim=pass (2048-bit key; unprotected) header.d=kernel.org header.i=@kernel.org header.b="rDDdN0r4";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-f53.google.com (mail-ot1-f53.google.com
- [209.85.210.53])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2D2FF10E2E6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Mar 2026 01:51:15 +0000 (UTC)
-Received: by mail-ot1-f53.google.com with SMTP id
- 46e09a7af769-7d4ba9abbecso10273274a34.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 05 Mar 2026 17:51:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772761874; x=1773366674; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Rjic6E4sYgoKxkNkNG8eG+bbyrYHUHzf7UJjTOVCQkA=;
- b=SqztcIfPRBD2tzqtLW/ac+y64QOL4W5AmcXWlV5s3IMJ0/wV+UxfGqBD2FPCsXyyo7
- 7IglWvDRmXuesxe5kiIZlkl7pI+FP0SbGRBMd6h/Cd+UbeJWF0vem7m+z8S1ZEuVhy81
- cHsJFbMc4hZP75EFN9h4zCalRU+/rNFKCazXgdYLvfNDMbshsmwsK7oj0tCXM4K19omu
- 56i6eUMOkauW0wQWanr4wHKjWjCinUzm1QocTQ++wLIGxg2o9Qd+lpRwwz6dBa4+ehMq
- PhoTfnZDbJtyDZhp5NkrCE87+FmpTLq3pUSgf1shfuUluPctcEaXHq6WhJwU2xQAR193
- HDjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772761874; x=1773366674;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Rjic6E4sYgoKxkNkNG8eG+bbyrYHUHzf7UJjTOVCQkA=;
- b=xKrEbaVxIUt9m8SVogOUVhYIXebIxHR/BZ56viUupTni7yj/loJlGpgt0py7satcxJ
- 8f1BRKLJYYyauzP39bEwA7/QvAToxR76H4dLeEltZH3tL1msu+hwAYx+xa89JSO6JIFg
- hCB8zgaSIqb7KIZBEvZ0VY9rxw4/MVrakigHYTyyUpyz9i/znssf5ZaoxCQ6DwdrdkUS
- POJmhAinEXBTByJqILb/NxE1meUhncWQGh+5x4jItLndZilwqxer5ZHX22YCPaa/hZK9
- Ditk+51CGSJJhU0b/p0SPZihhHNOZhXUvHdvy/PccNpUJ92/e+Thfc3aKkf/yV9/3y0z
- d9Mw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdHpgJzAmtcW1sL3NauBF2D46GFZymL7gKMC5JCv8PumL0/uQp4QA4o6rwSCKmFIb5qtE7vsvCbtrlZ6JV@lists.freedesktop.org
-X-Gm-Message-State: AOJu0YyV2IxIcBRkga5exg/O2flLLtHzNP9x2PVU1aMCJ6MQU9OmaI4N
- NYhwS5mkkCkgZwXijnBdF7KKrXBzsXBJ/k1dvuvCsKvVA+RbsnsvixEh3fbyuJ7N
-X-Gm-Gg: ATEYQzzNSqLK2wDD4LMXf+lgDXJwcEsv9B/2Cw0YGXY3bMCG7usuWkXBnjfShRxJeZe
- 0LL2QQ3bCAYRJXnFbqWaeYGsMCE2bEC0JSIXaJ7jkfbfYr4vznCkJC9LCTvyY9FXa7c3B+DW4/b
- YD4vr46GltZKk2jB6vSpWgmjemWRazSfo5iHKxLuoKTWL7cPru6PuuMcYye9cj1bFq5q2PjcIA8
- G6dny0UGBW0OHchvtYgbPKGeHnH6vxBAmGnTvsg7Qv4pQ5xJOXqgJZDbtQjRLV5BZ19lY2BTLDE
- 3oLSJoHFzv9MUuTbsDqofZiBeCmDp1nUqaycVQBK53V0BCawY3uExXamf+tdtdaLqFJ+9uGMJ35
- Li4QEAx/hMA4jburnPtaALUrAWCycRYFT5fbVyz7RmEm8CuZXPeXPXmjhpleLLlGfP2DpPOYqVV
- OIirKvr+d1LhC0zfRaWmFUPjY6SxxIscA9YL+s8xF0vdG0eFej
-X-Received: by 2002:a05:6820:3103:b0:663:11b2:d61d with SMTP id
- 006d021491bc7-67b9bca1e01mr428086eaf.25.1772761874446; 
- Thu, 05 Mar 2026 17:51:14 -0800 (PST)
-Received: from frodo (c-98-38-17-99.hsd1.co.comcast.net. [98.38.17.99])
- by smtp.googlemail.com with ESMTPSA id
- 006d021491bc7-67b9cc1a627sm115245eaf.6.2026.03.05.17.51.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2026 17:51:13 -0800 (PST)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Cc: Jim Cromie <jim.cromie@gmail.com>, Jason Baron <jbaron@akamai.com>,
- Shuah Khan <shuah@kernel.org>, linux-kselftest@vger.kernel.org
-Subject: [RFC PATCH 7/7] dyndbg-test: test keyword !value negation
-Date: Thu,  5 Mar 2026 18:50:10 -0700
-Message-ID: <20260306015022.1940986-8-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260306015022.1940986-1-jim.cromie@gmail.com>
-References: <20260306015022.1940986-1-jim.cromie@gmail.com>
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 14AFD10E275;
+ Fri,  6 Mar 2026 06:32:43 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 2C3B260018;
+ Fri,  6 Mar 2026 06:32:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72381C4CEF7;
+ Fri,  6 Mar 2026 06:32:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1772778761;
+ bh=PyHSu/XLNUufj+SM5UQKqUVMfMk2xCDzXveP9Z2/oF8=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=rDDdN0r4tB2FHk1XOOceTNdUeIu5FO+Djh7EqhOtWgpVWRf+FrYEJ1sOUg/gSx2nA
+ 7rYCov32CY/sjiTwSV4zDzcwmsBDJIlA33gwEFACTZsfMJ2X0ps/CvVJiBvCmPW+aI
+ 6zn1UFVfXuJmocKOGoV0D7ZZ22InVdTWgXUUUwDmlINu7cR/US5RuEnxt1bBczltnm
+ V0B4mSrPQ+3ZPkmaEUK7O7d1vxe+97oQe8qxfmD9WqEuAennkjZ2mUtkpKgamAwamv
+ 8d1da0OjXE9TtB7sMqGtlF8SLGcu/69EhkEvNHDv4co9cwPPdtPpcFdRyATgSffzZy
+ tXRJrl5EtmrIA==
+Message-ID: <51fed793-869b-4a5b-b90f-2ba80c13d773@kernel.org>
+Date: Fri, 6 Mar 2026 07:32:37 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 3/7] drivers/tty/serial/serial_core: ratelimit
+ uart_wait_until_sent
+To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Petr Mladek <pmladek@suse.com>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?=
+ <ilpo.jarvinen@linux.intel.com>, "Dr. David Alan Gilbert"
+ <linux@treblig.org>, Joseph Tilahun <jtilahun@astranis.com>,
+ linux-serial@vger.kernel.org
+References: <20260306015022.1940986-1-jim.cromie@gmail.com>
+ <20260306015022.1940986-4-jim.cromie@gmail.com>
+Content-Language: en-US
+From: Jiri Slaby <jirislaby@kernel.org>
+Autocrypt: addr=jirislaby@kernel.org; keydata=
+ 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
+In-Reply-To: <20260306015022.1940986-4-jim.cromie@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,103 +112,62 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 6CE1121A654
+X-Rspamd-Queue-Id: 92BB321C142
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.69 / 15.00];
+X-Spamd-Result: default: False [0.19 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_ALLOW(-0.50)[gmail.com,none];
-	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
-	R_DKIM_ALLOW(-0.20)[gmail.com:s=20230601];
+	DMARC_POLICY_ALLOW(-0.50)[kernel.org,quarantine];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[text/plain];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
+	R_DKIM_ALLOW(-0.20)[kernel.org:s=k20201202];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TAGGED_FROM(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_TO(0.00)[gmail.com,vger.kernel.org,lists.freedesktop.org];
+	ARC_NA(0.00)[];
 	RCVD_COUNT_THREE(0.00)[4];
 	MIME_TRACE(0.00)[0:+];
-	SUBJECT_HAS_EXCLAIM(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORWARDED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	FORGED_RECIPIENTS(0.00)[m:linux-kernel@vger.kernel.org,m:dri-devel@lists.freedesktop.org,m:amd-gfx@lists.freedesktop.org,m:intel-gfx@lists.freedesktop.org,m:jim.cromie@gmail.com,m:jbaron@akamai.com,m:shuah@kernel.org,m:linux-kselftest@vger.kernel.org,m:jimcromie@gmail.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[jimcromie@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FREEMAIL_FROM(0.00)[gmail.com];
-	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[gmail.com:+];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jimcromie@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FREEMAIL_CC(0.00)[gmail.com,akamai.com,kernel.org,vger.kernel.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[9];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	NEURAL_HAM(-0.00)[-1.000];
+	FROM_NEQ_ENVFROM(0.00)[jirislaby@kernel.org,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[kernel.org:+];
+	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	TO_DN_SOME(0.00)[]
 X-Rspamd-Action: no action
 
----
- .../dynamic_debug/dyndbg_selftest.sh          | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
+On 06. 03. 26, 2:50, Jim Cromie wrote:
+> Ratelimiting these pr_debug()s can reduce the console flood during
+> bulk dynamic-debug activation, in environments where a serial console
+> is used.
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+>   drivers/tty/serial/serial_core.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
+> index 487756947a96..6db465619c70 100644
+> --- a/drivers/tty/serial/serial_core.c
+> +++ b/drivers/tty/serial/serial_core.c
+> @@ -1790,8 +1790,8 @@ static void uart_wait_until_sent(struct tty_struct *tty, int timeout)
+>   
+>   	expire = jiffies + timeout;
+>   
+> -	pr_debug("uart_wait_until_sent(%u), jiffies=%lu, expire=%lu...\n",
+> -		port->line, jiffies, expire);
+> +	pr_debug_ratelimited("waiting on (%u) jiffies=%lu, expire=%lu...\n",
+> +			     port->line, jiffies, expire);
 
-diff --git a/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh b/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
-index 09937dca3056..5c35d7cc5ecf 100755
---- a/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
-+++ b/tools/testing/selftests/dynamic_debug/dyndbg_selftest.sh
-@@ -350,12 +350,47 @@ function test_mod_submod {
-     ifrmmod test_dynamic_debug
- }
- 
-+function test_negated_keywords {
-+    echo -e "${GREEN}# TEST_NEGATED_KEYWORDS ${NC}"
-+
-+    # Test 1: Disable negated subset from enabled set
-+    # Enables all 6 in init/main.c, then pulses ONLY those that are NOT run_init_process (the 2 blacklist sites) OFF.
-+    ddcmd =_
-+    ddcmd file init/main.c +p
-+    check_match_ct 'init/main.c:.*=p' 6 -r
-+    ddcmd file init/main.c func !run_init_process -p
-+    # Result: 6 - 2 = 4 sites (run_init_process) remain enabled.
-+    check_match_ct 'init/main.c:.*=p' 4 -r
-+    check_match_ct 'run_init_process' 4 -r
-+
-+    # Test 2: Enable negated subset from clean slate
-+    # Negation !run_init_process should match the 2 blacklist sites.
-+    ddcmd =_
-+    ddcmd file init/main.c func !run_init_process +p
-+    # Verify exactly 2 sites enabled
-+    check_match_ct 'init/main.c:.*=p' 2 -r
-+    check_match_ct 'initcall_blacklist[[:space:]]' 1 -r
-+    check_match_ct 'initcall_blacklisted[[:space:]]' 1 -r
-+
-+    # Test 3: Enable negated subset with wildcard
-+    # Negation !run_init_* should match the same 2 blacklist sites.
-+    ddcmd =_
-+    ddcmd file init/main.c func !run_init_* +p
-+    # Verify exactly 2 sites enabled
-+    check_match_ct 'init/main.c:.*=p' 2 -r
-+    check_match_ct 'initcall_blacklist[[:space:]]' 1 -r
-+    check_match_ct 'initcall_blacklisted[[:space:]]' 1 -r
-+
-+    ddcmd =_
-+}
-+
- tests_list=(
-     basic_tests
-     # these require test_dynamic_debug*.ko
-     comma_terminator_tests
-     test_percent_splitting
-     test_mod_submod
-+    test_negated_keywords
- )
- 
- # Run tests
+The changed message does not make any sense.
+
+
 -- 
-2.53.0
-
+js
+suse labs
