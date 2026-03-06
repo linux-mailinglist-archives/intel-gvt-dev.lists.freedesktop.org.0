@@ -2,46 +2,84 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MO/SJlwBqmm9JQEAu9opvQ
+	id 4CEVKvIyqmm8NAEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 23:19:08 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 02:50:42 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 046FC218D94
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 05 Mar 2026 23:19:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C1CA21A5DD
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 02:50:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D38B210E2E2;
-	Thu,  5 Mar 2026 22:19:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0584C10E2C2;
+	Fri,  6 Mar 2026 01:50:41 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=paradiseshotelcasino.com header.i=ourmarriotwelcomesyou@paradiseshotelcasino.com header.b="Fh/ii+VT";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="iJ6KU0B9";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 331 seconds by postgrey-1.36 at gabe;
- Thu, 05 Mar 2026 22:19:05 UTC
-Received: from send1.paradiseshotelcasino.com (mail.paradiseshotelcasino.com
- [199.80.55.45])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7E7E310E2E2
+Received: from mail-oa1-f49.google.com (mail-oa1-f49.google.com
+ [209.85.160.49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C61EA10E2E1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Mar 2026 22:19:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaznf9uisnbj;
- d=paradiseshotelcasino.com;
- h=To:Subject:MIME-Version:Date:From:Reply-To:Message-ID:Content-Type;
- i=ourmarriotwelcomesyou@paradiseshotelcasino.com;
- bh=QvFjiNEkeSvoSy0SY71rGwLTSrY5b31/sD2Bso8EK2M=;
- b=Fh/ii+VTfqnuhgH5EhJOl/jkWnhMJhBBquEzmMKmTAWl+tfSuDTdK9qqXlvIg36wxphBtXwSs1uz
- soEe0U8HQ33bnWs17FYTQ8Dkb6gmKc5W/VOSWsIAK1fixiWpqIkBXXBQtFoWkKAhWgTeDXWu+Qys
- +z1wvGRZ4qnHr9c7BvrdL+iX34F/oUdnJmOSj8f5QGDVzBuHVXXMGejoeSFjkaZVXS/Xg3RDmnfy
- WMIWExuMoknFMeKBNGEwL4h3ZB/mUmG0q+6G4aQYN00ikPPkJEick2FEv8fwGUtacI7q8wJeyG5r
- fawsKyC9fMijG7OxBbwS9lKj5nJM5b65E9kWRQ==
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Your Marriott thank-you gift is here
+ Fri,  6 Mar 2026 01:50:39 +0000 (UTC)
+Received: by mail-oa1-f49.google.com with SMTP id
+ 586e51a60fabf-40ee8b4f925so2651505fac.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 05 Mar 2026 17:50:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1772761839; x=1773366639; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=bkFWDNzYpAaNf6nKTX9X2HQLMlJtuGjLEa5TVIf/IA4=;
+ b=iJ6KU0B9xpJmpAsnoXuhKqsVAnPEzYjYgty+P0/JMZMxUvgkTOAkk6kUG8Dx+JQaUD
+ OthHA9qZiFXu4hXIVQH9U7RLpVHmi/WsCikVQuDwLvJCjgJjiZqMIJZ+Tf8XejENNKrO
+ JTKhfcx4bKMclqFOKKiwrG6LdOju3iW9pkv/KwKoQ9lShGZgzU3gep+mG8T6wTCghQqL
+ 1zrEZ80GgQHIi/GVfccTOUYrQVwm/rUNSjjF5ObN5aoKrrpFsWfsjgj8DbJOpjwKZLsV
+ N2zjXz7GpfLcOH865jrEuIJxZsRPYmq9b1w9X57RFzG0hpCGqQOqEKEGlipFTS5l0x9Y
+ aToA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772761839; x=1773366639;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bkFWDNzYpAaNf6nKTX9X2HQLMlJtuGjLEa5TVIf/IA4=;
+ b=firtttgDOUh2H97quC0kFC8WmKbjB4gtSVngpWi2kqum4zV2xk0YGh3JpjTHvXlb0Z
+ NopFbpVjiRFABM2dEjmEaOwFPrhI0hdI4IOnBwy+eAuLhnb7+laz9A8qd/bdQcEuj49o
+ fxCspAGGPZoSTgZftCyCZDDtpS9TB9QFydE/SJXMR/gMpTi7bmYOV7kzPCsGsHZTKW1y
+ YEvXKAQwqFlFTRsgR0JD9Hy89WPLhHtH/snLtYUeCELX1S4MCX5LrB9Jtp1iPJLzH4NJ
+ 2uVBwipqVPHFr9G/KNeDtNCXG6YvWxxCsPUQ2TcHq7fKHUGvvdGm6DFxOOQjEVrqTGey
+ bmyw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVoh9plbhlN9SDG6RenA+Kh6S5S1oftXrBvxdCwBp5T/HgDplVKVW72Xj2gMWXb8aIBmVAJtsibLnPLq0LG@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YxROhTmOXB3I5yGVDFVu5wtMXu2UaGbBM42ntPTkLWPuY/xTK1o
+ ulIOl+wrdol5lA6Va9HO2MLgRRvNKCoumW0BgvCTcFy9AhVZGL2Cp94S
+X-Gm-Gg: ATEYQzywZmxc9HAnOMJeHpYr5Sb7ZmsYIgjT0preFbw5/52i7TJVkkv0qhV57hF0X2p
+ JzXX9euqFVoUAhutgQdxqQb5C2zA71jzZ6m6wKWTStfbWs+CQU0zxGNDPeDgjtl8dt4VrJIf5Gl
+ snmIOEVXX5O5yZEH8F3NgkZNLxTjLJhlcIEUKIr5pHvxXTCrH5IopyH2677ZgeeSNQtVuCaLF14
+ nKp5n0lyk51Nltv8mHPa7S0b4tE7emXShXGIwaSaYMeurj1OchUa7Qns6XRxwHrP8boQ4Jdomes
+ E64/KToODXap2YNYmJ3APB9/Tga9Dy3QEz+2PEEBy3espGyLogf3WRiXyDXq2wQ6W+ek+4y5EYm
+ uH0TwiYdK7qxLDHJ91mnSXEVYct1gi85E/DwMJeWpYl4LzxzrfUHOhrG0zqzNUgpTKaOGRJoBWR
+ 8u40V2EFAdYBefN72Y/CMYNtRALUs+eRO1sr35eg+4e7Qot+8z
+X-Received: by 2002:a05:6820:4487:b0:679:96f:3f11 with SMTP id
+ 006d021491bc7-67b9bd4c44bmr385436eaf.64.1772761838800; 
+ Thu, 05 Mar 2026 17:50:38 -0800 (PST)
+Received: from frodo (c-98-38-17-99.hsd1.co.comcast.net. [98.38.17.99])
+ by smtp.googlemail.com with ESMTPSA id
+ 006d021491bc7-67b9cc1a627sm115245eaf.6.2026.03.05.17.50.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2026 17:50:38 -0800 (PST)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Cc: Jim Cromie <jim.cromie@gmail.com>
+Subject: [RFC PATCH 0/7] queued static-key API reduces IPIs to 134/16154 in
+ dyndbg 
+Date: Thu,  5 Mar 2026 18:50:03 -0700
+Message-ID: <20260306015022.1940986-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Date: Thu, 5 Mar 2026 17:13:16 -0500
-From: Our Marriot Welcomes You <ourmarriotwelcomesyou@paradiseshotelcasino.com>
-Message-ID: <949448b0fn4sqsdxav7mtv0dghky_0dghkyoufrdqen2b0fn4s@paradiseshotelcasino.com>
-Content-Type: multipart/alternative;
- boundary="=_Chunk_8396_377379.malrskvuxfuakqugrrfgvjezd"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,201 +92,131 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ourmarriotwelcomesyou@paradiseshotelcasino.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 046FC218D94
+X-Rspamd-Queue-Id: 2C1CA21A5DD
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [6.39 / 15.00];
-	ABUSE_SURBL(5.00)[www.paradiseshotelcasino.com:url,paradiseshotelcasino.com:dkim,paradiseshotelcasino.com:mid,paradiseshotelcasino.com:replyto];
-	SUSPICIOUS_URL_IN_SUSPICIOUS_MESSAGE(1.00)[];
-	URIBL_RED(0.50)[paradiseshotelcasino.com:dkim,paradiseshotelcasino.com:mid,paradiseshotelcasino.com:url,paradiseshotelcasino.com:replyto];
+X-Spamd-Result: default: False [-0.31 / 15.00];
+	R_MISSING_CHARSET(0.50)[];
+	DMARC_POLICY_ALLOW(-0.50)[gmail.com,none];
+	SUBJECT_ENDS_SPACES(0.50)[];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
+	R_DKIM_ALLOW(-0.20)[gmail.com:s=20230601];
 	MAILLIST(-0.20)[mailman];
-	BAD_REP_POLICIES(0.10)[];
-	HAS_ANON_DOMAIN(0.10)[];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	MANY_INVISIBLE_PARTS(0.10)[2];
+	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	R_DKIM_ALLOW(0.00)[paradiseshotelcasino.com:s=mtaznf9uisnbj];
-	DKIM_TRACE(0.00)[paradiseshotelcasino.com:+];
-	DMARC_POLICY_ALLOW(0.00)[paradiseshotelcasino.com,none];
-	ARC_NA(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	RCPT_COUNT_ONE(0.00)[1];
+	RCVD_COUNT_THREE(0.00)[4];
 	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:linux-kernel@vger.kernel.org,m:dri-devel@lists.freedesktop.org,m:amd-gfx@lists.freedesktop.org,m:intel-gfx@lists.freedesktop.org,m:jim.cromie@gmail.com,m:jimcromie@gmail.com,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	FORGED_SENDER(0.00)[jimcromie@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[ourmarriotwelcomesyou@paradiseshotelcasino.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	ARC_NA(0.00)[];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_SOME(0.00)[];
+	TAGGED_FROM(0.00)[];
+	DKIM_TRACE(0.00)[gmail.com:+];
+	RCPT_COUNT_FIVE(0.00)[6];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[jimcromie@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FREEMAIL_CC(0.00)[gmail.com];
+	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	HAS_REPLYTO(0.00)[ourmarriotwelcomesyou@paradiseshotelcasino.com]
-X-Rspamd-Action: add header
-X-Spam: Yes
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,drm-misc-fixes-2026-02-26-78-g535e886b182f:email]
+X-Rspamd-Action: no action
 
---=_Chunk_8396_377379.malrskvuxfuakqugrrfgvjezd
-Content-Type: text/plain; charset="UTF-8"
+This patchset formalizes and exposes the internal
+architecture-specific arch_jump_label_transform_queue API as a public
+kernel interface (static_key_*_queued).
 
-I think the meeting on Thursday should focus on the quarterly review data first. The projections from the marketing team are ready, and I've compiled the regional reports. We might need to allocate about twenty minutes for questions afterward. The conference room on the second floor has been reserved. Please let me know if you need me to bring any specific documents. I can also arrange for the video link if any remote team members plan to join. The agenda draft is with me, and I'll circulate it by end of day Tuesday.
+Currently, dynamic_debug toggles static keys individually, which
+triggers a machine-wide synchronization (IPI) for every callsite.
+This causes $O(N)$ overhead.
 
-Marriot
+By using the new queued API, (which also adds an insert-sort to the
+queue) dynamic_debug can now toggle up to 256 sites (x86 queue length)
+with a single IPI.
 
-Hotels & Resorts
+Without the sort, dyndbg saw a far more modest IPI reduction; ~6k/16k.
+Ordered descriptors does not insure ordered patch-addresses.
+Currently, only x86 has the sort.
 
-A Gesture for Our Recent Guests
+I tested on virtme-ng, using:
 
-As someone who stayed at a Marriot Hotel or a partner property in the last twelve months, we are providing a luxury cooling pillow set at no charge to your household. Once you complete a brief questionnaire, you may also secure a 2-night stay at participating locations, also provided at no charge. You will not be billed for the pillows or the qualifying stay nights.
+  echo +p > /proc/dynamic_debug/control
+  echo -p > /proc/dynamic_debug/control
 
-Secure Your Pillow Set + Stay
+With this patch and test, IPIs reduced to 134 from 16154.
 
-This is available to you because you stayed with us or a partner hotel within the past year. We have a total allocation of 800 pillow sets for this program. The opportunity concludes tomorrow. One pillow set per household.
+Patchset also changes virtio.c to use pr_debug_ratelimited() instead
+of pr_debug(), which otherwise flooded my test-setup, obscuring
+results.
 
-Attributes of Luxury Cooling Pillows
+serial_core.c also gets 1 _ratelimited() change, though I didnt see
+them in my setup, and likely missed a few conversion candidates.
 
-Temperature Regulation
+Patchset also includes a new query-cmd syntax for dyndbg:
 
-Advanced fabrics work to dissipate body heat, maintaining a consistent cool surface throughout the night.
+  echo 'module !virtio* +p' > /proc/dynamic_debug/control
+  echo -p > /proc/dynamic_debug/control
 
-Supportive Materials
+It further reduced the console output, so might have sufficient
+utility for eventual inclusion, despite lacking and/or logic.
 
-Designed with adaptive fill that contours to head and neck posture, reducing pressure points.
+The patch hoisting the static_key_apply_queued() out of
+ddebug_change() up to ddebug_exec_queries() does nothing in this case,
+and would only affect multi-queries:
 
-Hygienic Construction
+  echo 'module !virtio* +p ; module serial -p' > /proc/dynamic_debug/control
 
-Features include moisture-wicking covers and materials resistant to allergens and dust mites.
+ISTM such queries are currently rare, but could be leveraged in
+classmap-params, to optimize drm.debug=0x1ff, which currently would
+get one query-command per bit (12+ IPIs).
 
-Long-Lasting Durability
+DRM is the biggest potential beneficiary of this:
 
-High-quality components are selected to maintain shape and cooling performance over extended use.
+root@drm-misc-fixes-2026-02-26-78-g535e886b182f:/home/jimc/projects/lx/wk-D/b0-dd-drm-all# modprobe i915
+[   20.405557] dyndbg:  25 debug prints in module i2c_core
+[   20.459373] dyndbg: 340 debug prints in module drm
+[   20.459851] ACPI: bus type drm_connector registered
+[   20.471366] dyndbg:  89 debug prints in module drm_kms_helper
+[   20.482336] dyndbg: 155 debug prints in module drm_display_helper
+[   20.496153] dyndbg:   2 debug prints in module ttm
+[   21.136619] dyndbg: 1801 debug prints in module i915
+root@drm-misc-fixes-2026-02-26-78-g535e886b182f:/home/jimc/projects/lx/wk-D/b0-dd-drm-all# modprobe amdgpu
+[   32.907485] dyndbg: 4532 debug prints in module amdgpu
 
-Breathable Design
 
-Engineered with airflow channels that promote ventilation, preventing heat buildup.
+Jim Cromie (7):
+  jump_label: expose queueing API for batched static key updates
+  virtio: use pr_debug_ratelimited to avoid flooding
+  drivers/tty/serial/serial_core: ratelimit uart_wait_until_sent
+  dyndbg: use static-key queueing API in dynamic-debug
+  dyndbg: hoist static_key_apply_queued up
+  lib/dynamic_debug: add negation support to queries
+  dyndbg-test: test keyword !value negation
 
-Easy Maintenance
+ arch/Kconfig                                  |   3 +
+ arch/x86/Kconfig                              |   1 +
+ arch/x86/kernel/alternative.c                 |  50 ++++---
+ arch/x86/kernel/jump_label.c                  |  13 +-
+ drivers/tty/serial/serial_core.c              |   4 +-
+ drivers/virtio/virtio_ring.c                  |  12 +-
+ include/linux/jump_label.h                    |  24 ++++
+ kernel/jump_label.c                           | 125 ++++++++++++++++--
+ lib/dynamic_debug.c                           |  88 ++++++++----
+ .../dynamic_debug/dyndbg_selftest.sh          |  35 +++++
+ 10 files changed, 290 insertions(+), 65 deletions(-)
 
-Most designs include removable, machine-washable covers for straightforward care.
+-- 
+2.53.0
 
-Quantities are determined by program parameters. Access to stay dates and locations is coordinated through program scheduling.
-
-We value your recent visit. Your perspective helps us enhance the guest experience.
-
-Marriot Hotels. This is a service communication. Please note program conclusion is tomorrow.
-
-Regarding the project timeline, we should aim to have the first draft completed by the end of the month. The client's feedback on the initial concepts was generally positive, with a few notes on the color palette. I've scheduled a follow-up call for next Wednesday to discuss the revisions. The development team needs the final assets by the fifth to stay on track. I'll check in with the design lead tomorrow to confirm their progress. The outdoor event planning is moving forward, and we have a tentative rain date selected.
-
---=_Chunk_8396_377379.malrskvuxfuakqugrrfgvjezd
-Content-Type: text/html; charset="UTF-8"
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0; padding:0; background-color:#f8f8f8; font-family:Georgia, 'Times New Roman', Times, serif;">
-<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-I think the meeting on Thursday should focus on the quarterly review data first. The projections from the marketing team are ready, and I've compiled the regional reports. We might need to allocate about twenty minutes for questions afterward. The conference room on the second floor has been reserved. Please let me know if you need me to bring any specific documents. I can also arrange for the video link if any remote team members plan to join. The agenda draft is with me, and I'll circulate it by end of day Tuesday.
-</div>
-<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#f8f8f8;">
-<tr>
-<td align="center">
-<table width="640" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#ffffff; margin:20px auto; border-collapse:collapse; border:1px solid #e0e0e0; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(26,26,26,0.05);">
-<tr>
-<td style="padding:30px 40px 20px; text-align:center; border-bottom:3px solid #C22538;">
-<h1 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#C22538; font-size:42px; line-height:1; margin:0 0 10px; font-weight:normal; letter-spacing:-0.5px;">Marriot</h1>
-<p style="color:#262626; font-size:16px; margin:0; font-style:italic;">Hotels & Resorts</p>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 30px;">
-<h2 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#1a1a1a; font-size:28px; line-height:1.3; margin:0 0 15px; font-weight:bold; text-align:center;">A Gesture for Our Recent Guests</h2>
-<p style="color:#262626; font-size:18px; line-height:1.6; margin:0 0 25px; text-align:center; padding-bottom:20px; border-bottom:1px dashed #d0d0d0;">
-As someone who stayed at a Marriot Hotel or a partner property in the last twelve months, we are providing a luxury cooling pillow set at no charge to your household. Once you complete a brief questionnaire, you may also secure a 2-night stay at participating locations, also provided at no charge. You will not be billed for the pillows or the qualifying stay nights.
-</p>
-<table cellpadding="0" cellspacing="0" role="presentation" align="center" style="margin:30px auto;">
-<tr>
-<td align="center" style="background-color:#1a1a1a; border-radius:6px; padding:16px 40px;">
-<a href="http://www.paradiseshotelcasino.com/details-stream/viewreport/core_wire/v5q0tc5zp8pqudfytondv2/newspulse" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:18px; color:#ffffff; text-decoration:none; font-weight:bold; display:inline-block;">Secure Your Pillow Set + Stay</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:0 40px 30px;">
-<p style="color:#262626; font-size:16px; line-height:1.6; margin:0 0 20px;">
-This is available to you because you stayed with us or a partner hotel within the past year. We have a total allocation of 800 pillow sets for this program. The opportunity concludes tomorrow. One pillow set per household.
-</p>
-<h3 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#1a1a1a; font-size:22px; line-height:1.4; margin:25px 0 15px; font-weight:bold; padding-top:15px; border-top:2px solid #f0f0f0;">Attributes of Luxury Cooling Pillows</h3>
-<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate; border-spacing:0 10px;">
-<tr>
-<td width="48%" valign="top" style="background-color:#f9f9f9; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Temperature Regulation</strong><br />
-Advanced fabrics work to dissipate body heat, maintaining a consistent cool surface throughout the night.
-</td>
-<td width="4%"></td>
-<td width="48%" valign="top" style="background-color:#f9f9f9; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Supportive Materials</strong><br />
-Designed with adaptive fill that contours to head and neck posture, reducing pressure points.
-</td>
-</tr>
-<tr>
-<td width="48%" valign="top" style="background-color:#f5f5f5; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Hygienic Construction</strong><br />
-Features include moisture-wicking covers and materials resistant to allergens and dust mites.
-</td>
-<td width="4%"></td>
-<td width="48%" valign="top" style="background-color:#f5f5f5; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Long-Lasting Durability</strong><br />
-High-quality components are selected to maintain shape and cooling performance over extended use.
-</td>
-</tr>
-<tr>
-<td width="48%" valign="top" style="background-color:#f9f9f9; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Breathable Design</strong><br />
-Engineered with airflow channels that promote ventilation, preventing heat buildup.
-</td>
-<td width="4%"></td>
-<td width="48%" valign="top" style="background-color:#f9f9f9; border:1px solid #eaeaea; border-radius:6px; padding:18px; font-size:15px; line-height:1.5; color:#262626;">
-<strong>Easy Maintenance</strong><br />
-Most designs include removable, machine-washable covers for straightforward care.
-</td>
-</tr>
-</table>
-<p style="color:#666; font-size:14px; line-height:1.5; margin:25px 0 10px; font-style:italic;">
-Quantities are determined by program parameters. Access to stay dates and locations is coordinated through program scheduling.
-</p>
-</td>
-</tr>
-<tr>
-<td style="padding:30px 40px; background-color:#fafafa; border-top:1px solid #eaeaea; text-align:center;">
-<p style="color:#262626; font-size:15px; line-height:1.6; margin:0 0 10px;">
-We value your recent visit. Your perspective helps us enhance the guest experience.
-</p>
-<p style="color:#7a7a7a; font-size:12px; line-height:1.5; margin:0;">
-Marriot Hotels. This is a service communication. Please note program conclusion is tomorrow.
-</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<div style="font-family:'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', sans-serif; width:1px; line-height:0; overflow:hidden; text-emphasis: none; visibility:hidden;">
-Regarding the project timeline, we should aim to have the first draft completed by the end of the month. The client's feedback on the initial concepts was generally positive, with a few notes on the color palette. I've scheduled a follow-up call for next Wednesday to discuss the revisions. The development team needs the final assets by the fifth to stay on track. I'll check in with the design lead tomorrow to confirm their progress. The outdoor event planning is moving forward, and we have a tentative rain date selected.
-</div>
-</body>
-</html>
-
---=_Chunk_8396_377379.malrskvuxfuakqugrrfgvjezd--
