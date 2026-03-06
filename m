@@ -2,45 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id +C+JK7YZq2lNaAEAu9opvQ
+	id MCkiNAhRq2nZcAEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 19:15:18 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 23:11:20 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B0DD2269AE
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 19:15:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B7EE22837C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 06 Mar 2026 23:11:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7E6510E3DC;
-	Fri,  6 Mar 2026 18:15:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CF5F910EDA9;
+	Fri,  6 Mar 2026 22:11:18 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=evylerseds.com header.i=aaaroadsidecourtesy@evylerseds.com header.b="UsV3oUPC";
+	dkim=pass (2048-bit key; unprotected) header.d=pixquestion.com header.i=cstccoupdate@pixquestion.com header.b="Swgeid/P";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 324 seconds by postgrey-1.36 at gabe;
- Fri, 06 Mar 2026 18:15:11 UTC
-Received: from relay.evylerseds.com (mail.lorainautomattic.de [91.213.46.56])
- by gabe.freedesktop.org (Postfix) with ESMTP id C249A10E3DC
+X-Greylist: delayed 689 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Mar 2026 22:11:17 UTC
+Received: from send.pixquestion.com (unknown [23.160.160.74])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3AD46890EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Mar 2026 18:15:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaaawg6gdds1;
- d=evylerseds.com; 
- h=Date:Reply-To:Message-ID:To:MIME-Version:From:Subject:Content-Type;
- i=aaaroadsidecourtesy@evylerseds.com;
- bh=fA1KiBsF8Rdn8pU+Uz3Xdqdn5dKM78qHuFHdPId1GLU=;
- b=UsV3oUPCbnfQVsP103hQa1aIh/b3dGpPbSZZQLjAEO+rLExIxlgdEu4ptk/IVDSmmSoFsi1PkQ3o
- IRXLq6ak8NEbymXMz0mnSBYX34DGu26sl846+/5fHrcuDt0d+BWsUIZ/TXNSnpuRrhDcLiRHsYWy
- FS666En4dvM3dwNQqgXjHFAxNRMaktl/mRQqMnvIEOo3Cp6ezp0+v3QOkhx8WzPuIk6/gMtD5pPj
- Ns1RRDW+Gu5/Rv8Kg7vw6MTXEmLV7oSB/NSMRNiwz/wasbaR9JBw8YF4uffLVYjl3FMAYlhP2RuP
- 2Ln2HynwIWAMY7e4thf7tGWj/F+MLZ7WVIJI9A==
-Date: Fri, 6 Mar 2026 13:09:40 -0500
-Message-ID: <661267mzrhp1tcnwlhqbzpqsup66qsup66bbroxbwhtmz@evylerseds.com>
+ Fri,  6 Mar 2026 22:11:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtavhmrd7lfbp;
+ d=pixquestion.com; 
+ h=To:From:Date:MIME-Version:Subject:Reply-To:Message-ID:Content-Type;
+ i=cstccoupdate@pixquestion.com;
+ bh=p14aZGrgzWh3nSLG4fmSAOxzLk1LdzqzEaO6VvuaC0I=;
+ b=Swgeid/PGNKZr1pemL3dQRzCHGVW8aBUAiq4DBeIn/U9I4mpzoKykfv4SVCfCy3QgfZKEDq51tgY
+ RpkEFGg8Ev/miz4oUE/VzWL4e6+jJoSVCRyL1uDWjvnhwmJqdOUfzX9gkJsUgPxBnPr4wGZ1kgEf
+ 5ujxdyw7H/a7qd2X4cH9jMFZmqQxSM5dlxwcxrlJMrXohZS6eoQnTa8EzAtXLo3I5rgiyi8I1/Ju
+ CIcnRf31lliZUqsi3KwApspLlJ73/4OAUkaY1zFRqGSi4Am3S1+yL6RGdN/jWuCIHpBgBMhXhT+s
+ Ap4stCUbSGULtQr+xSgHysZg+jTIZXackV9w/g==
 To: intel-gvt-dev@lists.freedesktop.org
+From: C0STC0 Co Update <cstccoupdate@pixquestion.com>
+Date: Fri, 6 Mar 2026 16:59:39 -0500
 MIME-Version: 1.0
-From: AAA Roadside Courtesy <aaaroadsidecourtesy@evylerseds.com>
-Subject: Your 2026 AAA Roadside Kit is now shipping
+Subject: Changes to your Costco membership benefits
+Message-ID: <179987.a0a53ca8b8e7dwrzdruztd3pva8oq2odle@pixquestion.com>
 Content-Type: multipart/alternative;
- boundary="=_HeaderPart_uwgsfuihkloawzuqgwsul674081"
+ boundary="----=_ChunkPartarntu1fq4gseqhjpcsecjkc4AttachmentPart"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,216 +53,144 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: aaaroadsidecourtesy@evylerseds.com
+Reply-To: cstccoupdate@pixquestion.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 1B0DD2269AE
+X-Rspamd-Queue-Id: 4B7EE22837C
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [4.89 / 15.00];
-	ABUSE_SURBL(5.00)[www.evylerseds.com:url,evylerseds.com:replyto,evylerseds.com:mid];
+X-Spamd-Result: default: False [12.79 / 15.00];
+	DBL_SPAM(6.50)[pixquestion.com:replyto,pixquestion.com:url,pixquestion.com:mid];
+	ABUSE_SURBL(5.00)[pixquestion.com:replyto,pixquestion.com:mid,www.pixquestion.com:url];
+	R_DKIM_REJECT(1.00)[pixquestion.com:s=mtavhmrd7lfbp];
+	R_PARTS_DIFFER(0.50)[74.8%];
 	MAILLIST(-0.20)[mailman];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[pixquestion.com : SPF not aligned (relaxed),none];
 	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	ZERO_FONT(0.10)[1];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	MANY_INVISIBLE_PARTS(0.10)[2];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	R_DKIM_PERMFAIL(0.00)[evylerseds.com:s=mtaaawg6gdds1];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	ARC_NA(0.00)[];
-	DMARC_NA(0.00)[evylerseds.com: no valid DMARC record];
+	DKIM_TRACE(0.00)[pixquestion.com:-];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DKIM_TRACE(0.00)[evylerseds.com:~];
-	GREYLIST(0.00)[pass,meta];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	RCPT_COUNT_ONE(0.00)[1];
-	FROM_HAS_DN(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	HAS_REPLYTO(0.00)[aaaroadsidecourtesy@evylerseds.com];
-	TO_DN_NONE(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[aaaroadsidecourtesy@evylerseds.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	NEURAL_SPAM(0.00)[0.995];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	MID_RHS_MATCH_FROM(0.00)[];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	RCVD_TLS_LAST(0.00)[];
+	GREYLIST(0.00)[pass,meta];
+	ARC_NA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[evylerseds.com:replyto,evylerseds.com:url,evylerseds.com:mid,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
-X-Rspamd-Action: no action
+	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[cstccoupdate@pixquestion.com];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_NEQ_ENVFROM(0.00)[cstccoupdate@pixquestion.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	NEURAL_SPAM(0.00)[1.000];
+	TO_DN_NONE(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
+X-Rspamd-Action: add header
+X-Spam: Yes
 
---=_HeaderPart_uwgsfuihkloawzuqgwsul674081
+------=_ChunkPartarntu1fq4gseqhjpcsecjkc4AttachmentPart
 Content-Type: text/plain; charset="UTF-8"
 
-Hey, about the team lunch next week, I think the new place on 5th is a better option. They have a larger private room and the menu has more vegetarian and gluten-free choices, which we know a few people need. The last time we went to the other spot, the service was really slow and we were rushed at the end. This new place said they could do a fixed price per person for a three-course meal, which would simplify the billing. We should confirm the headcount by Thursday at the latest so I can give them a final number. Also, do you want me to arrange some simple decorations or just keep it casual? I can bring a few board games if people want to hang out after eating. Let me know your thoughts on that. I'll draft an email to the team with the details once we lock in the plan.
+Costco Wholesale Membership Update
 
-AAA
+Hey, did you get a chance to look over the plans for the team outing next month? I was thinking we could finalize the location based on what everyone said about driving distance. The park by the old mill seems to be the most popular, but we need to check if they allow large group reservations this time of year. Also, remember to ask if anyone has dietary restrictions for the catering order. We should probably set up a quick call on Tuesday afternoon to go over the final headcount and split up the tasks. I can bring the games and the sound system, but we'll need someone to handle the drinks and ice. Let me know what you think about the timing, maybe we can start a bit earlier to have more daylight. Don't forget to check the weather forecast as we get closer, just in case we need a backup plan indoors. I'll draft a simple agenda for the call so we can be efficient. It should be a good chance for everyone to connect outside of work. What's your take on the activity list? Should we inclu
+ de something like a group photo scavenger hunt or keep it more relaxed?
 
-Trusted support for your journey, wherever you drive.
+On another note, have you finished reading that book you mentioned last week? I've been looking for a new one to start. My neighbor recommended a couple of authors, but I haven't had time to look them up yet. Let me know if it's worth picking up. Maybe we can swap recommendations after you're done. I find I have more time to read in the evenings now that the days are getting longer. It's a nice way to unwind.
 
-Great News! Your Roadside Kit Is Shipping
+COSTCO
 
-As a licensed driver residing in a participating municipality, you are eligible to receive a roadside support kit. This kit is provided at no charge to eligible residents through the local community partnership program.
+WHOLESALE
 
-The program covers the cost of the kit for recipients in your area; you will not be billed for these items. Please review the contents and confirm your details to proceed.
+Important Membership Update
 
-Redeem Your Courtesy Kit
+This is a notification regarding recent changes to your Costco Wholesale membership.
 
-Kit Contents
+Your member benefits and structure have been updated. As part of this change, you have an opportunity to recover a $100 Costco Shop Card for the 2026 year and secure a 12-month membership rate.
 
-The Courtesy Roadside Kit includes practical items selected for driver preparedness.
+Membership Summary
 
-Reflective Safety Vest
+Member Status: Executive
 
-Tire Pressure Gauge
+Member ID: **********4097
 
-Multi-Tool with Blade
+Primary Cardholder: Active
 
-USB-Powered Air Compressor
+Please review your updated perks and membership details.
 
-Waterproof Flashlight
+Review Membership Changes & Perks
 
-First Aid Supplies
+This is an automated service message regarding your Costco Wholesale account. Please do not reply to this email.
 
-Booster Cables
+So about the garden project, I finally cleared out the side bed last weekend. It was a lot more work than I thought, with all those old roots. I think we should go with the native plants like we discussed, they'll need less water once established. Have you checked the nursery for availability? I can head over on Saturday morning if they have the shrubs in stock. We'll need about six of them, right? Also, do you have any spare mulch from your last project? If not, I can order a delivery. We should aim to get everything in the ground before the weather gets too hot. What's your schedule looking like next weekend? We could make a day of it. I'll bring my tools and we can get the irrigation lines sorted. Don't forget to wear sturdy shoes, the soil is still pretty soft back there. Let me know if you want to add any flowering annuals for a bit of color this season. I saw some nice options at the market. It's going to look great once it's all done. We should take some before and after pictu
+ res.
 
-Emergency Blanket
+By the way, how did your sister's recital go? I meant to ask earlier. I hope she had a wonderful time performing. Those events are always so special. Did you manage to get a good video of it? I remember you were worried about the lighting in that hall. It's nice that the family could all be there together. It must have been a proud moment for everyone. Tell her I said congratulations on all the hard work paying off.
 
-Durable Towing Strap
-
-Work Gloves
-
-Portable Power Bank
-
-Windshield Scraper
-
-Kits are available based on program allocation for your region.
-
-Thank you for being part of our community. We are pleased to provide this service.
-
-Regarding the project timeline, I've reviewed the draft you sent. The phase one deliverables look good, but I think we need to build in more buffer for the user testing round. Last time, recruiting participants took almost two weeks longer than planned. Maybe we can start reaching out to the panel earlier, even before the final designs are locked. Also, have we confirmed which dev team will handle the integration? I heard the backend group might be tied up with the migration in that same window. We should schedule a quick sync with their lead to align. On the content side, the writer said they can have the first pass ready by the 15th if we get them the final user flows by Monday. Can you check with design on that? I'll update the shared Gantt chart once we have these answers.
-
---=_HeaderPart_uwgsfuihkloawzuqgwsul674081
+------=_ChunkPartarntu1fq4gseqhjpcsecjkc4AttachmentPart
 Content-Type: text/html; charset="UTF-8"
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco Wholesale Membership Update</title>
 </head>
-<body style="margin:0; padding:20px 0; background-color:#f0f5fa; font-family: Georgia, 'Times New Roman', Times, serif; color:#333333;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Hey, about the team lunch next week, I think the new place on 5th is a better option. They have a larger private room and the menu has more vegetarian and gluten-free choices, which we know a few people need. The last time we went to the other spot, the service was really slow and we were rushed at the end. This new place said they could do a fixed price per person for a three-course meal, which would simplify the billing. We should confirm the headcount by Thursday at the latest so I can give them a final number. Also, do you want me to arrange some simple decorations or just keep it casual? I can bring a few board games if people want to hang out after eating. Let me know your thoughts on that. I'll draft an email to the team with the details once we lock in the plan.
-</div>
-<table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td align="center">
-<table width="640" role="presentation" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0, 42, 80, 0.08);">
-<tr>
-<td style="padding:32px 40px 24px; background-color:#084b84; text-align:center;">
-<div style="font-size:48px; line-height:1; font-weight:bold; color:#ffffff; letter-spacing:2px;">AAA</div>
-<p style="margin:12px 0 0; font-size:15px; color:#e6eef6; font-style:italic;">Trusted support for your journey, wherever you drive.</p>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 32px;">
-<h1 style="margin:0 0 16px; font-size:28px; line-height:1.3; color:#002a50; font-family: Arial, Helvetica, sans-serif;"> Great News! Your Roadside Kit Is Shipping </h1>
-<div style="width:60px; height:4px; background-color:#d00000; margin-bottom:20px;"></div>
-<p style="margin:0 0 20px; font-size:17px; line-height:1.6; color:#444444;">
-As a licensed driver residing in a participating municipality, you are eligible to receive a roadside support kit. This kit is provided at no charge to eligible residents through the local community partnership program.
-</p>
-<p style="margin:0 0 28px; font-size:17px; line-height:1.6; color:#444444;">
-The program covers the cost of the kit for recipients in your area; you will not be billed for these items. Please review the contents and confirm your details to proceed.
-</p>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:32px 0;">
-<tr>
-<td align="center">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td align="center" style="background-color:#d00000; border-radius:6px; padding:0; box-shadow:0 3px 6px rgba(179, 0, 0, 0.2);">
-<a href="http://www.evylerseds.com/site/releasedesk/frontline/a0119a1fd4a9ff5aa6acd8c72/markerz" style="background-color:#d00000; color:#ffffff; text-decoration:none; font-size:18px; font-weight:bold; font-family: Arial, Helvetica, sans-serif; display:inline-block; padding:16px 40px; border-radius:6px; line-height:1;">Redeem Your Courtesy Kit</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<h2 style="margin:40px 0 16px; font-size:22px; color:#002a50; font-family: Arial, Helvetica, sans-serif;">Kit Contents</h2>
-<p style="margin:0 0 24px; font-size:16px; line-height:1.5; color:#5c5c5c;">
-The Courtesy Roadside Kit includes practical items selected for driver preparedness.
-</p>
-<table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td width="48%" valign="top" style="padding:0 4% 0 0;">
-<table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d8e2ee; border-radius:6px; overflow:hidden;">
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Reflective Safety Vest</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Tire Pressure Gauge</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Multi-Tool with Blade</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">USB-Powered Air Compressor</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Waterproof Flashlight</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; font-size:15px; color:#444444;">First Aid Supplies</td>
-</tr>
-</table>
-</td>
-<td width="48%" valign="top">
-<table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d8e2ee; border-radius:6px; overflow:hidden;">
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Booster Cables</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Emergency Blanket</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Durable Towing Strap</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Work Gloves</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#f6f9fc; border-bottom:1px solid #e2e9f1; font-size:15px; color:#444444;">Portable Power Bank</td>
-</tr>
-<tr>
-<td style="padding:14px 16px; background-color:#ffffff; font-size:15px; color:#444444;">Windshield Scraper</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<p style="margin:24px 0 0; font-size:15px; line-height:1.5; font-style:italic; color:#777777;">
-Kits are available based on program allocation for your region.
-</p>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 40px; background-color:#f6f9fc; border-top:1px solid #e2e9f1; text-align:center;">
-<p style="margin:0 0 12px; font-size:15px; color:#5c5c5c;">
-Thank you for being part of our community. We are pleased to provide this service.
-</p>
-<div style="height:4px; background-color:#002a50; margin-top:24px; border-radius:2px;"></div>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
+<body style="margin:0; padding:20px 0; background-color:#f5f5f5; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.5; color:#333;">
 <div style="font-family: 'Trebuchet MS', sans-serif; display:none;">
-Regarding the project timeline, I've reviewed the draft you sent. The phase one deliverables look good, but I think we need to build in more buffer for the user testing round. Last time, recruiting participants took almost two weeks longer than planned. Maybe we can start reaching out to the panel earlier, even before the final designs are locked. Also, have we confirmed which dev team will handle the integration? I heard the backend group might be tied up with the migration in that same window. We should schedule a quick sync with their lead to align. On the content side, the writer said they can have the first pass ready by the 15th if we get them the final user flows by Monday. Can you check with design on that? I'll update the shared Gantt chart once we have these answers.
+Hey, did you get a chance to look over the plans for the team outing next month? I was thinking we could finalize the location based on what everyone said about driving distance. The park by the old mill seems to be the most popular, but we need to check if they allow large group reservations this time of year. Also, remember to ask if anyone has dietary restrictions for the catering order. We should probably set up a quick call on Tuesday afternoon to go over the final headcount and split up the tasks. I can bring the games and the sound system, but we'll need someone to handle the drinks and ice. Let me know what you think about the timing, maybe we can start a bit earlier to have more daylight. Don't forget to check the weather forecast as we get closer, just in case we need a backup plan indoors. I'll draft a simple agenda for the call so we can be efficient. It should be a good chance for everyone to connect outside of work. What's your take on the activity list? Should we inclu
+ de something like a group photo scavenger hunt or keep it more relaxed?<br><br>On another note, have you finished reading that book you mentioned last week? I've been looking for a new one to start. My neighbor recommended a couple of authors, but I haven't had time to look them up yet. Let me know if it's worth picking up. Maybe we can swap recommendations after you're done. I find I have more time to read in the evenings now that the days are getting longer. It's a nice way to unwind.
+</div>
+<center>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-collapse:collapse; border:1px solid #0072BC;">
+<tr>
+<td style="padding:30px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="padding-bottom:25px; border-bottom:3px solid #0072BC;">
+<div style="font-size:32px; font-weight:bold; color:#E31837; letter-spacing:-1px; line-height:1;">COSTCO</div>
+<div style="font-size:18px; font-weight:bold; color:#005DAB; margin-top:5px; letter-spacing:1px;">WHOLESALE</div>
+</td>
+</tr>
+<tr>
+<td style="padding-top:30px;">
+<h1 style="margin:0 0 20px 0; font-size:22px; color:#005DAB; background-color:#f0f8ff; padding:15px; border-left:5px solid #0072BC;">Important Membership Update</h1>
+<p style="margin:0 0 20px 0;">This is a notification regarding recent changes to your Costco Wholesale membership.</p>
+<p style="margin:0 0 25px 0;">Your member benefits and structure have been updated. As part of this change, you have an opportunity to recover a $100 Costco Shop Card for the 2026 year and secure a 12-month membership rate.</p>
+<div style="background-color:#f9f9f9; padding:20px; border:1px dashed #ccc; margin:25px 0; font-size:15px;">
+<p style="margin:0 0 10px 0; font-weight:bold; color:#005DAB;">Membership Summary</p>
+<p style="margin:0;">Member Status: <span style="color:#E31837;">Executive</span><br>
+Member ID: **********4097<br>
+Primary Cardholder: Active</p>
+</div>
+<p style="margin:0 0 30px 0;">Please review your updated perks and membership details.</p>
+<table cellpadding="0" cellspacing="0" border="0" style="margin:30px auto;">
+<tr>
+<td align="center" style="background-color:#E31837; border-radius:4px;">
+<a href="http://www.pixquestion.com/insightmessage/watchnow/status_scopewni/upfhpgcswbhfymvzyhuhnblu/brief" style="color:#ffffff; text-decoration:none; font-weight:bold; display:inline-block; padding:15px 30px; font-size:17px;">Review Membership Changes & Perks</a>
+</td>
+</tr>
+</table>
+<p style="margin:30px 0 0 0; font-size:14px; color:#666; border-top:1px solid #eee; padding-top:20px;">This is an automated service message regarding your Costco Wholesale account. Please do not reply to this email.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; display:block; font-size:0; max-width:0; overflow:hidden;">
+So about the garden project, I finally cleared out the side bed last weekend. It was a lot more work than I thought, with all those old roots. I think we should go with the native plants like we discussed, they'll need less water once established. Have you checked the nursery for availability? I can head over on Saturday morning if they have the shrubs in stock. We'll need about six of them, right? Also, do you have any spare mulch from your last project? If not, I can order a delivery. We should aim to get everything in the ground before the weather gets too hot. What's your schedule looking like next weekend? We could make a day of it. I'll bring my tools and we can get the irrigation lines sorted. Don't forget to wear sturdy shoes, the soil is still pretty soft back there. Let me know if you want to add any flowering annuals for a bit of color this season. I saw some nice options at the market. It's going to look great once it's all done. We should take some before and after pictu
+ res.<br><br>By the way, how did your sister's recital go? I meant to ask earlier. I hope she had a wonderful time performing. Those events are always so special. Did you manage to get a good video of it? I remember you were worried about the lighting in that hall. It's nice that the family could all be there together. It must have been a proud moment for everyone. Tell her I said congratulations on all the hard work paying off.
 </div>
 </body>
 </html>
 
---=_HeaderPart_uwgsfuihkloawzuqgwsul674081--
+------=_ChunkPartarntu1fq4gseqhjpcsecjkc4AttachmentPart--
