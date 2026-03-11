@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8P5XE1yOsGkukgIAu9opvQ
+	id CJ3KOh/XsWnVFgAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Mar 2026 22:34:20 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Mar 2026 21:57:03 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD47C25856F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Mar 2026 22:34:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3458126A34B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Mar 2026 21:57:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 903CA10E789;
-	Tue, 10 Mar 2026 21:27:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 671DB10E92A;
+	Wed, 11 Mar 2026 20:57:01 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=beardbearsfiles.com header.i=omahasteaksamplerbox@beardbearsfiles.com header.b="fOWpoB8k";
+	dkim=pass (2048-bit key; unprotected) header.d=humanteach.com header.i=cstcmeatspecial@humanteach.com header.b="SpU7ATrX";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx1.beardbearsfiles.com (mail.beardbearsfiles.com
- [199.80.55.68])
- by gabe.freedesktop.org (Postfix) with ESMTP id ECEB210E23E
+Received: from bounce.humanteach.com (unknown [91.236.116.155])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 24FE410E3F5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Mar 2026 21:27:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta3l3rehqpd2;
- d=beardbearsfiles.com; 
- h=Reply-To:Date:Message-ID:From:MIME-Version:To:Subject:Content-Type;
- i=omahasteaksamplerbox@beardbearsfiles.com;
- bh=i9Krsv6TOiBtoY218pxdYu+LQwXkwNMZCK9wCHUWFb8=;
- b=fOWpoB8klysT6y/huGVQxeCs5sfeikgMCdRJ+J1cSemZllv6Ra+dWZVuQ6kNlAzOgNv9wCQFZhru
- 3WnlhfcvHgVSnedo45LVO0uB6Gj1XMQ8BJGvrATrK+nM/4xoOo6oFMflodpK8WQ0agEKZNvjDz9G
- Qax90Wn5b6JGhEOCBcuuwJqFBv7/DGJ2GsmPya4WXreRXesDwES7DZNTtp8PKN+aw6XVgS/cqGFH
- tNmqFzUifQDqUrj6GTFOlXS7YzUF5nG+NGIIhV+v1PghaKy/kAjbgwm2cL0Wde3PSTQqNrOWz4pR
- y7CzCgGsU372hW2CzzM0VWBT978+87buWplJjw==
-Date: Tue, 10 Mar 2026 17:20:29 -0400
-Message-ID: <119463.2612222201046550bd161@beardbearsfiles.com>
-From: Omaha Steak Sampler Box <omahasteaksamplerbox@beardbearsfiles.com>
-MIME-Version: 1.0
+ Wed, 11 Mar 2026 20:56:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtatg5chbryof;
+ d=humanteach.com; 
+ h=Reply-To:To:Date:MIME-Version:From:Message-ID:Subject:Content-Type;
+ i=cstcmeatspecial@humanteach.com;
+ bh=FrAt3izZE6xgHF5pnVZmEhU260AfyKgd6u17dymSR/8=;
+ b=SpU7ATrXQd4PgXozkbBR1PrL5TtiWTNovGrV/LskxAObwXfGlv5vT+znPF7duqPdZw3hDsIkbmCZ
+ x28emTCzkxosVqUK2CAeUQSindarnR8dn8RpxCtdokxabB4HJmgKrjlTDydJkQfQllOkGaqM+uoQ
+ 0wIMlTR0hx0gES47bDeLTaiIx5qeaaTK09gVyRzp71M1pff5nQsWoCys2iG/MfhRwmwuFzXpcDVS
+ mn3jko+C6Q+m4xsiwcKc66u28w7l4Xn3cowAdcRvLtaLw+hnpV+SePY18WXh6bbn5Sko5PLF2l3G
+ AlXFSAIcoae0PxAdidC5veY7LNd56QiXYOb8iw==
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Discover your steak sampler offer
+Date: Wed, 11 Mar 2026 16:41:45 -0400
+MIME-Version: 1.0
+From: C0STC0 Meat Special <cstcmeatspecial@humanteach.com>
+Message-ID: <250210125306_kokmtzhnedxug-7582953@humanteach.com>
+Subject: After your recent Costco visit, a meat box offer for you
 Content-Type: multipart/alternative;
- boundary="----=_HtmlPart9cf7537e42a6e8.2g5cwmchuc1qy"
+ boundary="----=_StreamPart_nlseqhruzlebll6pec2zuw-rlmfus2z0mim8_16088474"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,154 +51,309 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: omahasteaksamplerbox@beardbearsfiles.com
+Reply-To: cstcmeatspecial@humanteach.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: AD47C25856F
-X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [4.84 / 15.00];
-	ABUSE_SURBL(5.00)[beardbearsfiles.com:dkim,beardbearsfiles.com:mid,beardbearsfiles.com:replyto,www.beardbearsfiles.com:url];
+X-Spamd-Result: default: False [13.74 / 15.00];
+	URIBL_BLACK(7.50)[humanteach.com:dkim,humanteach.com:mid,humanteach.com:replyto,humanteach.com:url];
+	DBL_SPAM(5.00)[humanteach.com:dkim,humanteach.com:mid,humanteach.com:replyto,humanteach.com:url];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	MANY_INVISIBLE_PARTS(0.30)[4];
+	ZERO_FONT(0.20)[3];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	BAD_REP_POLICIES(0.10)[];
-	ZERO_FONT(0.10)[1];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	BAD_REP_POLICIES(0.10)[];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
+	DMARC_POLICY_ALLOW(0.00)[humanteach.com,none];
 	RCVD_TLS_LAST(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DMARC_POLICY_ALLOW(0.00)[beardbearsfiles.com,none];
-	R_DKIM_ALLOW(0.00)[beardbearsfiles.com:s=mta3l3rehqpd2];
+	ABUSE_SURBL(0.00)[humanteach.com:dkim,humanteach.com:replyto,humanteach.com:mid,www.humanteach.com:url];
+	R_DKIM_ALLOW(0.00)[humanteach.com:s=mtatg5chbryof];
 	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	GREYLIST(0.00)[pass,meta];
 	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,body];
-	DKIM_TRACE(0.00)[beardbearsfiles.com:+];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	HAS_REPLYTO(0.00)[omahasteaksamplerbox@beardbearsfiles.com];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	HAS_REPLYTO(0.00)[cstcmeatspecial@humanteach.com];
 	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[omahasteaksamplerbox@beardbearsfiles.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
 	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[cstcmeatspecial@humanteach.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	DKIM_TRACE(0.00)[humanteach.com:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[beardbearsfiles.com:dkim,beardbearsfiles.com:mid,beardbearsfiles.com:url,beardbearsfiles.com:replyto]
-X-Rspamd-Action: no action
+	NEURAL_SPAM(0.00)[1.000];
+	MID_RHS_MATCH_FROM(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+X-Rspamd-Queue-Id: 3458126A34B
+X-Rspamd-Action: add header
+X-Rspamd-Server: lfdr
+X-Spam: Yes
 
-------=_HtmlPart9cf7537e42a6e8.2g5cwmchuc1qy
+------=_StreamPart_nlseqhruzlebll6pec2zuw-rlmfus2z0mim8_16088474
 Content-Type: text/plain; charset="UTF-8"
 
-Hey, I got your note about the weekend plans. I think Saturday afternoon works much better for me too, as I have that morning appointment. We could meet at the park around two? I can bring the frisbee and a blanket. The weather looks promising, sunny with a light breeze. Let me know if you want me to pick up anything on the way. I was thinking of grabbing some of those sparkling waters you like. Also, did you finish that book you were telling me about? I'd love to hear your thoughts on the ending. My sister might join us later if that's alright, she said she'd bring her dog. We should probably confirm by Friday evening so I can let her know. Looking forward to it.
+Member Perk Update
 
-Omaha Steaks
+Member perk update: your Costco Meat Box selection is available through March 13, 2026.
 
-Exceptional cuts, delivered to your kitchen
+COSTCO
 
-A Gourmet Sampler for You
+WHOLESALE
 
-Omaha Steaks is providing a sampler box at no charge to participants. This program has 500 boxes available, with one sampler allocated per household. This offer concludes Tomorrow.
+ 
 
-Access Your Sampler
+ 
 
-You will not be billed for the sampler. Each cut is hand-selected by our experts and flash-frozen at peak freshness to preserve its quality and flavor from our facility to your table.
+Important Update to Your Costco Member Benefits
 
-The sampler is normally valued above six hundred dollars. Quantities are reserved for this program.
+As a thank-you for your continued membership, you may request a Costco Meat Box at no charge, with a retail value of over $500. This member perk is available for a limited period and remains valid through March 13, 2026. We’re sharing this update now so you have time to review the benefit and complete your selection.
 
-Inside Your Box
+Member Perk Status
 
-Four Ribeye Steaks
+Not Yet Redeemed
 
-Six Top Sirloin Steaks
+ 
 
-Four New York Strip Steaks
+Your membership shows this perk is still available to claim.
 
-Four Filet Mignon Steaks
+Member Record Snapshot
 
-We appreciate your interest in our offerings.
+Benefit
 
-Regarding the project timeline you asked about, I've reviewed the initial drafts and think we need another day for the final edits. The client feedback was quite detailed, focusing on the third section. I'll coordinate with the design team tomorrow morning to align on the changes. Could you send me the latest analytics report when you have a moment? That would help inform our next steps. Also, don't forget the all-hands meeting is scheduled for Thursday at eleven. I'll bring the printed agendas. Let me know if you want to grab a quick coffee before that to go over the talking points. The new software update seems to have fixed the lag issue we were experiencing last week, which is a relief.
+Costco Meat Box
 
-------=_HtmlPart9cf7537e42a6e8.2g5cwmchuc1qy
+Status
+
+Pending Member Action
+
+Availability Ends
+
+March 13, 2026
+
+Membership Recognition
+
+Loyal Member Perk
+
+Review Your Costco Meat Box
+
+Costco continues to focus on dependable value across everyday essentials, including high-demand proteins. We know beef pricing can be challenging for many households, and this program reflects our effort to support members with carefully sourced options at a sustainable price point. By working closely with suppliers and maintaining long-term relationships, Costco aims to help members navigate rising costs with consistency and care.
+
+MEMBER BENEFIT NOTICE • VALID THROUGH MARCH 13, 2026 • COSTCO WHOLESALE
+
+Costco Wholesale Member Services
+
+This message relates to your membership benefits and available member perk status.
+
+Costco has built its reputation around straightforward pricing, strong vendor partnerships, and a shopping experience designed to serve families, businesses, and communities alike. From pantry staples to seasonal items, the goal has remained consistent: offer dependable quality in larger formats that support everyday planning. Members often rely on Costco for both household needs and long-range value, and that trust continues to shape how programs are introduced and improved. As costs shift across the market, Costco works to balance responsible sourcing with practical savings, especially in categories that matter most at the dinner table. That commitment helps members feel confident that their warehouse membership continues to deliver relevance, reliability, and thoughtful benefits throughout the year.
+
+------=_StreamPart_nlseqhruzlebll6pec2zuw-rlmfus2z0mim8_16088474
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Perk Update</title>
 </head>
-<body style="margin:0; padding:20px 0; background-color:#f8f4ec; font-family: Georgia, 'Times New Roman', Times, serif; color:#2e2e2e; line-height:1.5;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Hey, I got your note about the weekend plans. I think Saturday afternoon works much better for me too, as I have that morning appointment. We could meet at the park around two? I can bring the frisbee and a blanket. The weather looks promising, sunny with a light breeze. Let me know if you want me to pick up anything on the way. I was thinking of grabbing some of those sparkling waters you like. Also, did you finish that book you were telling me about? I'd love to hear your thoughts on the ending. My sister might join us later if that's alright, she said she'd bring her dog. We should probably confirm by Friday evening so I can let her know. Looking forward to it.
-</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
-<tr>
-<td style="padding:32px 40px 24px; text-align:center; border-bottom:1px solid #e3dbd2;">
-<h1 style="margin:0 0 8px; font-size:42px; font-weight:normal; letter-spacing:-0.5px; color:#8a1c22; font-family: 'Times New Roman', serif;">Omaha Steaks</h1>
-<p style="margin:0; font-size:15px; color:#787878; font-style:italic;">Exceptional cuts, delivered to your kitchen</p>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 32px;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td style="padding-bottom:24px; border-left:4px solid #c9a13e; padding-left:20px;">
-<h2 style="margin:0 0 12px; font-size:28px; color:#2e2e2e; font-weight:600;">A Gourmet Sampler for You</h2>
-<p style="margin:0; font-size:17px; color:#5a5a5a;">Omaha Steaks is providing a sampler box at no charge to participants. This program has 500 boxes available, with one sampler allocated per household. This offer concludes Tomorrow.</p>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 0; text-align:center;">
-<a href="http://www.beardbearsfiles.com/workspace/enter/mpmfablxqzbtqntuibwmlp/stream" style="background-color:#8a1c22; color:#ffffff; text-decoration:none; padding:18px 48px; border-radius:6px; font-size:18px; font-weight:bold; display:inline-block; box-shadow:0 3px 6px rgba(138, 28, 34, 0.2);">Access Your Sampler</a>
-</td>
-</tr>
-<tr>
-<td style="padding-bottom:32px;">
-<p style="margin:0 0 16px; font-size:16px; color:#3a3a3a;">You will not be billed for the sampler. Each cut is hand-selected by our experts and flash-frozen at peak freshness to preserve its quality and flavor from our facility to your table.</p>
-<p style="margin:0; font-size:16px; color:#3a3a3a;">The sampler is normally valued above six hundred dollars. Quantities are reserved for this program.</p>
-</td>
-</tr>
-<tr>
-<td>
-<h3 style="margin:0 0 20px; font-size:22px; color:#2e2e2e; text-align:center; font-weight:600;">Inside Your Box</h3>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #e3dbd2; border-radius:8px; overflow:hidden;">
-<tr>
-<td style="width:50%; padding:20px; background-color:#faf6f0; border-right:1px solid #e3dbd2; border-bottom:1px solid #e3dbd2;">
-<ul style="margin:0; padding-left:20px; color:#5a5a5a; font-size:16px;">
-<li style="margin-bottom:8px;">Four Ribeye Steaks</li>
-<li style="margin-bottom:8px;">Six Top Sirloin Steaks</li>
-</ul>
-</td>
-<td style="width:50%; padding:20px; background-color:#faf6f0; border-bottom:1px solid #e3dbd2;">
-<ul style="margin:0; padding-left:20px; color:#5a5a5a; font-size:16px;">
-<li style="margin-bottom:8px;">Four New York Strip Steaks</li>
-<li>Four Filet Mignon Steaks</li>
-</ul>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:40px; text-align:center; background-color:#faf6f0; border-top:1px solid #e3dbd2;">
-<p style="margin:0 0 20px; font-size:15px; color:#5a5a5a;">We appreciate your interest in our offerings.</p>
-<div style="height:4px; width:120px; background-color:#8a1c22; margin:0 auto; border-radius:2px;"></div>
-</td>
-</tr>
-</table>
-<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif;">
-Regarding the project timeline you asked about, I've reviewed the initial drafts and think we need another day for the final edits. The client feedback was quite detailed, focusing on the third section. I'll coordinate with the design team tomorrow morning to align on the changes. Could you send me the latest analytics report when you have a moment? That would help inform our next steps. Also, don't forget the all-hands meeting is scheduled for Thursday at eleven. I'll bring the printed agendas. Let me know if you want to grab a quick coffee before that to go over the talking points. The new software update seems to have fixed the lag issue we were experiencing last week, which is a relief.
-</div>
+<body style="margin:0; padding:0; background-color:#f4f7fb; font-family:Arial, Helvetica, sans-serif; color:#1f2d3d;">
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all;">
+    Member perk update: your Costco Meat Box selection is available through March 13, 2026.
+  </div>
+
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; background-color:#f4f7fb; margin:0; padding:0;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px; border-collapse:collapse; background-color:#ffffff; border:1px solid #d9e3f0;">
+          
+          <tr>
+            <td style="padding:28px 24px 12px 24px; text-align:center; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse:collapse;">
+                <tr>
+                  <td align="center">
+                    <div style="display:inline-block; text-align:left;">
+                      <div style="background-color:#d9232e; color:#ffffff; font-size:34px; line-height:34px; font-weight:bold; letter-spacing:1px; padding:10px 18px 6px 18px; border:2px solid #0b5cab;">
+                        COSTCO
+                      </div>
+                      <div style="background-color:#0b5cab; color:#ffffff; font-size:16px; line-height:16px; font-weight:bold; letter-spacing:3px; padding:7px 18px 8px 18px; text-align:right; border-left:2px solid #0b5cab; border-right:2px solid #0b5cab; border-bottom:2px solid #0b5cab;">
+                        WHOLESALE
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px 24px 0 24px; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                <tr>
+                  <td style="height:8px; background-color:#d9232e; width:50%; font-size:0; line-height:0;">&nbsp;</td>
+                  <td style="height:8px; background-color:#0b5cab; width:50%; font-size:0; line-height:0;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px 24px 8px 24px; background-color:#ffffff;">
+              <h1 style="margin:0; font-size:30px; line-height:38px; color:#0b3b75; font-weight:bold; text-align:center;">
+                Important Update to Your Costco Member Benefits
+              </h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px 24px 0 24px; background-color:#ffffff;">
+              <p style="margin:0; font-size:16px; line-height:25px; color:#33475b; text-align:left;">
+                As a thank-you for your continued membership, you may request a Costco Meat Box at no charge, with a retail value of over $500. This member perk is available for a limited period and remains valid through March 13, 2026. We’re sharing this update now so you have time to review the benefit and complete your selection.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:22px 24px 0 24px; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; border:1px solid #c9d8ea; background-color:#f8fbff;">
+                <tr>
+                  <td style="padding:14px 16px; font-size:14px; line-height:20px; color:#0b3b75; font-weight:bold;">
+                    Member Perk Status
+                  </td>
+                  <td style="padding:14px 16px; font-size:14px; line-height:20px; color:#d9232e; font-weight:bold; text-align:right;">
+                    Not Yet Redeemed
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding:0 16px 16px 16px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                      <tr>
+                        <td style="height:12px; background-color:#dfe8f3; border:1px solid #c9d8ea;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="18%" style="border-collapse:collapse;">
+                            <tr>
+                              <td style="height:10px; background-color:#d9232e; font-size:0; line-height:0;">&nbsp;</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    <div style="padding-top:8px; font-size:12px; line-height:18px; color:#5b6b7b;">
+                      Your membership shows this perk is still available to claim.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:22px 24px 0 24px; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; background-color:#eef5ff; border:1px solid #b8cce6;">
+                <tr>
+                  <td style="padding:14px 16px; font-size:13px; line-height:18px; color:#0b3b75; font-weight:bold; text-transform:uppercase; letter-spacing:0.8px;">
+                    Member Record Snapshot
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 16px 16px 16px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                      <tr>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#33475b;">
+                          Benefit
+                        </td>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#0b3b75; text-align:right; font-weight:bold;">
+                          Costco Meat Box
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#33475b;">
+                          Status
+                        </td>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#d9232e; text-align:right; font-weight:bold;">
+                          Pending Member Action
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#33475b;">
+                          Availability Ends
+                        </td>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#0b3b75; text-align:right; font-weight:bold;">
+                          March 13, 2026
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#33475b;">
+                          Membership Recognition
+                        </td>
+                        <td style="padding:10px 0; border-top:1px solid #d7e4f4; font-size:14px; line-height:20px; color:#0b3b75; text-align:right; font-weight:bold;">
+                          Loyal Member Perk
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:26px 24px 6px 24px; background-color:#ffffff;">
+              <a href="http://www.humanteach.com/prime_snapshots/steady/review/fgfrkzteshnhlbciw" style="display:inline-block; background-color:#d9232e; color:#ffffff; text-decoration:none; font-size:17px; line-height:17px; font-weight:bold; padding:16px 28px; border:1px solid #b51b25; border-radius:4px;">
+                Review Your Costco Meat Box
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:18px 24px 8px 24px; background-color:#ffffff;">
+              <p style="margin:0; font-size:16px; line-height:25px; color:#33475b;">
+                Costco continues to focus on dependable value across everyday essentials, including high-demand proteins. We know beef pricing can be challenging for many households, and this program reflects our effort to support members with carefully sourced options at a sustainable price point. By working closely with suppliers and maintaining long-term relationships, Costco aims to help members navigate rising costs with consistency and care.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:22px 24px 0 24px; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; background-color:#0b5cab;">
+                <tr>
+                  <td style="padding:12px 16px; font-size:13px; line-height:18px; color:#ffffff; text-align:center; letter-spacing:0.5px;">
+                    MEMBER BENEFIT NOTICE • VALID THROUGH MARCH 13, 2026 • COSTCO WHOLESALE
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px; background-color:#f7f9fc; border-top:1px solid #d9e3f0; text-align:center;">
+              <p style="margin:0 0 6px 0; font-size:13px; line-height:20px; color:#5b6b7b;">
+                Costco Wholesale Member Services
+              </p>
+              <p style="margin:0; font-size:12px; line-height:18px; color:#7a8896;">
+                This message relates to your membership benefits and available member perk status.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:18px 24px 28px 24px; background-color:#0b5cab;">
+              <p style="margin:0; font-size:13px; line-height:21px; color:#dbe9fb;">
+                Costco has built its reputation around straightforward pricing, strong vendor partnerships, and a shopping experience designed to serve families, businesses, and communities alike. From pantry staples to seasonal items, the goal has remained consistent: offer dependable quality in larger formats that support everyday planning. Members often rely on Costco for both household needs and long-range value, and that trust continues to shape how programs are introduced and improved. As costs shift across the market, Costco works to balance responsible sourcing with practical savings, especially in categories that matter most at the dinner table. That commitment helps members feel confident that their warehouse membership continues to deliver relevance, reliability, and thoughtful benefits throughout the year.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
 
-------=_HtmlPart9cf7537e42a6e8.2g5cwmchuc1qy--
+------=_StreamPart_nlseqhruzlebll6pec2zuw-rlmfus2z0mim8_16088474--
