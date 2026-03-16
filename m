@@ -2,45 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GLr9FmhCtGk4kAAAu9opvQ
+	id ONQoNMtDuGmLbAEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Mar 2026 17:59:20 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2026 18:54:19 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7F39287B2D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Mar 2026 17:59:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37DD729E9BD
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2026 18:54:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B45A710E430;
-	Fri, 13 Mar 2026 16:50:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E6E8E10E211;
+	Mon, 16 Mar 2026 17:45:46 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=tattoologo.com header.i=marriotthotelwelcome@tattoologo.com header.b="jgLD0lEP";
+	dkim=pass (2048-bit key; unprotected) header.d=royalcloudrm.name header.i=krogermember47@royalcloudrm.name header.b="PF4B91dV";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 13 Mar 2026 16:50:03 UTC
-Received: from mailhub.tattoologo.com (mail.tattoologo.com [188.245.225.112])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0EF6A10E431
+X-Greylist: delayed 360 seconds by postgrey-1.36 at gabe;
+ Mon, 16 Mar 2026 17:45:45 UTC
+Received: from mail.royalcloudrm.name (unknown [80.82.76.93])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1181110E211
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Mar 2026 16:50:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtawuwalpcbp5;
- d=tattoologo.com; 
- h=Reply-To:Message-ID:MIME-Version:From:To:Subject:Date:Content-Type;
- i=marriotthotelwelcome@tattoologo.com;
- bh=y3wYruk/Qmw2Z+rsxAzVX4QmeV+lYTqxNoEAxoKUqDY=;
- b=jgLD0lEPEaE9r2XbFQ86BJquocAKnC9ITa4B0Ame15FTezgUfEzwE/D++k4ndW5ncfUR9a95OBdo
- bdjYusbmCWRtrQdtUPPU2wJPapYlwsogbmAxoopQD0cZMJGwIM5Pt1XMjAT0DZNmLbwz7R1FD8jt
- eie9NkTy2+0vSLAxt84DsN39gCiO+vgexMfAC2IXUzhImR2Qk6fDnaHdfALv/zYPJp/jynzTZpSQ
- VRFiBvX+QEFEwh7PJDMi/uF7rO6t3lA+741/hJGFIOVTQogDqF8i4zotI7ljfSHBB7rCVrtoCEYp
- 6XY4sNV2dK/pqJEpMPNorcUr2/ExCXOmNP7pNg==
-Message-ID: <5659262612140525534jz82jr6f5ddtywkxn6xxg@tattoologo.com>
-MIME-Version: 1.0
-From: Marriott Hotel Welcome <marriotthotelwelcome@tattoologo.com>
+ Mon, 16 Mar 2026 17:45:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=royalcloudrm.name;
+ h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
+ i=krogermember47@royalcloudrm.name;
+ bh=4KtY3Tn/0m6LyhZJUPb3ba0CC2OTtprsL6Lb6oDCNn8=;
+ b=PF4B91dVyki2ICaPPBRtCRobzfMt4IP/qvKsF4JSE5w6ilKmh1bcWudDOMfBaohR887PDG8yumUq
+ 5fu/wlyNpIIX3xDEfAbdSJYxUOfZVrlqWEqmMOkZvEJLWYzCKeZg+HwqdEyig6L0HVaI+bB9vQKS
+ imxDdNuyMqBaZEmsxhc7nucpKfzX2i024yMOIKMg8gmivVU+CMcIPzqfBLWjUfNjn9r2XkWYQy7f
+ f2R8AnMr/3FE5wEii8q75kKakqrtGBAT1ccHbfZeoSrv8CcZh8gtTGhvTGhjaXyHrlvPMSRuyvrt
+ yHamWwX8wORuQABbUrfJFU1abPizUXdDC/etaA==
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: A thank-you gift for your recent visit
-Date: Fri, 13 Mar 2026 12:43:45 -0400
+From: Kroger Member Care <krogermember47@royalcloudrm.name>
+Date: Mon, 16 Mar 2026 13:39:38 -0400
+Subject: Reminder: Your shopping card remains active through today
+Message-ID: <tBPMxaY4_ffkDCBm5d3Ru37Ak-b731@mail.royalcloudrm.name>
+X-Request-ID: 92994e9c-5815-44d9-a3c5-014ee57f5a88
+X-Queue-ID: q-wp75f1
+X-Origin: ingest-ruc
+MIME-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="=_EnvelopeBoundary_sxjtuwlluezzxidlqjgwa24098924"
+ boundary="lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,180 +55,439 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marriotthotelwelcome@tattoologo.com
+Reply-To: krogermember47v0@royalcloudrm.name
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [11.29 / 15.00];
-	DBL_SPAM(6.50)[tattoologo.com:dkim,tattoologo.com:mid,tattoologo.com:replyto,tattoologo.com:url];
-	ABUSE_SURBL(5.00)[tattoologo.com:dkim,tattoologo.com:replyto,tattoologo.com:mid,www.tattoologo.com:url];
+X-Spamd-Result: default: False [8.69 / 15.00];
+	ABUSE_SURBL(5.00)[mail.royalcloudrm.name:mid,royalcloudrm.name:dkim,royalcloudrm.name:replyto,www.royalcloudrm.name:url];
+	SEM_URIBL_FRESH15(3.00)[royalcloudrm.name:dkim,royalcloudrm.name:url];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	BAD_REP_POLICIES(0.10)[];
-	MANY_INVISIBLE_PARTS(0.10)[2];
 	HAS_LIST_UNSUB(-0.01)[];
-	DMARC_POLICY_ALLOW(0.00)[tattoologo.com,none];
+	DMARC_POLICY_ALLOW(0.00)[royalcloudrm.name,quarantine];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	RCVD_TLS_LAST(0.00)[];
-	R_DKIM_ALLOW(0.00)[tattoologo.com:s=mtawuwalpcbp5];
-	RCPT_COUNT_ONE(0.00)[1];
 	GREYLIST(0.00)[pass,body];
-	DKIM_TRACE(0.00)[tattoologo.com:+];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	R_DKIM_ALLOW(0.00)[royalcloudrm.name:s=k1];
+	DKIM_TRACE(0.00)[royalcloudrm.name:+];
 	ARC_NA(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
 	MISSING_XM_UA(0.00)[];
-	HAS_REPLYTO(0.00)[marriotthotelwelcome@tattoologo.com];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	HAS_REPLYTO(0.00)[krogermember47v0@royalcloudrm.name];
+	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
 	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[marriotthotelwelcome@tattoologo.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
 	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[krogermember47@royalcloudrm.name,intel-gvt-dev-bounces@lists.freedesktop.org];
+	NEURAL_SPAM(0.00)[1.000];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
-X-Rspamd-Queue-Id: A7F39287B2D
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[royalcloudrm.name:dkim,royalcloudrm.name:replyto,royalcloudrm.name:url,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,mail.royalcloudrm.name:mid]
+X-Rspamd-Queue-Id: 37DD729E9BD
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
 X-Spam: Yes
 
---=_EnvelopeBoundary_sxjtuwlluezzxidlqjgwa24098924
+--lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Yes, the conference schedule is confirmed for the third week. I've attached the draft agenda to this message for your review. The keynote speaker has confirmed their participation, and we have secured the main auditorium for all three days. Catering options are being finalized, with a focus on dietary accommodations we discussed. Please let me know if you need any adjustments to the timing for the breakout sessions. I will coordinate with the AV team next Monday to confirm the technical requirements. The updated attendee list will be circulated by end of day tomorrow.
+Kroger=20Customer=20Reward
+=20=20=20=20=20=20=20=20Customer=20Notice=20#2194736
+=20=20=20=20=20=20=20=20KROGER
+=20=20=20=20=20=20=20=20Account=20Notice=20#5938471
+=20=20=20=20=20=20=20=20Your=20Kroger=20Shopper=20Reward=20Update
+=20=20=20=20=20=20=20=20customer=20verification=20window=20in=20progress
+=20=20=20=20=20=20=20=20Earn=20a=20100=20Kroger=20Gift=20Card
+=20=20=20=20=20=20=20=20Action=20Requested=20=E2=80=94=20Short=20Verificati=
+on=20Period
+=20=20=20=20=20=20=20=20=20=20Kroger=20is=20running=20a=20rapid=20customer=
+=20experience=20review.
+=20=20=20=20=20=20=20=20=20=20Approved=20shoppers=20who=20finish=20the=20br=
+ief=20survey=20will=20receive=20a
+=20=20=20=20=20=20=20=20=20=20$100=20Kroger=20Grocery=20Gift=20Card=20as=20=
+appreciation=20for=20sharing=20your=20input.
+=20=20=20=20=20=20=20=20=20=20Start=20Survey=20=20Reserve=20Your=20100
+=20=20=20=20=20=20=20=20=20=20This=20opportunity=20applies=20only=20to=20el=
+igible=20locations=20and=20will=20remain=20active=20until
+=20=20=20=20=20=20=20=20=20=20tomorrow=20evening=20or=20once=20verification=
+=20limits=20are=20met.
+=20=20=20=20=20=20=20=20=20=20Strong=20shopper=20response=20levels=20may=20=
+shorten=20availability.
+=20=20=20=20=20=20=20=20=20=20What=20You=20Receive:
+=20=20=20=20=20=20=20=20=20=20$100=20Kroger=20Gift=20Card
+=20=20=20=20=20=20=20=20=20=20Eligibility=20confirmed=20after=20completion=
+=20validation
+=20=20=20=20=20=20=20=20=20=20Reward=20access=20may=20adjust=20with=20daily=
+=20participation=20levels
+=20=20=20=20=20=20=20=20=20=20Enjoy=20everyday=20grocery=20favorites=20=E2=
+=80=94=20from=20garden-fresh=20produce,=20meats,=20and=20dairy
+=20=20=20=20=20=20=20=20=20=20to=20pantry=20basics,=20household=20needs,=20=
+and=20treats=20=E2=80=94=20at=20participating=20Kroger=20family=20locations.
+=20=20=20=20=20=20=20=20Kroger=20is=20committed=20to=20bringing=20value,=20=
+quality,=20and=20convenience=20to=20families=20across=20the=20country.
+=20=20=20=20=20=20=20=20When=20you=20shop=20with=20Kroger,=20you=20can=20ex=
+plore=20fresh=20produce,=20bakery=20favorites,=20deli=20selections,=20and
+=20=20=20=20=20=20=20=20everyday=20essentials=20that=20fit=20your=20lifesty=
+le=20and=20budget.=20Our=20teams=20work=20daily=20to=20keep=20your=20local
+=20=20=20=20=20=20=20=20store=20stocked=20with=20items=20you=20count=20on=
+=20most.
+=20=20=20=20=20=20=20=20With=20digital=20coupons,=20fuel=20points,=20and=20=
+personalized=20suggestions,=20Kroger=20aims=20to=20make=20each=20trip
+=20=20=20=20=20=20=20=20to=20the=20store=20or=20online=20order=20more=20rew=
+arding.=20Whether=20you=20are=20planning=20weekly=20meals,=20stocking=20up
+=20=20=20=20=20=20=20=20on=20snacks,=20or=20picking=20up=20last-minute=20in=
+gredients,=20you=20can=20rely=20on=20Kroger=20to=20help=20you=20find=20what
+=20=20=20=20=20=20=20=20you=20need,=20when=20you=20need=20it,=20at=20a=20va=
+lue=20that=20makes=20sense=20for=20your=20household.
+=20=20=20=20=20=20=20=20From=20curbside=20pickup=20and=20delivery=20options=
+=20to=20in-store=20services,=20Kroger=20continues=20to=20invest=20in
+=20=20=20=20=20=20=20=20ways=20to=20make=20your=20shopping=20experience=20s=
+moother=20and=20more=20enjoyable.=20By=20listening=20to=20shopper
+=20=20=20=20=20=20=20=20feedback=20and=20improving=20our=20services,=20we=
+=20strive=20to=20keep=20your=20neighborhood=20Kroger=20a=20trusted=20place
+=20=20=20=20=20=20=20=20for=20groceries,=20household=20items,=20and=20every=
+day=20favorites.
+=20=20=20=20=20=20If=20you=20wish=20to=20stop=20getting=20these,=20feel=20f=
+ree=20to=20exit
+=20=20=20=20=20=20here.
 
-MARRIOT
+http://www.royalcloudrm.name/botbego
 
-HOTELS & RESORTS
-
-A Note Regarding Your Recent Stay
-
-You are eligible to receive a set of two luxury cooling pillows, provided at no charge to your household. This is available because your travel included a stay at a Marriot or partner hotel in the last twelve months.
-
-Next Step: After a brief questionnaire, you may also secure a two-night stay at participating locations. You will not be billed for the pillows or the qualifying stay nights. We have 800 pillow sets available. This concludes tomorrow.
-
-Secure Pillow Set + Stay Nights
-
-Pillow Set Features
-
-Advanced phase-change material regulates temperature
-
-Hypoallergenic fill promotes restful sleep
-
-Breathable cover fabric enhances air circulation
-
-Ergonomic design supports neck and head alignment
-
-Maintains loft and resilience over extended use
-
-Moisture-wicking properties for consistent comfort
-
-Quantities for this program are established. Availability for stay dates is coordinated through the program schedule.
-
-We value your choice to stay with Marriot. Your perspective helps us enhance the guest experience.
-
-Marriot Hotels & Resorts
-
-Regarding the project timeline, we are on track for the phase two review next Friday. The initial data analysis is complete, and the report is in draft form. I've asked the team to prepare a summary of key findings for the stakeholders. The venue for the offsite is booked, and I will send the confirmation details shortly. We should discuss the agenda for the quarterly planning meeting when you have a moment. I have a few time slots open on Wednesday afternoon if that works for your schedule.
-
---=_EnvelopeBoundary_sxjtuwlluezzxidlqjgwa24098924
+--lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE=20html>
+<html=20lang=3D"en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta=20charset=3D"UTF-8"=20/>
+<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20initial-scal=
+e=3D1.0"=20/>
+<title>Kroger=20Customer=20Reward</title>
+
+<style>
+=20=20body=20{
+=20=20=20=20margin:=200;
+=20=20=20=20padding:=200;
+=20=20=20=20background:=20#f4f6f9;
+=20=20=20=20font-family:=20Arial,=20Helvetica,=20sans-serif;
+=20=20=20=20color:=20#1a1a1a;
+=20=20}
+
+=20=20.wrapper=20{
+=20=20=20=20width:=20100%;
+=20=20=20=20background:=20#f4f6f9;
+=20=20=20=20padding:=2020px=200;
+=20=20}
+
+=20=20.container=20{
+=20=20=20=20max-width:=20560px;
+=20=20=20=20margin:=200=20auto;
+=20=20=20=20background:=20#ffffff;
+=20=20=20=20border-radius:=2010px;
+=20=20=20=20border:=201px=20solid=20#e2e2e2;
+=20=20=20=20overflow:=20hidden;
+=20=20}
+
+=20=20.top-bar=20{
+=20=20=20=20background:=20#0055a6;
+=20=20=20=20padding:=2014px=2022px;
+=20=20=20=20color:=20#ffffff;
+=20=20=20=20font-size:=2013px;
+=20=20=20=20text-align:=20right;
+=20=20}
+
+=20=20.header=20{
+=20=20=20=20background:=20#ffffff;
+=20=20=20=20padding:=2018px=2024px=2010px=2024px;
+=20=20=20=20display:=20flex;
+=20=20=20=20align-items:=20center;
+=20=20=20=20border-bottom:=201px=20solid=20#dfe6ee;
+=20=20}
+
+=20=20.logo=20{
+=20=20=20=20font-size:=2026px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20color:=20#0055a6;
+=20=20=20=20letter-spacing:=200.4px;
+=20=20}
+
+=20=20.notice-tag=20{
+=20=20=20=20margin-left:=20auto;
+=20=20=20=20font-size:=2012px;
+=20=20=20=20text-transform:=20uppercase;
+=20=20=20=20color:=20#0055a6;
+=20=20=20=20font-weight:=20600;
+=20=20=20=20background:=20#eaf3ff;
+=20=20=20=20padding:=204px=2010px;
+=20=20=20=20border-radius:=2020px;
+=20=20}
+
+=20=20.banner=20{
+=20=20=20=20background:=20#003f7d;
+=20=20=20=20padding:=2016px=2024px;
+=20=20=20=20color:=20#ffffff;
+=20=20=20=20text-align:=20left;
+=20=20}
+
+=20=20.banner-title=20{
+=20=20=20=20font-size:=2022px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20margin:=200=200=204px=200;
+=20=20}
+
+=20=20.banner-sub=20{
+=20=20=20=20font-size:=2013px;
+=20=20=20=20letter-spacing:=200.6px;
+=20=20=20=20text-transform:=20uppercase;
+=20=20}
+
+=20=20.inner-content=20{
+=20=20=20=20padding:=2022px=2024px=2026px=2024px;
+=20=20}
+
+=20=20.title=20{
+=20=20=20=20font-size:=2022px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20color:=20#0055a6;
+=20=20=20=20margin-bottom:=2012px;
+=20=20=20=20line-height:=201.4;
+=20=20}
+
+=20=20.urgency=20{
+=20=20=20=20font-size:=2014px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20color:=20#d40000;
+=20=20=20=20margin-bottom:=2012px;
+=20=20}
+
+=20=20.alert-box=20{
+=20=20=20=20background:=20#eaf3ff;
+=20=20=20=20border-left:=205px=20solid=20#0055a6;
+=20=20=20=20padding:=2014px=2016px;
+=20=20=20=20margin:=2018px=200=2024px=200;
+=20=20=20=20font-size:=2014px;
+=20=20=20=20line-height:=201.6;
+=20=20}
+
+=20=20.btn-row=20{
+=20=20=20=20text-align:=20left;
+=20=20=20=20margin:=2010px=200=2024px=200;
+=20=20}
+
+=20=20.btn=20{
+=20=20=20=20display:=20inline-block;
+=20=20=20=20background:=20#0071ce;
+=20=20=20=20color:=20#ffffff=20!important;
+=20=20=20=20padding:=2013px=2026px;
+=20=20=20=20font-size:=2018px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20border-radius:=206px;
+=20=20=20=20text-decoration:=20none;
+=20=20}
+
+=20=20.btn:hover=20{
+=20=20=20=20background:=20#0055a6;
+=20=20}
+
+=20=20.list-heading=20{
+=20=20=20=20font-size:=2015px;
+=20=20=20=20margin-top:=2018px;
+=20=20=20=20font-weight:=20bold;
+=20=20=20=20color:=20#0055a6;
+=20=20}
+
+=20=20.benefits=20{
+=20=20=20=20font-size:=2015px;
+=20=20=20=20line-height:=201.6;
+=20=20=20=20padding-left:=2018px;
+=20=20=20=20margin:=2010px=200=200=200;
+=20=20}
+
+=20=20.benefits=20li=20{
+=20=20=20=20margin-bottom:=204px;
+=20=20}
+
+=20=20.footer-meta=20{
+=20=20=20=20font-size:=2010px;
+=20=20=20=20color:=20#bbbbbb;
+=20=20=20=20line-height:=201.5;
+=20=20=20=20padding:=2010px=2024px=206px=2024px;
+=20=20=20=20background:=20#ffffff;
+=20=20=20=20border-top:=201px=20solid=20#eeeeee;
+=20=20}
+
+=20=20.unsub=20{
+=20=20=20=20font-size:=2011px;
+=20=20=20=20color:=20#999999;
+=20=20=20=20padding:=206px=2024px=2016px=2024px;
+=20=20=20=20background:=20#ffffff;
+=20=20}
+
+=20=20.unsub=20a=20{
+=20=20=20=20color:=20#0055a6;
+=20=20=20=20text-decoration:=20underline;
+=20=20}
+
+=20=20@media=20only=20screen=20and=20(max-width:=20600px)=20{
+=20=20=20=20.container=20{
+=20=20=20=20=20=20margin:=200=2010px;
+=20=20=20=20}
+=20=20=20=20.header,=20.banner,=20.inner-content=20{
+=20=20=20=20=20=20padding-left:=2016px=20!important;
+=20=20=20=20=20=20padding-right:=2016px=20!important;
+=20=20=20=20}
+=20=20=20=20.btn-row=20{
+=20=20=20=20=20=20text-align:=20center=20!important;
+=20=20=20=20}
+=20=20=20=20.top-bar=20{
+=20=20=20=20=20=20text-align:=20center=20!important;
+=20=20=20=20}
+=20=20=20=20.notice-tag=20{
+=20=20=20=20=20=20margin-left:=200;
+=20=20=20=20=20=20margin-top:=206px;
+=20=20=20=20}
+=20=20=20=20.header=20{
+=20=20=20=20=20=20flex-direction:=20column;
+=20=20=20=20=20=20align-items:=20flex-start;
+=20=20=20=20}
+=20=20}
+</style>
 </head>
-<body style="margin:0;padding:20px 0;background-color:#f8f8f8;font-family:Georgia, 'Times New Roman', Times, serif;color:#1a1a1a;">
-<div style="display:none;font-size:1px;color:#f8f8f8;line-height:1px;font-family:Arial;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-Yes, the conference schedule is confirmed for the third week. I've attached the draft agenda to this message for your review. The keynote speaker has confirmed their participation, and we have secured the main auditorium for all three days. Catering options are being finalized, with a focus on dietary accommodations we discussed. Please let me know if you need any adjustments to the timing for the breakout sessions. I will coordinate with the AV team next Monday to confirm the technical requirements. The updated attendee list will be circulated by end of day tomorrow.
-</div>
-<center>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
-<tr>
-<td style="padding:32px 40px 24px;text-align:center;border-bottom:1px solid #eaeaea;">
-<div style="font-size:42px;font-weight:700;letter-spacing:-0.5px;color:#9e1b32;line-height:1;margin-bottom:8px;">MARRIOT</div>
-<div style="font-size:14px;color:#666;letter-spacing:2px;">HOTELS & RESORTS</div>
-</td>
-</tr>
-<tr>
-<td style="padding:40px 40px 32px;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td style="padding-bottom:24px;">
-<h1 style="font-family:Arial, Helvetica, sans-serif;font-size:28px;line-height:1.3;margin:0 0 16px 0;color:#262626;">A Note Regarding Your Recent Stay</h1>
-<p style="font-size:16px;line-height:1.6;margin:0 0 20px 0;color:#444;">
-You are eligible to receive a set of two luxury cooling pillows, provided at no charge to your household. This is available because your travel included a stay at a Marriot or partner hotel in the last twelve months.
-</p>
-<div style="background-color:#f9f2f4;border-left:4px solid #c52947;padding:16px 20px;margin:24px 0;border-radius:0 4px 4px 0;">
-<p style="font-size:15px;line-height:1.6;margin:0;color:#262626;">
-<strong>Next Step:</strong> After a brief questionnaire, you may also secure a two-night stay at participating locations. You will not be billed for the pillows or the qualifying stay nights. We have 800 pillow sets available. This concludes tomorrow.
-</p>
-</div>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 0;text-align:center;">
-<a href="http://www.tattoologo.com/postsfocus/next_today/wbpy5-586-b60oma/center" style="background-color:#262626;color:#ffffff;text-decoration:none;padding:18px 48px;font-family:Arial, Helvetica, sans-serif;font-size:17px;font-weight:600;border-radius:50px;display:inline-block;line-height:1;box-shadow:0 3px 8px rgba(38,38,38,0.2);">Secure Pillow Set + Stay Nights</a>
-</td>
-</tr>
-</table>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:40px 0 24px;">
-<tr>
-<td>
-<h2 style="font-family:Arial, Helvetica, sans-serif;font-size:22px;margin:0 0 20px 0;color:#262626;text-align:center;">Pillow Set Features</h2>
-</td>
-</tr>
-<tr>
-<td>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td width="48%" valign="top" style="background-color:#fafafa;padding:20px;border:1px solid #eee;border-radius:6px;margin-bottom:12px;">
-<ul style="margin:0;padding-left:20px;font-size:15px;line-height:1.7;color:#444;">
-<li>Advanced phase-change material regulates temperature</li>
-<li>Hypoallergenic fill promotes restful sleep</li>
-<li>Breathable cover fabric enhances air circulation</li>
-</ul>
-</td>
-<td width="4%"></td>
-<td width="48%" valign="top" style="background-color:#fafafa;padding:20px;border:1px solid #eee;border-radius:6px;">
-<ul style="margin:0;padding-left:20px;font-size:15px;line-height:1.7;color:#444;">
-<li>Ergonomic design supports neck and head alignment</li>
-<li>Maintains loft and resilience over extended use</li>
-<li>Moisture-wicking properties for consistent comfort</li>
-</ul>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<p style="font-size:14px;line-height:1.6;color:#666;text-align:center;font-style:italic;padding:16px 20px;background-color:#f9f9f9;border-radius:6px;">
-Quantities for this program are established. Availability for stay dates is coordinated through the program schedule.
-</p>
-</td>
-</tr>
-<tr>
-<td style="padding:32px 40px;background-color:#f5f5f5;text-align:center;border-top:1px solid #eaeaea;">
-<p style="font-size:14px;line-height:1.6;margin:0 0 12px 0;color:#555;">
-We value your choice to stay with Marriot. Your perspective helps us enhance the guest experience.
-</p>
-<p style="font-size:12px;color:#888;margin:0;">
-Marriot Hotels & Resorts
-</p>
-</td>
-</tr>
-</table>
-</center>
-<div style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; width:1px; line-height:0; overflow:hidden; text-emphasis:none; visibility:hidden;">
-Regarding the project timeline, we are on track for the phase two review next Friday. The initial data analysis is complete, and the report is in draft form. I've asked the team to prepare a summary of key findings for the stakeholders. The venue for the offsite is booked, and I will send the confirmation details shortly. We should discuss the agenda for the quarterly planning meeting when you have a moment. I have a few time slots open on Wednesday afternoon if that works for your schedule.
-</div>
+
+<body>
+=20=20<div=20class=3D"wrapper">
+=20=20=20=20<div=20class=3D"container">
+
+=20=20=20=20=20=20<div=20class=3D"top-bar">
+=20=20=20=20=20=20=20=20Customer=20Notice=20#2194736
+=20=20=20=20=20=20</div>
+
+=20=20=20=20=20=20<div=20class=3D"header">
+=20=20=20=20=20=20=20=20<div=20class=3D"logo">KROGER</div>
+=20=20=20=20=20=20=20=20<div=20class=3D"notice-tag">Account=20Notice=20#593=
+8471</div>
+=20=20=20=20=20=20</div>
+
+=20=20=20=20=20=20<div=20class=3D"banner">
+=20=20=20=20=20=20=20=20<p=20class=3D"banner-title">Your=20Kroger=20Shopper=
+=20Reward=20Update</p>
+=20=20=20=20=20=20=20=20<p=20class=3D"banner-sub">customer=20verification=
+=20window=20in=20progress</p>
+=20=20=20=20=20=20</div>
+
+=20=20=20=20=20=20<div=20class=3D"inner-content">
+
+=20=20=20=20=20=20=20=20<div=20class=3D"title">Earn=20a=20100=20Kroger=20Gi=
+ft=20Card</div>
+
+=20=20=20=20=20=20=20=20<div=20class=3D"urgency">Action=20Requested=20=E2=
+=80=94=20Short=20Verification=20Period</div>
+
+=20=20=20=20=20=20=20=20<div=20class=3D"alert-box">
+=20=20=20=20=20=20=20=20=20=20Kroger=20is=20running=20a=20rapid=20customer=
+=20experience=20review.
+=20=20=20=20=20=20=20=20=20=20Approved=20shoppers=20who=20finish=20the=20br=
+ief=20survey=20will=20receive=20a
+=20=20=20=20=20=20=20=20=20=20<strong>$100=20Kroger=20Grocery=20Gift=20Card=
+</strong>=20as=20appreciation=20for=20sharing=20your=20input.
+=20=20=20=20=20=20=20=20</div>
+
+=20=20=20=20=20=20=20=20<div=20class=3D"btn-row">
+=20=20=20=20=20=20=20=20=20=20<a=20href=3D"http://www.royalcloudrm.name/bot=
+bego"=20class=3D"btn">Start=20Survey=20=20Reserve=20Your=20100</a>
+=20=20=20=20=20=20=20=20</div>
+
+=20=20=20=20=20=20=20=20<p=20style=3D"font-size:15px;=20line-height:1.6;=20=
+margin:0=200=2010px=200;">
+=20=20=20=20=20=20=20=20=20=20This=20opportunity=20applies=20only=20to=20el=
+igible=20locations=20and=20will=20remain=20active=20until
+=20=20=20=20=20=20=20=20=20=20<strong>tomorrow=20evening</strong>=20or=20on=
+ce=20verification=20limits=20are=20met.
+=20=20=20=20=20=20=20=20=20=20Strong=20shopper=20response=20levels=20may=20=
+shorten=20availability.
+=20=20=20=20=20=20=20=20</p>
+
+=20=20=20=20=20=20=20=20<p=20class=3D"list-heading">
+=20=20=20=20=20=20=20=20=20=20What=20You=20Receive:
+=20=20=20=20=20=20=20=20</p>
+
+=20=20=20=20=20=20=20=20<ul=20class=3D"benefits">
+=20=20=20=20=20=20=20=20=20=20<li><strong>$100=20Kroger=20Gift=20Card</stro=
+ng></li>
+=20=20=20=20=20=20=20=20=20=20<li>Eligibility=20confirmed=20after=20complet=
+ion=20validation</li>
+=20=20=20=20=20=20=20=20=20=20<li>Reward=20access=20may=20adjust=20with=20d=
+aily=20participation=20levels</li>
+=20=20=20=20=20=20=20=20</ul>
+
+=20=20=20=20=20=20=20=20<p=20style=3D"font-size:15px;=20margin-top:18px;=20=
+line-height:1.6;">
+=20=20=20=20=20=20=20=20=20=20Enjoy=20everyday=20grocery=20favorites=20=E2=
+=80=94=20from=20garden-fresh=20produce,=20meats,=20and=20dairy
+=20=20=20=20=20=20=20=20=20=20to=20pantry=20basics,=20household=20needs,=20=
+and=20treats=20=E2=80=94=20at=20participating=20Kroger=20family=20locations.
+=20=20=20=20=20=20=20=20</p>
+
+=20=20=20=20=20=20</div>
+=20=20=20=20</div>
+
+=20=20=20=20<div=20class=3D"footer-meta">
+=20=20=20=20=20=20<p=20style=3D"margin:0=200=206px=200;">
+=20=20=20=20=20=20=20=20Kroger=20is=20committed=20to=20bringing=20value,=20=
+quality,=20and=20convenience=20to=20families=20across=20the=20country.=20
+=20=20=20=20=20=20=20=20When=20you=20shop=20with=20Kroger,=20you=20can=20ex=
+plore=20fresh=20produce,=20bakery=20favorites,=20deli=20selections,=20and=
+=20
+=20=20=20=20=20=20=20=20everyday=20essentials=20that=20fit=20your=20lifesty=
+le=20and=20budget.=20Our=20teams=20work=20daily=20to=20keep=20your=20local=
+=20
+=20=20=20=20=20=20=20=20store=20stocked=20with=20items=20you=20count=20on=
+=20most.
+=20=20=20=20=20=20</p>
+=20=20=20=20=20=20<p=20style=3D"margin:0=200=206px=200;">
+=20=20=20=20=20=20=20=20With=20digital=20coupons,=20fuel=20points,=20and=20=
+personalized=20suggestions,=20Kroger=20aims=20to=20make=20each=20trip=20
+=20=20=20=20=20=20=20=20to=20the=20store=20or=20online=20order=20more=20rew=
+arding.=20Whether=20you=20are=20planning=20weekly=20meals,=20stocking=20up=
+=20
+=20=20=20=20=20=20=20=20on=20snacks,=20or=20picking=20up=20last-minute=20in=
+gredients,=20you=20can=20rely=20on=20Kroger=20to=20help=20you=20find=20what=
+=20
+=20=20=20=20=20=20=20=20you=20need,=20when=20you=20need=20it,=20at=20a=20va=
+lue=20that=20makes=20sense=20for=20your=20household.
+=20=20=20=20=20=20</p>
+=20=20=20=20=20=20<p=20style=3D"margin:0;">
+=20=20=20=20=20=20=20=20From=20curbside=20pickup=20and=20delivery=20options=
+=20to=20in-store=20services,=20Kroger=20continues=20to=20invest=20in=20
+=20=20=20=20=20=20=20=20ways=20to=20make=20your=20shopping=20experience=20s=
+moother=20and=20more=20enjoyable.=20By=20listening=20to=20shopper=20
+=20=20=20=20=20=20=20=20feedback=20and=20improving=20our=20services,=20we=
+=20strive=20to=20keep=20your=20neighborhood=20Kroger=20a=20trusted=20place=
+=20
+=20=20=20=20=20=20=20=20for=20groceries,=20household=20items,=20and=20every=
+day=20favorites.
+=20=20=20=20=20=20</p>
+=20=20=20=20</div>
+
+=20=20=20=20<div=20class=3D"unsub">
+=20=20=20=20=20=20If=20you=20wish=20to=20stop=20getting=20these,=20feel=20f=
+ree=20to=20exit
+=20=20=20=20=20=20<a=20href=3D"http://www.royalcloudrm.name/xwt1z">here</a>.
+=20=20=20=20</div>
+=20=20</div>
+=20=20<img=20src=3D"http://www.royalcloudrm.name/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.png"=20w=
+idth=3D"1"=20height=3D"1"=20style=3D"display:none"=20alt=3D"">
 </body>
 </html>
 
---=_EnvelopeBoundary_sxjtuwlluezzxidlqjgwa24098924--
+--lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg--
