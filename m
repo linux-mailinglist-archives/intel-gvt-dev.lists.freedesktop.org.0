@@ -2,47 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id ONQoNMtDuGmLbAEAu9opvQ
+	id +DBFHpwHu2mceQIAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2026 18:54:19 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2026 21:14:20 +0100
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37DD729E9BD
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2026 18:54:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CFBDF2C267E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2026 21:14:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E6E8E10E211;
-	Mon, 16 Mar 2026 17:45:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7D89410E442;
+	Wed, 18 Mar 2026 20:07:31 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=royalcloudrm.name header.i=krogermember47@royalcloudrm.name header.b="PF4B91dV";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=ruralfacts.com header.i=costcowarehouseupdate@ruralfacts.com header.b="lopKlvwa";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 360 seconds by postgrey-1.36 at gabe;
- Mon, 16 Mar 2026 17:45:45 UTC
-Received: from mail.royalcloudrm.name (unknown [80.82.76.93])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1181110E211
+X-Greylist: delayed 357 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Mar 2026 20:07:28 UTC
+Received: from inbound.ruralfacts.com (mail.sailpirate.com [38.145.212.110])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 93FFB10E442
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Mar 2026 17:45:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=royalcloudrm.name;
- h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
- i=krogermember47@royalcloudrm.name;
- bh=4KtY3Tn/0m6LyhZJUPb3ba0CC2OTtprsL6Lb6oDCNn8=;
- b=PF4B91dVyki2ICaPPBRtCRobzfMt4IP/qvKsF4JSE5w6ilKmh1bcWudDOMfBaohR887PDG8yumUq
- 5fu/wlyNpIIX3xDEfAbdSJYxUOfZVrlqWEqmMOkZvEJLWYzCKeZg+HwqdEyig6L0HVaI+bB9vQKS
- imxDdNuyMqBaZEmsxhc7nucpKfzX2i024yMOIKMg8gmivVU+CMcIPzqfBLWjUfNjn9r2XkWYQy7f
- f2R8AnMr/3FE5wEii8q75kKakqrtGBAT1ccHbfZeoSrv8CcZh8gtTGhvTGhjaXyHrlvPMSRuyvrt
- yHamWwX8wORuQABbUrfJFU1abPizUXdDC/etaA==
+ Wed, 18 Mar 2026 20:07:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaeragzgrez3;
+ d=ruralfacts.com; 
+ h=From:To:Message-ID:MIME-Version:Reply-To:Date:Subject:List-Unsubscribe:
+ Content-Type; i=costcowarehouseupdate@ruralfacts.com;
+ bh=SW1aTGBDUxTCtFg6Yoq9Heglz7EShI+FurMV8++nA6A=;
+ b=lopKlvwaYCtoA5KPdr8fegCHS907FxpuZVi+gmy19KniVGGBKV27nwOmaya/9EzXBghcNO+/siXN
+ CnPDDYzMQ+FNThMSEVTeZGTYNsKhk/0ZA5rBnomxSOlKjf2UmXY6RGqGVH3IU49QQQD1RenkjvLR
+ cQPGSJCxJgtERKf7hH/j8D+9JpLmAwiWjMoUJlrZ9NoCycLeMNrcaoIWwDDxrYDmS6Bacp34H+DL
+ Nl7iCL8pV5+NFHiMvrjNZzpA+xaxIlBFJlPpN962UOWCz4G3RPPFYRFrtuowgPArAFrtXI7Je6rG
+ iR25B/qbI78chlqx5rUJ3T9fE7V2CKKCC2zFZg==
+From: Costco Warehouse Update <costcowarehouseupdate@ruralfacts.com>
 To: intel-gvt-dev@lists.freedesktop.org
-From: Kroger Member Care <krogermember47@royalcloudrm.name>
-Date: Mon, 16 Mar 2026 13:39:38 -0400
-Subject: Reminder: Your shopping card remains active through today
-Message-ID: <tBPMxaY4_ffkDCBm5d3Ru37Ak-b731@mail.royalcloudrm.name>
-X-Request-ID: 92994e9c-5815-44d9-a3c5-014ee57f5a88
-X-Queue-ID: q-wp75f1
-X-Origin: ingest-ruc
+Message-ID: <864906-240525080311-kas3m8vaipm@ruralfacts.com>
 MIME-Version: 1.0
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Date: Wed, 18 Mar 2026 16:00:18 -0400
+Subject: Costco membership changes and what they mean
 Content-Type: multipart/alternative;
- boundary="lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg"
+ boundary="----=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,439 +54,173 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: krogermember47v0@royalcloudrm.name
+Reply-To: costcowarehouseupdate@ruralfacts.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [8.69 / 15.00];
-	ABUSE_SURBL(5.00)[mail.royalcloudrm.name:mid,royalcloudrm.name:dkim,royalcloudrm.name:replyto,www.royalcloudrm.name:url];
-	SEM_URIBL_FRESH15(3.00)[royalcloudrm.name:dkim,royalcloudrm.name:url];
-	URI_COUNT_ODD(1.00)[1];
+X-Spamd-Result: default: False [8.44 / 15.00];
+	ABUSE_SURBL(5.00)[www.ruralfacts.com:url,ruralfacts.com:replyto,ruralfacts.com:mid];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	R_DKIM_REJECT(1.00)[ruralfacts.com:s=mtaeragzgrez3];
+	SUSPICIOUS_URL_IN_SUSPICIOUS_MESSAGE(1.00)[];
+	URIBL_RED(0.50)[ruralfacts.com:replyto,ruralfacts.com:mid,ruralfacts.com:url];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[ruralfacts.com : SPF not aligned (relaxed),none];
+	HAS_ANON_DOMAIN(0.10)[];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	BAD_REP_POLICIES(0.10)[];
+	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DMARC_POLICY_ALLOW(0.00)[royalcloudrm.name,quarantine];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	ARC_NA(0.00)[];
 	GREYLIST(0.00)[pass,body];
 	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	R_DKIM_ALLOW(0.00)[royalcloudrm.name:s=k1];
-	DKIM_TRACE(0.00)[royalcloudrm.name:+];
-	ARC_NA(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	HAS_REPLYTO(0.00)[krogermember47v0@royalcloudrm.name];
-	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
-	TO_DN_NONE(0.00)[];
+	DKIM_TRACE(0.00)[ruralfacts.com:-];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	HAS_REPLYTO(0.00)[costcowarehouseupdate@ruralfacts.com];
 	RCVD_COUNT_TWO(0.00)[2];
+	TO_DN_NONE(0.00)[];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[krogermember47@royalcloudrm.name,intel-gvt-dev-bounces@lists.freedesktop.org];
-	NEURAL_SPAM(0.00)[1.000];
+	FROM_NEQ_ENVFROM(0.00)[costcowarehouseupdate@ruralfacts.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	NEURAL_SPAM(0.00)[0.950];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[royalcloudrm.name:dkim,royalcloudrm.name:replyto,royalcloudrm.name:url,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,mail.royalcloudrm.name:mid]
-X-Rspamd-Queue-Id: 37DD729E9BD
+	DBL_BLOCKED_OPENRESOLVER(0.00)[ruralfacts.com:replyto,ruralfacts.com:mid,ruralfacts.com:url,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+X-Rspamd-Queue-Id: CFBDF2C267E
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
 X-Spam: Yes
 
---lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg
+------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Kroger=20Customer=20Reward
-=20=20=20=20=20=20=20=20Customer=20Notice=20#2194736
-=20=20=20=20=20=20=20=20KROGER
-=20=20=20=20=20=20=20=20Account=20Notice=20#5938471
-=20=20=20=20=20=20=20=20Your=20Kroger=20Shopper=20Reward=20Update
-=20=20=20=20=20=20=20=20customer=20verification=20window=20in=20progress
-=20=20=20=20=20=20=20=20Earn=20a=20100=20Kroger=20Gift=20Card
-=20=20=20=20=20=20=20=20Action=20Requested=20=E2=80=94=20Short=20Verificati=
-on=20Period
-=20=20=20=20=20=20=20=20=20=20Kroger=20is=20running=20a=20rapid=20customer=
-=20experience=20review.
-=20=20=20=20=20=20=20=20=20=20Approved=20shoppers=20who=20finish=20the=20br=
-ief=20survey=20will=20receive=20a
-=20=20=20=20=20=20=20=20=20=20$100=20Kroger=20Grocery=20Gift=20Card=20as=20=
-appreciation=20for=20sharing=20your=20input.
-=20=20=20=20=20=20=20=20=20=20Start=20Survey=20=20Reserve=20Your=20100
-=20=20=20=20=20=20=20=20=20=20This=20opportunity=20applies=20only=20to=20el=
-igible=20locations=20and=20will=20remain=20active=20until
-=20=20=20=20=20=20=20=20=20=20tomorrow=20evening=20or=20once=20verification=
-=20limits=20are=20met.
-=20=20=20=20=20=20=20=20=20=20Strong=20shopper=20response=20levels=20may=20=
-shorten=20availability.
-=20=20=20=20=20=20=20=20=20=20What=20You=20Receive:
-=20=20=20=20=20=20=20=20=20=20$100=20Kroger=20Gift=20Card
-=20=20=20=20=20=20=20=20=20=20Eligibility=20confirmed=20after=20completion=
-=20validation
-=20=20=20=20=20=20=20=20=20=20Reward=20access=20may=20adjust=20with=20daily=
-=20participation=20levels
-=20=20=20=20=20=20=20=20=20=20Enjoy=20everyday=20grocery=20favorites=20=E2=
-=80=94=20from=20garden-fresh=20produce,=20meats,=20and=20dairy
-=20=20=20=20=20=20=20=20=20=20to=20pantry=20basics,=20household=20needs,=20=
-and=20treats=20=E2=80=94=20at=20participating=20Kroger=20family=20locations.
-=20=20=20=20=20=20=20=20Kroger=20is=20committed=20to=20bringing=20value,=20=
-quality,=20and=20convenience=20to=20families=20across=20the=20country.
-=20=20=20=20=20=20=20=20When=20you=20shop=20with=20Kroger,=20you=20can=20ex=
-plore=20fresh=20produce,=20bakery=20favorites,=20deli=20selections,=20and
-=20=20=20=20=20=20=20=20everyday=20essentials=20that=20fit=20your=20lifesty=
-le=20and=20budget.=20Our=20teams=20work=20daily=20to=20keep=20your=20local
-=20=20=20=20=20=20=20=20store=20stocked=20with=20items=20you=20count=20on=
-=20most.
-=20=20=20=20=20=20=20=20With=20digital=20coupons,=20fuel=20points,=20and=20=
-personalized=20suggestions,=20Kroger=20aims=20to=20make=20each=20trip
-=20=20=20=20=20=20=20=20to=20the=20store=20or=20online=20order=20more=20rew=
-arding.=20Whether=20you=20are=20planning=20weekly=20meals,=20stocking=20up
-=20=20=20=20=20=20=20=20on=20snacks,=20or=20picking=20up=20last-minute=20in=
-gredients,=20you=20can=20rely=20on=20Kroger=20to=20help=20you=20find=20what
-=20=20=20=20=20=20=20=20you=20need,=20when=20you=20need=20it,=20at=20a=20va=
-lue=20that=20makes=20sense=20for=20your=20household.
-=20=20=20=20=20=20=20=20From=20curbside=20pickup=20and=20delivery=20options=
-=20to=20in-store=20services,=20Kroger=20continues=20to=20invest=20in
-=20=20=20=20=20=20=20=20ways=20to=20make=20your=20shopping=20experience=20s=
-moother=20and=20more=20enjoyable.=20By=20listening=20to=20shopper
-=20=20=20=20=20=20=20=20feedback=20and=20improving=20our=20services,=20we=
-=20strive=20to=20keep=20your=20neighborhood=20Kroger=20a=20trusted=20place
-=20=20=20=20=20=20=20=20for=20groceries,=20household=20items,=20and=20every=
-day=20favorites.
-=20=20=20=20=20=20If=20you=20wish=20to=20stop=20getting=20these,=20feel=20f=
-ree=20to=20exit
-=20=20=20=20=20=20here.
+Costco Wholesale Membership Update
 
-http://www.royalcloudrm.name/botbego
+Yes, that plan still works for me, and I think the easiest way is to keep the morning simple.
+Bring the printed notes if you already have them, because that will save time once everyone sits down.
+I can handle the first part of the discussion, then you can walk through the checklist after that.
+If the room near the front is open, use that one since it is quieter and easier for conversation.
+Also, please ask Jordan whether the smaller table is available, because the larger one makes it harder to hear each other.
+I would keep the agenda short, maybe three topics, so we have enough time for questions.
+For food, something light is best, maybe fruit and sandwiches, since a heavy meal slows everyone down.
+If the weather changes, we can move the outdoor portion inside without much adjustment.
+Send me the updated outline when you can, and I will look over the order of items before we begin.
 
---lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg
+Costco
+
+Wholesale
+
+Your Costco membership details have been revised
+
+We’re reaching out to let you know that your member perks are changing. Your account now shows an opportunity to recover a $100 Costco card and a 12/month membership update connected to your current benefits.
+
+Member record
+
+Membership Tier: Executive
+
+Member ID: 8473 2206 5914
+
+Status: Perks change pending review
+
+Please review the update to see what has changed and confirm the available member benefits tied to your account.
+
+Check Card + Membership Details
+
+Costco Wholesale Member Services
+
+I looked at your notes, and I think the second option is better because it gives everyone more time to settle in.
+The first version felt a little rushed, especially near the end where you had too many points packed together.
+I would move the discussion about seating higher up so people know where they are supposed to go before the main activity starts.
+Also, the idea about bringing extra pens is smart, because someone always forgets one.
+If you want, I can put together a cleaner list with shorter bullet points and send it back this afternoon.
+For the meal, keep it simple and easy to share, maybe wraps, sliced fruit, and tea.
+That should work well for different preferences without adding extra effort.
+As for timing, a short break in the middle would help, especially if the conversation runs long.
+Let me know whether you want me to handle the printed copies too, because I can do that before I leave.
+
+------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089
 Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE=20html>
-<html=20lang=3D"en">
+<!doctype html>
+<html lang="en">
 <head>
-<meta=20charset=3D"UTF-8"=20/>
-<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20initial-scal=
-e=3D1.0"=20/>
-<title>Kroger=20Customer=20Reward</title>
-
-<style>
-=20=20body=20{
-=20=20=20=20margin:=200;
-=20=20=20=20padding:=200;
-=20=20=20=20background:=20#f4f6f9;
-=20=20=20=20font-family:=20Arial,=20Helvetica,=20sans-serif;
-=20=20=20=20color:=20#1a1a1a;
-=20=20}
-
-=20=20.wrapper=20{
-=20=20=20=20width:=20100%;
-=20=20=20=20background:=20#f4f6f9;
-=20=20=20=20padding:=2020px=200;
-=20=20}
-
-=20=20.container=20{
-=20=20=20=20max-width:=20560px;
-=20=20=20=20margin:=200=20auto;
-=20=20=20=20background:=20#ffffff;
-=20=20=20=20border-radius:=2010px;
-=20=20=20=20border:=201px=20solid=20#e2e2e2;
-=20=20=20=20overflow:=20hidden;
-=20=20}
-
-=20=20.top-bar=20{
-=20=20=20=20background:=20#0055a6;
-=20=20=20=20padding:=2014px=2022px;
-=20=20=20=20color:=20#ffffff;
-=20=20=20=20font-size:=2013px;
-=20=20=20=20text-align:=20right;
-=20=20}
-
-=20=20.header=20{
-=20=20=20=20background:=20#ffffff;
-=20=20=20=20padding:=2018px=2024px=2010px=2024px;
-=20=20=20=20display:=20flex;
-=20=20=20=20align-items:=20center;
-=20=20=20=20border-bottom:=201px=20solid=20#dfe6ee;
-=20=20}
-
-=20=20.logo=20{
-=20=20=20=20font-size:=2026px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20color:=20#0055a6;
-=20=20=20=20letter-spacing:=200.4px;
-=20=20}
-
-=20=20.notice-tag=20{
-=20=20=20=20margin-left:=20auto;
-=20=20=20=20font-size:=2012px;
-=20=20=20=20text-transform:=20uppercase;
-=20=20=20=20color:=20#0055a6;
-=20=20=20=20font-weight:=20600;
-=20=20=20=20background:=20#eaf3ff;
-=20=20=20=20padding:=204px=2010px;
-=20=20=20=20border-radius:=2020px;
-=20=20}
-
-=20=20.banner=20{
-=20=20=20=20background:=20#003f7d;
-=20=20=20=20padding:=2016px=2024px;
-=20=20=20=20color:=20#ffffff;
-=20=20=20=20text-align:=20left;
-=20=20}
-
-=20=20.banner-title=20{
-=20=20=20=20font-size:=2022px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20margin:=200=200=204px=200;
-=20=20}
-
-=20=20.banner-sub=20{
-=20=20=20=20font-size:=2013px;
-=20=20=20=20letter-spacing:=200.6px;
-=20=20=20=20text-transform:=20uppercase;
-=20=20}
-
-=20=20.inner-content=20{
-=20=20=20=20padding:=2022px=2024px=2026px=2024px;
-=20=20}
-
-=20=20.title=20{
-=20=20=20=20font-size:=2022px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20color:=20#0055a6;
-=20=20=20=20margin-bottom:=2012px;
-=20=20=20=20line-height:=201.4;
-=20=20}
-
-=20=20.urgency=20{
-=20=20=20=20font-size:=2014px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20color:=20#d40000;
-=20=20=20=20margin-bottom:=2012px;
-=20=20}
-
-=20=20.alert-box=20{
-=20=20=20=20background:=20#eaf3ff;
-=20=20=20=20border-left:=205px=20solid=20#0055a6;
-=20=20=20=20padding:=2014px=2016px;
-=20=20=20=20margin:=2018px=200=2024px=200;
-=20=20=20=20font-size:=2014px;
-=20=20=20=20line-height:=201.6;
-=20=20}
-
-=20=20.btn-row=20{
-=20=20=20=20text-align:=20left;
-=20=20=20=20margin:=2010px=200=2024px=200;
-=20=20}
-
-=20=20.btn=20{
-=20=20=20=20display:=20inline-block;
-=20=20=20=20background:=20#0071ce;
-=20=20=20=20color:=20#ffffff=20!important;
-=20=20=20=20padding:=2013px=2026px;
-=20=20=20=20font-size:=2018px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20border-radius:=206px;
-=20=20=20=20text-decoration:=20none;
-=20=20}
-
-=20=20.btn:hover=20{
-=20=20=20=20background:=20#0055a6;
-=20=20}
-
-=20=20.list-heading=20{
-=20=20=20=20font-size:=2015px;
-=20=20=20=20margin-top:=2018px;
-=20=20=20=20font-weight:=20bold;
-=20=20=20=20color:=20#0055a6;
-=20=20}
-
-=20=20.benefits=20{
-=20=20=20=20font-size:=2015px;
-=20=20=20=20line-height:=201.6;
-=20=20=20=20padding-left:=2018px;
-=20=20=20=20margin:=2010px=200=200=200;
-=20=20}
-
-=20=20.benefits=20li=20{
-=20=20=20=20margin-bottom:=204px;
-=20=20}
-
-=20=20.footer-meta=20{
-=20=20=20=20font-size:=2010px;
-=20=20=20=20color:=20#bbbbbb;
-=20=20=20=20line-height:=201.5;
-=20=20=20=20padding:=2010px=2024px=206px=2024px;
-=20=20=20=20background:=20#ffffff;
-=20=20=20=20border-top:=201px=20solid=20#eeeeee;
-=20=20}
-
-=20=20.unsub=20{
-=20=20=20=20font-size:=2011px;
-=20=20=20=20color:=20#999999;
-=20=20=20=20padding:=206px=2024px=2016px=2024px;
-=20=20=20=20background:=20#ffffff;
-=20=20}
-
-=20=20.unsub=20a=20{
-=20=20=20=20color:=20#0055a6;
-=20=20=20=20text-decoration:=20underline;
-=20=20}
-
-=20=20@media=20only=20screen=20and=20(max-width:=20600px)=20{
-=20=20=20=20.container=20{
-=20=20=20=20=20=20margin:=200=2010px;
-=20=20=20=20}
-=20=20=20=20.header,=20.banner,=20.inner-content=20{
-=20=20=20=20=20=20padding-left:=2016px=20!important;
-=20=20=20=20=20=20padding-right:=2016px=20!important;
-=20=20=20=20}
-=20=20=20=20.btn-row=20{
-=20=20=20=20=20=20text-align:=20center=20!important;
-=20=20=20=20}
-=20=20=20=20.top-bar=20{
-=20=20=20=20=20=20text-align:=20center=20!important;
-=20=20=20=20}
-=20=20=20=20.notice-tag=20{
-=20=20=20=20=20=20margin-left:=200;
-=20=20=20=20=20=20margin-top:=206px;
-=20=20=20=20}
-=20=20=20=20.header=20{
-=20=20=20=20=20=20flex-direction:=20column;
-=20=20=20=20=20=20align-items:=20flex-start;
-=20=20=20=20}
-=20=20}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco Wholesale Membership Update</title>
 </head>
+<body style="margin:0; padding:0; background-color:#f4f7fb; font-family:Arial, Helvetica, sans-serif; color:#1f2d3d;">
+<div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:0; height:0; line-height:0; overflow:hidden;">Yes, that plan still works for me, and I think the easiest way is to keep the morning simple.<br>Bring the printed notes if you already have them, because that will save time once everyone sits down.<br>I can handle the first part of the discussion, then you can walk through the checklist after that.<br>If the room near the front is open, use that one since it is quieter and easier for conversation.<br>Also, please ask Jordan whether the smaller table is available, because the larger one makes it harder to hear each other.<br>I would keep the agenda short, maybe three topics, so we have enough time for questions.<br>For food, something light is best, maybe fruit and sandwiches, since a heavy meal slows everyone down.<br>If the weather changes, we can move the outdoor portion inside without much adjustment.<br>Send me the updated outline when you ca
+ n, and I will look over the order of items before we begin.</div>
 
-<body>
-=20=20<div=20class=3D"wrapper">
-=20=20=20=20<div=20class=3D"container">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:#f4f7fb;">
+  <tr>
+    <td align="center" style="padding:24px 12px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px; width:100%; background-color:#ffffff; border:2px solid #0a69b8; border-top:8px solid #d62b2b;">
+        <tr>
+          <td style="padding:24px 24px 12px 24px; text-align:left;">
+            <div style="display:inline-block; vertical-align:top; line-height:1;">
+              <div style="display:inline-block; background-color:#d62b2b; color:#ffffff; font-size:34px; font-weight:700; letter-spacing:1px; padding:8px 14px; line-height:1; text-transform:uppercase;">Costco</div>
+              <div style="display:block; background-color:#0a69b8; color:#ffffff; font-size:18px; font-weight:700; letter-spacing:2px; padding:6px 14px; line-height:1; text-transform:uppercase; margin-top:4px;">Wholesale</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 24px 0 24px;">
+            <div style="background-color:#eaf3fb; border-left:6px solid #0a69b8; padding:16px 18px;">
+              <div style="font-size:28px; line-height:36px; font-weight:700; color:#163a63;">Your Costco membership details have been revised</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 24px 8px 24px; font-size:18px; line-height:28px; color:#24364a;">
+            We’re reaching out to let you know that your member perks are changing. Your account now shows an opportunity to recover a <span style="font-weight:700; color:#163a63;">$100 Costco card</span> and a <span style="font-weight:700; color:#163a63;">12/month membership</span> update connected to your current benefits.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 24px 8px 24px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; border:1px solid #b9d3ea; background-color:#f7fbff;">
+              <tr>
+                <td style="padding:14px 16px; font-size:16px; line-height:24px; color:#24364a;">
+                  <div style="font-weight:700; color:#163a63; margin-bottom:6px;">Member record</div>
+                  <div>Membership Tier: Executive</div>
+                  <div>Member ID: 8473 2206 5914</div>
+                  <div>Status: Perks change pending review</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 24px 24px 24px; font-size:18px; line-height:28px; color:#24364a;">
+            Please review the update to see what has changed and confirm the available member benefits tied to your account.
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:0 24px 28px 24px;">
+            <a href="http://www.ruralfacts.com/content/uk/rapidfiles/timely/followup/00vz3_41c_lsz3_a21f8_8gbw0_631" style="display:inline-block; background-color:#0a69b8; color:#ffffff; text-decoration:none; font-size:18px; line-height:18px; font-weight:700; padding:16px 24px; border:2px solid #084f8b;">Check Card + Membership Details</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 24px 24px 24px;">
+            <div style="border-top:1px solid #c8dced; padding-top:16px; font-size:16px; line-height:24px; color:#4a5b6d;">
+              Costco Wholesale Member Services
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
-=20=20=20=20=20=20<div=20class=3D"top-bar">
-=20=20=20=20=20=20=20=20Customer=20Notice=20#2194736
-=20=20=20=20=20=20</div>
-
-=20=20=20=20=20=20<div=20class=3D"header">
-=20=20=20=20=20=20=20=20<div=20class=3D"logo">KROGER</div>
-=20=20=20=20=20=20=20=20<div=20class=3D"notice-tag">Account=20Notice=20#593=
-8471</div>
-=20=20=20=20=20=20</div>
-
-=20=20=20=20=20=20<div=20class=3D"banner">
-=20=20=20=20=20=20=20=20<p=20class=3D"banner-title">Your=20Kroger=20Shopper=
-=20Reward=20Update</p>
-=20=20=20=20=20=20=20=20<p=20class=3D"banner-sub">customer=20verification=
-=20window=20in=20progress</p>
-=20=20=20=20=20=20</div>
-
-=20=20=20=20=20=20<div=20class=3D"inner-content">
-
-=20=20=20=20=20=20=20=20<div=20class=3D"title">Earn=20a=20100=20Kroger=20Gi=
-ft=20Card</div>
-
-=20=20=20=20=20=20=20=20<div=20class=3D"urgency">Action=20Requested=20=E2=
-=80=94=20Short=20Verification=20Period</div>
-
-=20=20=20=20=20=20=20=20<div=20class=3D"alert-box">
-=20=20=20=20=20=20=20=20=20=20Kroger=20is=20running=20a=20rapid=20customer=
-=20experience=20review.
-=20=20=20=20=20=20=20=20=20=20Approved=20shoppers=20who=20finish=20the=20br=
-ief=20survey=20will=20receive=20a
-=20=20=20=20=20=20=20=20=20=20<strong>$100=20Kroger=20Grocery=20Gift=20Card=
-</strong>=20as=20appreciation=20for=20sharing=20your=20input.
-=20=20=20=20=20=20=20=20</div>
-
-=20=20=20=20=20=20=20=20<div=20class=3D"btn-row">
-=20=20=20=20=20=20=20=20=20=20<a=20href=3D"http://www.royalcloudrm.name/bot=
-bego"=20class=3D"btn">Start=20Survey=20=20Reserve=20Your=20100</a>
-=20=20=20=20=20=20=20=20</div>
-
-=20=20=20=20=20=20=20=20<p=20style=3D"font-size:15px;=20line-height:1.6;=20=
-margin:0=200=2010px=200;">
-=20=20=20=20=20=20=20=20=20=20This=20opportunity=20applies=20only=20to=20el=
-igible=20locations=20and=20will=20remain=20active=20until
-=20=20=20=20=20=20=20=20=20=20<strong>tomorrow=20evening</strong>=20or=20on=
-ce=20verification=20limits=20are=20met.
-=20=20=20=20=20=20=20=20=20=20Strong=20shopper=20response=20levels=20may=20=
-shorten=20availability.
-=20=20=20=20=20=20=20=20</p>
-
-=20=20=20=20=20=20=20=20<p=20class=3D"list-heading">
-=20=20=20=20=20=20=20=20=20=20What=20You=20Receive:
-=20=20=20=20=20=20=20=20</p>
-
-=20=20=20=20=20=20=20=20<ul=20class=3D"benefits">
-=20=20=20=20=20=20=20=20=20=20<li><strong>$100=20Kroger=20Gift=20Card</stro=
-ng></li>
-=20=20=20=20=20=20=20=20=20=20<li>Eligibility=20confirmed=20after=20complet=
-ion=20validation</li>
-=20=20=20=20=20=20=20=20=20=20<li>Reward=20access=20may=20adjust=20with=20d=
-aily=20participation=20levels</li>
-=20=20=20=20=20=20=20=20</ul>
-
-=20=20=20=20=20=20=20=20<p=20style=3D"font-size:15px;=20margin-top:18px;=20=
-line-height:1.6;">
-=20=20=20=20=20=20=20=20=20=20Enjoy=20everyday=20grocery=20favorites=20=E2=
-=80=94=20from=20garden-fresh=20produce,=20meats,=20and=20dairy
-=20=20=20=20=20=20=20=20=20=20to=20pantry=20basics,=20household=20needs,=20=
-and=20treats=20=E2=80=94=20at=20participating=20Kroger=20family=20locations.
-=20=20=20=20=20=20=20=20</p>
-
-=20=20=20=20=20=20</div>
-=20=20=20=20</div>
-
-=20=20=20=20<div=20class=3D"footer-meta">
-=20=20=20=20=20=20<p=20style=3D"margin:0=200=206px=200;">
-=20=20=20=20=20=20=20=20Kroger=20is=20committed=20to=20bringing=20value,=20=
-quality,=20and=20convenience=20to=20families=20across=20the=20country.=20
-=20=20=20=20=20=20=20=20When=20you=20shop=20with=20Kroger,=20you=20can=20ex=
-plore=20fresh=20produce,=20bakery=20favorites,=20deli=20selections,=20and=
-=20
-=20=20=20=20=20=20=20=20everyday=20essentials=20that=20fit=20your=20lifesty=
-le=20and=20budget.=20Our=20teams=20work=20daily=20to=20keep=20your=20local=
-=20
-=20=20=20=20=20=20=20=20store=20stocked=20with=20items=20you=20count=20on=
-=20most.
-=20=20=20=20=20=20</p>
-=20=20=20=20=20=20<p=20style=3D"margin:0=200=206px=200;">
-=20=20=20=20=20=20=20=20With=20digital=20coupons,=20fuel=20points,=20and=20=
-personalized=20suggestions,=20Kroger=20aims=20to=20make=20each=20trip=20
-=20=20=20=20=20=20=20=20to=20the=20store=20or=20online=20order=20more=20rew=
-arding.=20Whether=20you=20are=20planning=20weekly=20meals,=20stocking=20up=
-=20
-=20=20=20=20=20=20=20=20on=20snacks,=20or=20picking=20up=20last-minute=20in=
-gredients,=20you=20can=20rely=20on=20Kroger=20to=20help=20you=20find=20what=
-=20
-=20=20=20=20=20=20=20=20you=20need,=20when=20you=20need=20it,=20at=20a=20va=
-lue=20that=20makes=20sense=20for=20your=20household.
-=20=20=20=20=20=20</p>
-=20=20=20=20=20=20<p=20style=3D"margin:0;">
-=20=20=20=20=20=20=20=20From=20curbside=20pickup=20and=20delivery=20options=
-=20to=20in-store=20services,=20Kroger=20continues=20to=20invest=20in=20
-=20=20=20=20=20=20=20=20ways=20to=20make=20your=20shopping=20experience=20s=
-moother=20and=20more=20enjoyable.=20By=20listening=20to=20shopper=20
-=20=20=20=20=20=20=20=20feedback=20and=20improving=20our=20services,=20we=
-=20strive=20to=20keep=20your=20neighborhood=20Kroger=20a=20trusted=20place=
-=20
-=20=20=20=20=20=20=20=20for=20groceries,=20household=20items,=20and=20every=
-day=20favorites.
-=20=20=20=20=20=20</p>
-=20=20=20=20</div>
-
-=20=20=20=20<div=20class=3D"unsub">
-=20=20=20=20=20=20If=20you=20wish=20to=20stop=20getting=20these,=20feel=20f=
-ree=20to=20exit
-=20=20=20=20=20=20<a=20href=3D"http://www.royalcloudrm.name/xwt1z">here</a>.
-=20=20=20=20</div>
-=20=20</div>
-=20=20<img=20src=3D"http://www.royalcloudrm.name/open/aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc.png"=20w=
-idth=3D"1"=20height=3D"1"=20style=3D"display:none"=20alt=3D"">
+<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif;">I looked at your notes, and I think the second option is better because it gives everyone more time to settle in.<br>The first version felt a little rushed, especially near the end where you had too many points packed together.<br>I would move the discussion about seating higher up so people know where they are supposed to go before the main activity starts.<br>Also, the idea about bringing extra pens is smart, because someone always forgets one.<br>If you want, I can put together a cleaner list with shorter bullet points and send it back this afternoon.<br>For the meal, keep it simple and easy to share, maybe wraps, sliced fruit, and tea.<br>That should work well for different preferences without adding extra effort.<br>As for timing, a short break in the middle would help, especially if the conversation runs long.<br>Let me know whether you want me to handle the printed copies too, bec
+ ause I can do that before I leave.</div>
 </body>
 </html>
 
---lVbAK-EdWvHfEismBLmhXvtHPttTAs-__nzg--
+------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089--
