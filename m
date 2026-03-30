@@ -2,46 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id +DBFHpwHu2mceQIAu9opvQ
+	id SKSgGKIeymmu5QUAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2026 21:14:20 +0100
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Mar 2026 08:56:34 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFBDF2C267E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2026 21:14:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCF3F35621F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Mar 2026 08:56:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7D89410E442;
-	Wed, 18 Mar 2026 20:07:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F9AE10E37D;
+	Mon, 30 Mar 2026 06:56:32 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=ruralfacts.com header.i=costcowarehouseupdate@ruralfacts.com header.b="lopKlvwa";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=laojiguazi.com header.i=pgunther@laojiguazi.com header.b="B3iWnPv6";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 357 seconds by postgrey-1.36 at gabe;
- Wed, 18 Mar 2026 20:07:28 UTC
-Received: from inbound.ruralfacts.com (mail.sailpirate.com [38.145.212.110])
- by gabe.freedesktop.org (Postfix) with ESMTP id 93FFB10E442
+X-Greylist: delayed 9182 seconds by postgrey-1.36 at gabe;
+ Mon, 30 Mar 2026 06:56:30 UTC
+Received: from mail8.laojiguazi.com (mail8.laojiguazi.com [85.158.110.187])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 98F1110E37D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Mar 2026 20:07:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaeragzgrez3;
- d=ruralfacts.com; 
- h=From:To:Message-ID:MIME-Version:Reply-To:Date:Subject:List-Unsubscribe:
- Content-Type; i=costcowarehouseupdate@ruralfacts.com;
- bh=SW1aTGBDUxTCtFg6Yoq9Heglz7EShI+FurMV8++nA6A=;
- b=lopKlvwaYCtoA5KPdr8fegCHS907FxpuZVi+gmy19KniVGGBKV27nwOmaya/9EzXBghcNO+/siXN
- CnPDDYzMQ+FNThMSEVTeZGTYNsKhk/0ZA5rBnomxSOlKjf2UmXY6RGqGVH3IU49QQQD1RenkjvLR
- cQPGSJCxJgtERKf7hH/j8D+9JpLmAwiWjMoUJlrZ9NoCycLeMNrcaoIWwDDxrYDmS6Bacp34H+DL
- Nl7iCL8pV5+NFHiMvrjNZzpA+xaxIlBFJlPpN962UOWCz4G3RPPFYRFrtuowgPArAFrtXI7Je6rG
- iR25B/qbI78chlqx5rUJ3T9fE7V2CKKCC2zFZg==
-From: Costco Warehouse Update <costcowarehouseupdate@ruralfacts.com>
+ Mon, 30 Mar 2026 06:56:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=laojiguazi.com;
+ h=From:To:Message-ID:Reply-To:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:List-ID:List-Unsubscribe;
+ i=pgunther@laojiguazi.com; 
+ bh=NOysf7Ue1VtkKzhezEOKwTtCt4o6GHAtz0IY0LfeieU=;
+ b=B3iWnPv66Wy3IcTixhxgXqH5S40h5d67OwikPEDKpqCkkqFHwV8cfVDJK3c+NpnI5b+Z/KgmuqaV
+ N2BrZyGGX/0/7fwJtrb7ddg8Oi0JQBRKLXa8flznyA2n1kSn8jDDwSsMI80z0ooU2locgh0O6f27
+ Su91LtwNqwpsvekb1zyOxrE/azyHqOjZigJTksQaGxSAQagY/4QKKTKyO7NwLf+SFzWb6uVlH04S
+ 8p/Wm682S09aGRxzk+X87WJ6+tikVFyV+k+4AZppNstqrlYBo89dBbScKB3ZAG8WzXLBSbryWsn2
+ r01yX7bN0MY34AxftwrFpXwVcXdKuKYzx0TKYQ==
+From: "Jessica Martin" <pgunther@laojiguazi.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Message-ID: <864906-240525080311-kas3m8vaipm@ruralfacts.com>
+Message-ID: <gtat_HAXFP91AyLJEoOiACxYZdpR4v=0I@lincolnassessor.org>
+Subject: =?UTF-8?B?Q2hhcmFrdGVyc3RhcmstZGltZW5zaW9uaWVydGUgRWxla3Ryb2ZhaHJyYWQtU29ydGltZW50IGbDvHIgRmFjaGjDpG5kbGVyIGbDvHIgcmVnaW9uYWxlIHVuZCDDvGJlcnJlZ2lvbmFsZSBIw6RuZGxlcg==?=
+Date: Mon, 30 Mar 2026 05:25:39 +0200
 MIME-Version: 1.0
+Content-Type: multipart/alternative; charset="UTF-8";
+ boundary="b1_7126463727700e1d46dcecd123abb9d9"
+Content-Transfer-Encoding: quoted-printable
+X-MC-User: 4987cd5b6eccb292
+X-MC-Track: opens,clicks_all
+X-Campaign: lincolnassessor-98515676
+X-campaignid: ac3748d1875eab61570dc54b
+Feedback-ID: 7868:98515676:mc:lincolnassessor
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Date: Wed, 18 Mar 2026 16:00:18 -0400
-Subject: Costco membership changes and what they mean
-Content-Type: multipart/alternative;
- boundary="----=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,173 +59,106 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: costcowarehouseupdate@ruralfacts.com
+Reply-To: sales@laojiguazi.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [8.44 / 15.00];
-	ABUSE_SURBL(5.00)[www.ruralfacts.com:url,ruralfacts.com:replyto,ruralfacts.com:mid];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[ruralfacts.com:s=mtaeragzgrez3];
-	SUSPICIOUS_URL_IN_SUSPICIOUS_MESSAGE(1.00)[];
-	URIBL_RED(0.50)[ruralfacts.com:replyto,ruralfacts.com:mid,ruralfacts.com:url];
+X-Spamd-Result: default: False [2.56 / 15.00];
+	R_MIXED_CHARSET(1.07)[subject];
+	R_DKIM_REJECT(1.00)[laojiguazi.com:s=dkim];
+	URI_COUNT_ODD(1.00)[1];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[ruralfacts.com : SPF not aligned (relaxed),none];
-	HAS_ANON_DOMAIN(0.10)[];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[laojiguazi.com : SPF not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	ARC_NA(0.00)[];
-	GREYLIST(0.00)[pass,body];
+	HAS_PHPMAILER_SIG(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[ruralfacts.com:-];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	HAS_REPLYTO(0.00)[costcowarehouseupdate@ruralfacts.com];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_DN_NONE(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[costcowarehouseupdate@ruralfacts.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	NEURAL_SPAM(0.00)[0.950];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	ARC_NA(0.00)[];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_ONE(0.00)[1];
+	DKIM_TRACE(0.00)[laojiguazi.com:-];
 	MISSING_XM_UA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
+	HAS_REPLYTO(0.00)[sales@laojiguazi.com];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_NEQ_ENVFROM(0.00)[pgunther@laojiguazi.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	NEURAL_SPAM(0.00)[0.932];
+	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	TO_DN_NONE(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[ruralfacts.com:replyto,ruralfacts.com:mid,ruralfacts.com:url,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
-X-Rspamd-Queue-Id: CFBDF2C267E
-X-Rspamd-Action: add header
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[lincolnassessor.org:mid,laojiguazi.com:replyto,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+X-Rspamd-Queue-Id: BCF3F35621F
+X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spam: Yes
 
-------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089
-Content-Type: text/plain; charset="UTF-8"
+--b1_7126463727700e1d46dcecd123abb9d9
+Content-Type: text/plain; format=flowed; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Costco Wholesale Membership Update
+EU 250W E-Bike Offer=0A=0AInfo: Die englische Fassung finden Sie weiter unt=
+en. - English version follows below.=0A=0AFat-Tire Modelle f=C3=BCr Gel=
+=C3=A4nde und FreizeitHallo, hier ist Elmstone Bike Depot mit einer kurzen =
+B2B-Anfrage.=0A=0AWir k=C3=B6nnen Ihnen aktuelle Modelle mit kurzer Lieferz=
+eit innerhalb der EU anbieten.=0A=0AKleine Testbestellungen sind m=C3=B6gli=
+ch, und Nachbestellungen k=C3=B6nnen kurzfristig organisiert werden.=0A=0AA=
+uf Wunsch senden wir Ihnen Katalog, Preise, Spezifikationen und aktuelle Ve=
+rf=C3=BCgbarkeit.=0A=0AJe nach Region ist eine z=C3=BCgige Lieferung aus DE=
+-Lager m=C3=B6glich.=0A=0AWenn Interesse an einem E...
 
-Yes, that plan still works for me, and I think the easiest way is to keep the morning simple.
-Bring the printed notes if you already have them, because that will save time once everyone sits down.
-I can handle the first part of the discussion, then you can walk through the checklist after that.
-If the room near the front is open, use that one since it is quieter and easier for conversation.
-Also, please ask Jordan whether the smaller table is available, because the larger one makes it harder to hear each other.
-I would keep the agenda short, maybe three topics, so we have enough time for questions.
-For food, something light is best, maybe fruit and sandwiches, since a heavy meal slows everyone down.
-If the weather changes, we can move the outdoor portion inside without much adjustment.
-Send me the updated outline when you can, and I will look over the order of items before we begin.
-
-Costco
-
-Wholesale
-
-Your Costco membership details have been revised
-
-We’re reaching out to let you know that your member perks are changing. Your account now shows an opportunity to recover a $100 Costco card and a 12/month membership update connected to your current benefits.
-
-Member record
-
-Membership Tier: Executive
-
-Member ID: 8473 2206 5914
-
-Status: Perks change pending review
-
-Please review the update to see what has changed and confirm the available member benefits tied to your account.
-
-Check Card + Membership Details
-
-Costco Wholesale Member Services
-
-I looked at your notes, and I think the second option is better because it gives everyone more time to settle in.
-The first version felt a little rushed, especially near the end where you had too many points packed together.
-I would move the discussion about seating higher up so people know where they are supposed to go before the main activity starts.
-Also, the idea about bringing extra pens is smart, because someone always forgets one.
-If you want, I can put together a cleaner list with shorter bullet points and send it back this afternoon.
-For the meal, keep it simple and easy to share, maybe wraps, sliced fruit, and tea.
-That should work well for different preferences without adding extra effort.
-As for timing, a short break in the middle would help, especially if the conversation runs long.
-Let me know whether you want me to handle the printed copies too, because I can do that before I leave.
-
-------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089
+--b1_7126463727700e1d46dcecd123abb9d9
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<!doctype html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Costco Wholesale Membership Update</title>
-</head>
-<body style="margin:0; padding:0; background-color:#f4f7fb; font-family:Arial, Helvetica, sans-serif; color:#1f2d3d;">
-<div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:0; height:0; line-height:0; overflow:hidden;">Yes, that plan still works for me, and I think the easiest way is to keep the morning simple.<br>Bring the printed notes if you already have them, because that will save time once everyone sits down.<br>I can handle the first part of the discussion, then you can walk through the checklist after that.<br>If the room near the front is open, use that one since it is quieter and easier for conversation.<br>Also, please ask Jordan whether the smaller table is available, because the larger one makes it harder to hear each other.<br>I would keep the agenda short, maybe three topics, so we have enough time for questions.<br>For food, something light is best, maybe fruit and sandwiches, since a heavy meal slows everyone down.<br>If the weather changes, we can move the outdoor portion inside without much adjustment.<br>Send me the updated outline when you ca
- n, and I will look over the order of items before we begin.</div>
+<html><head><meta charset=3D"utf-8"/><title>EU 250W E-Bike Offer</title></h=
+ead>=0A<body style=3D"font-family:Arial,Helvetica,sans-serif;font-size:14px=
+;line-height:1.5;margin:0;padding:10px;">=0A<table cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"border-collapse:collapse;" width=3D"100%">=0A<tr><td c=
+olspan=3D"2" style=3D"padding:0 0 10px 0;text-align:center;color:#666666;fo=
+nt-size:12px;"><em>Info: Die englische Fassung finden Sie weiter unten. - E=
+nglish version follows below.</em></td></tr>=0A<tr><td colspan=3D"2" style=
+=3D"padding:0 0 10px 0;text-align:center;">=0A<img alt=3D"" src=3D"https://=
+ebycco.com/cdn/shop/files/2_0014_5.jpg" style=3D"max-width:100%;height:auto=
+;display:block;margin:0 auto;"/></td></tr>=0A<tr>=0A<td colspan=3D"2" style=
+=3D"padding:10px;" valign=3D"top">=0A<h3 style=3D"margin:0 0 8px 0;">Fat-Ti=
+re Modelle f=C3=BCr Gel=C3=A4nde und Freizeit</h3><p style=3D"margin:0 0 6p=
+x 0;">Hallo, hier ist Elmstone Bike Depot mit einer kurzen B2B-Anfrage.</p>=
+<p style=3D"margin:0 0 6px 0;">Wir k=C3=B6nnen Ihnen aktuelle Modelle mit k=
+urzer Lieferzeit innerhalb der EU anbieten.</p><p style=3D"margin:0 0 6px 0=
+;">Kleine Testbestellungen sind m=C3=B6glich, und Nachbestellungen k=C3=
+=B6nnen kurzfristig organisiert werden.</p><p style=3D"margin:0 0 6px 0;">A=
+uf Wunsch senden wir Ihnen Katalog, Preise, Spezifikationen und aktuelle Ve=
+rf=C3=BCgbarkeit.</p><p style=3D"margin:0 0 6px 0;">Je nach Region ist eine=
+ z=C3=BCgige Lieferung aus DE-Lager m=C3=B6glich.</p><p style=3D"margin:0 0=
+ 6px 0;">Wenn Interesse an einem Einkauf besteht, antworten Sie bitte auf u=
+nsere E-Mail und teilen Sie uns Ihre Adresse sowie Ihre Postleitzahl mit, d=
+amit wir die Frachtkosten berechnen k=C3=B6nnen.</p><p style=3D"margin:8px =
+0 0 0;">Freundliche Gr=C3=BC=C3=9Fe<br/><strong>Oscar Bryant</strong><br/><=
+strong>Elmstone Bike Depot</strong></p>=0A</td>=0A</tr>=0A<tr><td colspan=
+=3D"2" style=3D"padding:0 10px;"><hr style=3D"border:none;border-top:1px so=
+lid #cccccc;margin:0;"/></td></tr>=0A<tr>=0A<td colspan=3D"2" style=3D"padd=
+ing:10px;" valign=3D"top">=0A<h3 style=3D"margin:0 0 8px 0;">Fat-tire model=
+s for off-road and leisure</h3><p style=3D"margin:0 0 6px 0;">Hello, I am c=
+ontacting you on behalf of Elmstone Bike Depot.</p><p style=3D"margin:0 0 6=
+px 0;">We offer EU-compliant e-bikes across several categories, including c=
+ity, trekking, mountain and fat-tire models.</p><p style=3D"margin:0 0 6px =
+0;">We can also start with a small first purchase if that is more suitable.=
+</p><p style=3D"margin:0 0 6px 0;">Catalog, spec sheets and B2B information=
+ are available on request.</p><p style=3D"margin:0 0 6px 0;">For many EU de=
+stinations, we can arrange prompt shipping.</p><p style=3D"margin:0 0 6px 0=
+;">If you are interested in a purchase, please reply to our email and share=
+ your address and postal code so we can calculate the freight cost.</p><p s=
+tyle=3D"margin:8px 0 0 0;">Kind regards<br/><strong>Oscar Bryant</strong><b=
+r/><strong>Elmstone Bike Depot</strong></p>=0A</td>=0A</tr></table>=0A<p st=
+yle=3D"font-size:11px;color:#666666;margin:10px 0 0 0;">Wenn Sie keine weit=
+eren E-Mails erhalten m=C3=B6chten, antworten Sie bitte mit "unlist". - If =
+you do not wish to receive further emails, please reply "unlist".</p>=0A</b=
+ody></html>
 
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:#f4f7fb;">
-  <tr>
-    <td align="center" style="padding:24px 12px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px; width:100%; background-color:#ffffff; border:2px solid #0a69b8; border-top:8px solid #d62b2b;">
-        <tr>
-          <td style="padding:24px 24px 12px 24px; text-align:left;">
-            <div style="display:inline-block; vertical-align:top; line-height:1;">
-              <div style="display:inline-block; background-color:#d62b2b; color:#ffffff; font-size:34px; font-weight:700; letter-spacing:1px; padding:8px 14px; line-height:1; text-transform:uppercase;">Costco</div>
-              <div style="display:block; background-color:#0a69b8; color:#ffffff; font-size:18px; font-weight:700; letter-spacing:2px; padding:6px 14px; line-height:1; text-transform:uppercase; margin-top:4px;">Wholesale</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:0 24px 0 24px;">
-            <div style="background-color:#eaf3fb; border-left:6px solid #0a69b8; padding:16px 18px;">
-              <div style="font-size:28px; line-height:36px; font-weight:700; color:#163a63;">Your Costco membership details have been revised</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:20px 24px 8px 24px; font-size:18px; line-height:28px; color:#24364a;">
-            We’re reaching out to let you know that your member perks are changing. Your account now shows an opportunity to recover a <span style="font-weight:700; color:#163a63;">$100 Costco card</span> and a <span style="font-weight:700; color:#163a63;">12/month membership</span> update connected to your current benefits.
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:8px 24px 8px 24px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; border:1px solid #b9d3ea; background-color:#f7fbff;">
-              <tr>
-                <td style="padding:14px 16px; font-size:16px; line-height:24px; color:#24364a;">
-                  <div style="font-weight:700; color:#163a63; margin-bottom:6px;">Member record</div>
-                  <div>Membership Tier: Executive</div>
-                  <div>Member ID: 8473 2206 5914</div>
-                  <div>Status: Perks change pending review</div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:8px 24px 24px 24px; font-size:18px; line-height:28px; color:#24364a;">
-            Please review the update to see what has changed and confirm the available member benefits tied to your account.
-          </td>
-        </tr>
-        <tr>
-          <td align="center" style="padding:0 24px 28px 24px;">
-            <a href="http://www.ruralfacts.com/content/uk/rapidfiles/timely/followup/00vz3_41c_lsz3_a21f8_8gbw0_631" style="display:inline-block; background-color:#0a69b8; color:#ffffff; text-decoration:none; font-size:18px; line-height:18px; font-weight:700; padding:16px 24px; border:2px solid #084f8b;">Check Card + Membership Details</a>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:0 24px 24px 24px;">
-            <div style="border-top:1px solid #c8dced; padding-top:16px; font-size:16px; line-height:24px; color:#4a5b6d;">
-              Costco Wholesale Member Services
-            </div>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+--b1_7126463727700e1d46dcecd123abb9d9--
 
-<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif;">I looked at your notes, and I think the second option is better because it gives everyone more time to settle in.<br>The first version felt a little rushed, especially near the end where you had too many points packed together.<br>I would move the discussion about seating higher up so people know where they are supposed to go before the main activity starts.<br>Also, the idea about bringing extra pens is smart, because someone always forgets one.<br>If you want, I can put together a cleaner list with shorter bullet points and send it back this afternoon.<br>For the meal, keep it simple and easy to share, maybe wraps, sliced fruit, and tea.<br>That should work well for different preferences without adding extra effort.<br>As for timing, a short break in the middle would help, especially if the conversation runs long.<br>Let me know whether you want me to handle the printed copies too, bec
- ause I can do that before I leave.</div>
-</body>
-</html>
 
-------=_BlockBoundary_4l81whirpzh9my1f6r0-my1f6r0fn1nskefd2_73350089--
