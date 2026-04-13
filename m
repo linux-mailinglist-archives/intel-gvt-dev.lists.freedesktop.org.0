@@ -2,51 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 2J1MKetE12ksMAgAu9opvQ
+	id WCKEENDA3Gn5VwkAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Apr 2026 08:19:23 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2026 12:09:20 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E73A83C6877
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 09 Apr 2026 08:19:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C44F63EA4B2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2026 12:09:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A296E10E71D;
-	Thu,  9 Apr 2026 06:10:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9CB2D10E3BF;
+	Mon, 13 Apr 2026 10:09:18 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=kelindier.com header.i=ejansen@kelindier.com header.b="lnBIGK2j";
+	dkim=pass (2048-bit key; unprotected) header.d=thriveforgepl.pl header.i=@thriveforgepl.pl header.b="0now5MG+";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 11536 seconds by postgrey-1.36 at gabe;
- Thu, 09 Apr 2026 06:10:55 UTC
-Received: from mta13.kelindier.com (mta13.kelindier.com [185.117.90.183])
- by gabe.freedesktop.org (Postfix) with ESMTP id A2CD210E71B
+X-Greylist: delayed 446 seconds by postgrey-1.36 at gabe;
+ Mon, 13 Apr 2026 10:09:17 UTC
+Received: from mail.thriveforgepl.pl (vps-10ce586a.vps.ovh.net
+ [217.182.170.66])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2099E10E3B8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Apr 2026 06:10:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=kelindier.com; 
- h=From:To:Message-ID:Reply-To:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:List-ID:List-Unsubscribe;
- i=ejansen@kelindier.com; 
- bh=2LGBQ3HS6OpZy+eqKktvodV64mVxtvx3vPo2Mt3STxc=;
- b=lnBIGK2jrOgzVHM9Qyd4H7Ba/JXK1dEDx4TMz7eiB9pn27mIoQLw3JgfSRg1umT4P9wvK+90rSuy
- LIVheZrEP/r98EEevMVbatGNEdfZoEhazvlMEvDzZn6DoQFlB29T8AKH/QazjkXyF1KO4MwTGJRN
- k6IOvnsFjuq+F+vFuDI+rJt1orTuD83AtEog7E2p0hHyYLM6T49xZS0N1UuEVQlYPe3nxTTMWdIO
- A+E/mxwRL+GWk7yOW39NyxxaviHTkz1JPPT987tNzAm8P/vCbP4P6Olh8//DM4KnHYLHT62TQe/Y
- hZG5iPAbq3w+cOkKp3IMgfh47i4gM29UIsbi4w==
-From: "Michael Werner" <ejansen@kelindier.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Message-ID: <ojCXN_QLMj5pUg50HxmDx4tRR3OYmeVx=@lincolnsouthrotary.org>
-Subject: =?UTF-8?B?UmVsaWFibGUgMjUwVyBFLUJpa2UgZm9yIHRoZSBFVSBNYXJrZXQgLSBadXZlcmzDpHNzaWdlcyAyNTBXIEUtQmlrZSBmw7xyIGRlbiBFVS1NYXJrdA==?=
-Date: Thu, 09 Apr 2026 03:47:06 +0200
+ Mon, 13 Apr 2026 10:09:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=thriveforgepl.pl;
+ s=mail; t=1776074508;
+ bh=FUC+Bjp8XcgUBzBJiWtMRzxgXgWoIVjV7W9QthILc4k=;
+ h=Date:From:To:Subject:From;
+ b=0now5MG+KgFEdG4BAANO6SkRgJP7Ptr/R/r110FXDDJ9t90ZDZ+8MvJn9Tg/7CP21
+ f4nSJV80+dkOW6ZtcBJw+ygfKDOvXFYjGGKtVHpQXcd1GOXkIdhMMLOReR/hTKnZ3B
+ h6jaDliPqBCuZ45IAlPGacalW0nXDWhtyYGMQ0Df669rXaYXBWyhHkJPcxKYa5znur
+ Qfp7bvj08ZbM29rPBu9mIFGNw1xlI54+vdK0QwcBoz/6jc0othfmHTTMULpFKPvhBD
+ XZtzg0ydDFy1sYhrI2IO0EZvUbGmsMXq4FXnRT1k2jwLZYNj8N/v/3lLfoWsAp4Mm/
+ ru8wY/RbnlTyQ==
+Received: by mail.thriveforgepl.pl (Postfix, from userid 1002)
+ id A21EE45E82; Mon, 13 Apr 2026 10:01:02 +0000 (UTC)
+Received: by mail.thriveforgepl.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Apr 2026 10:00:52 GMT
+Message-ID: <20260413100000-0.1.f.1khw.0.2oifkvhiu3@thriveforgepl.pl>
+Date: Mon, 13 Apr 2026 10:00:52 GMT
+From: "Jacek Gradalski" <jacek.gradalski@thriveforgepl.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Zg=C5=82oszenie_rekrutacyjne?=
+X-Mailer: OpenEMM V2015_R3
 MIME-Version: 1.0
-Content-Type: multipart/alternative; charset="UTF-8";
- boundary="b1_e7e4b38fff72a29fff71e8f61cd1eb7e"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-MC-User: 04443401b3e126d1
-X-MC-Track: opens,clicks_all
-X-Campaign: lincolnsouthrotary-98822851
-X-campaignid: f98f9509a7b7dab459e7ec3c
-Feedback-ID: 9287:98822851:mc:lincolnsouthrotary
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,136 +59,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: sales@kelindier.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [11.87 / 15.00];
-	URIBL_BLACK(7.50)[kelindier.com:replyto];
-	RSPAMD_EMAILBL(2.50)[sales.kelindier.com:replyto];
-	URI_COUNT_ODD(1.00)[1];
-	R_DKIM_REJECT(1.00)[kelindier.com:s=dkim];
+X-Spamd-Result: default: False [-1.31 / 15.00];
+	DMARC_POLICY_ALLOW(-0.50)[thriveforgepl.pl,none];
 	MAILLIST(-0.20)[mailman];
-	BAD_REP_POLICIES(0.10)[];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
+	R_DKIM_ALLOW(-0.20)[thriveforgepl.pl:s=mail];
+	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[kelindier.com : SPF not aligned (relaxed),none];
-	R_PARTS_DIFFER(0.08)[54.2%];
 	HAS_LIST_UNSUB(-0.01)[];
-	HAS_PHPMAILER_SIG(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,body];
-	ARC_NA(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	NEURAL_SPAM(0.00)[0.150];
-	HAS_REPLYTO(0.00)[sales@kelindier.com];
-	RCVD_COUNT_TWO(0.00)[2];
-	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[ejansen@kelindier.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[kelindier.com:-];
-	TO_DN_NONE(0.00)[];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	MISSING_XM_UA(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,kelindier.com:replyto]
-X-Rspamd-Queue-Id: E73A83C6877
-X-Rspamd-Action: add header
+	URIBL_MULTI_FAIL(0.00)[gabe.freedesktop.org:server fail,thriveforgepl.pl:server fail];
+	NEURAL_HAM(-0.00)[-0.996];
+	RCVD_COUNT_THREE(0.00)[4];
+	FROM_NEQ_ENVFROM(0.00)[jacek.gradalski@thriveforgepl.pl,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,thriveforgepl.pl:dkim,thriveforgepl.pl:mid];
+	DKIM_TRACE(0.00)[thriveforgepl.pl:+]
+X-Rspamd-Queue-Id: C44F63EA4B2
+X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spam: Yes
 
---b1_e7e4b38fff72a29fff71e8f61cd1eb7e
-Content-Type: text/plain; format=flowed; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Witam,
 
-EU Warehouse E-Bike Offer | 250W | 750Wh | Up to 50 km=0A=0ADeutsche Versio=
-n steht nach dem englischen Text.=0A=0ADear Sir or Madam,=0A=0AThank you fo=
-r taking a moment to read this email.=0A=0APlease allow us to present our f=
-at tire e-bike shown in the image above. This model is equipped with a 250W=
- motor, a 750Wh battery, and a riding range of up to 50 km.=0A=0AWith its f=
-at tire design, stable frame structure, front suspension, and practical rea=
-r rack, it is suitable for commuting, leisure riding, short-distance transp=
-ort, and daily use.=0A=0AFrom a sales point of view, this e-bike offers a p=
-ractical specification level and an appearance that can work well for retai=
-lers, distributors, and resellers looking for a model with broad everyday a=
-ppe...
+Czy maj=C4=85 Pa=C5=84stwa aktualnie potrzeby z zakresu rekrutacji os=C3=B3=
+b na
+stanowiska specjalistyczne (finanse, in=C5=BCynieria, IT), sprzeda=C5=BCo=
+we,
+marketingowe, managerskie lub biurowe ?
 
---b1_e7e4b38fff72a29fff71e8f61cd1eb7e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Pomagamy skutecznie rekrutowa=C4=87 osoby z w=C5=82a=C5=9Bciwymi kwalifik=
+acjami na
+wymagaj=C4=85ce stanowiska.
 
-<!doctype html>=0A<html>=0A<head>=0A<meta charset=3D"utf-8">=0A<meta name=
-=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1.0">=0A<titl=
-e>EU Warehouse E-Bike Offer | 250W | 750Wh | Up to 50 km</title>=0A</head>=
-=0A<body style=3D"margin:0;padding:0;background:#f4f4f4;">=0A<table role=3D=
-"presentation" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"10=
-0%" style=3D"background:#f4f4f4;">=0A<tr>=0A<td align=3D"center" style=3D"p=
-adding:20px 10px;">=0A<table role=3D"presentation" cellpadding=3D"0" cellsp=
-acing=3D"0" border=3D"0" width=3D"600" style=3D"width:600px;max-width:600px=
-;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#222;">=0A=
-<tr>=0A<td style=3D"padding:0;">=0A<img src=3D"https://gamvire.com/cdn/shop=
-/files/2_0011_11.jpg" alt=3D"E-bike" width=3D"600" style=3D"display:block;w=
-idth:100%;max-width:600px;height:auto;border:0;">=0A</td>=0A</tr>=0A<tr>=0A=
-<td style=3D"padding:18px 28px 8px 28px;font-size:13px;line-height:19px;col=
-or:#666;"><strong>Deutsche Version steht nach dem englischen Text.</strong>=
-</td>=0A</tr>=0A<tr>=0A<td style=3D"padding:4px 28px 0 28px;font-size:15px;=
-line-height:24px;">=0A<p style=3D"margin:0 0 14px 0;">Dear Sir or Madam,</p=
->=0A<p style=3D"margin:0 0 14px 0;">Thank you for taking a moment to read t=
-his email.</p>=0A<p style=3D"margin:0 0 14px 0;">Please allow us to present=
- our fat tire e-bike shown in the image above. This model is equipped with =
-a 250W motor, a 750Wh battery, and a riding range of up to 50 km.</p>=0A<p =
-style=3D"margin:0 0 14px 0;">With its fat tire design, stable frame structu=
-re, front suspension, and practical rear rack, it is suitable for commuting=
-, leisure riding, short-distance transport, and daily use.</p>=0A<p style=
-=3D"margin:0 0 14px 0;">From a sales point of view, this e-bike offers a pr=
-actical specification level and an appearance that can work well for retail=
-ers, distributors, and resellers looking for a model with broad everyday ap=
-peal.</p>=0A<p style=3D"margin:0 0 14px 0;">With stock already prepared in =
-our Germany warehouse, we are able to offer door-to-door delivery across th=
-e EU in 3-5 days, which is useful for buyers who want a shorter lead time.<=
-/p>=0A<p style=3D"margin:0 0 14px 0;">The overall product concept focuses o=
-n usability, stable riding, and a specification level that can be introduce=
-d to a broad range of end users.</p>=0A<p style=3D"margin:0 0 14px 0;">For =
-many resellers, local stock and quick dispatch are important advantages, es=
-pecially when customers prefer shorter waiting times and direct delivery ar=
-rangements.</p>=0A<p style=3D"margin:0 0 14px 0;">If you need our quotation=
- for this model, please reply to this email. We will send you pricing and a=
-dditional details by return email.</p>=0A<p style=3D"margin:0 0 18px 0;">Be=
-st regards,<br>Christian M=C3=B6ller<br>Westfalia Bike Works</p>=0A</td>=0A=
-</tr>=0A<tr>=0A<td style=3D"padding:8px 28px 0 28px;border-top:1px solid #e=
-5e5e5;font-size:15px;line-height:24px;">=0A<p style=3D"margin:18px 0 14px 0=
-;">Sehr geehrte Damen und Herren,</p>=0A<p style=3D"margin:0 0 14px 0;">Ich=
- hoffe, diese Nachricht erreicht Sie gut.</p>=0A<p style=3D"margin:0 0 14px=
- 0;">Heute stellen wir Ihnen ein Fat Tire E-Bike vor, das bereits ab deutsc=
-hem Lager verf=C3=BCgbar ist. Dieses Modell ist mit einem 250W Motor, einem=
- 750Wh Akku und einer Reichweite von bis zu 50 km ausgestattet.</p>=0A<p st=
-yle=3D"margin:0 0 14px 0;">Mit breiten Reifen, stabilem Rahmen, Federgabel =
-und praktischem Gep=C3=A4cktr=C3=A4ger eignet es sich gut f=C3=BCr Pendeln,=
- Freizeit, kurze Transporte und den t=C3=A4glichen Einsatz.</p>=0A<p style=
-=3D"margin:0 0 14px 0;">Es ist eine gute Option f=C3=BCr H=C3=A4ndler und S=
-hops, die ein unkompliziertes, praktisches und alltagstaugliches E-Bike f=
-=C3=BCr verschiedene lokale M=C3=A4rkte suchen.</p>=0A<p style=3D"margin:0 =
-0 14px 0;">Mit bereits verf=C3=BCgbarem Bestand in unserem deutschen Lager =
-k=C3=B6nnen wir eine schnelle Lieferung innerhalb der EU in 3-5 Tagen anbie=
-ten, was f=C3=BCr K=C3=A4ufer mit k=C3=BCrzerem Beschaffungszeitraum sehr h=
-ilfreich ist.</p>=0A<p style=3D"margin:0 0 14px 0;">F=C3=BCr viele H=C3=
-=A4ndler ist ein solches Modell leichter zu vermarkten, weil die wichtigste=
-n Punkte klar sind: praktische Ausstattung, n=C3=BCtzliche Akkukapazit=
-=C3=A4t und kurze Lieferzeit aus Deutschland.</p>=0A<p style=3D"margin:0 0 =
-14px 0;">F=C3=BCr viele Wiederverk=C3=A4ufer sind lokaler Bestand und schne=
-ller Versand wichtige Vorteile, besonders wenn Endkunden k=C3=BCrzere Warte=
-zeiten und direkte Zustellung bevorzugen.</p>=0A<p style=3D"margin:0 0 14px=
- 0;">Wenn Sie unser Angebot f=C3=BCr dieses Modell w=C3=BCnschen, antworten=
- Sie bitte auf diese E-Mail. Wir senden Ihnen Preis und zus=C3=A4tzliche In=
-formationen per R=C3=BCckmail zu.</p>=0A<p style=3D"margin:0 0 24px 0;">Mit=
- freundlichen Gr=C3=BC=C3=9Fen<br>Christian M=C3=B6ller<br>Westfalia Bike W=
-orks</p>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</body>=0A=
-</html>
-
---b1_e7e4b38fff72a29fff71e8f61cd1eb7e--
+Czy mo=C5=BCemy porozmawia=C4=87?
 
 
+Pozdrawiam serdecznie
+Jacek Gradalski
+Key Account Manager
