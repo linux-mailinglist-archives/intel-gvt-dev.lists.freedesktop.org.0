@@ -2,48 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id WE+KLTjN82nq7AEAu9opvQ
+	id qNrPKojP82nq7AEAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Apr 2026 23:44:24 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Apr 2026 23:54:16 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EBAD4A858D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Apr 2026 23:44:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 084B84A866D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Apr 2026 23:54:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 227A210E201;
-	Thu, 30 Apr 2026 21:34:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E969A10E48D;
+	Thu, 30 Apr 2026 21:54:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=oohtee.com header.i=hardwareace@oohtee.com header.b="HRs1wRmh";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=libroofertas.com header.i=greetingsmarriot@libroofertas.com header.b="SF7x9J2T";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 461 seconds by postgrey-1.36 at gabe;
- Thu, 30 Apr 2026 21:34:40 UTC
-Received: from out2.oohtee.com (table1481.stmparkersburg.com [5.175.179.27])
- by gabe.freedesktop.org (Postfix) with ESMTP id 900FB10E492
+X-Greylist: delayed 386 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Apr 2026 21:54:12 UTC
+Received: from outbound.libroofertas.com (earth8099.stmparkersburg.com
+ [5.175.179.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A569010E48D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Apr 2026 21:34:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtafoldwmsznw;
- d=oohtee.com; 
- h=Subject:From:To:List-Unsubscribe:Reply-To:Date:Content-Type:Message-ID:
- MIME-Version; i=hardwareace@oohtee.com;
- bh=GzfuNhoaleP58wxgTZmkkYzkmFPrxxVMjM9Iv7TALeY=;
- b=HRs1wRmhPcaV8GyT4xedAumymIcGs7Z12PUHzmPvPVH43Ha37ETDyhFvo8oRAHWI/QPIt1Y5tgPM
- YWlOFtZDun3MuafwBpvKGFaVGtlivbepyGi/SOatKQjNdgCtr2ycJl7hT+doFxMN9pOJ+SAoul6H
- a9X2+3ln1syK50fZq9gtaE+KvvcouV76Udd/8flUEKbIbQv3aiw55FhqITK2KUyKt6HnP72+Guyk
- gD1M+FEsWmB+4Z2kcUXD1Eb4+CnquqGIEVk24tzVhGZUIxoYALDYAYnrD5mgFsHnThee/BQykh8I
- n2AtUnN90zOICvrTrrkg9uCrx8xYQfdRi2qd8w==
-Subject: Your Ring Doorbell + 1OO.OO - Thanks from ACE
-X-Custom-Header: DDUC9w1E4a8uqm=OBOXJHAK-87473171
-From: Hardware Ace <hardwareace@oohtee.com>
-To: intel-gvt-dev@lists.freedesktop.org
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-x-subscriber: eQsi0p0FypByDaOplTf2XT3PvjfLwZue0KZW1MvEhaq==
-Date: Thu, 30 Apr 2026 17:25:40 -0400
-Content-Type: multipart/alternative;
- boundary="--b2._bmvnumeqwn.68934_Matrix.Span"
-Message-ID: <xkfsucrfkzkz.921905-452fcac5f6b2759479c954d7@oohtee.com>
+ Thu, 30 Apr 2026 21:54:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtakavmk8huej;
+ d=libroofertas.com; 
+ h=Date:MIME-Version:List-Unsubscribe:Reply-To:From:To:Subject:Message-ID:
+ Content-Type; i=greetingsmarriot@libroofertas.com;
+ bh=1d6wOvNfH6zbBnYTLn2Ncmyll9dkdfVY4B+Eb+R4bO4=;
+ b=SF7x9J2TpDsitF6cxK7ze5gOIBCjZiT6GyblGV8jWEN8QOZlBf9RSUciReOBCouKALC2MfBYv5hz
+ J+KzgEaqUa8ufAVRvYCsLIlqmbYkufuJFU6tjfzD8n0pJmhV97clMa4m7mxiioKBO4jDikkI/xxt
+ Q9n+Q3o96MWgPn2ZCu6lgJu4tPS6FVYsMJlUiO3vMlthpqhNauYwiYPBA+xPssE3Z4PyzRDhL/sA
+ +omSiRC7Bb6lAVgw9LJB89jGx/5bGx+21qL6JfFc7ru2looZorHjfPaietJvieamSqqsfzX7UFuH
+ J9961kcXEDFYNhBXeXv4sICiOCeI/hDzLYytcQ==
+Date: Thu, 30 Apr 2026 17:47:23 -0400
 MIME-Version: 1.0
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mail-Flow-ID: ypDsRgn4o39-21688370-pxJoh
+X-Endpoint-Id: OTYPRQRO.pxJoh/xsszirxfilsbcm
+From: Greetings Marriot <greetingsmarriot@libroofertas.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: A thank-you after your previous Marriot visit
+Message-ID: <238937261017234540-xlxnb3jjdxmqikz@libroofertas.com>
+Content-Type: multipart/alternative;
+ boundary="_.mesh=Vertex-ksl8tn5xiknos26qhqgw8p8v_4670446_si66x6ww8p8ve6u1y"
+X-Envelope-Token: ypDsRgn4o39-y4lepcxvw80
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,214 +58,298 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: hardwareace@oohtee.com
+Reply-To: greetingsmarriot@libroofertas.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 1EBAD4A858D
+X-Rspamd-Queue-Id: 084B84A866D
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [13.29 / 15.00];
-	URIBL_BLACK(7.50)[oohtee.com:url,oohtee.com:replyto,oohtee.com:mid];
-	ABUSE_SURBL(5.00)[www.oohtee.com:url,oohtee.com:replyto,oohtee.com:mid];
-	R_DKIM_REJECT(1.00)[oohtee.com:s=mtafoldwmsznw];
+X-Spamd-Result: default: False [14.64 / 15.00];
+	URIBL_BLACK(7.50)[libroofertas.com:url,libroofertas.com:replyto,libroofertas.com:mid];
+	ABUSE_SURBL(5.00)[libroofertas.com:replyto,libroofertas.com:mid,www.libroofertas.com:url];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	R_DKIM_REJECT(1.00)[libroofertas.com:s=mtakavmk8huej];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[oohtee.com : SPF not aligned (relaxed),none];
+	ZERO_FONT(0.20)[2];
 	BAD_REP_POLICIES(0.10)[];
+	DMARC_POLICY_SOFTFAIL(0.10)[libroofertas.com : SPF not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	MANY_INVISIBLE_PARTS(0.10)[2];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCVD_TLS_LAST(0.00)[];
-	GREYLIST(0.00)[pass,body];
-	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[oohtee.com:-];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_SPAM(0.00)[0.976];
+	RCPT_COUNT_ONE(0.00)[1];
+	GREYLIST(0.00)[pass,meta];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MISSING_XM_UA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[hardwareace@oohtee.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[hardwareace@oohtee.com];
+	HAS_REPLYTO(0.00)[greetingsmarriot@libroofertas.com];
 	TO_DN_NONE(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[greetingsmarriot@libroofertas.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	DKIM_TRACE(0.00)[libroofertas.com:-];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	NEURAL_HAM(-0.00)[-0.953];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[oohtee.com:url,oohtee.com:replyto,oohtee.com:mid,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,libroofertas.com:url,libroofertas.com:replyto,libroofertas.com:mid]
 X-Spam: Yes
 
-----b2._bmvnumeqwn.68934_Matrix.Span
+--_.mesh=Vertex-ksl8tn5xiknos26qhqgw8p8v_4670446_si66x6ww8p8ve6u1y
 Content-Type: text/plain; charset="UTF-8"
 
-Ace Hardware Member Update
+That plan works well from my side, and I can shift a few things to make room.
+If we start earlier in the afternoon, we will have enough time to finish the setup without rushing through the last steps.
+I can bring the folders, printed notes, and a checklist so nothing gets skipped.
+If you want, send me the address changes before lunch and I will update everything once.
+The weather looks mild, so travel should be simple, and I can stay a bit later if the timing moves.
 
-I checked the schedule again this morning and I think the later option makes the most sense for me.
-I can be flexible if the group wants to start earlier, but I would rather leave a little extra room so nobody feels rushed getting there.
-I also remembered that the trail near the lake gets muddy after a cool night, so sturdy shoes are probably better than anything too light.
-If the weather shifts, I am still happy to come, I would just bring a jacket and maybe switch to the indoor backup plan.
-I like the idea of keeping it simple and not trying to squeeze in too many stops.
-A slower pace sounds better than packing every hour.
-If you want, I can bring a thermos of tea and a couple of small towels for the benches.
-Just let me know what time you decide and I will plan around that.
+Marriot
 
-Service notification: member eligibility update is active today.
+Previous stay notice for eligible guests
 
-ACE
+ 
 
-HARDWARE
+Your recent hotel stay may qualify you for a home sleep set plus two included nights
 
-Member status notification
+Because you stayed at a Marriot Hotel or a Marriot partnered hotel within the past year, you may receive a 2-pillow luxury cooling set provided at no charge. After a very quick questionnaire is completed, you can also claim a 2-night stay at select locations at no charge.
 
-Today's thank-you reward is ready.
+Redeem your pillows + 2 nights
 
-Update
+Program summary:
 
-A loyalty benefit has been added to your account.
+Receive one 2-pillow set per household.
 
-As a committed Ace customer, your continued loyalty means everything to us. To recognize your support this year, you are invited to claim a $100 Thank You Reward and a Ring Doorbell. Available only today.
+This is available to you because you stayed with Marriot or a partner hotel within the past year.
 
-Member record
+You will not be billed for the pillows or the qualifying stay nights.
 
-Member ID: 79827-20199
+Total pillow allocation: 500 sets.
 
-Loyalty points: 1,140
+Ends: Tomorrow.
 
-Perk summary
+What to know before you respond
 
-This is being issued as a recognition benefit connected to your Ace membership activity. Review the offer details and complete the claim while eligibility remains open today.
+This announcement is intended for households with a qualifying stay record from the past year. The questionnaire is brief and is used to confirm shipping details and participation for this Marriot Hotels previous stay program.
 
-Claim Your $100 + Ring Doorbell
+Once submitted, eligible recipients can receive the 2 luxury cooling pillows at no charge. After the questionnaire is completed, access to claim a 2-night stay at select locations is also included at no charge, subject to program scheduling for dates and participating properties.
 
-Thank you for being part of Ace Hardware. This notice is intended to help you act on your current member benefit before today's eligibility window closes.
+Key features of the cooling pillow set
 
-I was thinking about your question during lunch and I realized the reason I like that routine is because it keeps the whole day steady.
-When I start with a short walk and a full glass of water, everything after that feels less scrambled.
-I do not follow it perfectly every single day, but even a loose version helps me reset.
-If I skip it, I tend to drift and then I notice I am trying to catch up later in the afternoon.
-I also started leaving my notebook by the door so I can write down one reminder before I head out.
-That tiny habit has been more useful than I expected.
-You could try it for a week without changing everything else and just see what feels easier.
-If it does not help, at least you will know quickly.
-Either way, I am curious to hear what pattern ends up fitting your pace best.
+Temperature-conscious surface intended to feel cooler through the night
 
-----b2._bmvnumeqwn.68934_Matrix.Span
+Two-pillow format supports a consistent sleep setup for the bed
+
+Soft hand-feel designed for a more refined, hotel-inspired rest experience
+
+Balanced loft can help maintain comfort whether resting on the back or side
+
+Breathable construction aims to reduce stuffiness during warmer nights
+
+Designed to pair comfort with a neat, polished appearance on the bed
+
+Availability is determined by program quantities, and access to stay dates and locations is based on scheduling.
+
+If the questionnaire is completed before the program closes tomorrow, your household may proceed with the included pillow shipment process and the select-location 2-night stay claim step. Thank you for staying at a Marriot Hotel. Your feedback continues to shape guest programs like this one.
+
+ 
+
+I checked the schedule again, and the earlier window still seems like the simplest choice.
+That way we can handle the first step, pause for a short meal, and still leave enough room for changes near the end.
+I also think it would help if we keep the materials separated by topic so no one has to search through mixed papers later.
+If you send the final list by the morning, I can prepare the layout and bring extra copies.
+If anything shifts, let me know before I leave and I will adjust the route and timing without trouble.
+
+--_.mesh=Vertex-ksl8tn5xiknos26qhqgw8p8v_4670446_si66x6ww8p8ve6u1y
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ace Hardware Member Update</title>
 </head>
-<body style="margin:0; padding:0; background-color:#f4f4f0;">
-<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif;">I checked the schedule again this morning and I think the later option makes the most sense for me.<br>I can be flexible if the group wants to start earlier, but I would rather leave a little extra room so nobody feels rushed getting there.<br>I also remembered that the trail near the lake gets muddy after a cool night, so sturdy shoes are probably better than anything too light.<br>If the weather shifts, I am still happy to come, I would just bring a jacket and maybe switch to the indoor backup plan.<br>I like the idea of keeping it simple and not trying to squeeze in too many stops.<br>A slower pace sounds better than packing every hour.<br>If you want, I can bring a thermos of tea and a couple of small towels for the benches.<br>Just let me know what time you decide and I will plan around that.</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#f4f4f0; margin:0; padding:0;">
+<body style="margin:0;padding:0;background-color:#f7f5f3;font-family:Georgia,'Times New Roman',Times,serif;color:#1f1f1f;">
+<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial,Helvetica,sans-serif;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">That plan works well from my side, and I can shift a few things to make room.<br>If we start earlier in the afternoon, we will have enough time to finish the setup without rushing through the last steps.<br>I can bring the folders, printed notes, and a checklist so nothing gets skipped.<br>If you want, send me the address changes before lunch and I will update everything once.<br>The weather looks mild, so travel should be simple, and I can stay a bit later if the timing moves.</div>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;margin:0;padding:0;background-color:#f7f5f3;">
   <tr>
-    <td align="center" style="padding:18px 10px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="border-collapse:collapse; width:640px; max-width:640px; background-color:#f4f4f0;">
+    <td align="center" style="padding:24px 12px 28px 12px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="620" style="width:100%;max-width:620px;background-color:#ffffff;border:1px solid #e9e4e0;">
         <tr>
-          <td style="padding:0 0 10px 0;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#e9ecef; border-radius:10px;">
+          <td style="padding:0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
               <tr>
-                <td style="padding:10px 16px; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:12px; line-height:16px; color:#4b5563; text-align:center;">
-                  Service notification: member eligibility update is active today.
+                <td style="padding:22px 28px 18px 28px;border-bottom:4px solid #7A1627;background-color:#ffffff;" align="left">
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:34px;line-height:36px;font-weight:700;letter-spacing:0.5px;color:#B4203B;">
+                    <span style="color:#B4203B;">Marriot</span>
+                  </div>
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;color:#4a4a4a;padding-top:6px;">Previous stay notice for eligible guests</div>
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:0;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#ffffff; border-radius:16px;">
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
               <tr>
-                <td style="padding:0;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%;">
+                <td style="padding:30px 28px 14px 28px;">
+                  <div style="width:56px;height:4px;background-color:#D82A49;font-size:0;line-height:0;">&nbsp;</div>
+                  <div style="font-size:30px;line-height:38px;font-weight:700;color:#1A1A1A;padding-top:16px;">
+                    Your recent hotel stay may qualify you for a home sleep set plus two included nights
+                  </div>
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:25px;color:#333333;padding-top:14px;">
+                    Because you stayed at a Marriot Hotel or a Marriot partnered hotel within the past year, you may receive a <strong>2-pillow luxury cooling set</strong> provided <strong>at no charge</strong>. After a very quick questionnaire is completed, you can also claim a <strong>2-night stay at select locations</strong> at no charge.
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <tr>
+                <td style="padding:10px 28px 8px 28px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
                     <tr>
-                      <td style="background-color:#ffffff; padding:18px 22px 6px 22px; border-top-left-radius:16px; border-top-right-radius:16px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-                          <tr>
-                            <td style="background-color:#ffffff; padding:8px 12px; border:2px solid #cc2229; border-radius:8px;">
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:28px; line-height:28px; font-weight:700; color:#cc2229; letter-spacing:0.2px;">ACE</div>
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:10px; line-height:12px; color:#4b5563; font-weight:700; letter-spacing:1px;">HARDWARE</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:2px 22px 18px 22px;">
-                        <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:14px; line-height:18px; color:#6b7280; font-weight:700; text-transform:uppercase; letter-spacing:1.1px;">Member status notification</div>
-                        <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:34px; line-height:38px; color:#cc2229; font-weight:700; padding-top:4px;">Today's thank-you reward is ready.</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:0 22px 12px 22px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#f8f8f5; border-radius:14px;">
-                          <tr>
-                            <td style="padding:16px 16px 14px 16px;">
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:11px; line-height:14px; color:#6b7280; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Update</div>
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:26px; line-height:30px; color:#1a1a1a; font-weight:700; padding-top:4px;">A loyalty benefit has been added to your account.</div>
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:15px; line-height:22px; color:#374151; padding-top:8px;">As a committed Ace customer, your continued loyalty means everything to us. To recognize your support this year, you are invited to claim a <span style="font-weight:700; color:#1a1a1a;">$100 Thank You Reward</span> and a <span style="font-weight:700; color:#1a1a1a;">Ring Doorbell</span>. Available only today.</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:0 22px 12px 22px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#f1f2ee; border-radius:14px;">
-                          <tr>
-                            <td style="padding:15px 16px;">
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:11px; line-height:14px; color:#6b7280; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Member record</div>
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:15px; line-height:22px; color:#1a1a1a; padding-top:6px;">
-                                <span style="font-weight:700;">Member ID:</span> 79827-20199<br>
-                                <span style="font-weight:700;">Loyalty points:</span> 1,140
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:0 22px 12px 22px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse; width:100%; background-color:#fcfcfa; border:1px solid #d7dce1; border-radius:14px;">
-                          <tr>
-                            <td style="padding:14px 16px;">
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:11px; line-height:14px; color:#6b7280; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Perk summary</div>
-                              <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:15px; line-height:22px; color:#374151; padding-top:7px;">This is being issued as a recognition benefit connected to your Ace membership activity. Review the offer details and complete the claim while eligibility remains open today.</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:2px 22px 10px 22px;" align="left">
-                        <a href="http://www.oohtee.com/storydeskline/waypoint/210tu8ffg58y" style="display:inline-block; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:16px; line-height:16px; color:#ffffff; font-weight:700; text-decoration:none; background-color:#cc2229; padding:15px 22px; border-radius:12px;">Claim Your $100 + Ring Doorbell</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding:4px 22px 22px 22px;">
-                        <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:12px; line-height:18px; color:#6b7280;">Thank you for being part of Ace Hardware. This notice is intended to help you act on your current member benefit before today's eligibility window closes.</div>
+                      <td align="center" bgcolor="#f2efec" style="border:1px solid #d7cfca;border-radius:12px;box-shadow:0 2px 6px rgba(26,26,26,0.08);">
+                        <a href="http://www.libroofertas.com/gridline/5bctjqp/markery" style="display:inline-block;padding:14px 28px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:20px;font-weight:700;color:#1A1A1A;text-decoration:none;border-radius:12px;">Redeem your pillows + 2 nights</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
             </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <tr>
+                <td style="padding:16px 28px 8px 28px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e4dcd5;border-radius:10px;">
+                    <tr>
+                      <td style="padding:16px 18px 16px 18px;background-color:#faf8f6;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#2b2b2b;">
+                        <strong style="color:#1A1A1A;">Program summary:</strong><br>
+                        Receive one <strong>2-pillow set</strong> per household.<br>
+                        This is available to you because you stayed with Marriot or a partner hotel within the past year.<br>
+                        You will not be billed for the pillows or the qualifying stay nights.<br>
+                        <strong>Total pillow allocation:</strong> 500 sets.<br>
+                        <strong>Ends:</strong> Tomorrow.
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <tr>
+                <td style="padding:18px 28px 8px 28px;">
+                  <div style="font-size:22px;line-height:30px;font-weight:700;color:#1A1A1A;">What to know before you respond</div>
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#353535;padding-top:12px;">
+                    This announcement is intended for households with a qualifying stay record from the past year. The questionnaire is brief and is used to confirm shipping details and participation for this Marriot Hotels previous stay program.
+                  </div>
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#353535;padding-top:12px;">
+                    Once submitted, eligible recipients can receive the 2 luxury cooling pillows at no charge. After the questionnaire is completed, access to claim a 2-night stay at select locations is also included at no charge, subject to program scheduling for dates and participating properties.
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <tr>
+                <td style="padding:16px 28px 10px 28px;">
+                  <div style="font-size:21px;line-height:28px;font-weight:700;color:#1A1A1A;padding-bottom:12px;">Key features of the cooling pillow set</div>
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:separate;">
+                    <tr>
+                      <td width="50%" valign="top" style="padding:0 6px 10px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#faf8f6;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Temperature-conscious surface intended to feel cooler through the night
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="50%" valign="top" style="padding:0 0 10px 6px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#f4f1ee;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Two-pillow format supports a consistent sleep setup for the bed
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="50%" valign="top" style="padding:0 6px 10px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#f4f1ee;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Soft hand-feel designed for a more refined, hotel-inspired rest experience
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="50%" valign="top" style="padding:0 0 10px 6px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#faf8f6;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Balanced loft can help maintain comfort whether resting on the back or side
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="50%" valign="top" style="padding:0 6px 10px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#faf8f6;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Breathable construction aims to reduce stuffiness during warmer nights
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="50%" valign="top" style="padding:0 0 10px 6px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border:1px solid #e2dbd5;border-radius:10px;background-color:#f4f1ee;">
+                          <tr>
+                            <td style="padding:14px 14px 14px 14px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#303030;">
+                              Designed to pair comfort with a neat, polished appearance on the bed
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#595959;padding-top:4px;">Availability is determined by program quantities, and access to stay dates and locations is based on scheduling.</div>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <tr>
+                <td style="padding:10px 28px 28px 28px;">
+                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#353535;">
+                    If the questionnaire is completed before the program closes tomorrow, your household may proceed with the included pillow shipment process and the select-location 2-night stay claim step. Thank you for staying at a Marriot Hotel. Your feedback continues to shape guest programs like this one.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="height:16px;background-color:#252525;font-size:0;line-height:0;">&nbsp;</td>
+              </tr>
+            </table>
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 </table>
-<div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:0; height:0; line-height:0; overflow:hidden;">I was thinking about your question during lunch and I realized the reason I like that routine is because it keeps the whole day steady.<br>When I start with a short walk and a full glass of water, everything after that feels less scrambled.<br>I do not follow it perfectly every single day, but even a loose version helps me reset.<br>If I skip it, I tend to drift and then I notice I am trying to catch up later in the afternoon.<br>I also started leaving my notebook by the door so I can write down one reminder before I head out.<br>That tiny habit has been more useful than I expected.<br>You could try it for a week without changing everything else and just see what feels easier.<br>If it does not help, at least you will know quickly.<br>Either way, I am curious to hear what pattern ends up fitting your pace best.</div>
+
+<div style="font-family:Verdana,Geneva,sans-serif;width:1px;line-height:0;overflow:hidden;text-emphasis:none;opacity:0;color:#ffffff;max-height:0px;">I checked the schedule again, and the earlier window still seems like the simplest choice.<br>That way we can handle the first step, pause for a short meal, and still leave enough room for changes near the end.<br>I also think it would help if we keep the materials separated by topic so no one has to search through mixed papers later.<br>If you send the final list by the morning, I can prepare the layout and bring extra copies.<br>If anything shifts, let me know before I leave and I will adjust the route and timing without trouble.</div>
 </body>
 </html>
 
-----b2._bmvnumeqwn.68934_Matrix.Span--
+--_.mesh=Vertex-ksl8tn5xiknos26qhqgw8p8v_4670446_si66x6ww8p8ve6u1y--
