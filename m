@@ -2,48 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SEAcOl+89Gn2EAIAu9opvQ
+	id c4+cLMcx9WmUJQIAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 01 May 2026 16:44:47 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 02 May 2026 01:05:43 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B7074AD593
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 01 May 2026 16:44:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CA204B0237
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 02 May 2026 01:05:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BA53910E1E1;
-	Fri,  1 May 2026 14:44:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5180310E229;
+	Fri,  1 May 2026 23:05:41 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=zachthereikiguy.com header.i=mywalmartpoints@zachthereikiguy.com header.b="kRKU0swT";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=pascohousingmanager.com header.i=lowespotins@pascohousingmanager.com header.b="Qi5Mvb4h";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 329 seconds by postgrey-1.36 at gabe;
- Fri, 01 May 2026 14:44:43 UTC
-Received: from mta2.zachthereikiguy.com (stream8897.windowworldestimate.com
- [89.144.54.66])
- by gabe.freedesktop.org (Postfix) with ESMTP id B1DD710E1E1
+X-Greylist: delayed 534 seconds by postgrey-1.36 at gabe;
+ Fri, 01 May 2026 23:05:39 UTC
+Received: from smtp.pascohousingmanager.com (canyonhub.windowworldestimate.com
+ [89.144.54.80])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E013E10E21A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 May 2026 14:44:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtalvpp36qxfn;
- d=zachthereikiguy.com; 
- h=MIME-Version:Message-ID:Content-Type:Reply-To:List-Unsubscribe:From:Subject:
- To:Date; i=mywalmartpoints@zachthereikiguy.com;
- bh=zhu3y2Qv95XefW96vIUA8shny8j+iKp3I9AiUsXrFxo=;
- b=kRKU0swT51RRMGkRVHZqdN3HbG3np75QX+/qtvW+7rHsFeiO/Bhs6aSoxMDsV2mtiqCKff5VcqJx
- vj53J6xJMfM12k/SoXgqdOndMbh2fB1uYvdpWFXtf0o22V3diiIdbpirzF9QnCp6TsY9w+2Ip475
- uOKEHeld9uIDjHYc7cYKJXITSMgYXYPJYlgUewCMJdn2aoP2TN1Ob8/e177RQoxHRbAcxSnEewSE
- 1O4TgVuQbV0IRIC5jtwikSgWT2g+L+8g8p3qze3gyeI2d58eLS+QyB3DmN3NII4PCh2FyhJklv8A
- Q/rVg0HzTryHjXYeMZKCVmCY3h7dVTFqdKUnVA==
-MIME-Version: 1.0
-Message-ID: <6628088_hiwglzsumftycbveosmqanzgi-osmqanzgiaksqulhiw@zachthereikiguy.com>
+ Fri,  1 May 2026 23:05:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaqpvuq0aanp;
+ d=pascohousingmanager.com;
+ h=Message-ID:Content-Type:Reply-To:To:MIME-Version:List-Unsubscribe:Subject:
+ From:Date; i=lowespotins@pascohousingmanager.com;
+ bh=tf6Vxo/ABDRfQ7W/uvuvePl8s3jFLeZ+p3m6CZ+Bh+U=;
+ b=Qi5Mvb4hVoOj+NlPUKX5b42PKL5quIpfPUP1pFNOrH9Ptigyk/0ZEdfFUa1WzQWVBgD0jIZp9KXC
+ yXQrzONjteddFBNMZBl+jY4eeNc8Foeuyi3eDH8sZDReWak6ByggNYbxfFQdcx2pOIhiio9RILMb
+ Rsi7nCTfGt7zp2qDwQ97OFW+JzYdcUxdb7PUwPUuJO9bVvnQDjvEH0pquv0+qCdIWBBZ9bJKnuMm
+ q7/xuxm/Q8g/7r5oqr+21lXAukwfQ7CHGaCEwN27nHq+StDIP6jG7h7ijRrRTRVYt00oTAhjeuYV
+ tQKidxtGxLBXRmNlxkFO1h9z4IL4eR27Go3jJQ==
+X-MailRelay-ID: 9495_qdncxjemzm
+Message-ID: <240816205020.oipkcuq.kntndzchspq7@pascohousingmanager.com>
+X-Custom-Header: H52A2KRDycz2aHw=LWCILJHPAY-9495
 Content-Type: multipart/alternative;
- boundary="=wave_-ChunkBoundary=cda734c3b870_8533806"
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-X-Delivery-Hash: rKWMoimsNOL.7996422
-From: My Walmart Points <mywalmartpoints@zachthereikiguy.com>
-Subject: Walmart Pts. deadline - today
+ boundary="_mark._967553-Stripe_z9cvnmvcoin3wsvv=1690673509"
 To: intel-gvt-dev@lists.freedesktop.org
-Date: Fri, 1 May 2026 10:39:04 -0400
+MIME-Version: 1.0
+X-Greylist-Ref: qdncxjemzm-9495
+Subject: Status update for your Lowe's order
+From: lowes potins <lowespotins@pascohousingmanager.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Date: Fri, 1 May 2026 18:56:28 -0400
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,263 +58,255 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mywalmartpoints@zachthereikiguy.com
+Reply-To: lowespotins@pascohousingmanager.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 4B7074AD593
+X-Rspamd-Queue-Id: 0CA204B0237
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [14.62 / 15.00];
-	URIBL_BLACK(7.50)[zachthereikiguy.com:url,zachthereikiguy.com:replyto,zachthereikiguy.com:mid];
-	ABUSE_SURBL(5.00)[zachthereikiguy.com:replyto,zachthereikiguy.com:mid,www.zachthereikiguy.com:url];
+X-Spamd-Result: default: False [14.64 / 15.00];
+	URIBL_BLACK(7.50)[pascohousingmanager.com:url,pascohousingmanager.com:replyto,pascohousingmanager.com:mid];
+	ABUSE_SURBL(5.00)[pascohousingmanager.com:replyto,pascohousingmanager.com:mid,www.pascohousingmanager.com:url];
 	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[zachthereikiguy.com:s=mtalvpp36qxfn];
-	R_PARTS_DIFFER(0.28)[64.0%];
+	R_DKIM_REJECT(1.00)[pascohousingmanager.com:s=mtaqpvuq0aanp];
 	MAILLIST(-0.20)[mailman];
+	ZERO_FONT(0.20)[2];
 	BAD_REP_POLICIES(0.10)[];
+	DMARC_POLICY_SOFTFAIL(0.10)[pascohousingmanager.com : SPF not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[zachthereikiguy.com : SPF not aligned (relaxed),none];
+	MANY_INVISIBLE_PARTS(0.10)[2];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCPT_COUNT_ONE(0.00)[1];
-	DKIM_TRACE(0.00)[zachthereikiguy.com:-];
+	GREYLIST(0.00)[pass,meta];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[mywalmartpoints@zachthereikiguy.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[mywalmartpoints@zachthereikiguy.com];
+	HAS_REPLYTO(0.00)[lowespotins@pascohousingmanager.com];
 	TO_DN_NONE(0.00)[];
-	NEURAL_HAM(-0.00)[-0.947];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	RCVD_COUNT_TWO(0.00)[2];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[lowespotins@pascohousingmanager.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	DKIM_TRACE(0.00)[pascohousingmanager.com:-];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	MID_RHS_MATCH_FROM(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[zachthereikiguy.com:url,zachthereikiguy.com:replyto,zachthereikiguy.com:mid]
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.611];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,pascohousingmanager.com:url,pascohousingmanager.com:replyto,pascohousingmanager.com:mid]
 X-Spam: Yes
 
---=wave_-ChunkBoundary=cda734c3b870_8533806
+--_mark._967553-Stripe_z9cvnmvcoin3wsvv=1690673509
 Content-Type: text/plain; charset="UTF-8"
 
-Walmart Rewards
+Your Lowe's Rewards Update
 
-Hey, I was thinking about that documentary you mentioned last week. I finally caught it last night and honestly it was so much better than I expected. The pacing was a bit slow at first, but the second half really picked up. I think you'd enjoy the part where they interviewed the older scientist. Anyway, I wanted to ask if you're free this Saturday to grab lunch? I found a new spot near the park that does great sandwiches. Let me know what you think. Also, I started reading that novel you gave me and I'm already hooked on the characters. The writing style is so immersive. I'll text you later about the details for Saturday.
+Hey there! I finally got around to watching that documentary you mentioned last week. Honestly, it was slower than I expected for the first hour, but the second half really pulled me in. I think you were right about the cinematography being the standout part — some of those aerial shots were incredible. Also tried making that pasta dish you sent me the recipe for. Turned out pretty good once I figured out the right sauce consistency. Let me know if you want to grab coffee this weekend and chat more about both. I have a few other recommendations to trade with you as well.
 
-Hope you're doing well. Talk soon.
+The other thing I wanted to mention is that I finally cleaned out my garage over the weekend. Found some old board games I forgot we had. Maybe we can get a group together sometime soon and play a few rounds. It's been way too long since we did something low-key like that. Anyway, hope you're having a good week so far and not working too hard.
 
- 
+c3e1kwo5lbb
 
-Walmart
+MEMBER BENEFIT UPDATE — TIER UPGRADED TO GOLD
 
-EXPIRATION NOTICE
+LOWE'S
+MYLOWE'S REWARDS
 
- 
+YOU'VE EARNED GOLD — AND A KOBALT 100-PIECE TOOL SET + $100 MYLOWES CARD
 
- 
+Your MyLowe's Points have unlocked exclusive rewards and upgraded your membership to Gold tier.
 
-Your points expire today
+Feature
 
-Convert them to a $100 Walmart Card before they're gone.
+Your Value
 
- 
+Kobalt 100-Piece Tool Set
 
-Rewards Summary
+Durable hand tools for every workshop need
 
-Points balance: 1,139
+$100 MyLowes Card
 
-Member ID: WM-4827-1936
+Shop tools, appliances, décor & more
 
-Valid through: Today
+Gold Tier Status
 
- 
+Exclusive member perks and savings
 
-Don't let these rewards slip away. Your points are set to expire at the end of today. Redeeming them for a $100 Walmart Card only takes a minute.
+Member Number: MY-00710
 
- 
+Active account in good standing
 
-View Points and Details
+MyLowe's Points: 1,259
 
- 
+Points applied toward your rewards
 
-Walmart Rewards – Member Benefits
+Why this matters: Kobalt is Lowe’s house tool brand, trusted for durable hand tools and workshop essentials. MyLowe’s Rewards is designed to highlight your member perks and savings, and your Lowe’s gift card can be used across tools, appliances, décor, and home improvement purchases — everything you need for your next project.
 
- 
+Redeem Your $100 Card + Kobalt Tool Set
 
-I've been meaning to reply to your message about the hiking trail we discussed. I checked it out last weekend and the views were incredible. The path is well maintained but a bit steep in the middle section. We should plan a trip together once the weather is warmer. Now I'm thinking about starting a small vegetable garden on my balcony this spring. Do you have any experience with cherry tomatoes in containers? I heard they do well if you water them regularly and use enough sunlight. Anyway, let me know if you'd like to borrow my field guide for identifying wildflowers. It really helped me spot some rare species out there. Talk to you soon.
+Your rewards are ready — claim them now through your MyLowe's account.
 
-Take care,
+Thank you for being a valued member.
 
---=wave_-ChunkBoundary=cda734c3b870_8533806
+— The Lowe's Rewards Team
+
+Ref: 94959495
+
+Oh, I almost forgot to tell you about the hike I did last Saturday. We started early, around 6:30 AM, and the trail was completely quiet except for the birds. Made it to the summit just before noon and the view was absolutely worth the climb. I brought along that lightweight thermos you recommended and it kept my coffee hot for hours. On the way down we took the longer loop and found this little creek I'd never noticed before. Planning to go back with a better camera next time to capture the fall colors properly. Also, that new cafe opened up near the old bookstore downtown — I stopped in for a quick bite afterward and their pastries are fantastic. You should come with me next time.
+
+I finally tackled that bookshelf building project this past Sunday and I'm honestly pretty happy with how it turned out. The instructions were a bit confusing in a couple spots, but once I figured out the bracket system it came together smoothly. I used that stain you told me about and the wood grain really popped. It's now holding all those old hardcovers I had stacked in boxes. Also tried that new barbecue place on Fifth Street — their smoked brisket was really good, though the sauce was a little sweeter than I prefer. Let me know if you want to head over there sometime; I think you'd like the atmosphere. Hope you're having a good week!
+
+--_mark._967553-Stripe_z9cvnmvcoin3wsvv=1690673509
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walmart Rewards</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Lowe's Rewards Update</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ffffff; font-family:Arial, Helvetica, sans-serif;">
+<body style="margin:0; padding:0; background-color:#f5f5f5; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
 
-<!-- First hidden text -->
-<div style="display:none; font-family: 'Trebuchet MS', sans-serif;">
-    Hey, I was thinking about that documentary you mentioned last week. I finally caught it last night and honestly it was so much better than I expected. The pacing was a bit slow at first, but the second half really picked up. I think you'd enjoy the part where they interviewed the older scientist. Anyway, I wanted to ask if you're free this Saturday to grab lunch? I found a new spot near the park that does great sandwiches. Let me know what you think. Also, I started reading that novel you gave me and I'm already hooked on the characters. The writing style is so immersive. I'll text you later about the details for Saturday. <br><br>
-    Hope you're doing well. Talk soon.<br><br>
+<div style="font-family:'American Typewriter','Courier',monospace; min-width:0; min-height:0; max-width:0; font-size:0;">
+Hey there! I finally got around to watching that documentary you mentioned last week. Honestly, it was slower than I expected for the first hour, but the second half really pulled me in. I think you were right about the cinematography being the standout part — some of those aerial shots were incredible. Also tried making that pasta dish you sent me the recipe for. Turned out pretty good once I figured out the right sauce consistency. Let me know if you want to grab coffee this weekend and chat more about both. I have a few other recommendations to trade with you as well.<br>
+The other thing I wanted to mention is that I finally cleaned out my garage over the weekend. Found some old board games I forgot we had. Maybe we can get a group together sometime soon and play a few rounds. It's been way too long since we did something low-key like that. Anyway, hope you're having a good week so far and not working too hard.
 </div>
 
-<!-- Main email table -->
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;">
-    <tr>
-        <td align="center" style="padding:0;">
-            <!-- Outer container -->
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff;">
-                
-                <!-- Top color bar -->
-                <tr>
-                    <td style="background-color:#0071ce; height:8px; font-size:1px; line-height:1px;" height="8">&nbsp;</td>
-                </tr>
-                
-                <!-- Header row -->
-                <tr>
-                    <td style="padding:0;">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <td style="padding:12px 20px 8px 20px; vertical-align:middle;">
-                                    <span style="font-size:20px; font-weight:bold; color:#0071ce; font-family:Arial, Helvetica, sans-serif; letter-spacing:1px;">Walmart</span>
-                                </td>
-                                <td style="padding:12px 20px 8px 20px; text-align:right; vertical-align:middle;">
-                                    <span style="display:inline-block; background-color:#ffc220; color:#000000; font-size:11px; font-weight:bold; text-transform:uppercase; padding:4px 10px; border-radius:3px; font-family:Arial, Helvetica, sans-serif; line-height:1.2;">EXPIRATION NOTICE</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                
-                <!-- Bottom border line -->
-                <tr>
-                    <td style="border-bottom:2px solid #0071ce; height:1px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<div style="display:none;max-height:0;overflow:hidden;font-size:0;line-height:0;">c3e1kwo5lbb</div>
 
-                <!-- Spacer -->
-                <tr>
-                    <td style="height:24px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#eef3fb;" role="presentation">
+<tr>
+<td align="center" style="padding:0;">
 
-                <!-- Hero headline -->
-                <tr>
-                    <td style="padding:0 20px;">
-                        <h1 style="font-size:28px; font-weight:bold; color:#222222; margin:0 0 8px 0; font-family:Arial, Helvetica, sans-serif; line-height:1.2;">Your points expire today</h1>
-                        <p style="font-size:16px; color:#555555; margin:0 0 4px 0; font-family:Arial, Helvetica, sans-serif; line-height:1.5;">Convert them to a <span style="color:#0071ce; font-weight:bold;">$100 Walmart Card</span> before they're gone.</p>
-                    </td>
-                </tr>
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff;" role="presentation">
 
-                <!-- Spacer -->
-                <tr>
-                    <td style="height:20px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<!-- Alert bar -->
+<tr>
+<td style="background-color:#eef3fb; padding:12px 24px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif; font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#1a1a1a; text-transform:uppercase;">
+MEMBER BENEFIT UPDATE — TIER UPGRADED TO <span style="color:#B8860B; font-weight:bold;">GOLD</span>
+</td>
+</tr>
 
-                <!-- Transactional module (points and member ID) -->
-                <tr>
-                    <td style="padding:0 20px;">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef6fd; border-radius:6px;">
-                            <tr>
-                                <td style="padding:16px 20px;">
-                                    <p style="font-size:14px; color:#333333; margin:0 0 8px 0; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">Rewards Summary</p>
-                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td style="padding:4px 0; font-size:14px; color:#222222; font-family:Arial, Helvetica, sans-serif;">
-                                                <span style="display:inline-block; width:100px; font-weight:bold; color:#555555;">Points balance:</span> 1,139
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding:4px 0; font-size:14px; color:#222222; font-family:Arial, Helvetica, sans-serif;">
-                                                <span style="display:inline-block; width:100px; font-weight:bold; color:#555555;">Member ID:</span> WM-4827-1936
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding:4px 0; font-size:14px; color:#222222; font-family:Arial, Helvetica, sans-serif;">
-                                                <span style="display:inline-block; width:100px; font-weight:bold; color:#555555;">Valid through:</span> Today
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+<!-- Logo area -->
+<tr>
+<td style="background-color:#eef3fb; padding:18px 24px 28px 24px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
+<span style="font-size:36px; font-weight:bold; letter-spacing:4px; color:#004990; text-transform:uppercase;">LOWE'S</span>
+<div style="font-size:11px; letter-spacing:3px; color:#0067a0; text-transform:uppercase; margin-top:2px;">MYLOWE'S REWARDS</div>
+</td>
+</tr>
 
-                <!-- Spacer -->
-                <tr>
-                    <td style="height:20px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<!-- Transition spacer -->
+<tr>
+<td style="height:1px; background-color:#eef3fb; padding:0;" colspan="2"><div style="height:1px; background-color:#eef3fb;"></div></td>
+</tr>
 
-                <!-- Supporting explanation -->
-                <tr>
-                    <td style="padding:0 20px;">
-                        <p style="font-size:15px; color:#444444; margin:0 0 6px 0; font-family:Arial, Helvetica, sans-serif; line-height:1.5;">Don't let these rewards slip away. Your points are set to expire at the end of today. Redeeming them for a $100 Walmart Card only takes a minute.</p>
-                    </td>
-                </tr>
+<!-- Main message -->
+<tr>
+<td style="background-color:#ffffff; padding:32px 28px 16px 28px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
+<h1 style="margin:0 0 12px 0; font-size:22px; font-weight:bold; color:#1a1a1a; line-height:1.3; letter-spacing:0.5px;">
+YOU'VE EARNED <span style="color:#B8860B;">GOLD</span> — AND A KOBALT 100-PIECE TOOL SET + $100 MYLOWES CARD
+</h1>
+<p style="margin:0; font-size:15px; color:#444444; line-height:1.5; font-weight:normal;">
+Your MyLowe's Points have unlocked exclusive rewards and upgraded your membership to Gold tier.
+</p>
+</td>
+</tr>
 
-                <!-- Spacer -->
-                <tr>
-                    <td style="height:16px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<!-- Feature comparison table -->
+<tr>
+<td style="background-color:#ffffff; padding:20px 28px 10px 28px; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;" role="presentation">
+<tr style="border-bottom:2px solid #e6e6e6;">
+<th style="padding:10px 6px 10px 0; text-align:left; font-size:13px; font-weight:bold; color:#004990; text-transform:uppercase; letter-spacing:0.8px;">Feature</th>
+<th style="padding:10px 0 10px 6px; text-align:right; font-size:13px; font-weight:bold; color:#004990; text-transform:uppercase; letter-spacing:0.8px;">Your Value</th>
+</tr>
+<tr style="border-bottom:1px solid #eef3fb;">
+<td style="padding:10px 6px 10px 0; font-size:14px; font-weight:bold; color:#1a1a1a;">Kobalt 100-Piece Tool Set</td>
+<td style="padding:10px 0 10px 6px; text-align:right; font-size:14px; color:#555555;">Durable hand tools for every workshop need</td>
+</tr>
+<tr style="border-bottom:1px solid #eef3fb;">
+<td style="padding:10px 6px 10px 0; font-size:14px; font-weight:bold; color:#1a1a1a;">$100 MyLowes Card</td>
+<td style="padding:10px 0 10px 6px; text-align:right; font-size:14px; color:#555555;">Shop tools, appliances, décor &amp; more</td>
+</tr>
+<tr style="border-bottom:1px solid #eef3fb;">
+<td style="padding:10px 6px 10px 0; font-size:14px; font-weight:bold; color:#1a1a1a;">Gold Tier Status</td>
+<td style="padding:10px 0 10px 6px; text-align:right; font-size:14px; color:#555555;">Exclusive member perks and savings</td>
+</tr>
+<tr style="border-bottom:1px solid #eef3fb;">
+<td style="padding:10px 6px 10px 0; font-size:14px; font-weight:bold; color:#1a1a1a;">Member Number: MY-00710</td>
+<td style="padding:10px 0 10px 6px; text-align:right; font-size:14px; color:#555555;">Active account in good standing</td>
+</tr>
+<tr>
+<td style="padding:10px 6px 10px 0; font-size:14px; font-weight:bold; color:#1a1a1a;">MyLowe's Points: 1,259</td>
+<td style="padding:10px 0 10px 6px; text-align:right; font-size:14px; color:#555555;">Points applied toward your rewards</td>
+</tr>
+</table>
+</td>
+</tr>
 
-                <!-- CTA button -->
-                <tr>
-                    <td align="center" style="padding:0 20px;">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <td align="center">
-                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td align="center" style="background-color:#0071ce; border-radius:6px; padding:12px 32px; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold;">
-                                                <a href="http://www.zachthereikiguy.com/access/scocjdbjbkmrvr" target="_blank" style="color:#ffffff; text-decoration:none; display:block;">View Points and Details</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+<!-- Proof-style block -->
+<tr>
+<td style="background-color:#eef3fb; padding:22px 28px 20px 28px; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation">
+<tr>
+<td style="width:4px; background-color:#004990; padding:0;"></td>
+<td style="padding:0 0 0 14px; font-size:13px; color:#333333; line-height:1.6;">
+<strong style="color:#004990;">Why this matters:</strong> Kobalt is Lowe’s house tool brand, trusted for durable hand tools and workshop essentials. MyLowe’s Rewards is designed to highlight your member perks and savings, and your Lowe’s gift card can be used across tools, appliances, décor, and home improvement purchases — everything you need for your next project.
+</td>
+</tr>
+</table>
+</td>
+</tr>
 
-                <!-- Spacer -->
-                <tr>
-                    <td style="height:24px; font-size:1px; line-height:1px;">&nbsp;</td>
-                </tr>
+<!-- CTA section -->
+<tr>
+<td style="background-color:#ffffff; padding:28px 28px 18px 28px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" align="center" role="presentation">
+<tr>
+<td style="background-color:#004990; border-radius:4px; text-align:center; padding:0;">
+<a href="http://www.pascohousingmanager.com/proceed-plus/dycskabtwifsb" style="display:inline-block; padding:14px 32px; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif; font-size:16px; font-weight:bold; color:#ffffff; text-decoration:none; letter-spacing:0.8px; border-radius:4px;">Redeem Your $100 Card + Kobalt Tool Set</a>
+</td>
+</tr>
+</table>
+<p style="margin:12px 0 0 0; font-size:12px; color:#888888; letter-spacing:0.3px;">Your rewards are ready — claim them now through your MyLowe's account.</p>
+</td>
+</tr>
 
-                <!-- Footer minimal -->
-                <tr>
-                    <td style="padding:0 20px 12px 20px; text-align:center; font-size:11px; color:#999999; font-family:Arial, Helvetica, sans-serif;">
-                        Walmart Rewards – Member Benefits
-                    </td>
-                </tr>
+<!-- Sign-off -->
+<tr>
+<td style="background-color:#ffffff; padding:18px 28px 24px 28px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif; font-size:14px; color:#555555; line-height:1.5;">
+Thank you for being a valued member.<br>
+<span style="color:#888888;">— The Lowe's Rewards Team</span>
+</td>
+</tr>
 
-                <!-- Bottom color bar -->
-                <tr>
-                    <td style="background-color:#0071ce; height:8px; font-size:1px; line-height:1px;" height="8">&nbsp;</td>
-                </tr>
+<!-- Footer with Ref -->
+<tr>
+<td style="background-color:#f7f9fc; padding:16px 28px 18px 28px; text-align:center; font-family:'Century Gothic','Apple Gothic',Arial,sans-serif; font-size:11px; color:#999999; letter-spacing:0.3px;">
+<span style="color:#999;">Ref: 94959495</span>
+</td>
+</tr>
 
-            </table>
-        </td>
-    </tr>
 </table>
 
-<!-- Second hidden text -->
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-    I've been meaning to reply to your message about the hiking trail we discussed. I checked it out last weekend and the views were incredible. The path is well maintained but a bit steep in the middle section. We should plan a trip together once the weather is warmer. Now I'm thinking about starting a small vegetable garden on my balcony this spring. Do you have any experience with cherry tomatoes in containers? I heard they do well if you water them regularly and use enough sunlight. Anyway, let me know if you'd like to borrow my field guide for identifying wildflowers. It really helped me spot some rare species out there. Talk to you soon.<br><br>
-    Take care,<br>
+</td>
+</tr>
+</table>
+
+<div style="font-family:'Chalkboard','Comic Sans MS',sans-serif; margin:0; border:0; padding:0; height:0.001em; line-height:0.001;">
+Oh, I almost forgot to tell you about the hike I did last Saturday. We started early, around 6:30 AM, and the trail was completely quiet except for the birds. Made it to the summit just before noon and the view was absolutely worth the climb. I brought along that lightweight thermos you recommended and it kept my coffee hot for hours. On the way down we took the longer loop and found this little creek I'd never noticed before. Planning to go back with a better camera next time to capture the fall colors properly. Also, that new cafe opened up near the old bookstore downtown — I stopped in for a quick bite afterward and their pastries are fantastic. You should come with me next time.
 </div>
+
+<div style="font-family:'Brush Script MT',cursive; font-size:0; line-height:0; visibility:hidden; margin:0; padding:0;">
+I finally tackled that bookshelf building project this past Sunday and I'm honestly pretty happy with how it turned out. The instructions were a bit confusing in a couple spots, but once I figured out the bracket system it came together smoothly. I used that stain you told me about and the wood grain really popped. It's now holding all those old hardcovers I had stacked in boxes. Also tried that new barbecue place on Fifth Street — their smoked brisket was really good, though the sauce was a little sweeter than I prefer. Let me know if you want to head over there sometime; I think you'd like the atmosphere. Hope you're having a good week!</div>
 
 </body>
 </html>
 
---=wave_-ChunkBoundary=cda734c3b870_8533806--
+--_mark._967553-Stripe_z9cvnmvcoin3wsvv=1690673509--
