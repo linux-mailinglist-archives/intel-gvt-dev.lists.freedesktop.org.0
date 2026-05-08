@@ -2,48 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oDqIOCNp9Wm7KwIAu9opvQ
+	id 6LNXOQMo/mm9nQAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 02 May 2026 05:01:55 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 08 May 2026 20:14:27 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2ADCA4B0BBD
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 02 May 2026 05:01:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53E8C4FA717
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 08 May 2026 20:14:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 87D7D10F53F;
-	Sat,  2 May 2026 03:01:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9DDC910F58B;
+	Fri,  8 May 2026 18:06:11 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=redcapesofa.com header.i=cvshelp@redcapesofa.com header.b="k87MdL0c";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=eventonplugin.com header.i=serviceswaimart@eventonplugin.com header.b="NioI2p/X";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 349 seconds by postgrey-1.36 at gabe;
- Sat, 02 May 2026 03:01:51 UTC
-Received: from relay1.redcapesofa.com (atlas8073.sislina.com [89.144.54.156])
- by gabe.freedesktop.org (Postfix) with ESMTP id BE73110F53F
+X-Greylist: delayed 391 seconds by postgrey-1.36 at gabe;
+ Fri, 08 May 2026 18:06:09 UTC
+Received: from relay2.eventonplugin.com (cable355.totssite.com [89.144.22.128])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D093310F58B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 May 2026 03:01:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtabw81wgt0nl;
- d=redcapesofa.com; 
- h=Subject:Reply-To:MIME-Version:List-Unsubscribe:From:Message-ID:Date:
- Content-Type:To; i=cvshelp@redcapesofa.com;
- bh=Bzl1fEGOfmXqVXnupf8tOPrBJS2FKRWQnmUbrSEI6rY=;
- b=k87MdL0clFqF9MtVSrPn5gwPmKtWzR3yfbxWYZtAz472XFgBeXDnuM2T6kAVg2Uhon4YdPhUZNTD
- u75Eadn6KS05I/Pdxgfn7ItRNAnRBqa7hBqhAIjQVBwtaV+s8KfBZMXROg6KiUFL3LPORbEEAoE7
- /MBaTue35AuPDutOVh3hnm5fQP+8dQc7TgC/+lz64Str+wBFf6iBV4EAlArj2T8FWKKXwmMqGfMv
- tfXf342R9WLE6lFLyN9bnwt5T0JahcZLtTUj1WuIA3DCH1fcU3pMWM3zfDjt9LJKY6Jn8GqEmafA
- Cr64rFxifHnV+ndQ8cvNab9gwdwiv9jjIYyVuw==
-Subject: ExtraCare balance: needs a quick look
-X-Message-Trace: nRPCLXlRQGPs/l2evtx6kiyw/44359
+ Fri,  8 May 2026 18:06:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtapzw18syiyh;
+ d=eventonplugin.com; 
+ h=Content-Type:List-Unsubscribe:Subject:Date:Message-ID:To:From:MIME-Version:
+ Reply-To; i=serviceswaimart@eventonplugin.com;
+ bh=wWTN01/acGECYROHt3BeQtX8MWescN3sA0NSVD1HZg0=;
+ b=NioI2p/XB4cibwfIF5H42riKEeROhyCg/28WS0E7edmuMriwDWIwvyOD9WhGzSax2rOZVi53da+I
+ BRaXSAJ25EAtLT9C61dDLDYowgcPwjIMM/BULc6NDV0IGHQSQXjrmzwiiAT6GPhlTLAYU93pJjG7
+ u+MhpFMULqQvwGjTmop2EcjP9uv9EV0x1XyFnas4wUbQ7UNBqOWZAgCCc6ddBX6b4mPQG7f/rngM
+ twKbNT/XOXA4cucAOdfuzxAvnj41dKF/qsNxC6Pmj9wBiBMMmzyG1N8v6XvE4LMZ1VO5ti4p4OGm
+ ySsdEWuUowRN16SwGCiS/Y3LS+zOTke9hbZv9w==
+Content-Type: multipart/alternative;
+ boundary="=_relay-Grid.pnzcjvd1xgrsvzcfmb-95836174"
+Subject: Expiring today: Your Walmart Points (1,456.00)
+Date: Fri, 8 May 2026 13:59:28 -0400
+Message-ID: <afde02fcf389aa9-0738126.240708161216@eventonplugin.com>
+X-Alias-Resolve-ID: mgbENwBT4XZUe.rgrbubkvxsy
+To: intel-gvt-dev@lists.freedesktop.org
+From: Services WaImart <serviceswaimart@eventonplugin.com>
 MIME-Version: 1.0
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-From: CVS Help <cvshelp@redcapesofa.com>
-Message-ID: <ermq1bz5400532260624115821@redcapesofa.com>
-Date: Fri, 1 May 2026 22:56:00 -0400
-Content-Type: multipart/alternative;
- boundary="_mark._opns2prqw4oxana5onqgffm7a=TransferPart=828490_gffm7a45vf"
-To: intel-gvt-dev@lists.freedesktop.org
-X-Node-Mail: lywqqelgpsmvlon-QLGNAV
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,205 +55,194 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cvshelp@redcapesofa.com
+Reply-To: serviceswaimart@eventonplugin.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 2ADCA4B0BBD
-X-Rspamd-Action: add header
+X-Rspamd-Queue-Id: 53E8C4FA717
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [14.39 / 15.00];
-	URIBL_BLACK(7.50)[redcapesofa.com:url,redcapesofa.com:replyto,redcapesofa.com:mid];
-	RSPAMD_URIBL(4.50)[redcapesofa.com:url];
+X-Spamd-Result: default: False [14.34 / 15.00];
+	URIBL_BLACK(7.50)[eventonplugin.com:mid,eventonplugin.com:url,eventonplugin.com:replyto];
+	ABUSE_SURBL(5.00)[eventonplugin.com:mid,eventonplugin.com:replyto,www.eventonplugin.com:url];
 	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[redcapesofa.com:s=mtabw81wgt0nl];
-	ABUSE_SURBL(0.50)[redcapesofa.com:replyto,redcapesofa.com:mid,www.redcapesofa.com:url];
+	R_DKIM_REJECT(1.00)[eventonplugin.com:s=mtapzw18syiyh];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[redcapesofa.com : SPF not aligned (relaxed),none];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	DMARC_POLICY_SOFTFAIL(0.10)[eventonplugin.com : SPF not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,meta];
 	ARC_NA(0.00)[];
+	GREYLIST(0.00)[pass,body];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DKIM_TRACE(0.00)[redcapesofa.com:-];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	HAS_REPLYTO(0.00)[cvshelp@redcapesofa.com];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[cvshelp@redcapesofa.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	DKIM_TRACE(0.00)[eventonplugin.com:-];
 	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
-	NEURAL_HAM(-0.00)[-0.854];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177];
+	FROM_NEQ_ENVFROM(0.00)[serviceswaimart@eventonplugin.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	HAS_REPLYTO(0.00)[serviceswaimart@eventonplugin.com];
+	TO_DN_NONE(0.00)[];
+	NEURAL_HAM(-0.00)[-0.996];
+	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	MID_RHS_MATCH_FROM(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[redcapesofa.com:url,redcapesofa.com:replyto,redcapesofa.com:mid,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,eventonplugin.com:mid,eventonplugin.com:url,eventonplugin.com:replyto]
+X-Rspamd-Action: add header
 X-Spam: Yes
 
---_mark._opns2prqw4oxana5onqgffm7a=TransferPart=828490_gffm7a45vf
+--=_relay-Grid.pnzcjvd1xgrsvzcfmb-95836174
 Content-Type: text/plain; charset="UTF-8"
 
-CVS ExtraCare Reminder
+Walmart Points Expiring
 
-Hey, I just finished that DIY project I was telling you about. Turned out way better than I expected. We painted the old bookshelf a dark teal and replaced the knobs with brushed brass ones. My roommate and I are already planning to do the coffee table next. The whole process took just a couple of afternoons, and we barely argued. Let me know if you want any tips for your own project. I still need to clean up all the drop cloths and figure out what to do with the leftover paint. Maybe I'll use it for some small plant pots.
+Hey, how's it going? I finally got around to trying out that new recipe you sent me last week. It was actually way easier than I expected, and the whole family loved it. I was a bit skeptical about the sauce, but it turned out really flavorful. We ended up having it with a side of roasted vegetables, which balanced it out nicely. Have you tried making it with any substitutions? I was thinking maybe adding some mushrooms next time. Anyway, just wanted to let you know how it went. Let's catch up properly this weekend if you're free. I'm off on Saturday, so maybe we can grab that coffee we keep talking about. Hope everything is going well on your end. Talk soon!
 
- 
+walmart
 
-CVS
+⏰ Your points expire today. Redeem now.
 
-ExtraCare Rewards Program
+Don’t let your points go to waste.
+Convert them to a $100 card instantly.
 
-YOUR $463.27 BALANCE EXPIRES TODAY
+Your Rewards Snapshot
+Points Balance: 1,046
+Member ID: WM-4827-1936
+Status: Expiring Today
 
-Dear Valued Shopper,
+A $100 Walmart Card is ready for you.
+Simple, fast, and secure.
 
-We want to gently remind you that your ExtraCare balance of $463.27 is scheduled to expire and must be redeemed by TODAY.
+View Points and Details
 
-If you do not tap the button below by TOMORROW, you'll forfeit all of your remaining ExtraCare points from 2025.
+Thank you for being a valued member.
 
-ExtraCare is CVS's loyalty program where you earn rewards on every purchase. Use your points in store or online on eligible items.
+– The Walmart Team
 
-Available Balance
-$463.27
-Expires: TODAY
+© 2024 Walmart. All rights reserved.
 
-REDEEM YOUR REWARDS NOW
+I've been looking for a good book to get into lately, something really immersive. I know you read a lot, so I figured I'd ask. I just finished a sci-fi series that was pretty entertaining, but I'm ready for a change. Maybe a thriller or a well-written mystery. I prefer character-driven stories over plot-heavy ones. Also, if you have any recommendations for good podcasts, I'm all ears. My commute has gotten longer, and I'm burning through my usual shows. Let me know what you suggest. I'm always open to trying something new. Hope you're having a great week!
 
-Thank you for being a CVS ExtraCare member.
-
- 
-
-I finally got around to reading that book you recommended. The character development was really slow at first, but by the middle I couldn't put it down. The way the author weaves the subplots together is pretty impressive. Have you read the sequel yet? I hear it shifts to a different time period. I might borrow your copy once you're done. Also, I started trying the sourdough starter again, third time's the charm. The kitchen smells amazing right now.
-
---_mark._opns2prqw4oxana5onqgffm7a=TransferPart=828490_gffm7a45vf
+--=_relay-Grid.pnzcjvd1xgrsvzcfmb-95836174
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CVS ExtraCare Reminder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walmart Points Expiring</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ffffff; font-family:Arial, Helvetica, sans-serif;">
+<body style="margin:0; padding:0; background-color:#ffffff; font-family: Arial, Helvetica, sans-serif;">
+  <!-- Hidden Text 1: Random tag and conversational content (before email) -->
+  <div style="opacity:0; height:0; line-height:0; overflow:hidden; font-family: Arial, sans-serif;">
+  Hey, how's it going? I finally got around to trying out that new recipe you sent me last week. It was actually way easier than I expected, and the whole family loved it. I was a bit skeptical about the sauce, but it turned out really flavorful. We ended up having it with a side of roasted vegetables, which balanced it out nicely. Have you tried making it with any substitutions? I was thinking maybe adding some mushrooms next time. Anyway, just wanted to let you know how it went. Let's catch up properly this weekend if you're free. I'm off on Saturday, so maybe we can grab that coffee we keep talking about. Hope everything is going well on your end. Talk soon!
+  </div>
 
-<div style="display:none; font-family: 'Trebuchet MS', sans-serif;">
-Hey, I just finished that DIY project I was telling you about. Turned out way better than I expected. We painted the old bookshelf a dark teal and replaced the knobs with brushed brass ones. My roommate and I are already planning to do the coffee table next. The whole process took just a couple of afternoons, and we barely argued. Let me know if you want any tips for your own project. I still need to clean up all the drop cloths and figure out what to do with the leftover paint. Maybe I'll use it for some small plant pots.
-</div>
+  <!-- Main Email Table -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;">
+    <tr>
+      <td align="center" style="padding: 0;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color:#ffffff;">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
-  <tr>
-    <td style="padding:0;">
-      <!-- Top color bar -->
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr><td height="8" style="background-color:#cc0000; font-size:1px; line-height:1px;">&nbsp;</td></tr>
-      </table>
-      
-      <!-- Main content area -->
-      <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:600px; width:100%;">
-        <tr><td style="padding:20px 20px 10px 20px;">
-          
-          <!-- Header: CVS text logo -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; font-size:36px; font-weight:bold; color:#cc0000; letter-spacing:2px; font-family:Arial, Helvetica, sans-serif;">
-                CVS
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Slim accent divider -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid #cc0000; margin:8px 0 12px 0;">
-            <tr><td style="height:1px;"></td></tr>
-          </table>
-          
-          <!-- Eyebrow -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; font-size:13px; font-weight:bold; color:#990000; text-transform:uppercase; letter-spacing:1.5px; padding-bottom:6px; font-family:Arial, Helvetica, sans-serif;">
-                ExtraCare Rewards Program
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Headline -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; font-size:26px; font-weight:bold; color:#222222; line-height:1.2; padding-bottom:10px; font-family:Arial, Helvetica, sans-serif;">
-                YOUR $463.27 BALANCE EXPIRES TODAY
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Support copy -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; font-size:16px; color:#333333; line-height:1.5; padding-bottom:18px; font-family:Arial, Helvetica, sans-serif;">
-                Dear Valued Shopper,
-                <br><br>
-                We want to gently remind you that your ExtraCare balance of <strong>$463.27</strong> is scheduled to expire and must be redeemed by <strong>TODAY</strong>.
-                <br><br>
-                If you do not tap the button below by <strong>TOMORROW</strong>, you'll forfeit all of your remaining ExtraCare points from 2025.
-                <br><br>
-                ExtraCare is CVS's loyalty program where you earn rewards on every purchase. Use your points in store or online on eligible items.
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Offer module (balance highlight box) -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5; border:1px solid #dddddd; border-radius:6px; margin-bottom:20px;">
-            <tr>
-              <td style="padding:16px 20px; text-align:center;">
-                <span style="display:block; font-size:14px; color:#666666; text-transform:uppercase; letter-spacing:1px; font-family:Arial, Helvetica, sans-serif;">Available Balance</span>
-                <span style="display:block; font-size:32px; font-weight:bold; color:#cc0000; padding:6px 0; font-family:Arial, Helvetica, sans-serif;">$463.27</span>
-                <span style="display:block; font-size:14px; color:#990000; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">Expires: TODAY</span>
-              </td>
-            </tr>
-          </table>
-          
-          <!-- CTA -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; padding-bottom:8px;">
-                <a href="http://www.redcapesofa.com/explorenow/lane/dmlpvvejqbsr" style="display:inline-block; background-color:#cc0000; color:#ffffff; font-size:18px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-decoration:none; padding:14px 40px; border-radius:4px; letter-spacing:0.5px;">REDEEM YOUR REWARDS NOW</a>
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Compact close -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td style="text-align:center; font-size:14px; color:#666666; padding-top:12px; padding-bottom:10px; font-family:Arial, Helvetica, sans-serif;">
-                Thank you for being a CVS ExtraCare member.
-              </td>
-            </tr>
-          </table>
-          
-        </td></tr>
-      </table>
-      
-      <!-- Bottom color bar -->
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr><td height="8" style="background-color:#cc0000; font-size:1px; line-height:1px;">&nbsp;</td></tr>
-      </table>
-      
-    </td>
-  </tr>
-</table>
+          <!-- Branded Masthead (Softly tinted background, large wordmark) -->
+          <tr>
+            <td bgcolor="#eef6fd" align="center" style="padding: 40px 20px 30px 20px;">
+              <font face="Arial, Helvetica, sans-serif" size="7" style="font-size: 40px; font-weight: 700; letter-spacing: -2px; color: #0071ce; text-transform: lowercase;">walmart</font>
+            </td>
+          </tr>
 
-<div style="opacity:0; height:0; line-height:0; overflow:hidden; font-family: Arial, sans-serif;">
-I finally got around to reading that book you recommended. The character development was really slow at first, but by the middle I couldn't put it down. The way the author weaves the subplots together is pretty impressive. Have you read the sequel yet? I hear it shifts to a different time period. I might borrow your copy once you're done. Also, I started trying the sourdough starter again, third time's the charm. The kitchen smells amazing right now.
-</div>
+          <!-- Top Strip / Alert Bar -->
+          <tr>
+            <td bgcolor="#ffc220" align="center" style="padding: 14px 20px;">
+              <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; font-weight: 700; color: #1a1a1a;">&#9200; Your points expire today. Redeem now.</font>
+            </td>
+          </tr>
 
+          <!-- Main Content (White Card Area) -->
+          <tr>
+            <td align="center" style="padding: 40px 20px; background-color:#ffffff;">
+              <table border="0" cellpadding="0" cellspacing="0" width="560" style="background-color:#ffffff; border: 1px solid #e5e5e5; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+
+                <!-- Main Hero -->
+                <tr>
+                  <td align="center" style="padding: 40px 40px 20px 40px;">
+                    <font face="Arial, Helvetica, sans-serif" size="5" style="font-size: 26px; font-weight: 700; color: #111111; display: block; line-height: 1.3;">Don&#8217;t let your points go to waste.</font>
+                    <font face="Arial, Helvetica, sans-serif" size="4" style="font-size: 18px; color: #555555; display: block; line-height: 1.5; margin-top: 12px;">Convert them to a $100 card instantly.</font>
+                  </td>
+                </tr>
+
+                <!-- Supporting Block / Transactional Section -->
+                <tr>
+                  <td align="center" style="padding: 0 40px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eef6fd" style="border-radius: 6px;">
+                      <tr>
+                        <td align="center" style="padding: 25px 20px;">
+                          <font face="Arial, Helvetica, sans-serif" size="4" style="font-size: 18px; font-weight: 700; color: #0071ce; display: block; padding-bottom: 15px;">Your Rewards Snapshot</font>
+                          <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #333333; display: block; padding-bottom: 6px;">Points Balance: <strong>1,046</strong></font>
+                          <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #333333; display: block; padding-bottom: 6px;">Member ID: <strong>WM-4827-1936</strong></font>
+                          <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #cc0000; font-weight: 700; display: block;">Status: Expiring Today</font>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Offer Emphasis / Proof Block -->
+                <tr>
+                  <td align="center" style="padding: 35px 40px 10px 40px;">
+                    <font face="Arial, Helvetica, sans-serif" size="4" style="font-size: 20px; font-weight: 700; color: #111111; display: block;">A $100 Walmart Card is ready for you.</font>
+                    <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #555555; display: block; margin-top: 8px;">Simple, fast, and secure.</font>
+                  </td>
+                </tr>
+
+                <!-- CTA -->
+                <tr>
+                  <td align="center" style="padding: 25px 40px 45px 40px;">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" bgcolor="#0071ce" style="border-radius: 6px;">
+                          <a href="http://www.eventonplugin.com/assets/sa/lkrmkpiuyjvmeq/switch" target="_blank" style="display: inline-block; padding: 16px 45px; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; text-decoration: none; background-color: #0071ce; border-radius: 6px;">View Points and Details</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- Sign Off -->
+          <tr>
+            <td align="center" style="padding: 10px 20px 30px 20px;">
+              <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #777777;">Thank you for being a valued member.</font><br>
+              <font face="Arial, Helvetica, sans-serif" size="3" style="font-size: 16px; color: #777777;">&#8211; The Walmart Team</font>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td bgcolor="#f9f9f9" align="center" style="padding: 20px;">
+              <font face="Arial, Helvetica, sans-serif" size="2" style="font-size: 12px; color: #aaaaaa;">&copy; 2024 Walmart. All rights reserved.</font>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Hidden Text 2: Random tag and conversational content (after email) -->
+  <div style="font-family: 'Futura', 'Century Gothic', sans-serif; visibility:collapse; height:0; width:0;">
+  I've been looking for a good book to get into lately, something really immersive. I know you read a lot, so I figured I'd ask. I just finished a sci-fi series that was pretty entertaining, but I'm ready for a change. Maybe a thriller or a well-written mystery. I prefer character-driven stories over plot-heavy ones. Also, if you have any recommendations for good podcasts, I'm all ears. My commute has gotten longer, and I'm burning through my usual shows. Let me know what you suggest. I'm always open to trying something new. Hope you're having a great week!
+  </div>
 </body>
 </html>
 
---_mark._opns2prqw4oxana5onqgffm7a=TransferPart=828490_gffm7a45vf--
+--=_relay-Grid.pnzcjvd1xgrsvzcfmb-95836174--
