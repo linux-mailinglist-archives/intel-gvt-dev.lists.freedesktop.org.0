@@ -2,48 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aMqnEeEDAmrknAEAu9opvQ
+	id KEAsJWDxBWq3dgIAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 May 2026 18:29:21 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 May 2026 17:59:28 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A43D151224F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 May 2026 18:29:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 037BE544633
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 May 2026 17:59:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0FC2310E80D;
-	Mon, 11 May 2026 16:29:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8040A10E3BF;
+	Thu, 14 May 2026 15:52:22 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=gossipteam.com header.i=kitchenbestbuyaid@gossipteam.com header.b="fvJV3bAA";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=origamifun.com header.i=roadsidecourteous@origamifun.com header.b="ei/spdGI";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Mon, 11 May 2026 16:29:17 UTC
-Received: from mail.gossipteam.com (unknown [5.175.187.195])
- by gabe.freedesktop.org (Postfix) with ESMTP id BEC8B10E80D
+X-Greylist: delayed 397 seconds by postgrey-1.36 at gabe;
+ Thu, 14 May 2026 15:52:20 UTC
+Received: from smtp.origamifun.com (golden4961.victorysite.com
+ [103.176.192.240])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DF64F10E3BF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 11 May 2026 16:29:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtahb11eouc2t;
- d=gossipteam.com; 
- h=To:MIME-Version:From:Reply-To:Message-ID:Subject:List-Unsubscribe:Date:
- Content-Type; i=kitchenbestbuyaid@gossipteam.com;
- bh=4I+vfyAaouqBfTfe8mfRvD8EJbylZzrlZpbMNHsvVHo=;
- b=fvJV3bAAeAX/qsagS6+y2hjqnwcBN/kVq4yvo5a8Hmbl5r9A3IGJxdvhAQliAlyDygbKyLkfj9C0
- QVd747GI4wFoPy2IHQlP19lpOMLxlftMrRtUtspvXE4azHqsT2oaOxKRq/Tu4Hjx98viVpTMhsBu
- qw3C10vD+6xmD+zGYEYYB7CO3w8Kjxj0AHzd+1QlO/r+1YZ+v9H9jPEFrrXoEq1ow7Pb2kDpJUUM
- VZ72mNk1U+JZuYlhXgaj9MlnEqXz//682aVnz59+K1N2FAv10qxgPj4a1eN3e9nbclFtCVRA712o
- fx+5oYhrvmBL4Az3YVkQVSZiVyKvRlvxXe6xJA==
-X-Node-Mail: rmdzmduwqnelz-CQPQC
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-To: intel-gvt-dev@lists.freedesktop.org
+ Thu, 14 May 2026 15:52:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtapvbpmsnxbl;
+ d=origamifun.com; 
+ h=MIME-Version:Message-ID:Subject:From:Date:Content-Type:Reply-To:To:
+ List-Unsubscribe; i=roadsidecourteous@origamifun.com;
+ bh=n2z7Rl8pn/oAQOSdceUPSbg4vY/hc5ZEa3PSenDQPY4=;
+ b=ei/spdGIKEoZD+269kB/TtyDSIT9Cumy8BnawgVAhpJZPs9UOPkcjfhz0p6LTD7tPUfcUakHxCKb
+ b1yZ6NAhhDfAXvRR/GSHhdB5ezGf1uHimGa30EcxkLSCsW/DvyppcCIuc8LHhf3mw+EY9H2xjI91
+ 2Cj2PaxBj9iOnsGO1Ad5ObXFi5FVvb1rcklcwyB4lOLxlDYCnU9QiowbycIJfE/mEL7uPruwelAx
+ LvfVpL8ayg0zJgA/v449VjER7xxzEJdVT82DksbIkiDq1TG2rTYxwJEnSahjhIhbsmrpq8whjqRv
+ 0jfmXGrXY9D8oNzkV+ywDAGDVqacr8Ke8wWOMA==
 MIME-Version: 1.0
-From: Kitchen BestBuy Aid <kitchenbestbuyaid@gossipteam.com>
-Message-ID: <5b7c7e7d75f012ed56d5b7ca5.jmbldp@gossipteam.com>
-Subject: Best Buy has your Kitchen Aid Mixer + 15O.OO Card for this day only
-Date: Mon, 11 May 2026 12:23:46 -0400
+Message-ID: <260715061711-acygxdz_jmnppzvmivyd@origamifun.com>
+Subject: From A A A: Your Courtesy Road Kit Is En Route
+From: Roadside Courteous <roadsidecourteous@origamifun.com>
+Date: Thu, 14 May 2026 11:42:58 -0400
 Content-Type: multipart/alternative;
- boundary=".axis=-imxwq9ty9r7e=Matrix_4573690"
-X-Inbound-Scanner-ID: upgk6wf9van2-odRJA
+ boundary="=_mto5it1o2qvso_Ember_igfbwaqnezdsznb"
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Metadata-Key: wljvxlphpx=3005973
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,275 +56,286 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: kitchenbestbuyaid@gossipteam.com
+Reply-To: roadsidecourteous@origamifun.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: A43D151224F
+X-Rspamd-Queue-Id: 037BE544633
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [13.44 / 15.00];
-	URIBL_BLACK(7.50)[gossipteam.com:mid,gossipteam.com:url,gossipteam.com:replyto];
-	ABUSE_SURBL(5.00)[gossipteam.com:mid,gossipteam.com:replyto,www.gossipteam.com:url];
-	R_DKIM_REJECT(1.00)[gossipteam.com:s=mtahb11eouc2t];
+X-Spamd-Result: default: False [14.34 / 15.00];
+	URIBL_BLACK(7.50)[origamifun.com:mid,origamifun.com:url,origamifun.com:replyto];
+	ABUSE_SURBL(5.00)[www.origamifun.com:url,origamifun.com:mid,origamifun.com:replyto];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	R_DKIM_REJECT(1.00)[origamifun.com:s=mtapvbpmsnxbl];
 	MAILLIST(-0.20)[mailman];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[gossipteam.com : SPF not aligned (relaxed),none];
-	ZERO_FONT(0.10)[1];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	DMARC_POLICY_SOFTFAIL(0.10)[origamifun.com : SPF not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	ARC_NA(0.00)[];
-	GREYLIST(0.00)[pass,meta];
+	GREYLIST(0.00)[pass,body];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCPT_COUNT_ONE(0.00)[1];
-	DKIM_TRACE(0.00)[gossipteam.com:-];
+	DKIM_TRACE(0.00)[origamifun.com:-];
 	NEURAL_SPAM(0.00)[1.000];
 	MISSING_XM_UA(0.00)[];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kitchenbestbuyaid@gossipteam.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[kitchenbestbuyaid@gossipteam.com];
 	RCVD_COUNT_TWO(0.00)[2];
+	FROM_NEQ_ENVFROM(0.00)[roadsidecourteous@origamifun.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_HAS_DN(0.00)[];
+	HAS_REPLYTO(0.00)[roadsidecourteous@origamifun.com];
+	TO_DN_NONE(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,gossipteam.com:mid,gossipteam.com:url,gossipteam.com:replyto]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[origamifun.com:mid,origamifun.com:url,origamifun.com:replyto,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
 X-Rspamd-Action: add header
 X-Spam: Yes
 
---.axis=-imxwq9ty9r7e=Matrix_4573690
+--=_mto5it1o2qvso_Ember_igfbwaqnezdsznb
 Content-Type: text/plain; charset="UTF-8"
 
-Best Buy Member Update
+Thanks for asking about next weekend. I think the weather should cooperate based on what I saw in the forecast. We could head out early Saturday morning around 7am and be at the trailhead by 9. The loop I mapped is about 8 miles with moderate elevation gain so it should take us around 5 hours with breaks. I will bring the water filter since there are a couple of streams along the way. Let me know if you want to bring your camp stove for lunch or if we should just pack sandwiches. I was thinking we could take the northern route first since it has better views in the morning light. The parking lot is usually not too full on weekdays but weekends can be busier so arriving early helps. I will check trail conditions Friday evening and send you a message. You might want to bring extra layers since it can get windy near the ridge. I have a map downloaded on my phone but carrying a paper copy is always a good idea too.
 
-upgk6wf9van2
+I also looked into whether we need a permit for that area and it looks like day hikes do not require one. There is a small parking fee of five dollars at the lot so bring some cash. The ranger station opens at 8am if we need to ask about current conditions. I am looking forward to getting out there and hope the weather holds.
 
-I meant to reply earlier, but the afternoon got away from me and I only now have a quiet minute to circle back.
-You were right that it helps to write things down before deciding anything, because once I made a short list the whole situation felt less tangled.
-I tried a different routine this week, and it actually made the day smoother from start to finish, especially after lunch when I usually lose focus.
-I also remembered what you said about keeping expectations realistic, and that helped more than I expected when something small went sideways in the middle of it all.
-I am still adjusting, though, and I noticed MX1fdCkChf9K that the minute I rush, I skip details that matter later.
-So my plan is simple: finish one thing, take a breath, then move to the next instead of attempting everything at once.
-It is not dramatic, just steadier, and honestly steadier seems better right now.
+AAA
+Roadside Support • Courtesy Program
 
-Best Buy
+Residents in Your Area Receive a Courtesy Roadside Kit
 
-ENDS TONIGHT
+AAA's Premier Roadside Support program extends this benefit to licensed drivers
 
-1
+in your region as part of a local service expansion.
 
-MINUTE
+Because of where you live, you are eligible to receive a roadside assistance kit provided at no charge to qualified residents. You will not be billed for the kit — it is covered by the program for your area.
 
-Answer one quick questionnaire. Claim a Kitchen Aid Mixer plus a 15O.OO Card.
+View Your Roadside Kit
 
-This limited member update is available to past customers who complete a short survey before midnight. One valid claim per customer.
+The AAA Courtesy Bundle includes a selection of practical items to help you handle common roadside situations. Each kit is assembled with attention to quality and usefulness, so you have essential tools on hand when you need them.
 
-Member eligibility overview
+This offering is part of a regional program serving licensed drivers in your locality. No payment is required for eligible recipients, and there are no subscription fees or ongoing commitments associated with the kit.
 
-Best Buy serves customers shopping electronics, appliances, gaming, and smart home products online and in stores nationwide. Known for Geek Squad support, member deals, store pickup, delivery, and installation, the brand is using this short questionnaire to confirm offer eligibility before fulfillment.
+Items Included in Your Kit
 
-TONIGHT
+• LED road flares (3-pack)
 
-Midnight deadline
+• Heavy-duty jumper cables (16 ft)
 
-Status
+• Reflective safety vest
 
-Queued for review
+• Multi-tool with pliers and screwdrivers
 
-Current Best buy Points: 408
+• Tire pressure gauge with dial
 
-Customer Number: BU-981-408
+• Emergency blanket (mylar)
 
-Offer rule: Valid One Per Customer
+• Work gloves (heavy-duty pair)
 
-The questionnaire takes about one minute. Complete it before the midnight cutoff to continue the redemption path.
+• Flashlight with batteries (LED)
 
-Redeem Kitchen Aid Mixer + 15O.OO Card
+• Bungee cords (assorted sizes, set of 4)
 
-Ref: 031783031783
+• First aid kit (25-piece basic set)
 
-This update is presented as a concise member-style notice with account-style details to help confirm eligibility status and response timing. Please review the listed points, customer number, and deadline before continuing.
+• Heavy-duty zip ties (10-pack)
 
-I think the main issue was that I packed too much into one morning and then felt annoyed at myself when everything took longer than I guessed.
-Next time I am going to start earlier, leave a little space between tasks, and stop pretending I can move from one thing to the next without resetting my attention even briefly.
-I also tried changing my usual route on the walk back, which sounds minor, but it gave me a quieter end to the day and somehow made the evening feel more organized.
-If you are still deciding whether to simplify your schedule, I would say yes, even if only for a few days, because it cleared up my head almost immediately.
-I noticed MX1fdCkChf9K that when I wrote a short note before bed, I slept better and did not wake up trying to remember every little thing at once.
-That has probably been the most useful habit of the week, and I am hoping I can stick with it.
+• Rain poncho (one-size)
 
---.axis=-imxwq9ty9r7e=Matrix_4573690
+• Tow strap (10 ft, 10,000 lb rating)
+
+• Compact road atlas
+
+Supplies are allocated based on program availability in your region. Kit contents may vary slightly depending on current inventory.
+
+Thank you for being a valued member of your community.
+
+AAA Roadside Support • Courtesy Program
+
+ 
+
+I finally tried that recipe you sent me last week and it turned out pretty well after some adjustments. The main issue was the cooking time which seemed too short for my oven. I added about 10 minutes and checked with a toothpick which came out clean. Next time I would use slightly less sugar because it was a bit sweeter than I prefer. The texture was good though and the topping came out nice and golden. I substituted almond extract for vanilla since I ran out and it gave it a nice flavor. The recipe said it would serve 8 but I found it was more like 6 portions for a decent serving size. I will bring some over when we meet so you can try it. Let me know if you want me to send you the changes I made so you can try it your way. Overall it was a success and I would make it again for a gathering.
+
+I also wanted to ask if you have any preference on what we do for the dinner next month since I am starting to plan the menu. Let me know if you have any dietary restrictions or preferences I should account for. I was thinking of doing a simple pasta dish with a side salad and maybe a dessert.
+
+--=_mto5it1o2qvso_Ember_igfbwaqnezdsznb
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Buy Member Update</title>
 </head>
-<body style="margin:0; padding:0; background-color:#f4f6fb;">
-<div style="display:none;max-height:0;overflow:hidden;font-size:0;line-height:0;">upgk6wf9van2</div>
-<div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:0; height:0; line-height:0; overflow:hidden;">I meant to reply earlier, but the afternoon got away from me and I only now have a quiet minute to circle back.<br>You were right that it helps to write things down before deciding anything, because once I made a short list the whole situation felt less tangled.<br>I tried a different routine this week, and it actually made the day smoother from start to finish, especially after lunch when I usually lose focus.<br>I also remembered what you said about keeping expectations realistic, and that helped more than I expected when something small went sideways in the middle of it all.<br>I am still adjusting, though, and I noticed MX1fdCkChf9K that the minute I rush, I skip details that matter later.<br>So my plan is simple: finish one thing, take a breath, then move to the next instead of attempting everything at once.<br>It is not dramatic, just steadie
- r, and honestly steadier seems better right now.</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; background-color:#f4f6fb; margin:0; padding:0;">
-  <tr>
-    <td align="center" style="padding:14px 10px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="620" style="width:620px; max-width:620px; background-color:#ffffff; border:1px solid #dfe5f3;">
-        <tr>
-          <td style="padding:0;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr>
-                <td align="left" valign="middle" style="padding:16px 18px; background-color:#eef2fd; border-bottom:1px solid #d9e1f5;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                    <tr>
-                      <td align="left" valign="middle" style="font-family:'Palatino Linotype', Palatino, Georgia, serif; font-size:28px; line-height:30px; font-weight:bold; color:#0046be;">
-                        Best Buy
-                      </td>
-                      <td align="right" valign="middle" style="font-family:'Palatino Linotype', Palatino, Georgia, serif; font-size:12px; line-height:14px; color:#0046be; font-weight:bold; letter-spacing:0.3px;">
-                        ENDS TONIGHT
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:18px 18px 8px 18px; background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                    <tr>
-                      <td width="112" valign="top" style="width:112px; padding-right:12px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#0046be;">
-                          <tr>
-                            <td align="center" style="padding:18px 10px; font-family:'Palatino Linotype', Palatino, Georgia, serif; color:#ffffff;">
-                              <div style="font-size:28px; line-height:30px; font-weight:bold;">1</div>
-                              <div style="font-size:12px; line-height:14px; letter-spacing:0.5px;">MINUTE</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                      <td valign="top" style="font-family:'Palatino Linotype', Palatino, Georgia, serif; color:#172033;">
-                        <div style="font-size:30px; line-height:32px; font-weight:bold; color:#172033; padding-bottom:6px;">
-                          Answer one quick questionnaire. Claim a Kitchen Aid Mixer plus a 15O.OO Card.
-                        </div>
-                        <div style="font-size:16px; line-height:22px; color:#39465e;">
-                          This limited member update is available to past customers who complete a short survey before midnight. One valid claim per customer.
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:8px 18px 8px 18px; background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#eef2fd;">
-                    <tr>
-                      <td valign="top" style="padding:14px 14px 14px 16px; font-family:'Palatino Linotype', Palatino, Georgia, serif; color:#1f2a44;">
-                        <div style="font-size:19px; line-height:22px; font-weight:bold; color:#0046be; padding-bottom:5px;">
-                          Member eligibility overview
-                        </div>
-                        <div style="font-size:14px; line-height:20px; color:#364154;">
-                          Best Buy serves customers shopping electronics, appliances, gaming, and smart home products online and in stores nationwide. Known for Geek Squad support, member deals, store pickup, delivery, and installation, the brand is using this short questionnaire to confirm offer eligibility before fulfillment.
-                        </div>
-                      </td>
-                      <td width="125" valign="middle" style="width:125px; padding:0 14px 0 0;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffffff; border:1px solid #d5ddf2;">
-                          <tr>
-                            <td align="center" style="padding:16px 8px; font-family:'Palatino Linotype', Palatino, Georgia, serif;">
-                              <div style="font-size:22px; line-height:24px; color:#0046be; font-weight:bold;">TONIGHT</div>
-                              <div style="font-size:12px; line-height:15px; color:#4c5973;">Midnight deadline</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:8px 18px 8px 18px; background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                    <tr>
-                      <td width="125" valign="top" style="width:125px; padding-right:12px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffe000;">
-                          <tr>
-                            <td align="center" style="padding:18px 10px; font-family:'Palatino Linotype', Palatino, Georgia, serif; color:#172033;">
-                              <div style="font-size:24px; line-height:26px; font-weight:bold;">Status</div>
-                              <div style="font-size:12px; line-height:15px;">Queued for review</div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                      <td valign="top" style="font-family:'Palatino Linotype', Palatino, Georgia, serif;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#fbfcff; border:1px solid #dfe5f3;">
-                          <tr>
-                            <td style="padding:12px 14px;">
-                              <div style="font-size:14px; line-height:20px; color:#1f2a44; padding-bottom:6px;">
-                                <strong>Current Best buy Points:</strong> 408
-                              </div>
-                              <div style="font-size:14px; line-height:20px; color:#1f2a44; padding-bottom:6px;">
-                                <strong>Customer Number:</strong> BU-981-408
-                              </div>
-                              <div style="font-size:14px; line-height:20px; color:#1f2a44;">
-                                <strong>Offer rule:</strong> Valid One Per Customer
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:10px 18px 8px 18px; background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#0046be;">
-                    <tr>
-                      <td align="center" style="padding:18px 14px;">
-                        <div style="font-family:'Palatino Linotype', Palatino, Georgia, serif; font-size:14px; line-height:20px; color:#dfe9ff; padding-bottom:12px;">
-                          The questionnaire takes about one minute. Complete it before the midnight cutoff to continue the redemption path.
-                        </div>
-                        <a href="http://www.gossipteam.com/ap/reviewwire/pmajfdoolmb" style="display:inline-block; font-family:'Palatino Linotype', Palatino, Georgia, serif; font-size:16px; line-height:16px; color:#172033; text-decoration:none; background-color:#ffe000; padding:14px 22px; font-weight:bold;">Redeem Kitchen Aid Mixer + 15O.OO Card</a>
-                        <div style="padding-top:10px;">
-                          <span style="font-size:11px;color:#999; font-family:'Palatino Linotype', Palatino, Georgia, serif;">Ref: 031783031783</span>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:8px 18px 18px 18px; background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#eef2fd;">
-                    <tr>
-                      <td style="padding:12px 14px; font-family:'Palatino Linotype', Palatino, Georgia, serif; color:#42516b; font-size:12px; line-height:18px;">
-                        This update is presented as a concise member-style notice with account-style details to help confirm eligibility status and response timing. Please review the listed points, customer number, and deadline before continuing.
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+<body style="margin:0; padding:0; background-color:#f0f4fa; font-family: Arial, Helvetica, sans-serif;">
+<div style="display:none; font-family: 'Trebuchet MS', sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
+Thanks for asking about next weekend. I think the weather should cooperate based on what I saw in the forecast. We could head out early Saturday morning around 7am and be at the trailhead by 9. The loop I mapped is about 8 miles with moderate elevation gain so it should take us around 5 hours with breaks. I will bring the water filter since there are a couple of streams along the way. Let me know if you want to bring your camp stove for lunch or if we should just pack sandwiches. I was thinking we could take the northern route first since it has better views in the morning light. The parking lot is usually not too full on weekdays but weekends can be busier so arriving early helps. I will check trail conditions Friday evening and send you a message. You might want to bring extra layers since it can get windy near the ridge. I have a map downloaded on my phone but carrying a paper copy is always a good idea too.<br><br>I also looked into whether we need a permit for that area and it l
+ ooks like day hikes do not require one. There is a small parking fee of five dollars at the lot so bring some cash. The ranger station opens at 8am if we need to ask about current conditions. I am looking forward to getting out there and hope the weather holds.
+</div>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f0f4fa;">
+<tr>
+<td align="center" style="padding:24px 16px 16px 16px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+<tr>
+<td style="padding:0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="background-color:#003b6f; padding:20px 30px 18px 30px; text-align:center; border-radius:6px 6px 0 0;">
+<span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:34px; font-weight:bold; color:#ffffff; letter-spacing:3px;">AAA</span>
+<div style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:13px; color:#d0dae6; margin-top:4px; letter-spacing:1px;">Roadside Support • Courtesy Program</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding:32px 32px 12px 32px; text-align:center;">
+<div style="width:50px; height:3px; background-color:#cc0000; margin:0 auto 16px auto; border-radius:2px;"></div>
+<h1 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:26px; font-weight:normal; color:#003b6f; margin:0 0 8px 0; line-height:1.3; letter-spacing:0.3px;">Residents in Your Area Receive a Courtesy Roadside Kit</h1>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:15px; color:#666666; margin:0 0 4px 0; line-height:1.5; font-weight:normal;">AAA's Premier Roadside Support program extends this benefit to licensed drivers</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:15px; color:#666666; margin:0 0 0 0; line-height:1.5; font-weight:normal;">in your region as part of a local service expansion.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:4px 32px 20px 32px; text-align:center;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:16px; color:#333333; margin:0 0 0 0; line-height:1.6;">Because of where you live, you are eligible to receive a roadside assistance kit provided at no charge to qualified residents. You will not be billed for the kit — it is covered by the program for your area.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:6px 32px 28px 32px; text-align:center;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+<td align="center" style="background-color:#cc0000; border-radius:30px; box-shadow:0 3px 8px rgba(204,0,0,0.25);">
+<a href="http://www.origamifun.com/me/alerts/e62l-362fc-qels/insider-board" style="display:inline-block; font-family: Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#ffffff; text-decoration:none; padding:14px 42px; line-height:1; letter-spacing:0.4px; border-radius:30px;">View Your Roadside Kit</a>
+</td>
+</tr>
 </table>
-<div style="font-family: 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', serif; position:fixed; top:-100vh; left:-100vw;">I think the main issue was that I packed too much into one morning and then felt annoyed at myself when everything took longer than I guessed.<br>Next time I am going to start earlier, leave a little space between tasks, and stop pretending I can move from one thing to the next without resetting my attention even briefly.<br>I also tried changing my usual route on the walk back, which sounds minor, but it gave me a quieter end to the day and somehow made the evening feel more organized.<br>If you are still deciding whether to simplify your schedule, I would say yes, even if only for a few days, because it cleared up my head almost immediately.<br>I noticed MX1fdCkChf9K that when I wrote a short note before bed, I slept better and did not wake up trying to remember every little thing at once.<br>That has probably been the most useful habit of the week, and I
-  am hoping I can stick with it.</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0 32px 16px 32px;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:15px; color:#333333; margin:0 0 14px 0; line-height:1.6;">The AAA Courtesy Bundle includes a selection of practical items to help you handle common roadside situations. Each kit is assembled with attention to quality and usefulness, so you have essential tools on hand when you need them.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:15px; color:#333333; margin:0 0 14px 0; line-height:1.6;">This offering is part of a regional program serving licensed drivers in your locality. No payment is required for eligible recipients, and there are no subscription fees or ongoing commitments associated with the kit.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:4px 32px 12px 32px;">
+<h2 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:20px; font-weight:normal; color:#003b6f; margin:0 0 14px 0; letter-spacing:0.2px;">Items Included in Your Kit</h2>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+<tr>
+<td valign="top" style="width:50%; padding:4px 6px 4px 0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• LED road flares (3-pack)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Heavy-duty jumper cables (16 ft)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Reflective safety vest</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Multi-tool with pliers and screwdrivers</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Tire pressure gauge with dial</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Emergency blanket (mylar)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Work gloves (heavy-duty pair)</span>
+</td>
+</tr>
+</table>
+</td>
+<td valign="top" style="width:50%; padding:4px 0 4px 6px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Flashlight with batteries (LED)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Bungee cords (assorted sizes, set of 4)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• First aid kit (25-piece basic set)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Heavy-duty zip ties (10-pack)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Rain poncho (one-size)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#f6f8fb; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Tow strap (10 ft, 10,000 lb rating)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color:#ffffff; border:1px solid #d0dae6; border-radius:5px; padding:10px 14px; margin-bottom:6px; display:block;">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#333333; line-height:1.4;">• Compact road atlas</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:14px 32px 6px 32px;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#666666; margin:0 0 0 0; line-height:1.5; font-style:italic;">Supplies are allocated based on program availability in your region. Kit contents may vary slightly depending on current inventory.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:28px 32px 22px 32px; text-align:center; border-top:1px solid #d0dae6;">
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#003b6f; margin:0 0 4px 0; line-height:1.5;">Thank you for being a valued member of your community.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size:13px; color:#999999; margin:0 0 0 0; line-height:1.5;">AAA Roadside Support • Courtesy Program</p>
+</td>
+</tr>
+<tr>
+<td style="background-color:#003b6f; height:6px; border-radius:0 0 6px 6px; font-size:1px; line-height:1px;">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
+I finally tried that recipe you sent me last week and it turned out pretty well after some adjustments. The main issue was the cooking time which seemed too short for my oven. I added about 10 minutes and checked with a toothpick which came out clean. Next time I would use slightly less sugar because it was a bit sweeter than I prefer. The texture was good though and the topping came out nice and golden. I substituted almond extract for vanilla since I ran out and it gave it a nice flavor. The recipe said it would serve 8 but I found it was more like 6 portions for a decent serving size. I will bring some over when we meet so you can try it. Let me know if you want me to send you the changes I made so you can try it your way. Overall it was a success and I would make it again for a gathering.<br><br>I also wanted to ask if you have any preference on what we do for the dinner next month since I am starting to plan the menu. Let me know if you have any dietary restrictions or preferenc
+ es I should account for. I was thinking of doing a simple pasta dish with a side salad and maybe a dessert.
+</div>
 </body>
 </html>
 
---.axis=-imxwq9ty9r7e=Matrix_4573690--
+--=_mto5it1o2qvso_Ember_igfbwaqnezdsznb--
