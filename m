@@ -2,50 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id ZqyeI1h4BmptkAIAu9opvQ
+	id CELRKnvIBmrynwIAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 03:35:20 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 09:17:15 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D687D548709
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 03:35:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 20B9454A703
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 09:17:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1FE9D10E129;
-	Fri, 15 May 2026 01:35:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7922710F435;
+	Fri, 15 May 2026 07:17:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=ozonetax.com header.i=mahasteakassortment@ozonetax.com header.b="eJ+seypB";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=clientsbook.com header.i=welcomefromcvs@clientsbook.com header.b="pgv1E0s8";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 666 seconds by postgrey-1.36 at gabe;
- Fri, 15 May 2026 01:35:15 UTC
-Received: from smtp1.ozonetax.com (figurestack.nanodriving.com [103.176.192.6])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0F36010E129
+X-Greylist: delayed 396 seconds by postgrey-1.36 at gabe;
+ Fri, 15 May 2026 07:17:11 UTC
+Received: from mailhub.clientsbook.com (field9522.majorgalore.com
+ [103.176.192.167])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F2F1C10F436
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 15 May 2026 01:35:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtajp8ipnxgot;
- d=ozonetax.com; 
- h=MIME-Version:To:Subject:Content-Type:From:List-Unsubscribe:Reply-To:
- Message-ID:Date; i=mahasteakassortment@ozonetax.com;
- bh=XTWemHKx2oCVMU785oj+mexXKpzM/Qo/rBXrSZ3qulo=;
- b=eJ+seypBgvQKo4A62LeBaKbNhOXY9IZuDUuH2Fu4fi/TwMhsCZMXHafMR3i8cDBRjMb6wv6nXiZf
- tW23Zd8ubYYFSph0zRDdwP2KTEo84dHeILfj7vqj7qK90qb3fqGLto1zX3PNTMVdoTXIR8SAmFrs
- bZxtVxgrIXuRiFR6OxNlrCoDvOAUPAXoC1vMzaG2R3Zcnc2IsmKYlpudqVdjPIQlrToXj/oZTmnl
- km1Lfi8p0QQyiAV+4/sSVwvhIiwtdNZhr70Y3d9Hj3+CmJ32dDB7ga+T4itPAUXs/acnjgWFvbv3
- ghzJHPHqVZbhGSpK1zTxC5nDlbq7VD1+JQ1XoQ==
+ Fri, 15 May 2026 07:17:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta500pcjo0d3;
+ d=clientsbook.com; 
+ h=List-Unsubscribe:Message-ID:MIME-Version:From:Date:Subject:Reply-To:To:
+ Content-Type; i=welcomefromcvs@clientsbook.com;
+ bh=dj1EnrwkEJFXBI4XvH5FvrD0rFGUp/F0lDEAEIn5M+U=;
+ b=pgv1E0s8QPcHHhbuhjzMEFoQE2704TfrrVF/1vcX7klx3NrYptsYK9bopx4Jj9rhfcbKfwdnV7aT
+ TfqU3SkBb/7aGhf+57VawJuoHZTy8ydnEmyemgtAuPkA618FTWG10HzbftMJGRy5GMB4xq69mOV7
+ rOXgf1aUXcjVoQJkkXKid2PdAJrdnowRTOY8gOTZhCqoc8zOmf11nZFOZJrn3y1AnJ7GCttaL618
+ Lj2fzwFTX3GXBMVHpdGX9sPZCyyDmwKVIzaLqQ3c4PLzpajPXa/xlixihOr2HwoSRAN60RcAYv8O
+ 9W/wBlKek2U3rOhAP5tQANDNMDeUahf62GT+eg==
+Message-ID: <688648.240221094019-a3d3d947caaf1b18366c8@clientsbook.com>
 MIME-Version: 1.0
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: 0maha-Steak's Offering You A Steak Sampler - Just 500 Left - Today
- Only
-Content-Type: multipart/alternative;
- boundary="_pulse=-c7470eafec351f4a55cd413a90=Junction-nlawbrufklpgfy-3079"
-From: 0maha Steak Assortment <mahasteakassortment@ozonetax.com>
-X-Queue-Token: 0337=dazvodxgjxr.3rdXXQ99rH
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Message-ID: <250124195703mjmrhfzdxpdream_h28hd4zhlg@ozonetax.com>
-Date: Thu, 14 May 2026 21:22:56 -0400
-X-Queue-Ref: 0337-QKNMHVE-spCPE
-X-Cleanup-ID: spCPE.3rdXXQ99rH
+X-SMTP-Client-ID: jiu5fnjhuy1.OLLWP
+From: Welcome from CVS <welcomefromcvs@clientsbook.com>
+Date: Fri, 15 May 2026 03:07:30 -0400
+Subject: 476.39 Points in Your ExtraCare Account Expire Today Unless Accessed
+ Now
+X-Header-Check-ID: 10208/iPOG5O6sZuTZY
+To: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/alternative;
+ boundary="--b1=_36481_c11710e86aa0f9=MessageBoundary"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,196 +58,194 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mahasteakassortment@ozonetax.com
+Reply-To: welcomefromcvs@clientsbook.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: D687D548709
+X-Rspamd-Queue-Id: 20B9454A703
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [14.49 / 15.00];
-	URIBL_BLACK(7.50)[ozonetax.com:mid,ozonetax.com:url,ozonetax.com:replyto];
-	ABUSE_SURBL(5.00)[ozonetax.com:mid,ozonetax.com:replyto,www.ozonetax.com:url];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[ozonetax.com:s=mtajp8ipnxgot];
+X-Spamd-Result: default: False [14.69 / 15.00];
+	URIBL_BLACK(7.50)[clientsbook.com:mid,clientsbook.com:url,clientsbook.com:replyto];
+	RSPAMD_URIBL(4.50)[clientsbook.com:url];
+	R_DKIM_REJECT(1.00)[clientsbook.com:s=mta500pcjo0d3];
+	URI_COUNT_ODD(1.00)[1];
+	ABUSE_SURBL(0.50)[www.clientsbook.com:url,clientsbook.com:mid,clientsbook.com:replyto];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[ozonetax.com : SPF not aligned (relaxed),none];
-	BAD_REP_POLICIES(0.10)[];
-	ZERO_FONT(0.10)[1];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	R_PARTS_DIFFER(0.20)[59.8%];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	BAD_REP_POLICIES(0.10)[];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	ZERO_FONT(0.10)[1];
+	DMARC_POLICY_SOFTFAIL(0.10)[clientsbook.com : SPF not aligned (relaxed),none];
+	MANY_INVISIBLE_PARTS(0.10)[2];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[clientsbook.com:-];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCPT_COUNT_ONE(0.00)[1];
 	GREYLIST(0.00)[pass,meta];
 	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	NEURAL_SPAM(0.00)[1.000];
-	HAS_REPLYTO(0.00)[mahasteakassortment@ozonetax.com];
+	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[welcomefromcvs@clientsbook.com];
 	TO_DN_NONE(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[mahasteakassortment@ozonetax.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	DKIM_TRACE(0.00)[ozonetax.com:-];
+	FROM_NEQ_ENVFROM(0.00)[welcomefromcvs@clientsbook.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	NEURAL_SPAM(0.00)[1.000];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	MISSING_XM_UA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	MID_RHS_MATCH_FROM(0.00)[];
+	SEM_URIBL(0.00)[clientsbook.com:url];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[ozonetax.com:mid,ozonetax.com:url,ozonetax.com:replyto,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns,clientsbook.com:mid,clientsbook.com:url,clientsbook.com:replyto]
 X-Rspamd-Action: add header
 X-Spam: Yes
 
---_pulse=-c7470eafec351f4a55cd413a90=Junction-nlawbrufklpgfy-3079
+----b1=_36481_c11710e86aa0f9=MessageBoundary
 Content-Type: text/plain; charset="UTF-8"
 
-Yes I think the trail conditions should be fine by Saturday morning. We checked the forecast and it looks dry with temps around sixty so that should work well for the full loop. I confirmed with the ranger station that the upper ridge trail is open now after the maintenance work last month. We will want to start by seven to beat the afternoon heat and give ourselves plenty of time for breaks. I plan to bring extra water and snacks for everyone. Let me know if anyone has dietary restrictions I should account for. The parking lot tends to fill early so I will arrive by six thirty to save spots. We can do a quick gear check at the trailhead before heading out. I think the wildflowers should be nice this time of year along the meadow section. Make sure everyone has decent hiking shoes not just sneakers because there are a few rocky stretches. I will send a final reminder the night before with meeting details.
+Hey I was just thinking about what you said regarding the best way to learn a new language. I've been using that app for a few weeks now and it's actually pretty solid. The repetition really helps cement the vocabulary. I'm still only doing about fifteen minutes a day, but I can already string together some basic sentences. It's definitely not as hard as I thought it would be. Consistency seems to be the key, more than anything else. I also found a couple of podcasts that are easy to follow. Let me know if you want the links. Anyway, I'm glad I finally started, even if I'm still a beginner. It's a fun challenge. We should try that new taco place this weekend and I can tell you more about it. I also think it's a great way to keep the brain active. Hope you're doing well!
 
-Omaha Steaks
-Tradition in every cut, quality in every bite.
+CVS
 
-A curated selection of hand-selected cuts
+YOUR REWARDS
+ARE READY
 
-Experience the difference that careful aging and flash-freezing make.
+$463.27 IN EXTRA CARE POINTS
 
-See the sampler details
+ExtraCare is CVS's loyalty program, designed to reward you for every purchase. As a valued member, you've earned a significant balance. Use your rewards in-store or online at CVS.com before they are scheduled to expire.
 
-Omaha Steaks is making 500 gourmet boxes available through this program. Each recipient is ensured a sampler box, provided at no charge to participants. One sampler per household, and the offer concludes Tomorrow.
+Current ExtraCare Balance
 
-Each cut is hand-selected and flash-frozen to lock in exceptional flavor. The retail value of each box is over $600, yet no payment is required for those who receive it.
+$463.27
 
-Inside Your Box
+Scheduled Expiration
 
-4 New York Strips
+TODAY
 
-6 Top Sirloins
+Redeem In-Store or Online
 
-4 Filet Mignons
+Ready to Use
 
-4 Ribeyes
+Tap the button below to use your points before they expire.
 
-Quantities are determined by program allocation. One sampler per household.
+REDEEM YOUR REWARDS NOW
 
-Thank you for considering this offering from Omaha Steaks.
+If you do not tap the button above by TOMORROW, you will forfeit all of your remaining ExtraCare points from 2025.
 
-© 2025 Omaha Steaks · All rights reserved.
+CVS
 
-I think the herb garden plan you asked about is coming together pretty well. I decided to go with basil thyme and rosemary for the sunny side of the balcony because they handle heat well and don't need constant attention. For the shadier corner I am trying mint and chives since they seem to do fine with less direct light. I picked up terracotta pots with drainage holes and a bag of organic potting soil mixed with a little perlite for aeration. I will start the seeds indoors for another two weeks then move them outside once the nights stay above fifty. I found a good watering schedule that keeps the soil moist without overdoing it. I am also adding a small trellis for the rosemary to climb since it can get woody and tall. Let me know if you want me to pick up extra starts for you. I can swing by the garden center this weekend.
+About that hiking trail we talked about, I finally went there last Saturday. The weather was perfect, not too hot, and there was a nice breeze. The trail itself was pretty well maintained, though it got a bit rocky near the summit. The view from the top was absolutely worth the climb. I brought along some sandwiches and just sat there for about an hour taking it all in. There's a smaller loop trail that branches off about halfway up, which I want to try next time. It's supposed to lead to a small waterfall. I'd definitely recommend wearing good hiking boots though, especially after a bit of rain. Some parts were a little slippery. Let me know if you want to plan a trip there together. It's a great way to disconnect and just enjoy nature for a while. You'd really like the serenity of the place. Talk soon!
 
---_pulse=-c7470eafec351f4a55cd413a90=Junction-nlawbrufklpgfy-3079
+----b1=_36481_c11710e86aa0f9=MessageBoundary
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
 </head>
-<body style="margin:0; padding:0; background-color:#f7f2ea;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Yes I think the trail conditions should be fine by Saturday morning. We checked the forecast and it looks dry with temps around sixty so that should work well for the full loop. I confirmed with the ranger station that the upper ridge trail is open now after the maintenance work last month. We will want to start by seven to beat the afternoon heat and give ourselves plenty of time for breaks. I plan to bring extra water and snacks for everyone. Let me know if anyone has dietary restrictions I should account for. The parking lot tends to fill early so I will arrive by six thirty to save spots. We can do a quick gear check at the trailhead before heading out. I think the wildflowers should be nice this time of year along the meadow section. Make sure everyone has decent hiking shoes not just sneakers because there are a few rocky stretches. I will send a final reminder the night before with meeting details.
+<body style="margin:0; padding:0; background-color:#fdfaf5; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<div style="display:none; font-family: 'Trebuchet MS', sans-serif; max-height:0; overflow:hidden;">
+Hey I was just thinking about what you said regarding the best way to learn a new language. I've been using that app for a few weeks now and it's actually pretty solid. The repetition really helps cement the vocabulary. I'm still only doing about fifteen minutes a day, but I can already string together some basic sentences. It's definitely not as hard as I thought it would be. Consistency seems to be the key, more than anything else. I also found a couple of podcasts that are easy to follow. Let me know if you want the links. Anyway, I'm glad I finally started, even if I'm still a beginner. It's a fun challenge. We should try that new taco place this weekend and I can tell you more about it. I also think it's a great way to keep the brain active. Hope you're doing well!
 </div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f7f2ea;">
-<tr>
-<td align="center" style="padding:24px 12px;">
-<table role="presentation" width="100%" style="max-width:600px; background-color:#ffffff; border:1px solid #d4cbc1; border-radius:6px;">
-<tr>
-<td style="padding:0;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="border-bottom:3px solid #c4943a; padding:28px 32px 18px 32px; text-align:center;">
-<span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:32px; font-weight:bold; color:#7a1319; letter-spacing:1px;">Omaha Steaks</span>
-<div style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#606060; margin-top:6px; font-style:italic;">Tradition in every cut, quality in every bite.</div>
-</td>
-</tr>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fdfaf5">
+  <tr>
+    <td align="center" style="padding: 20px 0;">
+      <table border="0" cellpadding="0" cellspacing="0" width="600">
+        
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 35px 45px 5px 45px; text-align: center;">
+            <span style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 22px; font-weight: bold; color: #cc0000; letter-spacing: 3px; text-transform: uppercase;">CVS</span>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 0 45px 20px 45px; text-align: center;">
+            <table border="0" cellpadding="0" cellspacing="0" width="40" align="center">
+              <tr><td style="border-bottom: 2px solid #cc0000;"></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 20px 45px 10px 45px; text-align: center;">
+            <h1 style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 44px; font-weight: bold; color: #333333; margin: 0; line-height: 1.15; letter-spacing: -1px;">YOUR REWARDS<br>ARE READY</h1>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 15px 45px 35px 45px; text-align: center;">
+            <span style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 20px; color: #cc0000; font-weight: bold;">$463.27 IN EXTRA CARE POINTS</span>
+          </td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#fdfaf5" style="padding: 35px 45px;">
+            <p style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 16px; color: #555555; line-height: 1.7; margin: 0; text-align: center;">
+              ExtraCare is CVS's loyalty program, designed to reward you for every purchase. As a valued member, you've earned a significant balance. Use your rewards in-store or online at CVS.com before they are scheduled to expire.
+            </p>
+          </td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#fff5f5" style="padding: 30px 45px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td width="60%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#333333; padding:10px 0;">Current ExtraCare Balance</td>
+                <td width="40%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#cc0000; font-weight:bold; text-align:right; padding:10px 0;">$463.27</td>
+              </tr>
+              <tr><td colspan="2" style="border-bottom: 1px solid #e0c0c0;"></td></tr>
+              <tr>
+                <td width="60%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#333333; padding:10px 0;">Scheduled Expiration</td>
+                <td width="40%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#990000; font-weight:bold; text-align:right; padding:10px 0;">TODAY</td>
+              </tr>
+              <tr><td colspan="2" style="border-bottom: 1px solid #e0c0c0;"></td></tr>
+              <tr>
+                <td width="60%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#333333; padding:10px 0;">Redeem In-Store or Online</td>
+                <td width="40%" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif; font-size:15px; color:#990000; font-weight:bold; text-align:right; padding:10px 0;">Ready to Use</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 35px 45px 15px 45px; text-align: center;">
+            <p style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 16px; color: #333333; margin: 0;">Tap the button below to use your points before they expire.</p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 15px 45px 25px 45px; text-align: center;">
+            <a href="http://www.clientsbook.com/vertex/in/b85b6f8d1d18/markerz" target="_blank" style="display: inline-block; background-color: #cc0000; color: #ffffff; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; padding: 16px 50px; border-radius: 6px;">REDEEM YOUR REWARDS NOW</a>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff" style="padding: 0 45px 35px 45px; text-align: center;">
+            <p style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 13px; color: #777777; line-height: 1.5; margin: 0;">
+              If you do not tap the button above by TOMORROW, you will forfeit all of your remaining ExtraCare points from 2025.
+            </p>
+          </td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#fdfaf5" style="padding: 25px 45px; text-align: center;">
+            <span style="font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 12px; color: #999999; letter-spacing: 1px; text-transform: uppercase;">CVS</span>
+            <span style="display:none;"><img src="http://www.clientsbook.com/s/_open/07q-9M9o040yWbX9jQdmylR6jyh6hGI.gif" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;overflow:hidden;" /></span>
+          </td>
+        </tr>
+        
+      </table>
+    </td>
+  </tr>
 </table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding:28px 32px 14px 32px;">
-<div style="border-left:4px solid #c4943a; padding-left:16px;">
-<h1 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:26px; color:#2a2a2a; margin:0 0 6px 0; font-weight:normal; letter-spacing:0.5px;">A curated selection of hand-selected cuts</h1>
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:16px; color:#606060; margin:0; line-height:1.5;">Experience the difference that careful aging and flash-freezing make.</p>
-</div>
-</td>
-</tr>
-</table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding:12px 32px 18px 32px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td align="center" style="padding:0;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td bgcolor="#7a1319" style="border-radius:30px; padding:0; box-shadow:0 2px 6px rgba(122,19,25,0.25);">
-<a href="http://www.ozonetax.com/signalinsightsview/signal/7f6e63305acc1/digest_main" style="display:inline-block; font-family: Georgia, 'Times New Roman', Times, serif; font-size:16px; font-weight:bold; color:#ffffff; text-decoration:none; padding:14px 40px; border-radius:30px; background-color:#7a1319; letter-spacing:0.5px;">See the sampler details</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding:0 32px 14px 32px;">
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#2a2a2a; line-height:1.6; margin:0 0 12px 0;">
-Omaha Steaks is making <strong style="color:#7a1319;">500 gourmet boxes</strong> available through this program. Each recipient is ensured a sampler box, provided at no charge to participants. One sampler per household, and the offer concludes Tomorrow.
-</p>
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#2a2a2a; line-height:1.6; margin:0;">
-Each cut is hand-selected and flash-frozen to lock in exceptional flavor. The retail value of each box is over $600, yet no payment is required for those who receive it.
-</p>
-</td>
-</tr>
-</table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding:6px 32px 20px 32px;">
-<h2 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:18px; color:#7a1319; margin:0 0 10px 0; font-weight:bold; letter-spacing:0.3px;">Inside Your Box</h2>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d4cbc1; border-radius:5px; overflow:hidden;">
-<tr>
-<td style="padding:0;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="width:50%; padding:10px 14px; background-color:#fcfaf7; border-bottom:1px solid #e3dbd2; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#2a2a2a;">4 New York Strips</td>
-<td style="width:50%; padding:10px 14px; background-color:#ffffff; border-bottom:1px solid #e3dbd2; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#2a2a2a;">6 Top Sirloins</td>
-</tr>
-<tr>
-<td style="width:50%; padding:10px 14px; background-color:#fcfaf7; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#2a2a2a;">4 Filet Mignons</td>
-<td style="width:50%; padding:10px 14px; background-color:#ffffff; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#2a2a2a;">4 Ribeyes</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:13px; color:#787878; margin:10px 0 0 0; line-height:1.5; font-style:italic;">Quantities are determined by program allocation. One sampler per household.</p>
-</td>
-</tr>
-</table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="padding:18px 32px 28px 32px; border-top:1px solid #d4cbc1;">
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#606060; margin:0 0 4px 0; line-height:1.5;">Thank you for considering this offering from Omaha Steaks.</p>
-<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:12px; color:#787878; margin:6px 0 0 0; line-height:1.5;">&copy; 2025 Omaha Steaks &middot; All rights reserved.</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<div style="position:absolute; left:-9999px; top:-9999px; font-family: Georgia, Garamond, serif;">
-I think the herb garden plan you asked about is coming together pretty well. I decided to go with basil thyme and rosemary for the sunny side of the balcony because they handle heat well and don't need constant attention. For the shadier corner I am trying mint and chives since they seem to do fine with less direct light. I picked up terracotta pots with drainage holes and a bag of organic potting soil mixed with a little perlite for aeration. I will start the seeds indoors for another two weeks then move them outside once the nights stay above fifty. I found a good watering schedule that keeps the soil moist without overdoing it. I am also adding a small trellis for the rosemary to climb since it can get woody and tall. Let me know if you want me to pick up extra starts for you. I can swing by the garden center this weekend.
+
+<div style="font-family: 'Times New Roman', Times, serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
+About that hiking trail we talked about, I finally went there last Saturday. The weather was perfect, not too hot, and there was a nice breeze. The trail itself was pretty well maintained, though it got a bit rocky near the summit. The view from the top was absolutely worth the climb. I brought along some sandwiches and just sat there for about an hour taking it all in. There's a smaller loop trail that branches off about halfway up, which I want to try next time. It's supposed to lead to a small waterfall. I'd definitely recommend wearing good hiking boots though, especially after a bit of rain. Some parts were a little slippery. Let me know if you want to plan a trip there together. It's a great way to disconnect and just enjoy nature for a while. You'd really like the serenity of the place. Talk soon!
 </div>
 </body>
 </html>
 
---_pulse=-c7470eafec351f4a55cd413a90=Junction-nlawbrufklpgfy-3079--
+----b1=_36481_c11710e86aa0f9=MessageBoundary--
