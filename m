@@ -2,49 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id kCJlMyLNBmrynwIAu9opvQ
+	id cDZWF+eFC2paIwUAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 09:37:06 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2026 23:34:31 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6367E54AAAF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 May 2026 09:37:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2D6C573EBC
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2026 23:34:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85ED510F445;
-	Fri, 15 May 2026 07:37:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CAA2A10E33B;
+	Mon, 18 May 2026 21:26:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=letsbookmark.com header.i=waimartsupport@letsbookmark.com header.b="NkrtrNkf";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=insaaren.com header.i=waimartgroup@insaaren.com header.b="1AsNRVGs";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 598 seconds by postgrey-1.36 at gabe;
- Fri, 15 May 2026 07:36:59 UTC
-Received: from mailhub.letsbookmark.com (apex6598.nanodriving.com
- [103.176.192.38])
- by gabe.freedesktop.org (Postfix) with ESMTP id 05CC610F445
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 18 May 2026 21:26:11 UTC
+Received: from smtp1.insaaren.com (west1316.faqnote.com [5.231.121.198])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DB18510E33B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 15 May 2026 07:36:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta3zucs69roe;
- d=letsbookmark.com; 
- h=Message-ID:Content-Type:Reply-To:To:List-Unsubscribe:From:Subject:
- MIME-Version:Date; i=waimartsupport@letsbookmark.com;
- bh=7eWBripZwQNNp/3Fo5QPiyXyHQSeCUOYbAOX36Eou5Y=;
- b=NkrtrNkfpRjTTBMqrkkvoYuT6rbyxCat1T4GZ/O/1UaF07fZtKeGr4aRSWlzAjHbVjNt2GiRei0O
- lzt5ujqR/osIBCslXJH7v19Q02qGZztbelIJVjBNSIl+YZkhqyhHpXZau3KQmUyg/TChu9Pi/RPy
- HAXXci47DV6psqSlYmyFla6oiCD2C6Z54hKmKxiWymxw0gECGtd/xwtscE9+8zVx4bGk4+frQczL
- IUXSPL93ZFktgVyN7JXOj7U4/vQDFiHQy34Fh66uckP7niLBhOzZNTvOT/7tQV+DV0s15s4Gzwit
- Zomb3TwLzpSbauWjVpLJ4JrUue4QRvCFx5SSPw==
-Message-ID: <20240114041713_226801-bwywkukqxtfkte@letsbookmark.com>
-Content-Type: multipart/alternative;
- boundary="--mix=_ContentPart-dzhpotqthtcf2gv.HtmlPart"
-To: intel-gvt-dev@lists.freedesktop.org
-From: WaImart Support <waimartsupport@letsbookmark.com>
-Subject: Don't Wait - +1,456.00 Walmart Points Expire Today
-MIME-Version: 1.0
-X-Delivery-Attempt-ID: 44419753-44419753-kNd1d3erc7shXh9
+ Mon, 18 May 2026 21:26:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta2ybbxjyzdz;
+ d=insaaren.com; 
+ h=Subject:Date:List-Unsubscribe:From:MIME-Version:Content-Type:To:Message-ID:
+ Reply-To; i=waimartgroup@insaaren.com;
+ bh=ImAwoOxkWAfNxg/YX3Jb38Vt7f/XJsRpHIfpxOaNbXk=;
+ b=1AsNRVGsVCldGqRmSgLDgHcB4hiEMPv1mHfAR4ChH5k3Sfz/JGheXX0MA1Igm5BF+o/KvCKEHvnT
+ KNXEW4sNTI4MNWpv3Jg+u1SKZsb/3oqWNHOZZVfYHgUKK23PQ9C/cCs2Q+pLV/AiqjXVY4jAHpH7
+ UZay75zC6R0Y3eMA6M6MyWD67r+n8ETxy6846DfQ0N5W+cD7nUzv6qyFPS0otcWlsuGxv3Tz+JVX
+ I9viWL/5rmxaBb2pwugcwoeHQUvDbJl7ZL3P2Zb+Afjt7zrrbcwMOC/0L7r3+5mAhte30ugl92d2
+ EPaFQ6PENBoiF6ZNh9qQRYiEyGAnXPfS8dZa3A==
+Subject: Redeem your points now before they expire
+Date: Mon, 18 May 2026 17:20:56 -0400
+X-Sasl-Auth-ID: k3eodmtq3897w-y0m7wqjzAi
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-X-Queue-Ref: 44419753-VZCSQKZL-EvNpE
-Date: Fri, 15 May 2026 03:26:55 -0400
+X-TLS-Session-ID: y0m7wqjzAi_wfoq_38610403
+From: WaImart Group <waimartgroup@insaaren.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--core=.Transit.375feb5b7985a4_791630"
+To: intel-gvt-dev@lists.freedesktop.org
+Message-ID: <143881_260108145411-dzvywjoovpmd@insaaren.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,180 +56,175 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: waimartsupport@letsbookmark.com
+Reply-To: waimartgroup@insaaren.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Rspamd-Queue-Id: 6367E54AAAF
-X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [14.39 / 15.00];
-	URIBL_BLACK(7.50)[letsbookmark.com:mid,letsbookmark.com:url,letsbookmark.com:replyto];
-	ABUSE_SURBL(5.00)[letsbookmark.com:mid,letsbookmark.com:replyto,www.letsbookmark.com:url];
-	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[letsbookmark.com:s=mta3zucs69roe];
+X-Spamd-Result: default: False [14.93 / 15.00];
+	URIBL_BLACK(7.50)[insaaren.com:url,insaaren.com:replyto,insaaren.com:mid];
+	ABUSE_SURBL(5.00)[insaaren.com:mid,insaaren.com:replyto,www.insaaren.com:url];
+	URI_COUNT_ODD(1.00)[1];
+	R_DKIM_REJECT(1.00)[insaaren.com:s=mta2ybbxjyzdz];
+	R_PARTS_DIFFER(0.44)[71.9%];
 	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[insaaren.com : SPF not aligned (relaxed),none];
+	ZERO_FONT(0.10)[1];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	BAD_REP_POLICIES(0.10)[];
+	MANY_INVISIBLE_PARTS(0.10)[2];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[letsbookmark.com : SPF not aligned (relaxed),none];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	BAD_REP_POLICIES(0.10)[];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCPT_COUNT_ONE(0.00)[1];
-	DKIM_TRACE(0.00)[letsbookmark.com:-];
-	NEURAL_SPAM(0.00)[1.000];
+	GREYLIST(0.00)[pass,body];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[waimartgroup@insaaren.com];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[waimartsupport@letsbookmark.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_NEQ_ENVFROM(0.00)[waimartgroup@insaaren.com,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[waimartsupport@letsbookmark.com];
+	DKIM_TRACE(0.00)[insaaren.com:-];
 	RCVD_COUNT_TWO(0.00)[2];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[letsbookmark.com:mid,letsbookmark.com:url,letsbookmark.com:replyto,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,insaaren.com:url,insaaren.com:replyto,insaaren.com:mid]
+X-Rspamd-Queue-Id: C2D6C573EBC
 X-Rspamd-Action: add header
+X-Rspamd-Server: lfdr
 X-Spam: Yes
 
-----mix=_ContentPart-dzhpotqthtcf2gv.HtmlPart
+----core=.Transit.375feb5b7985a4_791630
 Content-Type: text/plain; charset="UTF-8"
 
-I finally finished that bookshelf I was telling you about and it turned out way better than I expected. The instructions were honestly kind of confusing at first but once I figured out the pattern it all came together pretty fast. I ended up using a dark stain instead of painting it because I wanted the wood grain to show through. Took me about two full weekends working on it off and on. The best part was installing the trim pieces on the front they really make it look custom. My partner was skeptical at first but now they want me to build another one for the other side of the room. I might try a different design next time maybe with some closed storage on the bottom. I found a few new techniques watching videos online that I want to try. It's really satisfying making something with your own hands you know. Anyway I'll send you a photo later. Let me know if you want help with that project you mentioned.
+Hey, I completely agree with your perspective on the documentary about deep-sea exploration. The pacing felt a little slow during the technical segments describing the submersible upgrades, but the visual payoff at the end was absolutely incredible. Have you watched any of the director's earlier projects focusing on polar ecosystems? I remember being blown away by the arctic series several years ago. The cinematography was stunning even with a modest production budget and limited equipment. We should definitely grab coffee this weekend to chat about it properly. I really want to hear your take on the final sequence near the coral gardens and the bioluminescent creatures. Hope you're having a great week so far and managing to stay warm with this chilly weather we are having.
 
 Walmart
 
-Your Rewards. Your Moment.
+POINTS EXPIRING SOON
 
-Your Points Are Expiring Today
+Your Points Will Expire Today
 
-Convert them into a $100 Walmart card before they're gone.
+Convert them to a $100 Card before it's too late. This is the final opportunity to redeem your accumulated rewards.
 
-Rewards Summary
+Member ID
+
+WM-4827-1936
 
 Points Balance
 
-1,897
+1,058
 
-Member ID: WM-4827-1936
+Expiry
 
-Status: Expiring Today — Redeem Now
-
-A $100 Walmart card gives you the freedom to shop for what you need most. From groceries to home essentials, your points have real value — don't let them expire.
-
-How to redeem
-
-Click the button below to convert your points into a $100 Walmart card. The process takes just a moment.
+Today
 
 View Points and Details
 
-Walmart  ·  Thank you for being a valued member.
+Redeem your 1,058 points for a $100 Card.
 
-I tried making that pasta dish from scratch last night and it was actually pretty straightforward once I got the dough to the right consistency. The recipe called for letting it rest for an hour which made a big difference in how easy it was to roll out. I used a mix of semolina and all purpose flour like you suggested and the texture came out perfect. I made a simple sauce with cherry tomatoes garlic and basil from the garden. The whole meal took about two hours start to finish but most of that was just waiting for things to rest or simmer. I think next time I'll try making the sauce a day ahead to save time. I also want to experiment with adding some herbs to the dough itself. We had some friends over and they were really impressed which was nice. Anyway I just wanted to share because I know you've been wanting to try making pasta yourself. Let me know if you want the recipe link.
+Walmart Rewards
 
-----mix=_ContentPart-dzhpotqthtcf2gv.HtmlPart
+Thanks for the update on the community garden initiative. I picked up some heirloom tomato seeds and a few lavender plants from the local nursery over the weekend. Hopefully they will adapt well to the raised beds we prepared last month. The weather forecast looks favorable with a mix of sun and scattered showers expected over the next two weeks. I also came across an interesting recipe for homemade fermented hot sauce that might work perfectly if your chili pepper harvest is as abundant as last year. Let me know if you need assistance setting up the drip irrigation system or building additional trellises for the climbing beans. I should be free on Saturday afternoon and most of Sunday morning next weekend. We could also finally plan that hiking trip we kept postponing since spring arrived so late this season. Looking forward to catching up and getting our hands dirty in the garden again soon.
+
+----core=.Transit.375feb5b7985a4_791630
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body style="margin:0; padding:0; background-color:#f2f6fa; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;">
-<div style="display:none; font-family:'Trebuchet MS', sans-serif;">
-I finally finished that bookshelf I was telling you about and it turned out way better than I expected. The instructions were honestly kind of confusing at first but once I figured out the pattern it all came together pretty fast. I ended up using a dark stain instead of painting it because I wanted the wood grain to show through. Took me about two full weekends working on it off and on. The best part was installing the trim pieces on the front they really make it look custom. My partner was skeptical at first but now they want me to build another one for the other side of the room. I might try a different design next time maybe with some closed storage on the bottom. I found a few new techniques watching videos online that I want to try. It's really satisfying making something with your own hands you know. Anyway I'll send you a photo later. Let me know if you want help with that project you mentioned.
-</div>
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f6fa; padding:24px 0;">
+<body style="margin:0; padding:0; background-color:#fdfbf7; font-family: Georgia, 'Times New Roman', Times, serif;">
+<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">Hey, I completely agree with your perspective on the documentary about deep-sea exploration. The pacing felt a little slow during the technical segments describing the submersible upgrades, but the visual payoff at the end was absolutely incredible. Have you watched any of the director's earlier projects focusing on polar ecosystems? I remember being blown away by the arctic series several years ago. The cinematography was stunning even with a modest production budget and limited equipment. We should definitely grab coffee this weekend to chat about it properly. I really want to hear your take on the final sequence near the coral gardens and the bioluminescent creatures. Hope you're having a great week so far and managing to stay warm with this chilly weather we are having.</div>
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdfbf7;">
 <tr>
-<td align="center">
-<table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color:#ffffff; border-radius:4px;">
+<td align="center" style="padding:40px 10px;">
+<table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%;">
+
 <tr>
-<td style="background-color:#0071ce; text-align:center; padding:28px 20px 16px 20px;">
-<div style="font-size:2px; line-height:2px; height:2px; background-color:#ffc220; width:60px; margin:0 auto 14px auto;"></div>
-<div style="color:#ffffff; font-size:28px; font-weight:bold; letter-spacing:-0.5px;">Walmart</div>
-<div style="color:#ffffff; font-size:14px; font-weight:normal; margin-top:6px; opacity:0.9;">Your Rewards. Your Moment.</div>
+<td style="text-align:center; padding-bottom:15px;">
+<h1 style="margin:0; font-size:30px; font-weight:bold; letter-spacing:2px; color:#041e42; font-family: Georgia, 'Times New Roman', Times, serif;">Walmart</h1>
+<p style="margin:8px 0 0 0; font-size:18px; font-weight:bold; color:#0071ce; font-family: Georgia, 'Times New Roman', Times, serif; letter-spacing:1px;">POINTS EXPIRING SOON</p>
 </td>
 </tr>
+
 <tr>
-<td style="background-color:#ffffff; text-align:center; padding:36px 32px 20px 32px;">
-<div style="font-size:26px; font-weight:bold; color:#1e2a3a; line-height:1.3;">Your Points Are Expiring Today</div>
-<div style="font-size:16px; color:#4a5a6a; margin-top:10px; line-height:1.5;">Convert them into a $100 Walmart card before they're gone.</div>
-</td>
+<td style="background-color:#ffffff; border-radius:8px; padding:40px 35px; border:1px solid #e5e5e5;">
+
+<table border="0" cellpadding="0" cellspacing="0" width="70" style="margin:0 auto 25px auto;">
+<tr>
+<td style="height:4px; background-color:#ffc220; border-radius:2px;"></td>
 </tr>
+</table>
+
+<h2 style="margin:0 0 12px 0; font-size:24px; color:#333333; text-align:center; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:normal;">Your Points Will Expire Today</h2>
+
+<p style="margin:0 0 35px 0; font-size:16px; color:#555555; text-align:center; line-height:1.6; font-family: Georgia, 'Times New Roman', Times, serif;">Convert them to a <strong style="color:#0071ce;">$100 Card</strong> before it's too late. This is the final opportunity to redeem your accumulated rewards.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef6fd; border-radius:6px; margin-bottom:35px;">
 <tr>
-<td style="background-color:#eef6fd; padding:28px 32px;">
+<td style="padding:25px 20px;">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td style="padding-bottom:14px; font-size:14px; color:#1e2a3a; font-weight:bold; border-bottom:1px solid #c8dce8;">Rewards Summary</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; padding-bottom:10px; border-bottom:1px dashed #0071ce;">Member ID</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; text-align:right; padding-bottom:10px; border-bottom:1px dashed #0071ce; font-weight:bold;">WM-4827-1936</td>
 </tr>
 <tr>
-<td style="padding:14px 0 6px 0; font-size:15px; color:#1e2a3a;">Points Balance</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#333333; padding-top:10px;">Points Balance</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:22px; color:#0071ce; text-align:right; padding-top:10px; font-weight:bold;">1,058</td>
 </tr>
 <tr>
-<td style="font-size:28px; font-weight:bold; color:#0071ce; padding:0 0 12px 0;">1,897</td>
-</tr>
-<tr>
-<td style="padding:4px 0; font-size:14px; color:#4a5a6a;">Member ID: WM-4827-1936</td>
-</tr>
-<tr>
-<td style="padding:4px 0 0 0; font-size:14px; color:#b53b2c; font-weight:bold;">Status: Expiring Today — Redeem Now</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; padding-top:8px;">Expiry</td>
+<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:16px; color:#cc0000; text-align:right; padding-top:8px; font-weight:bold;">Today</td>
 </tr>
 </table>
 </td>
 </tr>
-<tr>
-<td style="background-color:#ffffff; padding:24px 32px;">
+</table>
+
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td style="font-size:15px; color:#2a3a4a; line-height:1.6;">A $100 Walmart card gives you the freedom to shop for what you need most. From groceries to home essentials, your points have real value — don't let them expire.</td>
-</tr>
-</table>
-</td>
-</tr>
+<td align="center" style="padding-bottom:5px;">
+<table border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td style="background-color:#eef6fd; padding:20px 32px 24px 32px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td style="font-size:15px; color:#2a3a4a; font-weight:bold; padding-bottom:6px;">How to redeem</td>
-</tr>
-<tr>
-<td style="font-size:14px; color:#4a5a6a; line-height:1.5;">Click the button below to convert your points into a $100 Walmart card. The process takes just a moment.</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="background-color:#ffffff; text-align:center; padding:28px 32px 36px 32px;">
-<table border="0" cellpadding="0" cellspacing="0" align="center">
-<tr>
-<td align="center" style="background-color:#0071ce; border-radius:4px; padding:14px 36px;">
-<a href="http://www.letsbookmark.com/view/tips-atlas/pzuotflqfu/wire" style="color:#ffffff; font-size:16px; font-weight:bold; text-decoration:none; display:inline-block;">View Points and Details</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="background-color:#f8fafc; text-align:center; padding:20px 32px; border-top:1px solid #e2e8f0;">
-<div style="font-size:13px; color:#6a7a8a;">Walmart &nbsp;·&nbsp; Thank you for being a valued member.</div>
+<td align="center" style="background-color:#0071ce; border-radius:50px; padding:15px 45px;">
+<a href="http://www.insaaren.com/it/reviewnow-plus/dvw9fs" target="_blank" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:18px; color:#ffffff; text-decoration:none; font-weight:bold; display:inline-block;">View Points and Details</a>
 </td>
 </tr>
 </table>
 </td>
 </tr>
 </table>
-<div style="font-family:'Rockwell', 'Bodoni MT', serif; font-size:1px; text-indent:-9999px; overflow:hidden;">
-I tried making that pasta dish from scratch last night and it was actually pretty straightforward once I got the dough to the right consistency. The recipe called for letting it rest for an hour which made a big difference in how easy it was to roll out. I used a mix of semolina and all purpose flour like you suggested and the texture came out perfect. I made a simple sauce with cherry tomatoes garlic and basil from the garden. The whole meal took about two hours start to finish but most of that was just waiting for things to rest or simmer. I think next time I'll try making the sauce a day ahead to save time. I also want to experiment with adding some herbs to the dough itself. We had some friends over and they were really impressed which was nice. Anyway I just wanted to share because I know you've been wanting to try making pasta yourself. Let me know if you want the recipe link.
-</div>
+
+<p style="margin:20px 0 0 0; font-size:14px; color:#888888; text-align:center; font-family: Georgia, 'Times New Roman', Times, serif;">Redeem your <strong>1,058</strong> points for a <strong style="color:#0071ce;">$100 Card</strong>.</p>
+
+</td>
+</tr>
+
+<tr>
+<td style="text-align:center; padding-top:30px; font-family: Georgia, 'Times New Roman', Times, serif; font-size:12px; color:#aaaaaa; line-height:1.5;">
+<p style="margin:0 0 5px 0;">Walmart Rewards</p>
+<span style="font-size:1px; color:transparent;"><img src="http://www.insaaren.com/s/_open/Y4YtvpHS-9NeKmjxPpGSh7ZgTeVwwxDOzLoC.gif" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;overflow:hidden;" /></span>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<div style="font-family:'Trebuchet MS', sans-serif; display:none;">Thanks for the update on the community garden initiative. I picked up some heirloom tomato seeds and a few lavender plants from the local nursery over the weekend. Hopefully they will adapt well to the raised beds we prepared last month. The weather forecast looks favorable with a mix of sun and scattered showers expected over the next two weeks. I also came across an interesting recipe for homemade fermented hot sauce that might work perfectly if your chili pepper harvest is as abundant as last year. Let me know if you need assistance setting up the drip irrigation system or building additional trellises for the climbing beans. I should be free on Saturday afternoon and most of Sunday morning next weekend. We could also finally plan that hiking trip we kept postponing since spring arrived so late this season. Looking forward to catching up and getting our hands dirty in the garden again soon.</div>
+
 </body>
 </html>
 
-----mix=_ContentPart-dzhpotqthtcf2gv.HtmlPart--
+----core=.Transit.375feb5b7985a4_791630--
