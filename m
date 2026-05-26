@@ -2,48 +2,94 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id cDZWF+eFC2paIwUAu9opvQ
+	id mHKjBvOrFWpuXgcAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2026 23:34:31 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 May 2026 16:19:31 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2D6C573EBC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2026 23:34:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A4AC5D7556
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 May 2026 16:19:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CAA2A10E33B;
-	Mon, 18 May 2026 21:26:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 649B510E68E;
+	Tue, 26 May 2026 14:13:58 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=insaaren.com header.i=waimartgroup@insaaren.com header.b="1AsNRVGs";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="CzfZQd0J";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 18 May 2026 21:26:11 UTC
-Received: from smtp1.insaaren.com (west1316.faqnote.com [5.231.121.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id DB18510E33B
+Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com
+ [209.85.167.41])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6017E10E690
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 May 2026 21:26:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mta2ybbxjyzdz;
- d=insaaren.com; 
- h=Subject:Date:List-Unsubscribe:From:MIME-Version:Content-Type:To:Message-ID:
- Reply-To; i=waimartgroup@insaaren.com;
- bh=ImAwoOxkWAfNxg/YX3Jb38Vt7f/XJsRpHIfpxOaNbXk=;
- b=1AsNRVGsVCldGqRmSgLDgHcB4hiEMPv1mHfAR4ChH5k3Sfz/JGheXX0MA1Igm5BF+o/KvCKEHvnT
- KNXEW4sNTI4MNWpv3Jg+u1SKZsb/3oqWNHOZZVfYHgUKK23PQ9C/cCs2Q+pLV/AiqjXVY4jAHpH7
- UZay75zC6R0Y3eMA6M6MyWD67r+n8ETxy6846DfQ0N5W+cD7nUzv6qyFPS0otcWlsuGxv3Tz+JVX
- I9viWL/5rmxaBb2pwugcwoeHQUvDbJl7ZL3P2Zb+Afjt7zrrbcwMOC/0L7r3+5mAhte30ugl92d2
- EPaFQ6PENBoiF6ZNh9qQRYiEyGAnXPfS8dZa3A==
-Subject: Redeem your points now before they expire
-Date: Mon, 18 May 2026 17:20:56 -0400
-X-Sasl-Auth-ID: k3eodmtq3897w-y0m7wqjzAi
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-X-TLS-Session-ID: y0m7wqjzAi_wfoq_38610403
-From: WaImart Group <waimartgroup@insaaren.com>
+ Tue, 26 May 2026 14:13:57 +0000 (UTC)
+Received: by mail-lf1-f41.google.com with SMTP id
+ 2adb3069b0e04-5a87782588cso3972712e87.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 26 May 2026 07:13:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779804835; cv=none;
+ d=google.com; s=arc-20240605;
+ b=BmlUrce4DRED6Mh4A4bibQ+MZUSvOk0nVtwhAZVE/NcwWBk9CtsbMR9Lb/riepqKGe
+ yL9N7nNSC/4roMfIqHAn0r6S5Ybnqld7oZoh63ABhmyf8dMfIPtVoj0oF0QICbiAvS8i
+ HF0CdSbuvkXPky8irjgNjfhdBcB4k/fGYLlWfpua6kqRQr6+HCCc9gcm/a0a3snQpS/H
+ 5T8DW4XOmDQfHaXbSC8YbFe5QA7rSpf9wLA1hVWGwB4OlTYYEI5dEt2tSAEs+rGNYPXj
+ VegQnsTF/2qkVcSAgAsgLzOG15NycwZpvsQ3v+xHp9FEO7QFQOV3zwTM8F5fGEk71fjV
+ dMwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :dkim-signature;
+ bh=CagB7YAGIZTfnT7FVMJzDu9+hPjkjeo8DuXfI0KVXcM=;
+ fh=4ZS+2pTeWq42cl82vyZIe63vf7dYkH6fz6mlGfn50gI=;
+ b=Tol7l3Q5RMZi5UuryIZyrn21ncCAu671MU3MjAqcvapNFi2LfCJJbeJSK5DP6dP2qa
+ pC/F6DSWOT3rKy8LVUwEjffzxZ1kxhiO4K1KXDvRLMjGxJzTKKu6oymWjySAAmjZEaLw
+ rZLccepQeXiz+jbCHQ7I26YHLOul4ehvR1uhikH8WjyU+wDPnNghmK70OWvJ5D/NtRM7
+ cPz0ydY0E/QTCQ5fKbGWTzvxeseg+nLOk2BPzlMOC8mfiC2pPyM0hNdxXqEZYOeXwriJ
+ agi2+WHn22K4I7y7rJS23TsjANNa2CLtDKnK+5RmMsQDpGMqvmMbglxHva8d8MPxmMd7
+ 6kDg==; darn=lists.freedesktop.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1779804835; x=1780409635; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CagB7YAGIZTfnT7FVMJzDu9+hPjkjeo8DuXfI0KVXcM=;
+ b=CzfZQd0JfXXlW/sHwaDI7h6C1hot+oKqzs20DAHBPW0TiYFiAFe3r0Rq3Ca6CbmZLE
+ RnY0LoefUPL+W4RGQEQ28jwt+L0cwFm5yEYL1vc/0oKt6po6oBYDfiaBVRo0K6xhLzf3
+ s5IV7RZXpXKvk9KmYBIbfja0JbHx5DYU4pRyNMsxTG+Y6depJbsDwELEzSjRxNqA4nMk
+ PLycu0vFvjrpynRMK3VpqvjigAHPDg0sRauAkbkfnFIFjgE9cgU2+ghaYeJ7+p/UPTlf
+ yaeI7WKCC8oVvwFbKz98sKmyArXomLvVrYthDD1LEl5Sxebo0IOlW92ca4E1v/pvFCHU
+ GBnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779804835; x=1780409635;
+ h=to:subject:message-id:date:from:reply-to:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=CagB7YAGIZTfnT7FVMJzDu9+hPjkjeo8DuXfI0KVXcM=;
+ b=dFsZQo//zu3v8DKgtTQIg/TeWTh6KRrhg3StX9QN7YC2EEsNP1ZBEFcZwrSvjxs7HJ
+ esN6zxbqV/Q3leXYMBu98qOPfmNtKLCpeBKhFAuD73TcrBy1IlTavftQ6PfQ6yMOxZGT
+ rcR4tj5tbgyRnFvPQ4lcAwuZERSRzQHgS8Tk/jnYai68gVoA+kxtXA+oaavPqB115obr
+ VgIcaL/H3Yv1p5VgW+8v+O4AjoFoQo8GBvh0ghq23a9Bq57Aw45XCi02Xfa5oE6kjKqE
+ wi8phxzxi909efOZUTpMs7JpfgVHHmrjQkiTUYIh4ESHhLs1Q57DctCn1ZiqtA1Erh71
+ RL+Q==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8O/7MiCIKomMqMOfIii0VZZdGaYWyf+sXAFMi/yCT3pYhSDb0b7KWPS1+4vba1GSAX/3FJTkrX/8ogw+bl@lists.freedesktop.org
+X-Gm-Message-State: AOJu0YzE4cDj6YIgDRZfvPaFMrKA3QDon4w5w06/beR7V0o5BMHK+uc8
+ B51TRENkW8ECEFljnlnJIg85iARjVbp19ZUB4/3LF/S9JC/YYqj1qhbycxBGS0qHVW2ZJR4wSR7
+ 7kBXP6X3UxHrsKJOOdc1/5GTYuyCzocg=
+X-Gm-Gg: Acq92OFYll7p6njKQMmbBG8wgGKwkcEGPscjq0WlO2pj9hVGj3niJVm5U77HHxvr2pf
+ pQAlqE1tDju/2jhrQ5CDXd0ZseJehAhDKGoKARo/AC4yPXPJKkzC3mjyD8qZS7wZv4V+PLRLFjZ
+ +iJkVsCB4eiu+NoC6/MOtmYEsIhBMiySfd2jGYc1Ok2zAPnEZnP/sF3fdOuUcdLN9vHsgLsFwWx
+ zzd/cl4DL3t5juCKfnDzksCj+E9be3Eh7EU8O0TZ3k8TMSaNsa8YQW89iyutt0TBgMLXr22gqhb
+ lmI5T8NCY9ufjDdwcu0u6SSSV8fRcgvvYtjfUhnZ9OBS
+X-Received: by 2002:a05:6512:3ba8:b0:5a8:778b:7df8 with SMTP id
+ 2adb3069b0e04-5aa323a9070mr5141167e87.40.1779804834982; Tue, 26 May 2026
+ 07:13:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="--core=.Transit.375feb5b7985a4_791630"
-To: intel-gvt-dev@lists.freedesktop.org
-Message-ID: <143881_260108145411-dzvywjoovpmd@insaaren.com>
+From: "MR.OWEN JAMES" <marvelouspaulups@gmail.com>
+Date: Tue, 26 May 2026 15:13:43 +0100
+X-Gm-Features: AVHnY4LHwlz8bgCVvVgiQ4rWCd-i_Teom7RqVuCBt2v5DAKSoa6ELUKcMaZq918
+Message-ID: <CAOC4BXDP2=za2o+ocTk6kp8cpYMT1SOX-4nj283et=GvLwOBqw@mail.gmail.com>
+Subject: TRANSACTION CONFIRMATION NEEDED
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000f5708f0652b91afa"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,175 +102,111 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: waimartgroup@insaaren.com
+Reply-To: davidburgerlucas@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [14.93 / 15.00];
-	URIBL_BLACK(7.50)[insaaren.com:url,insaaren.com:replyto,insaaren.com:mid];
-	ABUSE_SURBL(5.00)[insaaren.com:mid,insaaren.com:replyto,www.insaaren.com:url];
-	URI_COUNT_ODD(1.00)[1];
-	R_DKIM_REJECT(1.00)[insaaren.com:s=mta2ybbxjyzdz];
-	R_PARTS_DIFFER(0.44)[71.9%];
+X-Spamd-Result: default: False [10.02 / 15.00];
+	FREEMAIL_AFF(4.00)[];
+	R_UNDISC_RCPT(3.00)[];
+	SUBJ_ALL_CAPS(2.33)[31];
+	FREEMAIL_REPLYTO_NEQ_FROM(2.00)[];
+	FROM_NAME_HAS_TITLE(1.00)[mr];
+	ARC_ALLOW(-1.00)[google.com:s=arc-20240605:i=1];
+	DMARC_POLICY_ALLOW(-0.50)[gmail.com,none];
+	R_SPF_ALLOW(-0.20)[+ip4:131.252.210.177:c];
+	R_DKIM_ALLOW(-0.20)[gmail.com:s=20251104];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[insaaren.com : SPF not aligned (relaxed),none];
-	ZERO_FONT(0.10)[1];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	MANY_INVISIBLE_PARTS(0.10)[2];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	BAD_REP_POLICIES(0.10)[];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,body];
-	ARC_NA(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:,s:lists@lfdr.de];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FREEMAIL_REPLYTO(0.00)[gmail.com];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_ONE(0.00)[1];
+	FORWARDED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	GREYLIST(0.00)[pass,body];
+	FORGED_SENDER(0.00)[marvelouspaulups@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	NEURAL_SPAM(0.00)[0.812];
+	RCVD_COUNT_THREE(0.00)[3];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[gmail.com:+];
+	TO_DN_ALL(0.00)[];
+	REPLYTO_DOM_EQ_FROM_DOM(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[marvelouspaulups@gmail.com,intel-gvt-dev-bounces@lists.freedesktop.org];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	HAS_REPLYTO(0.00)[davidburgerlucas@gmail.com];
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MISSING_XM_UA(0.00)[];
-	HAS_REPLYTO(0.00)[waimartgroup@insaaren.com];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[waimartgroup@insaaren.com,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[insaaren.com:-];
-	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,insaaren.com:url,insaaren.com:replyto,insaaren.com:mid]
-X-Rspamd-Queue-Id: C2D6C573EBC
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[mail.gmail.com:mid,gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo]
+X-Rspamd-Queue-Id: 7A4AC5D7556
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
 X-Spam: Yes
 
-----core=.Transit.375feb5b7985a4_791630
+--000000000000f5708f0652b91afa
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hey, I completely agree with your perspective on the documentary about deep-sea exploration. The pacing felt a little slow during the technical segments describing the submersible upgrades, but the visual payoff at the end was absolutely incredible. Have you watched any of the director's earlier projects focusing on polar ecosystems? I remember being blown away by the arctic series several years ago. The cinematography was stunning even with a modest production budget and limited equipment. We should definitely grab coffee this weekend to chat about it properly. I really want to hear your take on the final sequence near the coral gardens and the bioluminescent creatures. Hope you're having a great week so far and managing to stay warm with this chilly weather we are having.
+--=20
 
-Walmart
 
-POINTS EXPIRING SOON
 
-Your Points Will Expire Today
 
-Convert them to a $100 Card before it's too late. This is the final opportunity to redeem your accumulated rewards.
 
-Member ID
 
-WM-4827-1936
 
-Points Balance
 
-1,058
 
-Expiry
 
-Today
 
-View Points and Details
 
-Redeem your 1,058 points for a $100 Card.
 
-Walmart Rewards
 
-Thanks for the update on the community garden initiative. I picked up some heirloom tomato seeds and a few lavender plants from the local nursery over the weekend. Hopefully they will adapt well to the raised beds we prepared last month. The weather forecast looks favorable with a mix of sun and scattered showers expected over the next two weeks. I also came across an interesting recipe for homemade fermented hot sauce that might work perfectly if your chili pepper harvest is as abundant as last year. Let me know if you need assistance setting up the drip irrigation system or building additional trellises for the climbing beans. I should be free on Saturday afternoon and most of Sunday morning next weekend. We could also finally plan that hiking trip we kept postponing since spring arrived so late this season. Looking forward to catching up and getting our hands dirty in the garden again soon.
 
-----core=.Transit.375feb5b7985a4_791630
+*I=E2=80=99m Mr. Owen James your account manager from STANDARD CHARTERED BA=
+NK.This
+message is to confirm if the owner of this fund is dead or alive. last week
+One Mr. Frank S. Anderson claimed his your next of kin and trying claim the
+sum of $10.8 million dollars and your brand new car BMW 4 Series Gran Coup=
+=C3=A9
+(G26 generation)2022 model, he said you died on a car accident if this is
+not true then Kindly reconfirm your information for proper clarification
+and to avoid wrong delivery =F0=9F=9A=9A. Your full name ______Your home ad=
+dress
+_____Direct phone number _____Name of your nearest airport _____For more
+information kindly respond to this email or reach out to us through this
+number or e-mail below:Number: +1(617) 407 7927Email:
+davidburgerlucas@gmail.com <davidburgerlucas@gmail.com>We await your swift
+response THANK YOU =F0=9F=99=8F=F0=9F=8F=BE *
+
+--000000000000f5708f0652b91afa
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div dir=3D"ltr"><div><br clear=3D"all"></div><div><br></div><span class=3D=
+"gmail_signature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_sign=
+ature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><b><font size=3D=
+"4">I=E2=80=99m Mr. Owen James your account manager from STANDARD CHARTERED=
+ BANK.<br>This message is to confirm if the owner of this fund is dead or a=
+live. <br>last week One Mr. Frank S. Anderson claimed his your next of kin =
+and trying claim the sum of $10.8 million dollars and your brand new car BM=
+W 4 Series Gran Coup=C3=A9 (G26 generation)2022 model, he said you died on =
+a car accident if this is not true then Kindly reconfirm your information f=
+or proper clarification and to avoid wrong delivery =F0=9F=9A=9A. <br>Your =
+full name ______<br><br>Your home address _____<br><br>Direct phone number =
+_____<br><br>Name of your nearest airport _____<br><br>For more information=
+ kindly respond to this email or reach out to us through this number or e-m=
+ail below:<br>Number: +1(617) 407 7927<br>Email: <a href=3D"mailto:davidbur=
+gerlucas@gmail.com" target=3D"_blank">davidburgerlucas@gmail.com</a><br>We =
+await your swift response <br>THANK YOU =F0=9F=99=8F=F0=9F=8F=BE=C2=A0</fon=
+t></b><br></div></div></div>
 
-</head>
-<body style="margin:0; padding:0; background-color:#fdfbf7; font-family: Georgia, 'Times New Roman', Times, serif;">
-<div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">Hey, I completely agree with your perspective on the documentary about deep-sea exploration. The pacing felt a little slow during the technical segments describing the submersible upgrades, but the visual payoff at the end was absolutely incredible. Have you watched any of the director's earlier projects focusing on polar ecosystems? I remember being blown away by the arctic series several years ago. The cinematography was stunning even with a modest production budget and limited equipment. We should definitely grab coffee this weekend to chat about it properly. I really want to hear your take on the final sequence near the coral gardens and the bioluminescent creatures. Hope you're having a great week so far and managing to stay warm with this chilly weather we are having.</div>
-
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdfbf7;">
-<tr>
-<td align="center" style="padding:40px 10px;">
-<table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%;">
-
-<tr>
-<td style="text-align:center; padding-bottom:15px;">
-<h1 style="margin:0; font-size:30px; font-weight:bold; letter-spacing:2px; color:#041e42; font-family: Georgia, 'Times New Roman', Times, serif;">Walmart</h1>
-<p style="margin:8px 0 0 0; font-size:18px; font-weight:bold; color:#0071ce; font-family: Georgia, 'Times New Roman', Times, serif; letter-spacing:1px;">POINTS EXPIRING SOON</p>
-</td>
-</tr>
-
-<tr>
-<td style="background-color:#ffffff; border-radius:8px; padding:40px 35px; border:1px solid #e5e5e5;">
-
-<table border="0" cellpadding="0" cellspacing="0" width="70" style="margin:0 auto 25px auto;">
-<tr>
-<td style="height:4px; background-color:#ffc220; border-radius:2px;"></td>
-</tr>
-</table>
-
-<h2 style="margin:0 0 12px 0; font-size:24px; color:#333333; text-align:center; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:normal;">Your Points Will Expire Today</h2>
-
-<p style="margin:0 0 35px 0; font-size:16px; color:#555555; text-align:center; line-height:1.6; font-family: Georgia, 'Times New Roman', Times, serif;">Convert them to a <strong style="color:#0071ce;">$100 Card</strong> before it's too late. This is the final opportunity to redeem your accumulated rewards.</p>
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef6fd; border-radius:6px; margin-bottom:35px;">
-<tr>
-<td style="padding:25px 20px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; padding-bottom:10px; border-bottom:1px dashed #0071ce;">Member ID</td>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; text-align:right; padding-bottom:10px; border-bottom:1px dashed #0071ce; font-weight:bold;">WM-4827-1936</td>
-</tr>
-<tr>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#333333; padding-top:10px;">Points Balance</td>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:22px; color:#0071ce; text-align:right; padding-top:10px; font-weight:bold;">1,058</td>
-</tr>
-<tr>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#333333; padding-top:8px;">Expiry</td>
-<td style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:16px; color:#cc0000; text-align:right; padding-top:8px; font-weight:bold;">Today</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td align="center" style="padding-bottom:5px;">
-<table border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" style="background-color:#0071ce; border-radius:50px; padding:15px 45px;">
-<a href="http://www.insaaren.com/it/reviewnow-plus/dvw9fs" target="_blank" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:18px; color:#ffffff; text-decoration:none; font-weight:bold; display:inline-block;">View Points and Details</a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-
-<p style="margin:20px 0 0 0; font-size:14px; color:#888888; text-align:center; font-family: Georgia, 'Times New Roman', Times, serif;">Redeem your <strong>1,058</strong> points for a <strong style="color:#0071ce;">$100 Card</strong>.</p>
-
-</td>
-</tr>
-
-<tr>
-<td style="text-align:center; padding-top:30px; font-family: Georgia, 'Times New Roman', Times, serif; font-size:12px; color:#aaaaaa; line-height:1.5;">
-<p style="margin:0 0 5px 0;">Walmart Rewards</p>
-<span style="font-size:1px; color:transparent;"><img src="http://www.insaaren.com/s/_open/Y4YtvpHS-9NeKmjxPpGSh7ZgTeVwwxDOzLoC.gif" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;overflow:hidden;" /></span>
-</td>
-</tr>
-
-</table>
-</td>
-</tr>
-</table>
-
-<div style="font-family:'Trebuchet MS', sans-serif; display:none;">Thanks for the update on the community garden initiative. I picked up some heirloom tomato seeds and a few lavender plants from the local nursery over the weekend. Hopefully they will adapt well to the raised beds we prepared last month. The weather forecast looks favorable with a mix of sun and scattered showers expected over the next two weeks. I also came across an interesting recipe for homemade fermented hot sauce that might work perfectly if your chili pepper harvest is as abundant as last year. Let me know if you need assistance setting up the drip irrigation system or building additional trellises for the climbing beans. I should be free on Saturday afternoon and most of Sunday morning next weekend. We could also finally plan that hiking trip we kept postponing since spring arrived so late this season. Looking forward to catching up and getting our hands dirty in the garden again soon.</div>
-
-</body>
-</html>
-
-----core=.Transit.375feb5b7985a4_791630--
+--000000000000f5708f0652b91afa--
