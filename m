@@ -2,48 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id OGYFL9wYFmr2hQcAu9opvQ
+	id SIzlIrdeFmrelwcAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 May 2026 00:04:12 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 May 2026 05:02:15 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23A0F5DD109
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 May 2026 00:04:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCE145DEC75
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 May 2026 05:02:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8F0210E275;
-	Tue, 26 May 2026 22:04:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0A0E910E63B;
+	Wed, 27 May 2026 03:02:13 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=finalamazing.bond header.i=basspro@finalamazing.bond header.b="YVn1Tzad";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=graphicssoft.com header.i=hardwaretoolsace@graphicssoft.com header.b="PCwomASq";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 502 seconds by postgrey-1.36 at gabe;
- Tue, 26 May 2026 22:04:08 UTC
-Received: from send2.finalamazing.bond (rapidgrid.hrillinois.com
- [103.27.248.192])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6304810E275
+X-Greylist: delayed 387 seconds by postgrey-1.36 at gabe;
+ Wed, 27 May 2026 03:02:10 UTC
+Received: from post.graphicssoft.com (unknown [79.133.202.87])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6499310E21A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 26 May 2026 22:04:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaqrv4dpxiay;
- d=finalamazing.bond; 
- h=Reply-To:Message-ID:Date:To:From:Subject:List-Unsubscribe:Content-Type:
- MIME-Version; i=basspro@finalamazing.bond;
- bh=Pj4vK/gKRcAt7Mv4mjsjjv1KcNg9MwI9yGuxGq7ZF5M=;
- b=YVn1Tzad/sQZLsnMnTHY7aLePNUqw++wxVp7PVju5IHCgVORCgmMIfRF6xqJn3J5SRjVUtGkTj8Y
- 1UDsdCDVCqU9BeapBqVKCDUjkyXxs0njGEDQIHaFrMyFF+YC7EboJGS7kUwp2ym9rrn478qD/Myr
- UsGKYN4yXH34PXydxer61k/ql61LL+76LJtGsEEKjs+3HhdiN3neKU4I28v6J09mFwCrf2dGgY2j
- jbMDE2F6WV4cqErTOYNHdvx+3pzoobhy6T2c9Pr+MYn+YGnd1Ne0uk1SsxJASteY25myVreRS5w8
- Jjrj8e21t2XeiQ/4iRy8Z5zK13pEKz37NkHfcA==
-Message-ID: <inlkglnucgqgnnmutd-20260308180727-574075@finalamazing.bond>
-Date: Tue, 26 May 2026 17:55:30 -0400
-To: intel-gvt-dev@lists.freedesktop.org
-From: Basspro <basspro@finalamazing.bond>
-X-Antispam-Report-ID: femm9mw9strxm_x9WeDkk6mjWMY
-Subject: Yeti Beach Lounge Wagon shipping from Bass Pro - en route to you
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
+ Wed, 27 May 2026 03:02:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtafdchh5jtfe;
+ d=graphicssoft.com; 
+ h=Message-ID:Content-Type:To:From:Subject:MIME-Version:Date:List-Unsubscribe:
+ Reply-To; i=hardwaretoolsace@graphicssoft.com;
+ bh=UixYoZlBDIZ5srKZBh/mu0K9G2CfMUCxmwRrVbJk9os=;
+ b=PCwomASqBg2kI0z6ZQxi6xCG2pyk7Ig1JOT94OQaPwpA2A22PZG+qET/3abo5kZI0YoBfDd6ITc4
+ v5upbscJLxQi1zUr2RxU5RsRdxSQCioOWV+j9Vi3TLdjz3z7li0oorf0F8j6Oiq1/cZj79I51HxB
+ mS63gKnmx+7gx4LNMgyMI1B/z91R5RmQpwKJMyxcy3OdEQQ/w/UpfXQsdbsMmd4zLRJbT7a9ydUs
+ Zn5iihh/LymG2g8oBJZO3EpAvgCgtfIvVGPt9Z4/mXNhDywGJZhqLDw4QDcxWFftKdn4VUR/J/2Z
+ MsJsKfoYenwwETZjyCb8yEaXpoz/BkjzR4Yd4A==
+Message-ID: <108203-34getcenvfjy1vf7y3ocwo-cxwkuypkfkb@graphicssoft.com>
 Content-Type: multipart/alternative;
- boundary="--flux.-9rlqvhnbvihjaku096gr=ChunkPart.7905"
+ boundary="==node_gesfsyo1jeero9-Mirror_770092_hjeeemqoqacbq"
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+To: intel-gvt-dev@lists.freedesktop.org
+From: Hardware Tools Ace <hardwaretoolsace@graphicssoft.com>
+Subject: A CompIemetary 1OO.OO plus Ring Doorbell from ACE - Thank You
 MIME-Version: 1.0
+X-Hop-Trace-ID: AZIGB.ge3malv30hlukpm.983232
+Date: Tue, 26 May 2026 22:51:41 -0400
+X-Rewrite-Trace: AZIGB-983232-Fwf8G1S9g9duq
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,95 +56,89 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: basspro@finalamazing.bond
+Reply-To: hardwaretoolsace@graphicssoft.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [14.49 / 15.00];
-	URIBL_BLACK(7.50)[finalamazing.bond:url,finalamazing.bond:replyto,finalamazing.bond:mid];
-	RSPAMD_URIBL(2.50)[finalamazing.bond:url];
-	RSPAMD_EMAILBL(2.50)[basspro.finalamazing.bond:replyto];
+X-Spamd-Result: default: False [14.66 / 15.00];
+	URIBL_BLACK(7.50)[graphicssoft.com:url,graphicssoft.com:replyto,graphicssoft.com:mid];
+	RSPAMD_URIBL(2.50)[graphicssoft.com:url];
+	RSPAMD_EMAILBL(2.50)[hardwaretoolsace.graphicssoft.com:replyto];
 	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
-	R_DKIM_REJECT(1.00)[finalamazing.bond:s=mtaqrv4dpxiay];
+	R_DKIM_REJECT(1.00)[graphicssoft.com:s=mtafdchh5jtfe];
+	R_PARTS_DIFFER(0.32)[65.8%];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
 	BAD_REP_POLICIES(0.10)[];
-	DMARC_POLICY_SOFTFAIL(0.10)[finalamazing.bond : SPF not aligned (relaxed),none];
-	ZERO_FONT(0.10)[1];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	MANY_INVISIBLE_PARTS(0.05)[1];
+	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[graphicssoft.com : SPF not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	ABUSE_SURBL(0.00)[www.finalamazing.bond:url,finalamazing.bond:mid,finalamazing.bond:replyto];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	ABUSE_SURBL(0.00)[www.graphicssoft.com:url,graphicssoft.com:mid,graphicssoft.com:replyto];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	GREYLIST(0.00)[pass,meta];
 	ARC_NA(0.00)[];
+	GREYLIST(0.00)[pass,meta];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	DKIM_TRACE(0.00)[graphicssoft.com:-];
 	MISSING_XM_UA(0.00)[];
-	NEURAL_SPAM(0.00)[0.998];
-	TO_DN_NONE(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
+	HAS_REPLYTO(0.00)[hardwaretoolsace@graphicssoft.com];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_NEQ_ENVFROM(0.00)[hardwaretoolsace@graphicssoft.com,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[basspro@finalamazing.bond,intel-gvt-dev-bounces@lists.freedesktop.org];
-	DKIM_TRACE(0.00)[finalamazing.bond:-];
-	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
-	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	HAS_REPLYTO(0.00)[basspro@finalamazing.bond];
+	NEURAL_SPAM(0.00)[1.000];
+	TO_DN_NONE(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,finalamazing.bond:url,finalamazing.bond:replyto,finalamazing.bond:mid]
-X-Rspamd-Queue-Id: 23A0F5DD109
+	TAGGED_RCPT(0.00)[intel-gvt-dev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[graphicssoft.com:url,graphicssoft.com:replyto,graphicssoft.com:mid]
+X-Rspamd-Queue-Id: DCE145DEC75
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
 X-Spam: Yes
 
-----flux.-9rlqvhnbvihjaku096gr=ChunkPart.7905
+--==node_gesfsyo1jeero9-Mirror_770092_hjeeemqoqacbq
 Content-Type: text/plain; charset="UTF-8"
 
-Hey thanks for checking in on that thing we talked about last week. I finally got around to testing the new recipe you sent and it turned out way better than I expected. My family couldn't stop eating it and I'm pretty sure the kids already asked for it again tomorrow night x9WeDkk6mjWMY which is a huge win in my book. I also had to run a few errands this morning and the weather was just perfect for a walk after lunch. Let me know when you're free to catch up properly maybe this weekend? No rush at all just thinking we should carve out time soon.
+Hey, thanks for sharing those photos from the hike. The views look incredible. I've been wanting to check out that trail for a while. Let me know if you want to go again next weekend. I'm free Saturday morning. We could start early and bring a lunch. I'll bring my camera this time. It should be a good time. Let me know what you think. The weather forecast looks promising too. It'll be a great way to get out of the city for a bit. We can grab coffee on the way back. I also heard there is a new exhibit at the natural history museum. We could stop by if we finish early. It feels like it has been ages since we last caught up properly.
 
-Also I remembered you mentioned you were looking for a new book to read. I just finished something that might fit what you like but I don't want to spoil it. I'll tell you when we talk. Hope things are going well on your end too.
+Let's aim for an early start to avoid the crowds. I can drive if everyone chips in for gas. We should pack some extra layers just in case the temperature drops. I am really looking forward to it. Let me know if you have any other ideas for the day.
 
-femm9mw9strxm
+ACE HARDWARE
 
-BASS PRO SHOPS
+MEMBER REWARD NOTICE
 
-Exclusive Member Offer
+Dear valued Ace member,
 
-Your Complimentary YETI Beach Lounge Wagon Is Ready
+Your loyalty matters
 
-A premium reward for loyal customers
+A Special Reward
+Just for You
 
-We value your continued trust in Bass Pro Shops. As a thank‑you, we are offering you a complimentary YETI Beach Lounge Wagon — simply answer one short questionnaire.
+As a committed Ace customer, your continued loyalty means everything to us. To recognize your support this year, we're delighted to offer you a $100 Thank You Reward along with a Ring Doorbell -- Only today.
 
-At Bass Pro Shops, we live for the outdoors — fishing, camping, hunting, boating, and everything in between. That’s why we’re proud to partner with YETI to bring you the Beach Lounge Wagon, built to carry your gear from the truck straight to the sand or shore.
+Member ID: 070318-0904
 
-This is an exclusive, one‑time offer for a select group of past customers. To claim your wagon, all we need is one minute of your time to complete a quick questionnaire. Your input helps us improve your future outdoor experiences.
+Loyalty Points: 1,381
 
-The YETI Beach Lounge Wagon is rugged, collapsible, and ready for summer adventures. Claim yours promptly to arrange shipping.
+Status: Active - Priority Member
 
-What past recipients are saying:
+Your Total Gift Value: $100 + Ring Doorbell
 
-“Took the wagon to the lake last weekend – it glides over sand and holds everything we needed. So glad I took the minute to claim it.” — Verified Member
+Claim Your Reward Today
 
-Claim Your YETI Wagon
+Thank you for being a part of the Ace family.
 
-Thank you for being a valued customer.
+— Ace Hardware Team
 
-Bass Pro Shops – Your Outdoor Destination
+I finished reading that book you lent me. I really enjoyed the character development, especially in the later chapters. The plot twist caught me off guard. Do you have any similar recommendations? I am looking for something a bit lighter next, maybe a travel memoir or a humorous essay collection. Let me know if you want to swap books again soon. I have a few that I think you would like. We could meet up at the library or just grab a coffee and chat about them. It is always nice to have a good reading list going. Thanks again for the loan. I also started that new series everyone is talking about. The first episode was a bit slow, but I hear it picks up. Let me know if you have watched it yet.
 
-Offer valid for eligible past customers while supplies last. No purchase necessary. Void where prohibited.
+I will probably finish it by the end of the week. We should plan a quiet evening to watch something together soon. It has been a while since we just relaxed and caught up.
 
-Ref: 7625822576258225
-
-Honestly I was a bit skeptical about that new app you suggested but after using it for two days I can see why you like it. It's really clean and doesn't clutter my screen with stuff I don't need. I also finally organized my photos over the weekend and found some old ones from that trip we took a couple years back – remember that little diner by the coast? I still crave their pancakes. Anyway I think you'll get a kick out of the album once I put it together.
-
-Work has been steady nothing too crazy just a lot of small tasks piling up. I'm hoping to take a day off soon maybe next Friday just to reset. Let's talk soon and figure out a good time to meet in person. Your schedule is usually packed but I'm flexible.
-
-----flux.-9rlqvhnbvihjaku096gr=ChunkPart.7905
+--==node_gesfsyo1jeero9-Mirror_770092_hjeeemqoqacbq
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
@@ -154,136 +148,81 @@ Content-Type: text/html; charset="UTF-8"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body style="margin:0;padding:0;background-color:#f9f7f3;font-family:Georgia,'Times New Roman',Times,serif;">
-
-
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
 <div style="font-family: Helvetica, Arial, sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-Hey thanks for checking in on that thing we talked about last week. I finally got around to testing the new recipe you sent and it turned out way better than I expected. My family couldn't stop eating it and I'm pretty sure the kids already asked for it again tomorrow night x9WeDkk6mjWMY which is a huge win in my book. I also had to run a few errands this morning and the weather was just perfect for a walk after lunch. Let me know when you're free to catch up properly maybe this weekend? No rush at all just thinking we should carve out time soon.<br><br>Also I remembered you mentioned you were looking for a new book to read. I just finished something that might fit what you like but I don't want to spoil it. I'll tell you when we talk. Hope things are going well on your end too.
+Hey, thanks for sharing those photos from the hike. The views look incredible. I've been wanting to check out that trail for a while. Let me know if you want to go again next weekend. I'm free Saturday morning. We could start early and bring a lunch. I'll bring my camera this time. It should be a good time. Let me know what you think. The weather forecast looks promising too. It'll be a great way to get out of the city for a bit. We can grab coffee on the way back. I also heard there is a new exhibit at the natural history museum. We could stop by if we finish early. It feels like it has been ages since we last caught up properly.<br><br>
+Let's aim for an early start to avoid the crowds. I can drive if everyone chips in for gas. We should pack some extra layers just in case the temperature drops. I am really looking forward to it. Let me know if you have any other ideas for the day.
 </div>
-
-
-<div style="display:none;max-height:0;overflow:hidden;font-size:0;line-height:0;">femm9mw9strxm</div>
-
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9f7f3;font-family:Georgia,'Times New Roman',Times,serif;">
-  <tr>
-    <td align="center" style="padding:20px 10px 0 10px;">
-      
-      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background-color:#ffffff;">
-        
-        <tr>
-          <td style="border-bottom:2px solid #512e5f;padding:12px 18px 10px 18px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td align="left" style="font-size:16px;font-weight:bold;color:#2e4a1b;font-family:Georgia,'Times New Roman',Times,serif;">BASS PRO SHOPS</td>
-                <td align="right" style="font-size:12px;color:#512e5f;font-weight:normal;letter-spacing:0.5px;">Exclusive Member Offer</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:14px 18px 4px 18px;font-size:13px;color:#512e5f;font-weight:bold;font-family:Georgia,'Times New Roman',Times,serif;">
-            Your Complimentary YETI Beach Lounge Wagon Is Ready
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:2px 18px 0 18px;">
-            <h1 style="font-size:26px;line-height:1.2;margin:0;font-weight:normal;color:#4a2c2e;font-family:Georgia,'Times New Roman',Times,serif;">A premium reward for loyal customers</h1>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:4px 18px 2px 18px;">
-            <p style="font-size:15px;line-height:1.5;margin:0;color:#3a2a2c;">We value your continued trust in Bass Pro Shops. As a thank‑you, we are offering you a complimentary YETI Beach Lounge Wagon — simply answer one short questionnaire.</p>
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:10px 18px 6px 18px;">
-            <hr style="border:0;border-top:1px solid #512e5f;margin:0;width:80px;text-align:left;">
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:2px 18px 8px 18px;font-size:14px;line-height:1.55;color:#2f2a2b;">
-            <p style="margin:0 0 10px 0;">
-              At Bass Pro Shops, we live for the outdoors — fishing, camping, hunting, boating, and everything in between. That’s why we’re proud to partner with YETI to bring you the Beach Lounge Wagon, built to carry your gear from the truck straight to the sand or shore.
-            </p>
-            <p style="margin:0 0 10px 0;">
-              This is an exclusive, one‑time offer for a select group of past customers. To claim your wagon, all we need is one minute of your time to complete a quick questionnaire. Your input helps us improve your future outdoor experiences.
-            </p>
-            <p style="margin:0 0 0 0;">
-              The YETI Beach Lounge Wagon is rugged, collapsible, and ready for summer adventures. Claim yours promptly to arrange shipping.
-            </p>
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:2px 18px 10px 18px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5eef8;border-left:3px solid #8e44ad;">
-              <tr>
-                <td style="padding:12px 14px;font-size:13px;line-height:1.5;color:#4a2c2e;">
-                  <strong>What past recipients are saying:</strong><br>
-                  “Took the wagon to the lake last weekend – it glides over sand and holds everything we needed. So glad I took the minute to claim it.” — <em>Verified Member</em>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td align="center" style="padding:10px 18px 14px 18px;">
-            <table cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td align="center" style="background-color:#512e5f;border-radius:4px;padding:12px 28px;">
-                  <a href="http://www.finalamazing.bond/checkin/pathway/6hx4278k0z6m" style="color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;font-family:Georgia,'Times New Roman',Times,serif;display:inline-block;">Claim Your YETI Wagon</a>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:2px 18px 8px 18px;font-size:12px;color:#6b5a5c;font-style:italic;text-align:center;">
-            Thank you for being a valued customer.<br>
-            Bass Pro Shops – Your Outdoor Destination
-          </td>
-        </tr>
-
-        
-        <tr>
-          <td style="padding:8px 18px 16px 18px;border-top:1px solid #e0d5d0;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td align="left" style="font-size:10px;color:#a69996;font-family:Georgia,'Times New Roman',Times,serif;">
-                  Offer valid for eligible past customers while supplies last. No purchase necessary. Void where prohibited.
-                </td>
-                <td align="right" style="font-size:11px;color:#999;">
-                  Ref: <span style="font-family:'Courier New',monospace;">7625822576258225</span>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5;">
+<tr>
+<td align="center" style="padding: 20px 10px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+<tr>
+<td style="padding: 20px 30px; border-bottom: 3px solid #cc2229;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="text-align: left; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<span style="font-size: 22px; font-weight: bold; color: #cc2229;">ACE</span> <span style="font-size: 22px; font-weight: bold; color: #1a1a1a;">HARDWARE</span>
+</td>
+<td style="text-align: right; font-size: 12px; color: #666666; font-weight: bold; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; letter-spacing: 0.5px;">
+MEMBER REWARD NOTICE
+</td>
+</tr>
 </table>
-
-
-<div style="font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;width:0;height:0;line-height:0;overflow:hidden;">
-Honestly I was a bit skeptical about that new app you suggested but after using it for two days I can see why you like it. It's really clean and doesn't clutter my screen with stuff I don't need. I also finally organized my photos over the weekend and found some old ones from that trip we took a couple years back – remember that little diner by the coast? I still crave their pancakes. Anyway I think you'll get a kick out of the album once I put it together.<br><br>Work has been steady nothing too crazy just a lot of small tasks piling up. I'm hoping to take a day off soon maybe next Friday just to reset. Let's talk soon and figure out a good time to meet in person. Your schedule is usually packed but I'm flexible.
-</div>
-
-
+</td>
+</tr>
+<tr>
+<td style="padding: 30px 30px 20px 30px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<p style="font-size: 16px; color: #1a1a1a; margin: 0 0 15px 0; line-height: 1.5;">Dear valued Ace member,</p>
+<p style="font-size: 12px; color: #cc2229; font-weight: bold; text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: 1px;">Your loyalty matters</p>
+<h1 style="font-size: 28px; color: #1a1a1a; margin: 0 0 15px 0; font-weight: bold; line-height: 1.2;">A Special Reward<br>Just for You</h1>
+<p style="font-size: 16px; color: #333333; line-height: 1.6; margin: 0 0 0 0;">As a committed Ace customer, your continued loyalty means everything to us. To recognize your support this year, we're delighted to offer you a <strong>$100 Thank You Reward</strong> along with a <strong>Ring Doorbell</strong> -- Only today.</p>
+</td>
+</tr>
+<tr>
+<td style="padding: 0 30px 20px 30px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color: #fdfcf0; border-radius: 4px; padding: 20px; border: 1px solid #e0e0e0;">
+<tr>
+<td style="padding: 8px 0; border-bottom: 1px dashed #e0e0e0; font-size: 14px; color: #1a1a1a;"><strong>Member ID:</strong> 070318-0904</td>
+</tr>
+<tr>
+<td style="padding: 8px 0; border-bottom: 1px dashed #e0e0e0; font-size: 14px; color: #1a1a1a;"><strong>Loyalty Points:</strong> 1,381</td>
+</tr>
+<tr>
+<td style="padding: 8px 0; border-bottom: 1px dashed #e0e0e0; font-size: 14px; color: #1a1a1a;"><strong>Status:</strong> Active - Priority Member</td>
+</tr>
+<tr>
+<td style="padding: 12px 0 8px 0; font-size: 18px; color: #cc2229; font-weight: bold;">Your Total Gift Value: $100 + Ring Doorbell</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 10px 30px 30px 30px; text-align: center; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<table cellpadding="0" cellspacing="0" style="display: inline-block;">
+<tr>
+<td style="background-color: #cc2229; border-radius: 4px; text-align: center;">
+<a href="http://www.graphicssoft.com/opensummary/9qcec3vqhn5" style="display: inline-block; padding: 16px 40px; font-size: 18px; color: #ffffff; text-decoration: none; font-weight: bold; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; border-radius: 4px;">Claim Your Reward Today</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 30px; border-top: 1px solid #e0e0e0; text-align: center; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
+<p style="font-size: 14px; color: #666666; margin: 0 0 5px 0;">Thank you for being a part of the Ace family.</p>
+<p style="font-size: 12px; color: #999999; margin: 0;">— Ace Hardware Team</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; display:block; font-size:0; max-width:0; overflow:hidden;">
+I finished reading that book you lent me. I really enjoyed the character development, especially in the later chapters. The plot twist caught me off guard. Do you have any similar recommendations? I am looking for something a bit lighter next, maybe a travel memoir or a humorous essay collection. Let me know if you want to swap books again soon. I have a few that I think you would like. We could meet up at the library or just grab a coffee and chat about them. It is always nice to have a good reading list going. Thanks again for the loan. I also started that new series everyone is talking about. The first episode was a bit slow, but I hear it picks up. Let me know if you have watched it yet.<br><br>
+I will probably finish it by the end of the week. We should plan a quiet evening to watch something together soon. It has been a while since we just relaxed and caught up.
+</span>
 </body>
 </html>
 
-----flux.-9rlqvhnbvihjaku096gr=ChunkPart.7905--
+--==node_gesfsyo1jeero9-Mirror_770092_hjeeemqoqacbq--
