@@ -1,47 +1,49 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
-	by lfdr with LMTP
-	id WEbeAGPPF2qZRggAu9opvQ
+	by mail.lfdr.de with LMTP
+	id pRgxDQDxHmpbZgAAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 May 2026 07:15:15 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 02 Jun 2026 17:04:32 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51B545ECAC7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 May 2026 07:15:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F64862F91B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 02 Jun 2026 17:04:31 +0200 (CEST)
+Authentication-Results: mail.lfdr.de;
+	dkim=fail ("body hash did not verify") header.d=tendhold.garden header.s=mtaubiikwrlqb header.b=r2byv6uz;
+	spf=pass (mail.lfdr.de: domain of intel-gvt-dev-bounces@lists.freedesktop.org designates 131.252.210.177 as permitted sender) smtp.mailfrom=intel-gvt-dev-bounces@lists.freedesktop.org;
+	dmarc=fail reason="SPF not aligned (relaxed)" header.from=tendhold.garden (policy=none)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 317BB10EC07;
-	Thu, 28 May 2026 05:15:13 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=summermoorwa.blog header.i=applesupport@summermoorwa.blog header.b="KKKHx8Bm";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 28AD910F1EF;
+	Tue,  2 Jun 2026 14:56:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 28 May 2026 05:15:12 UTC
-Received: from mail.summermoorwa.blog (unknown [148.135.53.146])
- by gabe.freedesktop.org (Postfix) with ESMTP id 79C3910EC07
+X-Greylist: delayed 315 seconds by postgrey-1.36 at gabe;
+ Tue, 02 Jun 2026 14:56:41 UTC
+Received: from relay.tendhold.garden (unknown [93.92.72.52])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BD65210F1ED
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 28 May 2026 05:15:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mx1;
- d=summermoorwa.blog; 
- h=To:From:Reply-To:Date:Subject:Message-ID:MIME-Version:Content-Type;
- i=applesupport@summermoorwa.blog;
- bh=uF5CDFH2bqoA+KjbUnqRVu6iLmDXIFyhRFXrHw3pMkA=;
- b=KKKHx8Bm9eBywQWCEu5BSsLrZBMbFibsTt+3XoD/Hu2lE008ng1EVMbynXmQKvB9PYA1sqgeY+5M
- CvWLHh0xucYihb/7lJhfalNa3K4Lv7aBKRC4VxxBkwUy+fQ4KALpXZN+5z6WA4FXGUoUZVoKu+WJ
- i4B5QwUNoGmI5iSNCRyFP7li4bSHEUmrw+NOjG/Aat9XmId21y0/fKk3fhwqe4J8+8Go115xniNW
- u2VBZsZy1dgYV3Bye4HPaNGF2ubygC6DEXHMSzZrR5GFaYOnuzE2Krjpi/iL1LBo+8d1SDYY7hPQ
- JiDdCPXWuLZHnTRYDRwYArEP+pkM8kvbl7ldBA==
-To: intel-gvt-dev@lists.freedesktop.org
-From: Apple Support <applesupport@summermoorwa.blog>
-Date: Thu, 28 May 2026 01:10:03 -0400
-Subject: Pending Still on Your Action
-Message-ID: <g6KdfJ3A_u69@swf7.summermoorwa.blog>
-X-Request-ID: d912b2d8-2636-4619-a559-3e616ac67341
+ Tue,  2 Jun 2026 14:56:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaubiikwrlqb;
+ d=tendhold.garden; 
+ h=List-Unsubscribe:Message-ID:Date:MIME-Version:Reply-To:To:Content-Type:From:
+ Subject; i=steaksfrommaha@tendhold.garden;
+ bh=opq1KImb+nsIx8SwASWIg/44kol9kSupZ4SxFTrqD9s=;
+ b=r2byv6uzHpe4TgQG/fX24EZCVpTeZHuAvm4rqAIbPIKjZUhma4swa5o4FesR2SaWOBX5pwBu8XoZ
+ lcOaMwlYMX2YqbSYcI+8V5HjfVfGOkHfhHfY7ckheG+y9LAPYY157FmOqan/FoQEtrxvjGZd3dwc
+ JMMCm2GQ/ss+3IwY5z51ySidu94XHitkExUo+cKsqptr4gDyU0YLGayu1lTUQQlnbhUWVm64L9s9
+ Vl7b/vnoDiVoMLNpAyfpOjyeqIc2YdZnFMIgxlh/9VnzOLabG424bE8PKNQhGWhYp/2XCX0UtpyY
+ EoJz+hjh4W9EC1iwBR6kvVb1Tbd166PpWpVD6A==
+Message-ID: <260714234729-kzb9i9cktt9_5198709@tendhold.garden>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Date: Tue, 2 Jun 2026 10:51:21 -0400
 MIME-Version: 1.0
+X-Hop-Session-Ref: mf1mvqh2klmz3q_HEGOPE
+To: intel-gvt-dev@lists.freedesktop.org
 Content-Type: multipart/alternative;
- boundary="eHw-vNnSc2LQGhG7Exp5vbAEJmWh-.gnci"
+ boundary="._grid-DataPart.vwbkbanbfggffkhg_3530511612=vanmptaxevfw3zzpivn1c"
+From: Steaks from 0maha <steaksfrommaha@tendhold.garden>
+Subject: 0maha-Steak's Has Your Steak SampIer - Only 5OO Left - Grab It Today
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,186 +56,195 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: applesupport@summermoorwa.blog
+Reply-To: steaksfrommaha@tendhold.garden
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-X-Spamd-Result: default: False [12.19 / 15.00];
-	URIBL_BLACK(7.50)[summermoorwa.blog:url,summermoorwa.blog:replyto,summermoorwa.blog:dkim];
-	ABUSE_SURBL(5.00)[summermoorwa.blog:replyto,summermoorwa.blog:dkim,www.summermoorwa.blog:url,swf7.summermoorwa.blog:mid];
+X-Rspamd-Action: add header
+X-Spamd-Result: default: False [14.49 / 15.00];
+	URIBL_BLACK(7.50)[tendhold.garden:mid,tendhold.garden:replyto,tendhold.garden:from_mime,tendhold.garden:url];
+	RSPAMD_EMAILBL(2.50)[steaksfrommaha.tendhold.garden:replyto];
+	RSPAMD_URIBL(2.50)[tendhold.garden:mid,tendhold.garden:from_mime,tendhold.garden:url];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	R_DKIM_REJECT(1.00)[tendhold.garden:s=mtaubiikwrlqb];
 	MAILLIST(-0.20)[mailman];
-	BAD_REP_POLICIES(0.10)[];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
+	BAD_REP_POLICIES(0.10)[];
+	DMARC_POLICY_SOFTFAIL(0.10)[tendhold.garden : SPF not aligned (relaxed),none];
+	ZERO_FONT(0.10)[1];
+	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
+	MANY_INVISIBLE_PARTS(0.05)[1];
 	HAS_LIST_UNSUB(-0.01)[];
+	ABUSE_SURBL(0.00)[www.tendhold.garden:url,tendhold.garden:mid,tendhold.garden:from_mime,tendhold.garden:replyto];
 	RCVD_TLS_LAST(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	DMARC_POLICY_ALLOW(0.00)[summermoorwa.blog,quarantine];
-	R_DKIM_ALLOW(0.00)[summermoorwa.blog:s=mx1];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	GREYLIST(0.00)[pass,meta];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DBL_SPAM(0.00)[swf7.summermoorwa.blog:mid];
 	RCPT_COUNT_ONE(0.00)[1];
+	GREYLIST(0.00)[pass,body];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[summermoorwa.blog:+];
-	NEURAL_SPAM(0.00)[0.987];
-	MISSING_XM_UA(0.00)[];
-	REPLYTO_ADDR_EQ_FROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_NEQ_ENVFROM(0.00)[applesupport@summermoorwa.blog,intel-gvt-dev-bounces@lists.freedesktop.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[applesupport@summermoorwa.blog];
-	TO_DN_NONE(0.00)[];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
+	MISSING_XM_UA(0.00)[];
+	TO_DN_NONE(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	REPLYTO_ADDR_EQ_FROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[steaksfrommaha@tendhold.garden,intel-gvt-dev-bounces@lists.freedesktop.org];
+	DKIM_TRACE(0.00)[tendhold.garden:-];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
+	MID_RHS_MATCH_FROM(0.00)[];
+	HAS_REPLYTO(0.00)[steaksfrommaha@tendhold.garden];
+	ALIAS_RESOLVED(0.00)[];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[summermoorwa.blog:url,summermoorwa.blog:replyto,summermoorwa.blog:dkim]
-X-Rspamd-Queue-Id: 51B545ECAC7
-X-Rspamd-Action: add header
+	DBL_BLOCKED_OPENRESOLVER(0.00)[lists.freedesktop.org:from_smtp,tendhold.garden:mid,tendhold.garden:replyto,tendhold.garden:from_mime,tendhold.garden:url,gabe.freedesktop.org:helo,gabe.freedesktop.org:rdns]
 X-Rspamd-Server: lfdr
+X-Rspamd-Queue-Id: 7F64862F91B
 X-Spam: Yes
 
---eHw-vNnSc2LQGhG7Exp5vbAEJmWh-.gnci
+--._grid-DataPart.vwbkbanbfggffkhg_3530511612=vanmptaxevfw3zzpivn1c
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Apple
-=20=20=20=20=20=20=20=20System=20Alert:=20Your=20Exclusive=20Reward=20Is=20=
-Reserved
-=20=20=20=20=20=20=20=20Action=20Required:=20Feedback=20Program=20Access
-=20=20=20=20=20=20=20=20Your=20opinion=20carries=20weight.=20We=20have=20re=
-served=20a=20special=20incentive=20for=20completing=20our=20brief=20feedbac=
-k=20program:=20an=20Apple=20iPhone=2017=20Air,=20with=20a=20retail=20value=
-=20of=20$1,299.=20This=20sleek=20device=20features=20a=20stunning=206.1-inc=
-h=20Super=20Retina=20XDR=20display,=20the=20powerful=20A18=20Pro=20chip=20f=
-or=20seamless=20performance,=20and=20an=20advanced=20dual-camera=20system=
-=20that=20captures=20every=20detail=20with=20precision.
-=20=20=20=20=20=20=20=20=20=20Incentive:Apple=20iPhone=2017=20Air
-=20=20=20=20=20=20=20=20=20=20Retail=20Value:$1,299
-=20=20=20=20=20=20=20=20=20=20Action=20Required:Complete=20a=20short=20surv=
-ey=20about=20your=20device=20preferences
-=20=20=20=20=20=20=20=20=20=20Deadline:7=20days=20remaining=20to=20claim
-=20=20=20=20=20=20=20=20Claim=20Your=20Reward=20Now
-=20=20=20=20=20=20=20=20Fine=20Print:=20This=20is=20an=20exclusive=20offer=
-=20for=20selected=20participants.=20Your=20feedback=20helps=20improve=20our=
-=20products.=20Reward=20is=20non-transferable=20and=20subject=20to=20availa=
-bility.=20Terms=20and=20conditions=20apply.=20Void=20where=20prohibited.
-=20=20=20=20=20=20=20=20A=20bee=20lands=20on=20a=20flower,=20its=20legs=20d=
-usted=20with=20pollen=20as=20it=20moves=20from=20petal=20to=20petal=20in=20=
-a=20methodical=20dance.=20The=20flower=20sways=20slightly=20under=20the=20w=
-eight,=20yet=20the=20bee=20continues=20its=20work=20with=20unbroken=20focus=
-=20Sunlight=20catches=20the=20translucent=20wings,=20making=20them=20shimm=
-er=20for=20a=20brief=20moment=20before=20the=20bee=20lifts=20off=20toward=
-=20the=20next=20bloom.=20It=20is=20a=20small=20interaction,=20but=20one=20t=
-hat=20repeats=20countless=20times=20through=20the=20garden=20without=20noti=
-ce.
+I think the trailhead suggestion you mentioned could work well for Saturday morning. Starting by 7 would give us enough time to reach the ridge before the afternoon heat sets in. The loop you described is roughly eight miles with about fourteen hundred feet of elevation gain which seems manageable if we pace ourselves. I checked the weather forecast and it looks clear with highs near seventy five so we should bring extra water and some snacks. If you want we can stop at that bakery on the way out of town for sandwiches to pack. Let me know if you prefer the longer route that goes past the old fire lookout or if sticking to the main loop sounds better. I have the map spread out on the table right now and the creek crossing should be low enough this time of year to cross without getting soaked. We might see some wildflowers still blooming in the upper meadows which would be nice. I can drive if you want to meet at my place around six thirty.
 
-http://www.summermoorwa.blog/morin-nm
+Omaha Steaks
 
---eHw-vNnSc2LQGhG7Exp5vbAEJmWh-.gnci
+Hand-selected cuts,
+prepared with care
+
+ 
+
+Gourmet Sampler Program
+
+A selection of premium cuts is being made available to participants, provided at no charge through this program.
+
+Omaha Steaks is offering 500 gourmet boxes, each valued over $600, at no charge to recipients. One sampler per household. This offer ends Tomorrow. Each cut is hand-selected and flash-frozen to preserve its natural flavor and tenderness.
+
+Those who receive this message are guaranteed a sampler box. You will not be billed for the sampler — the cost is covered by the program for this offer.
+
+See What's Included
+
+Inside Your Box
+
+4 Filet Mignons
+
+4 Ribeyes
+
+4 New York Strips
+
+6 Top Sirloins
+
+Quantities are determined by program allocation. One sampler per household. Offer ends Tomorrow.
+
+Thank you for taking a moment to review this offer.
+
+I have been thinking about the best way to approach the backyard patio project and I think starting with a concrete base rather than pavers would give us a more stable surface in the long run. The area we measured last weekend is about twelve feet by sixteen feet which would require around two and a half cubic yards of concrete if we pour it four inches thick. My neighbor did something similar last year and he recommended using fibermesh reinforcement to help control cracking. We would need to rent a mixer unless we want to order a ready mix truck which might be easier for that volume. I can help with the grading and forms if you can handle the finishing work. We should also think about drainage since that corner of the yard tends to collect water after a heavy rain. I was looking at some photos of stamped concrete patterns that could give it a nice finished look without the cost of stone. Let me know when you want to start and I can reserve the equipment for a weekend.
+
+--._grid-DataPart.vwbkbanbfggffkhg_3530511612=vanmptaxevfw3zzpivn1c
 Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE=20html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-=20=20<meta=20charset=3D"UTF-8">
-=20=20<meta=20name=3D"viewport"=20content=3D"width=3Ddevice-width,=20initia=
-l-scale=3D1.0">
-=20=20<style>
-=20=20=20=20body=20{=20margin:=200;=20padding:=200;=20background-color:=20#=
-F5F5F7;=20font-family:=20Arial,=20Helvetica,=20sans-serif;=20}
-=20=20=20=20table=20{=20border-collapse:=20collapse;=20width:=20100%;=20max=
--width:=20600px;=20margin:=200=20auto;=20background-color:=20#ffffff;=20}
-=20=20=20=20td=20{=20padding:=2020px;=20}
-=20=20=20=20.logo=20{=20font-size:=2028px;=20font-weight:=20bold;=20color:=
-=20#000000;=20text-align:=20center;=20padding:=2020px=200=2010px;=20}
-=20=20=20=20.header=20{=20font-size:=2024px;=20font-weight:=20bold;=20color=
-:=20#000000;=20text-align:=20left;=20text-transform:=20uppercase;=20padding=
-:=2010px=200;=20}
-=20=20=20=20.alert=20{=20font-size:=2014px;=20color:=20#0171E3;=20text-alig=
-n:=20left;=20padding:=205px=200;=20font-weight:=20bold;=20}
-=20=20=20=20.body-text=20{=20font-size:=2016px;=20color:=20#000000;=20line-=
-height:=201.5;=20padding:=2010px=200;=20}
-=20=20=20=20.table-data=20{=20width:=20100%;=20background-color:=20#F5F5F7;=
-=20padding:=2015px;=20margin:=2010px=200;=20}
-=20=20=20=20.table-data=20td=20{=20padding:=208px;=20font-size:=2014px;=20c=
-olor:=20#000000;=20}
-=20=20=20=20.cta-button=20{=20display:=20inline-block;=20background-color:=
-=20#0171E3;=20color:=20#ffffff;=20text-decoration:=20none;=20padding:=2015p=
-x=2030px;=20font-size:=2018px;=20font-weight:=20bold;=20border-radius:=206p=
-x;=20text-align:=20center;=20width:=20100%;=20box-sizing:=20border-box;=20m=
-argin:=2015px=200;=20}
-=20=20=20=20.disclaimer=20{=20font-size:=2011px;=20color:=20#666666;=20padd=
-ing:=2010px=200;=20line-height:=201.3;=20}
-=20=20=20=20.mundane-text=20{=20font-size:=2013px;=20color:=20#999999;=20pa=
-dding:=2010px=200;=20line-height:=201.4;=20font-style:=20italic;=20}
-=20=20=20=20@media=20only=20screen=20and=20(max-width:=20480px)=20{
-=20=20=20=20=20=20td=20{=20padding:=2015px;=20}
-=20=20=20=20=20=20.logo=20{=20font-size:=2022px;=20}
-=20=20=20=20=20=20.header=20{=20font-size:=2020px;=20}
-=20=20=20=20=20=20.cta-button=20{=20font-size:=2016px;=20padding:=2012px=20=
-20px;=20}
-=20=20=20=20}
-=20=20</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
-<body>
-=20=20<table>
-=20=20=20=20<tr>
-=20=20=20=20=20=20<td>
-=20=20=20=20=20=20=20=20<div=20class=3D"logo">Apple</div>
-
-=20=20=20=20=20=20=20=20<div=20class=3D"alert">System=20Alert:=20Your=20Exc=
-lusive=20Reward=20Is=20Reserved</div>
-
-=20=20=20=20=20=20=20=20<div=20class=3D"header">Action=20Required:=20Feedba=
-ck=20Program=20Access</div>
-
-=20=20=20=20=20=20=20=20<p=20class=3D"body-text">Your=20opinion=20carries=
-=20weight.=20We=20have=20reserved=20a=20special=20incentive=20for=20complet=
-ing=20our=20brief=20feedback=20program:=20an=20Apple=20iPhone=2017=20Air,=
-=20with=20a=20retail=20value=20of=20$1,299.=20This=20sleek=20device=20featu=
-res=20a=20stunning=206.1-inch=20Super=20Retina=20XDR=20display,=20the=20pow=
-erful=20A18=20Pro=20chip=20for=20seamless=20performance,=20and=20an=20advan=
-ced=20dual-camera=20system=20that=20captures=20every=20detail=20with=20prec=
-ision.</p>
-
-=20=20=20=20=20=20=20=20<table=20class=3D"table-data">
-=20=20=20=20=20=20=20=20=20=20<tr><td><strong>Incentive:</strong></td><td>A=
-pple=20iPhone=2017=20Air</td></tr>
-=20=20=20=20=20=20=20=20=20=20<tr><td><strong>Retail=20Value:</strong></td>=
-<td>$1,299</td></tr>
-=20=20=20=20=20=20=20=20=20=20<tr><td><strong>Action=20Required:</strong></=
-td><td>Complete=20a=20short=20survey=20about=20your=20device=20preferences<=
-/td></tr>
-=20=20=20=20=20=20=20=20=20=20<tr><td><strong>Deadline:</strong></td><td>7=
-=20days=20remaining=20to=20claim</td></tr>
-=20=20=20=20=20=20=20=20</table>
-
-=20=20=20=20=20=20=20=20<a=20href=3D"http://www.summermoorwa.blog/morin-nm"=
-=20class=3D"cta-button">Claim=20Your=20Reward=20Now</a>
-
-=20=20=20=20=20=20=20=20<p=20class=3D"disclaimer">Fine=20Print:=20This=20is=
-=20an=20exclusive=20offer=20for=20selected=20participants.=20Your=20feedbac=
-k=20helps=20improve=20our=20products.=20Reward=20is=20non-transferable=20an=
-d=20subject=20to=20availability.=20Terms=20and=20conditions=20apply.=20Void=
-=20where=20prohibited.</p>
-
-=20=20=20=20=20=20=20=20<p=20class=3D"mundane-text">A=20bee=20lands=20on=20=
-a=20flower,=20its=20legs=20dusted=20with=20pollen=20as=20it=20moves=20from=
-=20petal=20to=20petal=20in=20a=20methodical=20dance.=20The=20flower=20sways=
-=20slightly=20under=20the=20weight,=20yet=20the=20bee=20continues=20its=20w=
-ork=20with=20unbroken=20focus.=20Sunlight=20catches=20the=20translucent=20w=
-ings,=20making=20them=20shimmer=20for=20a=20brief=20moment=20before=20the=
-=20bee=20lifts=20off=20toward=20the=20next=20bloom.=20It=20is=20a=20small=
-=20interaction,=20but=20one=20that=20repeats=20countless=20times=20through=
-=20the=20garden=20without=20notice.</p>
-=20=20=20=20=20=20</td>
-=20=20=20=20</tr>
-=20=20</table>
+<body style="margin:0; padding:0; background-color:#f5efe6; font-family: Georgia, 'Times New Roman', Times, serif;">
+<div style="font-family: 'Courier New', monospace; display:block; max-width:0; max-height:0; overflow:hidden;">I think the trailhead suggestion you mentioned could work well for Saturday morning. Starting by 7 would give us enough time to reach the ridge before the afternoon heat sets in. The loop you described is roughly eight miles with about fourteen hundred feet of elevation gain which seems manageable if we pace ourselves. I checked the weather forecast and it looks clear with highs near seventy five so we should bring extra water and some snacks. If you want we can stop at that bakery on the way out of town for sandwiches to pack. Let me know if you prefer the longer route that goes past the old fire lookout or if sticking to the main loop sounds better. I have the map spread out on the table right now and the creek crossing should be low enough this time of year to cross without getting soaked. We might see some wildflowers still blooming in the upper meadows which would be ni
+ ce. I can drive if you want to meet at my place around six thirty.</div>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5efe6;">
+<tr>
+<td align="center" style="padding:20px 10px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+<tr>
+<td style="padding:0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding:28px 30px 10px 30px; border-bottom:2px solid #cfc6bd;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:26px; font-weight:bold; color:#6e0f14; letter-spacing:1px; line-height:1.2;">Omaha Steaks</td>
+<td align="right" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:13px; color:#787878; font-style:italic; line-height:1.4;">Hand-selected cuts,<br>prepared with care</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:8px 30px 0 30px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="width:6px; background-color:#d4a94a; border-radius:3px;">&nbsp;</td>
+<td style="padding-left:18px;">
+<h1 style="font-family: 'Arial', Helvetica, sans-serif; font-size:22px; color:#222222; margin:0 0 6px 0; font-weight:700; line-height:1.3;">Gourmet Sampler Program</h1>
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#3a3a3a; margin:0 0 0 0; line-height:1.5;">A selection of premium cuts is being made available to participants, provided at no charge through this program.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:18px 30px 12px 30px;">
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#3a3a3a; margin:0 0 14px 0; line-height:1.6;">Omaha Steaks is offering 500 gourmet boxes, each valued over $600, at no charge to recipients. One sampler per household. This offer ends Tomorrow. Each cut is hand-selected and flash-frozen to preserve its natural flavor and tenderness.</p>
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:15px; color:#3a3a3a; margin:0 0 16px 0; line-height:1.6;">Those who receive this message are guaranteed a sampler box. You will not be billed for the sampler — the cost is covered by the program for this offer.</p>
+</td>
+</tr>
+<tr>
+<td align="center" style="padding:6px 30px 20px 30px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="background-color:#6e0f14; border-radius:30px; padding:0; box-shadow:0 3px 6px rgba(0,0,0,0.15);">
+<a href="http://www.tendhold.garden/signals/details/track/xdbi54sux1ra" style="display:inline-block; font-family: Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#ffffff; text-decoration:none; padding:14px 42px; border-radius:30px; line-height:1; letter-spacing:0.5px;">See What's Included</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:0 30px 20px 30px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding-bottom:8px; font-family: 'Arial', Helvetica, sans-serif; font-size:16px; color:#222222; font-weight:700; line-height:1.3;">Inside Your Box</td>
+</tr>
+</table>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #cfc6bd; border-radius:6px;">
+<tr>
+<td style="padding:0;" valign="top">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="width:50%; padding:10px 14px; border-bottom:1px solid #e3dbd2; background-color:#faf6f0; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#3a3a3a; line-height:1.5; vertical-align:middle;">4 Filet Mignons</td>
+<td style="width:50%; padding:10px 14px; border-bottom:1px solid #e3dbd2; border-left:1px solid #e3dbd2; background-color:#ffffff; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#3a3a3a; line-height:1.5; vertical-align:middle;">4 Ribeyes</td>
+</tr>
+<tr>
+<td style="width:50%; padding:10px 14px; border-bottom:1px solid #e3dbd2; background-color:#ffffff; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#3a3a3a; line-height:1.5; vertical-align:middle;">4 New York Strips</td>
+<td style="width:50%; padding:10px 14px; border-bottom:1px solid #e3dbd2; border-left:1px solid #e3dbd2; background-color:#faf6f0; font-family: Georgia, 'Times New Roman', Times, serif; font-size:14px; color:#3a3a3a; line-height:1.5; vertical-align:middle;">6 Top Sirloins</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:0 30px 16px 30px;">
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:13px; color:#787878; margin:0; line-height:1.5; font-style:italic;">Quantities are determined by program allocation. One sampler per household. Offer ends Tomorrow.</p>
+</td>
+</tr>
+<tr>
+<td style="padding:16px 30px 20px 30px; border-top:1px solid #cfc6bd;">
+<p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:13px; color:#5a5a5a; margin:0; line-height:1.5; text-align:center;">Thank you for taking a moment to review this offer.</p>
+<div style="height:4px; background-color:#6e0f14; border-radius:2px; margin-top:16px;"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div style="font-family: 'Brush Script MT', cursive; margin:0; padding:0; font-size:0; line-height:0; visibility:hidden;">I have been thinking about the best way to approach the backyard patio project and I think starting with a concrete base rather than pavers would give us a more stable surface in the long run. The area we measured last weekend is about twelve feet by sixteen feet which would require around two and a half cubic yards of concrete if we pour it four inches thick. My neighbor did something similar last year and he recommended using fibermesh reinforcement to help control cracking. We would need to rent a mixer unless we want to order a ready mix truck which might be easier for that volume. I can help with the grading and forms if you can handle the finishing work. We should also think about drainage since that corner of the yard tends to collect water after a heavy rain. I was looking at some photos of stamped concrete patterns that could give it a nice finished look 
+ without the cost of stone. Let me know when you want to start and I can reserve the equipment for a weekend.</div>
 </body>
 </html>
 
---eHw-vNnSc2LQGhG7Exp5vbAEJmWh-.gnci--
+--._grid-DataPart.vwbkbanbfggffkhg_3530511612=vanmptaxevfw3zzpivn1c--
