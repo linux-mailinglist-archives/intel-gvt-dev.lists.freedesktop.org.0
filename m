@@ -2,48 +2,49 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id w5ndFODfJmq/mAIAu9opvQ
+	id HE3rOcfnJmpwmwIAu9opvQ
 	(envelope-from <intel-gvt-dev-bounces@lists.freedesktop.org>)
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 08 Jun 2026 17:29:36 +0200
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 08 Jun 2026 18:03:19 +0200
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5EA4658124
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 08 Jun 2026 17:29:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51072658772
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 08 Jun 2026 18:03:19 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=fail ("headers rsa verify failed") header.d=recentjim.living header.s=mtajdf1jvwyxx header.b=igqI5Sct;
+	dkim=fail ("body hash did not verify") header.d=parkingagree.skin header.s=mtaju9c43qhdn header.b="NHQhAg/K";
 	spf=pass (mail.lfdr.de: domain of intel-gvt-dev-bounces@lists.freedesktop.org designates 131.252.210.177 as permitted sender) smtp.mailfrom=intel-gvt-dev-bounces@lists.freedesktop.org;
-	dmarc=fail reason="SPF not aligned (relaxed)" header.from=recentjim.living (policy=none)
+	dmarc=fail reason="SPF not aligned (relaxed)" header.from=parkingagree.skin (policy=none)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 82C5410F5E4;
-	Mon,  8 Jun 2026 15:29:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2F6C010F66E;
+	Mon,  8 Jun 2026 16:03:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from relay.recentjim.living (unknown [162.217.161.6])
- by gabe.freedesktop.org (Postfix) with ESMTP id 398F610F5E4
+X-Greylist: delayed 338 seconds by postgrey-1.36 at gabe;
+ Mon, 08 Jun 2026 16:03:16 UTC
+Received: from relay2.parkingagree.skin (lantern3689.fintentlab.com
+ [162.217.160.151])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B2CA310F66E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Jun 2026 15:29:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtajdf1jvwyxx;
- d=recentjim.living; 
- h=MIME-Version:Subject:Message-ID:Date:To:Reply-To:List-Unsubscribe:From:
- Content-Type; i=bluecrosshello@recentjim.living;
- bh=ZfrH3od4PNL1bIYmAV1vifaC5UVT3edEe5RUKAnAtqw=;
- b=igqI5SctJmdsa0YfAAXR74axiPzlC8Kee+BeBZRGVCeO3OclTH6SQKo43tvmveY35A9SSAj7bBIP
- LM1Xldy8IyYPStlh+6zrYZa5pNNPXSLKG833EKJkinaG1ARKsnb3ESABQF3KO0rcnq6DSlMOC1mS
- 6YqNebrdwdP+ynIEN2Y8bsehrJGL3G3FDoXQRaDlsLUYU4nZv4uZ0+axUNIXONpM6s+AIHUyZIzi
- 2nY+lrac8I+2MRJNIrVN8MICoPQmleLGqbpjyz0LbApigT21z/oeNVEllbMcfRlTIvKR2vFTu0eC
- XVZXp6GNfToV0d/EIVnmMjgqe8oHg4jvcw/XpQ==
-MIME-Version: 1.0
-Subject: The selections as your pIan modifies for 2026 - examine
-Message-ID: <wmfvchbok.642027-aa031cb18cbf701cbea8a87c2@recentjim.living>
-X-Nonce: 0000:?66998647-JzbzH
-Date: Mon, 8 Jun 2026 11:21:59 -0400
+ Mon,  8 Jun 2026 16:03:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mtaju9c43qhdn;
+ d=parkingagree.skin; 
+ h=Message-ID:From:MIME-Version:Subject:To:Content-Type:List-Unsubscribe:
+ Reply-To:Date; i=acehardware@parkingagree.skin;
+ bh=KUuTgvttuQmVUb4RMOVUm+1IyOWC/srRIvPtteCqbPw=;
+ b=NHQhAg/KxB7ZnILIxQFkVfNxeFq94FEyWU4V4vn030uYNk0mFTYjVM2BFeycZ5Zs0VDYzGuPBuha
+ SpGZK87RNXBYv61+VjnKy5iF/2ZKqQJVISLEW48pgezcA0tfyGFv82h82cTiGP/cmWTmWRQXq8PO
+ HGYa/AMht02E6aajs7DBrXAIrTUD0D2EoTRPHk2SwpLeMBMcWXA08plh8QFwoeXk+DoKNDuoIjk5
+ GTxeAVilBqPeuTsveIuTmFbcmVgoWe2gpdw6gdR0HQSSnpGIB923Eu2IoWyihMynfSfuD4HUUCC7
+ ESHEqVEJylFQTQGObVwPo4iy1BH+yx0eB7Qm0g==
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <264572-2t847gr50lrafli4aossswexzksf@parkingagree.skin>
+From: Ace Hardware <acehardware@parkingagree.skin>
+MIME-Version: 1.0
+Subject: Your AceReward points expire tomorrow.
 To: intel-gvt-dev@lists.freedesktop.org
-X-Dispatch-Trace: z06h1ltosl_hbX2NncGd2
-X-Filter-Chain-Ref: MCJJQTQUPO/z06h1ltosl/66998647
-From: BlueCross Hello <bluecrosshello@recentjim.living>
 Content-Type: multipart/alternative;
- boundary="-span.-6911=Mirror-wz81utb2qrsmv62l"
+ boundary="--core=.Packet-TextPart=xexclzrtoadybqlj_09916"
+X-Downlink-Trace-ID: Daxxh6B7weDrIh.JHDOUAH.4732
+Date: Mon, 8 Jun 2026 11:57:32 -0400
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,186 +57,265 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bluecrosshello@recentjim.living
+Reply-To: acehardware@parkingagree.skin
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Rspamd-Action: add header
-X-Spamd-Result: default: False [13.59 / 15.00];
-	URIBL_BLACK(7.50)[recentjim.living:replyto,recentjim.living:mid,recentjim.living:url,recentjim.living:from_mime];
-	ABUSE_SURBL(5.00)[recentjim.living:replyto,recentjim.living:mid,recentjim.living:from_mime,www.recentjim.living:url];
-	R_DKIM_REJECT(1.00)[recentjim.living:s=mtajdf1jvwyxx];
+X-Spamd-Result: default: False [10.49 / 15.00];
+	URIBL_BLACK(7.50)[parkingagree.skin:replyto,parkingagree.skin:mid,parkingagree.skin:url,parkingagree.skin:from_mime];
+	R_BAD_CTE_7BIT(1.05)[unknown,utf8];
+	R_DKIM_REJECT(1.00)[parkingagree.skin:s=mtaju9c43qhdn];
+	URI_COUNT_ODD(1.00)[1];
 	MAILLIST(-0.20)[mailman];
-	ZERO_FONT(0.20)[2];
 	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
-	BAD_REP_POLICIES(0.10)[];
 	RWL_MAILSPIKE_GOOD(-0.10)[131.252.210.177:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[recentjim.living : SPF not aligned (relaxed),none];
-	MANY_INVISIBLE_PARTS(0.10)[2];
+	BAD_REP_POLICIES(0.10)[];
+	DMARC_POLICY_SOFTFAIL(0.10)[parkingagree.skin : SPF not aligned (relaxed),none];
+	ZERO_FONT(0.10)[1];
+	MANY_INVISIBLE_PARTS(0.05)[1];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	DKIM_TRACE(0.00)[parkingagree.skin:-];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCPT_COUNT_ONE(0.00)[1];
 	GREYLIST(0.00)[pass,meta];
-	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	DKIM_TRACE(0.00)[recentjim.living:-];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
 	MISSING_XM_UA(0.00)[];
 	ASN(0.00)[asn:6366, ipnet:131.252.0.0/16, country:US];
 	REPLYTO_ADDR_EQ_FROM(0.00)[];
 	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[bluecrosshello@recentjim.living,intel-gvt-dev-bounces@lists.freedesktop.org];
+	FROM_NEQ_ENVFROM(0.00)[acehardware@parkingagree.skin,intel-gvt-dev-bounces@lists.freedesktop.org];
 	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[bluecrosshello@recentjim.living];
+	ARC_NA(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
 	ALIAS_RESOLVED(0.00)[];
 	R_SPF_ALLOW(0.00)[+ip4:131.252.210.177:c];
 	PREVIOUSLY_DELIVERED(0.00)[intel-gvt-dev@lists.freedesktop.org];
 	TAGGED_RCPT(0.00)[intel-gvt-dev];
 	MID_RHS_MATCH_FROM(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[gabe.freedesktop.org:rdns,gabe.freedesktop.org:helo,lists.freedesktop.org:from_smtp,recentjim.living:replyto,recentjim.living:mid,recentjim.living:url,recentjim.living:from_mime]
+	HAS_REPLYTO(0.00)[acehardware@parkingagree.skin]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: A5EA4658124
+X-Rspamd-Queue-Id: 51072658772
 X-Spam: Yes
 
----span.-6911=Mirror-wz81utb2qrsmv62l
+----core=.Packet-TextPart=xexclzrtoadybqlj_09916
 Content-Type: text/plain; charset="UTF-8"
 
-I am planning to go up to the lake next weekend if the weather holds. We need to figure out the best route because last time we hit a lot of traffic on the main highway. Maybe we can take the back roads through the valley. It adds about thirty minutes but the views are much nicer and there is hardly any traffic. Let me know what you think about the timing. I can bring the grill and some side dishes if you handle the main course. Send me a list of what else we might need and I will pick it up on Friday after work.
+0hajhafaqb
 
-BlueCross BlueShield
+Yeah, I finally did that hike we talked about last month! The trail was longer than expected but the views at the top were incredible. We started around 7 AM to beat the heat and honestly it was the right call. The first two miles are pretty steep but after that it levels out nicely. I saw a few deer about halfway up which was unexpected. We packed sandwiches and ate at the summit which was perfect timing because right after we finished the clouds rolled in. The descent took about an hour and a half because my knees were complaining but overall it was such a great day. You should definitely try it next weekend if Daxxh6B7weDrIh the weather holds up. Just bring more water than you think you need because there's no shade for long stretches. Let me know if you want the trail map I saved on my phone. There's also a waterfall about a mile from the trailhead that we almost missed because it's hidden behind some brush. Definitely worth stopping there on the way back.
 
-Preparing for 2026: Plan Updates & Your Medicare Kit
+Urgent Notice
 
-Your coverage options are evolving, and BlueCross BlueShield is committed to helping you transition smoothly. We have important details regarding your 2026 plan configurations.
+Your AceReward Points
+Expire Tomorrow
 
-Eligibility & Program Details:
+$100+
 
-Residents in your service area may receive a Medicare Kit provided at no charge. One kit is available per household, with a total allocation of 800 kits. The program enrollment period concludes Tomorrow. No payment is required to request your kit.
+in-store credit waiting for you
 
-Learn About Your Kit & Plan
+Redeem your points at any Ace location or shop online with your account. Use your credit on anything in stock — tools, paint, lawn care, hardware, and more.
 
-2026 Plan Coverage Adjustments
+Redeem
 
-Based on your current enrollment, there are several updated coverage options available for the 2026 plan year. Our team has outlined the key areas where you may want to review your selections to ensure they align with your anticipated healthcare needs.
+At Any Ace Location
 
-Alongside these coverage updates, BlueCross BlueShield is pleased to provide a comprehensive Medicare Kit to eligible residents. This kit is designed to support your daily health monitoring and wellness routines.
+Visit your neighborhood Ace Hardware, provide your AceRewards account information, and apply your credit at checkout. No minimum purchase required.
 
-Inside Your Medicare Kit
+Shop
 
-Contents are curated to support your wellness. Quantities are determined by program allocation and availability.
+Online With Your Account
 
-Blood Pressure Monitor
+Sign in to your AceRewards account on acehardware.com, add items to your cart, and select your credit as the payment method at checkout. Easy and convenient.
 
-Compression Socks (Pair)
+Details
 
-Multi-Purpose First Aid Kit
+Your Rewards Summary
 
-Daily Pill Organizer
+Points: 1,832
 
-Digital Thermometer
+ID: AC-82KvU8u-XNal
 
-Reusable Heating Pad
+Redeem Points plus Store Card
 
-Disposable Latex Gloves (Box)
+Offer valid tomorrow only. Redeem in-store or online.
 
-Assorted Adhesive Bandages
+Ref: 47324732
 
-One kit per eligible household while supplies last. Program concludes Tomorrow.
+Ace Hardware
 
-Access Your Plan & Kit Details
+Hey, I tried making that pasta dish you mentioned and it turned out better than I expected. The key is really letting the garlic brown slowly in the olive oil before adding anything else. I also added a bit of lemon zest at the end which brightened up the whole thing. The recipe said to use fresh basil but I only had dried and it still worked fine honestly. I paired it with a simple side salad and some crusty bread and it felt like a proper meal. Next time I think I'll add some pine nuts for texture or maybe some roasted cherry tomatoes. The whole thing took about 30 minutes from start to finish which was perfect for a weeknight. Let me know if you want me to send you the link to the recipe I used. I think it would also be great with grilled chicken if you're looking for more protein. The leftovers reheated really well the next day too which is always a plus when meal prepping.
 
-Thank you for trusting BlueCross BlueShield with your healthcare needs.
-
-This communication is for informational purposes regarding your plan benefits.
-
-I spent the better part of the afternoon looking into that database migration issue you flagged. It turns out the schema mismatch was causing the null values to propagate through the stored procedures. We can fix it by adding explicit type casts on the join conditions, but we will need to schedule a maintenance window to deploy the change. I can draft the migration script tonight and send it over for review in the morning. Let me know if you want to walk through the logic together before we present it to the team lead.
-
----span.-6911=Mirror-wz81utb2qrsmv62l
+----core=.Packet-TextPart=xexclzrtoadybqlj_09916
 Content-Type: text/html; charset="UTF-8"
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 </head>
-<body style="margin:0; padding:0; background-color:#f4f6f8; font-family: Arial, Helvetica, sans-serif;">
-<div style="display:none; font-family: 'Trebuchet MS', sans-serif; font-size:0; line-height:0; max-height:0; overflow:hidden;">
-I am planning to go up to the lake next weekend if the weather holds. We need to figure out the best route because last time we hit a lot of traffic on the main highway. Maybe we can take the back roads through the valley. It adds about thirty minutes but the views are much nicer and there is hardly any traffic. Let me know what you think about the timing. I can bring the grill and some side dishes if you handle the main course. Send me a list of what else we might need and I will pick it up on Friday after work.
-</div>
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f4f6f8;">
-<tr><td align="center" style="padding:20px 10px;">
-<table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-<tr><td style="padding:30px 40px 10px 40px; text-align:center; font-size:28px; font-weight:bold; color:#005d8f; letter-spacing:1px;">BlueCross BlueShield</td></tr>
-<tr><td style="padding:0 40px;"><div style="height:4px; background-color:#6FBEDC; border-radius:2px; margin-bottom:20px;"></div></td></tr>
-<tr><td style="padding:20px 40px 10px 40px;">
-<h1 style="margin:0 0 10px 0; font-size:24px; color:#222222; font-weight:bold;">Preparing for 2026: Plan Updates & Your Medicare Kit</h1>
-<p style="margin:0 0 15px 0; font-size:16px; color:#555555; line-height:1.5;">Your coverage options are evolving, and BlueCross BlueShield is committed to helping you transition smoothly. We have important details regarding your 2026 plan configurations.</p>
-<table role="presentation" width="100%" cellspacing="0" cellpadding="12" style="background-color:#E6F3F7; border-radius:6px; border-left: 5px solid #005d8f;">
-<tr><td style="font-size:15px; color:#222222; line-height:1.5;">
-<strong style="color:#005d8f;">Eligibility & Program Details:</strong><br>
-Residents in your service area may receive a Medicare Kit provided at no charge. One kit is available per household, with a total allocation of 800 kits. The program enrollment period concludes Tomorrow. No payment is required to request your kit.
-</td></tr>
-</table>
-</td></tr>
-<tr><td align="center" style="padding:20px 40px 10px 40px;">
-<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 auto;">
-<tr><td align="center" style="background-color:#007AAE; border-radius:50px; padding:0;">
-<a href="http://www.recentjim.living/it/preview/eazulqefl" target="_blank" style="display:inline-block; padding:15px 35px; font-size:18px; font-weight:bold; color:#ffffff; text-decoration:none; border-radius:50px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Learn About Your Kit & Plan</a>
-</td></tr>
-</table>
-</td></tr>
-<tr><td style="padding:10px 40px;">
-<h2 style="margin:20px 0 10px 0; font-size:20px; color:#222222; font-weight:bold;">2026 Plan Coverage Adjustments</h2>
-<p style="margin:0 0 15px 0; font-size:16px; color:#555555; line-height:1.5;">Based on your current enrollment, there are several updated coverage options available for the 2026 plan year. Our team has outlined the key areas where you may want to review your selections to ensure they align with your anticipated healthcare needs.</p>
-<p style="margin:0 0 15px 0; font-size:16px; color:#555555; line-height:1.5;">Alongside these coverage updates, BlueCross BlueShield is pleased to provide a comprehensive Medicare Kit to eligible residents. This kit is designed to support your daily health monitoring and wellness routines.</p>
-</td></tr>
-<tr><td style="padding:10px 40px 20px 40px;">
-<h2 style="margin:0 0 15px 0; font-size:20px; color:#222222; font-weight:bold;">Inside Your Medicare Kit</h2>
-<p style="margin:0 0 15px 0; font-size:14px; color:#777777;">Contents are curated to support your wellness. Quantities are determined by program allocation and availability.</p>
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+<body style="margin:0;padding:0;background-color:#faf8f5;font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;font-size:0;line-height:0;">0hajhafaqb</div>
+
+<div style="display:none;font-family:'Trebuchet MS',sans-serif;">Yeah, I finally did that hike we talked about last month! The trail was longer than expected but the views at the top were incredible. We started around 7 AM to beat the heat and honestly it was the right call. The first two miles are pretty steep but after that it levels out nicely. I saw a few deer about halfway up which was unexpected. We packed sandwiches and ate at the summit which was perfect timing because right after we finished the clouds rolled in. The descent took about an hour and a half because my knees were complaining but overall it was such a great day. You should definitely try it next weekend if Daxxh6B7weDrIh the weather holds up. Just bring more water than you think you need because there's no shade for long stretches. Let me know if you want the trail map I saved on my phone. There's also a waterfall about a mile from the trailhead that we almost missed because it's hidden behind some brush. Definit
+ ely worth stopping there on the way back.<br><br></div>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#faf8f5;">
 <tr>
-<td width="50%" valign="top" style="padding:4px;">
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #dddddd; border-radius:6px; overflow:hidden;">
-<tr style="background-color:#f9f9f9;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Blood Pressure Monitor</td></tr>
-<tr style="background-color:#ffffff;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Compression Socks (Pair)</td></tr>
-<tr style="background-color:#f9f9f9;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Multi-Purpose First Aid Kit</td></tr>
-<tr style="background-color:#ffffff;"><td style="padding:12px 15px; font-size:15px; color:#222222;">Daily Pill Organizer</td></tr>
+<td align="center" style="padding:40px 20px 20px 20px;">
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;background-color:#ffffff;border-radius:4px;">
+<tr>
+<td align="center" style="padding:40px 30px 20px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding-bottom:12px;">
+<div style="background-color:#ffffff;display:inline-block;">
+<img src="http://www.parkingagree.skin/insights_scope/overview/readnext/w66qnu6cdfb5jchnrrv9eobrjps5uw/global_nodehubqmq" alt="Ace Hardware logo" style="display:block;border:0;">
+</div>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:2px solid #cc2229;padding-top:0;"></td>
+</tr>
 </table>
 </td>
-<td width="50%" valign="top" style="padding:4px;">
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #dddddd; border-radius:6px; overflow:hidden;">
-<tr style="background-color:#f9f9f9;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Digital Thermometer</td></tr>
-<tr style="background-color:#ffffff;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Reusable Heating Pad</td></tr>
-<tr style="background-color:#f9f9f9;"><td style="padding:12px 15px; font-size:15px; color:#222222; border-bottom:1px solid #dddddd;">Disposable Latex Gloves (Box)</td></tr>
-<tr style="background-color:#ffffff;"><td style="padding:12px 15px; font-size:15px; color:#222222;">Assorted Adhesive Bandages</td></tr>
+</tr>
+
+<tr>
+<td align="center" style="padding:30px 30px 10px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#cc2229;letter-spacing:2px;text-transform:uppercase;padding-bottom:10px;">Urgent Notice</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:28px;font-weight:700;color:#1a1a1a;line-height:1.2;padding-bottom:8px;">Your AceReward Points<br>Expire Tomorrow</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:48px;font-weight:700;color:#cc2229;line-height:1.1;padding:10px 0 6px 0;">$100+</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;color:#1a1a1a;padding-bottom:6px;">in-store credit waiting for you</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:15px;color:#555555;line-height:1.5;padding-top:4px;">Redeem your points at any Ace location or shop online with your account. Use your credit on anything in stock — tools, paint, lawn care, hardware, and more.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td align="center" style="padding:20px 30px 10px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left" style="background-color:#fff5f5;border-radius:4px;padding:20px 24px;font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:13px;color:#1a1a1a;line-height:1.6;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="font-weight:700;color:#cc2229;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding-bottom:2px;">Redeem</td>
+</tr>
+<tr>
+<td style="font-weight:700;font-size:16px;padding-bottom:4px;">At Any Ace Location</td>
+</tr>
+<tr>
+<td style="font-size:14px;color:#444444;">Visit your neighborhood Ace Hardware, provide your AceRewards account information, and apply your credit at checkout. No minimum purchase required.</td>
+</tr>
 </table>
 </td>
 </tr>
 </table>
-<p style="margin:15px 0 0 0; font-size:14px; color:#888888; font-style:italic;">One kit per eligible household while supplies last. Program concludes Tomorrow.</p>
-</td></tr>
-<tr><td align="center" style="padding:10px 40px 30px 40px;">
-<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 auto;">
-<tr><td align="center" style="background-color:#007AAE; border-radius:50px; padding:0;">
-<a href="http://www.recentjim.living/it/preview/eazulqefl" target="_blank" style="display:inline-block; padding:15px 35px; font-size:18px; font-weight:bold; color:#ffffff; text-decoration:none; border-radius:50px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Access Your Plan & Kit Details</a>
-</td></tr>
+</td>
+</tr>
+
+<tr>
+<td align="center" style="padding:10px 30px 10px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left" style="background-color:#fff5f5;border-radius:4px;padding:20px 24px;font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:13px;color:#1a1a1a;line-height:1.6;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="font-weight:700;color:#cc2229;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding-bottom:2px;">Shop</td>
+</tr>
+<tr>
+<td style="font-weight:700;font-size:16px;padding-bottom:4px;">Online With Your Account</td>
+</tr>
+<tr>
+<td style="font-size:14px;color:#444444;">Sign in to your AceRewards account on acehardware.com, add items to your cart, and select your credit as the payment method at checkout. Easy and convenient.</td>
+</tr>
 </table>
-</td></tr>
-<tr><td style="padding:30px 40px 20px 40px; border-top:2px solid #005d8f; text-align:center;">
-<p style="margin:0 0 5px 0; font-size:14px; color:#666666;">Thank you for trusting BlueCross BlueShield with your healthcare needs.</p>
-<p style="margin:0; font-size:12px; color:#999999;">This communication is for informational purposes regarding your plan benefits.</p>
-</td></tr>
+</td>
+</tr>
 </table>
-</td></tr>
+</td>
+</tr>
+
+<tr>
+<td align="center" style="padding:10px 30px 20px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left" style="background-color:#fff5f5;border-radius:4px;padding:20px 24px;font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:13px;color:#1a1a1a;line-height:1.6;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="font-weight:700;color:#cc2229;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding-bottom:2px;">Details</td>
+</tr>
+<tr>
+<td style="font-weight:700;font-size:16px;padding-bottom:4px;">Your Rewards Summary</td>
+</tr>
+<tr>
+<td style="font-size:14px;color:#444444;padding-bottom:4px;">Points: 1,832</td>
+</tr>
+<tr>
+<td style="font-size:14px;color:#444444;">ID: AC-82KvU8u-XNal</td>
+</tr>
 </table>
-<div style="font-size:0; line-height:0; max-height:0; overflow:hidden; font-family: 'Courier New', monospace;">
-I spent the better part of the afternoon looking into that database migration issue you flagged. It turns out the schema mismatch was causing the null values to propagate through the stored procedures. We can fix it by adding explicit type casts on the join conditions, but we will need to schedule a maintenance window to deploy the change. I can draft the migration script tonight and send it over for review in the morning. Let me know if you want to walk through the logic together before we present it to the team lead.
-</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td align="center" style="padding:10px 30px 30px 30px;background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding:8px 0 4px 0;">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="background-color:#cc2229;border-radius:4px;padding:0;">
+<a href="http://www.parkingagree.skin/notes/litpdolssyns" style="display:inline-block;padding:16px 40px;font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#ffffff;background-color:#cc2229;border-radius:4px;text-decoration:none;letter-spacing:0.5px;">Redeem Points plus Store Card</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:13px;color:#888888;padding-top:12px;">Offer valid tomorrow only. Redeem in-store or online.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td align="center" style="padding:20px 30px 30px 30px;background-color:#faf8f5;border-radius:0 0 4px 4px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:11px;color:#999999;padding-bottom:4px;">Ref: 47324732</td>
+</tr>
+<tr>
+<td align="center" style="font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:11px;color:#aaaaaa;">Ace Hardware</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div style="opacity:0;height:0;line-height:0;overflow:hidden;font-family:Arial,sans-serif;">Hey, I tried making that pasta dish you mentioned and it turned out better than I expected. The key is really letting the garlic brown slowly in the olive oil before adding anything else. I also added a bit of lemon zest at the end which brightened up the whole thing. The recipe said to use fresh basil but I only had dried and it still worked fine honestly. I paired it with a simple side salad and some crusty bread and it felt like a proper meal. Next time I think I'll add some pine nuts for texture or maybe some roasted cherry tomatoes. The whole thing took about 30 minutes from start to finish which was perfect for a weeknight. Let me know if you want me to send you the link to the recipe I used. I think it would also be great with grilled chicken if you're looking for more protein. The leftovers reheated really well the next day too which is always a plus when meal prepping.<br><br></div>
+
 </body>
 </html>
 
----span.-6911=Mirror-wz81utb2qrsmv62l--
+----core=.Packet-TextPart=xexclzrtoadybqlj_09916--
